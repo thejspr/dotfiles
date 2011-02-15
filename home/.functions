@@ -1,0 +1,64 @@
+###functions
+#Automatically do an ls after each cd
+cd() {
+  if [ -n "$1" ]; then
+    builtin cd "$@" && ls
+  else
+    builtin cd ~ && ls
+      fi
+}
+
+# mkdir, cd into it
+mkcd () {
+  mkdir -p "$*"
+    cd "$*"
+}
+
+#show current external ip.
+function myip {
+  myip=`elinks -dump http://checkip.dyndns.org:8245/`
+    echo "${myip}"
+}
+
+# extract any archive
+function ef() {
+  if [ -f "$1" ] ; then
+  case "$1" in
+    *.tar.bz2) tar xjfv "$1" ;;
+    *.tar.gz) tar xzfv "$1" ;;
+    *.tar.Z) tar xzfv "$1" ;;
+    *.bz2) bunzip2 "$1" ;;
+    *.rar) unrar x "$1" ;;
+    *.gz) gunzip "$1" ;;
+    *.jar) unzip "$1" ;;
+    *.tar) tar xfv "$1" ;;
+    *.tbz2) tar xjfv "$1" ;;
+    *.tgz) tar xzfv "$1" ;;
+    *.zip) unzip "$1" ;;
+    *.7z) 7z e "$1" ;;
+    *.Z) uncompress "$1" ;;
+    *) echo "'$1' cannot be extracted." ;;
+    esac
+  else
+    echo "'$1' is not a file."
+      fi
+}
+# packs $2-$n into $1 depending on $1's extension.  add more file types as needed
+function pack() {
+	 if [ $# -lt 2 ] ; then
+	    echo -e "\npack() usage:"
+	    echo -e "\tpack archive_file_name file1 file2 ... fileN"
+	    echo -e "\tcreates archive of files 1-N\n"
+	 else 
+	   DEST=$1
+	   shift
+
+	   case $DEST in 
+		*.tar.bz2)		tar -cvjf $DEST "$@" ;;  
+		*.tar.gz)		tar -cvzf $DEST "$@" ;;  
+		*.zip)			zip -r $DEST "$@" ;;
+		*.xpi)			zip -r $DEST "$@" ;;
+		*)				echo "Unknown file type - $DEST" ;;
+	   esac
+	 fi
+}

@@ -1,0 +1,32 @@
+[user]
+	name = Jesper Kjeldgaard
+	email = jkjeldgaard@gmail.com 
+[github]
+  user = jkjeldgaard
+  token = 
+[color]
+  ui = true
+[alias]
+  st = status
+  ci = commit
+  co = checkout
+  br = branch
+  cp = cherry-pick
+  up = pull --rebase
+  ff = pull --ff-only
+  lg = log --decorate
+  logs = log --stat --decorate
+  logg = log --graph --decorate --branches --remotes
+  pop = stash pop
+  override = !sh -c 'echo git add -- $0 && echo git reset HEAD -q -- $0 && echo git checkout -- $0'
+  wu = log --stat origin..@{0}
+  unadd = rm --cached
+  sup = !git stash && git up && git pop
+  sff = !git stash && git ff && git pop
+[mergetool]
+  keepBackup = false
+[push]
+  default = current
+[core]
+	excludesfile = /home/jesper/.gitignore
+
