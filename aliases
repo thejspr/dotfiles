@@ -1,10 +1,22 @@
-#git
+# edit
+alias gvimt='gvim --remote-tab-silent'
+alias gv='gvim'
+sgv() { sudo gvim --remote-tab-silent "$1" &; }
+sv() { sudo vim --remote-tab-silent "$1" &; }
+
+# tmux
+alias ltmux="if tmux has; then tmux attach; else tmux new; fi"
+
+# git
 gitp() { git add -A; git commit -m "$*"; git push; }
 
-#ruby&rails
-railsres() { rake db:drop; rake db:migrate; rails s; }
-rakedb() { rake db:drop; rake db:migrate; rake db:seed; }
+# sass
+alias sassw='sass --watch public/stylesheets/sass/:public/stylesheets'
+
+# ruby & rails
 alias r='rails $*'
+alias rs='rails server'
+alias rc='rails console'
 alias gemup='gem update --system && gem update'
 alias nres='sudo /etc/init.d/nginx restart'
 # heroku
@@ -44,17 +56,6 @@ alias grep='grep --color=auto'
 alias du='du -h'
 alias df='df -h'
 
-# Applications
-#edit
-alias gvim='gvim --remote-tab-silent'
-alias gv='gvim'
-sgv() { sudo gvim --remote-tab-silent "$1" &; }
-sv() { sudo vim --remote-tab-silent "$1" &; }
-
-#nano
-sn() { sudo nano "$1"; }
-n() { nano $1; }
-
 # system
 alias a='alias'
 alias ea='gvim ~/.aliases & sr'
@@ -63,3 +64,4 @@ alias aprox='apropos'
 alias off='sudo shutdown -h now'
 alias sr='source ~/.zshrc'
 alias cpenv='scp ~/.zshrc ~/.aliases ~/.gemrc ~/.functions jkjeldgaard.xen.prgmr.com:~'
+

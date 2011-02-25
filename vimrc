@@ -6,19 +6,23 @@ set viminfo^=% " remember open buffers.
 
 colorscheme railscasts
 
+if has("gui_running")
+  set guioptions-=T
+endif 
+
 "save file
 nmap <c-s> :w<CR>
 vmap <c-s> <Esc><c-s>gv
 imap <c-s> <Esc><c-s>
 
 " Buffers - explore/next/previous: Alt-F12, F12, Shift-F12.
-nnoremap <silent> <M-F12> :BufExplorer<CR>
-nnoremap <silent> <F12> :bn<CR>
-nnoremap <silent> <S-F12> :bp<CR>
+nnoremap <silent> <F12> :BufExplorer<CR>
+nnoremap <silent> <M-right> :bn<CR>
+nnoremap <silent> <M-left> :bp<CR>
 
 " close buffer (force close buffer)
 nmap <F4> :bw<CR>
-nmap <S-F4> :bw<CR>
+nmap <s-F4> :bw!<CR>
 
 " Move lines up/down
 noremap <a-up> :call feedkeys( line('.')==1 ? '' : 'ddkP' )<CR>
@@ -26,7 +30,12 @@ noremap <a-down> ddp
 
 " reload configuration file on edit/save
 autocmd BufWritePost .vimrc source %
-"autocmd BufWritePost .gvimrc source %
+command! Ev :e ~/.vimrc
+
+" FuzzyFinder
+"map <leader>t :FufFile **/<CR>
+map <leader>f :FufFile<CR>
+map <leader>b :FufBuffer<CR>
 
 " NERD Tree
 nmap <silent> <c-n> :NERDTreeToggle<CR>
@@ -46,9 +55,6 @@ set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 
-" Don't use Ex mode, use Q for formatting
-map Q gq
-
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
@@ -59,7 +65,6 @@ endif
 " Switch wrap off for everything
 set nowrap
 
-" Only do this part when compiled with support for autocommands.
 if has("autocmd")
   " Enable file type detection.
   " Use the default filetype settings, so that mail gets 'tw' set to 72,
@@ -95,11 +100,8 @@ if has("autocmd")
   au FileType * exe('setl dict+='.$VIMRUNTIME.'/syntax/'.&filetype.'.vim')
 
   augroup END
-
 else
-
   set autoindent		" always set autoindenting on
-
 endif " has("autocmd")
 
 " Softtabs, 2 spaces
@@ -123,7 +125,7 @@ map <Leader>m :Rmodel
 map <Leader>c :Rcontroller 
 map <Leader>v :Rview 
 map <Leader>u :Runittest 
-map <Leader>f :Rfunctionaltest 
+"map <Leader>f :Rfunctionaltest 
 map <Leader>tm :RTmodel 
 map <Leader>tc :RTcontroller 
 map <Leader>tv :RTview 

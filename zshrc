@@ -7,6 +7,11 @@ EDITOR=nano
 if [ "$HOST" = "ub" ]; then
   export CDPATH=.:~:~/Dropbox/:~/Dropbox/projects
   export PATH=${PATH}:/home/jesper/apps/android-sdk-linux_x86/tools
+  # https://github.com/rupa/z
+  . ~/repos/z/z.sh
+  function precmd () {
+    z --add "$(pwd -P)"
+  }
 else
 	cd /var/www/
 fi
