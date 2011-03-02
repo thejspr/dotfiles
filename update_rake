@@ -1,0 +1,69 @@
+desc "Updates all folders"
+task :update do
+
+  puts "Updating..."
+
+  directories = Dir.glob("*")
+
+  ROOT_DIRECTORY = Dir.pwd
+
+  directories.each do | directory|
+    if File.directory?(directory)
+      Dir.chdir(directory)
+      current_dir = Dir.new(".")
+      if current_dir.entries.include?(".git") and File.directory?(".git")
+        p "git pull #{Dir.pwd}"
+        puts %x{git pull}
+      elsif current_dir.entries.include?(".svn")
+        p "svn update #{Dir.pwd}"
+        puts %x{svn update}
+      elsif current_dir.entries.include?(".hg")
+        p "hg pull #{Dir.pwd}"
+        puts %x{hg pull}
+      end
+      Dir.chdir(ROOT_DIRECTORY)
+    end
+  end
+end
+
+desc "Installs all configurations"
+task :install do
+  puts "Installing..."
+
+  dirs_bash = %w{snipmate.vim vim-ruby}
+  dirs_rake = %w{jslint.vim nerdtree snipmate-snippets syntastic vim-rails}
+
+  ROOT_DIR = Dir.pwd
+
+  dirs_bash.each do |dir|
+    script = "#{dir}.sh" 
+    if File.exists?(script) then puts %x{sh #{script}} end
+  end 
+
+  dirs_rake.each do |dir| 
+    puts dir
+    Dir.chdir(dir)
+    content = Dir.new(".").entries
+    if content.include?("Rakefile")
+      cmd = "rake"
+      case dir
+      when "vim-rails"
+        cmd << " install"
+      when "snipmate-snippets"
+        puts %x{rake snippets_dir:purge}
+        cmd << " deploy_local"
+      end
+
+      puts %x{#{cmd}} 
+    end
+    Dir.chdir(ROOT_DIR)
+  end
+
+end
+
+desc "build and install vim"
+task :vim do
+  puts %x{sh vim.sh}
+end
+
+task :default => ["update", "install"]

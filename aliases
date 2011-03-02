@@ -41,11 +41,11 @@ alias sab='sabnzbdplus --daemon'
 alias sabres='pkill sabnzbdplus && sabnzbdplus --daemon'
 
 # aptitude conviniences
-alias aptin='sudo apt-get install $* -y'
-alias aptun='sudo apt-get remove'
-alias aptfi='sudo apt-cache search'
-alias aptup='sudo apt-get update && sudo apt-get upgrade -y'
-alias aptclean='sudo apt-get autoclean && sudo apt-get autoremove && sudo apt-get clean && sudo apt-get remove'
+alias ain='sudo apt-get install $* -y'
+alias aun='sudo apt-get remove'
+alias afi='sudo apt-cache search'
+alias aup='sudo apt-get update && sudo apt-get upgrade -y'
+alias aclean='sudo apt-get autoclean && sudo apt-get autoremove && sudo apt-get clean && sudo apt-get remove'
 
 # files, directories and commands
 alias mx='chmod a+x'
