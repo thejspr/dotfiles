@@ -1,3 +1,6 @@
+# todo
+alias t='todo $*'
+
 # edit
 alias gvimt='gvim --remote-tab-silent'
 alias gv='gvim'
@@ -20,11 +23,11 @@ alias rc='rails console'
 alias gemup='gem update --system && gem update'
 alias nres='sudo /etc/init.d/nginx restart'
 # heroku
-hpush() { git add *; git commit -a -m "$*"; git push heroku master; heroku rake db:migrate; }
+hpush() { git add -A; git commit -a -m "$*"; git push heroku master; heroku rake db:migrate; }
 alias h='heroku $*'
 
 # latex
-alias lmkp='latexmk -pvc -pdfps'
+alias lmkp='latexmk -pvc -pdf'
 alias lmk='latexmk $*'
 
 # servers
@@ -36,7 +39,6 @@ alias ares='sudo /etc/init.d/apache2 restart'
 alias elog='tail -f /var/log/apache2/error.log'
 
 # misc
-alias wiki='wikipedia2text -p '
 alias sab='sabnzbdplus --daemon'
 alias sabres='pkill sabnzbdplus && sabnzbdplus --daemon'
 
@@ -48,7 +50,7 @@ alias aup='sudo apt-get update && sudo apt-get upgrade -y'
 alias aclean='sudo apt-get autoclean && sudo apt-get autoremove && sudo apt-get clean && sudo apt-get remove'
 
 # files, directories and commands
-alias mx='chmod a+x'
+alias mx='chmod a+x $*'
 alias cd..='cd ..'
 alias ls='ls --color=auto'
 alias ll='ls -lA --color=auto'
@@ -58,10 +60,8 @@ alias df='df -h'
 
 # system
 alias a='alias'
-alias ea='gvim ~/.aliases & sr'
-alias ez='gvim ~/.zshrc &'
+alias ea='gvim --remote-tab-silent ~/.aliases & sr'
+alias ez='gvim --remote-tab-silent ~/.zshrc &'
 alias aprox='apropos'
 alias off='sudo shutdown -h now'
 alias sr='source ~/.zshrc'
-alias cpenv='scp ~/.zshrc ~/.aliases ~/.gemrc ~/.functions jkjeldgaard.xen.prgmr.com:~'
-

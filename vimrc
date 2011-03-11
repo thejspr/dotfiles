@@ -10,6 +10,13 @@ if has("gui_running")
   set guioptions-=T
 endif 
 
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=1
+
 "save file
 nmap <c-s> :w<CR>
 vmap <c-s> <Esc><c-s>gv
@@ -50,7 +57,7 @@ set backup
 set backupdir=~/.vim/backup,~/,.
 set directory=~/.vim/tmp,~/,.
 set nowritebackup
-set history=100		" keep 50 lines of command line history
+set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
@@ -74,6 +81,9 @@ if has("autocmd")
 
   " Set File type to 'text' for files ending in .txt
   autocmd BufNewFile,BufRead *.txt setfiletype text
+
+  " latex stuff
+  autocmd BufNewFile,BufRead *.tex set wrap linebreak textwidth=0
 
   " Enable soft-wrapping for text files
   autocmd FileType text,markdown,html,xhtml,eruby setlocal wrap linebreak nolist
@@ -181,18 +191,8 @@ set numberwidth=4
 " Snippets are activated by Shift+Tab
 let g:snippetsEmu_key = "<S-Tab>"
 
-" Tab completion options
-" (only complete to the longest unambiguous match, and show a menu)
-set completeopt=longest,menu
-set wildmode=list:longest,list:full
-set complete=.,t
-
 " case only matters with mixed case expressions
 set ignorecase
 set smartcase
-
-" Tags
-let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
-set tags=./tags;
 
 let g:fuf_splitPathMatching=1

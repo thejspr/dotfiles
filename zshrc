@@ -11,9 +11,6 @@ else
 	cd /var/www/
 fi
 
-# rvm init
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
-
 # Alias and function definitions.
 if [ -f ~/.aliases ]; then
     . ~/.aliases
