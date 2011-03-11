@@ -4,7 +4,7 @@ set viminfo^=! " Add recently accessed projects menu (project plugin)
 
 set viminfo^=% " remember open buffers.
 
-colorscheme railscasts
+colorscheme oceandeep
 
 if has("gui_running")
   set guioptions-=T
@@ -22,14 +22,13 @@ nmap <c-s> :w<CR>
 vmap <c-s> <Esc><c-s>gv
 imap <c-s> <Esc><c-s>
 
-" Buffers - explore/next/previous: Alt-F12, F12, Shift-F12.
-nnoremap <silent> <F12> :BufExplorer<CR>
+" Buffers - explore/next/previous
+nnoremap <silent> <F9> :BufExplorer<CR>
 nnoremap <silent> <M-right> :bn<CR>
 nnoremap <silent> <M-left> :bp<CR>
 
-" close buffer (force close buffer)
-nmap <F4> :bw<CR>
-nmap <s-F4> :bw!<CR>
+" close buffer (see bclose.vim)
+nmap <F4> :Kwbd<CR>
 
 " Move lines up/down
 noremap <a-up> :call feedkeys( line('.')==1 ? '' : 'ddkP' )<CR>
