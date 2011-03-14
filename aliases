@@ -12,6 +12,7 @@ alias ltmux="if tmux has; then tmux attach; else tmux new; fi"
 
 # git
 gitp() { git add -A; git commit -m "$*"; git push; }
+alias git='nocorrect git $*'
 
 # sass
 alias sassw='sass --watch public/stylesheets/sass/:public/stylesheets'
@@ -61,7 +62,7 @@ alias df='df -h'
 # system
 alias a='alias'
 alias ea='gvim --remote-tab-silent ~/.aliases & sr'
-alias ez='gvim --remote-tab-silent ~/.zshrc &'
+alias ez='gvim --remote-tab-silent ~/dotfiles/zshrc & sr'
 alias aprox='apropos'
 alias off='sudo shutdown -h now'
 alias sr='source ~/.zshrc'

@@ -1,0 +1,10 @@
+windows:
+  - name: ah dev
+    splits:
+      - cmd: cd ~/Dropbox/projects/ah
+      - cmd:
+        - cd ~/Dropbox/projects/ah
+        - rails server
+        width: 50
+      - cmd: compass watch
+        height: 25
