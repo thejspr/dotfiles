@@ -19,6 +19,9 @@ if [ -f ~/.functions ]; then
     . ~/.functions
 fi
 
+# disable terminal locking
+stty -ixon -ixoff
+
 if [[ "${COLORTERM}" == "gnome-terminal" && "${TERM}" != "xterm"  ]]; then
     export TERM="gnome-256color"
 fi
