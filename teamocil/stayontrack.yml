@@ -1,0 +1,12 @@
+windows:
+  - name: stayOnTrack dev
+    splits:
+      - cmd: cd ~/Dropbox/projects/stayontrack
+      - cmd:
+        - cd ~/Dropbox/projects/stayontrack
+        - rails server
+        width: 50
+      - cmd:
+        - cd ~/Dropbox/projects/stayontrack
+        - compass watch
+        height: 50

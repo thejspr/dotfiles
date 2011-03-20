@@ -1,9 +1,10 @@
 # todo
 alias t='todo $*'
+alias tls='todo ls | sort'
 
 # edit
 alias gvimt='gvim --remote-tab-silent'
-alias gv='gvim'
+alias gv='gvim --remote-tab-silent'
 sgv() { sudo gvim --remote-tab-silent "$1" &; }
 sv() { sudo vim --remote-tab-silent "$1" &; }
 
@@ -17,6 +18,9 @@ alias git='nocorrect git $*'
 # sass
 alias sassw='sass --watch public/stylesheets/sass/:public/stylesheets'
 
+# ctags
+alias rctags='ctags -R --exclude=.git --exclude=log --exclude=public *'
+
 # ruby & rails
 alias r='rails $*'
 alias rs='rails server'
@@ -24,7 +28,7 @@ alias rc='rails console'
 alias gemup='gem update --system && gem update'
 alias nres='sudo /etc/init.d/nginx restart'
 # heroku
-hpush() { git add -A; git commit -a -m "$*"; git push heroku master; heroku rake db:migrate; }
+hpush() { git add -A; git commit -a -m 'automatic'; git push heroku master; }
 alias h='heroku $*'
 
 # latex

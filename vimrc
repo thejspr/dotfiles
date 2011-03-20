@@ -1,26 +1,36 @@
 set nocompatible " Use Vim settings, rather then Vi settings (much better!).
 
-set viminfo^=! " Add recently accessed projects menu (project plugin)
+"set viminfo^=! " Add recently accessed projects menu (project plugin)
 
 set viminfo^=% " remember open buffers.
 
-colorscheme oceandeep
+colorscheme tango2
+
+" , is the leader character
+let mapleader = ","
 
 if has("gui_running")
   set guioptions-=T
-endif 
+  "save file
+  nmap <c-s> :w<CR>
+  vmap <c-s> <Esc><c-s>gv
+  imap <c-s> <Esc><c-s>
+else
+  set t_Co=256
+endif
+
+" remove trailing whitespaces
+autocmd BufWritePre * :%s/\s\+$//e
+
+" vim ctags
+set tags=./tags;
 
 " syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
-
-"save file
-nmap <c-s> :w<CR>
-vmap <c-s> <Esc><c-s>gv
-imap <c-s> <Esc><c-s>
 
 " Buffers - explore/next/previous
 nnoremap <silent> <F9> :BufExplorer<CR>
@@ -34,14 +44,13 @@ nmap <F4> :Kwbd<CR>
 noremap <a-up> :call feedkeys( line('.')==1 ? '' : 'ddkP' )<CR>
 noremap <a-down> ddp
 
-" reload configuration file on edit/save
-autocmd BufWritePost .vimrc source %
 command! Ev :e ~/.vimrc
 
 " FuzzyFinder
-"map <leader>t :FufFile **/<CR>
-map <leader>f :FufFile<CR>
+map <leader>f :FufFile **/<CR>
+"map <leader>f :FufFile<CR>
 map <leader>b :FufBuffer<CR>
+let g:fuf_splitPathMatching=1
 
 " NERD Tree
 nmap <silent> <c-n> :NERDTreeToggle<CR>
@@ -61,12 +70,8 @@ set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
-  syntax on
-  set hlsearch
-endif
+syntax on
+set hlsearch
 
 " Switch wrap off for everything
 set nowrap
@@ -74,7 +79,6 @@ set nowrap
 if has("autocmd")
   " Enable file type detection.
   " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
   " Also load indent files, to automatically do language-dependent indenting.
   filetype plugin indent on
 
@@ -82,7 +86,7 @@ if has("autocmd")
   autocmd BufNewFile,BufRead *.txt setfiletype text
 
   " latex stuff
-  autocmd BufNewFile,BufRead *.tex set wrap linebreak textwidth=0
+  autocmd BufNewFile,BufRead *.tex setlocal wrap linebreak textwidth=0
 
   " Enable soft-wrapping for text files
   autocmd FileType text,markdown,html,xhtml,eruby setlocal wrap linebreak nolist
@@ -123,28 +127,25 @@ set smartindent
 " Always display the status line
 set laststatus=2
 
-" \ is the leader character
-let mapleader = ","
-
 " Edit the README_FOR_APP (makes :R commands work)
 map <Leader>R :e doc/README_FOR_APP<CR>
 
 " Leader shortcuts for Rails commands
-map <Leader>m :Rmodel 
-map <Leader>c :Rcontroller 
-map <Leader>v :Rview 
-map <Leader>u :Runittest 
-"map <Leader>f :Rfunctionaltest 
-map <Leader>tm :RTmodel 
-map <Leader>tc :RTcontroller 
-map <Leader>tv :RTview 
-map <Leader>tu :RTunittest 
-map <Leader>tf :RTfunctionaltest 
-map <Leader>sm :RSmodel 
-map <Leader>sc :RScontroller 
-map <Leader>sv :RSview 
-map <Leader>su :RSunittest 
-map <Leader>sf :RSfunctionaltest 
+map <Leader>m :Rmodel<space>
+map <Leader>c :Rcontroller<space>
+map <Leader>v :Rview<space>
+map <Leader>u :Runittest
+"map <Leader>f :Rfunctionaltest
+map <Leader>tm :RTmodel
+map <Leader>tc :RTcontroller
+map <Leader>tv :RTview
+map <Leader>tu :RTunittest
+map <Leader>tf :RTfunctionaltest
+map <Leader>sm :RSmodel
+map <Leader>sc :RScontroller
+map <Leader>sv :RSview
+map <Leader>su :RSunittest
+map <Leader>sf :RSfunctionaltest
 
 " Hide search highlighting
 map <Leader>h :set invhls <CR>
@@ -156,18 +157,6 @@ map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 " Opens a tab edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>t
 map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
-
-" Inserts the path of the currently edited file into a command
-" Command mode: Ctrl+P
-cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
-
-" Duplicate a selection
-" Visual mode: D
-vmap D y'>p
-
-" Press Shift+P while in visual mode to replace the selection without
-" overwriting the default register
-vmap P p :call setreg('"', getreg('0')) <CR>
 
 " Press ^F from insert mode to insert the current file name
 imap <C-F> <C-R>=expand("%")<CR>
@@ -185,13 +174,12 @@ endif
 
 " Numbers
 set number
-set numberwidth=4
+set numberwidth=3
 
 " Snippets are activated by Shift+Tab
-let g:snippetsEmu_key = "<S-Tab>"
+let g:snippetsEmu_key = "<Tab>"
 
 " case only matters with mixed case expressions
 set ignorecase
 set smartcase
 
-let g:fuf_splitPathMatching=1

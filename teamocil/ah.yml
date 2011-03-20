@@ -1,10 +1,12 @@
 windows:
-  - name: ah dev
+  - name: acheevo dev
     splits:
-      - cmd: cd ~/Dropbox/projects/ah
+      - cmd: cd ~/Dropbox/projects/acheevo
       - cmd:
-        - cd ~/Dropbox/projects/ah
+        - cd ~/Dropbox/projects/acheevo
         - rails server
-        width: 50
-      - cmd: compass watch
-        height: 25
+#        width: 50
+#- cmd:
+#        - cd ~/Dropbox/projects/acheevo 
+#        - compass watch
+#        height: 50

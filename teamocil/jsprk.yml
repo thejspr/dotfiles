@@ -1,0 +1,15 @@
+windows:
+  - name: jsprk.dk development 
+    splits:
+      - cmd: cd ~/Dropbox/projects/jsprk.dk
+      - cmd: 
+        - cd ~/Dropbox/projects/jsprk.dk
+        - rake server
+      - cmd:
+        - cd ~/Dropbox/projects/jsprk.dk
+        - rake compass
+        width: 50
+      - cmd:
+        - cd ~/Dropbox/projects/jsprk.dk
+        - rake haml
+        height: 50

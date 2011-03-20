@@ -19,10 +19,9 @@ if [ -f ~/.functions ]; then
     . ~/.functions
 fi
 
-# Set up the prompt
-#autoload -Uz promptinit
-#promptinit
-#prompt walters
+if [[ "${COLORTERM}" == "gnome-terminal" && "${TERM}" != "xterm"  ]]; then
+    export TERM="gnome-256color"
+fi
 
 #-----------------------------------
 # SSH agent init
