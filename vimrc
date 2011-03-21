@@ -19,10 +19,8 @@
   " edit .vimrc
   command! Ev :e ~/.vimrc
   autocmd BufWritePost .vimrc source $MYVIMRC
-  autocmd BufRead .vimrc setlocal foldenable foldmethod=indent
 " }}}
 
-  " Misc. commands and setup {{{
   " remove trailing whitespaces
   autocmd BufWritePre * :%s/\s\+$//e
 
@@ -40,10 +38,7 @@
 
   set showmatch  " Show matching brackets.
   " set matchtime=5  " Bracket blinking.
-  " set novisualbell  " No blinking
-  " set noerrorbells  " No noise.
   set laststatus=2  " Always show status line.
-  " set vb t_vb= " disable any beeps or flashes on error
   set ruler  " Show ruler
   set showcmd " Display an incomplete command in the lower right corner of the Vim window
   set shortmess=atI " Shortens messages
@@ -67,10 +62,6 @@
   set history=256	" keep 50 lines of command line history
   set showcmd		" display incomplete commands
   set incsearch		" do incremental searching
-
-  " set foldenable " Turn on folding
-  "set foldmethod=syntax
-  set foldnestmax=1
 
   " Use Ack instead of Grep when available
   if executable("ack")
@@ -100,7 +91,7 @@
   au FileType * exe('setl dict+='.$VIMRUNTIME.'/syntax/'.&filetype.'.vim')
 
   " Set File type to 'text' for files ending in .txt
-  autocmd BufNewFile,BufRead *.txt setfiletype text
+  autocmd BufNewFile,BufRead {*.txt,README} setfiletype text
 
   " latex stuff
   autocmd BufNewFile,BufRead *.tex setlocal wrap linebreak textwidth=0
@@ -165,17 +156,17 @@
   "Bundle "cucumber.zip"
 
   " Git integration
-  Bundle "git.zip"
-  "Bundle "fugitive.vim"
+  Bundle "https://github.com/tpope/vim-git.git"
+  Bundle "fugitive.vim"
 
   " Colors
   Bundle 'Color-Sampler-Pack'
-  colorscheme tango2
+  colorscheme rdark
 
   " Utility
   "Bundle "repeat.vim"
   Bundle "surround.vim"
-  "Bundle "SuperTab"
+  Bundle "https://github.com/ervandew/supertab.git"
   "Bundle "file-line"
   "Bundle "Align"
 
@@ -214,6 +205,7 @@
   " Command-T
   Bundle "git://git.wincent.com/command-t.git"
   let g:CommandTMatchWindowAtTop=1 " show window at top
+  :set wildignore+=*.o,*.obj,.git,vendor/**
 
   " Navigation
   Bundle "bufexplorer.zip"
