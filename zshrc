@@ -26,6 +26,8 @@ if [[ "${COLORTERM}" == "gnome-terminal" && "${TERM}" != "xterm"  ]]; then
     export TERM="gnome-256color"
 fi
 
+export EDITOR=vim
+
 #-----------------------------------
 # SSH agent init
 #-----------------------------------

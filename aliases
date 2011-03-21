@@ -6,7 +6,7 @@ alias tls='todo ls | sort'
 alias gvimt='gvim --remote-tab-silent'
 alias gv='gvim --remote-tab-silent'
 sgv() { sudo gvim --remote-tab-silent "$1" &; }
-sv() { sudo vim --remote-tab-silent "$1" &; }
+alias sv='sudo vim $1'
 
 # tmux
 alias ltmux="if tmux has; then tmux attach; else tmux new; fi"
