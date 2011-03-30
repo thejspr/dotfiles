@@ -26,6 +26,9 @@ if [[ "${COLORTERM}" == "gnome-terminal" && "${TERM}" != "xterm"  ]]; then
     export TERM="gnome-256color"
 fi
 
+# disable autocorrect
+unsetopt correct_all
+
 export EDITOR=vim
 
 #-----------------------------------

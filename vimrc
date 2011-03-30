@@ -4,9 +4,9 @@
   let mapleader = ","
 
   " save shortcut
-  noremap <C-S> :update<CR>
-  vnoremap <C-S> <C-C>:update<CR>
-  inoremap <C-S> <C-O>:update<CR>
+  noremap <C-S> :w<CR>
+  vnoremap <C-S> <C-C>:w<CR>
+  inoremap <C-S> <C-O>:w<CR>
 
   " Move lines up/down
   noremap <a-up> :call feedkeys( line('.')==1 ? '' : 'ddkP' )<CR>
@@ -19,16 +19,22 @@
   " edit .vimrc
   command! Ev :e ~/.vimrc
   autocmd BufWritePost .vimrc source $MYVIMRC
-" }}}
 
-  " remove trailing whitespaces
-  autocmd BufWritePre * :%s/\s\+$//e
+  " set filetype to ruby
+  command! FR set filetype=ruby
+
+  " Copy paste in/out of vim
+  map <C-c> "+y
+  map <C-v> "+p
 
   " vim ctags
   set tags=./tags;
 
   " Sudo write
   comm! W exec 'w !sudo tee % > /dev/null' | e
+
+  " toggle paste mode
+  set pastetoggle=<f1>
 " }}}
 
 " General setup {{{
@@ -49,6 +55,7 @@
 
   if has("gui_running")
     set guioptions-=T
+    " set guioptions-=m
   else
     set t_Co=256
   endif
@@ -57,7 +64,7 @@
   set backup
   set nowritebackup
   set backupdir=~/.vim/backup,~/,.
-  set directory=~/.vim/tmp,~/,.
+  set directory=~/.vim/backup,~/,.
 
   set history=256	" keep 50 lines of command line history
   set showcmd		" display incomplete commands
@@ -65,7 +72,8 @@
 
   " Use Ack instead of Grep when available
   if executable("ack")
-    set grepprg=ack\ -H\ --nogroup\ --nocolor\ --ignore-dir=tmp\ --ignore-dir=coverage
+    let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+    nnoremap <leader>a :Ack 
   endif
 
   " case only matters with mixed case expressions
@@ -131,13 +139,13 @@
   map <Leader>m :Rmodel<space>
   map <Leader>c :Rcontroller<space>
   map <Leader>v :Rview<space>
-  map <Leader>u :Runittest
-  "map <Leader>f :Rfunctionaltest
-  map <Leader>tm :RTmodel
-  map <Leader>tc :RTcontroller
-  map <Leader>tv :RTview
-  map <Leader>tu :RTunittest
-  map <Leader>tf :RTfunctionaltest
+  " map <Leader>u :Runittest
+  " map <Leader>f :Rfunctionaltest
+  " map <Leader>tm :RTmodel
+  " map <Leader>tc :RTcontroller
+  " map <Leader>tv :RTview
+  " map <Leader>tu :RTunittest
+  " map <Leader>tf :RTfunctionaltest
   map <Leader>sm :RSmodel
   map <Leader>sc :RScontroller
   map <Leader>sv :RSview
@@ -161,14 +169,11 @@
 
   " Colors
   Bundle 'Color-Sampler-Pack'
-  colorscheme rdark
-
+  colorscheme railscasts
+  
   " Utility
-  "Bundle "repeat.vim"
   Bundle "surround.vim"
   Bundle "https://github.com/ervandew/supertab.git"
-  "Bundle "file-line"
-  "Bundle "Align"
 
   " FuzzyFinder
   Bundle "L9"
@@ -176,8 +181,8 @@
   let g:fuf_modesDisable = [] " ------------------{
   nnoremap <silent> <LocalLeader>h :FufHelp<CR>
   nnoremap <silent> <LocalLeader>2  :FufFileWithCurrentBufferDir<CR>
-  nnoremap <silent> <LocalLeader>@  :FufFile<CR>
-  nnoremap <silent> <LocalLeader>3  :FufBuffer<CR>
+  " nnoremap <silent> <LocalLeader>@  :FufFile<CR>
+  " nnoremap <silent> <LocalLeader>3  :FufBuffer<CR>
   nnoremap <silent> <LocalLeader>4  :FufDirWithCurrentBufferDir<CR>
   nnoremap <silent> <LocalLeader>$  :FufDir<CR>
   nnoremap <silent> <LocalLeader>5  :FufChangeList<CR>
@@ -189,11 +194,11 @@
   map <leader>f :FufFile **/<CR>
   "map <leader>f :FufFile<CR>
   map <leader>b :FufBuffer<CR>
-  let g:fuf_splitPathMatching=1"
+  " let g:fuf_splitPathMatching=1"
   " ----------------------------------------------}
 
   " Ack
-  Bundle "ack.vim"
+  Bundle "https://github.com/mileszs/ack.vim.git"
   noremap <LocalLeader># "ayiw:Ack <C-r>a<CR>
   vnoremap <LocalLeader># "ay:Ack <C-r>a<CR>
 
@@ -215,6 +220,6 @@
   Bundle "https://github.com/scrooloose/nerdtree.git"
   nmap <silent> <c-n> :NERDTreeToggle<CR>
   map <F2> :NERDTreeToggle<CR>
-  Bundle "bufkill.vim"
-  nmap <F4> :BD<CR>
-" }}}
+  " kwdb.vim
+  nmap <F4> <Plug>Kwbd
+  " }}}

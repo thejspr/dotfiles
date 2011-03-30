@@ -1,6 +1,11 @@
-# todo
-alias t='todo $*'
-alias tls='todo ls | sort'
+# todo.txt-cli
+function t() {
+  if [ $# -eq 0 ]; then
+    ~/repos/todo.txt-cli/todo.sh -d ~/Dropbox/todo/todo.cfg ls
+  else
+    ~/repos/todo.txt-cli/todo.sh -d ~/Dropbox/todo/todo.cfg $*
+  fi
+}
 
 # edit
 alias gvimt='gvim --remote-tab-silent'
@@ -13,8 +18,13 @@ alias ltmux="if tmux has; then tmux attach; else tmux new; fi"
 
 # git
 gitp() { git add -A; git commit -m "$*"; git push; }
-alias git='nocorrect git $*'
-
+g() {
+  if [[ $# == '0' ]]; then
+    command git status
+  else
+    command git "$@";
+  fi
+}
 # sass
 alias sassw='sass --watch public/stylesheets/sass/:public/stylesheets'
 
