@@ -16,7 +16,7 @@ export ZSH_THEME="kennethreitz"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(ruby rails3 gem git github bundler command-not-found)
+plugins=(ruby rails3 gem git github bundler)
 
 source $ZSH/oh-my-zsh.sh
 
