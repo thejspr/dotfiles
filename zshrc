@@ -1,50 +1,25 @@
-# specific things for laptop and server
-if [ "$HOST" = "ub" ]; then
-  export CDPATH=.:~:~/Dropbox/:~/Dropbox/projects
-  export PATH=${PATH}:/home/jesper/apps/android-sdk-linux_x86/tools
-  # https://github.com/rupa/z
-  . ~/repos/z/z.sh
-  function precmd () {
-    z --add "$(pwd -P)"
-  }
-else
-	cd /var/www/
-fi
+# Path to your oh-my-zsh configuration.
+export ZSH=$HOME/.oh-my-zsh
 
-# Alias and function definitions.
-if [ -f ~/.aliases ]; then
-    . ~/.aliases
-fi
-if [ -f ~/.functions ]; then
-    . ~/.functions
-fi
+# Set to the name theme to load.
+# Look in ~/.oh-my-zsh/themes/
+export ZSH_THEME="kennethreitz"
 
-# disable terminal locking
-stty -ixon -ixoff
+# Set to this to use case-sensitive completion
+# export CASE_SENSITIVE="true"
 
-if [[ "${COLORTERM}" == "gnome-terminal" && "${TERM}" != "xterm"  ]]; then
-    export TERM="gnome-256color"
-fi
+# Comment this out to disable weekly auto-update checks
+# export DISABLE_AUTO_UPDATE="true"
 
-# disable autocorrect
-unsetopt correct_all
+# Uncomment following line if you want to disable colors in ls
+# export DISABLE_LS_COLORS="true"
 
-export EDITOR=vim
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(ruby rails3 gem git github bundler command-not-found)
 
-#-----------------------------------
-# SSH agent init
-#-----------------------------------
-SSH_ENV="$HOME/.ssh/environment"
-# Source SSH settings, if applicable
-if [ -f "${SSH_ENV}" ]; then
-  . "${SSH_ENV}" > /dev/null
-  #ps ${SSH_AGENT_PID} doesn't work under cygwin
-  ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
-    echo "Initializing new SSH agent..."
-    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
-    echo succeeded
-    chmod 600 "${SSH_ENV}"
-    . "${SSH_ENV}" > /dev/null
-    /usr/bin/ssh-add;
-  }
+source $ZSH/oh-my-zsh.sh
+
+if [ -f ~/repos/dotfiles/my_zshrc ]; then
+    . ~/repos/dotfiles/my_zshrc
 fi
