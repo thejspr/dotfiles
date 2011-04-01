@@ -1,0 +1,47 @@
+source 'http://rubygems.org'
+
+# core
+gem 'rails'
+gem 'pg'
+
+# authentication and authorization
+gem 'devise', :git => 'http://github.com/plataformatec/devise.git' 
+gem 'cancan'
+
+# model enhancements
+
+# UI and layout
+gem 'haml'
+gem 'jquery-rails'
+gem 'simple-navigation'
+gem 'formtastic'
+gem 'validation_reflection' # adds model validations to formtastic
+gem 'compass'
+gem 'fancy-buttons'
+
+# file uploads and storage
+gem 'aws-s3'
+gem 'paperclip'
+
+group :development, :test do
+  # generators
+  gem 'haml-rails'
+  gem 'nifty-generators'
+  gem 'mocha'
+  # required by devise
+  gem 'hpricot'
+  gem 'ruby_parser'
+
+  # models, annotations, etc.
+  gem 'annotate'
+
+  # testing
+  gem 'capybara'
+  gem 'cucumber-rails'
+  gem 'rspec-rails'
+  gem 'shoulda'
+  gem 'factory_girl_rails'
+  gem 'autotest'
+  gem 'faker'
+  gem 'database_cleaner'
+end
