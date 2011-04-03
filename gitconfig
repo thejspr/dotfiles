@@ -27,8 +27,5 @@
   co = checkout
   b = branch
   l = log
-  f = fetch
-  p = push
-  pu = pull
 [apply]
 	whitespace = nowarn

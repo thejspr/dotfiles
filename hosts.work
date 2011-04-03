@@ -1,0 +1,21 @@
+192.168.0.105	ub	# Added by NetworkManager
+127.0.0.1	localhost.localdomain	localhost
+::1	ub	localhost6.localdomain6	localhost6
+127.0.1.1	ub
+
+# The following lines are desirable for IPv6 capable hosts
+::1     localhost ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+
+66.135.33.106 news.ycombinator.com
+66.135.33.106 www.facebook.com
+66.135.33.106 www.twitter.com
+66.135.33.106 www.songkick.com
+66.135.33.106 www.yelp.co.uk
+66.135.33.106 www.google.com
+66.135.33.106 www.qoura.com
+66.135.33.106 www.reddit.com

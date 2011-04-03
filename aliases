@@ -7,11 +7,19 @@ function t() {
   fi
 }
 
+# productivity mode
+alias work='sudo cp -f ~/dotfiles/hosts.work /etc/hosts'
+alias play='sudo cp -f ~/dotfiles/hosts.play /etc/hosts'
+
+# line endings
+function mac2unix() { sed 's/\r/\n/gi' }
+
 # edit
 alias gvimt='gvim --remote-tab-silent'
 alias gv='gvim --remote-tab-silent'
 sgv() { sudo gvim --remote-tab-silent "$1" &; }
 alias sv='sudo vim $1'
+alias e='vim'
 
 # tmux
 alias ltmux="if tmux has; then tmux attach; else tmux new; fi"
@@ -54,7 +62,6 @@ alias ares='sudo /etc/init.d/apache2 restart'
 alias elog='tail -f /var/log/apache2/error.log'
 
 # misc
-alias sab='sabnzbdplus --daemon'
 alias sabres='pkill sabnzbdplus && sabnzbdplus --daemon'
 
 # aptitude conviniences
@@ -75,8 +82,8 @@ alias df='df -h'
 
 # system
 alias a='alias'
-alias ea='gvim --remote-tab-silent ~/.aliases & sr'
-alias ez='gvim --remote-tab-silent ~/dotfiles/zshrc & sr'
+alias ea='vim ~/.aliases'
+alias ez='vim ~/dotfiles/zshrc'
 alias aprox='apropos'
 alias off='sudo shutdown -h now'
 alias sr='source ~/.zshrc'

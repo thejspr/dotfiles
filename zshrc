@@ -20,6 +20,6 @@ plugins=(ruby rails3 gem git github bundler)
 
 source $ZSH/oh-my-zsh.sh
 
-if [ -f ~/repos/dotfiles/my_zshrc ]; then
-    . ~/repos/dotfiles/my_zshrc
+if [ -f ~/repos/dotfiles/_zshrc ]; then
+    . ~/repos/dotfiles/_zshrc
 fi
