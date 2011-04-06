@@ -46,7 +46,7 @@ alias rc='rails console'
 alias gemup='gem update --system && gem update'
 alias nres='sudo /etc/init.d/nginx restart'
 # heroku
-hpush() { git add -A; git commit -a -m 'automatic'; git push heroku master; }
+hpush() { git add -A; git commit -a -m 'automatic'; git push heroku master; heroku rake db:migrate; }
 alias h='heroku $*'
 
 # latex
@@ -55,6 +55,7 @@ alias lmk='latexmk $*'
 
 # servers
 alias prgmr='ssh jkjeldgaard.xen.prgmr.com'
+alias prgs='ssh -p 7818 jesper@theprogress.net'
 alias award='ssh -p 2222 jkjeldgaard@jsprk.dk'
 
 # apache
