@@ -7,13 +7,6 @@ function t() {
   fi
 }
 
-# productivity mode
-alias work='sudo cp -f ~/dotfiles/hosts.work /etc/hosts'
-alias play='sudo cp -f ~/dotfiles/hosts.play /etc/hosts'
-
-# line endings
-function mac2unix() { sed 's/\r/\n/gi' }
-
 # edit
 alias gvimt='gvim --remote-tab-silent'
 alias gv='gvim --remote-tab-silent'
@@ -44,7 +37,6 @@ alias r='rails $*'
 alias rs='rails server'
 alias rc='rails console'
 alias gemup='gem update --system && gem update'
-alias nres='sudo /etc/init.d/nginx restart'
 # heroku
 hpush() { git add -A; git commit -a -m 'automatic'; git push heroku master; heroku rake db:migrate; }
 alias h='heroku $*'
@@ -55,12 +47,11 @@ alias lmk='latexmk $*'
 
 # servers
 alias prgmr='ssh jkjeldgaard.xen.prgmr.com'
-alias prgs='ssh -p 7818 jesper@theprogress.net'
+alias prgs='ssh theprogress.net'
 alias award='ssh -p 2222 jkjeldgaard@jsprk.dk'
 
 # apache
 alias ares='sudo /etc/init.d/apache2 restart'
-alias elog='tail -f /var/log/apache2/error.log'
 
 # misc
 alias sabres='pkill sabnzbdplus && sabnzbdplus --daemon'
@@ -86,5 +77,4 @@ alias a='alias'
 alias ea='vim ~/.aliases'
 alias ez='vim ~/dotfiles/zshrc'
 alias aprox='apropos'
-alias off='sudo shutdown -h now'
 alias sr='source ~/.zshrc'
