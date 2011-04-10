@@ -194,13 +194,15 @@ Bundle "fugitive.vim"
 
 " Colors
 Bundle 'Color-Sampler-Pack'
-" Bundle "https://github.com/altercation/vim-colors-solarized.git"
+Bundle "https://github.com/altercation/vim-colors-solarized.git"
 if has("gui_running")
   " set background=dark
   " colorscheme solarized
   colorscheme wombat
 else
   colorscheme wombat256
+  " set background=dark
+  " colorscheme solarized 
 endif
 
 " Utility
@@ -241,6 +243,8 @@ let g:CommandTMatchWindowAtTop=1 " show window at top
 :set wildignore+=*.o,*.obj,.git,vendor/**,tmp/**
 
 " Navigation
+Bundle "https://github.com/Lokaltog/vim-easymotion.git"
+let g:EasyMotion_leader_key = '<Leader>m'
 Bundle "bufexplorer.zip"
 let g:bufExplorerDefaultHelp=0
 let g:bufExplorerShowRelativePath=1

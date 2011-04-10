@@ -4,6 +4,7 @@ function t() {
     ~/repos/todo.txt-cli/todo.sh -d ~/Dropbox/todo/todo.cfg ls
   else
     ~/repos/todo.txt-cli/todo.sh -d ~/Dropbox/todo/todo.cfg $*
+    ~/repos/todo.txt-cli/todo.sh -d ~/Dropbox/todo/todo.cfg ls
   fi
 }
 
