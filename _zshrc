@@ -4,6 +4,12 @@ if [ "$HOST" = "ub" ]; then
   export PATH=${PATH}:/home/jesper/apps/android-sdk-linux_x86/tools
 fi
 
+if [ "$HOST" = "theprogress" ]; then
+  cd ~/repos/dotfiles
+  git pull
+  cd
+fi
+
 # https://github.com/rupa/z
 . ~/repos/z/z.sh
 function precmd () {
