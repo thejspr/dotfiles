@@ -7,7 +7,14 @@ function t() {
     ~/repos/todo.txt-cli/todo.sh -d ~/Dropbox/todo/todo.cfg ls
   fi
 }
-
+# rvm
+function wrvm() {
+  if [ $# -eq 0 ]; then
+    rvm current
+  else
+    rvm $*   
+  fi
+}
 # edit
 alias gvimt='gvim --remote-tab-silent'
 alias gv='gvim --remote-tab-silent'
