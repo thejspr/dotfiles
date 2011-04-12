@@ -1,15 +1,3 @@
-# specific things for laptop and server
-if [ "$HOST" = "ub" ]; then
-  export CDPATH=.:~:~/Dropbox/:~/Dropbox/projects
-  export PATH=${PATH}:/home/jesper/apps/android-sdk-linux_x86/tools
-fi
-
-if [ "$HOST" = "theprogress" ]; then
-  cd ~/repos/dotfiles
-  git pull
-  cd
-fi
-
 # https://github.com/rupa/z
 . ~/repos/z/z.sh
 function precmd () {
@@ -39,16 +27,32 @@ export EDITOR=vim
 #-----------------------------------
 # SSH agent init
 #-----------------------------------
-SSH_ENV="$HOME/.ssh/environment"
-# Source SSH settings, if applicable
-if [ -f "${SSH_ENV}" ]; then
-  . "${SSH_ENV}" > /dev/null
-  ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
-    echo "Initializing new SSH agent..."
-    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
-    echo succeeded
-    chmod 600 "${SSH_ENV}"
+function start_ssh_agent() {
+  SSH_ENV="$HOME/.ssh/environment"
+  # Source SSH settings, if applicable
+  if [ -f "${SSH_ENV}" ]; then
     . "${SSH_ENV}" > /dev/null
-    /usr/bin/ssh-add;
-  }
+    ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+      echo "Initializing new SSH agent..."
+      /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+      echo succeeded
+      chmod 600 "${SSH_ENV}"
+      . "${SSH_ENV}" > /dev/null
+      /usr/bin/ssh-add;
+    }
+  fi
+}
+
+start_ssh_agent();
+
+# specific things for laptop and server
+if [ "$HOST" = "ub" ]; then
+  export CDPATH=.:~:~/Dropbox/:~/Dropbox/projects
+  export PATH=${PATH}:/home/jesper/apps/android-sdk-linux_x86/tools
+elif [ "$HOST" = "theprogress" ]; then
+  cd ~/repos/dotfiles
+  git pull
+  cd
 fi
+
+
