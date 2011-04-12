@@ -23,3 +23,5 @@ source $ZSH/oh-my-zsh.sh
 if [ -f ~/repos/dotfiles/_zshrc ]; then
     . ~/repos/dotfiles/_zshrc
 fi
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # Load RVM into a shell session *as a function*
