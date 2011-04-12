@@ -46,7 +46,7 @@ function start_ssh_agent() {
 start_ssh_agent();
 
 # specific things for laptop and server
-if [ "$HOST" = "ub" ]; then
+if [ "$HOST" = "laptop" ]; then
   export CDPATH=.:~:~/Dropbox/:~/Dropbox/projects
   export PATH=${PATH}:/home/jesper/apps/android-sdk-linux_x86/tools
 elif [ "$HOST" = "theprogress" ]; then
