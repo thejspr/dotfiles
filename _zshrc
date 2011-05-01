@@ -27,32 +27,27 @@ export EDITOR=vim
 #-----------------------------------
 # SSH agent init
 #-----------------------------------
-function start_ssh_agent() {
-  SSH_ENV="$HOME/.ssh/environment"
-  # Source SSH settings, if applicable
-  if [ -f "${SSH_ENV}" ]; then
+SSH_ENV="$HOME/.ssh/environment"
+# Source SSH settings, if applicable
+if [ -f "${SSH_ENV}" ]; then
+  . "${SSH_ENV}" > /dev/null
+  ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+    echo "Initializing new SSH agent..."
+    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+    echo succeeded
+    chmod 600 "${SSH_ENV}"
     . "${SSH_ENV}" > /dev/null
-    ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
-      echo "Initializing new SSH agent..."
-      /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
-      echo succeeded
-      chmod 600 "${SSH_ENV}"
-      . "${SSH_ENV}" > /dev/null
-      /usr/bin/ssh-add;
-    }
-  fi
-}
-
-start_ssh_agent();
+    /usr/bin/ssh-add;
+  }
+fi
 
 # specific things for laptop and server
-if [ "$HOST" = "laptop" ]; then
+if [ "$HOST" = "vision" ]; then
   export CDPATH=.:~:~/Dropbox/:~/Dropbox/projects
-  export PATH=${PATH}:/home/jesper/apps/android-sdk-linux_x86/tools
+  export PATH=${PATH}:/home/jesper/apps/android-sdk-linux_x86/tools:/home/jesper/bin/
 elif [ "$HOST" = "theprogress" ]; then
   cd ~/repos/dotfiles
   git pull
   cd
 fi
-
 

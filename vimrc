@@ -196,13 +196,13 @@ Bundle "fugitive.vim"
 Bundle 'Color-Sampler-Pack'
 Bundle "https://github.com/altercation/vim-colors-solarized.git"
 if has("gui_running")
-  " set background=dark
-  " colorscheme solarized
-  colorscheme wombat
+  set background=dark
+  colorscheme solarized
+  " colorscheme wombat
 else
-  colorscheme wombat256
-  " set background=dark
-  " colorscheme solarized 
+  " colorscheme wombat256
+  set background=dark
+  colorscheme solarized 
 endif
 
 " Utility
