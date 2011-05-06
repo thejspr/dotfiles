@@ -15,10 +15,10 @@ fi
 # disable terminal locking
 stty -ixon -ixoff
 
-if [[ "${COLORTERM}" == "gnome-terminal" && "${TERM}" != "xterm"  ]]; then
-    export TERM="gnome-256color"
-fi
-
+# if [[ "${COLORTERM}" == "gnome-terminal" && "${TERM}" != "xterm"  ]]; then
+#     export TERM="gnome-256color"
+# fi
+# 
 # disable autocorrect
 unsetopt correct_all
 

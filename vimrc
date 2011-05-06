@@ -14,7 +14,8 @@ nmap <A-k> mz:m-2<cr>`z
 vmap <A-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <A-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
-map <F3> :w !detex \| wc -w<CR>
+map <F6> :w !detex \| wc -w<CR>
+nnoremap <F3> :set hlsearch!<CR>
 
 set backspace=indent,eol,start "allow backspacing over everything in insert mode
 
@@ -243,14 +244,16 @@ let g:CommandTMatchWindowAtTop=1 " show window at top
 :set wildignore+=*.o,*.obj,.git,vendor/**,tmp/**
 
 " Navigation
-Bundle "https://github.com/Lokaltog/vim-easymotion.git"
-let g:EasyMotion_leader_key = '<Leader>m'
+" Bundle "https://github.com/Lokaltog/vim-easymotion.git"
+" let g:EasyMotion_leader_key = '<Leader>m'
+
 Bundle "bufexplorer.zip"
 let g:bufExplorerDefaultHelp=0
 let g:bufExplorerShowRelativePath=1
 map <leader>o :BufExplorer<cr>
-nnoremap <silent> <M-right> :bn<CR>
-nnoremap <silent> <M-left> :bp<CR>
+nnoremap <silent> <S-M-right> :bn<CR>
+nnoremap <silent> <S-M-left> :bp<CR>
+
 Bundle "https://github.com/scrooloose/nerdtree.git"
 nmap <silent> <c-n> :NERDTreeToggle<CR>
 map <F2> :NERDTreeToggle<CR>
