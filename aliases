@@ -1,3 +1,6 @@
+#keepassx
+alias kpass='keepassx ~/Dropbox/privat/db.kdb &'
+
 # todo.txt-cli
 function t() {
   if [ $# -eq 0 ]; then
@@ -42,11 +45,12 @@ alias rctags='ctags -R --exclude=.git --exclude=log --exclude=public *'
 
 # ruby & rails
 alias r='rails $*'
-alias rs='rails server'
-alias rc='rails console'
+alias rs="if [ -f script/server ]; then script/server; else script/rails server; fi"
+alias rc="if [ -f script/console ]; then script/console; else script/rails console; fi"
+
 alias gemup='gem update --system && gem update'
 # heroku
-hpush() { git add -A; git commit -a -m 'automatic'; git push heroku master; heroku rake db:migrate; }
+hpush() { git add -A; git commit -a -m 'automatic commit/push'; git push heroku master; heroku rake db:migrate; }
 alias h='heroku $*'
 
 # latex
@@ -54,9 +58,7 @@ alias lmkp='latexmk -pvc -pdf'
 alias lmk='latexmk $*'
 
 # servers
-alias prgmr='ssh jkjeldgaard.xen.prgmr.com'
 alias prgs='ssh theprogress.net'
-alias award='ssh -p 2222 jkjeldgaard@jsprk.dk'
 
 # apache
 alias ares='sudo /etc/init.d/apache2 restart'

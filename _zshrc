@@ -45,6 +45,7 @@ fi
 if [ "$HOST" = "vision" ]; then
   export CDPATH=.:~:~/Dropbox/:~/Dropbox/projects
   export PATH=${PATH}:/home/jesper/apps/android-sdk-linux_x86/tools:/home/jesper/bin/
+  export PATH=$HOME/local/node/bin:$PATH
 elif [ "$HOST" = "theprogress" ]; then
   cd ~/repos/dotfiles
   git pull
