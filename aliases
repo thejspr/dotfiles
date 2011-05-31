@@ -1,27 +1,13 @@
+# find shortcut
+alias fnd='sudo find $1 -iname $2'
+
 #keepassx
 alias kpass='keepassx ~/Dropbox/privat/db.kdb &'
 
-# todo.txt-cli
-function t() {
-  if [ $# -eq 0 ]; then
-    ~/repos/todo.txt-cli/todo.sh -d ~/Dropbox/todo/todo.cfg ls
-  else
-    ~/repos/todo.txt-cli/todo.sh -d ~/Dropbox/todo/todo.cfg $*
-    ~/repos/todo.txt-cli/todo.sh -d ~/Dropbox/todo/todo.cfg ls
-  fi
-}
 # rvm
-function wrvm() {
-  if [ $# -eq 0 ]; then
-    rvm current
-  else
-    rvm $*   
-  fi
-}
+alias wrvm='rvm current'
+
 # edit
-alias gvimt='gvim --remote-tab-silent'
-alias gv='gvim --remote-tab-silent'
-sgv() { sudo gvim --remote-tab-silent "$1" &; }
 alias sv='sudo vim $1'
 alias e='vim'
 
@@ -29,7 +15,7 @@ alias e='vim'
 alias ltmux="if tmux has; then tmux attach; else tmux new; fi"
 
 # git
-gpush() { git add -A; git commit -m "$*"; git push; }
+gpush() { git add -A; git commit -m "$@"; git push; }
 g() {
   if [[ $# == '0' ]]; then
     command git status
@@ -37,20 +23,38 @@ g() {
     command git "$@";
   fi
 }
-# sass
-alias sassw='sass --watch public/stylesheets/sass/:public/stylesheets'
 
 # ctags
 alias rctags='ctags -R --exclude=.git --exclude=log --exclude=public *'
 
 # ruby & rails
-alias r='rails $*'
-alias rs="if [ -f script/server ]; then script/server; else script/rails server; fi"
-alias rc="if [ -f script/console ]; then script/console; else script/rails console; fi"
+alias r='rails $@'
+function ss {
+  if [ -e script/server ]; then
+    script/server $@
+  else
+    rails server $@
+  fi
+}
+function sc {
+  if [ -e script/console ]; then
+    script/console $@
+  else
+    rails console $@
+  fi
+}
+function sg {
+  if [ -e script/generate ]; then
+    script/generate $@
+  else
+    rails generate $@
+  fi
+}
 
 alias gemup='gem update --system && gem update'
 # heroku
-hpush() { git add -A; git commit -a -m 'automatic commit/push'; git push heroku master; heroku rake db:migrate; }
+hpush() { git add -A; git commit -m 'hotfix commit/push'; git push heroku master; }
+hpushm() { git add -A; git commit -m 'hotfix commit/push + migration'; git push heroku master; heroku rake db:migrate; }
 alias h='heroku $*'
 
 # latex
@@ -64,17 +68,20 @@ alias prgs='ssh theprogress.net'
 alias ares='sudo /etc/init.d/apache2 restart'
 
 # misc
-alias sabres='pkill sabnzbdplus && sabnzbdplus --daemon'
+alias sabres='pkill sabnzbdplus && sabnzbdplus -f ~/.sabnzbd/sabnzbd.ini -w 1 -d'
 
 # aptitude conviniences
-alias ain='sudo apt-get install $* -y'
+alias ain='sudo apt-get install $@ -y'
 alias aun='sudo apt-get remove'
 alias afi='sudo apt-cache search'
 alias aup='sudo apt-get update && sudo apt-get upgrade -y'
 alias aclean='sudo apt-get autoclean && sudo apt-get autoremove && sudo apt-get clean && sudo apt-get remove'
 
+# searching for stuff
+alias ack='ack-grep $@'
+
 # files, directories and commands
-alias mx='chmod a+x $*'
+alias mx='chmod a+x $@'
 alias cd..='cd ..'
 alias ls='ls --color=auto'
 alias ll='ls -lA --color=auto'
@@ -87,6 +94,4 @@ alias a='alias'
 alias ea='vim ~/.aliases'
 alias ez='vim ~/dotfiles/zshrc'
 alias ez_='vim ~/dotfiles/_zshrc'
-alias aprox='apropos'
 alias sr='source ~/.zshrc'
-alias goals='vim ~/Dropbox/privat/goals.txt'

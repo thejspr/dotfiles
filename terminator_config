@@ -1,3 +1,1 @@
-[global_config]
-
-[KEYBINDING]
+scrollback_lines = 2500

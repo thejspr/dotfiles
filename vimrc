@@ -54,7 +54,7 @@ set ruler  " Show ruler
 set showcmd " Display an incomplete command in the lower right corner of the Vim window
 set shortmess=atI " Shortens messages
 set number
-set numberwidth=3
+set numberwidth=2
 set hidden "enables buffer switch without saving.
 set nowrap
 
@@ -109,9 +109,11 @@ autocmd BufNewFile,BufRead *.tex setlocal wrap linebreak textwidth=0
 " Enable soft-wrapping for text files
 autocmd FileType text,markdown,html,xhtml,eruby setlocal wrap linebreak nolist
 
-" Ruby customizations
+" Ruby and Rails customizations
 au BufRead,BufNewFile {Gemfile,Rakefile,Capfile,*.rake,config.ru} set ft=ruby
 autocmd BufNewFile,BufRead *_spec.rb compiler rspec
+
+autocmd BufWritePost Gemfile exe('!bundle')
 
 " For all text files set 'textwidth' to 78 characters.
 autocmd FileType text setlocal textwidth=78
@@ -214,9 +216,9 @@ nnoremap // :TComment<CR>
 vnoremap // :TComment<CR>
 
 " Command-T
-Bundle "git://git.wincent.com/command-t.git"
-let g:CommandTMatchWindowAtTop=1 " show window at top
-:set wildignore+=*.o,*.obj,.git,vendor/**,tmp/**
+" Bundle "git://git.wincent.com/command-t.git"
+" let g:CommandTMatchWindowAtTop=1 " show window at top
+" :set wildignore+=*.o,*.obj,.git,vendor/**,tmp/**
 
 " Navigation
 " Bundle "https://github.com/Lokaltog/vim-easymotion.git"
