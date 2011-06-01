@@ -1,7 +1,9 @@
 task :links do
   Dir.glob("*").each do |file| 
-    unless file =~ /^[R_.]/
-      cmd = "ln -s #{Dir.pwd}/#{file} ~/.#{file}"
+    file_target = "/home/jesper/.#{file}"
+    unless file =~ /^[R_.]/ or File.file? file_target or File.directory? file_target 
+      cmd = "ln -s #{Dir.pwd}/#{file} #{file_target}"
+      puts "Executing: " + cmd
       %x{#{cmd}}
     end
   end 

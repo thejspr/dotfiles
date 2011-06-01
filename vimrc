@@ -179,18 +179,18 @@ let g:snippetsEmu_key = "<Tab>"
 Bundle "https://github.com/scrooloose/syntastic.git"
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
-Bundle "https://github.com/tpope/vim-cucumber.git"
+" Bundle "https://github.com/tpope/vim-cucumber.git"
 
 " Git integration
 Bundle "https://github.com/tpope/vim-git.git"
 Bundle "fugitive.vim"
 
 " Colors
-" Bundle 'Color-Sampler-Pack'
-Bundle "https://github.com/altercation/vim-colors-solarized.git"
+Bundle 'Color-Sampler-Pack'
+" Bundle "https://github.com/altercation/vim-colors-solarized.git"
 set t_Co=256
-set background=dark
-colorscheme solarized 
+" set background=dark
+colorscheme wombat256
 
 " Utility
 Bundle "surround.vim"
