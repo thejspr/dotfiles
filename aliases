@@ -64,8 +64,9 @@ alias lmk='latexmk $*'
 # servers
 alias prgs='ssh theprogress.net'
 
-# apache
+# apache and nginx
 alias ares='sudo /etc/init.d/apache2 restart'
+alias nres='sudo service nginx-init restart'
 
 # misc
 alias sabres='pkill sabnzbdplus && sabnzbdplus -f ~/.sabnzbd/sabnzbd.ini -w 1 -d'
