@@ -189,7 +189,7 @@ Bundle "fugitive.vim"
 Bundle 'Color-Sampler-Pack'
 " Bundle "https://github.com/altercation/vim-colors-solarized.git"
 set t_Co=256
-" set background=dark
+set background=dark
 colorscheme wombat256
 
 " Utility
