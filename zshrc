@@ -16,7 +16,12 @@ export ZSH_THEME="thejspr"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(gem git rails3 ssh-agent rvm)
+if [ "$HOST" = "vision" ]; then
+  plugins=(gem git rails3 ssh-agent rvm)
+elif [ "$HOST" = "theprogress" ]; then
+  plugins=(gem git rails3 rvm)
+fi
+
 
 source $ZSH/oh-my-zsh.sh
 
