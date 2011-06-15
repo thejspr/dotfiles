@@ -25,8 +25,8 @@ if [ "$HOST" = "vision" ]; then
   export PATH=${PATH}:/home/jesper/apps/android-sdk-linux_x86/tools:/home/jesper/bin/:$HOME/local/node/bin:/opt/nginx/sbin
 elif [ "$HOST" = "theprogress" ]; then
   export PATH=${PATH}:/opt/nginx/sbin
-  cd ~/repos/dotfiles
-  git pull
-  cd
+  # cd ~/repos/dotfiles
+  # git pull
+  # cd
 fi
 
