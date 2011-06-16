@@ -62,7 +62,7 @@ alias lmkp='latexmk -pvc -pdf'
 alias lmk='latexmk $*'
 
 # servers
-alias prgs='ssh theprogress.net'
+alias prgs='ssh thejspr.com'
 
 # apache and nginx
 alias ares='sudo /etc/init.d/apache2 restart'

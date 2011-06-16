@@ -21,8 +21,7 @@ export EDITOR=vim
 
 # specific things for laptop and server
 if [ "$HOST" = "vision" ]; then
-  export CDPATH=.:~:~/Dropbox/:~/Dropbox/projects
-  export PATH=${PATH}:/home/jesper/apps/android-sdk-linux_x86/tools:/home/jesper/bin/:$HOME/local/node/bin:/opt/nginx/sbin
+  export PATH=${PATH}:$HOME/apps/android-sdk-linux_x86/tools:$HOME/bin/:$HOME/local/node/bin:/opt/nginx/sbin:$HOME/apps/eclipse
 elif [ "$HOST" = "theprogress" ]; then
   export PATH=${PATH}:/opt/nginx/sbin
   cd ~/repos/dotfiles

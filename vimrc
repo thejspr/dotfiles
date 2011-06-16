@@ -13,6 +13,9 @@ nmap <C-k> mz:m-2<cr>`z
 vmap <C-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <C-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
+" select everything
+map <C-a> ggVG
+
 map <F6> :w !detex \| wc -w<CR>
 nnoremap <F3> :set hlsearch!<CR>
 
@@ -74,7 +77,7 @@ set incsearch		" do incremental searching
 
 " Use Ack instead of Grep when available
 if executable("ack")
-  let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+  let g:ackprg="ack-grep"
   nnoremap <leader>a :Ack 
 endif
 
@@ -112,8 +115,6 @@ autocmd FileType text,markdown,html,xhtml,eruby setlocal wrap linebreak nolist
 " Ruby and Rails customizations
 au BufRead,BufNewFile {Gemfile,Rakefile,Capfile,*.rake,config.ru} set ft=ruby
 autocmd BufNewFile,BufRead *_spec.rb compiler rspec
-
-autocmd BufWritePost Gemfile exe('!bundle')
 
 " For all text files set 'textwidth' to 78 characters.
 autocmd FileType text setlocal textwidth=78
@@ -163,11 +164,8 @@ map <Leader>sv :RSview
 map <Leader>su :RSunittest
 map <Leader>sf :RSfunctionaltest
 
-" cucumber
-map <leader>cu :! cucumber %<CR>
-
 " rake
-map <leader>r :!rake 
+map <leader>r :!bundle exec rake  
 
 " ----------------------------------------------}
 
@@ -195,15 +193,11 @@ colorscheme wombat256
 " Utility
 Bundle "surround.vim"
 Bundle "https://github.com/ervandew/supertab.git"
-
-" FuzzyFinder
-Bundle "L9"
-Bundle "FuzzyFinder"
-let g:fuf_modesDisable = [] " ------------------{
-map <leader>f :FufFile **/<CR>
-map <leader>b :FufBuffer<CR>
-nnoremap <leader>sr :FufRenewCache<CR>
-" ----------------------------------------------}
+" let g:SuperTabDefaultCompletionTypeDiscovery = [
+" \ "&completefunc:<c-x><c-u>",
+" \ "&omnifunc:<c-x><c-o>",
+" \ ]
+let g:SuperTabLongestHighlight = 1
 
 " Ack
 Bundle "https://github.com/mileszs/ack.vim.git"
@@ -216,9 +210,9 @@ nnoremap // :TComment<CR>
 vnoremap // :TComment<CR>
 
 " Command-T
-" Bundle "git://git.wincent.com/command-t.git"
-" let g:CommandTMatchWindowAtTop=1 " show window at top
-" :set wildignore+=*.o,*.obj,.git,vendor/**,tmp/**
+Bundle "git://git.wincent.com/command-t.git"
+let g:CommandTMatchWindowAtTop=1 " show window at top
+set wildignore+=*.o,*.obj,.git,vendor/**,tmp/**,app/assets/images/**,public/images,*.class
 
 " Navigation
 " Bundle "https://github.com/Lokaltog/vim-easymotion.git"
@@ -243,5 +237,19 @@ nmap <F4> <Plug>Kwbd
 
 " syntax
 Bundle "https://github.com/briancollins/vim-jst.git"
+
+" Eclim settings
+" ,ji imports whatever is needed for current line
+nnoremap <silent> <LocalLeader>ji :JavaImport<cr>
+" ,jd opens javadoc for statement in browser
+nnoremap <silent> <LocalLeader>jd :JavaDocSearch -x declarations<cr>
+" ,<enter> searches context for statement
+nnoremap <silent> <LocalLeader><cr> :JavaSearchContext<cr>
+" ,jv validates current java file
+nnoremap <silent> <LocalLeader>jv :Validate<cr>
+" ,jc shows corrections for the current line of java
+nnoremap <silent> <LocalLeader>jc :JavaCorrect<cr>
+" 'open' on OSX will open the url in the default browser without issue
+let g:EclimBrowser='open'
 
 " }}}
