@@ -16,6 +16,9 @@ vmap <C-k> :m'<-2<cr>`>my`<mzgv`yo`z
 " select everything
 map <C-a> ggVG
 
+" ruby koans
+map ½ /__<CR>cw
+
 map <F6> :w !detex \| wc -w<CR>
 nnoremap <F3> :set hlsearch!<CR>
 
@@ -84,7 +87,7 @@ endif
 " case only matters with mixed case expressions
 set ignorecase
 set smartcase
-set hlsearch
+" set hlsearch
 
 " Softtabs, 2 spaces
 set tabstop=2
@@ -128,6 +131,7 @@ autocmd BufReadPost *
       \ endif
 
 " Spell checking
+set dict+=/home/jesper/.vim/spellfile.en.utf-8.add
 map <leader>ss :setlocal spell!<cr>
 "Shortcuts using <leader>
 map <leader>sn ]s
@@ -145,7 +149,8 @@ call vundle#rc()
 " Programming
 Bundle "jQuery"
 Bundle "rails.vim"
-command! Rroutes :e config/routes.rb " ---------{
+let g:rails_menu=2
+command! Rroutes :e config/routes.rb
 command! Rschema :e db/schema.rb
 " Leader shortcuts for Rails commands
 map <Leader>m :Rmodel<space>
@@ -165,7 +170,7 @@ map <Leader>su :RSunittest
 map <Leader>sf :RSfunctionaltest
 
 " rake
-map <leader>r :!bundle exec rake  
+map <leader>r :!bundle exec rake 
 
 " ----------------------------------------------}
 
@@ -212,7 +217,7 @@ vnoremap // :TComment<CR>
 " Command-T
 Bundle "git://git.wincent.com/command-t.git"
 let g:CommandTMatchWindowAtTop=1 " show window at top
-set wildignore+=*.o,*.obj,.git,vendor/**,tmp/**,app/assets/images/**,public/images,*.class
+set wildignore+=*.o,*.obj,.git,vendor/**,tmp/**,app/assets/images/**,public/images,*.class,*.doc,*.png
 
 " Navigation
 " Bundle "https://github.com/Lokaltog/vim-easymotion.git"
@@ -237,19 +242,5 @@ nmap <F4> <Plug>Kwbd
 
 " syntax
 Bundle "https://github.com/briancollins/vim-jst.git"
-
-" Eclim settings
-" ,ji imports whatever is needed for current line
-nnoremap <silent> <LocalLeader>ji :JavaImport<cr>
-" ,jd opens javadoc for statement in browser
-nnoremap <silent> <LocalLeader>jd :JavaDocSearch -x declarations<cr>
-" ,<enter> searches context for statement
-nnoremap <silent> <LocalLeader><cr> :JavaSearchContext<cr>
-" ,jv validates current java file
-nnoremap <silent> <LocalLeader>jv :Validate<cr>
-" ,jc shows corrections for the current line of java
-nnoremap <silent> <LocalLeader>jc :JavaCorrect<cr>
-" 'open' on OSX will open the url in the default browser without issue
-let g:EclimBrowser='open'
 
 " }}}

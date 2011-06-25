@@ -60,6 +60,7 @@ alias h='heroku $*'
 # latex
 alias lmkp='latexmk -pvc -pdf'
 alias lmk='latexmk $*'
+alias lmkc='latexmk -CA'
 
 # servers
 alias prgs='ssh thejspr.com'
