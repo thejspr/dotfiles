@@ -1,3 +1,6 @@
+# create file and edit in vim
+alias te='touch $1; vim $1'
+
 # find shortcut
 alias fnd='sudo find $1 -iname $2'
 

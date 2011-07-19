@@ -16,6 +16,9 @@ vmap <C-k> :m'<-2<cr>`>my`<mzgv`yo`z
 " select everything
 map <C-a> ggVG
 
+" find/replace shortcut
+map <leader>f :%s/
+
 " ruby koans
 map ½ /__<CR>cw
 
@@ -25,8 +28,8 @@ nnoremap <F3> :set hlsearch!<CR>
 set backspace=indent,eol,start "allow backspacing over everything in insert mode
 
 " Indent entire file
-map   <silent> <F5> mmgg=G`m^
-imap  <silent> <F5> <Esc> mmgg=G`m^
+map   <silent> <F5> mmgg=G'm
+imap  <silent> <F5> <Esc> mmgg=G'm
 
 " edit .vimrc
 command! Ev :e ~/.vimrc
@@ -62,7 +65,7 @@ set shortmess=atI " Shortens messages
 set number
 set numberwidth=2
 set hidden "enables buffer switch without saving.
-set nowrap
+" set nowrap
 
 set binary " resolved "no end of line" git thing
 
@@ -111,6 +114,7 @@ autocmd BufNewFile,BufRead {*.txt,README} setfiletype text
 
 " latex stuff
 autocmd BufNewFile,BufRead *.tex setlocal wrap linebreak textwidth=0
+autocmd BufNewFile,BufRead {*.tex,*.bib} set filetype=tex
 
 " Enable soft-wrapping for text files
 autocmd FileType text,markdown,html,xhtml,eruby setlocal wrap linebreak nolist
@@ -118,6 +122,14 @@ autocmd FileType text,markdown,html,xhtml,eruby setlocal wrap linebreak nolist
 " Ruby and Rails customizations
 au BufRead,BufNewFile {Gemfile,Rakefile,Capfile,*.rake,config.ru} set ft=ruby
 autocmd BufNewFile,BufRead *_spec.rb compiler rspec
+
+"ruby
+autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+"improve autocomplete menu color
+highlight Pmenu ctermbg=238 gui=bold
 
 " For all text files set 'textwidth' to 78 characters.
 autocmd FileType text setlocal textwidth=78
@@ -131,7 +143,9 @@ autocmd BufReadPost *
       \ endif
 
 " Spell checking
-set dict+=/home/jesper/.vim/spellfile.en.utf-8.add
+set encoding=utf-8
+set spellfile+=~/.vim/spell/en.utf-8.add
+set dict+=~/.vim/spell/en.utf-8.add
 map <leader>ss :setlocal spell!<cr>
 "Shortcuts using <leader>
 map <leader>sn ]s
@@ -175,13 +189,13 @@ map <leader>r :!bundle exec rake
 " ----------------------------------------------}
 
 " Snippets
+filetype plugin on
 Bundle "https://github.com/msanders/snipmate.vim.git"
-let g:snippetsEmu_key = "<Tab>"
 
 " Syntax highlight and checking
 Bundle "https://github.com/scrooloose/syntastic.git"
 let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=1
+let g:syntastic_auto_loc_list=2
 " Bundle "https://github.com/tpope/vim-cucumber.git"
 
 " Git integration
@@ -198,10 +212,10 @@ colorscheme wombat256
 " Utility
 Bundle "surround.vim"
 Bundle "https://github.com/ervandew/supertab.git"
-" let g:SuperTabDefaultCompletionTypeDiscovery = [
-" \ "&completefunc:<c-x><c-u>",
-" \ "&omnifunc:<c-x><c-o>",
-" \ ]
+let g:SuperTabDefaultCompletionTypeDiscovery = [
+\ "&completefunc:<c-x><c-u>",
+\ "&omnifunc:<c-x><c-o>",
+\ ]
 let g:SuperTabLongestHighlight = 1
 
 " Ack
@@ -217,7 +231,9 @@ vnoremap // :TComment<CR>
 " Command-T
 Bundle "git://git.wincent.com/command-t.git"
 let g:CommandTMatchWindowAtTop=1 " show window at top
-set wildignore+=*.o,*.obj,.git,vendor/**,tmp/**,app/assets/images/**,public/images,*.class,*.doc,*.png
+set wildignore+=*.o,*.obj,.git/**,vendor/**,tmp/**,app/assets/images/**,public/images/**
+set wildignore+=*.class,*.doc,*.png
+set wildignore+=repos/**,spikes/**,msc/**,img/**,*.aux,*.out,*.bbl,*.toc,*latexmk,*.blg,*.pdf "thesis stuff
 
 " Navigation
 " Bundle "https://github.com/Lokaltog/vim-easymotion.git"
@@ -244,3 +260,5 @@ nmap <F4> <Plug>Kwbd
 Bundle "https://github.com/briancollins/vim-jst.git"
 
 " }}}
+" Statusline ----------------------------------{
+" ---------------------------------------------}
