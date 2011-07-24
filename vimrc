@@ -19,10 +19,6 @@ map <C-a> ggVG
 " find/replace shortcut
 map <leader>f :%s/
 
-" ruby koans
-map ½ /__<CR>cw
-
-map <F6> :w !detex \| wc -w<CR>
 nnoremap <F3> :set hlsearch!<CR>
 
 set backspace=indent,eol,start "allow backspacing over everything in insert mode
@@ -40,16 +36,14 @@ set ffs=unix,mac,dos
 " Copy paste in/out of vim
 map <C-c> "+y
 map <C-v> "+p
-
-" When pressing <leader>cd switch to the directory of the open buffer
-map <leader>cd :cd %:p:h<CR>
+imap <C-c> <esc>"+y 
+imap <C-v> <esc>"+p 
 
 " vim ctags
 set tags=./tags;
 
 " Sudo write
 comm! W exec 'w !sudo tee % > /dev/null' | e
-
 " }}}
 
 " General setup {{{
@@ -77,7 +71,7 @@ set nobackup
 set nowb
 set noswapfile  
 
-set history=264	" lines of command line history
+set history=1024 " lines of command line history
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 
@@ -123,14 +117,6 @@ autocmd FileType text,markdown,html,xhtml,eruby setlocal wrap linebreak nolist
 au BufRead,BufNewFile {Gemfile,Rakefile,Capfile,*.rake,config.ru} set ft=ruby
 autocmd BufNewFile,BufRead *_spec.rb compiler rspec
 
-"ruby
-autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-"improve autocomplete menu color
-highlight Pmenu ctermbg=238 gui=bold
-
 " For all text files set 'textwidth' to 78 characters.
 autocmd FileType text setlocal textwidth=78
 
@@ -158,10 +144,9 @@ map <leader>s? z=
 set runtimepath+=~/.vim/vundle.git/ " Vundle plugin manager
 call vundle#rc()
 
-" trying these
-
 " Programming
 Bundle "jQuery"
+
 Bundle "rails.vim"
 let g:rails_menu=2
 command! Rroutes :e config/routes.rb
@@ -170,33 +155,23 @@ command! Rschema :e db/schema.rb
 map <Leader>m :Rmodel<space>
 map <Leader>c :Rcontroller<space>
 map <Leader>v :Rview<space>
-" map <Leader>u :Runittest
-" map <Leader>f :Rfunctionaltest
-" map <Leader>tm :RTmodel
-" map <Leader>tc :RTcontroller
-" map <Leader>tv :RTview
-" map <Leader>tu :RTunittest
-" map <Leader>tf :RTfunctionaltest
 map <Leader>sm :RSmodel
 map <Leader>sc :RScontroller
 map <Leader>sv :RSview
 map <Leader>su :RSunittest
 map <Leader>sf :RSfunctionaltest
 
-" rake
-map <leader>r :!bundle exec rake 
-
 " ----------------------------------------------}
 
 " Snippets
-filetype plugin on
 Bundle "https://github.com/msanders/snipmate.vim.git"
+" ino <c-tab> <c-r>=TriggerSnippet()<cr>  
+" snor <c-tab> <esc>i<right><c-r>=TriggerSnippet()<cr>
 
 " Syntax highlight and checking
 Bundle "https://github.com/scrooloose/syntastic.git"
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
-" Bundle "https://github.com/tpope/vim-cucumber.git"
 
 " Git integration
 Bundle "https://github.com/tpope/vim-git.git"
@@ -212,10 +187,10 @@ colorscheme wombat256
 " Utility
 Bundle "surround.vim"
 Bundle "https://github.com/ervandew/supertab.git"
-let g:SuperTabDefaultCompletionTypeDiscovery = [
-\ "&completefunc:<c-x><c-u>",
-\ "&omnifunc:<c-x><c-o>",
-\ ]
+" let g:SuperTabDefaultCompletionTypeDiscovery = [
+" \ "&completefunc:<c-x><c-u>",
+" \ "&omnifunc:<c-x><c-o>",
+" \ ]
 let g:SuperTabLongestHighlight = 1
 
 " Ack
@@ -232,13 +207,10 @@ vnoremap // :TComment<CR>
 Bundle "git://git.wincent.com/command-t.git"
 let g:CommandTMatchWindowAtTop=1 " show window at top
 set wildignore+=*.o,*.obj,.git/**,vendor/**,tmp/**,app/assets/images/**,public/images/**
-set wildignore+=*.class,*.doc,*.png
-set wildignore+=repos/**,spikes/**,msc/**,img/**,*.aux,*.out,*.bbl,*.toc,*latexmk,*.blg,*.pdf "thesis stuff
+set wildignore+=*.class,*.doc,*.png.*.lock
+set wildignore+=repos/**,spikes/**,msc/**,img/**,*.aux,*.out,*.bbl,*.toc,*latexmk,*.blg,*.pdf,*_off* "thesis stuff
 
 " Navigation
-" Bundle "https://github.com/Lokaltog/vim-easymotion.git"
-" let g:EasyMotion_leader_key = '<Leader>m'
-
 Bundle "bufexplorer.zip"
 let g:bufExplorerDefaultHelp=0
 let g:bufExplorerShowRelativePath=1
@@ -251,14 +223,5 @@ Bundle "https://github.com/scrooloose/nerdtree.git"
 nmap <silent> <c-n> :NERDTreeToggle<CR>
 map <F2> :NERDTreeToggle<CR>
 
-Bundle 'rename.vim'
-
 " kwdb.vim
 nmap <F4> <Plug>Kwbd
-
-" syntax
-Bundle "https://github.com/briancollins/vim-jst.git"
-
-" }}}
-" Statusline ----------------------------------{
-" ---------------------------------------------}
