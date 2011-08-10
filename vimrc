@@ -61,15 +61,14 @@ set numberwidth=2
 set hidden "enables buffer switch without saving.
 " set nowrap
 
-set binary " resolved "no end of line" git thing
+set binary " resolved no end of line git thing
 
 set so=7
 set wildmenu "Turn on WiLd menu
 
 " backups
 set nobackup
-set nowb
-set noswapfile  
+set nowritebackup
 
 set history=1024 " lines of command line history
 set showcmd		" display incomplete commands
@@ -109,6 +108,7 @@ autocmd BufNewFile,BufRead {*.txt,README} setfiletype text
 " latex stuff
 autocmd BufNewFile,BufRead *.tex setlocal wrap linebreak textwidth=0
 autocmd BufNewFile,BufRead {*.tex,*.bib} set filetype=tex
+map <F3> :w !detex \| wc -w<CR>
 
 " Enable soft-wrapping for text files
 autocmd FileType text,markdown,html,xhtml,eruby setlocal wrap linebreak nolist
@@ -118,7 +118,7 @@ au BufRead,BufNewFile {Gemfile,Rakefile,Capfile,*.rake,config.ru} set ft=ruby
 autocmd BufNewFile,BufRead *_spec.rb compiler rspec
 
 " For all text files set 'textwidth' to 78 characters.
-autocmd FileType text setlocal textwidth=78
+autocmd FileType text,tex setlocal textwidth=80
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
@@ -137,7 +137,7 @@ map <leader>ss :setlocal spell!<cr>
 map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
-map <leader>s? z=
+map <leader>sd z=
 " }}}
 
 " Plugins {{{
@@ -165,6 +165,10 @@ map <Leader>sf :RSfunctionaltest
 
 " Snippets
 Bundle "https://github.com/msanders/snipmate.vim.git"
+let g:snippetsEmu_key = "<S-Tab>"
+" Tab completion options
+set wildmode=list:longest,list:full
+set complete=.,w,t
 " ino <c-tab> <c-r>=TriggerSnippet()<cr>  
 " snor <c-tab> <esc>i<right><c-r>=TriggerSnippet()<cr>
 
@@ -203,12 +207,15 @@ Bundle "tComment"
 nnoremap // :TComment<CR>
 vnoremap // :TComment<CR>
 
+Bundle 'toggle_words.vim'
+nmap <leader>s :ToggleWord<CR> 
+
 " Command-T
 Bundle "git://git.wincent.com/command-t.git"
 let g:CommandTMatchWindowAtTop=1 " show window at top
 set wildignore+=*.o,*.obj,.git/**,vendor/**,tmp/**,app/assets/images/**,public/images/**
-set wildignore+=*.class,*.doc,*.png.*.lock
-set wildignore+=repos/**,spikes/**,msc/**,img/**,*.aux,*.out,*.bbl,*.toc,*latexmk,*.blg,*.pdf,*_off* "thesis stuff
+set wildignore+=*.class,*.doc,*.png.*.lock,*.lox
+set wildignore+=repos/**,spikes/**,msc/**,img/**,*.aux,*.out,*.bbl,*.toc,*latexmk,*.blg,*.pdf,*_off*,report.log "thesis stuff
 
 " Navigation
 Bundle "bufexplorer.zip"
@@ -222,6 +229,19 @@ nnoremap <silent> <S-M-left> :bp<CR>
 Bundle "https://github.com/scrooloose/nerdtree.git"
 nmap <silent> <c-n> :NERDTreeToggle<CR>
 map <F2> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
 
 " kwdb.vim
 nmap <F4> <Plug>Kwbd
+
+" Learn home-row keys damnit!
+nnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up> :echoe "Use k"<CR>
+nnoremap <Down> :echoe "Use j"<CR>
+
+" Treat <li> and <p> tags like the block tags they are
+let g:html_indent_tags = 'li\|p'
+
+" spelling corrections
+iab teh the
