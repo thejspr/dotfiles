@@ -68,6 +68,7 @@ set wildmenu "Turn on WiLd menu
 
 " backups
 set nobackup
+set noswapfile
 set nowritebackup
 
 set history=1024 " lines of command line history
@@ -116,6 +117,9 @@ autocmd FileType text,markdown,html,xhtml,eruby setlocal wrap linebreak nolist
 " Ruby and Rails customizations
 au BufRead,BufNewFile {Gemfile,Rakefile,Capfile,*.rake,config.ru} set ft=ruby
 autocmd BufNewFile,BufRead *_spec.rb compiler rspec
+
+" JavaScript and JSON
+map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
 
 " For all text files set 'textwidth' to 78 characters.
 autocmd FileType text,tex setlocal textwidth=80
@@ -215,7 +219,7 @@ Bundle "git://git.wincent.com/command-t.git"
 let g:CommandTMatchWindowAtTop=1 " show window at top
 set wildignore+=*.o,*.obj,.git/**,vendor/**,tmp/**,app/assets/images/**,public/images/**
 set wildignore+=*.class,*.doc,*.png.*.lock,*.lox
-set wildignore+=repos/**,spikes/**,msc/**,img/**,*.aux,*.out,*.bbl,*.toc,*latexmk,*.blg,*.pdf,*_off*,report.log "thesis stuff
+set wildignore+=repos/**,spikes/**,msc/**,img/**,*.aux,*.out,*.bbl,*.toc,*latexmk,*.blg,*.pdf,report.log "thesis stuff
 
 " Navigation
 Bundle "bufexplorer.zip"
@@ -234,11 +238,14 @@ let NERDTreeShowHidden=1
 " kwdb.vim
 nmap <F4> <Plug>Kwbd
 
+" vimwiki - http://code.google.com/p/vimwiki/
+Bundle "vimwiki"
+
 " Learn home-row keys damnit!
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
+" nnoremap <Left> :echoe "Use h"<CR>
+" nnoremap <Right> :echoe "Use l"<CR>
+" nnoremap <Up> :echoe "Use k"<CR>
+" nnoremap <Down> :echoe "Use j"<CR>
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'

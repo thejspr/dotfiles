@@ -1,3 +1,6 @@
+# thesis
+ty() { ./bin/yarn &; pid=$!; sleep 0.5; curl -I http://127.0.0.1:3000/index.html; sleep 0.5; kill -HUP $pid; } # tests yarn
+
 # tail syslog
 alias slog='tail -f /var/log/syslog'
 
@@ -95,7 +98,7 @@ alias df='df -h'
 alias a='alias'
 alias e='vim'
 alias sv='sudo vim'
-alias te='touch $1; vim $1'
+alias te='touch $@; vim $@'
 alias ea='vim ~/.aliases'
 alias ez='vim ~/dotfiles/zshrc'
 alias ez_='vim ~/dotfiles/_zshrc'

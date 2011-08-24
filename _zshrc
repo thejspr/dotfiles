@@ -21,7 +21,7 @@ export EDITOR=vim
 
 # specific things for laptop and server
 if [ "$HOST" = "vision" ]; then
-  export PATH=${PATH}:$HOME/apps/android-sdk-linux_x86/tools:$HOME/local/node/bin:/opt/nginx/sbin:$HOME/apps/eclipse:$HOME/bin:$HOME/apps/firefox
+  export PATH=${PATH}:$HOME/apps/android-sdk-linux_x86/tools:/opt/nginx/sbin:$HOME/apps/eclipse:$HOME/bin
 elif [ "$HOST" = "theprogress" ]; then
   export PATH=${PATH}:/opt/nginx/sbin
   # cd ~/repos/dotfiles
@@ -30,3 +30,4 @@ elif [ "$HOST" = "theprogress" ]; then
 fi
 
 export AUTOFEATURE=true
+export JRUBY_OPTS=--1.9
