@@ -2,12 +2,15 @@
 " , is the leader character
 let mapleader = ","
 
+" Leave insert-mode
+imap jj <esc>
+
 " save shortcut
 noremap <C-s> <ESC>:w<CR>
 vnoremap <C-s> <ESC>:w<CR>
 inoremap <C-s> <ESC>:w<CR>
 
-"Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
+"Move a line of text using Ctrl+[jk]
 nmap <C-j> mz:m+<cr>`z
 nmap <C-k> mz:m-2<cr>`z
 vmap <C-j> :m'>+<cr>`<my`>mzgv`yo`z
@@ -17,7 +20,7 @@ vmap <C-k> :m'<-2<cr>`>my`<mzgv`yo`z
 map <C-a> ggVG
 
 " find/replace shortcut
-map <leader>f :%s/
+map <leader>f :%s///gc<left><left><left><left>
 
 nnoremap <F3> :set hlsearch!<CR>
 
@@ -54,7 +57,7 @@ set showmatch  " Show matching brackets.
 set matchtime=2  " Bracket blinking.
 set laststatus=2  " Always show status line.
 set ruler  " Show ruler
-set showcmd " Display an incomplete command in the lower right corner of the Vim window
+set showcmd " Display an incomplete command in the lower right corner
 set shortmess=atI " Shortens messages
 set number
 set numberwidth=2
@@ -72,7 +75,6 @@ set noswapfile
 set nowritebackup
 
 set history=1024 " lines of command line history
-set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 
 " Use Ack instead of Grep when available
@@ -104,12 +106,16 @@ filetype plugin indent on
 au FileType * exe('setl dict+='.$VIMRUNTIME.'/syntax/'.&filetype.'.vim')
 
 " Set File type to 'text' for files ending in .txt
-autocmd BufNewFile,BufRead {*.txt,README} setfiletype text
+autocmd BufNewFile,BufRead {*.txt,README,*.wiki} setfiletype text
+
+" Vimwiki settings
+autocmd BufWrite {*.wiki} exe('VimwikiAll2HTML')
+let g:vimwiki_list = [{'html_header': '~/vimwiki_html/header.tpl'}]
 
 " latex stuff
 autocmd BufNewFile,BufRead *.tex setlocal wrap linebreak textwidth=0
 autocmd BufNewFile,BufRead {*.tex,*.bib} set filetype=tex
-map <F3> :w !detex \| wc -w<CR>
+map <F6> :w !detex \| wc -w<CR>
 
 " Enable soft-wrapping for text files
 autocmd FileType text,markdown,html,xhtml,eruby setlocal wrap linebreak nolist
@@ -121,8 +127,8 @@ autocmd BufNewFile,BufRead *_spec.rb compiler rspec
 " JavaScript and JSON
 map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
 
-" For all text files set 'textwidth' to 78 characters.
-autocmd FileType text,tex setlocal textwidth=80
+" For all text and tex files set 'textwidth' to 78 characters.
+autocmd FileType text,tex setlocal textwidth=78
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
@@ -151,7 +157,7 @@ call vundle#rc()
 " Programming
 Bundle "jQuery"
 
-Bundle "rails.vim"
+Bundle "https://github.com/tpope/vim-rails"
 let g:rails_menu=2
 command! Rroutes :e config/routes.rb
 command! Rschema :e db/schema.rb
@@ -218,8 +224,11 @@ nmap <leader>s :ToggleWord<CR>
 Bundle "git://git.wincent.com/command-t.git"
 let g:CommandTMatchWindowAtTop=1 " show window at top
 set wildignore+=*.o,*.obj,.git/**,vendor/**,tmp/**,app/assets/images/**,public/images/**
-set wildignore+=*.class,*.doc,*.png.*.lock,*.lox
-set wildignore+=repos/**,spikes/**,msc/**,img/**,*.aux,*.out,*.bbl,*.toc,*latexmk,*.blg,*.pdf,report.log "thesis stuff
+set wildignore+=*.class,*.doc,*.lock,*.lox,**.png,**.jpg,**.jpeg
+" thesis stuff
+set wildignore+=repos/**,spikes/**,msc/**,img/**,*.aux,*.out,*.bbl,*.toc,*latexmk,*.blg,*.pdf,report.log
+set wildignore+=test_objects/**,coverage/**
+au BufWritePost {*.treetop,*.tt} exec('!tt %')
 
 " Navigation
 Bundle "bufexplorer.zip"
@@ -237,6 +246,8 @@ let NERDTreeShowHidden=1
 
 " kwdb.vim
 nmap <F4> <Plug>Kwbd
+
+Bundle "https://github.com/nathanaelkane/vim-indent-guides.git"
 
 " vimwiki - http://code.google.com/p/vimwiki/
 Bundle "vimwiki"

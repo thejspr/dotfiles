@@ -31,3 +31,5 @@ fi
 
 export AUTOFEATURE=true
 export JRUBY_OPTS=--1.9
+
+stty intr '^C'

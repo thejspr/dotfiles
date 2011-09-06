@@ -1,0 +1,17 @@
+== Rails ==
+
+
+== Tools ==
+
+Replace rails console with Pry: (add to config/environments/development.rb)
+{{{class="brush: ruby"
+  MyApp::Application.configure do
+    silence_warnings do
+      begin
+        require 'pry'
+        IRB = Pry
+      rescue LoadError
+      end
+    end
+  end
+}}}

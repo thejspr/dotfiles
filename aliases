@@ -1,5 +1,13 @@
 # thesis
-ty() { ./bin/yarn &; pid=$!; sleep 0.5; curl -I http://127.0.0.1:3000/index.html; sleep 0.5; kill -HUP $pid; } # tests yarn
+# tests yarn
+ty() { 
+  ./bin/yarn &; 
+  pid=$!; 
+  sleep 1; 
+  curl -i http://127.0.0.1:3000/ -b "$VAR=testing"; 
+  sleep 2; kill -HUP $pid; 
+}
+yarn() { ~/Dropbox/thesis/code/yarn/bin/yarn }
 
 # tail syslog
 alias slog='tail -f /var/log/syslog'
@@ -53,10 +61,11 @@ function sg {
   fi
 }
 
+alias devlog='tail -f log/development.log | egrep -v "^(Served asset|$)"'
 alias gemup='gem update --system && gem update'
 # heroku
 hpush() { git add -A; git commit -m 'hotfix commit/push'; git push heroku master; }
-hpushm() { git add -A; git commit -m 'hotfix commit/push + migration'; git push heroku master; heroku rake db:migrate; }
+hpushm() { git add -A; git commit -m 'hotfix commit/push + migration'; git push heroku master; heroku run rake db:migrate; }
 alias h='heroku'
 
 # latex
@@ -97,7 +106,7 @@ alias df='df -h'
 # system and files editing
 alias a='alias'
 alias e='vim'
-alias sv='sudo vim'
+alias se='sudo vim'
 alias te='touch $@; vim $@'
 alias ea='vim ~/.aliases'
 alias ez='vim ~/dotfiles/zshrc'
