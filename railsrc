@@ -1,1 +1,0 @@
-gem 'irbtools', :require => 'irbtools/configure'

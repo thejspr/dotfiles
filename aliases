@@ -1,13 +1,14 @@
 # thesis
 # tests yarn
 ty() { 
-  ./bin/yarn &; 
+  dyarn &; 
   pid=$!; 
   sleep 1; 
-  curl -i http://127.0.0.1:3000/ -b "$VAR=testing"; 
+  curl -i http://127.0.0.1:3000/test_objects/app.rb -b "$VAR=testing"; 
   sleep 2; kill -HUP $pid; 
 }
-yarn() { ~/Dropbox/thesis/code/yarn/bin/yarn }
+dyarn() { ~/Dropbox/thesis/code/yarn/bin/yarn -t dynamic}
+syarn() { ~/Dropbox/thesis/code/yarn/bin/yarn -t static}
 
 # tail syslog
 alias slog='tail -f /var/log/syslog'
@@ -15,17 +16,11 @@ alias slog='tail -f /var/log/syslog'
 # find shortcut
 alias fnd='sudo find $1 -iname $2'
 
-#keepassx
-alias kpass='keepassx ~/Dropbox/privat/db.kdb &'
-
-# tmux
-alias ltmux="if tmux has; then tmux attach; else tmux new; fi"
-
 # git
 gpush() { git add -A; git commit -m "$@"; git push; }
 g() {
   if [[ $# == '0' ]]; then
-    command git status
+    command git status -sb
   else
     command git "$@";
   fi
@@ -35,25 +30,22 @@ g() {
 alias rctags='ctags -R --exclude=.git --exclude=log --exclude=public *'
 
 # ruby & rails
-alias wrvm='rvm current'
-alias r='rails $@'
-alias b='bundle'
 alias be='bundle exec'
-function ss {
+function rs {
   if [ -e script/server ]; then
     script/server $@
   else
     rails server $@
   fi
 }
-function sc {
+function rc {
   if [ -e script/console ]; then
     script/console $@
   else
     rails console $@
   fi
 }
-function sg {
+function rg {
   if [ -e script/generate ]; then
     script/generate $@
   else
@@ -65,8 +57,6 @@ alias devlog='tail -f log/development.log | egrep -v "^(Served asset|$)"'
 alias gemup='gem update --system && gem update'
 # heroku
 hpush() { git add -A; git commit -m 'hotfix commit/push'; git push heroku master; }
-hpushm() { git add -A; git commit -m 'hotfix commit/push + migration'; git push heroku master; heroku run rake db:migrate; }
-alias h='heroku'
 
 # latex
 alias lwc='pdftotext report.pdf - | wc -w -'
@@ -100,14 +90,11 @@ alias cd..='cd ..'
 alias ls='ls --color=auto'
 alias ll='ls -lA --color=auto'
 alias grep='grep --color=auto'
-alias du='du -h'
-alias df='df -h'
 
 # system and files editing
-alias a='alias'
 alias e='vim'
 alias se='sudo vim'
-alias te='touch $@; vim $@'
+alias te='touch $1; vim $1'
 alias ea='vim ~/.aliases'
 alias ez='vim ~/dotfiles/zshrc'
 alias ez_='vim ~/dotfiles/_zshrc'

@@ -2,10 +2,10 @@
 
 == Thesis Todo ==
 
-  * [ ] try out Treetop
+  * [ ] better 404/500 page
+  * [ ] factory girl for tests
   * [ ] sort directory listing
-  * [X] Invite k.xu@mdx.ac.uk to gantt
-
+  * [ ] add directory listing styles
 
 == Programming ==
   
@@ -18,9 +18,10 @@
 == Vim ==
 
   Learning Todo:
+    * [ ] home row keys
+    * [ ] <CTRL-o> : trace your movements backwards. <CTRL-i> forwards
     * [ ] https://github.com/mileszs/ack.vim
     * [ ] w,e (W,E) for word navigation
     * [ ] * goes to next occurence of the word
     * [ ] % goes to matching bracket
     * [ ] <start position><command><end position> (y2/foo) (yE)
-    * [ ] home row keys

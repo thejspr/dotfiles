@@ -154,9 +154,17 @@ map <leader>sd z=
 set runtimepath+=~/.vim/vundle.git/ " Vundle plugin manager
 call vundle#rc()
 
-" Programming
-Bundle "jQuery"
+" Ruby
+Bundle "https://github.com/ecomba/vim-ruby-refactoring"
+Bundle "https://github.com/taq/vim-refact"
 
+" RSpec
+Bundle "https://github.com/duskhacker/sweet-rspec-vim"
+map <leader>rs :SweetVimRspecRunFile<CR>
+map <leader>rf :SweetVimRspecRunFocused<CR>
+map <leader>rp :SweetVimRspecRunPrevious<CR>
+
+" Rails
 Bundle "https://github.com/tpope/vim-rails"
 let g:rails_menu=2
 command! Rroutes :e config/routes.rb
@@ -171,7 +179,8 @@ map <Leader>sv :RSview
 map <Leader>su :RSunittest
 map <Leader>sf :RSfunctionaltest
 
-" ----------------------------------------------}
+" JQuery
+Bundle "jQuery"
 
 " Snippets
 Bundle "https://github.com/msanders/snipmate.vim.git"
@@ -179,8 +188,6 @@ let g:snippetsEmu_key = "<S-Tab>"
 " Tab completion options
 set wildmode=list:longest,list:full
 set complete=.,w,t
-" ino <c-tab> <c-r>=TriggerSnippet()<cr>  
-" snor <c-tab> <esc>i<right><c-r>=TriggerSnippet()<cr>
 
 " Syntax highlight and checking
 Bundle "https://github.com/scrooloose/syntastic.git"
@@ -195,7 +202,7 @@ Bundle "fugitive.vim"
 Bundle 'Color-Sampler-Pack'
 " Bundle "https://github.com/altercation/vim-colors-solarized.git"
 set t_Co=256
-set background=dark
+" set background=dark
 colorscheme wombat256
 
 " Utility
@@ -223,12 +230,16 @@ nmap <leader>s :ToggleWord<CR>
 " Command-T
 Bundle "git://git.wincent.com/command-t.git"
 let g:CommandTMatchWindowAtTop=1 " show window at top
-set wildignore+=*.o,*.obj,.git/**,vendor/**,tmp/**,app/assets/images/**,public/images/**
+set wildignore+=*.o,*.obj,.git/**,vendor/**,tmp/**,app/assets/images/**,public/images/**,public/assets/**
 set wildignore+=*.class,*.doc,*.lock,*.lox,**.png,**.jpg,**.jpeg
 " thesis stuff
 set wildignore+=repos/**,spikes/**,msc/**,img/**,*.aux,*.out,*.bbl,*.toc,*latexmk,*.blg,*.pdf,report.log
-set wildignore+=test_objects/**,coverage/**
-au BufWritePost {*.treetop,*.tt} exec('!tt %')
+set wildignore+=test_objects/rdoc/**,coverage/**
+augroup CommandTExtension
+  autocmd!
+  autocmd FocusGained * CommandTFlush
+  autocmd BufWritePost * CommandTFlush
+augroup END
 
 " Navigation
 Bundle "bufexplorer.zip"
@@ -263,3 +274,4 @@ let g:html_indent_tags = 'li\|p'
 
 " spelling corrections
 iab teh the
+iab tehn then

@@ -15,7 +15,7 @@ fi
 # disable terminal locking
 stty -ixon -ixoff
 
-unsetopt correct_all
+# unsetopt correct_all
 
 export EDITOR=vim
 
@@ -24,12 +24,9 @@ if [ "$HOST" = "vision" ]; then
   export PATH=${PATH}:$HOME/apps/android-sdk-linux_x86/tools:/opt/nginx/sbin:$HOME/apps/eclipse:$HOME/bin
 elif [ "$HOST" = "theprogress" ]; then
   export PATH=${PATH}:/opt/nginx/sbin
-  # cd ~/repos/dotfiles
-  # git pull
-  # cd
 fi
 
 export AUTOFEATURE=true
 export JRUBY_OPTS=--1.9
 
-stty intr '^C'
+cp ~/repos/sabnzbd.ini ~/.sabnzbd/
