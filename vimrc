@@ -16,17 +16,17 @@ vmap <C-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <C-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 " select everything
-map <C-a> ggVG
+noremap <C-a> ggVG
 
 " find/replace shortcut
-map <leader>f :%s///gc<left><left><left><left>
+noremap <leader>f :%s///gc<left><left><left><left>
 
 nnoremap <F3> :set hlsearch!<CR>
 
 set backspace=indent,eol,start "allow backspacing over everything in insert mode
 
 " Indent entire file
-map   <silent> <F5> mmgg=G'm
+noremap   <silent> <F5> mmgg=G'm
 imap  <silent> <F5> <Esc> mmgg=G'm
 
 " edit .vimrc
@@ -36,8 +36,8 @@ autocmd BufWritePost .vimrc source $MYVIMRC
 set ffs=unix,mac,dos
 
 " Copy paste in/out of vim
-map <C-c> "+y
-map <C-v> "+p
+noremap <C-c> "+y
+noremap <C-v> "+p
 imap <C-c> <esc>"+y 
 imap <C-v> <esc>"+p 
 
@@ -123,7 +123,7 @@ au BufRead,BufNewFile {Gemfile,Rakefile,Capfile,*.rake,config.ru} set ft=ruby
 autocmd BufNewFile,BufRead *_spec.rb compiler rspec
 
 " JavaScript and JSON
-map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
+noremap <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
 
 " For all text and tex files set 'textwidth' to 78 characters.
 autocmd FileType text,tex setlocal textwidth=78
@@ -140,11 +140,11 @@ autocmd BufReadPost *
 set encoding=utf-8
 set spellfile+=~/.vim/spell/en.utf-8.add
 set dict+=~/.vim/spell/en.utf-8.add
-map <leader>ss :setlocal spell!<cr>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>sd z=
+noremap <leader>ss :setlocal spell!<cr>
+noremap <leader>sn ]s
+noremap <leader>sp [s
+noremap <leader>sa zg
+noremap <leader>sd z=
 " }}}
 
 " Plugins {{{
@@ -155,9 +155,9 @@ call vundle#rc()
 Bundle "https://github.com/ecomba/vim-ruby-refactoring"
 Bundle "https://github.com/taq/vim-refact"
 Bundle "https://github.com/janx/vim-rubytest.git"
-map <Leader>1 <Plug>RubyTestRun
-map <Leader>2 <Plug>RubyFileRun
-map <Leader>3 <Plug>RubyTestRunLast
+noremap <Leader>1 <Plug>RubyTestRun
+noremap <Leader>2 <Plug>RubyFileRun
+noremap <Leader>3 <Plug>RubyTestRunLast
 
 " Rails
 Bundle "https://github.com/tpope/vim-rails"
@@ -165,14 +165,14 @@ let g:rails_menu=2
 command! Rroutes :e config/routes.rb
 command! Rschema :e db/schema.rb
 " Leader shortcuts for Rails commands
-map <Leader>m :Rmodel<space>
-map <Leader>c :Rcontroller<space>
-map <Leader>v :Rview<space>
-map <Leader>sm :RSmodel
-map <Leader>sc :RScontroller
-map <Leader>sv :RSview
-map <Leader>su :RSunittest
-map <Leader>sf :RSfunctionaltest
+noremap <Leader>m :Rmodel<space>
+noremap <Leader>c :Rcontroller<space>
+noremap <Leader>v :Rview<space>
+noremap <Leader>sm :RSmodel
+noremap <Leader>sc :RScontroller
+noremap <Leader>sv :RSview
+noremap <Leader>su :RSunittest
+noremap <Leader>sf :RSfunctionaltest
 
 " JavaScript
 Bundle "https://github.com/mozilla/doctorjs.git"
@@ -238,14 +238,14 @@ augroup END
 Bundle "bufexplorer.zip"
 let g:bufExplorerDefaultHelp=0
 let g:bufExplorerShowRelativePath=1
-map <leader>o :BufExplorer<cr>
+noremap <leader>o :BufExplorer<cr>
 nnoremap <silent> <S-M-right> :bn<CR>
 nnoremap <silent> <S-M-left> :bp<CR>
 
 " filesystem
 Bundle "https://github.com/scrooloose/nerdtree.git"
 nmap <silent> <c-n> :NERDTreeToggle<CR>
-map <F2> :NERDTreeToggle<CR>
+noremap <F2> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 
 " kwdb.vim
