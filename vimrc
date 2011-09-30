@@ -112,7 +112,6 @@ let g:vimwiki_list = [{'html_header': '~/vimwiki_html/header.tpl'}]
 " latex stuff
 autocmd BufNewFile,BufRead *.tex setlocal wrap linebreak textwidth=0
 autocmd BufNewFile,BufRead {*.tex,*.bib} set filetype=tex
-noremap <F9> ggVGgq
 noremap <F6> :w !detex \| wc -w<CR>
 
 " Enable soft-wrapping for text files
@@ -247,16 +246,13 @@ Bundle "https://github.com/scrooloose/nerdtree.git"
 nmap <silent> <c-n> :NERDTreeToggle<CR>
 noremap <F2> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
+let NERDTreeIgnore=['\.git$']
 
 " kwdb.vim
 nmap <F4> <Plug>Kwbd
 
-Bundle "https://github.com/nathanaelkane/vim-indent-guides.git"
-
 " vimwiki - http://code.google.com/p/vimwiki/
 Bundle "vimwiki"
-
-Bundle "https://github.com/tpope/vim-markdown.git"
 
 " Learn home-row keys damnit!
 " nnoremap <Left> :echoe "Use h"<CR>
