@@ -45,20 +45,31 @@ function ef() {
 }
 # packs $2-$n into $1 depending on $1's extension.  add more file types as needed
 function pack() {
-	 if [ $# -lt 2 ] ; then
-	    echo -e "\npack() usage:"
-	    echo -e "\tpack archive_file_name file1 file2 ... fileN"
-	    echo -e "\tcreates archive of files 1-N\n"
-	 else 
-	   DEST=$1
-	   shift
+  if [ $# -lt 2 ] ; then
+    echo -e "\npack() usage:"
+      echo -e "\tpack archive_file_name file1 file2 ... fileN"
+      echo -e "\tcreates archive of files 1-N\n"
+  else 
+    DEST=$1
+      shift
 
-	   case $DEST in 
-		*.tar.bz2)		tar -cvjf $DEST "$@" ;;  
-		*.tar.gz)		tar -cvzf $DEST "$@" ;;  
-		*.zip)			zip -r $DEST "$@" ;;
-		*.xpi)			zip -r $DEST "$@" ;;
-		*)				echo "Unknown file type - $DEST" ;;
-	   esac
-	 fi
+      case $DEST in 
+      *.tar.bz2)		tar -cvjf $DEST "$@" ;;  
+  *.tar.gz)		tar -cvzf $DEST "$@" ;;  
+  *.zip)			zip -r $DEST "$@" ;;
+  *.xpi)			zip -r $DEST "$@" ;;
+  *)				echo "Unknown file type - $DEST" ;;
+  esac
+    fi
+}
+function ssh-reagent () {
+  for agent in /tmp/ssh-*/agent.*; do
+    export SSH_AUTH_SOCK=$agent
+      if ssh-add -l 2>&1 > /dev/null; then
+        echo Found working SSH Agent:
+          ssh-add -l
+          return
+          fi
+          done
+          echo Cannot find ssh agent - maybe you should reconnect and forward it?
 }

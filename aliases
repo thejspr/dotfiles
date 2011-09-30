@@ -1,20 +1,23 @@
 # thesis
 # tests yarn
 ty() { 
-  dyarn &; 
+  ~/Dropbox/thesis/code/yarn/bin/yarn "$@" &; 
   pid=$!; 
   sleep 1; 
-  curl -i http://127.0.0.1:3000/test_objects/app.rb -b "$VAR=testing"; 
-  sleep 2; kill -HUP $pid; 
+  curl -i http://127.0.0.1:3000/;
+  kill -15 $pid;
 }
-dyarn() { ~/Dropbox/thesis/code/yarn/bin/yarn -t dynamic}
-syarn() { ~/Dropbox/thesis/code/yarn/bin/yarn -t static}
+ry() { rackup -s Yarn ~/Dropbox/thesis/code/yarn/test_objects/config.ru }
+sy() { ~/Dropbox/thesis/code/yarn/bin/yarn }
+kr() { pkill ruby }
 
 # tail syslog
 alias slog='tail -f /var/log/syslog'
 
 # find shortcut
 alias fnd='sudo find $1 -iname $2'
+
+alias ack="ack-grep"
 
 # git
 gpush() { git add -A; git commit -m "$@"; git push; }
@@ -80,9 +83,6 @@ alias aun='sudo apt-get remove'
 alias afi='sudo apt-cache search'
 alias aup='sudo apt-get update && sudo apt-get upgrade -y'
 alias aclean='sudo apt-get autoclean && sudo apt-get autoremove && sudo apt-get clean && sudo apt-get remove'
-
-# searching for stuff
-alias ack='ack-grep'
 
 # files, directories and commands
 alias mx='chmod a+x'

@@ -1,12 +1,5 @@
 = Personal wiki =
 
-== Thesis Todo ==
-
-  * [ ] better 404/500 page
-  * [ ] factory girl for tests
-  * [ ] sort directory listing
-  * [ ] add directory listing styles
-
 == Programming ==
   
   RailsSnippets

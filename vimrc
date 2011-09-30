@@ -1,5 +1,4 @@
 " Shortcuts and keymappings {{{
-" , is the leader character
 let mapleader = ","
 
 " Leave insert-mode
@@ -50,43 +49,41 @@ comm! W exec 'w !sudo tee % > /dev/null' | e
 " }}}
 
 " General setup {{{
-set nocompatible " Use Vim settings, rather then Vi.
-set viminfo^=% " remember open buffers.
+set nocompatible  " Use Vim settings, rather then Vi.
+set viminfo^=%    " remember open buffers.
 
-set showmatch  " Show matching brackets.
-set matchtime=2  " Bracket blinking.
+set showmatch     " Show matching brackets.
+set matchtime=2   " Bracket blinking.
 set laststatus=2  " Always show status line.
-set ruler  " Show ruler
-set showcmd " Display an incomplete command in the lower right corner
+set ruler         " Show ruler
+set showcmd       " Display an incomplete command in the lower right corner
 set shortmess=atI " Shortens messages
 set number
 set numberwidth=2
-set hidden "enables buffer switch without saving.
-" set nowrap
+set hidden        "enables buffer switch without saving.
 
-set binary " resolved no end of line git thing
+set binary        " resolved no end of line git thing
 
 set so=7
-set wildmenu "Turn on WiLd menu
+set wildmenu      "Turn on WiLd menu
 
 " backups
 set nobackup
 set noswapfile
 set nowritebackup
 
-set history=1024 " lines of command line history
-set incsearch		" do incremental searching
+set history=1024  " lines of command line history
+set incsearch		  " do incremental searching
 
 " Use Ack instead of Grep when available
 if executable("ack")
-  let g:ackprg="ack-grep"
+  let g:ackprg="ack-grep -H --nocolor --nogroup --column"
   nnoremap <leader>a :Ack 
 endif
 
 " case only matters with mixed case expressions
 set ignorecase
 set smartcase
-" set hlsearch
 
 " Softtabs, 2 spaces
 set tabstop=2
@@ -115,7 +112,8 @@ let g:vimwiki_list = [{'html_header': '~/vimwiki_html/header.tpl'}]
 " latex stuff
 autocmd BufNewFile,BufRead *.tex setlocal wrap linebreak textwidth=0
 autocmd BufNewFile,BufRead {*.tex,*.bib} set filetype=tex
-map <F6> :w !detex \| wc -w<CR>
+noremap <F9> ggVGgq
+noremap <F6> :w !detex \| wc -w<CR>
 
 " Enable soft-wrapping for text files
 autocmd FileType text,markdown,html,xhtml,eruby setlocal wrap linebreak nolist
@@ -143,7 +141,6 @@ set encoding=utf-8
 set spellfile+=~/.vim/spell/en.utf-8.add
 set dict+=~/.vim/spell/en.utf-8.add
 map <leader>ss :setlocal spell!<cr>
-"Shortcuts using <leader>
 map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
@@ -157,12 +154,10 @@ call vundle#rc()
 " Ruby
 Bundle "https://github.com/ecomba/vim-ruby-refactoring"
 Bundle "https://github.com/taq/vim-refact"
-
-" RSpec
-Bundle "https://github.com/duskhacker/sweet-rspec-vim"
-map <leader>rs :SweetVimRspecRunFile<CR>
-map <leader>rf :SweetVimRspecRunFocused<CR>
-map <leader>rp :SweetVimRspecRunPrevious<CR>
+Bundle "https://github.com/janx/vim-rubytest.git"
+map <Leader>1 <Plug>RubyTestRun
+map <Leader>2 <Plug>RubyFileRun
+map <Leader>3 <Plug>RubyTestRunLast
 
 " Rails
 Bundle "https://github.com/tpope/vim-rails"
@@ -179,8 +174,8 @@ map <Leader>sv :RSview
 map <Leader>su :RSunittest
 map <Leader>sf :RSfunctionaltest
 
-" JQuery
-Bundle "jQuery"
+" JavaScript
+Bundle "https://github.com/mozilla/doctorjs.git"
 
 " Snippets
 Bundle "https://github.com/msanders/snipmate.vim.git"
@@ -200,9 +195,7 @@ Bundle "fugitive.vim"
 
 " Colors
 Bundle 'Color-Sampler-Pack'
-" Bundle "https://github.com/altercation/vim-colors-solarized.git"
 set t_Co=256
-" set background=dark
 colorscheme wombat256
 
 " Utility
@@ -216,8 +209,8 @@ let g:SuperTabLongestHighlight = 1
 
 " Ack
 Bundle "https://github.com/mileszs/ack.vim.git"
-noremap <LocalLeader># "ayiw:Ack <C-r>a<CR>
-vnoremap <LocalLeader># "ay:Ack <C-r>a<CR>
+noremap <leader># "ayiw:Ack <C-r>a<CR>
+vnoremap <leader># "ay:Ack <C-r>a<CR>
 
 " tComment
 Bundle "tComment"
@@ -262,6 +255,8 @@ Bundle "https://github.com/nathanaelkane/vim-indent-guides.git"
 
 " vimwiki - http://code.google.com/p/vimwiki/
 Bundle "vimwiki"
+
+Bundle "https://github.com/tpope/vim-markdown.git"
 
 " Learn home-row keys damnit!
 " nnoremap <Left> :echoe "Use h"<CR>

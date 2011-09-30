@@ -15,13 +15,13 @@ fi
 # disable terminal locking
 stty -ixon -ixoff
 
-# unsetopt correct_all
+unsetopt correct_all
 
 export EDITOR=vim
 
 # specific things for laptop and server
 if [ "$HOST" = "vision" ]; then
-  export PATH=${PATH}:$HOME/apps/android-sdk-linux_x86/tools:/opt/nginx/sbin:$HOME/apps/eclipse:$HOME/bin
+  export PATH=${PATH}:$HOME/apps/android-sdk-linux_x86/tools:$HOME/apps/eclipse:$HOME/bin
 elif [ "$HOST" = "theprogress" ]; then
   export PATH=${PATH}:/opt/nginx/sbin
 fi
