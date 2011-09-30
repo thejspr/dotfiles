@@ -6,11 +6,11 @@ date = Date.today
 
 puts "Backup/commit dotfiles to github"
 Dir.chdir("/home/jesper/dotfiles")
-puts `git add -A && git commit -m "Automatic backup" && git push`
+system("git add -A && git commit -m 'Automatic backup' && git push")
 
 puts "Update z"
 Dir.chdir("/home/jesper/repos/z")
-`git pull`
+system("git pull")
 
 puts "Update rvm"
-`rvm get head`
+system(`rvm get head`)
