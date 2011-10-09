@@ -8,6 +8,9 @@ imap jj <esc>
 noremap <C-s> <ESC>:w<CR>
 vnoremap <C-s> <ESC>:w<CR>
 inoremap <C-s> <ESC>:w<CR>
+noremap <C-M-s> <ESC>:wq<CR>
+vnoremap <C-M-s> <ESC>:wq<CR>
+inoremap <C-M-s> <ESC>:wq<CR>
 
 "Move a line of text using Ctrl+[jk]
 nmap <C-j> mz:m+<cr>`z
@@ -50,7 +53,7 @@ comm! W exec 'w !sudo tee % > /dev/null' | e
 
 " General setup {{{
 set nocompatible  " Use Vim settings, rather then Vi.
-set viminfo^=%    " remember open buffers.
+" set viminfo^=%    " remember open buffers.
 
 set showmatch     " Show matching brackets.
 set matchtime=2   " Bracket blinking.
@@ -154,9 +157,9 @@ call vundle#rc()
 Bundle "https://github.com/ecomba/vim-ruby-refactoring"
 Bundle "https://github.com/taq/vim-refact"
 Bundle "https://github.com/janx/vim-rubytest.git"
-noremap <Leader>1 <Plug>RubyTestRun
-noremap <Leader>2 <Plug>RubyFileRun
-noremap <Leader>3 <Plug>RubyTestRunLast
+map <Leader>1 <Plug>RubyTestRun
+map <Leader>2 <Plug>RubyFileRun
+map <Leader>3 <Plug>RubyTestRunLast
 
 " Rails
 Bundle "https://github.com/tpope/vim-rails"
@@ -191,6 +194,8 @@ let g:syntastic_auto_loc_list=2
 " Git integration
 Bundle "https://github.com/tpope/vim-git.git"
 Bundle "fugitive.vim"
+noremap <leader>8 :e! Gemfile \| Gstatus<CR>
+noremap <leader>9 :Gcommit<CR>
 
 " Colors
 Bundle 'Color-Sampler-Pack'
@@ -222,11 +227,12 @@ nmap <leader>s :ToggleWord<CR>
 " Command-T
 Bundle "git://git.wincent.com/command-t.git"
 let g:CommandTMatchWindowAtTop=1 " show window at top
+let g:CommandTMaxHeight=30
 set wildignore+=*.o,*.obj,.git/**,vendor/**,tmp/**,app/assets/images/**,public/images/**,public/assets/**
 set wildignore+=*.class,*.doc,*.lock,*.lox,**.png,**.jpg,**.jpeg
 " thesis stuff
 set wildignore+=repos/**,spikes/**,msc/**,img/**,*.aux,*.out,*.bbl,*.toc,*latexmk,*.blg,*.pdf,report.log
-set wildignore+=test_objects/rdoc/**,coverage/**
+set wildignore+=test_objects/*/**,coverage/**
 augroup CommandTExtension
   autocmd!
   autocmd FocusGained * CommandTFlush
@@ -253,6 +259,9 @@ nmap <F4> <Plug>Kwbd
 
 " vimwiki - http://code.google.com/p/vimwiki/
 Bundle "vimwiki"
+
+Bundle 'https://github.com/vim-scripts/YankRing.vim.git'
+noremap <leader>½ :YRShow<CR>
 
 " Learn home-row keys damnit!
 " nnoremap <Left> :echoe "Use h"<CR>
