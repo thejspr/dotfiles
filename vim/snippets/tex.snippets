@@ -4,10 +4,13 @@ snippet begin
 		${2}
 	\end{$1}
 
+snippet reflst
+	Listing~\ref{${1}} ${2}
+
 snippet lst
-	\begin{${1:env}}[label=${2},caption=${3}]
-		${4}
-	\end{$1}
+	\begin{lstlisting}[label=${1},caption=${2}]
+		${3}
+	\end{lstlisting}
 
 snippet tt
 	\texttt{${1}} ${2}

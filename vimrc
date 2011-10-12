@@ -8,9 +8,9 @@ imap jj <esc>
 noremap <C-s> <ESC>:w<CR>
 vnoremap <C-s> <ESC>:w<CR>
 inoremap <C-s> <ESC>:w<CR>
-noremap <C-M-s> <ESC>:wq<CR>
-vnoremap <C-M-s> <ESC>:wq<CR>
-inoremap <C-M-s> <ESC>:wq<CR>
+noremap <C-d> <ESC>:wq<CR>
+vnoremap <C-d> <ESC>:wq<CR>
+inoremap <C-d> <ESC>:wq<CR>
 
 "Move a line of text using Ctrl+[jk]
 nmap <C-j> mz:m+<cr>`z
@@ -27,6 +27,9 @@ noremap <leader>f :%s///gc<left><left><left><left>
 nnoremap <F3> :set hlsearch!<CR>
 
 set backspace=indent,eol,start "allow backspacing over everything in insert mode
+
+" autocomplete options
+" set completeopt=menu,longest,preview
 
 " Indent entire file
 noremap   <silent> <F5> mmgg=G'm
@@ -154,6 +157,7 @@ set runtimepath+=~/.vim/vundle.git/ " Vundle plugin manager
 call vundle#rc()
 
 " Ruby
+Bundle "ruby-matchit"
 Bundle "https://github.com/ecomba/vim-ruby-refactoring"
 Bundle "https://github.com/taq/vim-refact"
 Bundle "https://github.com/janx/vim-rubytest.git"
@@ -201,6 +205,9 @@ noremap <leader>9 :Gcommit<CR>
 Bundle 'Color-Sampler-Pack'
 set t_Co=256
 colorscheme wombat256
+" Bundle 'altercation/vim-colors-solarized'
+" set background=dark
+" colorscheme solarized
 
 " Utility
 Bundle "surround.vim"
@@ -263,6 +270,7 @@ Bundle "vimwiki"
 Bundle 'https://github.com/vim-scripts/YankRing.vim.git'
 noremap <leader>½ :YRShow<CR>
 
+Bundle 'rvm.vim'
 " Learn home-row keys damnit!
 " nnoremap <Left> :echoe "Use h"<CR>
 " nnoremap <Right> :echoe "Use l"<CR>
@@ -275,3 +283,7 @@ let g:html_indent_tags = 'li\|p'
 " spelling corrections
 iab teh the
 iab tehn then
+
+"statusline setup
+set statusline=   " clear the statusline for when vimrc is reloaded
+set statusline=%<\ %n:%f\ %m%r%y%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)

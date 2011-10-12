@@ -1,8 +1,8 @@
 [user]
   name = Jesper Kjeldgaard
-  email = jkjeldgaard@gmail.com
+  email = thejspr@gmail.com
 [github]
-  user = jkjeldgaard
+  user = thejspr
   token =
 [color]
   ui = true
@@ -18,9 +18,6 @@
   # commit
   c = commit -v
   cm = commit -v -m
-  # amending the previous commit
-  ca = commit --amend
-  caa = commit -a --amend -C HEAD
 
   # shortcuts for commands
   d = diff
@@ -28,4 +25,4 @@
   b = branch
   l = log
 [apply]
-	whitespace = nowarn
+  # whitespace = nowarn

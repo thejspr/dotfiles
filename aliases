@@ -57,6 +57,9 @@ function rg {
 }
 
 alias devlog='tail -f log/development.log | egrep -v "^(Served asset|$)"'
+
+# rubygems
+alias gi='gem install'
 alias gemup='gem update --system && gem update'
 # heroku
 hpush() { git add -A; git commit -m 'hotfix commit/push'; git push heroku master; }

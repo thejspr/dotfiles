@@ -1,17 +1,20 @@
 == Rails ==
 
+=== Caching ===
+
+# Cache counts (3 queries -> 1)
+add_column :posts, :comments_count, :integer
+belongs_to :post, :counter_cache => true
 
 == Tools ==
 
-Replace rails console with Pry: (add to config/environments/development.rb)
-{{{class="brush: ruby"
-  MyApp::Application.configure do
-    silence_warnings do
-      begin
-        require 'pry'
-        IRB = Pry
-      rescue LoadError
-      end
+# Replace rails console with Pry: (add to config/environments/development.rb)
+MyApp::Application.configure do
+  silence_warnings do
+    begin
+      require 'pry'
+      IRB = Pry
+    rescue LoadError
     end
   end
-}}}
+end
