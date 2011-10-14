@@ -28,6 +28,6 @@ if [ "$HOST" = "vision" ]; then
   export JRUBY_OPTS=--1.9 
   export RBXOPT=-X19
 elif [ "$HOST" = "theprogress" ]; then
-  export PATH=${PATH}:/opt/nginx/sbin
+  export PATH=${PATH}:/usr/local/nginx/sbin/
   export RAILS_ENV=production
 fi
