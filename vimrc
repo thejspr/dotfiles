@@ -235,11 +235,11 @@ nmap <leader>s :ToggleWord<CR>
 Bundle "git://git.wincent.com/command-t.git"
 let g:CommandTMatchWindowAtTop=1 " show window at top
 let g:CommandTMaxHeight=30
-set wildignore+=*.o,*.obj,.git/**,vendor/**,tmp/**,app/assets/images/**,public/images/**,public/assets/**
+set wildignore+=*.o,*~,*.obj,.git/**,vendor/**,tmp/**,app/assets/images/**,public/images/**,public/assets/**
 set wildignore+=*.class,*.doc,*.lock,*.lox,**.png,**.jpg,**.jpeg
 " thesis stuff
 set wildignore+=repos/**,spikes/**,msc/**,img/**,*.aux,*.out,*.bbl,*.toc,*latexmk,*.blg,*.pdf,report.log
-set wildignore+=test_objects/*/**,coverage/**
+set wildignore+=test_objects/*/**,coverage/**,doc/**
 augroup CommandTExtension
   autocmd!
   autocmd FocusGained * CommandTFlush
@@ -271,6 +271,10 @@ Bundle 'https://github.com/vim-scripts/YankRing.vim.git'
 noremap <leader>½ :YRShow<CR>
 
 Bundle 'rvm.vim'
+
+" convenience for gist.github.com
+Bundle 'Gist.vim'
+
 " Learn home-row keys damnit!
 " nnoremap <Left> :echoe "Use h"<CR>
 " nnoremap <Right> :echoe "Use l"<CR>

@@ -22,18 +22,12 @@ export EDITOR=vim
 # specific things for laptop and server
 if [ "$HOST" = "vision" ]; then
   export PATH=${PATH}:$HOME/apps/android-sdk-linux_x86/tools:$HOME/apps/eclipse:$HOME/bin
+  export PATH=$PATH:~/.cabal/bin # Haskell
+  cp ~/repos/sabnzbd.ini ~/.sabnzbd/
+  export AUTOFEATURE=true
+  export JRUBY_OPTS=--1.9 
+  export RBXOPT=-X19
 elif [ "$HOST" = "theprogress" ]; then
   export PATH=${PATH}:/opt/nginx/sbin
   export RAILS_ENV=production
 fi
-
-export AUTOFEATURE=true
-export JRUBY_OPTS=--1.9 
-export RBXOPT=-X19
-# export RUBYOPT="-r`gem which perftools | tail -1`"
-# export CPUPROFILE=/tmp/myrbprof
-
-# Haskell
-export PATH=$PATH:~/.cabal/bin
-
-cp ~/repos/sabnzbd.ini ~/.sabnzbd/
