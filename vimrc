@@ -12,6 +12,10 @@ noremap <C-d> <ESC>:wq<CR>
 vnoremap <C-d> <ESC>:wq<CR>
 inoremap <C-d> <ESC>:wq<CR>
 
+" wordwrap
+set nowrap
+map <F1> :set nowrap! <CR>
+
 "Move a line of text using Ctrl+[jk]
 nmap <C-j> mz:m+<cr>`z
 nmap <C-k> mz:m-2<cr>`z
@@ -111,10 +115,6 @@ au FileType * exe('setl dict+='.$VIMRUNTIME.'/syntax/'.&filetype.'.vim')
 " Set File type to 'text' for files ending in .txt
 autocmd BufNewFile,BufRead {*.txt,README,*.wiki} setfiletype text
 
-" Vimwiki settings
-autocmd BufWrite {*.wiki} exe('VimwikiAll2HTML')
-let g:vimwiki_list = [{'html_header': '~/vimwiki_html/header.tpl'}]
-
 " latex stuff
 autocmd BufNewFile,BufRead *.tex setlocal wrap linebreak textwidth=0
 autocmd BufNewFile,BufRead {*.tex,*.bib} set filetype=tex
@@ -171,14 +171,14 @@ let g:rails_menu=2
 command! Rroutes :e config/routes.rb
 command! Rschema :e db/schema.rb
 " Leader shortcuts for Rails commands
-noremap <Leader>m :Rmodel<space>
-noremap <Leader>c :Rcontroller<space>
-noremap <Leader>v :Rview<space>
-noremap <Leader>sm :RSmodel
-noremap <Leader>sc :RScontroller
-noremap <Leader>sv :RSview
-noremap <Leader>su :RSunittest
-noremap <Leader>sf :RSfunctionaltest
+map <Leader>m :Rmodel<space>
+map <Leader>c :Rcontroller<space>
+map <Leader>v :Rview<space>
+map <Leader>sm :RSmodel
+map <Leader>sc :RScontroller
+map <Leader>sv :RSview
+map <Leader>su :RSunittest
+map <Leader>sf :RSfunctionaltest
 
 " JavaScript
 Bundle "https://github.com/mozilla/doctorjs.git"
@@ -237,9 +237,7 @@ let g:CommandTMatchWindowAtTop=1 " show window at top
 let g:CommandTMaxHeight=30
 set wildignore+=*.o,*~,*.obj,.git/**,vendor/**,tmp/**,app/assets/images/**,public/images/**,public/assets/**
 set wildignore+=*.class,*.doc,*.lock,*.lox,**.png,**.jpg,**.jpeg
-" thesis stuff
-set wildignore+=repos/**,spikes/**,msc/**,img/**,*.aux,*.out,*.bbl,*.toc,*latexmk,*.blg,*.pdf,report.log
-set wildignore+=test_objects/*/**,coverage/**,doc/**
+set wildignore+=*.sass-cache/**,build/**
 augroup CommandTExtension
   autocmd!
   autocmd FocusGained * CommandTFlush

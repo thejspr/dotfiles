@@ -1,21 +1,5 @@
-# thesis
-# tests yarn
-ty() { 
-  ~/Dropbox/thesis/code/yarn/bin/yarn "$@" &; 
-  pid=$!; 
-  sleep 1; 
-  curl -i http://127.0.0.1:3000/;
-  kill -15 $pid;
-}
-ry() { rackup -s Yarn ~/Dropbox/thesis/code/yarn/test_objects/config.ru }
-sy() { ~/Dropbox/thesis/code/yarn/bin/yarn }
-kr() { pkill ruby }
-
 # tail syslog
 alias slog='tail -f /var/log/syslog'
-
-# find shortcut
-alias fnd='sudo find $1 -iname $2'
 
 alias ack="ack-grep"
 
@@ -31,6 +15,10 @@ g() {
 
 # ctags
 alias rctags='ctags -R --exclude=.git --exclude=log --exclude=public *'
+
+# rake
+alias rake='noglob rake'
+alias r='noglob rake'
 
 # ruby & rails
 alias be='bundle exec'
@@ -95,9 +83,9 @@ alias ll='ls -lA --color=auto'
 alias grep='grep --color=auto'
 
 # system and files editing
+te() { touch $@; vim $@; }
 alias e='vim'
 alias se='sudo vim'
-alias te='touch $1; vim $1'
 alias ea='vim ~/.aliases'
 alias ez='vim ~/dotfiles/zshrc'
 alias ez_='vim ~/dotfiles/_zshrc'
