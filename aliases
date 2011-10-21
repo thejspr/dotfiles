@@ -20,49 +20,24 @@ alias rctags='ctags -R --exclude=.git --exclude=log --exclude=public *'
 alias rake='noglob rake'
 alias r='noglob rake'
 
-# ruby & rails
-alias be='bundle exec'
-function rs {
-  if [ -e script/server ]; then
-    script/server $@
-  else
-    rails server $@
-  fi
-}
-function rc {
-  if [ -e script/console ]; then
-    script/console $@
-  else
-    rails console $@
-  fi
-}
-function rg {
-  if [ -e script/generate ]; then
-    script/generate $@
-  else
-    rails generate $@
-  fi
-}
-
-alias devlog='tail -f log/development.log | egrep -v "^(Served asset|$)"'
-
 # rubygems
-alias gi='gem install'
+alias gin='gem install'
+alias gun='gem uninstall'
 alias gemup='gem update --system && gem update'
+
 # heroku
+alias h="heroku"
 hpush() { git add -A; git commit -m 'hotfix commit/push'; git push heroku master; }
 
 # latex
-alias lwc='pdftotext report.pdf - | wc -w -'
 alias lmkp='latexmk -pvc -pdf report.tex'
-alias lmk='latexmk'
 alias lmkc='latexmk -CA'
 
 # servers
 alias prgs='ssh thejspr.com'
 
 # apache and nginx
-alias ares='sudo /etc/init.d/apache2 restart'
+alias ares='sudo service apache2 restart'
 alias nres='sudo service nginx-init restart'
 
 # misc

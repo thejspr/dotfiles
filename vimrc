@@ -86,7 +86,7 @@ set history=1024  " lines of command line history
 set incsearch		  " do incremental searching
 
 " Use Ack instead of Grep when available
-if executable("ack")
+if executable("ack-grep")
   let g:ackprg="ack-grep -H --nocolor --nogroup --column"
   nnoremap <leader>a :Ack 
 endif
@@ -103,10 +103,7 @@ set cindent
 set smartindent
 " }}}
 
-" syntax {{{
 syntax on
-
-" Enable file type detection.
 filetype plugin indent on
 
 " enable syntax files
@@ -115,15 +112,10 @@ au FileType * exe('setl dict+='.$VIMRUNTIME.'/syntax/'.&filetype.'.vim')
 " Set File type to 'text' for files ending in .txt
 autocmd BufNewFile,BufRead {*.txt,README,*.wiki} setfiletype text
 
-" latex stuff
-autocmd BufNewFile,BufRead *.tex setlocal wrap linebreak textwidth=0
-autocmd BufNewFile,BufRead {*.tex,*.bib} set filetype=tex
-noremap <F6> :w !detex \| wc -w<CR>
-
 " Enable soft-wrapping for text files
 autocmd FileType text,markdown,html,xhtml,eruby setlocal wrap linebreak nolist
 
-" Ruby and Rails customizations
+" Ruby customizations
 au BufRead,BufNewFile {Gemfile,Rakefile,Capfile,*.rake,config.ru} set ft=ruby
 autocmd BufNewFile,BufRead *_spec.rb compiler rspec
 
@@ -158,8 +150,8 @@ call vundle#rc()
 
 " Ruby
 Bundle "ruby-matchit"
-Bundle "https://github.com/ecomba/vim-ruby-refactoring"
-Bundle "https://github.com/taq/vim-refact"
+" Bundle "https://github.com/ecomba/vim-ruby-refactoring"
+" Bundle "https://github.com/taq/vim-refact"
 Bundle "https://github.com/janx/vim-rubytest.git"
 map <Leader>1 <Plug>RubyTestRun
 map <Leader>2 <Plug>RubyFileRun
@@ -170,7 +162,6 @@ Bundle "https://github.com/tpope/vim-rails"
 let g:rails_menu=2
 command! Rroutes :e config/routes.rb
 command! Rschema :e db/schema.rb
-" Leader shortcuts for Rails commands
 map <Leader>m :Rmodel<space>
 map <Leader>c :Rcontroller<space>
 map <Leader>v :Rview<space>
@@ -212,10 +203,6 @@ colorscheme wombat256
 " Utility
 Bundle "surround.vim"
 Bundle "https://github.com/ervandew/supertab.git"
-" let g:SuperTabDefaultCompletionTypeDiscovery = [
-" \ "&completefunc:<c-x><c-u>",
-" \ "&omnifunc:<c-x><c-o>",
-" \ ]
 let g:SuperTabLongestHighlight = 1
 
 " Ack
@@ -236,7 +223,7 @@ Bundle "git://git.wincent.com/command-t.git"
 let g:CommandTMatchWindowAtTop=1 " show window at top
 let g:CommandTMaxHeight=30
 set wildignore+=*.o,*~,*.obj,.git/**,vendor/**,tmp/**,app/assets/images/**,public/images/**,public/assets/**
-set wildignore+=*.class,*.doc,*.lock,*.lox,**.png,**.jpg,**.jpeg
+set wildignore+=*.class,*.doc,*.lock,**.png,**.jpg,**.jpeg
 set wildignore+=*.sass-cache/**,build/**
 augroup CommandTExtension
   autocmd!
@@ -252,15 +239,15 @@ noremap <leader>o :BufExplorer<cr>
 nnoremap <silent> <S-M-right> :bn<CR>
 nnoremap <silent> <S-M-left> :bp<CR>
 
+" kwdb.vim
+nmap <F4> <Plug>Kwbd
+
 " filesystem
 Bundle "https://github.com/scrooloose/nerdtree.git"
 nmap <silent> <c-n> :NERDTreeToggle<CR>
 noremap <F2> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\.git$']
-
-" kwdb.vim
-nmap <F4> <Plug>Kwbd
+let NERDTreeIgnore=['\.git$','\.sass-cache']
 
 " vimwiki - http://code.google.com/p/vimwiki/
 Bundle "vimwiki"
@@ -270,8 +257,7 @@ noremap <leader>½ :YRShow<CR>
 
 Bundle 'rvm.vim'
 
-" convenience for gist.github.com
-Bundle 'Gist.vim'
+Bundle 'vim-coffee-script'
 
 " Learn home-row keys damnit!
 " nnoremap <Left> :echoe "Use h"<CR>
@@ -288,4 +274,8 @@ iab tehn then
 
 "statusline setup
 set statusline=   " clear the statusline for when vimrc is reloaded
-set statusline=%<\ %n:%f\ %m%r%y%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
+" set statusline=%<\ %n:%f\ %m%r%y%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
+" if exists('g:loaded_rvm')
+"   set statusline+=%{rvm#statusline()} 
+" endif
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{exists('g:loaded_rvm')?rvm#statusline():''}%=%-16(\ %l,%c-%v\ %)%P
