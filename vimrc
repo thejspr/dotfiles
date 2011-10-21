@@ -1,20 +1,93 @@
-" Shortcuts and keymappings {{{
-let mapleader = ","
+set nocompatible               " be iMproved
 
-" Leave insert-mode
-imap jj <esc>
+"  ---------------------------------------------------------------------------
+"  Plugins
+"  ---------------------------------------------------------------------------
+
+silent! runtime bundles.vim
+
+"  ---------------------------------------------------------------------------
+"  General
+"  ---------------------------------------------------------------------------
+
+filetype plugin indent on     
+let mapleader = ","
+let g:mapleader = ","
+set modelines=0
+set history=1000
+set nobackup
+set nowritebackup
+set noswapfile
+syntax enable
+set autoread
+
+"  ---------------------------------------------------------------------------
+"  UI
+"  ---------------------------------------------------------------------------
+
+set title
+set encoding=utf-8
+set ffs=unix,mac,dos
+set scrolloff=3
+set autoindent
+set smartindent
+set showmode
+set showcmd
+set hidden
+set wildmenu
+set wildmode=list:longest
+set cursorline
+set ttyfast
+set ruler
+set backspace=indent,eol,start
+set laststatus=2
+set number
+" set relativenumber
+set undofile
+
+" Auto adjust window sizes when they become current
+set winwidth=84
+set winheight=5
+set winminheight=5
+set winheight=999
+
+colorscheme wombat256
+set t_Co=256
+
+"statusline setup
+set statusline=   " clear the statusline for when vimrc is reloaded
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{exists('g:loaded_rvm')?rvm#statusline():''}%=%-16(\ %l,%c-%v\ %)%P
+
+"  ---------------------------------------------------------------------------
+"  Text Formatting
+"  ---------------------------------------------------------------------------
+
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+
+set binary        " resolved no end of line git thing
+set nowrap
+set textwidth=79
+set formatoptions=n
+
+"  ---------------------------------------------------------------------------
+"  Mappings
+"  ---------------------------------------------------------------------------
+
+" Saving and exit
+nmap <leader>q :wqa!<CR>
+nmap <leader>w :w!<CR>
+nmap <leader><Esc> :q!<CR>
 
 " save shortcut
 noremap <C-s> <ESC>:w<CR>
 vnoremap <C-s> <ESC>:w<CR>
 inoremap <C-s> <ESC>:w<CR>
-noremap <C-d> <ESC>:wq<CR>
-vnoremap <C-d> <ESC>:wq<CR>
-inoremap <C-d> <ESC>:wq<CR>
 
-" wordwrap
-set nowrap
-map <F1> :set nowrap! <CR>
+" Map ESC
+imap jj <ESC>
 
 "Move a line of text using Ctrl+[jk]
 nmap <C-j> mz:m+<cr>`z
@@ -25,25 +98,30 @@ vmap <C-k> :m'<-2<cr>`>my`<mzgv`yo`z
 " select everything
 noremap <C-a> ggVG
 
+" Searching / moving
+nnoremap / /\v
+vnoremap / /\v
+set ignorecase
+set smartcase
+set gdefault
+set incsearch
+set showmatch
+set hlsearch
+" turn search highlight off
+nnoremap <leader><space> :noh<cr> 
+" search (forwards)
+nmap <space> /
+" search (backwards)
+map <c-space> ?
 " find/replace shortcut
 noremap <leader>f :%s///gc<left><left><left><left>
 
-nnoremap <F3> :set hlsearch!<CR>
-
-set backspace=indent,eol,start "allow backspacing over everything in insert mode
-
-" autocomplete options
-" set completeopt=menu,longest,preview
-
-" Indent entire file
-noremap   <silent> <F5> mmgg=G'm
-imap  <silent> <F5> <Esc> mmgg=G'm
+" Auto format
+map === mmgg=G`m^zz
 
 " edit .vimrc
 command! Ev :e ~/.vimrc
-autocmd BufWritePost .vimrc source $MYVIMRC
-
-set ffs=unix,mac,dos
+command! Eb :e ~/.vim/bundles.vim
 
 " Copy paste in/out of vim
 noremap <C-c> "+y
@@ -51,39 +129,8 @@ noremap <C-v> "+p
 imap <C-c> <esc>"+y 
 imap <C-v> <esc>"+p 
 
-" vim ctags
-set tags=./tags;
-
 " Sudo write
 comm! W exec 'w !sudo tee % > /dev/null' | e
-" }}}
-
-" General setup {{{
-set nocompatible  " Use Vim settings, rather then Vi.
-" set viminfo^=%    " remember open buffers.
-
-set showmatch     " Show matching brackets.
-set matchtime=2   " Bracket blinking.
-set laststatus=2  " Always show status line.
-set ruler         " Show ruler
-set showcmd       " Display an incomplete command in the lower right corner
-set shortmess=atI " Shortens messages
-set number
-set numberwidth=2
-set hidden        "enables buffer switch without saving.
-
-set binary        " resolved no end of line git thing
-
-set so=7
-set wildmenu      "Turn on WiLd menu
-
-" backups
-set nobackup
-set noswapfile
-set nowritebackup
-
-set history=1024  " lines of command line history
-set incsearch		  " do incremental searching
 
 " Use Ack instead of Grep when available
 if executable("ack-grep")
@@ -91,39 +138,167 @@ if executable("ack-grep")
   nnoremap <leader>a :Ack 
 endif
 
-" case only matters with mixed case expressions
-set ignorecase
-set smartcase
+" Spell checking
+set spellfile+=~/.vim/spell/en.utf-8.add
+set dict+=~/.vim/spell/en.utf-8.add
+noremap <leader>ss :setlocal spell!<cr>
+noremap <leader>sn ]s
+noremap <leader>sp [s
+noremap <leader>sa zg
+noremap <leader>sd z=
 
-" Softtabs, 2 spaces
-set tabstop=2
-set shiftwidth=2
-set expandtab
-set cindent
-set smartindent
-" }}}
+" Switch between buffers
+noremap <tab> :bn<CR>
+noremap <S-tab> :bp<CR>
+" close buffer
+nmap <leader>d :bd<CR>
+" close all buffers
+nmap <leader>D :bufdo bd<CR>
 
-syntax on
-filetype plugin indent on
+" Switch between last two buffers
+nnoremap <leader><leader> <c-^>
 
-" enable syntax files
-au FileType * exe('setl dict+='.$VIMRUNTIME.'/syntax/'.&filetype.'.vim')
+"  ---------------------------------------------------------------------------
+"  Function Keys
+"  ---------------------------------------------------------------------------
 
-" Set File type to 'text' for files ending in .txt
-autocmd BufNewFile,BufRead {*.txt,README,*.wiki} setfiletype text
+" F1 - toggle wordwrap
+map <F1> :set nowrap! <CR>
 
-" Enable soft-wrapping for text files
-autocmd FileType text,markdown,html,xhtml,eruby setlocal wrap linebreak nolist
+" F2 - NERDTree
+noremap <F2> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
+let NERDTreeShowBookmarks = 0
+let NERDChristmasTree = 1
+let NERDTreeWinPos = "left"
+let NERDTreeHijackNetrw = 1
+let NERDTreeQuitOnOpen = 1
+let NERDTreeWinSize = 50 
+let NERDTreeIgnore=['\.git$','\.sass-cache']
 
-" Ruby customizations
-au BufRead,BufNewFile {Gemfile,Rakefile,Capfile,*.rake,config.ru} set ft=ruby
-autocmd BufNewFile,BufRead *_spec.rb compiler rspec
+" F3 - YankRing
+nnoremap <silent> <F3> :YRShow<cr>
+inoremap <silent> <F3> <ESC>:YRShow<cr>
 
-" JavaScript and JSON
-noremap <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
+" F4 - kwdb.vim
+nmap <F4> <Plug>Kwbd
 
-" For all text and tex files set 'textwidth' to 78 characters.
-autocmd FileType text,tex setlocal textwidth=78
+" F5 - Terminal
+map <F5> :ConqueTerm zsh<CR>
+
+"  ---------------------------------------------------------------------------
+"  Plugins
+"  ---------------------------------------------------------------------------
+
+" Ruby
+map <Leader>1 <Plug>RubyTestRun
+map <Leader>2 <Plug>RubyFileRun
+map <Leader>3 <Plug>RubyTestRunLast
+
+" Rails
+let g:rails_menu=2
+map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
+map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
+map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
+" map <Leader>m :Rmodel<space>
+" map <Leader>c :Rcontroller<space>
+" map <Leader>v :Rview<space>
+" map <Leader>sm :RSmodel
+" map <Leader>sc :RScontroller
+" map <Leader>sv :RSview
+" map <Leader>su :RSunittest
+" map <Leader>sf :RSfunctionaltest
+" View routes or Gemfile in large split
+map <leader>gr :topleft :split config/routes.rb<cr>
+map <leader>gg :topleft 100 :split Gemfile<cr>
+" Skip to Models and Views
+map <Leader>m :Rmodel 
+map <Leader>v :Rview 
+
+" Syntastic
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=2
+
+" Command-T
+" find file
+map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
+let g:CommandTMatchWindowAtTop=1 " show window at top
+let g:CommandTMaxHeight=20
+set wildignore+=*.o,*~,*.obj,.git/**,vendor/**,tmp/**,app/assets/images/**,public/images/**,public/assets/**
+set wildignore+=*.class,*.doc,*.lock,**.png,**.jpg,**.jpeg
+set wildignore+=*.sass-cache/**,build/**
+
+" Center screen when scrolling search results
+nmap n nzz
+nmap N Nzz
+
+" Git integration
+noremap <leader>8 :e! Gemfile \| Gstatus<CR>
+noremap <leader>9 :Gcommit<CR>
+
+" Supertab
+let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+let g:SuperTabLongestHighlight = 1
+
+" tComment
+nnoremap // :TComment<CR>
+vnoremap // :TComment<CR>
+
+nmap <leader>s :ToggleWord<CR> 
+
+" Buffer window (find file in open buffers)
+nmap <silent> <leader>b :FufBuffer<CR>
+
+" Use only current file to autocomplete from tags
+set complete=.,w,b,u,t,i
+
+" AutoClose
+let g:AutoClosePairs = {'(': ')', '{': '}', '[': ']', '"': '"', "'": "'", '#{': '}'} 
+let g:AutoCloseProtectedRegions = ["Character"] 
+
+let my_home = expand("$HOME/")
+if filereadable(my_home . '.vim/bundle/vim-autocorrect/autocorrect.vim')
+  source ~/.vim/bundle/vim-autocorrect/autocorrect.vim
+endif
+
+"  ---------------------------------------------------------------------------
+"  GUI
+"  ---------------------------------------------------------------------------
+
+if has("gui_running")
+  set guioptions-=T " no toolbar set guioptions-=m " no menus
+  set guioptions-=r " no scrollbar on the right
+  set guioptions-=R " no scrollbar on the right
+  set guioptions-=l " no scrollbar on the left
+  set guioptions-=b " no scrollbar on the bottom
+  set guioptions=aiA 
+  set mouse=v
+  set guifont=Monaco:h12 "<- Maybe a good idea when using mac
+endif
+set guifont=Monaco:h12
+
+"  ---------------------------------------------------------------------------
+"  Directories
+"  ---------------------------------------------------------------------------
+
+set backupdir=~/tmp,/tmp
+set undodir=~/.vim/.tmp,~/tmp,~/.tmp,/tmp
+
+" Ctags path (brew install ctags)
+let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
+
+" Make Vim use RVM correctly when using Zsh
+" https://rvm.beginrescueend.com/integration/vim/
+set shell=/bin/sh
+
+" Finally, load custom configs
+if filereadable(my_home . '.vimrc.local')
+  source ~/.vimrc.local
+endif
+
+"  ---------------------------------------------------------------------------
+"  Misc
+"  ---------------------------------------------------------------------------
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
@@ -133,149 +308,5 @@ autocmd BufReadPost *
       \   exe "normal g`\"" |
       \ endif
 
-" Spell checking
-set encoding=utf-8
-set spellfile+=~/.vim/spell/en.utf-8.add
-set dict+=~/.vim/spell/en.utf-8.add
-noremap <leader>ss :setlocal spell!<cr>
-noremap <leader>sn ]s
-noremap <leader>sp [s
-noremap <leader>sa zg
-noremap <leader>sd z=
-" }}}
-
-" Plugins {{{
-set runtimepath+=~/.vim/vundle.git/ " Vundle plugin manager
-call vundle#rc()
-
-" Ruby
-Bundle "ruby-matchit"
-" Bundle "https://github.com/ecomba/vim-ruby-refactoring"
-" Bundle "https://github.com/taq/vim-refact"
-Bundle "https://github.com/janx/vim-rubytest.git"
-map <Leader>1 <Plug>RubyTestRun
-map <Leader>2 <Plug>RubyFileRun
-map <Leader>3 <Plug>RubyTestRunLast
-
-" Rails
-Bundle "https://github.com/tpope/vim-rails"
-let g:rails_menu=2
-command! Rroutes :e config/routes.rb
-command! Rschema :e db/schema.rb
-map <Leader>m :Rmodel<space>
-map <Leader>c :Rcontroller<space>
-map <Leader>v :Rview<space>
-map <Leader>sm :RSmodel
-map <Leader>sc :RScontroller
-map <Leader>sv :RSview
-map <Leader>su :RSunittest
-map <Leader>sf :RSfunctionaltest
-
-" JavaScript
-Bundle "https://github.com/mozilla/doctorjs.git"
-
-" Snippets
-Bundle "https://github.com/msanders/snipmate.vim.git"
-let g:snippetsEmu_key = "<S-Tab>"
-" Tab completion options
-set wildmode=list:longest,list:full
-set complete=.,w,t
-
-" Syntax highlight and checking
-Bundle "https://github.com/scrooloose/syntastic.git"
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=2
-
-" Git integration
-Bundle "https://github.com/tpope/vim-git.git"
-Bundle "fugitive.vim"
-noremap <leader>8 :e! Gemfile \| Gstatus<CR>
-noremap <leader>9 :Gcommit<CR>
-
-" Colors
-Bundle 'Color-Sampler-Pack'
-set t_Co=256
-colorscheme wombat256
-" Bundle 'altercation/vim-colors-solarized'
-" set background=dark
-" colorscheme solarized
-
-" Utility
-Bundle "surround.vim"
-Bundle "https://github.com/ervandew/supertab.git"
-let g:SuperTabLongestHighlight = 1
-
-" Ack
-Bundle "https://github.com/mileszs/ack.vim.git"
-noremap <leader># "ayiw:Ack <C-r>a<CR>
-vnoremap <leader># "ay:Ack <C-r>a<CR>
-
-" tComment
-Bundle "tComment"
-nnoremap // :TComment<CR>
-vnoremap // :TComment<CR>
-
-Bundle 'toggle_words.vim'
-nmap <leader>s :ToggleWord<CR> 
-
-" Command-T
-Bundle "git://git.wincent.com/command-t.git"
-let g:CommandTMatchWindowAtTop=1 " show window at top
-let g:CommandTMaxHeight=30
-set wildignore+=*.o,*~,*.obj,.git/**,vendor/**,tmp/**,app/assets/images/**,public/images/**,public/assets/**
-set wildignore+=*.class,*.doc,*.lock,**.png,**.jpg,**.jpeg
-set wildignore+=*.sass-cache/**,build/**
-augroup CommandTExtension
-  autocmd!
-  autocmd FocusGained * CommandTFlush
-  autocmd BufWritePost * CommandTFlush
-augroup END
-
-" Navigation
-Bundle "bufexplorer.zip"
-let g:bufExplorerDefaultHelp=0
-let g:bufExplorerShowRelativePath=1
-noremap <leader>o :BufExplorer<cr>
-nnoremap <silent> <S-M-right> :bn<CR>
-nnoremap <silent> <S-M-left> :bp<CR>
-
-" kwdb.vim
-nmap <F4> <Plug>Kwbd
-
-" filesystem
-Bundle "https://github.com/scrooloose/nerdtree.git"
-nmap <silent> <c-n> :NERDTreeToggle<CR>
-noremap <F2> :NERDTreeToggle<CR>
-let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\.git$','\.sass-cache']
-
-" vimwiki - http://code.google.com/p/vimwiki/
-Bundle "vimwiki"
-
-Bundle 'https://github.com/vim-scripts/YankRing.vim.git'
-noremap <leader>½ :YRShow<CR>
-
-Bundle 'rvm.vim'
-
-Bundle 'vim-coffee-script'
-
-" Learn home-row keys damnit!
-" nnoremap <Left> :echoe "Use h"<CR>
-" nnoremap <Right> :echoe "Use l"<CR>
-" nnoremap <Up> :echoe "Use k"<CR>
-" nnoremap <Down> :echoe "Use j"<CR>
-
-" Treat <li> and <p> tags like the block tags they are
-let g:html_indent_tags = 'li\|p'
-
-" spelling corrections
-iab teh the
-iab tehn then
-
-"statusline setup
-set statusline=   " clear the statusline for when vimrc is reloaded
-" set statusline=%<\ %n:%f\ %m%r%y%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
-" if exists('g:loaded_rvm')
-"   set statusline+=%{rvm#statusline()} 
-" endif
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{exists('g:loaded_rvm')?rvm#statusline():''}%=%-16(\ %l,%c-%v\ %)%P
+" When vimrc is edited, reload it
+autocmd bufwritepost vimrc source ~/.vimrc

@@ -17,7 +17,7 @@ export ZSH_THEME="gallois"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
 if [ "$HOST" = "vision" ]; then
-  plugins=(git github rails3 bundler gem extract ssh-agent rvm heroku)
+  plugins=(git github rails3 gem extract ssh-agent rvm heroku)
 elif [ "$HOST" = "theprogress" ]; then
   plugins=(git rails3 rvm)
 fi
