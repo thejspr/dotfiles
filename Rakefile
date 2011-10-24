@@ -1,7 +1,8 @@
 desc "Setup Vim bundles"
 task :install do
-  root = File.expand_path(File.dirname(__FILE__))
+  root = File.expand_path(File,join("..", File.dirname(__FILE__)))
 
+  exit
   puts 'Installing Bundles'
   system "vim -c BundleInstall! -c q -c q -u bundles.vim"
 
