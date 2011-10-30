@@ -42,14 +42,7 @@ set ruler
 set backspace=indent,eol,start
 set laststatus=2
 set number
-" set relativenumber
 set undofile
-
-" Auto adjust window sizes when they become current
-set winwidth=84
-set winheight=5
-set winminheight=5
-set winheight=999
 
 colorscheme wombat256
 set t_Co=256
@@ -136,6 +129,7 @@ comm! W exec 'w !sudo tee % > /dev/null' | e
 if executable("ack-grep")
   let g:ackprg="ack-grep -H --nocolor --nogroup --column"
   nnoremap <leader>a :Ack 
+	nnoremap <leader>A :Ack <cword><CR> 
 endif
 
 " Spell checking
@@ -173,7 +167,7 @@ let NERDChristmasTree = 1
 let NERDTreeWinPos = "left"
 let NERDTreeHijackNetrw = 1
 let NERDTreeQuitOnOpen = 1
-let NERDTreeWinSize = 50 
+let NERDTreeWinSize = 30 
 let NERDTreeIgnore=['\.git$','\.sass-cache']
 
 " F3 - YankRing
@@ -184,7 +178,7 @@ inoremap <silent> <F3> <ESC>:YRShow<cr>
 nmap <F4> <Plug>Kwbd
 
 " F5 - Terminal
-map <F5> :ConqueTerm zsh<CR>
+" map <F5> :ConqueTerm zsh<CR>
 
 "  ---------------------------------------------------------------------------
 "  Plugins
@@ -200,9 +194,9 @@ let g:rails_menu=2
 map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
 map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
 map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
-" map <Leader>m :Rmodel<space>
-" map <Leader>c :Rcontroller<space>
-" map <Leader>v :Rview<space>
+map <Leader>m :Rmodel 
+map <Leader>c :Rcontroller 
+map <Leader>v :Rview 
 " map <Leader>sm :RSmodel
 " map <Leader>sc :RScontroller
 " map <Leader>sv :RSview
@@ -210,10 +204,8 @@ map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
 " map <Leader>sf :RSfunctionaltest
 " View routes or Gemfile in large split
 map <leader>gr :topleft :split config/routes.rb<cr>
-map <leader>gg :topleft 100 :split Gemfile<cr>
+map <leader>gg :topleft :vsplit Gemfile<cr>
 " Skip to Models and Views
-map <Leader>m :Rmodel 
-map <Leader>v :Rview 
 
 " Syntastic
 let g:syntastic_enable_signs=1
@@ -221,12 +213,13 @@ let g:syntastic_auto_loc_list=2
 
 " Command-T
 " find file
-map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
+map <leader>t :CommandTFlush<cr>\|:CommandT<cr>
 let g:CommandTMatchWindowAtTop=1 " show window at top
 let g:CommandTMaxHeight=20
 set wildignore+=*.o,*~,*.obj,.git/**,vendor/**,tmp/**,app/assets/images/**,public/images/**,public/assets/**
 set wildignore+=*.class,*.doc,*.lock,**.png,**.jpg,**.jpeg
 set wildignore+=*.sass-cache/**,build/**
+set wildignore+=doc/**,rdoc/**
 
 " Center screen when scrolling search results
 nmap n nzz
@@ -309,4 +302,4 @@ autocmd BufReadPost *
       \ endif
 
 " When vimrc is edited, reload it
-autocmd bufwritepost vimrc source ~/.vimrc
+autocmd BufWritePost .vimrc source $MYVIMRC
