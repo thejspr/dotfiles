@@ -1,3 +1,4 @@
+export PATH=/usr/local/bin:$HOME/.rbenv/bin:$PATH
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -17,7 +18,7 @@ export ZSH_THEME="gallois"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
 if [ "$HOST" = "vision" ]; then
-  plugins=(git github rails3 gem extract ssh-agent rvm heroku)
+  plugins=(git github extract rvm heroku)
 elif [ "$HOST" = "theprogress" ]; then
   plugins=(git rails3 rvm)
 fi
@@ -28,4 +29,5 @@ if [ -f ~/dotfiles/_zshrc ]; then
     . ~/dotfiles/_zshrc
 fi
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # Load RVM into a shell session *as a function*
+# rbenv
+eval "$(rbenv init -)"

@@ -221,7 +221,7 @@ let g:syntastic_auto_loc_list=2
 
 " Command-T
 " find file
-map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
+map <leader>t :CommandTFlush<cr>\|:CommandT<cr>
 let g:CommandTMatchWindowAtTop=1 " show window at top
 let g:CommandTMaxHeight=20
 set wildignore+=*.o,*~,*.obj,.git/**,vendor/**,tmp/**,app/assets/images/**,public/images/**,public/assets/**
