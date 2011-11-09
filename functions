@@ -1,11 +1,11 @@
 #Automatically do an ls after each cd
-cd() {
-  if [ -n "$1" ]; then
-    builtin cd "$@" && ls
-  else
-    builtin cd ~ && ls
-      fi
-}
+# cd() {
+#   if [ -n "$1" ]; then
+#     builtin cd "$@" && ls
+#   else
+#     builtin cd ~ && ls
+#       fi
+# }
 
 # mkdir, cd into it
 mkcd () {
