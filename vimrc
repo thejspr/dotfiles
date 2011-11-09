@@ -27,7 +27,7 @@ set autoread
 
 set title
 set encoding=utf-8
-set ffs=unix,mac,dos
+set ffs=mac,unix,dos
 set scrolloff=3
 set autoindent
 set smartindent
@@ -35,7 +35,7 @@ set showmode
 set showcmd
 set hidden
 set wildmenu
-set wildmode=list:longest
+set wildmode=list:longest,list:full
 set cursorline
 set ttyfast
 set ruler
@@ -59,8 +59,8 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
+set list listchars=tab:\ \ ,trail:·
 
-set binary        " resolved no end of line git thing
 set nowrap
 set textwidth=79
 set formatoptions=n
@@ -94,12 +94,12 @@ noremap <C-a> ggVG
 " Searching / moving
 nnoremap / /\v
 vnoremap / /\v
+set hlsearch
+set incsearch
 set ignorecase
 set smartcase
 set gdefault
-set incsearch
 set showmatch
-set hlsearch
 " turn search highlight off
 nnoremap <leader><space> :noh<cr> 
 " search (forwards)
