@@ -20,6 +20,7 @@ set nowritebackup
 set noswapfile
 syntax enable
 set autoread
+set vb
 
 "  ---------------------------------------------------------------------------
 "  UI
@@ -64,13 +65,13 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{exists('g:loaded_rvm')?rvm#statusline(
 
 set tabstop=2
 set shiftwidth=2
-set softtabstop=2
 set expandtab
+" set list
 
-set binary        " resolved no end of line git thing
+" set binary        " resolved no end of line git thing
 set nowrap
 set textwidth=79
-set formatoptions=n
+" set formatoptions=n
 
 "  ---------------------------------------------------------------------------
 "  Mappings
@@ -165,17 +166,6 @@ nnoremap <leader><leader> <c-^>
 " F1 - toggle wordwrap
 map <F1> :set nowrap! <CR>
 
-" F2 - NERDTree
-noremap <F2> :NERDTreeToggle<CR>
-let NERDTreeShowHidden=1
-let NERDTreeShowBookmarks = 0
-let NERDChristmasTree = 1
-let NERDTreeWinPos = "left"
-let NERDTreeHijackNetrw = 1
-let NERDTreeQuitOnOpen = 1
-let NERDTreeWinSize = 50 
-let NERDTreeIgnore=['\.git$','\.sass-cache']
-
 " F3 - YankRing
 nnoremap <silent> <F3> :YRShow<cr>
 inoremap <silent> <F3> <ESC>:YRShow<cr>
@@ -244,7 +234,20 @@ let g:SuperTabLongestHighlight = 1
 nnoremap // :TComment<CR>
 vnoremap // :TComment<CR>
 
+" toggle words/bool/int
 nmap <leader>s :ToggleWord<CR> 
+
+" NERDTree
+noremap <leader>n :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
+let NERDTreeShowBookmarks = 0
+let NERDChristmasTree = 1
+let NERDTreeWinPos = "left"
+let NERDTreeHijackNetrw = 1
+let NERDTreeQuitOnOpen = 1
+let NERDTreeWinSize = 40 
+let NERDTreeIgnore=['\.git$','\.sass-cache']
+
 
 " Buffer window (find file in open buffers)
 nmap <silent> <leader>b :FufBuffer<CR>

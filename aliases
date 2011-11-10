@@ -25,6 +25,9 @@ alias gin='gem install'
 alias gun='gem uninstall'
 alias gemup='gem update --system && gem update'
 
+# ruby
+alias rb='rbenv'
+
 # heroku
 alias h="heroku"
 hpush() { git add -A; git commit -m 'hotfix commit/push'; git push heroku master; }
