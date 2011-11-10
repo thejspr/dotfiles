@@ -28,7 +28,7 @@ set vb
 
 set title
 set encoding=utf-8
-set ffs=unix,mac,dos
+set ffs=mac,unix,dos
 set scrolloff=3
 set autoindent
 set smartindent
@@ -36,21 +36,14 @@ set showmode
 set showcmd
 set hidden
 set wildmenu
-set wildmode=list:longest
+set wildmode=list:longest,list:full
 set cursorline
 set ttyfast
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
 set number
-" set relativenumber
 set undofile
-
-" Auto adjust window sizes when they become current
-set winwidth=84
-set winheight=5
-set winminheight=5
-set winheight=999
 
 colorscheme wombat256
 set t_Co=256
@@ -66,9 +59,8 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{exists('g:loaded_rvm')?rvm#statusline(
 set tabstop=2
 set shiftwidth=2
 set expandtab
-" set list
+set list listchars=tab:\ \ ,trail:·
 
-" set binary        " resolved no end of line git thing
 set nowrap
 set textwidth=79
 " set formatoptions=n
@@ -102,12 +94,12 @@ noremap <C-a> ggVG
 " Searching / moving
 nnoremap / /\v
 vnoremap / /\v
+set hlsearch
+set incsearch
 set ignorecase
 set smartcase
 set gdefault
-set incsearch
 set showmatch
-set hlsearch
 " turn search highlight off
 nnoremap <leader><space> :noh<cr> 
 " search (forwards)
@@ -137,6 +129,7 @@ comm! W exec 'w !sudo tee % > /dev/null' | e
 if executable("ack-grep")
   let g:ackprg="ack-grep -H --nocolor --nogroup --column"
   nnoremap <leader>a :Ack 
+	nnoremap <leader>A :Ack <cword><CR> 
 endif
 
 " Spell checking
@@ -166,6 +159,20 @@ nnoremap <leader><leader> <c-^>
 " F1 - toggle wordwrap
 map <F1> :set nowrap! <CR>
 
+<<<<<<< HEAD
+=======
+" F2 - NERDTree
+noremap <F2> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
+let NERDTreeShowBookmarks = 0
+let NERDChristmasTree = 1
+let NERDTreeWinPos = "left"
+let NERDTreeHijackNetrw = 1
+let NERDTreeQuitOnOpen = 1
+let NERDTreeWinSize = 30 
+let NERDTreeIgnore=['\.git$','\.sass-cache']
+
+>>>>>>> d27457c49b2681c122676626d85856213cfd0916
 " F3 - YankRing
 nnoremap <silent> <F3> :YRShow<cr>
 inoremap <silent> <F3> <ESC>:YRShow<cr>
@@ -174,7 +181,7 @@ inoremap <silent> <F3> <ESC>:YRShow<cr>
 nmap <F4> <Plug>Kwbd
 
 " F5 - Terminal
-map <F5> :ConqueTerm zsh<CR>
+" map <F5> :ConqueTerm zsh<CR>
 
 "  ---------------------------------------------------------------------------
 "  Plugins
@@ -190,9 +197,9 @@ let g:rails_menu=2
 map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
 map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
 map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
-" map <Leader>m :Rmodel<space>
-" map <Leader>c :Rcontroller<space>
-" map <Leader>v :Rview<space>
+map <Leader>m :Rmodel 
+map <Leader>c :Rcontroller 
+map <Leader>v :Rview 
 " map <Leader>sm :RSmodel
 " map <Leader>sc :RScontroller
 " map <Leader>sv :RSview
@@ -200,10 +207,8 @@ map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
 " map <Leader>sf :RSfunctionaltest
 " View routes or Gemfile in large split
 map <leader>gr :topleft :split config/routes.rb<cr>
-map <leader>gg :topleft 100 :split Gemfile<cr>
+map <leader>gg :topleft :vsplit Gemfile<cr>
 " Skip to Models and Views
-map <Leader>m :Rmodel 
-map <Leader>v :Rview 
 
 " Syntastic
 let g:syntastic_enable_signs=1
@@ -217,6 +222,7 @@ let g:CommandTMaxHeight=20
 set wildignore+=*.o,*~,*.obj,.git/**,vendor/**,tmp/**,app/assets/images/**,public/images/**,public/assets/**
 set wildignore+=*.class,*.doc,*.lock,**.png,**.jpg,**.jpeg
 set wildignore+=*.sass-cache/**,build/**
+set wildignore+=doc/**,rdoc/**
 
 " Center screen when scrolling search results
 nmap n nzz
@@ -312,4 +318,4 @@ autocmd BufReadPost *
       \ endif
 
 " When vimrc is edited, reload it
-autocmd bufwritepost vimrc source ~/.vimrc
+autocmd BufWritePost .vimrc source $MYVIMRC

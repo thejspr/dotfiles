@@ -19,7 +19,7 @@ Bundle "git://github.com/tpope/vim-surround.git"
 " Bundle "git://github.com/chrismetcalf/vim-yankring.git"
 " Bundle "git://github.com/chrismetcalf/vim-taglist.git"
 Bundle "git://github.com/tpope/vim-endwise.git"
-Bundle "git://github.com/Townk/vim-autoclose.git"
+Bundle "git://github.com/blueyed/vim-autoclose.git"
 Bundle "git://github.com/panozzaj/vim-autocorrect.git"
 Bundle "git://github.com/tsaleh/vim-tcomment.git"
 Bundle "git://github.com/clones/vim-fuzzyfinder.git"
@@ -41,6 +41,7 @@ Bundle "git://git.wincent.com/command-t.git"
 Bundle "Color-Sampler-Pack"
 Bundle "toggle_words.vim"
 " Bundle "jQuery"
+Bundle 'vim-coffee-script'
 
 
 filetype plugin indent on     " and turn it back on!

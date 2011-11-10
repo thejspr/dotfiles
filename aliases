@@ -16,6 +16,9 @@ g() {
 # ctags
 alias rctags='ctags -R --exclude=.git --exclude=log --exclude=public *'
 
+# rails
+alias ars="unicorn_rails -p 3000 -c config/unicorn.rb"
+
 # rake
 alias rake='noglob rake'
 alias r='noglob rake'
