@@ -10,7 +10,7 @@ silent! runtime bundles.vim
 "  General
 "  ---------------------------------------------------------------------------
 
-filetype plugin indent on     
+filetype plugin indent on
 let mapleader = ","
 let g:mapleader = ","
 set modelines=0
@@ -59,7 +59,12 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{exists('g:loaded_rvm')?rvm#statusline(
 set tabstop=2
 set shiftwidth=2
 set expandtab
-set list listchars=tab:\ \ ,trail:·
+set list!
+if has("gui_running")
+  set listchars=tab:\ \ ,trail:·
+else
+  set listchars=tab:\ \ ,trail:-
+endif
 
 set nowrap
 set textwidth=79
@@ -159,8 +164,6 @@ nnoremap <leader><leader> <c-^>
 " F1 - toggle wordwrap
 map <F1> :set nowrap! <CR>
 
-<<<<<<< HEAD
-=======
 " F2 - NERDTree
 noremap <F2> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
@@ -172,7 +175,6 @@ let NERDTreeQuitOnOpen = 1
 let NERDTreeWinSize = 30 
 let NERDTreeIgnore=['\.git$','\.sass-cache']
 
->>>>>>> d27457c49b2681c122676626d85856213cfd0916
 " F3 - YankRing
 nnoremap <silent> <F3> :YRShow<cr>
 inoremap <silent> <F3> <ESC>:YRShow<cr>
