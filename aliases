@@ -1,3 +1,8 @@
+# pomodoro
+pomodoro() {
+  play ~/dotfiles/sounds/tic.wav repeat 5000 trim 0 25:00 && play ~/dotfiles/sounds/zing.wav
+}
+
 # tail syslog
 alias slog='tail -f /var/log/syslog'
 
