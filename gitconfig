@@ -11,7 +11,7 @@
 [push]
   default = current
 [core]
-  excludesfile = /home/jesper/.gitignore
+	excludesfile = /Users/jesper/.gitignore
 [alias]
   # add
   a = add

@@ -4,7 +4,47 @@ set nocompatible               " be iMproved
 "  Plugins
 "  ---------------------------------------------------------------------------
 
-silent! runtime bundles.vim
+if !isdirectory(expand("~/.vim/bundle/vundle/.git"))
+  !git clone git://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+endif
+
+filetype off                   " must be off before Vundle has run
+set runtimepath+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle "gmarik/vundle"
+Bundle "git://github.com/mileszs/ack.vim.git"
+Bundle "git://github.com/tpope/vim-fugitive"
+Bundle "git://github.com/tpope/vim-rails.git"
+Bundle "git://github.com/tpope/vim-surround.git"
+Bundle "git://github.com/chrismetcalf/vim-yankring.git"
+Bundle "git://github.com/chrismetcalf/vim-taglist.git"
+Bundle "git://github.com/tpope/vim-endwise.git"
+Bundle "git://github.com/blueyed/vim-autoclose.git"
+Bundle "git://github.com/panozzaj/vim-autocorrect.git"
+Bundle "git://github.com/tsaleh/vim-tcomment.git"
+Bundle "git://github.com/clones/vim-fuzzyfinder.git"
+" Bundle "git://github.com/godlygeek/tabular.git"
+Bundle "git://github.com/vim-scripts/Gist.vim.git"
+Bundle "git://github.com/vim-scripts/L9.git"
+" Bundle "git://github.com/rson/vim-conque.git"
+Bundle "git://github.com/gmarik/snipmate.vim.git"
+Bundle "git://github.com/kana/vim-textobj-user.git"
+Bundle "git://github.com/nelstrom/vim-textobj-rubyblock.git"
+Bundle "git://github.com/janx/vim-rubytest.git"
+Bundle "git://github.com/scrooloose/syntastic.git"
+Bundle "git://github.com/msanders/snipmate.vim.git"
+Bundle "git://github.com/ervandew/supertab.git"
+Bundle "git://github.com/scrooloose/nerdtree.git"
+Bundle "git://git.wincent.com/command-t.git"
+Bundle "Color-Sampler-Pack"
+Bundle "toggle_words.vim"
+Bundle 'vim-coffee-script'
+" Bundle 'Align.vim'
+
+filetype plugin indent on     " and turn it back on!
+
+runtime macros/matchit.vim
 
 "  ---------------------------------------------------------------------------
 "  General
@@ -61,7 +101,7 @@ set shiftwidth=2
 set expandtab
 set list!
 if has("gui_running")
-  set listchars=tab:\ \ ,trail:·
+  set listchars=tab:»·,trail:·
 else
   set listchars=tab:\ \ ,trail:-
 endif
@@ -131,8 +171,8 @@ imap <C-v> <esc>"+p
 comm! W exec 'w !sudo tee % > /dev/null' | e
 
 " Use Ack instead of Grep when available
-if executable("ack-grep")
-  let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+if executable("ack")
+  let g:ackprg="ack -H --nocolor --nogroup --column"
   nnoremap <leader>a :Ack 
 	nnoremap <leader>A :Ack <cword><CR> 
 endif
@@ -184,6 +224,14 @@ nmap <F4> <Plug>Kwbd
 
 " F5 - Terminal
 " map <F5> :ConqueTerm zsh<CR>
+
+" F6 - Trim trailing whitespace
+nmap <F6> :%s/\s*$//<CR>
+
+"  ---------------------------------------------------------------------------
+"  Ruby
+"  ---------------------------------------------------------------------------
+
 
 "  ---------------------------------------------------------------------------
 "  Plugins

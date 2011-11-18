@@ -17,7 +17,7 @@ export ZSH_THEME="thejspr"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew github extract heroku)
+plugins=(git brew github extract heroku bundler)
 
 if [ "$HOST" = "theprogress" ]; then
   plugins=(git rails3 rvm)

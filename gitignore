@@ -2,3 +2,4 @@
 *.swp
 vim/backup/
 *.rbc
+.DS_Store

@@ -1,8 +1,6 @@
 # tail syslog
 alias slog='tail -f /var/log/syslog'
 
-alias ack="ack-grep"
-
 # git
 gpush() { git add -A; git commit -m "$@"; git push; }
 g() {
