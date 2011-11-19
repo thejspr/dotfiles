@@ -88,6 +88,9 @@ set undofile
 colorscheme wombat256
 set t_Co=256
 
+" Resize splits when the window is resized
+au VimResized * exe "normal! \<c-w>="
+
 "statusline setup
 set statusline=   " clear the statusline for when vimrc is reloaded
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{exists('g:loaded_rvm')?rvm#statusline():''}%=%-16(\ %l,%c-%v\ %)%P
@@ -159,7 +162,6 @@ map === mmgg=G`m^zz
 
 " edit .vimrc
 command! Ev :e ~/.vimrc
-command! Eb :e ~/.vim/bundles.vim
 
 " Copy paste in/out of vim
 noremap <C-c> "+y
