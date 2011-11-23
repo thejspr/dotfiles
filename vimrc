@@ -1,5 +1,4 @@
 set nocompatible               " be iMproved
-
 "  ---------------------------------------------------------------------------
 "  Plugins
 "  ---------------------------------------------------------------------------
@@ -20,11 +19,11 @@ Bundle "git://github.com/tpope/vim-surround.git"
 Bundle "git://github.com/chrismetcalf/vim-yankring.git"
 Bundle "git://github.com/chrismetcalf/vim-taglist.git"
 Bundle "git://github.com/tpope/vim-endwise.git"
-Bundle "git://github.com/blueyed/vim-autoclose.git"
+Bundle "git://github.com/Townk/vim-autoclose.git"
 Bundle "git://github.com/panozzaj/vim-autocorrect.git"
 Bundle "git://github.com/tsaleh/vim-tcomment.git"
 Bundle "git://github.com/clones/vim-fuzzyfinder.git"
-" Bundle "git://github.com/godlygeek/tabular.git"
+Bundle "git://github.com/godlygeek/tabular.git"
 Bundle "git://github.com/vim-scripts/Gist.vim.git"
 Bundle "git://github.com/vim-scripts/L9.git"
 " Bundle "git://github.com/rson/vim-conque.git"
@@ -40,7 +39,6 @@ Bundle "git://git.wincent.com/command-t.git"
 Bundle "Color-Sampler-Pack"
 Bundle "toggle_words.vim"
 Bundle 'vim-coffee-script'
-" Bundle 'Align.vim'
 
 filetype plugin indent on     " and turn it back on!
 
@@ -68,7 +66,7 @@ set vb
 
 set title
 set encoding=utf-8
-set ffs=mac,unix,dos
+set ffs=unix,mac,dos
 set scrolloff=3
 set autoindent
 set smartindent
@@ -213,8 +211,8 @@ let NERDTreeShowBookmarks = 0
 let NERDChristmasTree = 1
 let NERDTreeWinPos = "left"
 let NERDTreeHijackNetrw = 1
-let NERDTreeQuitOnOpen = 1
-let NERDTreeWinSize = 30 
+let NERDTreeQuitOnOpen = 0
+let NERDTreeWinSize = 30
 let NERDTreeIgnore=['\.git$','\.sass-cache']
 
 " F3 - YankRing
@@ -265,6 +263,14 @@ map <leader>gg :topleft :vsplit Gemfile<cr>
 " Syntastic
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
+
+" yankring
+let g:yankring_history_dir = '$VIM'
+
+" vim-autoclose
+if !has("gui_running")
+  let g:AutoClosePreservDotReg = 0
+endif
 
 " Command-T
 " find file
@@ -332,9 +338,10 @@ if has("gui_running")
   set guioptions-=R " no scrollbar on the right
   set guioptions-=l " no scrollbar on the left
   set guioptions-=b " no scrollbar on the bottom
-  set guioptions=aiA 
-  set mouse=v
+  set guioptions=aiA
+  set mouse=a
   set guifont=Monaco:h12 "<- Maybe a good idea when using mac
+  set antialias
 endif
 set guifont=Monaco:h12
 
