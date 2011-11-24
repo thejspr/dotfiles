@@ -57,6 +57,7 @@ alias gemup='gem update --system && gem update'
 
 # ruby
 alias rb='rbenv'
+alias rv='ruby -v'
 
 # heroku
 alias h="heroku"

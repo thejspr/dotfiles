@@ -63,7 +63,7 @@ function git_time_since_commit() {
             fi
 
             if [ "$HOURS" -gt 24 ]; then
-                echo "($COLOR${DAYS}d${SUB_HOURS}h${SUB_MINUTES}m%{$reset_color%}|"
+                echo "($COLOR${DAYS}d%{$reset_color%}|"
             elif [ "$MINUTES" -gt 60 ]; then
                 echo "($COLOR${HOURS}h${SUB_MINUTES}m%{$reset_color%}|"
             else

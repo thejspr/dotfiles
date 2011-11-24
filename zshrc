@@ -25,8 +25,8 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
-if [ -f ~/dotfiles/_zshrc ]; then
-    . ~/dotfiles/_zshrc
+if [ -f ~/Code/dotfiles/_zshrc ]; then
+    . ~/Code/dotfiles/_zshrc
 fi
 
 # rbenv
