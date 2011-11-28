@@ -12,13 +12,7 @@ export ZSH_THEME="thejspr"
 # Comment this out to disable weekly auto-update checks
 # export DISABLE_AUTO_UPDATE="true"
 
-# Uncomment following line if you want to disable colors in ls
-# export DISABLE_LS_COLORS="true"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Example format: plugins=(rails git textmate ruby lighthouse)
-
-plugins=(git brew github)
+plugins=(git brew github bundler)
 if [ "$HOST" = "theprogress" ]; then
   plugins=(git rails3 rvm)
 fi
@@ -31,3 +25,5 @@ fi
 
 # rbenv
 eval "$(rbenv init -)"
+
+unalias ruby

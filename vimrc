@@ -17,16 +17,15 @@ Bundle "git://github.com/tpope/vim-fugitive"
 Bundle "git://github.com/tpope/vim-rails.git"
 Bundle "git://github.com/tpope/vim-surround.git"
 Bundle "git://github.com/chrismetcalf/vim-yankring.git"
-Bundle "git://github.com/chrismetcalf/vim-taglist.git"
 Bundle "git://github.com/tpope/vim-endwise.git"
 Bundle "git://github.com/Townk/vim-autoclose.git"
 Bundle "git://github.com/panozzaj/vim-autocorrect.git"
 Bundle "git://github.com/tsaleh/vim-tcomment.git"
 Bundle "git://github.com/clones/vim-fuzzyfinder.git"
 Bundle "git://github.com/godlygeek/tabular.git"
-Bundle "git://github.com/vim-scripts/Gist.vim.git"
+Bundle "http://github.com/mattn/gist-vim"
 Bundle "git://github.com/vim-scripts/L9.git"
-" Bundle "git://github.com/rson/vim-conque.git"
+Bundle "git://github.com/rson/vim-conque.git"
 Bundle "git://github.com/gmarik/snipmate.vim.git"
 Bundle "git://github.com/kana/vim-textobj-user.git"
 Bundle "git://github.com/nelstrom/vim-textobj-rubyblock.git"
@@ -160,6 +159,7 @@ map === mmgg=G`m^zz
 
 " edit .vimrc
 command! Ev :e ~/.vimrc
+command! Eg :e ~/.gvimrc
 
 " Copy paste in/out of vim
 noremap <C-c> "+y
@@ -204,16 +204,13 @@ nnoremap <leader><leader> <c-^>
 " F1 - toggle wordwrap
 map <F1> :set nowrap! <CR>
 
-" F2 - NERDTree
-noremap <F2> :NERDTreeToggle<CR>
-let NERDTreeShowHidden=1
-let NERDTreeShowBookmarks = 0
-let NERDChristmasTree = 1
-let NERDTreeWinPos = "left"
-let NERDTreeHijackNetrw = 1
-let NERDTreeQuitOnOpen = 0
-let NERDTreeWinSize = 30
-let NERDTreeIgnore=['\.git$','\.sass-cache']
+" F2 - Terminal
+" ConqueTerm wrapper
+function! StartTerm()
+  execute 'ConqueTerm ' . $SHELL . ' --login'
+  setlocal listchars=tab:\ \
+endfunction
+map <F2> :call StartTerm()<CR>
 
 " F3 - YankRing
 nnoremap <silent> <F3> :YRShow<cr>
@@ -222,25 +219,21 @@ inoremap <silent> <F3> <ESC>:YRShow<cr>
 " F4 - kwdb.vim
 nmap <F4> <Plug>Kwbd
 
-" F5 - Terminal
-" map <F5> :ConqueTerm zsh<CR>
-
 " F6 - Trim trailing whitespace
-nmap <F6> :%s/\s*$//<CR>
+nmap <F6> :%s/\s*$//<CR>:noh<CR>
 
 "  ---------------------------------------------------------------------------
-"  Ruby
+"  #Ruby
 "  ---------------------------------------------------------------------------
 
+" testing
+map <Leader>1 <Plug>RubyTestRun
+map <Leader>2 <Plug>RubyFileRun
+map <Leader>3 <Plug>RubyTestRunLast
 
 "  ---------------------------------------------------------------------------
 "  Plugins
 "  ---------------------------------------------------------------------------
-
-" Ruby
-map <Leader>1 <Plug>RubyTestRun
-map <Leader>2 <Plug>RubyFileRun
-map <Leader>3 <Plug>RubyTestRunLast
 
 " Rails
 let g:rails_menu=2
@@ -264,6 +257,16 @@ map <leader>gg :topleft :vsplit Gemfile<cr>
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 
+" NERDTree
+let NERDTreeShowHidden=1
+let NERDTreeShowBookmarks = 0
+let NERDChristmasTree = 1
+let NERDTreeWinPos = "left"
+let NERDTreeHijackNetrw = 1
+let NERDTreeQuitOnOpen = 0
+let NERDTreeWinSize = 30
+let NERDTreeIgnore=['\.git$','\.sass-cache']
+
 " yankring
 let g:yankring_history_dir = '$VIM'
 
@@ -277,7 +280,7 @@ endif
 map <leader>t :CommandTFlush<cr>\|:CommandT<cr>
 let g:CommandTMatchWindowAtTop=1 " show window at top
 let g:CommandTMaxHeight=20
-set wildignore+=*.o,*~,*.obj,.git/**,vendor/**,tmp/**,app/assets/images/**,public/images/**,public/assets/**
+set wildignore+=*.o,*~,*.obj,.git/**,tmp/**,app/assets/images/**,public/images/**,public/assets/**
 set wildignore+=*.class,*.doc,*.lock,**.png,**.jpg,**.jpeg
 set wildignore+=*.sass-cache/**,build/**
 set wildignore+=doc/**,rdoc/**

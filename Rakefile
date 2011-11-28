@@ -1,5 +1,5 @@
 desc "Setup Vim bundles"
-task :install do
+task :vim do
   root = File.expand_path(File,join("..", File.dirname(__FILE__)))
 
   puts 'Installing Bundles'
@@ -22,11 +22,12 @@ task :links do
   Dir.glob("*").each do |file| 
     file_target = "~/.#{file}"
     file_target = "~/.oh-my-zsh/themes/#{file}" if file == 'thejspr.zsh-theme'
-    unless file =~ /^[R_.]/ or file == "scripts" or File.file? file_target or File.directory? file_target
-      cmd = "ln -s #{Dir.pwd}/#{file} #{file_target}"
-      puts "Executing: " + cmd
-      %x{#{cmd}}
-    end
+    
+    next if file =~ /^[R_.]/ or File.exists? file or File.directory? file
+
+    cmd = "ln -s #{Dir.pwd}/#{file} #{file_target}"
+    puts "Executing: " + cmd
+    %x{#{cmd}}
   end 
 end
 

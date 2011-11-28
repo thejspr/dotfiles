@@ -1,9 +1,9 @@
 [user]
-	name = Jesper Kjeldgaard
+  name = Jesper Kjeldgaard
   email = thejspr@gmail.com
 [github]
   user = thejspr
-  token =
+  token = 6ca46d23fb958dc830bc7403274afd43
 [color]
   ui = true
 [mergetool]
@@ -11,18 +11,14 @@
 [push]
   default = current
 [core]
-	excludesfile = /Users/jesper/.gitignore
+  excludesfile = /Users/jesper/.gitignore
 [alias]
-  # add
   a = add
-  # commit
   c = commit -v
   cm = commit -v -m
-
-  # shortcuts for commands
   d = diff
   co = checkout
   b = branch
   l = log
 [apply]
-  # whitespace = nowarn
+  whitespace = warn

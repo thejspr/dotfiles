@@ -95,6 +95,6 @@ te() { touch $@; vim $@; }
 alias e='vim'
 alias se='sudo vim'
 alias ea='vim ~/.aliases'
-alias ez='vim ~/dotfiles/zshrc'
-alias ez_='vim ~/dotfiles/_zshrc'
+alias ez='vim ~/Code/dotfiles/zshrc'
+alias ez_='vim ~/Code/dotfiles/_zshrc'
 alias sr='source ~/.zshrc'
