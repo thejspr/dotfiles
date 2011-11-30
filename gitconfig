@@ -21,4 +21,4 @@
   b = branch
   l = log
 [apply]
-  whitespace = warn
+  whitespace = nowarn
