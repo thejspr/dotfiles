@@ -262,7 +262,6 @@ let NERDTreeShowHidden=1
 let NERDTreeShowBookmarks = 0
 let NERDChristmasTree = 1
 let NERDTreeWinPos = "left"
-let NERDTreeHijackNetrw = 1
 let NERDTreeQuitOnOpen = 0
 let NERDTreeWinSize = 30
 let NERDTreeIgnore=['\.git$','\.sass-cache']
