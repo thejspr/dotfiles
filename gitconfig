@@ -12,13 +12,18 @@
   default = current
 [core]
   excludesfile = /Users/jesper/.gitignore
+  editor = mvim -f
 [alias]
   a = add
   c = commit -v
   cm = commit -v -m
+  ca = commit -v -a
   d = diff
   co = checkout
   b = branch
   l = log
 [apply]
   whitespace = nowarn
+[branch]
+  autosetupmerge = true
+  autosetuprebase = always

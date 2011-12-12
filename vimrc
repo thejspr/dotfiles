@@ -16,7 +16,7 @@ Bundle "git://github.com/mileszs/ack.vim.git"
 Bundle "git://github.com/tpope/vim-fugitive"
 Bundle "git://github.com/tpope/vim-rails.git"
 Bundle "git://github.com/tpope/vim-surround.git"
-Bundle "git://github.com/chrismetcalf/vim-yankring.git"
+" Bundle "git://github.com/chrismetcalf/vim-yankring.git"
 Bundle "git://github.com/tpope/vim-endwise.git"
 Bundle "git://github.com/Townk/vim-autoclose.git"
 Bundle "git://github.com/panozzaj/vim-autocorrect.git"
@@ -30,13 +30,12 @@ Bundle "git://github.com/gmarik/snipmate.vim.git"
 Bundle "git://github.com/kana/vim-textobj-user.git"
 Bundle "git://github.com/nelstrom/vim-textobj-rubyblock.git"
 Bundle "git://github.com/janx/vim-rubytest.git"
-Bundle "git://github.com/scrooloose/syntastic.git"
+" Bundle "git://github.com/scrooloose/syntastic.git"
 Bundle "git://github.com/msanders/snipmate.vim.git"
 Bundle "git://github.com/ervandew/supertab.git"
 Bundle "git://github.com/scrooloose/nerdtree.git"
 Bundle "git://git.wincent.com/command-t.git"
 Bundle "Color-Sampler-Pack"
-Bundle "toggle_words.vim"
 Bundle 'vim-coffee-script'
 
 filetype plugin indent on     " and turn it back on!
@@ -262,12 +261,8 @@ let NERDTreeShowHidden=1
 let NERDTreeShowBookmarks = 0
 let NERDChristmasTree = 1
 let NERDTreeWinPos = "left"
-let NERDTreeQuitOnOpen = 0
 let NERDTreeWinSize = 30
 let NERDTreeIgnore=['\.git$','\.sass-cache']
-
-" yankring
-let g:yankring_history_dir = '$VIM'
 
 " vim-autoclose
 if !has("gui_running")
