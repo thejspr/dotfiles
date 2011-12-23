@@ -17,7 +17,6 @@ stty -ixon -ixoff
 
 unsetopt correct_all
 
-export EDITOR=vim
 
 # specific things for laptop and server
 if [ "$HOST" = "vision" ]; then
@@ -25,9 +24,13 @@ if [ "$HOST" = "vision" ]; then
   export PATH=$PATH:~/.cabal/bin # Haskell
   cp ~/repos/sabnzbd.ini ~/.sabnzbd/
   export AUTOFEATURE=true
-  export JRUBY_OPTS=--1.9 
+  export JRUBY_OPTS=--1.9
   export RBXOPT=-X19
+  export EDITOR=gvim
 elif [ "$HOST" = "theprogress" ]; then
   export PATH=${PATH}:/usr/local/nginx/sbin/
   export RAILS_ENV=production
+  export EDITOR=mvim
+else
+  export PROFILE=default
 fi

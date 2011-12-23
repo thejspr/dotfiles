@@ -4,7 +4,7 @@ snippet sh
 
 # describe
 snippet des
-	describe "${1:description}" do
+	describe '${1:description}' do
 		${2}
 	end
 snippet desc
@@ -15,14 +15,14 @@ snippet desc
 
 	end
 snippet descd
-	describe ${1:class}, "${2:description}" do
+	describe ${1:class}, '${2:description}' do
 		before do
 			${3}
 		end
 
 	end
 snippet desb
-	describe "${1:description}" do
+	describe '${1:description}' do
 		before(:each) do
 			${2}
 		end
@@ -41,7 +41,7 @@ snippet aft
 
 # it should
 snippet it
-	it "${1:description}" do
+	it '${1:description}' do
 		${2}
 	end
 snippet itsh
