@@ -23,10 +23,11 @@ task :links do
     file_target = "~/.#{file}"
     file_target = "~/.oh-my-zsh/themes/#{file}" if file == 'thejspr.zsh-theme'
     
-    next if file =~ /^[R_.]/ or File.exists? file or File.directory? file
+    next if file =~ /^[R_.]/ || File.exists?(file_target) || File.directory?(file)
 
     cmd = "ln -s #{Dir.pwd}/#{file} #{file_target}"
     puts "Executing: " + cmd
+
     %x{#{cmd}}
   end 
 end
