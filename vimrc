@@ -12,31 +12,33 @@ set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
+" Bundle 'Color-Sampler-Pack'
+" Bundle 'git://github.com/scrooloose/syntastic.git'
+Bundle 'git://github.com/Shougo/neocomplcache.git'
+Bundle 'git://git.wincent.com/command-t.git'
+Bundle 'git://github.com/Townk/vim-autoclose.git'
+Bundle 'git://github.com/clones/vim-fuzzyfinder.git'
+Bundle 'git://github.com/ervandew/supertab.git'
+Bundle 'git://github.com/gmarik/snipmate.vim.git'
+Bundle 'git://github.com/godlygeek/tabular.git'
+Bundle 'git://github.com/janx/vim-rubytest.git'
+Bundle 'git://github.com/kana/vim-textobj-user.git'
 Bundle 'git://github.com/mileszs/ack.vim.git'
+Bundle 'git://github.com/mrtazz/molokai.vim.git'
+Bundle 'git://github.com/msanders/snipmate.vim.git'
+Bundle 'git://github.com/nelstrom/vim-textobj-rubyblock.git'
+Bundle 'git://github.com/panozzaj/vim-autocorrect.git'
+Bundle 'git://github.com/rson/vim-conque.git'
+Bundle 'git://github.com/scrooloose/nerdtree.git'
+Bundle 'git://github.com/tomtom/tcomment_vim.git'
+Bundle 'git://github.com/tpope/vim-endwise.git'
 Bundle 'git://github.com/tpope/vim-fugitive'
 Bundle 'git://github.com/tpope/vim-rails.git'
 Bundle 'git://github.com/tpope/vim-surround.git'
-Bundle 'git://github.com/tpope/vim-endwise.git'
-Bundle 'git://github.com/Townk/vim-autoclose.git'
-Bundle 'git://github.com/panozzaj/vim-autocorrect.git'
-Bundle 'git://github.com/tsaleh/vim-tcomment.git'
-Bundle 'git://github.com/clones/vim-fuzzyfinder.git'
-Bundle 'git://github.com/godlygeek/tabular.git'
-Bundle 'http://github.com/mattn/gist-vim'
+Bundle 'git://github.com/vim-ruby/vim-ruby.git'
 Bundle 'git://github.com/vim-scripts/L9.git'
-Bundle 'git://github.com/rson/vim-conque.git'
-Bundle 'git://github.com/gmarik/snipmate.vim.git'
-Bundle 'git://github.com/kana/vim-textobj-user.git'
-Bundle 'git://github.com/nelstrom/vim-textobj-rubyblock.git'
-Bundle 'git://github.com/janx/vim-rubytest.git'
-" Bundle 'git://github.com/scrooloose/syntastic.git'
-Bundle 'git://github.com/msanders/snipmate.vim.git'
-Bundle 'git://github.com/ervandew/supertab.git'
-Bundle 'git://github.com/scrooloose/nerdtree.git'
-Bundle 'git://git.wincent.com/command-t.git'
-Bundle 'Color-Sampler-Pack'
+Bundle 'http://github.com/mattn/gist-vim'
 Bundle 'vim-coffee-script'
-Bundle 'molokai.vim'
 
 filetype plugin indent on     " and turn it back on!
 
@@ -72,7 +74,7 @@ set showmode
 set showcmd
 set hidden
 set wildmenu
-set wildmode=list:longest,list:full
+set wildmode=list:longest,full
 set cursorline
 set ttyfast
 set ruler
@@ -107,7 +109,7 @@ else
 endif
 
 set nowrap
-set textwidth=79
+set textwidth=85
 " set formatoptions=n
 
 "  ---------------------------------------------------------------------------
@@ -197,6 +199,8 @@ nmap <leader>D :bufdo bd<CR>
 " Switch between last two buffers
 nnoremap <leader><leader> <c-^>
 
+nmap <leader>w <C-w><C-w>_
+
 "  ---------------------------------------------------------------------------
 "  Function Keys
 "  ---------------------------------------------------------------------------
@@ -225,6 +229,8 @@ nmap <F6> :%s/\s*$//<CR>:noh<CR>
 "  ---------------------------------------------------------------------------
 "  #Ruby
 "  ---------------------------------------------------------------------------
+
+autocmd BufNewFile,BufRead Guardfile setf ruby
 
 " testing
 map <Leader>1 <Plug>RubyTestRun
@@ -258,6 +264,7 @@ let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 
 " NERDTree
+let NERDTreeQuitOnOpen=0
 let NERDTreeShowHidden=1
 let NERDTreeShowBookmarks = 0
 let NERDChristmasTree = 1
@@ -277,7 +284,7 @@ let g:CommandTMatchWindowAtTop=1 " show window at top
 let g:CommandTMaxHeight=20
 set wildignore+=*.o,*~,*.obj,.git/**,tmp/**,app/assets/images/**,public/images/**,public/assets/**
 set wildignore+=*.class,*.doc,*.lock,**.png,**.jpg,**.jpeg
-set wildignore+=*.sass-cache/**,build/**
+set wildignore+=*.sass-cache/**,build/**,coverage/**
 set wildignore+=doc/**,rdoc/**
 
 " Center screen when scrolling search results
@@ -291,6 +298,12 @@ noremap <leader>9 :Gcommit<CR>
 " Supertab
 let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 let g:SuperTabLongestHighlight = 1
+
+" Tabularize
+" align symbols
+map <leader>as :Tab/\w\+ "[^"]*",/l0l1<CR>
+" align equals
+map <leader>a= :Tabularize/=\(.*=\)\@!/<CR>
 
 " tComment
 nnoremap // :TComment<CR>
@@ -309,7 +322,6 @@ let NERDTreeHijackNetrw = 1
 let NERDTreeQuitOnOpen = 1
 let NERDTreeWinSize = 40 
 let NERDTreeIgnore=['\.git$','\.sass-cache']
-
 
 " Buffer window (find file in open buffers)
 nmap <silent> <leader>b :FufBuffer<CR>
