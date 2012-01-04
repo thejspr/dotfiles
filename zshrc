@@ -12,9 +12,9 @@ export ZSH_THEME="thejspr"
 # Comment this out to disable weekly auto-update checks
 # export DISABLE_AUTO_UPDATE="true"
 
-plugins=(git brew github bundler)
+plugins=(git bundler)
 if [ "$HOST" = "theprogress" ]; then
-  plugins=(git rails3 rvm)
+  plugins=(git rvm)
 fi
 
 source $ZSH/oh-my-zsh.sh
