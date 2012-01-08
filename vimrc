@@ -264,13 +264,13 @@ let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 
 " NERDTree
-let NERDTreeQuitOnOpen=0
-let NERDTreeShowHidden=1
-let NERDTreeShowBookmarks = 0
-let NERDChristmasTree = 1
-let NERDTreeWinPos = "left"
-let NERDTreeWinSize = 30
-let NERDTreeIgnore=['\.git$','\.sass-cache', '\.DS_Store']
+let g:NERDTreeQuitOnOpen=0
+let g:NERDTreeShowHidden=1
+let g:NERDTreeShowBookmarks = 0
+let g:NERDChristmasTree = 1
+let g:NERDTreeWinPos = "left"
+let g:NERDTreeWinSize = 40
+let g:NERDTreeIgnore=['\.git$','\.sass-cache', '\.DS_Store']
 
 " vim-autoclose
 if !has("gui_running")
@@ -311,17 +311,6 @@ vnoremap // :TComment<CR>
 
 " toggle words/bool/int
 nmap <leader>s :ToggleWord<CR> 
-
-" NERDTree
-noremap <leader>n :NERDTreeToggle<CR>
-let NERDTreeShowHidden=1
-let NERDTreeShowBookmarks = 0
-let NERDChristmasTree = 1
-let NERDTreeWinPos = "left"
-let NERDTreeHijackNetrw = 1
-let NERDTreeQuitOnOpen = 1
-let NERDTreeWinSize = 40 
-let NERDTreeIgnore=['\.git$','\.sass-cache']
 
 " Buffer window (find file in open buffers)
 nmap <silent> <leader>b :FufBuffer<CR>
@@ -388,3 +377,6 @@ autocmd BufReadPost *
 
 " When vimrc is edited, reload it
 autocmd BufWritePost .vimrc source $MYVIMRC
+
+" scratch buffer
+map :Es :e ~/scratch-buffer.rb
