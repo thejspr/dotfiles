@@ -154,7 +154,7 @@ nmap <space> /
 " search (backwards)
 map <c-space> ?
 " find/replace shortcut
-noremap <leader>f :%s///c<left><left><left><left>
+noremap <leader>f :%s///c<left><left><left>
 
 " Auto format
 map === mmgg=G`m^zz
@@ -264,12 +264,13 @@ let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 
 " NERDTree
+noremap <leader>n :NERDTreeToggle<CR>
 let g:NERDTreeQuitOnOpen=0
 let g:NERDTreeShowHidden=1
 let g:NERDTreeShowBookmarks = 0
 let g:NERDChristmasTree = 1
 let g:NERDTreeWinPos = "left"
-let g:NERDTreeWinSize = 40
+let g:NERDTreeWinSize = 30
 let g:NERDTreeIgnore=['\.git$','\.sass-cache', '\.DS_Store']
 
 " vim-autoclose
