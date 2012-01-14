@@ -8,7 +8,7 @@
 [mergetool]
   keepBackup = false
 [push]
-  default = current
+	default = tracking
 [core]
   excludesfile = /Users/jesper/.gitignore
   editor = mvim -v
@@ -25,4 +25,4 @@
   whitespace = nowarn
 [branch]
   autosetupmerge = true
-  autosetuprebase = always
+	autosetuprebase = always

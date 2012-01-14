@@ -1,6 +1,7 @@
 # Vim
 alias vim='mvim'
 alias e='mvim'
+
 # Evently
 alias li='LIVE=true'
 alias lr='LIVE=true RISKY=true'
@@ -21,13 +22,15 @@ alias -g W='|wc'
 gpush() { git add -A; git commit -m "$@"; git push; }
 g() {
   if [[ $# == '0' ]]; then
-    command git status -sb
+    command hub status -sb
   else
-    command git "$@";
+    command hub "$@";
   fi
 }
 
-alias gl='git log --oneline --decorate'
+alias git='hub'
+alias gl='git log --oneline --decorate -20'
+alias gdw='git diff --word-diff'
 
 # rails
 

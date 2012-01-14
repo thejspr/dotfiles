@@ -12,8 +12,6 @@ set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
-" Bundle 'Color-Sampler-Pack'
-" Bundle '/scrooloose/syntastic'
 Bundle 'git://git.wincent.com/command-t'
 Bundle 'Townk/vim-autoclose'
 Bundle 'clones/vim-fuzzyfinder'
@@ -27,7 +25,6 @@ Bundle 'mrtazz/molokai.vim'
 Bundle 'msanders/snipmate.vim'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'panozzaj/vim-autocorrect'
-Bundle 'rson/vim-conque'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-endwise'
@@ -40,7 +37,6 @@ Bundle 'mattn/gist-vim'
 Bundle 'vim-coffee-script'
 
 " trial plugins
-Bundle 'Shougo/neocomplcache'
 Bundle 'sickill/vim-pasta'
 Bundle 'Lokaltog/vim-powerline'
 
@@ -94,10 +90,6 @@ colorscheme molokai
 " Resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="
 
-"statusline setup
-set statusline=   " clear the statusline for when vimrc is reloaded
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{exists('g:loaded_rvm')?rvm#statusline():''}%=%-16(\ %l,%c-%v\ %)%P
-
 "  ---------------------------------------------------------------------------
 "  Text Formatting
 "  ---------------------------------------------------------------------------
@@ -109,12 +101,11 @@ set list!
 if has("gui_running")
   set listchars=tab:»·,trail:·
 else
-  set listchars=tab:\ \ ,trail:-
+  set listchars=tab:\ \ ,trail:·
 endif
 
 set nowrap
 set textwidth=85
-" set formatoptions=n
 
 "  ---------------------------------------------------------------------------
 "  Mappings
@@ -134,10 +125,10 @@ inoremap <C-s> <ESC>:w<CR>
 imap jj <ESC>
 
 "Move a line of text using Ctrl+[jk]
-nmap <C-j> mz:m+<cr>`z
-nmap <C-k> mz:m-2<cr>`z
-vmap <C-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <C-k> :m'<-2<cr>`>my`<mzgv`yo`z
+nmap <M-j> mz:m+<cr>`z
+nmap <M-k> mz:m-2<cr>`z
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 " easier navigation between split windows
 nnoremap <c-j> <c-w>j
@@ -145,12 +136,7 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
-" select everything
-noremap <C-a> ggVG
-
 " Searching / moving
-nnoremap / /\v
-vnoremap / /\v
 set hlsearch
 set incsearch
 set ignorecase
@@ -206,29 +192,12 @@ nmap <leader>d :bd<CR>
 " close all buffers
 nmap <leader>D :bufdo bd<CR>
 
-" Switch between last two buffers
-nnoremap <leader><leader> <c-^>
-
-nmap <leader>w <C-w><C-w>_
-
 "  ---------------------------------------------------------------------------
 "  Function Keys
 "  ---------------------------------------------------------------------------
 
 " F1 - toggle wordwrap
 map <F1> :set nowrap! <CR>
-
-" F2 - Terminal
-" ConqueTerm wrapper
-function! StartTerm()
-  execute 'ConqueTerm ' . $SHELL . ' --login'
-  setlocal listchars=tab:\ \
-endfunction
-map <F2> :call StartTerm()<CR>
-
-" F3 - YankRing
-nnoremap <silent> <F3> :YRShow<cr>
-inoremap <silent> <F3> <ESC>:YRShow<cr>
 
 " F4 - kwdb.vim
 nmap <F4> <Plug>Kwbd
@@ -270,13 +239,6 @@ map <Leader>v :Rview
 " map <Leader>su :RSunittest
 " map <Leader>sf :RSfunctionaltest
 " View routes or Gemfile in large split
-map <leader>gr :topleft :split config/routes.rb<cr>
-map <leader>gg :topleft :vsplit Gemfile<cr>
-" Skip to Models and Views
-
-" Syntastic
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=2
 
 " NERDTree
 noremap <leader>n :NERDTreeToggle<CR>
@@ -325,9 +287,6 @@ map <leader>a= :Tabularize/=\(.*=\)\@!/<CR>
 nnoremap // :TComment<CR>
 vnoremap // :TComment<CR>
 
-" toggle words/bool/int
-nmap <leader>s :ToggleWord<CR> 
-
 " Buffer window (find file in open buffers)
 nmap <silent> <leader>b :FufBuffer<CR>
 
@@ -370,29 +329,18 @@ set undodir=~/.vim/.tmp,~/tmp,~/.tmp,/tmp
 " Ctags path (brew install ctags)
 let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
 
-" Make Vim use RVM correctly when using Zsh
-" https://rvm.beginrescueend.com/integration/vim/
-set shell=/bin/sh
-
-" Finally, load custom configs
-if filereadable(my_home . '.vimrc.local')
-  source ~/.vimrc.local
-endif
-
 "  ---------------------------------------------------------------------------
 "  Misc
 "  ---------------------------------------------------------------------------
 
 " When editing a file, always jump to the last known cursor position.
-" Don't do it when the position is invalid or when inside an event handler
-" (happens when dropping a file on gvim).
 autocmd BufReadPost *
       \ if line("'\"") > 0 && line("'\"") <= line("$") |
       \   exe "normal g`\"" |
       \ endif
 
 " When vimrc is edited, reload it
-map :Ex :source $MYVIMRC
+map :Ex :source $MYVIMRC<CR>
 
 " scratch buffer
 map :Es :e ~/scratch-buffer.rb
