@@ -3,7 +3,6 @@
   email = thejspr@gmail.com
 [github]
   user = thejspr
-  token = 6ca46d23fb958dc830bc7403274afd43
 [color]
   ui = true
 [mergetool]
@@ -12,7 +11,7 @@
   default = current
 [core]
   excludesfile = /Users/jesper/.gitignore
-  editor = mvim -f
+  editor = mvim -v
 [alias]
   a = add
   c = commit -v

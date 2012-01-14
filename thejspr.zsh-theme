@@ -1,4 +1,4 @@
-PROMPT='%{$fg[blue]%}%~%b%{$reset_color%}($(check_git_prompt_info)$ '
+PROMPT='%{$fg[blue]%}%~%b%{$reset_color%}$(check_git_prompt_info)$ '
 # PROMPT='%{$fg[blue]%}%~%b%{$reset_color%}$(git_time_since_commit)$(check_git_prompt_info)$ '
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[white]%}"
@@ -25,7 +25,7 @@ function check_git_prompt_info() {
         if [[ -z $(git_prompt_info) ]]; then
             echo "%{$fg[magenta]%}detached-head%{$reset_color%})"
         else
-            echo "$(git_prompt_info)"
+            echo "($(git_prompt_info)"
         fi
     fi
 }
