@@ -13,32 +13,36 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 " Bundle 'Color-Sampler-Pack'
-" Bundle 'git://github.com/scrooloose/syntastic.git'
-Bundle 'git://github.com/Shougo/neocomplcache.git'
-Bundle 'git://git.wincent.com/command-t.git'
-Bundle 'git://github.com/Townk/vim-autoclose.git'
-Bundle 'git://github.com/clones/vim-fuzzyfinder.git'
-Bundle 'git://github.com/ervandew/supertab.git'
-Bundle 'git://github.com/gmarik/snipmate.vim.git'
-Bundle 'git://github.com/godlygeek/tabular.git'
-Bundle 'git://github.com/janx/vim-rubytest.git'
-Bundle 'git://github.com/kana/vim-textobj-user.git'
-Bundle 'git://github.com/mileszs/ack.vim.git'
-Bundle 'git://github.com/mrtazz/molokai.vim.git'
-Bundle 'git://github.com/msanders/snipmate.vim.git'
-Bundle 'git://github.com/nelstrom/vim-textobj-rubyblock.git'
-Bundle 'git://github.com/panozzaj/vim-autocorrect.git'
-Bundle 'git://github.com/rson/vim-conque.git'
-Bundle 'git://github.com/scrooloose/nerdtree.git'
-Bundle 'git://github.com/tomtom/tcomment_vim.git'
-Bundle 'git://github.com/tpope/vim-endwise.git'
-Bundle 'git://github.com/tpope/vim-fugitive'
-Bundle 'git://github.com/tpope/vim-rails.git'
-Bundle 'git://github.com/tpope/vim-surround.git'
-Bundle 'git://github.com/vim-ruby/vim-ruby.git'
-Bundle 'git://github.com/vim-scripts/L9.git'
-Bundle 'http://github.com/mattn/gist-vim'
+" Bundle '/scrooloose/syntastic'
+Bundle 'git://git.wincent.com/command-t'
+Bundle 'Townk/vim-autoclose'
+Bundle 'clones/vim-fuzzyfinder'
+Bundle 'ervandew/supertab'
+Bundle 'gmarik/snipmate.vim'
+Bundle 'godlygeek/tabular'
+Bundle 'janx/vim-rubytest'
+Bundle 'kana/vim-textobj-user'
+Bundle 'mileszs/ack.vim'
+Bundle 'mrtazz/molokai.vim'
+Bundle 'msanders/snipmate.vim'
+Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'panozzaj/vim-autocorrect'
+Bundle 'rson/vim-conque'
+Bundle 'scrooloose/nerdtree'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-surround'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'vim-scripts/L9'
+Bundle 'mattn/gist-vim'
 Bundle 'vim-coffee-script'
+
+" trial plugins
+Bundle 'Shougo/neocomplcache'
+Bundle 'sickill/vim-pasta'
+Bundle 'Lokaltog/vim-powerline'
 
 filetype plugin indent on     " and turn it back on!
 
@@ -135,6 +139,12 @@ nmap <C-k> mz:m-2<cr>`z
 vmap <C-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <C-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
+" easier navigation between split windows
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+
 " select everything
 noremap <C-a> ggVG
 
@@ -225,6 +235,11 @@ nmap <F4> <Plug>Kwbd
 
 " F6 - Trim trailing whitespace
 nmap <F6> :%s/\s*$//<CR>:noh<CR>
+
+"  ---------------------------------------------------------------------------
+"  #Git
+"  ---------------------------------------------------------------------------
+autocmd BufRead COMMIT_EDITMSG setlocal spell!<cr>
 
 "  ---------------------------------------------------------------------------
 "  #Ruby
@@ -377,7 +392,7 @@ autocmd BufReadPost *
       \ endif
 
 " When vimrc is edited, reload it
-autocmd BufWritePost .vimrc source $MYVIMRC
+map :Ex :source $MYVIMRC
 
 " scratch buffer
 map :Es :e ~/scratch-buffer.rb
