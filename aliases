@@ -1,6 +1,7 @@
 # Evently
-alias blr='LIVE=true DO_NOT_QUIT_BROWSER=true RISKY=true'
-alias bl='LIVE=true DO_NOT_QUIT_BROWSER=true'
+alias li='LIVE=true'
+alias lr='LIVE=true RISKY=true'
+alias dq='DO_NOT_QUIT_BROWSER=true'
 
 # conviniences
 alias -g A='|ack'
@@ -23,8 +24,9 @@ g() {
   fi
 }
 
+alias gl='git log --oneline --decorate'
+
 # rails
-alias r='rails'
 
 # launching console/server
 rc () {
@@ -51,19 +53,12 @@ rs () {
   fi
 }
 
-# database migrate
-alias rdbm='rake db:migrate'
-
 # rails logs, tailing and cleaning
 alias tdl='tail -f ./log/development.log'
 alias ttl='tail -f ./log/test.log'
 
 # ctags
 alias rctags='ctags -R --exclude=.git --exclude=log --exclude=public *'
-
-# rake
-alias rake='noglob rake'
-alias r='noglob rake'
 
 # rubygems
 alias gin='gem install'
@@ -76,28 +71,10 @@ alias rv='ruby -v'
 
 # heroku
 alias h="heroku"
-hpush() { git add -A; git commit -m 'hotfix commit/push'; git push heroku master; }
-
-# latex
-alias lmkp='latexmk -pvc -pdf report.tex'
-alias lmkc='latexmk -CA'
+hpush() { git add -A; git commit -m $*; git push heroku master; }
 
 # servers
 alias prgs='ssh thejspr.com'
-
-# apache and nginx
-alias ares='sudo service apache2 restart'
-alias nres='sudo service nginx-init restart'
-
-# misc
-alias sabres='pkill sabnzbdplus && sabnzbdplus -f ~/.sabnzbd/sabnzbd.ini -w 1 -d'
-
-# aptitude conviniences
-alias ain='sudo apt-get install $@ -y'
-alias aun='sudo apt-get remove'
-alias afi='sudo apt-cache search'
-alias aup='sudo apt-get update && sudo apt-get upgrade -y'
-alias aclean='sudo apt-get autoclean && sudo apt-get autoremove && sudo apt-get clean && sudo apt-get remove'
 
 # files, directories and commands
 alias mx='chmod a+x'
@@ -106,10 +83,14 @@ alias ll='ls -lA'
 alias grep='grep --color=auto'
 
 # system and files editing
-te() { touch $@; vim $@; }
-alias e='vim'
-alias se='sudo vim'
 alias ea='vim ~/.aliases'
 alias ez='vim ~/Code/dotfiles/zshrc'
 alias ez_='vim ~/Code/dotfiles/_zshrc'
 alias sr='source ~/.zshrc'
+
+# aptitude conviniences
+alias ain='sudo apt-get install $@ -y'
+alias aun='sudo apt-get remove'
+alias afi='sudo apt-cache search'
+alias aup='sudo apt-get update && sudo apt-get upgrade -y'
+alias aclean='sudo apt-get autoclean && sudo apt-get autoremove && sudo apt-get clean && sudo apt-get remove'
