@@ -1,3 +1,6 @@
+# Vim
+alias vim='mvim'
+alias e='mvim'
 # Evently
 alias li='LIVE=true'
 alias lr='LIVE=true RISKY=true'
