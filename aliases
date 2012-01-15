@@ -1,3 +1,4 @@
+unalias g
 # Vim
 alias vim='mvim'
 alias e='mvim'

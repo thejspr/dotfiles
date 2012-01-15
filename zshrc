@@ -27,5 +27,3 @@ fi
 eval "$(rbenv init -)"
 
 unalias ruby
-
-alias mvim='mvim -v'

@@ -17,9 +17,11 @@ stty -ixon -ixoff
 
 unsetopt correct_all
 
+zshaddhistory() { [[ $1 != *cd* ]] }
 
 # specific things for laptop and server
 if [ "$HOST" = "vision" ]; then
+  # linux laptop
   export PATH=${PATH}:$HOME/apps/android-sdk-linux_x86/tools:$HOME/apps/eclipse:$HOME/bin
   export PATH=$PATH:~/.cabal/bin # Haskell
   cp ~/repos/sabnzbd.ini ~/.sabnzbd/
@@ -28,9 +30,11 @@ if [ "$HOST" = "vision" ]; then
   export RBXOPT=-X19
   export EDITOR=gvim
 elif [ "$HOST" = "theprogress" ]; then
+  # virtual host
   export PATH=${PATH}:/usr/local/nginx/sbin/
   export RAILS_ENV=production
-  export EDITOR=mvim
-else
+elif [ "$HOST" = "jspr.local" ]; then
+  # mac
   export PROFILE=default
+  export PATH=$PATH:/usr/local/texlive/2011basic/bin/universal-darwin/
 fi

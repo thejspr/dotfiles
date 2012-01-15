@@ -12,33 +12,35 @@ set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
-Bundle 'git://git.wincent.com/command-t'
+Bundle 'Lokaltog/vim-powerline'
 Bundle 'Townk/vim-autoclose'
 Bundle 'clones/vim-fuzzyfinder'
 Bundle 'ervandew/supertab'
+Bundle 'git://git.wincent.com/command-t'
 Bundle 'gmarik/snipmate.vim'
 Bundle 'godlygeek/tabular'
 Bundle 'janx/vim-rubytest'
 Bundle 'kana/vim-textobj-user'
+Bundle 'mattn/gist-vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'mrtazz/molokai.vim'
 Bundle 'msanders/snipmate.vim'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'panozzaj/vim-autocorrect'
 Bundle 'scrooloose/nerdtree'
+Bundle 'sickill/vim-pasta'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-surround'
+Bundle 'vim-coffee-script'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'vim-scripts/L9'
-Bundle 'mattn/gist-vim'
-Bundle 'vim-coffee-script'
 
 " trial plugins
-Bundle 'sickill/vim-pasta'
-Bundle 'Lokaltog/vim-powerline'
+Bundle 'bitc/vim-bad-whitespace'
+Bundle 'tpope/vim-markdown'
 
 filetype plugin indent on     " and turn it back on!
 
@@ -59,6 +61,8 @@ set noswapfile
 syntax enable
 set autoread
 set vb
+set undofile
+set undodir=~/.vim/.tmp,~/tmp,~/.tmp,/tmp
 
 "  ---------------------------------------------------------------------------
 "  UI
@@ -67,7 +71,7 @@ set vb
 set title
 set encoding=utf-8
 set ffs=unix,mac,dos
-set scrolloff=3
+set scrolloff=5
 set autoindent
 set smartindent
 set showmode
@@ -81,7 +85,6 @@ set ruler
 set backspace=indent,eol,start
 set laststatus=2
 set number
-set undofile
 
 " colorscheme wombat256
 colorscheme molokai
@@ -97,13 +100,6 @@ au VimResized * exe "normal! \<c-w>="
 set tabstop=2
 set shiftwidth=2
 set expandtab
-set list!
-if has("gui_running")
-  set listchars=tab:»·,trail:·
-else
-  set listchars=tab:\ \ ,trail:·
-endif
-
 set nowrap
 set textwidth=85
 
@@ -112,7 +108,7 @@ set textwidth=85
 "  ---------------------------------------------------------------------------
 
 " Saving and exit
-nmap <leader>q :wqa!<CR>
+nmap <leader>q :wq<CR>
 nmap <leader>w :w!<CR>
 nmap <leader><Esc> :q!<CR>
 
@@ -144,13 +140,13 @@ set smartcase
 set gdefault
 set showmatch
 " turn search highlight off
-nnoremap <leader><space> :noh<cr> 
+nnoremap <leader><space> :noh<cr>
 " search (forwards)
 nmap <space> /
 " search (backwards)
 map <c-space> ?
 " find/replace shortcut
-noremap <leader>f :%s///c<left><left><left>
+noremap <leader>f :%s///<left><left>
 
 " Auto format
 map === mmgg=G`m^zz
@@ -158,12 +154,16 @@ map === mmgg=G`m^zz
 " edit .vimrc
 command! Ev :e ~/.vimrc
 command! Eg :e ~/.gvimrc
+" When vimrc is edited, reload it
+command! Ex :source $MYVIMRC | :BundleInstall
+" scratch buffer
+command! Es :e ~/scratch-buffer.rb
 
 " Copy paste in/out of vim
 noremap <C-c> "+y
 noremap <C-v> "+p
-imap <C-c> <esc>"+y 
-imap <C-v> <esc>"+p 
+imap <C-c> <esc>"+y
+imap <C-v> <esc>"+p
 
 " Sudo write
 comm! W exec 'w !sudo tee % > /dev/null' | e
@@ -171,8 +171,8 @@ comm! W exec 'w !sudo tee % > /dev/null' | e
 " Use Ack instead of Grep when available
 if executable("ack")
   let g:ackprg="ack -H --nocolor --nogroup --column"
-  nnoremap <leader>a :Ack 
-	nnoremap <leader>A :Ack <cword><CR> 
+  nnoremap <leader>a :Ack
+  nnoremap <leader>A :Ack <cword><CR>
 endif
 
 " Spell checking
@@ -230,15 +230,17 @@ let g:rails_menu=2
 map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
 map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
 map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
-map <Leader>m :Rmodel 
-map <Leader>c :Rcontroller 
-map <Leader>v :Rview 
+map <Leader>m :Rmodel
+map <Leader>c :Rcontroller
+map <Leader>v :Rview
 " map <Leader>sm :RSmodel
 " map <Leader>sc :RScontroller
 " map <Leader>sv :RSview
 " map <Leader>su :RSunittest
 " map <Leader>sf :RSfunctionaltest
-" View routes or Gemfile in large split
+
+" Fabricator
+autocmd User Rails Rnavcommand fabricator spec/fabricators -suffix=_fabricator.rb -default=model()
 
 " NERDTree
 noremap <leader>n :NERDTreeToggle<CR>
@@ -294,8 +296,8 @@ nmap <silent> <leader>b :FufBuffer<CR>
 set complete=.,w,b,u,t,i
 
 " AutoClose
-let g:AutoClosePairs = {'(': ')', '{': '}', '[': ']', '"': '"', "'": "'", '#{': '}'} 
-let g:AutoCloseProtectedRegions = ["Character"] 
+let g:AutoClosePairs = {'(': ')', '{': '}', '[': ']', '"': '"', "'": "'", '#{': '}'}
+let g:AutoCloseProtectedRegions = ["Character"]
 
 let my_home = expand("$HOME/")
 if filereadable(my_home . '.vim/bundle/vim-autocorrect/autocorrect.vim')
@@ -323,9 +325,6 @@ set guifont=Monaco:h12
 "  Directories
 "  ---------------------------------------------------------------------------
 
-set backupdir=~/tmp,/tmp
-set undodir=~/.vim/.tmp,~/tmp,~/.tmp,/tmp
-
 " Ctags path (brew install ctags)
 let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
 
@@ -338,9 +337,3 @@ autocmd BufReadPost *
       \ if line("'\"") > 0 && line("'\"") <= line("$") |
       \   exe "normal g`\"" |
       \ endif
-
-" When vimrc is edited, reload it
-map :Ex :source $MYVIMRC<CR>
-
-" scratch buffer
-map :Es :e ~/scratch-buffer.rb
