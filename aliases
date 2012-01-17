@@ -1,12 +1,14 @@
 unalias g
 # Vim
-alias vim='mvim'
-alias e='mvim'
+alias vim='mvim -v'
 
 # Evently
-alias li='LIVE=true'
-alias lr='LIVE=true RISKY=true'
+alias risky='RISKY=true'
 alias dq='DO_NOT_QUIT_BROWSER=true'
+
+# Broadcast spec runners
+rsh() { rspec spec/broadcast/sites/helpers/"$1"_helper_spec.rb"$2" }
+rss() { LIVE=true rspec spec/broadcast/sites/"$1"_spec.rb"$2" }
 
 # conviniences
 alias -g A='|ack'
@@ -61,15 +63,13 @@ rs () {
 }
 
 # rails logs, tailing and cleaning
-alias tdl='tail -f ./log/development.log'
-alias ttl='tail -f ./log/test.log'
+alias devlog='tail -f ./log/development.log'
+alias testlog='tail -f ./log/test.log'
 
 # ctags
 alias rctags='ctags -R --exclude=.git --exclude=log --exclude=public *'
 
 # rubygems
-alias gin='gem install'
-alias gun='gem uninstall'
 alias gemup='gem update --system && gem update'
 
 # ruby
@@ -78,13 +78,13 @@ alias rv='ruby -v'
 
 # heroku
 alias h="heroku"
-hpush() { git add -A; git commit -m $*; git push heroku master; }
+hpush() { git add -A; git commit -m "$*"; git push heroku master; }
 
 # servers
 alias prgs='ssh thejspr.com'
 
 # files, directories and commands
-alias mx='chmod a+x'
+alias mx='chmod +x'
 alias cd..='cd ..'
 alias ll='ls -lA'
 alias grep='grep --color=auto'

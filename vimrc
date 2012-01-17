@@ -19,7 +19,7 @@ Bundle 'ervandew/supertab'
 Bundle 'git://git.wincent.com/command-t'
 Bundle 'gmarik/snipmate.vim'
 Bundle 'godlygeek/tabular'
-Bundle 'janx/vim-rubytest'
+" Bundle 'janx/vim-rubytest'
 Bundle 'kana/vim-textobj-user'
 Bundle 'mattn/gist-vim'
 Bundle 'mileszs/ack.vim'
@@ -41,6 +41,7 @@ Bundle 'vim-scripts/L9'
 " trial plugins
 Bundle 'bitc/vim-bad-whitespace'
 Bundle 'tpope/vim-markdown'
+Bundle 'skwp/vim-rspec'
 
 filetype plugin indent on     " and turn it back on!
 
@@ -101,7 +102,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set nowrap
-set textwidth=85
+set textwidth=80
 
 "  ---------------------------------------------------------------------------
 "  Mappings
