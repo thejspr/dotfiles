@@ -23,7 +23,7 @@ FORBIDDEN = [
   /\bshow_page\b/,
   /\bconsole\.log\b/,
   /\bconsole\.debug\b/,
-  /binding\.pry/i
+  /*pry*/
 ]
 
 full_diff = `git diff --cached --`
