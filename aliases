@@ -82,6 +82,7 @@ hpush() { git add -A; git commit -m "$*"; git push heroku master; }
 
 # servers
 alias prgs='ssh thejspr.com'
+myip() { elinks -dump http://checkip.dyndns.org:8245/ }
 
 # files, directories and commands
 alias mx='chmod +x'

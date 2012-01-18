@@ -8,16 +8,11 @@ function precmd () {
 if [ -f ~/.aliases ]; then
     . ~/.aliases
 fi
-if [ -f ~/.functions ]; then
-    . ~/.functions
-fi
 
 # disable terminal locking
 stty -ixon -ixoff
 
 unsetopt correct_all
-
-zshaddhistory() { [[ $1 != *cd* ]] }
 
 # specific things for laptop and server
 if [ "$HOST" = "vision" ]; then
