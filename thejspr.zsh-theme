@@ -23,7 +23,7 @@ ZSH_THEME_GIT_TIME_SINCE_COMMIT_NEUTRAL="%{$fg[cyan]%}"
 function check_git_prompt_info() {
     if git rev-parse --git-dir > /dev/null 2>&1; then
         if [[ -z $(git_prompt_info) ]]; then
-            echo "%{$fg[magenta]%}detached-head%{$reset_color%})"
+            echo "(%{$fg[magenta]%}detached-head%{$reset_color%})"
         else
             echo "($(git_prompt_info)"
         fi

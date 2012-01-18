@@ -19,7 +19,7 @@ end
 
 desc "Create symlinks"
 task :links do
-  Dir.glob("*").each do |file| 
+  Dir.glob("*").each do |file|
     next if file =~ /^[R_.]/ || File.directory?(file)
 
     file_target = "~/.#{file}"
