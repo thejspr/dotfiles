@@ -90,10 +90,10 @@ set number
 
 " colorscheme wombat256
 " colorscheme molokai
-let g:solarized_termcolors=256
+" let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
-set t_Co=256
+" set t_Co=256
 
 " Resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="
