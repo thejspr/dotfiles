@@ -1,6 +1,7 @@
 unalias g
 # Vim
 alias vim='mvim -v'
+alias tmux="TERM=screen-256color-bce tmux"
 
 # Evently
 alias risky='RISKY=true'
@@ -34,6 +35,7 @@ g() {
 alias git='hub'
 alias gl='git log --oneline --decorate -20'
 alias gdw='git diff --word-diff'
+alias gci='git commit -v --no-verify'
 
 # rails
 

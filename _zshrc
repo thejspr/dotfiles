@@ -31,5 +31,5 @@ elif [ "$HOST" = "theprogress" ]; then
 elif [ "$HOST" = "jspr.local" ]; then
   # mac
   export PROFILE=default
-  export PATH=$PATH:/usr/local/texlive/2011basic/bin/universal-darwin/:~/bin
+  export PATH=~/bin:$PATH
 fi

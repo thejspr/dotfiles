@@ -42,6 +42,7 @@ Bundle 'vim-scripts/L9'
 Bundle 'bitc/vim-bad-whitespace'
 Bundle 'tpope/vim-markdown'
 Bundle 'skwp/vim-rspec'
+Bundle 'Solarized'
 
 filetype plugin indent on     " and turn it back on!
 
@@ -88,8 +89,11 @@ set laststatus=2
 set number
 
 " colorscheme wombat256
-colorscheme molokai
-" set t_Co=256
+" colorscheme molokai
+let g:solarized_termcolors=256
+set background=dark
+colorscheme solarized
+set t_Co=256
 
 " Resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="
@@ -111,7 +115,7 @@ set textwidth=80
 " Saving and exit
 nmap <leader>q :wq<CR>
 nmap <leader>w :w!<CR>
-nmap <leader><Esc> :q!<CR>
+nmap <leader><Esc> :wall \| :qall<CR>
 
 " save shortcut
 noremap <C-s> <ESC>:w<CR>

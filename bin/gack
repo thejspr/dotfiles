@@ -1,2 +1,2 @@
 #!/bin/sh
-mvim $(ack -g $@)
+git add $(find . -iname *$@*)
