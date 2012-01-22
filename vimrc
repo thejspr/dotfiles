@@ -39,6 +39,8 @@ Bundle 'vim-scripts/L9'
 Bundle 'bitc/vim-bad-whitespace'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-rake'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'tslime.vim'
 
 filetype plugin indent on     " and turn it back on!
 
@@ -62,9 +64,33 @@ set vb
 set undofile
 set undodir=~/.vim/.tmp,~/tmp,~/.tmp,/tmp
 
+" Make vim load shel env
+" set shell=zsh
+" set shellcmdflag=-ic
+
 "  ---------------------------------------------------------------------------
 "  UI
 "  ---------------------------------------------------------------------------
+set colorcolumn=80
+set t_Co=256
+let g:solarized_termcolors=256
+let g:solarized_underline=0
+let g:solarized_style='dark'
+set background=dark
+colorscheme solarized
+
+function! ToggleBackground()
+  if (g:solarized_style=="dark")
+    let g:solarized_style="light"
+    set background=light
+    colorscheme solarized
+  else
+    let g:solarized_style="dark"
+    set background=dark
+    colorscheme solarized
+  endif
+endfunction
+nnoremap <F3> :call ToggleBackground()<CR>
 
 set title
 set encoding=utf-8
@@ -84,7 +110,8 @@ set backspace=indent,eol,start
 set laststatus=2
 set number
 
-colorscheme molokai
+set mouse=a
+set mousehide
 
 " Resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="
@@ -151,7 +178,7 @@ map === mmgg=G`m^zz
 command! Ev :e ~/.vimrc
 command! Eg :e ~/.gvimrc
 " When vimrc is edited, reload it
-command! Ex :source $MYVIMRC | :BundleInstall
+au! BufWritePost .vimrc source %
 " scratch buffer
 command! Es :e ~/scratch-buffer.rb
 
@@ -210,12 +237,8 @@ autocmd BufRead COMMIT_EDITMSG setlocal spell!
 "  #Ruby
 "  ---------------------------------------------------------------------------
 
-autocmd BufNewFile,BufRead Guardfile setf ruby
-
-" testing
-map <Leader>1 <Plug>RubyTestRun
-map <Leader>2 <Plug>RubyFileRun
-map <Leader>3 <Plug>RubyTestRunLast
+au BufRead,BufNewFile *.rb set filetype=ruby.rails.rspec
+au BufRead,BufNewFile Guardfile,config.ru set filetype=ruby
 
 "  ---------------------------------------------------------------------------
 "  Plugins
@@ -311,11 +334,9 @@ if has("gui_running")
   set guioptions-=l " no scrollbar on the left
   set guioptions-=b " no scrollbar on the bottom
   set guioptions=aiA
-  set mouse=a
   set guifont=Monaco:h12 "<- Maybe a good idea when using mac
   set antialias
 endif
-set guifont=Monaco:h12
 
 "  ---------------------------------------------------------------------------
 "  Directories
