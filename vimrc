@@ -17,11 +17,8 @@ Bundle 'Townk/vim-autoclose'
 Bundle 'clones/vim-fuzzyfinder'
 Bundle 'ervandew/supertab'
 Bundle 'git://git.wincent.com/command-t'
-Bundle 'gmarik/snipmate.vim'
 Bundle 'godlygeek/tabular'
-" Bundle 'janx/vim-rubytest'
 Bundle 'kana/vim-textobj-user'
-Bundle 'mattn/gist-vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'mrtazz/molokai.vim'
 Bundle 'msanders/snipmate.vim'
@@ -41,8 +38,7 @@ Bundle 'vim-scripts/L9'
 " trial plugins
 Bundle 'bitc/vim-bad-whitespace'
 Bundle 'tpope/vim-markdown'
-Bundle 'skwp/vim-rspec'
-Bundle 'Solarized'
+Bundle 'tpope/vim-rake'
 
 filetype plugin indent on     " and turn it back on!
 
@@ -88,12 +84,7 @@ set backspace=indent,eol,start
 set laststatus=2
 set number
 
-" colorscheme wombat256
-" colorscheme molokai
-" let g:solarized_termcolors=256
-set background=dark
-colorscheme solarized
-" set t_Co=256
+colorscheme molokai
 
 " Resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="
