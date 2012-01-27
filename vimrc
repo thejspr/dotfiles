@@ -39,7 +39,7 @@ Bundle 'vim-scripts/L9'
 Bundle 'bitc/vim-bad-whitespace'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-rake'
-Bundle 'altercation/vim-colors-solarized'
+" Bundle 'altercation/vim-colors-solarized'
 Bundle 'tslime.vim'
 
 filetype plugin indent on     " and turn it back on!
@@ -71,13 +71,15 @@ set undodir=~/.vim/.tmp,~/tmp,~/.tmp,/tmp
 "  ---------------------------------------------------------------------------
 "  UI
 "  ---------------------------------------------------------------------------
-set colorcolumn=80
-set t_Co=256
-let g:solarized_termcolors=256
-let g:solarized_underline=0
-let g:solarized_style='dark'
-set background=dark
-colorscheme solarized
+" map <Esc>[B <Down>
+" set colorcolumn=80
+" set t_Co=256
+" let g:solarized_termcolors=256
+" let g:solarized_underline=0
+" let g:solarized_style='dark'
+" set background=dark
+" colorscheme solarized
+colorscheme molokai
 
 function! ToggleBackground()
   if (g:solarized_style=="dark")
@@ -180,7 +182,7 @@ command! Eg :e ~/.gvimrc
 " When vimrc is edited, reload it
 au! BufWritePost .vimrc source %
 " scratch buffer
-command! Es :e ~/scratch-buffer.rb
+command! Es :e ~/scratch-buffer.txt
 
 " Copy paste in/out of vim
 noremap <C-c> "+y

@@ -12,7 +12,7 @@ export ZSH_THEME="thejspr"
 # Comment this out to disable weekly auto-update checks
 # export DISABLE_AUTO_UPDATE="true"
 
-plugins=(git bundler)
+plugins=(git bundler osx brew)
 if [ "$HOST" = "theprogress" ]; then
   plugins=(git rvm)
 fi
