@@ -1,6 +1,6 @@
 [user]
-  name = Jesper Kjeldgaard
-  email = thejspr@gmail.com
+	name = Jesper Kjeldgaard
+	email = thejspr@gmail.com
 [github]
   user = thejspr
 [color]
@@ -13,14 +13,19 @@
   excludesfile = /Users/jesper/.gitignore
   editor = mvim -v
 [alias]
-  a = add
+  a = !git add . && git status
+	au = !git add -u . && git status
+	aa = !git add . && git add -u . && git status
   c = commit -v
-  cm = commit -v -m
+  cm = commit -m
   ca = commit -v -a
-  d = diff
+  d = diff --color-words
+  dh = diff --color-words head
+  master = checkout master
   co = checkout
   b = branch
   l = log
+  alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
 [apply]
   whitespace = nowarn
 [branch]

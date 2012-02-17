@@ -1,4 +1,4 @@
-export PATH=/usr/local/bin:$HOME/.rbenv/bin:$PATH
+export PATH=$HOME/.rbenv/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -12,7 +12,7 @@ export ZSH_THEME="thejspr"
 # Comment this out to disable weekly auto-update checks
 # export DISABLE_AUTO_UPDATE="true"
 
-plugins=(git bundler osx brew)
+plugins=(git bundler osx brew history-substring-search zsh-syntax-highlighting)
 if [ "$HOST" = "theprogress" ]; then
   plugins=(git rvm)
 fi

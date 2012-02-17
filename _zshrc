@@ -20,16 +20,21 @@ if [ "$HOST" = "vision" ]; then
   export PATH=${PATH}:$HOME/apps/android-sdk-linux_x86/tools:$HOME/apps/eclipse:$HOME/bin
   export PATH=$PATH:~/.cabal/bin # Haskell
   cp ~/repos/sabnzbd.ini ~/.sabnzbd/
-  export AUTOFEATURE=true
-  export JRUBY_OPTS=--1.9
-  export RBXOPT=-X19
   export EDITOR=gvim
-elif [ "$HOST" = "theprogress" ]; then
-  # virtual host
-  export PATH=${PATH}:/usr/local/nginx/sbin/
-  export RAILS_ENV=production
 elif [ "$HOST" = "jspr.local" ]; then
   # mac
   export PROFILE=default
   export PATH=~/bin:$PATH
+fi
+
+# ruby
+export RUBY_HEAP_MIN_SLOTS=1000000
+export RUBY_HEAP_SLOTS_INCREMENT=1000000
+export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
+export RUBY_GC_MALLOC_LIMIT=1000000000
+export RUBY_HEAP_FREE_MIN=500000
+
+# Work
+if [ -f ~/.beh_ec2_auth ]; then
+    . ~/.beh_ec2_auth
 fi

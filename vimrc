@@ -14,6 +14,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'Townk/vim-autoclose'
+Bundle 'bitc/vim-bad-whitespace'
 Bundle 'clones/vim-fuzzyfinder'
 Bundle 'ervandew/supertab'
 Bundle 'git://git.wincent.com/command-t'
@@ -30,17 +31,17 @@ Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'vim-coffee-script'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'vim-scripts/L9'
 
 " trial plugins
-Bundle 'bitc/vim-bad-whitespace'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-rake'
-" Bundle 'altercation/vim-colors-solarized'
-Bundle 'tslime.vim'
+Bundle 'pangloss/vim-javascript'
+" Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 
 filetype plugin indent on     " and turn it back on!
 
@@ -71,28 +72,8 @@ set undodir=~/.vim/.tmp,~/tmp,~/.tmp,/tmp
 "  ---------------------------------------------------------------------------
 "  UI
 "  ---------------------------------------------------------------------------
-" map <Esc>[B <Down>
-" set colorcolumn=80
-" set t_Co=256
-" let g:solarized_termcolors=256
-" let g:solarized_underline=0
-" let g:solarized_style='dark'
-" set background=dark
-" colorscheme solarized
-colorscheme molokai
 
-function! ToggleBackground()
-  if (g:solarized_style=="dark")
-    let g:solarized_style="light"
-    set background=light
-    colorscheme solarized
-  else
-    let g:solarized_style="dark"
-    set background=dark
-    colorscheme solarized
-  endif
-endfunction
-nnoremap <F3> :call ToggleBackground()<CR>
+colorscheme molokai
 
 set title
 set encoding=utf-8
@@ -242,6 +223,9 @@ autocmd BufRead COMMIT_EDITMSG setlocal spell!
 au BufRead,BufNewFile *.rb set filetype=ruby.rails.rspec
 au BufRead,BufNewFile Guardfile,config.ru set filetype=ruby
 
+" Replace Ruby 1.8 style hashes with shorter Ruby 1.9 style
+map <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/<CR>
+
 "  ---------------------------------------------------------------------------
 "  Plugins
 "  ---------------------------------------------------------------------------
@@ -251,9 +235,9 @@ let g:rails_menu=2
 map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
 map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
 map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
-map <Leader>m :Rmodel
-map <Leader>c :Rcontroller
-map <Leader>v :Rview
+map <Leader>m :Rmodel<space>
+map <Leader>c :Rcontroller<space>
+map <Leader>v :Rview<space>
 " map <Leader>sm :RSmodel
 " map <Leader>sc :RScontroller
 " map <Leader>sv :RSview
@@ -283,9 +267,9 @@ endif
 map <leader>t :CommandTFlush<cr>\|:CommandT<cr>
 let g:CommandTMatchWindowAtTop=1 " show window at top
 let g:CommandTMaxHeight=20
-set wildignore+=*.o,*~,*.obj,.git/**,tmp/**,app/assets/images/**,public/images/**,public/assets/**
+set wildignore+=*.o,*~,*.obj,.git/**,tmp/**,app/assets/images/**,public/**
 set wildignore+=*.class,*.doc,*.lock,**.png,**.jpg,**.jpeg
-set wildignore+=*.sass-cache/**,build/**,coverage/**
+set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**
 set wildignore+=doc/**,rdoc/**
 
 " Center screen when scrolling search results

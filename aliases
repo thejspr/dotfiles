@@ -1,4 +1,5 @@
-unalias g
+export EDITOR=mvim
+
 # Vim
 alias vim='mvim -v'
 alias tmux="TERM=screen-256color-bce tmux"
@@ -7,7 +8,7 @@ alias tmux="TERM=screen-256color-bce tmux"
 alias risky='RISKY=true'
 alias dq='DO_NOT_QUIT_BROWSER=true'
 alias rsq='ps -ef | grep resque'
-bcwl() { RAILS_ENV=production rake broadcast:work QUEUE="$1" }
+bcwl() { DO_NOT_QUIT_BROWSER=true RAILS_ENV=production rake broadcast:work QUEUE="$1" }
 
 # Broadcast spec runners
 rsh() { rspec spec/broadcast/sites/helpers/"$1"_helper_spec.rb"$2" }
@@ -25,6 +26,7 @@ alias -g N='&>/dev/null&'
 alias -g W='|wc'
 
 # git
+unalias g
 gpush() { git add -A; git commit -m "$@"; git push; }
 g() {
   if [[ $# == '0' ]]; then
@@ -41,6 +43,7 @@ alias gdw='git diff --word-diff'
 alias gci='git commit -v --no-verify'
 
 # rails
+alias migrate='rake db:migrate && rake db:test:clone_structure'
 
 # launching console/server
 rc () {
