@@ -6,7 +6,7 @@ function precmd () {
 
 # Alias and function definitions.
 if [ -f ~/.aliases ]; then
-    . ~/.aliases
+  . ~/.aliases
 fi
 
 # disable terminal locking
@@ -36,5 +36,7 @@ export RUBY_HEAP_FREE_MIN=500000
 
 # Work
 if [ -f ~/.beh_ec2_auth ]; then
-    . ~/.beh_ec2_auth
+  . ~/.beh_ec2_auth
 fi
+
+export PAGER=vimpager

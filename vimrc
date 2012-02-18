@@ -248,7 +248,7 @@ map <Leader>v :Rview<space>
 autocmd User Rails Rnavcommand fabricator spec/fabricators -suffix=_fabricator.rb -default=model()
 
 " NERDTree
-noremap <leader>n :NERDTreeToggle<CR>
+noremap <F2> :NERDTreeToggle<CR>
 let g:NERDTreeQuitOnOpen=0
 let g:NERDTreeShowHidden=1
 let g:NERDTreeShowBookmarks = 0

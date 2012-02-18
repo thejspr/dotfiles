@@ -12,15 +12,15 @@ export ZSH_THEME="thejspr"
 # Comment this out to disable weekly auto-update checks
 # export DISABLE_AUTO_UPDATE="true"
 
-plugins=(git bundler osx brew history-substring-search zsh-syntax-highlighting)
-if [ "$HOST" = "theprogress" ]; then
-  plugins=(git rvm)
-fi
+# OFF
+# zsh-syntax-highlighting
+plugins=(git bundler osx brew history-substring-search)
+if [ "$HOST" = "theprogress" ]; then; plugins=(git rvm); fi
 
 source $ZSH/oh-my-zsh.sh
 
 if [ -f ~/Code/dotfiles/_zshrc ]; then
-    . ~/Code/dotfiles/_zshrc
+  . ~/Code/dotfiles/_zshrc
 fi
 
 # rbenv
