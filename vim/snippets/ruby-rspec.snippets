@@ -14,43 +14,11 @@ snippet desc
 		end
 
 	end
-snippet descd
-	describe ${1:class}, '${2:description}' do
-		before do
-			${3}
-		end
-
-	end
-snippet desb
-	describe '${1:description}' do
-		before(:each) do
-			${2}
-		end
-
-	end
-
-# before & after
-snippet bef
-	before(:${1:each}) do
-		${2}
-	end
-snippet aft
-	after(:${1:each}) do
-		${2}
-	end
 
 # it should
 snippet it
 	it '${1:description}' do
 		${2}
-	end
-snippet itsh
-	it "should ${1:description}" do
-		${2:model}.should ${3}
-	end
-snippet itshbe
-	it "should ${1:description}" do
-		${2:model}.should be_${3}
 	end
 
 # matchers

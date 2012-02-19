@@ -254,7 +254,7 @@ let g:NERDTreeShowHidden=1
 let g:NERDTreeShowBookmarks = 0
 let g:NERDChristmasTree = 1
 let g:NERDTreeWinPos = "left"
-let g:NERDTreeWinSize = 30
+let g:NERDTreeWinSize = 20
 let g:NERDTreeIgnore=['\.git$','\.sass-cache', '\.DS_Store']
 
 " vim-autoclose
