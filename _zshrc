@@ -38,5 +38,3 @@ export RUBY_HEAP_FREE_MIN=500000
 if [ -f ~/.beh_ec2_auth ]; then
   . ~/.beh_ec2_auth
 fi
-
-export PAGER=vimpager

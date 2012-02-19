@@ -17,14 +17,24 @@ task :vim do
   puts "Vim setup done"
 end
 
+IGNORE    = %w(Gemfile.lock githooks iterm scripts Rakefile _zshrc .git .gitignore)
+NO_PREFIX = %w(Gemfile bin)
+
 desc "Create symlinks"
 task :links do
   Dir.glob("*").each do |file|
-    next if file =~ /^[R_.]/ || File.directory?(file)
 
-    file_target = "~/.#{file}"
-    file_target = "~/.oh-my-zsh/themes/#{file}" if file == 'thejspr.zsh-theme'
-    file_target = File.expand_path(file_target)
+    if IGNORE.include?(file)
+      next
+    elsif NO_PREFIX.include?(file)
+      target = "~/#{file}"
+    elsif file =~ /zsh-theme/
+      target = "~/.oh-my-zsh/themes/#{file}"
+    else
+      target = "~/.#{file}"
+    end
+
+    file_target = File.expand_path(target)
 
     next if File.exists?(file_target) || File.symlink?(file_target)
 

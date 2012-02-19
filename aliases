@@ -1,5 +1,9 @@
 export EDITOR=mvim
 
+# Filetypes
+alias -s rb=mvim
+alias -s log=mvim
+
 # Vim
 alias vim='mvim -v'
 alias tmux="TERM=screen-256color-bce tmux"
@@ -20,14 +24,11 @@ alias -g L='|less'
 alias -g V='|vim -'
 alias -g M='|mvim -'
 alias -g G='|grep'
-alias -g T='|tail'
-alias -g H='|head'
 alias -g N='&>/dev/null&'
 alias -g W='|wc'
 
 # git
 unalias g
-gpush() { git add -A; git commit -m "$@"; git push; }
 g() {
   if [[ $# == '0' ]]; then
     command hub status -sb
@@ -48,7 +49,7 @@ alias migrate='rake db:migrate && rake db:test:clone_structure'
 # launching console/server
 rc () {
   if [ -f ./script/rails ]; then
-    rails c $@
+    be rails c $@
   else
     ./script/console $@
   fi
@@ -56,7 +57,7 @@ rc () {
 
 rg () {
   if [ -f ./script/rails ]; then
-    rails g $@
+    be rails g $@
   else
     ./script/generate $@
   fi
@@ -64,7 +65,7 @@ rg () {
 
 rs () {
   if [ -f ./script/rails ]; then
-    rails s $@
+    be rails s $@
   else
     ./script/server $@
   fi
