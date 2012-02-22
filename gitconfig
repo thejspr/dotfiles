@@ -3,6 +3,7 @@
 	email = thejspr@gmail.com
 [github]
   user = thejspr
+	token = 4a4aac000c2ee16857d75e4d999b7c71
 [color]
   ui = true
 [mergetool]
@@ -14,17 +15,15 @@
   editor = mvim -v
 [alias]
   a = !git add . && git status
-	au = !git add -u . && git status
-	aa = !git add . && git add -u . && git status
   c = commit -v
   cm = commit -m
   ca = commit -v -a
   d = diff --color-words
-  dh = diff --color-words head
-  master = checkout master
+  ms = checkout master
   co = checkout
   b = branch
   l = log
+  panic = !tar cvf ../git_panic.tar .
   alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
 [apply]
   whitespace = nowarn

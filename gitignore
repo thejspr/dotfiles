@@ -4,3 +4,4 @@ vim/backup/
 *.rbc
 .DS_Store
 .rbenv-version
+tmp.txt

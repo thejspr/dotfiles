@@ -45,31 +45,8 @@ alias gci='git commit -v --no-verify'
 
 # rails
 alias migrate='rake db:migrate && rake db:test:clone_structure'
-
-# launching console/server
-rc () {
-  if [ -f ./script/rails ]; then
-    be rails c $@
-  else
-    ./script/console $@
-  fi
-}
-
-rg () {
-  if [ -f ./script/rails ]; then
-    be rails g $@
-  else
-    ./script/generate $@
-  fi
-}
-
-rs () {
-  if [ -f ./script/rails ]; then
-    be rails s $@
-  else
-    ./script/server $@
-  fi
-}
+alias rs='rails server thin'
+alias rc='rails console'
 
 # rails logs, tailing and cleaning
 alias devlog='tail -f ./log/development.log'
