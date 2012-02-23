@@ -215,6 +215,7 @@ nmap <F6> :%s/\s*$//<CR>:noh<CR>
 "  #Git
 "  ---------------------------------------------------------------------------
 autocmd BufRead COMMIT_EDITMSG setlocal spell!
+autocmd BufRead COMMIT_EDITMSG setlocal nocursorline
 
 "  ---------------------------------------------------------------------------
 "  #Ruby
