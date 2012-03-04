@@ -1,7 +1,4 @@
 set nocompatible               " be iMproved
-"  ---------------------------------------------------------------------------
-"  Plugins
-"  ---------------------------------------------------------------------------
 
 if !isdirectory(expand("~/.vim/bundle/vundle/.git"))
   !git clone git://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
@@ -126,18 +123,6 @@ inoremap <C-s> <ESC>:w<CR>
 " Map ESC
 imap jj <ESC>
 
-"Move a line of text using Ctrl+[jk]
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
-" easier navigation between split windows
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
-
 " Searching / moving
 set hlsearch
 set incsearch
@@ -245,9 +230,6 @@ map <Leader>v :Rview<space>
 " map <Leader>su :RSunittest
 " map <Leader>sf :RSfunctionaltest
 
-" Fabricator
-autocmd User Rails Rnavcommand fabricator spec/fabricators -suffix=_fabricator.rb -default=model()
-
 " NERDTree
 noremap <F2> :NERDTreeToggle<CR>
 let g:NERDTreeQuitOnOpen=0
@@ -255,7 +237,7 @@ let g:NERDTreeShowHidden=1
 let g:NERDTreeShowBookmarks = 0
 let g:NERDChristmasTree = 1
 let g:NERDTreeWinPos = "left"
-let g:NERDTreeWinSize = 20
+let g:NERDTreeWinSize = 30
 let g:NERDTreeIgnore=['\.git$','\.sass-cache', '\.DS_Store']
 
 " vim-autoclose
@@ -265,7 +247,8 @@ endif
 
 " Command-T
 " find file
-map <leader>t :CommandTFlush<cr>\|:CommandT<cr>
+map <Leader>t :CommandT<CR>
+map <leader>T :CommandTFlush<cr>\|:CommandT<cr>
 let g:CommandTMatchWindowAtTop=1 " show window at top
 let g:CommandTMaxHeight=20
 set wildignore+=*.o,*~,*.obj,.git/**,tmp/**,app/assets/images/**,public/**
@@ -284,12 +267,6 @@ noremap <leader>9 :Gcommit<CR>
 " Supertab
 let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 let g:SuperTabLongestHighlight = 1
-
-" Tabularize
-" align symbols
-map <leader>as :Tab/\w\+ "[^"]*",/l0l1<CR>
-" align equals
-map <leader>a= :Tabularize/=\(.*=\)\@!/<CR>
 
 " tComment
 nnoremap // :TComment<CR>
@@ -341,3 +318,28 @@ autocmd BufReadPost *
       \ if line("'\"") > 0 && line("'\"") <= line("$") |
       \   exe "normal g`\"" |
       \ endif
+
+"  ---------------------------------------------------------------------------
+" New stuff
+"  ---------------------------------------------------------------------------
+" reselect visual lock after indent/outdent
+vnoremap < <gv
+vnoremap > >gv
+
+" easy split navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" improve movement on wrapped lines
+nnoremap j gj
+nnoremap k gk
+
+" move lines vertivally
+noremap <A-j> :m+<CR>
+noremap <A-k> :m-2<CR>
+inoremap <A-j> <Esc>:m+<CR>
+inoremap <A-k> <Esc>:m-2<CR>
+vnoremap <A-j> :m'>+<CR>gv
+vnoremap <A-k> :m-2<CR>gv
