@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# heroku create "$@" --stack cedar
+
+heroku addons:add mongolab:starter
+heroku addons:add logging:expanded
+heroku addons:add newrelic:standard
+heroku addons:add sendgrid:starter

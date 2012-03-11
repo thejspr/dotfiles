@@ -10,21 +10,22 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'Townk/vim-autoclose'
+" Bundle 'Townk/vim-autoclose'
 Bundle 'bitc/vim-bad-whitespace'
 Bundle 'clones/vim-fuzzyfinder'
-Bundle 'ervandew/supertab'
+" Bundle 'ervandew/supertab'
 Bundle 'git://git.wincent.com/command-t'
 Bundle 'godlygeek/tabular'
-Bundle 'kana/vim-textobj-user'
 Bundle 'mileszs/ack.vim'
 Bundle 'mrtazz/molokai.vim'
 Bundle 'msanders/snipmate.vim'
+Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'panozzaj/vim-autocorrect'
 Bundle 'scrooloose/nerdtree'
 Bundle 'sickill/vim-pasta'
 Bundle 'tomtom/tcomment_vim'
+Bundle 'Auto-Pairs'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails'
@@ -35,10 +36,11 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'vim-scripts/L9'
 
 " trial plugins
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-rake'
-Bundle 'pangloss/vim-javascript'
-" Bundle 'jeffkreeftmeijer/vim-numbertoggle'
+" Bundle 'tpope/vim-markdown'
+" Bundle 'tpope/vim-rake'
+" Bundle 'pangloss/vim-javascript'
+" Bundle 'Vim-R-plugin'
+Bundle 'less.vim'
 
 filetype plugin indent on     " and turn it back on!
 
@@ -111,9 +113,7 @@ set textwidth=80
 "  ---------------------------------------------------------------------------
 
 " Saving and exit
-nmap <leader>q :wq<CR>
-nmap <leader>w :w!<CR>
-nmap <leader><Esc> :wall \| :qall<CR>
+nmap <leader>w :wq<CR>
 
 " save shortcut
 noremap <C-s> <ESC>:w<CR>
@@ -245,11 +245,11 @@ if !has("gui_running")
   let g:AutoClosePreservDotReg = 0
 endif
 
-" Command-T
+"cmdt
 " find file
 map <Leader>t :CommandT<CR>
 map <leader>T :CommandTFlush<cr>\|:CommandT<cr>
-let g:CommandTMatchWindowAtTop=1 " show window at top
+let g:CommandTMatchWindowAtTop=0 " show window at top
 let g:CommandTMaxHeight=20
 set wildignore+=*.o,*~,*.obj,.git/**,tmp/**,app/assets/images/**,public/**
 set wildignore+=*.class,*.doc,*.lock,**.png,**.jpg,**.jpeg

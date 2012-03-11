@@ -14,7 +14,7 @@ export ZSH_THEME="thejspr"
 
 # OFF
 # zsh-syntax-highlighting
-plugins=(git bundler osx brew history-substring-search)
+plugins=(git bundler osx brew history-substring-search gem pow)
 if [ "$HOST" = "theprogress" ]; then; plugins=(git rvm); fi
 
 source $ZSH/oh-my-zsh.sh
