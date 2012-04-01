@@ -1,46 +1,42 @@
 set nocompatible               " be iMproved
-
 if !isdirectory(expand("~/.vim/bundle/vundle/.git"))
   !git clone git://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 endif
-
 filetype off                   " must be off before Vundle has run
 set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
-Bundle 'Lokaltog/vim-powerline'
-" Bundle 'Townk/vim-autoclose'
 Bundle 'bitc/vim-bad-whitespace'
 Bundle 'clones/vim-fuzzyfinder'
-" Bundle 'ervandew/supertab'
+Bundle 'ervandew/supertab'
 Bundle 'git://git.wincent.com/command-t'
 Bundle 'godlygeek/tabular'
 Bundle 'mileszs/ack.vim'
-Bundle 'mrtazz/molokai.vim'
 Bundle 'msanders/snipmate.vim'
 Bundle 'kana/vim-textobj-user'
+Bundle 'kana/vim-smartinput'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'panozzaj/vim-autocorrect'
 Bundle 'scrooloose/nerdtree'
 Bundle 'sickill/vim-pasta'
 Bundle 'tomtom/tcomment_vim'
-Bundle 'Auto-Pairs'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
 Bundle 'vim-coffee-script'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'vim-scripts/L9'
 
-" trial plugins
-" Bundle 'tpope/vim-markdown'
-" Bundle 'tpope/vim-rake'
+" Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-markdown'
+
 " Bundle 'pangloss/vim-javascript'
-" Bundle 'Vim-R-plugin'
-Bundle 'less.vim'
+" Bundle 'molokai'
+
+" MacVim
+Bundle 'Lokaltog/vim-powerline'
 
 filetype plugin indent on     " and turn it back on!
 
@@ -62,17 +58,22 @@ syntax enable
 set autoread
 set vb
 set undofile
-set undodir=~/.vim/.tmp,~/tmp,~/.tmp,/tmp
+set undodir=~/.tmp,/tmp
 
-" Make vim load shel env
-" set shell=zsh
-" set shellcmdflag=-ic
+"#tmux
+set clipboard=unnamed
+
+if &term =~ "xterm"
+  let g:CommandTCancelMap     = ['<ESC>', '<C-c>']
+  let g:CommandTSelectNextMap = ['<C-n>', '<C-j>', '<ESC>OB']
+  let g:CommandTSelectPrevMap = ['<C-p>', '<C-k>', '<ESC>OA']
+endif
 
 "  ---------------------------------------------------------------------------
 "  UI
 "  ---------------------------------------------------------------------------
 
-colorscheme molokai
+colorscheme desert
 
 set title
 set encoding=utf-8
@@ -85,7 +86,7 @@ set showcmd
 set hidden
 set wildmenu
 set wildmode=list:longest,full
-set cursorline
+" set cursorline
 set ttyfast
 set ruler
 set backspace=indent,eol,start
@@ -98,6 +99,14 @@ set mousehide
 " Resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="
 
+set winwidth=84
+" We have to have a winheight bigger than we want to set winminheight. But if
+" we set winheight to be huge before winminheight, the winminheight set will
+" fail.
+set winheight=5
+set winminheight=5
+set winheight=999
+
 "  ---------------------------------------------------------------------------
 "  Text Formatting
 "  ---------------------------------------------------------------------------
@@ -105,15 +114,15 @@ au VimResized * exe "normal! \<c-w>="
 set tabstop=2
 set shiftwidth=2
 set expandtab
-set nowrap
+set wrap
 set textwidth=80
 
 "  ---------------------------------------------------------------------------
 "  Mappings
 "  ---------------------------------------------------------------------------
 
-" Saving and exit
-nmap <leader>w :wq<CR>
+" Switch between the last two files
+nnoremap <leader><leader> <c-^>
 
 " save shortcut
 noremap <C-s> <ESC>:w<CR>
@@ -144,7 +153,6 @@ map === mmgg=G`m^zz
 
 " edit .vimrc
 command! Ev :e ~/.vimrc
-command! Eg :e ~/.gvimrc
 " When vimrc is edited, reload it
 au! BufWritePost .vimrc source %
 " scratch buffer
@@ -178,10 +186,28 @@ noremap <leader>sd z=
 " Switch between buffers
 noremap <tab> :bn<CR>
 noremap <S-tab> :bp<CR>
-" close buffer
-nmap <leader>d :bd<CR>
-" close all buffers
-nmap <leader>D :bufdo bd<CR>
+
+" reselect visual lock after indent/outdent
+vnoremap < <gv
+vnoremap > >gv
+
+" easy split navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" improve movement on wrapped lines
+nnoremap j gj
+nnoremap k gk
+
+" move lines vertivally
+noremap <C-j> :m+<CR>
+noremap <C-k> :m-2<CR>
+inoremap <C-j> <Esc>:m+<CR>
+inoremap <C-k> <Esc>:m-2<CR>
+vnoremap <C-j> :m'>+<CR>gv
+vnoremap <C-k> :m-2<CR>gv
 
 "  ---------------------------------------------------------------------------
 "  Function Keys
@@ -207,7 +233,7 @@ autocmd BufRead COMMIT_EDITMSG setlocal nocursorline
 "  ---------------------------------------------------------------------------
 
 au BufRead,BufNewFile *.rb set filetype=ruby.rails.rspec
-au BufRead,BufNewFile Guardfile,config.ru set filetype=ruby
+au BufRead,BufNewFile Guardfile,*.ru set filetype=ruby
 
 " Replace Ruby 1.8 style hashes with shorter Ruby 1.9 style
 map <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/<CR>
@@ -216,19 +242,30 @@ map <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/<CR>
 "  Plugins
 "  ---------------------------------------------------------------------------
 
-" Rails
-let g:rails_menu=2
-map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
-map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
-map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
+" Rails.vim
 map <Leader>m :Rmodel<space>
 map <Leader>c :Rcontroller<space>
 map <Leader>v :Rview<space>
-" map <Leader>sm :RSmodel
-" map <Leader>sc :RScontroller
-" map <Leader>sv :RSview
-" map <Leader>su :RSunittest
-" map <Leader>sf :RSfunctionaltest
+map <leader>gr :topleft :split config/routes.rb<cr>
+map <leader>gg :topleft 100 :split Gemfile<cr>
+
+function! ShowRoutes()
+  " Requires 'scratch' plugin
+  :topleft 100 :split __Routes__
+  " Make sure Vim doesn't write __Routes__ as a file
+  :set buftype=nofile
+  " Delete everything
+  :normal 1GdG
+  " Put routes output in buffer
+  :0r! rake -s routes
+  " Size window to number of lines (1 plus rake output length)
+  :exec ":normal " . line("$") . _ "
+  " Move cursor to bottom
+  :normal 1GG
+  " Delete empty trailing line
+  :normal dd
+  endfunction
+map <leader>gR :call ShowRoutes()<cr>
 
 " NERDTree
 noremap <F2> :NERDTreeToggle<CR>
@@ -240,20 +277,20 @@ let g:NERDTreeWinPos = "left"
 let g:NERDTreeWinSize = 30
 let g:NERDTreeIgnore=['\.git$','\.sass-cache', '\.DS_Store']
 
-" vim-autoclose
-if !has("gui_running")
-  let g:AutoClosePreservDotReg = 0
-endif
-
-"cmdt
-" find file
-map <Leader>t :CommandT<CR>
-map <leader>T :CommandTFlush<cr>\|:CommandT<cr>
+" Command-t
+map <leader>t :CommandTFlush<cr>\|:CommandT<cr>
+map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
+map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
+map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
+map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
+map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
+map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
+map <leader>gs :CommandTFlush<cr>\|:CommandT public/stylesheets<cr>
 let g:CommandTMatchWindowAtTop=0 " show window at top
 let g:CommandTMaxHeight=20
 set wildignore+=*.o,*~,*.obj,.git/**,tmp/**,app/assets/images/**,public/**
 set wildignore+=*.class,*.doc,*.lock,**.png,**.jpg,**.jpeg
-set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**
+set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**,solr/**
 set wildignore+=doc/**,rdoc/**
 
 " Center screen when scrolling search results
@@ -272,34 +309,12 @@ let g:SuperTabLongestHighlight = 1
 nnoremap // :TComment<CR>
 vnoremap // :TComment<CR>
 
-" Buffer window (find file in open buffers)
-nmap <silent> <leader>b :FufBuffer<CR>
-
 " Use only current file to autocomplete from tags
 set complete=.,w,b,u,t,i
-
-" AutoClose
-let g:AutoClosePairs = {'(': ')', '{': '}', '[': ']', '"': '"', "'": "'", '#{': '}'}
-let g:AutoCloseProtectedRegions = ["Character"]
 
 let my_home = expand("$HOME/")
 if filereadable(my_home . '.vim/bundle/vim-autocorrect/autocorrect.vim')
   source ~/.vim/bundle/vim-autocorrect/autocorrect.vim
-endif
-
-"  ---------------------------------------------------------------------------
-"  GUI
-"  ---------------------------------------------------------------------------
-
-if has("gui_running")
-  set guioptions-=T " no toolbar set guioptions-=m " no menus
-  set guioptions-=r " no scrollbar on the right
-  set guioptions-=R " no scrollbar on the right
-  set guioptions-=l " no scrollbar on the left
-  set guioptions-=b " no scrollbar on the bottom
-  set guioptions=aiA
-  set guifont=Monaco:h12 "<- Maybe a good idea when using mac
-  set antialias
 endif
 
 "  ---------------------------------------------------------------------------
@@ -310,36 +325,46 @@ endif
 let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
 
 "  ---------------------------------------------------------------------------
-"  Misc
-"  ---------------------------------------------------------------------------
-
-" When editing a file, always jump to the last known cursor position.
-autocmd BufReadPost *
-      \ if line("'\"") > 0 && line("'\"") <= line("$") |
-      \   exe "normal g`\"" |
-      \ endif
-
-"  ---------------------------------------------------------------------------
 " New stuff
 "  ---------------------------------------------------------------------------
-" reselect visual lock after indent/outdent
-vnoremap < <gv
-vnoremap > >gv
 
-" easy split navigation
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+function! RunTests(filename)
+    " Write the file and run tests for the given filename
+    :w
+    :silent !echo;echo;echo;echo;echo
+    exec ":!bundle exec rspec " . a:filename
+endfunction
 
-" improve movement on wrapped lines
-nnoremap j gj
-nnoremap k gk
+function! SetTestFile()
+    " Set the spec file that tests will be run for.
+    let t:grb_test_file=@%
+endfunction
 
-" move lines vertivally
-noremap <A-j> :m+<CR>
-noremap <A-k> :m-2<CR>
-inoremap <A-j> <Esc>:m+<CR>
-inoremap <A-k> <Esc>:m-2<CR>
-vnoremap <A-j> :m'>+<CR>gv
-vnoremap <A-k> :m-2<CR>gv
+function! RunTestFile(...)
+    if a:0
+        let command_suffix = a:1
+    else
+        let command_suffix = ""
+    endif
+
+    " Run the tests for the previously-marked file.
+    let in_spec_file = match(expand("%"), '_spec.rb$') != -1
+    if in_spec_file
+        call SetTestFile()
+    elseif !exists("t:grb_test_file")
+        return
+    end
+    call RunTests(t:grb_test_file . command_suffix)
+endfunction
+
+function! RunNearestTest()
+    let spec_line_number = line('.')
+    call RunTestFile(":" . spec_line_number)
+endfunction
+
+" Run this file
+map <leader>R :call RunTestFile()<cr>
+" Run only the example under the cursor
+map <leader>r :call RunNearestTest()<cr>
+" Run all test files
+" map <leader>a :call RunTests('spec')<cr>

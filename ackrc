@@ -1,11 +1,18 @@
---type-add=ruby=.haml,.rake,.rsel,.builder
+--type-add=ruby=rake,haml
+--type-add=vim=vimrc
 --type-add=html=.html.erb,.html.haml
--type-add=js=.js.erb,.js.haml,.coffee
---type-add=css=.sass
---type-set=cucumber=.feature
+--type-add=js=json,.js.erb,.coffee
+
+# add types ack doesn't know about
+--type-set=cucumber=feature
+--type-set=css=sass
+--type-set=MARKDOWN=md,mkd,markdown
+--type-set=RDOC=rdoc
+
 --ignore-dir=vendor
 --ignore-dir=log
 --ignore-dir=tmp
 --ignore-dir=doc
 --ignore-dir=coverage
+
 --sort-files

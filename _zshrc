@@ -24,7 +24,6 @@ if [ "$HOST" = "vision" ]; then
 elif [ "$HOST" = "jspr.local" ]; then
   # mac
   export PROFILE=default
-  export PATH=~/bin:$PATH
 fi
 
 # ruby
@@ -33,6 +32,9 @@ export RUBY_HEAP_SLOTS_INCREMENT=1000000
 export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
 export RUBY_GC_MALLOC_LIMIT=1000000000
 export RUBY_HEAP_FREE_MIN=500000
+
+# parallel_test
+export PARALLEL_TEST_PROCESSORS=2
 
 # Work
 if [ -f ~/.beh_ec2_auth ]; then

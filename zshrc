@@ -1,9 +1,9 @@
 export PATH=$HOME/.rbenv/bin:/usr/local/bin:$PATH
+
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.oh-my-zsh
 
 # Set to the name theme to load.
-# Look in ~/.oh-my-zsh/themes/
 export ZSH_THEME="thejspr"
 
 # Set to this to use case-sensitive completion
@@ -14,8 +14,7 @@ export ZSH_THEME="thejspr"
 
 # OFF
 # zsh-syntax-highlighting
-plugins=(git bundler osx brew history-substring-search gem pow)
-if [ "$HOST" = "theprogress" ]; then; plugins=(git rvm); fi
+plugins=(git bundler osx brew history-substring-search gem)
 
 source $ZSH/oh-my-zsh.sh
 

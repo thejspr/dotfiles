@@ -1,4 +1,5 @@
 export EDITOR=mvim
+alias time='/usr/bin/time'
 
 #filetypes
 alias -s rb=mvim
@@ -12,7 +13,10 @@ alias tmux="TERM=screen-256color-bce tmux"
 alias risky='RISKY=true'
 alias dq='DO_NOT_QUIT_BROWSER=true'
 alias rsq='ps -ef | grep resque'
-bcwl() { DO_NOT_QUIT_BROWSER=true RAILS_ENV=production rake broadcast:work QUEUE="$1" }
+bcw() { DO_NOT_QUIT_BROWSER=true RAILS_ENV=production rake broadcast:work QUEUE="$1" }
+
+# tail server rails log
+tail_server() { ssh -t "$1" tail -f /var/www/bullseye/production/current/log/production.log }
 
 #broadcast spec runners
 rsh() { rspec spec/broadcast/sites/helpers/"$1"_helper_spec.rb"$2" }
@@ -29,6 +33,7 @@ alias -g W='|wc'
 
 #git
 unalias g
+alias git=hub
 g() {
   if [[ $# == '0' ]]; then
     command hub status -sb
@@ -37,7 +42,6 @@ g() {
   fi
 }
 
-alias git='hub'
 alias gl='git log --oneline --decorate -20'
 alias gd='git diff'
 alias gdw='git diff --word-diff'
@@ -59,6 +63,7 @@ alias rctags='ctags -R --exclude=.git --exclude=log --exclude=public *'
 #ruby
 alias rb='rbenv'
 alias rv='ruby -v'
+alias wr='ps aux | grep ruby'
 
 #rake
 alias rt='rake -T'

@@ -1,32 +1,32 @@
 [user]
-	name = Jesper Kjeldgaard
-	email = thejspr@gmail.com
+  name = Jesper Kjeldgaard
+  email = thejspr@gmail.com
 [github]
   user = thejspr
-	token = 
 [color]
   ui = true
 [mergetool]
   keepBackup = false
 [push]
-	default = tracking
+  default = tracking
 [core]
   excludesfile = /Users/jesper/.gitignore
   editor = mvim -v
 [alias]
-  a = !git add . && git status
+  a = !git add -A && git status
   c = commit -v
   cm = commit -m
-  ca = commit -v -a
+  ca = commit -v -A
   d = diff --color-words
   ms = checkout master
   co = checkout
   b = branch
   l = log
+  r = remote
   panic = !tar cvf ../git_panic.tar .
   alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
 [apply]
   whitespace = nowarn
 [branch]
   autosetupmerge = true
-	autosetuprebase = always
+  autosetuprebase = always
