@@ -8,35 +8,27 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'bitc/vim-bad-whitespace'
-Bundle 'clones/vim-fuzzyfinder'
+" Bundle 'clones/vim-fuzzyfinder'
 Bundle 'ervandew/supertab'
 Bundle 'git://git.wincent.com/command-t'
 Bundle 'godlygeek/tabular'
 Bundle 'mileszs/ack.vim'
 Bundle 'msanders/snipmate.vim'
 Bundle 'kana/vim-textobj-user'
-Bundle 'kana/vim-smartinput'
 Bundle 'nelstrom/vim-textobj-rubyblock'
-Bundle 'panozzaj/vim-autocorrect'
+" Bundle 'panozzaj/vim-autocorrect'
 Bundle 'scrooloose/nerdtree'
 Bundle 'sickill/vim-pasta'
 Bundle 'tomtom/tcomment_vim'
-Bundle 'vim-coffee-script'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'vim-scripts/L9'
+" Bundle 'vim-coffee-script'
+" Bundle 'vim-scripts/L9'
 
-" Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-repeat'
+" Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-markdown'
-
-" Bundle 'pangloss/vim-javascript'
-" Bundle 'molokai'
-
-" MacVim
-Bundle 'Lokaltog/vim-powerline'
+Bundle 'Auto-Pairs'
 
 filetype plugin indent on     " and turn it back on!
 
@@ -59,21 +51,13 @@ set autoread
 set vb
 set undofile
 set undodir=~/.tmp,/tmp
-
-"#tmux
-set clipboard=unnamed
-
-if &term =~ "xterm"
-  let g:CommandTCancelMap     = ['<ESC>', '<C-c>']
-  let g:CommandTSelectNextMap = ['<C-n>', '<C-j>', '<ESC>OB']
-  let g:CommandTSelectPrevMap = ['<C-p>', '<C-k>', '<ESC>OA']
-endif
+set autoread
 
 "  ---------------------------------------------------------------------------
 "  UI
 "  ---------------------------------------------------------------------------
 
-colorscheme desert
+colorscheme ir_black
 
 set title
 set encoding=utf-8
@@ -99,13 +83,13 @@ set mousehide
 " Resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="
 
-set winwidth=84
+set winwidth=70
 " We have to have a winheight bigger than we want to set winminheight. But if
 " we set winheight to be huge before winminheight, the winminheight set will
 " fail.
-set winheight=5
-set winminheight=5
-set winheight=999
+" set winheight=10
+" set winminheight=10
+" set winheight=999
 
 "  ---------------------------------------------------------------------------
 "  Text Formatting
@@ -292,6 +276,7 @@ set wildignore+=*.o,*~,*.obj,.git/**,tmp/**,app/assets/images/**,public/**
 set wildignore+=*.class,*.doc,*.lock,**.png,**.jpg,**.jpeg
 set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**,solr/**
 set wildignore+=doc/**,rdoc/**
+set wildignore+=spec/dummy/**
 
 " Center screen when scrolling search results
 nmap n nzz
@@ -312,11 +297,6 @@ vnoremap // :TComment<CR>
 " Use only current file to autocomplete from tags
 set complete=.,w,b,u,t,i
 
-let my_home = expand("$HOME/")
-if filereadable(my_home . '.vim/bundle/vim-autocorrect/autocorrect.vim')
-  source ~/.vim/bundle/vim-autocorrect/autocorrect.vim
-endif
-
 "  ---------------------------------------------------------------------------
 "  Directories
 "  ---------------------------------------------------------------------------
@@ -332,7 +312,7 @@ function! RunTests(filename)
     " Write the file and run tests for the given filename
     :w
     :silent !echo;echo;echo;echo;echo
-    exec ":!bundle exec rspec " . a:filename
+    exec ":!~/.rbenv/shims/bundle exec rspec " . a:filename
 endfunction
 
 function! SetTestFile()

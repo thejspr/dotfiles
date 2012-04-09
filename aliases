@@ -9,6 +9,8 @@ alias -s log=mvim
 alias vim='mvim -v'
 alias tmux="TERM=screen-256color-bce tmux"
 
+alias cuc='cucumber'
+
 #evently
 alias risky='RISKY=true'
 alias dq='DO_NOT_QUIT_BROWSER=true'

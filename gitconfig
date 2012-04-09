@@ -13,17 +13,15 @@
   excludesfile = /Users/jesper/.gitignore
   editor = mvim -v
 [alias]
-  a = !git add -A && git status
+  aa = add --all
   c = commit -v
-  cm = commit -m
-  ca = commit -v -A
   d = diff --color-words
   ms = checkout master
   co = checkout
   b = branch
   l = log
   r = remote
-  panic = !tar cvf ../git_panic.tar .
+  rc = !git add -A && git rebase --continue
   alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
 [apply]
   whitespace = nowarn
