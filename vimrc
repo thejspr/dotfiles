@@ -20,7 +20,7 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'scrooloose/nerdtree'
 Bundle 'sickill/vim-pasta'
 Bundle 'tomtom/tcomment_vim'
-" Bundle 'vim-coffee-script'
+Bundle 'vim-coffee-script'
 " Bundle 'vim-scripts/L9'
 
 Bundle 'tpope/vim-endwise'
