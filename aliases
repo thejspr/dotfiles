@@ -34,20 +34,14 @@ alias -g N='&>/dev/null&'
 alias -g W='|wc'
 
 #git
-unalias g
-alias git=hub
 g() {
   if [[ $# == '0' ]]; then
-    command hub status -sb
+    command git status -sb
   else
-    command hub "$@";
+    command git "$@";
   fi
 }
-
-alias gl='git log --oneline --decorate -20'
-alias gd='git diff'
-alias gdw='git diff --word-diff'
-alias gci='git commit -v --no-verify'
+complete -o default -o nospace -F _git g
 grmb() { git push origin :"$@"; git branch -D "$@" }
 
 #rails
@@ -72,6 +66,7 @@ alias rt='rake -T'
 
 #heroku
 alias h="heroku"
+complete -o default -o nospace -F _heroke h
 hpush() { git add -A; git commit -m "$*"; git push heroku master; }
 
 #servers
@@ -81,7 +76,6 @@ myip() { elinks -dump http://checkip.dyndns.org:8245/ }
 #msc
 alias mx='chmod +x'
 alias cd..='cd ..'
-alias ll='ls -lA'
 alias grep='grep --color=auto'
 
 # system and files editing
@@ -89,10 +83,3 @@ alias ea='vim ~/.aliases'
 alias ez='vim ~/Code/dotfiles/zshrc'
 alias ez_='vim ~/Code/dotfiles/_zshrc'
 alias sr='source ~/.zshrc'
-
-# aptitude conviniences
-alias ain='sudo apt-get install $@ -y'
-alias aun='sudo apt-get remove'
-alias afi='sudo apt-cache search'
-alias aup='sudo apt-get update && sudo apt-get upgrade -y'
-alias aclean='sudo apt-get autoclean && sudo apt-get autoremove && sudo apt-get clean && sudo apt-get remove'

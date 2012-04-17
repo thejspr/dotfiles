@@ -4,7 +4,7 @@
 [github]
   user = thejspr
 [color]
-  ui = true
+	ui = auto
 [mergetool]
   keepBackup = false
 [push]
@@ -19,7 +19,7 @@
   ms = checkout master
   co = checkout
   b = branch
-  l = log
+  l = !git log --oneline --decorate --graph -20
   r = remote
   rc = !git add -A && git rebase --continue
   alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort

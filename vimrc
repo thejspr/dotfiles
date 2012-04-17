@@ -10,13 +10,13 @@ Bundle 'gmarik/vundle'
 Bundle 'bitc/vim-bad-whitespace'
 " Bundle 'clones/vim-fuzzyfinder'
 Bundle 'ervandew/supertab'
-Bundle 'git://git.wincent.com/command-t'
+" Bundle 'git://git.wincent.com/command-t'
 Bundle 'godlygeek/tabular'
 Bundle 'mileszs/ack.vim'
 Bundle 'msanders/snipmate.vim'
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
-" Bundle 'panozzaj/vim-autocorrect'
+Bundle 'panozzaj/vim-autocorrect'
 Bundle 'scrooloose/nerdtree'
 Bundle 'sickill/vim-pasta'
 Bundle 'tomtom/tcomment_vim'
@@ -26,9 +26,12 @@ Bundle 'vim-coffee-script'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails'
-" Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'Auto-Pairs'
+Bundle 'sjl/vitality.vim'
+Bundle 'kien/ctrlp.vim'
+Bundle 'sjl/clam.vim'
 
 filetype plugin indent on     " and turn it back on!
 
@@ -41,6 +44,7 @@ runtime macros/matchit.vim
 filetype plugin indent on
 let mapleader = ","
 let g:mapleader = ","
+let maplocalleader = ";"
 set modelines=0
 set history=1000
 set nobackup
@@ -262,16 +266,17 @@ let g:NERDTreeWinSize = 30
 let g:NERDTreeIgnore=['\.git$','\.sass-cache', '\.DS_Store']
 
 " Command-t
-map <leader>t :CommandTFlush<cr>\|:CommandT<cr>
-map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
-map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
-map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
-map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
-map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
-map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
-map <leader>gs :CommandTFlush<cr>\|:CommandT public/stylesheets<cr>
-let g:CommandTMatchWindowAtTop=0 " show window at top
-let g:CommandTMaxHeight=20
+" map <leader>t :CommandTFlush<cr>\|:CommandT<cr>
+" map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
+" map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
+" map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
+" map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
+" map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
+" map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
+" map <leader>gs :CommandTFlush<cr>\|:CommandT public/stylesheets<cr>
+" let g:CommandTMatchWindowAtTop=0 " show window at top
+" let g:CommandTMaxHeight=20
+map <leader>t :CtrlP<cr>
 set wildignore+=*.o,*~,*.obj,.git/**,tmp/**,app/assets/images/**,public/**
 set wildignore+=*.class,*.doc,*.lock,**.png,**.jpg,**.jpeg
 set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**,solr/**
