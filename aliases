@@ -41,7 +41,7 @@ g() {
     command git "$@";
   fi
 }
-complete -o default -o nospace -F _git g
+# complete -o default -o nospace -F _git g
 grmb() { git push origin :"$@"; git branch -D "$@" }
 
 #rails
@@ -66,7 +66,7 @@ alias rt='rake -T'
 
 #heroku
 alias h="heroku"
-complete -o default -o nospace -F _heroke h
+# complete -o default -o nospace -F _heroke h
 hpush() { git add -A; git commit -m "$*"; git push heroku master; }
 
 #servers
