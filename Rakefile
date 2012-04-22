@@ -5,20 +5,12 @@ task :vim do
   puts 'Installing Bundles'
   system "vim -c BundleInstall! -c q -c q -u bundles.vim"
 
-  puts 'Compile command-t extensions'
-  cmds = [
-    "cd #{File.join(root, 'bundle', 'command-t', 'ruby', 'command-t')}",
-    "ruby extconf.rb",
-    "make",
-    "make install"
-  ]
-
   system cmds.join(' && ')
   puts "Vim setup done"
 end
 
-IGNORE    = %w(Gemfile.lock githooks iterm scripts Rakefile _zshrc .git .gitignore)
-NO_PREFIX = %w(Gemfile bin)
+IGNORE    = %w(Gemfile Gemfile.lock githooks iterm scripts Rakefile _zshrc .git .gitignore)
+NO_PREFIX = %w(bin)
 
 desc "Create symlinks"
 task :links do

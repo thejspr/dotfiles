@@ -8,9 +8,7 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'bitc/vim-bad-whitespace'
-" Bundle 'clones/vim-fuzzyfinder'
 Bundle 'ervandew/supertab'
-" Bundle 'git://git.wincent.com/command-t'
 Bundle 'godlygeek/tabular'
 Bundle 'mileszs/ack.vim'
 Bundle 'msanders/snipmate.vim'
@@ -21,7 +19,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'sickill/vim-pasta'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'vim-coffee-script'
-" Bundle 'vim-scripts/L9'
+Bundle 'vim-scripts/L9'
 
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-fugitive'
@@ -31,11 +29,16 @@ Bundle 'tpope/vim-surround'
 Bundle 'Auto-Pairs'
 Bundle 'sjl/vitality.vim'
 Bundle 'kien/ctrlp.vim'
-Bundle 'sjl/clam.vim'
+Bundle 'tpope/vim-markdown'
+Bundle 'altercation/vim-colors-solarized'
 
 filetype plugin indent on     " and turn it back on!
 
 runtime macros/matchit.vim
+
+syntax enable
+set background=dark
+colorscheme solarized
 
 "  ---------------------------------------------------------------------------
 "  General
@@ -61,7 +64,7 @@ set autoread
 "  UI
 "  ---------------------------------------------------------------------------
 
-colorscheme ir_black
+" colorscheme zenburn
 
 set title
 set encoding=utf-8
@@ -265,18 +268,11 @@ let g:NERDTreeWinPos = "left"
 let g:NERDTreeWinSize = 30
 let g:NERDTreeIgnore=['\.git$','\.sass-cache', '\.DS_Store']
 
-" Command-t
-" map <leader>t :CommandTFlush<cr>\|:CommandT<cr>
-" map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
-" map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
-" map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
-" map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
-" map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
-" map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
-" map <leader>gs :CommandTFlush<cr>\|:CommandT public/stylesheets<cr>
-" let g:CommandTMatchWindowAtTop=0 " show window at top
-" let g:CommandTMaxHeight=20
+" ctt
 map <leader>t :CtrlP<cr>
+let g:ctrlp_custom_ignore = '\.git$\|*tmp/\|_deploy/$'
+let g:ctrlp_clear_cache_on_exit = 1
+
 set wildignore+=*.o,*~,*.obj,.git/**,tmp/**,app/assets/images/**,public/**
 set wildignore+=*.class,*.doc,*.lock,**.png,**.jpg,**.jpeg
 set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**,solr/**

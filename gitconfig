@@ -16,7 +16,7 @@
 [alias]
   aa = add --all
   c = commit -v
-  d = diff --color-words
+  d = diff
   ms = checkout master
   co = checkout
   b = branch
