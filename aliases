@@ -1,5 +1,7 @@
-export EDITOR=mvim
+export EDITOR=vim
 alias time='/usr/bin/time'
+
+alias t='task'
 
 #filetypes
 alias -s rb=mvim
@@ -19,6 +21,7 @@ bcw() { DO_NOT_QUIT_BROWSER=true RAILS_ENV=production rake broadcast:work QUEUE=
 
 # tail server rails log
 tail_server() { ssh -t "$1" tail -f /var/www/bullseye/production/current/log/production.log }
+tail_test_server() { ssh -t "$1" tail -f /var/www/bullseye/testing/current/log/production.log }
 
 #broadcast spec runners
 rsh() { rspec spec/broadcast/sites/helpers/"$1"_helper_spec.rb"$2" }
@@ -41,8 +44,10 @@ g() {
     command git "$@";
   fi
 }
-# complete -o default -o nospace -F _git g
 grmb() { git push origin :"$@"; git branch -D "$@" }
+
+alias gd='g d'
+alias gl='g l'
 
 #rails
 alias migrate='rake db:migrate && rake db:test:clone_structure'

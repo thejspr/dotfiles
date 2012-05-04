@@ -1,4 +1,4 @@
-export PATH=$HOME/.rbenv/bin:/usr/local/bin:~/bin:/usr/local/share/python:$PATH
+export PATH=/usr/local/bin:~/bin:/usr/local/share/python:$PATH
 
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.oh-my-zsh
@@ -22,7 +22,16 @@ if [ -f ~/Code/dotfiles/_zshrc ]; then
   . ~/Code/dotfiles/_zshrc
 fi
 
-# rbenv
+# Rbenv
+if [[ -s "${HOME}/.rbenv/bin" ]]; then
+    rbenv_root="${HOME}/.rbenv"
+  else
+rbenv_root="/usr/local/rbenv"
+  export RBENV_ROOT="$rbenv_root"
+fi
+
+export PATH="${rbenv_root}/bin:$PATH"
 eval "$(rbenv init -)"
 
 unalias ruby
+[[ -s $HOME/.pythonbrew/etc/bashrc ]] && source $HOME/.pythonbrew/etc/bashrc

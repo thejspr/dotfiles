@@ -21,16 +21,17 @@ Bundle 'tomtom/tcomment_vim'
 Bundle 'vim-coffee-script'
 Bundle 'vim-scripts/L9'
 
-Bundle 'tpope/vim-endwise'
+" Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
-Bundle 'Auto-Pairs'
+" Bundle 'Auto-Pairs'
 Bundle 'sjl/vitality.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-markdown'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'mrtazz/simplenote.vim'
 
 filetype plugin indent on     " and turn it back on!
 
@@ -105,7 +106,7 @@ set winwidth=70
 set tabstop=2
 set shiftwidth=2
 set expandtab
-set wrap
+set nowrap
 set textwidth=80
 
 "  ---------------------------------------------------------------------------
@@ -157,6 +158,7 @@ imap <C-v> <esc>"+p
 
 " Sudo write
 comm! W exec 'w !sudo tee % > /dev/null' | e
+comm! Wq exec 'wq'
 
 " Use Ack instead of Grep when available
 if executable("ack")
@@ -270,9 +272,10 @@ let g:NERDTreeIgnore=['\.git$','\.sass-cache', '\.DS_Store']
 
 " ctt
 map <leader>t :CtrlP<cr>
-let g:ctrlp_custom_ignore = '\.git$\|*tmp/\|_deploy/$'
+let g:ctrlp_custom_ignore = '\.git$\|tmp$\|_deploy$'
 let g:ctrlp_clear_cache_on_exit = 1
 
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 set wildignore+=*.o,*~,*.obj,.git/**,tmp/**,app/assets/images/**,public/**
 set wildignore+=*.class,*.doc,*.lock,**.png,**.jpg,**.jpeg
 set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**,solr/**
@@ -349,3 +352,27 @@ map <leader>R :call RunTestFile()<cr>
 map <leader>r :call RunNearestTest()<cr>
 " Run all test files
 " map <leader>a :call RunTests('spec')<cr>
+
+" Simplenote
+source ~/.simplenoterc
+
+" position
+" Tell vim to remember certain things when we exit
+" "  '10  :  marks will be remembered for up to 10 previously edited files
+" "  "100 :  will save up to 100 lines for each register
+" "  :50  :  up to 20 lines of command-line history will be remembered
+" "  %    :  saves and restores the buffer list
+" "  n... :  where to save the viminfo files
+set viminfo='10,\"100,:50,n~/.viminfo
+
+function! ResCur()
+  if line("'\"") <= line("$")
+    normal! g`"
+    return 1
+  endif
+endfunction
+
+augroup resCur
+  autocmd!
+  autocmd BufWinEnter * call ResCur()
+augroup END
