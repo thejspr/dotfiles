@@ -1,8 +1,11 @@
 set nocompatible               " be iMproved
+
 if !isdirectory(expand("~/.vim/bundle/vundle/.git"))
   !git clone git://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 endif
+
 filetype off                   " must be off before Vundle has run
+
 set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -16,12 +19,12 @@ Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'panozzaj/vim-autocorrect'
 Bundle 'scrooloose/nerdtree'
-Bundle 'sickill/vim-pasta'
+" Bundle 'sickill/vim-pasta'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'vim-coffee-script'
 Bundle 'vim-scripts/L9'
 
-" Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-repeat'
@@ -31,7 +34,7 @@ Bundle 'sjl/vitality.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-markdown'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'mrtazz/simplenote.vim'
+Bundle 'vim-scripts/vimwiki'
 
 filetype plugin indent on     " and turn it back on!
 
