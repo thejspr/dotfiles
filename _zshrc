@@ -40,6 +40,3 @@ export PARALLEL_TEST_PROCESSORS=2
 if [ -f ~/.beh_ec2_auth ]; then
   . ~/.beh_ec2_auth
 fi
-
-# Python
-[[ -s "$HOME/.pythonbrew/etc/bashrc"  ]] && source "$HOME/.pythonbrew/etc/bashrc"

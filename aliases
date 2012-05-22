@@ -4,8 +4,8 @@ alias time='/usr/bin/time'
 alias t='task'
 
 #filetypes
-alias -s rb=mvim
-alias -s log=mvim
+#alias -s rb=mvim
+#alias -s log=mvim
 
 #vim
 alias vim='mvim -v'

@@ -1,4 +1,4 @@
-export PATH=/usr/local/bin:~/bin:/usr/local/share/python:$PATH
+export PATH=/usr/local/bin:~/bin:/Library/PostgreSQL/9.1/bin:$PATH
 
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.oh-my-zsh

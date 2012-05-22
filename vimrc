@@ -8,33 +8,67 @@ filetype off                   " must be off before Vundle has run
 
 set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
-
 Bundle 'gmarik/vundle'
-Bundle 'bitc/vim-bad-whitespace'
-Bundle 'ervandew/supertab'
-Bundle 'godlygeek/tabular'
+
+" essentials
 Bundle 'mileszs/ack.vim'
+Bundle 'tpope/vim-repeat'
+Bundle 'sjl/vitality.vim'
+Bundle 'xolox/vim-easytags'
+
+" helpers
+Bundle 'ervandew/supertab'
+Bundle 'Shougo/neocomplcache'
+
+" autoclose
+Bundle 'kana/vim-smartinput'
+" Bundle 'Auto-Pairs'
+" Bundle 'Raimondi/delimitMate'
+" Bundle 'Townk/vim-autoclose'
+
+" UI
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'bitc/vim-bad-whitespace'
+Bundle 'altercation/vim-colors-solarized'
+
+" textwrangling
+Bundle 'tpope/vim-speeddating'
+Bundle 'tpope/vim-surround'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'godlygeek/tabular'
+
+" plugins
+Bundle 'tpope/vim-fugitive'
+Bundle 'scrooloose/nerdtree'
 Bundle 'msanders/snipmate.vim'
+Bundle 'kien/ctrlp.vim'
+" Bundle 'vim-scripts/L9'
+
+" Ruby
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-rake'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'lucapette/vim-ruby-doc'
+" Bundle 'sickill/vim-pasta'
+
+" JavaScript
+Bundle 'pangloss/vim-javascript'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'leshill/vim-json'
+Bundle 'itspriddle/vim-jquery'
+
+" html...
+Bundle 'gregsexton/MatchTag'
+
+" msc languages
+Bundle 'tpope/vim-markdown'
+Bundle 'panozzaj/vim-autocorrect'
+
+" MatchIt
+Bundle 'matchit.zip'
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
-Bundle 'panozzaj/vim-autocorrect'
-Bundle 'scrooloose/nerdtree'
-" Bundle 'sickill/vim-pasta'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'vim-coffee-script'
-Bundle 'vim-scripts/L9'
-
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
-" Bundle 'Auto-Pairs'
-Bundle 'sjl/vitality.vim'
-Bundle 'kien/ctrlp.vim'
-Bundle 'tpope/vim-markdown'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'vim-scripts/vimwiki'
 
 filetype plugin indent on     " and turn it back on!
 
@@ -47,7 +81,6 @@ colorscheme solarized
 "  ---------------------------------------------------------------------------
 "  General
 "  ---------------------------------------------------------------------------
-
 filetype plugin indent on
 let mapleader = ","
 let g:mapleader = ","
@@ -57,19 +90,25 @@ set history=1000
 set nobackup
 set nowritebackup
 set noswapfile
-syntax enable
-set autoread
 set vb
 set undofile
 set undodir=~/.tmp,/tmp
-set autoread
+set foldlevelstart=99
+
+"  ---------------------------------------------------------------------------
+"  Completion
+"  ---------------------------------------------------------------------------
+" Supertab
+let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+let g:SuperTabLongestHighlight = 1
+" neocomplcache
+imap  <silent><expr><tab> neocomplcache#sources#snippets_complete#expandable() ? "\<plug>(neocomplcache_snippets_expand)" : (pumvisible() ? "\<c-e>" : "\<tab>")
+smap  <tab> <right><plug>(neocomplcache_snippets_jump) 
+inoremap <expr><c-e> neocomplcache#complete_common_string()
 
 "  ---------------------------------------------------------------------------
 "  UI
 "  ---------------------------------------------------------------------------
-
-" colorscheme zenburn
-
 set title
 set encoding=utf-8
 set ffs=unix,mac,dos
@@ -81,7 +120,7 @@ set showcmd
 set hidden
 set wildmenu
 set wildmode=list:longest,full
-" set cursorline
+set cursorline
 set ttyfast
 set ruler
 set backspace=indent,eol,start
@@ -94,18 +133,9 @@ set mousehide
 " Resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="
 
-set winwidth=70
-" We have to have a winheight bigger than we want to set winminheight. But if
-" we set winheight to be huge before winminheight, the winminheight set will
-" fail.
-" set winheight=10
-" set winminheight=10
-" set winheight=999
-
 "  ---------------------------------------------------------------------------
 "  Text Formatting
 "  ---------------------------------------------------------------------------
-
 set tabstop=2
 set shiftwidth=2
 set expandtab
@@ -115,7 +145,6 @@ set textwidth=80
 "  ---------------------------------------------------------------------------
 "  Mappings
 "  ---------------------------------------------------------------------------
-
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
 
@@ -123,9 +152,6 @@ nnoremap <leader><leader> <c-^>
 noremap <C-s> <ESC>:w<CR>
 vnoremap <C-s> <ESC>:w<CR>
 inoremap <C-s> <ESC>:w<CR>
-
-" Map ESC
-imap jj <ESC>
 
 " Searching / moving
 set hlsearch
@@ -141,7 +167,7 @@ nmap <space> /
 " search (backwards)
 map <c-space> ?
 " find/replace shortcut
-noremap <leader>f :%s///<left><left>
+noremap <leader>f :%s///g<left><left>
 
 " Auto format
 map === mmgg=G`m^zz
@@ -164,11 +190,9 @@ comm! W exec 'w !sudo tee % > /dev/null' | e
 comm! Wq exec 'wq'
 
 " Use Ack instead of Grep when available
-if executable("ack")
-  let g:ackprg="ack -H --nocolor --nogroup --column"
-  nnoremap <leader>a :Ack
-  nnoremap <leader>A :Ack <cword><CR>
-endif
+let g:ackprg="ack -H --nogroup --column"
+nnoremap <leader>a :Ack
+nnoremap <leader>A :Ack <cword><CR>
 
 " Spell checking
 set spellfile+=~/.vim/spell/en.utf-8.add
@@ -212,11 +236,11 @@ vnoremap <C-k> :m-2<CR>gv
 " F1 - toggle wordwrap
 map <F1> :set nowrap! <CR>
 
+" F2 - Trim trailing whitespace
+nmap <F6> :%s/\s*$//<CR>:noh<CR>
+
 " F4 - kwdb.vim
 nmap <F4> <Plug>Kwbd
-
-" F6 - Trim trailing whitespace
-nmap <F6> :%s/\s*$//<CR>:noh<CR>
 
 "  ---------------------------------------------------------------------------
 "  #Git
@@ -228,8 +252,10 @@ autocmd BufRead COMMIT_EDITMSG setlocal nocursorline
 "  #Ruby
 "  ---------------------------------------------------------------------------
 
+let g:ruby_doc_command='open'
+
 au BufRead,BufNewFile *.rb set filetype=ruby.rails.rspec
-au BufRead,BufNewFile Guardfile,*.ru set filetype=ruby
+au BufRead,BufNewFile Guardfile,Procfile,*.ru set filetype=ruby
 
 " Replace Ruby 1.8 style hashes with shorter Ruby 1.9 style
 map <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/<CR>
@@ -242,8 +268,6 @@ map <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/<CR>
 map <Leader>m :Rmodel<space>
 map <Leader>c :Rcontroller<space>
 map <Leader>v :Rview<space>
-map <leader>gr :topleft :split config/routes.rb<cr>
-map <leader>gg :topleft 100 :split Gemfile<cr>
 
 function! ShowRoutes()
   " Requires 'scratch' plugin
@@ -293,10 +317,6 @@ nmap N Nzz
 noremap <leader>8 :e! Gemfile \| Gstatus<CR>
 noremap <leader>9 :Gcommit<CR>
 
-" Supertab
-let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
-let g:SuperTabLongestHighlight = 1
-
 " tComment
 nnoremap // :TComment<CR>
 vnoremap // :TComment<CR>
@@ -307,7 +327,6 @@ set complete=.,w,b,u,t,i
 "  ---------------------------------------------------------------------------
 "  Directories
 "  ---------------------------------------------------------------------------
-
 " Ctags path (brew install ctags)
 let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
 
@@ -355,9 +374,6 @@ map <leader>R :call RunTestFile()<cr>
 map <leader>r :call RunNearestTest()<cr>
 " Run all test files
 " map <leader>a :call RunTests('spec')<cr>
-
-" Simplenote
-source ~/.simplenoterc
 
 " position
 " Tell vim to remember certain things when we exit

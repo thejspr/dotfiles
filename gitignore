@@ -5,3 +5,4 @@ vim/backup/
 .DS_Store
 .rbenv-version
 tmp.txt
+tags

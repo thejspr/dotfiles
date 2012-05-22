@@ -1,29 +1,17 @@
-# rspec
 snippet sh
 	require 'spec_helper'
 
-# describe
 snippet des
 	describe '${1:description}' do
 		${2}
 	end
-snippet desc
-	describe ${1:class} do
-		before do
-			${2}
-		end
 
-	end
-
-# it should
 snippet it
 	it '${1:description}' do
 		${2}
 	end
 
-# matchers
-snippet sheq
-	${1:targe}.should == ${2}
-snippet shbe
-	${1:target}.should be_${2:result}
-
+snippet con
+	context '${1}' do
+		${2}
+	end
