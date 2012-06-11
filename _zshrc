@@ -1,3 +1,8 @@
+# system-wide environment settings for zsh(1)
+if [ -x /usr/libexec/path_helper ]; then
+  eval `/usr/libexec/path_helper -s`
+fi
+
 # https://github.com/rupa/z
  . `brew --prefix`/etc/profile.d/z.sh
  function precmd () {
@@ -32,9 +37,6 @@ export RUBY_HEAP_SLOTS_INCREMENT=1000000
 export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
 export RUBY_GC_MALLOC_LIMIT=1000000000
 export RUBY_HEAP_FREE_MIN=500000
-
-# parallel_test
-export PARALLEL_TEST_PROCESSORS=2
 
 # Work
 if [ -f ~/.beh_ec2_auth ]; then

@@ -6,3 +6,4 @@ vim/backup/
 .rbenv-version
 tmp.txt
 tags
+latest.dump

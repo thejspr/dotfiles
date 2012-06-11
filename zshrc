@@ -1,4 +1,4 @@
-export PATH=/usr/local/bin:~/bin:/Library/PostgreSQL/9.1/bin:$PATH
+export PATH=~/bin:/Library/PostgreSQL/9.1/bin:$PATH
 
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.oh-my-zsh
@@ -6,15 +6,9 @@ export ZSH=$HOME/.oh-my-zsh
 # Set to the name theme to load.
 export ZSH_THEME="thejspr"
 
-# Set to this to use case-sensitive completion
-# export CASE_SENSITIVE="true"
-
-# Comment this out to disable weekly auto-update checks
-# export DISABLE_AUTO_UPDATE="true"
-
 # OFF
-# zsh-syntax-highlighting
-plugins=(git bundler osx brew history-substring-search gem)
+# zsh-syntax-highlighting gem osx
+plugins=(git bundler brew history-substring-search gem osx)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -24,14 +18,14 @@ fi
 
 # Rbenv
 if [[ -s "${HOME}/.rbenv/bin" ]]; then
-    rbenv_root="${HOME}/.rbenv"
-  else
-rbenv_root="/usr/local/rbenv"
+  rbenv_root="${HOME}/.rbenv"
+else
+  rbenv_root="/usr/local/rbenv"
   export RBENV_ROOT="$rbenv_root"
 fi
 
 export PATH="${rbenv_root}/bin:$PATH"
-eval "$(rbenv init -)"
+eval "$(rbenv init - --no-rehash)"
 
 unalias ruby
 [[ -s $HOME/.pythonbrew/etc/bashrc ]] && source $HOME/.pythonbrew/etc/bashrc

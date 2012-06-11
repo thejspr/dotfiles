@@ -17,15 +17,15 @@ alias cuc='cucumber'
 alias risky='RISKY=true'
 alias dq='DO_NOT_QUIT_BROWSER=true'
 alias rsq='ps -ef | grep resque'
-bcw() { DO_NOT_QUIT_BROWSER=true RAILS_ENV=production rake broadcast:work QUEUE="$1" }
+local_broadcast() { DO_NOT_QUIT_BROWSER=true RAILS_ENV=production rake broadcast:work QUEUE="$1" }
+
+#broadcast spec runners
+rsh() { be rspec spec/broadcast/sites/helpers/"$1"_helper_spec.rb"$2" }
+rss() { LIVE=true be rspec spec/broadcast/sites/"$1"_spec.rb"$2" }
 
 # tail server rails log
 tail_server() { ssh -t "$1" tail -f /var/www/bullseye/production/current/log/production.log }
 tail_test_server() { ssh -t "$1" tail -f /var/www/bullseye/testing/current/log/production.log }
-
-#broadcast spec runners
-rsh() { rspec spec/broadcast/sites/helpers/"$1"_helper_spec.rb"$2" }
-rss() { LIVE=true rspec spec/broadcast/sites/"$1"_spec.rb"$2" }
 
 #conviniences
 alias -g A='|ack'

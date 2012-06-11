@@ -88,3 +88,5 @@ addons
 pgbackups
 postgres
 signup
+Ries
+resque

@@ -21,15 +21,16 @@ Bundle 'ervandew/supertab'
 Bundle 'Shougo/neocomplcache'
 
 " autoclose
-Bundle 'kana/vim-smartinput'
+" Bundle 'kana/vim-smartinput'
 " Bundle 'Auto-Pairs'
-" Bundle 'Raimondi/delimitMate'
+Bundle 'Raimondi/delimitMate'
 " Bundle 'Townk/vim-autoclose'
 
 " UI
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'bitc/vim-bad-whitespace'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'henrik/vim-indexed-search'
 
 " textwrangling
 Bundle 'tpope/vim-speeddating'
@@ -39,10 +40,13 @@ Bundle 'godlygeek/tabular'
 
 " plugins
 Bundle 'tpope/vim-fugitive'
-Bundle 'scrooloose/nerdtree'
 Bundle 'msanders/snipmate.vim'
 Bundle 'kien/ctrlp.vim'
 " Bundle 'vim-scripts/L9'
+
+" File management
+Bundle 'scrooloose/nerdtree'
+Bundle 'tpope/vim-eunuch'
 
 " Ruby
 Bundle 'tpope/vim-endwise'
@@ -94,6 +98,8 @@ set vb
 set undofile
 set undodir=~/.tmp,/tmp
 set foldlevelstart=99
+set colorcolumn=85
+:au FocusLost * silent! wa "save all buffers when focus os lost
 
 "  ---------------------------------------------------------------------------
 "  Completion
@@ -103,7 +109,7 @@ let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 let g:SuperTabLongestHighlight = 1
 " neocomplcache
 imap  <silent><expr><tab> neocomplcache#sources#snippets_complete#expandable() ? "\<plug>(neocomplcache_snippets_expand)" : (pumvisible() ? "\<c-e>" : "\<tab>")
-smap  <tab> <right><plug>(neocomplcache_snippets_jump) 
+smap  <tab> <right><plug>(neocomplcache_snippets_jump)
 inoremap <expr><c-e> neocomplcache#complete_common_string()
 
 "  ---------------------------------------------------------------------------
@@ -165,9 +171,9 @@ nnoremap <leader><space> :noh<cr>
 " search (forwards)
 nmap <space> /
 " search (backwards)
-map <c-space> ?
+map <m-space> ?
 " find/replace shortcut
-noremap <leader>f :%s///g<left><left>
+noremap <leader>f :%s///g<left><left><left>
 
 " Auto format
 map === mmgg=G`m^zz
@@ -310,8 +316,12 @@ set wildignore+=doc/**,rdoc/**
 set wildignore+=spec/dummy/**
 
 " Center screen when scrolling search results
-nmap n nzz
-nmap N Nzz
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
 
 " Git integration
 noremap <leader>8 :e! Gemfile \| Gstatus<CR>
