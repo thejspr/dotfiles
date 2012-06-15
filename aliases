@@ -1,3 +1,6 @@
+#testing
+alias pam='polyamory'
+
 export EDITOR=vim
 alias time='/usr/bin/time'
 
@@ -49,10 +52,14 @@ grmb() { git push origin :"$@"; git branch -D "$@" }
 alias gd='g d'
 alias gl='g l'
 
+#bundler
+alias bs='bundle show'
+
 #rails
 alias migrate='rake db:migrate && rake db:test:clone_structure'
 alias rs='rails server thin'
 alias rc='rails console'
+alias rg='rails generate'
 
 #logs, #rails
 alias devlog='tail -f ./log/development.log'

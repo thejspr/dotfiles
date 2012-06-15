@@ -13,12 +13,12 @@ Bundle 'gmarik/vundle'
 " essentials
 Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-repeat'
-Bundle 'sjl/vitality.vim'
+" Bundle 'sjl/vitality.vim'
 Bundle 'xolox/vim-easytags'
 
 " helpers
 Bundle 'ervandew/supertab'
-Bundle 'Shougo/neocomplcache'
+" Bundle 'Shougo/neocomplcache'
 
 " autoclose
 " Bundle 'kana/vim-smartinput'
@@ -42,7 +42,7 @@ Bundle 'godlygeek/tabular'
 Bundle 'tpope/vim-fugitive'
 Bundle 'msanders/snipmate.vim'
 Bundle 'kien/ctrlp.vim'
-" Bundle 'vim-scripts/L9'
+Bundle 'vim-scripts/L9'
 
 " File management
 Bundle 'scrooloose/nerdtree'
@@ -54,7 +54,7 @@ Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-rake'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'lucapette/vim-ruby-doc'
-" Bundle 'sickill/vim-pasta'
+Bundle 'sickill/vim-pasta'
 
 " JavaScript
 Bundle 'pangloss/vim-javascript'
@@ -62,20 +62,20 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'leshill/vim-json'
 Bundle 'itspriddle/vim-jquery'
 
-" html...
-Bundle 'gregsexton/MatchTag'
-
 " msc languages
 Bundle 'tpope/vim-markdown'
 Bundle 'panozzaj/vim-autocorrect'
+Bundle 'bbommarito/vim-slim'
 
 " MatchIt
 Bundle 'matchit.zip'
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 
-filetype plugin indent on     " and turn it back on!
+" trial plugins
+Bundle 'rstacruz/sparkup'
 
+filetype plugin indent on
 runtime macros/matchit.vim
 
 syntax enable
@@ -88,8 +88,7 @@ colorscheme solarized
 filetype plugin indent on
 let mapleader = ","
 let g:mapleader = ","
-let maplocalleader = ";"
-set modelines=0
+" set modelines=0
 set history=1000
 set nobackup
 set nowritebackup
@@ -108,9 +107,9 @@ set colorcolumn=85
 let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 let g:SuperTabLongestHighlight = 1
 " neocomplcache
-imap  <silent><expr><tab> neocomplcache#sources#snippets_complete#expandable() ? "\<plug>(neocomplcache_snippets_expand)" : (pumvisible() ? "\<c-e>" : "\<tab>")
-smap  <tab> <right><plug>(neocomplcache_snippets_jump)
-inoremap <expr><c-e> neocomplcache#complete_common_string()
+" imap  <silent><expr><tab> neocomplcache#sources#snippets_complete#expandable() ? "\<plug>(neocomplcache_snippets_expand)" : (pumvisible() ? "\<c-e>" : "\<tab>")
+" smap  <tab> <right><plug>(neocomplcache_snippets_jump)
+" inoremap <expr><c-e> neocomplcache#complete_common_string()
 
 "  ---------------------------------------------------------------------------
 "  UI
@@ -118,7 +117,7 @@ inoremap <expr><c-e> neocomplcache#complete_common_string()
 set title
 set encoding=utf-8
 set ffs=unix,mac,dos
-set scrolloff=5
+set scrolloff=7
 set autoindent
 set smartindent
 set showmode
@@ -146,7 +145,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set nowrap
-set textwidth=80
+set textwidth=85
 
 "  ---------------------------------------------------------------------------
 "  Mappings
@@ -155,7 +154,7 @@ set textwidth=80
 nnoremap <leader><leader> <c-^>
 
 " save shortcut
-noremap <C-s> <ESC>:w<CR>
+noremap <C-s> :w<CR>
 vnoremap <C-s> <ESC>:w<CR>
 inoremap <C-s> <ESC>:w<CR>
 
@@ -173,7 +172,7 @@ nmap <space> /
 " search (backwards)
 map <m-space> ?
 " find/replace shortcut
-noremap <leader>f :%s///g<left><left><left>
+noremap <leader>f :%s///<left><left>
 
 " Auto format
 map === mmgg=G`m^zz
@@ -185,15 +184,13 @@ au! BufWritePost .vimrc source %
 " scratch buffer
 command! Es :e ~/scratch-buffer.txt
 
-" Copy paste in/out of vim
+" Copy/paste
 noremap <C-c> "+y
 noremap <C-v> "+p
+vmap <C-c> "+y
+vmap <C-v> "+p
 imap <C-c> <esc>"+y
 imap <C-v> <esc>"+p
-
-" Sudo write
-comm! W exec 'w !sudo tee % > /dev/null' | e
-comm! Wq exec 'wq'
 
 " Use Ack instead of Grep when available
 let g:ackprg="ack -H --nogroup --column"
@@ -239,14 +236,12 @@ vnoremap <C-k> :m-2<CR>gv
 "  Function Keys
 "  ---------------------------------------------------------------------------
 
-" F1 - toggle wordwrap
 map <F1> :set nowrap! <CR>
-
-" F2 - Trim trailing whitespace
-nmap <F6> :%s/\s*$//<CR>:noh<CR>
-
-" F4 - kwdb.vim
+noremap <F2> :NERDTreeToggle<CR>
+set pastetoggle=<F3>
 nmap <F4> <Plug>Kwbd
+" F5 Ctrlp refresh
+nmap <F6> :%s/\s*$//<CR>:noh<CR>
 
 "  ---------------------------------------------------------------------------
 "  #Git
@@ -258,7 +253,7 @@ autocmd BufRead COMMIT_EDITMSG setlocal nocursorline
 "  #Ruby
 "  ---------------------------------------------------------------------------
 
-let g:ruby_doc_command='open'
+" let g:ruby_doc_command='open'
 
 au BufRead,BufNewFile *.rb set filetype=ruby.rails.rspec
 au BufRead,BufNewFile Guardfile,Procfile,*.ru set filetype=ruby
@@ -275,36 +270,17 @@ map <Leader>m :Rmodel<space>
 map <Leader>c :Rcontroller<space>
 map <Leader>v :Rview<space>
 
-function! ShowRoutes()
-  " Requires 'scratch' plugin
-  :topleft 100 :split __Routes__
-  " Make sure Vim doesn't write __Routes__ as a file
-  :set buftype=nofile
-  " Delete everything
-  :normal 1GdG
-  " Put routes output in buffer
-  :0r! rake -s routes
-  " Size window to number of lines (1 plus rake output length)
-  :exec ":normal " . line("$") . _ "
-  " Move cursor to bottom
-  :normal 1GG
-  " Delete empty trailing line
-  :normal dd
-  endfunction
-map <leader>gR :call ShowRoutes()<cr>
-
 " NERDTree
-noremap <F2> :NERDTreeToggle<CR>
 let g:NERDTreeQuitOnOpen=0
 let g:NERDTreeShowHidden=1
 let g:NERDTreeShowBookmarks = 0
-let g:NERDChristmasTree = 1
 let g:NERDTreeWinPos = "left"
 let g:NERDTreeWinSize = 30
 let g:NERDTreeIgnore=['\.git$','\.sass-cache', '\.DS_Store']
 
-" ctt
+" ctrlp
 map <leader>t :CtrlP<cr>
+map <leader>b :CtrlPBuffer<cr>
 let g:ctrlp_custom_ignore = '\.git$\|tmp$\|_deploy$'
 let g:ctrlp_clear_cache_on_exit = 1
 
@@ -405,3 +381,13 @@ augroup resCur
   autocmd!
   autocmd BufWinEnter * call ResCur()
 augroup END
+
+"Disable arrows
+map   <up>    <nop>
+map   <down>  <nop>
+map   <left>  <nop>
+map   <right> <nop>
+imap  <up>    <nop>
+imap  <down>  <nop>
+imap  <left>  <nop>
+imap  <right> <nop>
