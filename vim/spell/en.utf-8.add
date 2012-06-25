@@ -90,3 +90,6 @@ postgres
 signup
 Ries
 resque
+localhost
+webdriver
+apps

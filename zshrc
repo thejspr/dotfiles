@@ -1,4 +1,7 @@
-export PATH=/usr/local/bin:~/bin:/Library/PostgreSQL/9.1/bin:$PATH
+# system-wide environment settings for zsh(1)
+if [ -x /usr/libexec/path_helper ]; then
+  eval `/usr/libexec/path_helper -s`
+fi
 
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.oh-my-zsh
@@ -24,8 +27,8 @@ else
   export RBENV_ROOT="$rbenv_root"
 fi
 
-export PATH="${rbenv_root}/bin:$PATH"
+export PATH=/usr/local/bin:~/bin:/Library/PostgreSQL/9.1/bin:${rbenv_root}/bin:$PATH
 eval "$(rbenv init - --no-rehash)"
 
 unalias ruby
-[[ -s $HOME/.pythonbrew/etc/bashrc ]] && source $HOME/.pythonbrew/etc/bashrc
+# [[ -s $HOME/.pythonbrew/etc/bashrc ]] && source $HOME/.pythonbrew/etc/bashrc

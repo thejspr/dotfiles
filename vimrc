@@ -30,7 +30,6 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'bitc/vim-bad-whitespace'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'henrik/vim-indexed-search'
 
 " textwrangling
 Bundle 'tpope/vim-speeddating'
@@ -74,6 +73,7 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 
 " trial plugins
 Bundle 'rstacruz/sparkup'
+Bundle 'YankRing.vim'
 
 filetype plugin indent on
 runtime macros/matchit.vim
@@ -261,9 +261,16 @@ au BufRead,BufNewFile Guardfile,Procfile,*.ru set filetype=ruby
 " Replace Ruby 1.8 style hashes with shorter Ruby 1.9 style
 map <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/<CR>
 
+" https://github.com/lucapette/vim-ruby-doc
+let g:ruby_doc_command='open'
+
 "  ---------------------------------------------------------------------------
 "  Plugins
 "  ---------------------------------------------------------------------------
+
+" Fugitive
+nmap <leader>gs :Gstatus<CR><C-w>10+
+noremap <leader>gc :Gcommit -v<CR><C-w>15+
 
 " Rails.vim
 map <Leader>m :Rmodel<space>
@@ -298,10 +305,6 @@ nnoremap * *zz
 nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
-
-" Git integration
-noremap <leader>8 :e! Gemfile \| Gstatus<CR>
-noremap <leader>9 :Gcommit<CR>
 
 " tComment
 nnoremap // :TComment<CR>
@@ -383,11 +386,10 @@ augroup resCur
 augroup END
 
 "Disable arrows
-map   <up>    <nop>
-map   <down>  <nop>
-map   <left>  <nop>
-map   <right> <nop>
-imap  <up>    <nop>
-imap  <down>  <nop>
-imap  <left>  <nop>
-imap  <right> <nop>
+" map   <up>    <nop>
+" map   <down>  <nop>
+" map   <left>  <nop>
+" map   <right> <nop>
+" imap  <up>    <nop>
+" imap  <down>  <nop>
+" imap  <left>  <nop>

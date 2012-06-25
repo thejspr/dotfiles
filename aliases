@@ -1,3 +1,6 @@
+# msc
+alias youtube-dl='noglob youtube-dl'
+
 #testing
 alias pam='polyamory'
 
