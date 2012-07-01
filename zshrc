@@ -10,8 +10,7 @@ export ZSH=$HOME/.oh-my-zsh
 export ZSH_THEME="thejspr"
 
 # OFF
-# zsh-syntax-highlighting gem osx
-plugins=(git bundler brew history-substring-search gem osx)
+plugins=(git bundler brew heroku redis-cli history-substring-search gem)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -31,4 +30,3 @@ export PATH=/usr/local/bin:~/bin:/Library/PostgreSQL/9.1/bin:${rbenv_root}/bin:$
 eval "$(rbenv init - --no-rehash)"
 
 unalias ruby
-# [[ -s $HOME/.pythonbrew/etc/bashrc ]] && source $HOME/.pythonbrew/etc/bashrc

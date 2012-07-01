@@ -97,7 +97,6 @@ set vb
 set undofile
 set undodir=~/.tmp,/tmp
 set foldlevelstart=99
-set colorcolumn=85
 :au FocusLost * silent! wa "save all buffers when focus os lost
 
 "  ---------------------------------------------------------------------------
@@ -145,7 +144,8 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set nowrap
-set textwidth=85
+set textwidth=80
+set colorcolumn=80
 
 "  ---------------------------------------------------------------------------
 "  Mappings
@@ -186,11 +186,12 @@ command! Es :e ~/scratch-buffer.txt
 
 " Copy/paste
 noremap <C-c> "+y
-noremap <C-v> "+p
+noremap <C-v> :set paste<CR>"+p:set nopaste<CR>
 vmap <C-c> "+y
-vmap <C-v> "+p
+vmap <C-v> :set paste<CR>"+p:set nopaste<CR>
 imap <C-c> <esc>"+y
-imap <C-v> <esc>"+p
+imap <C-v> <esc>:set paste<CR>"+p:set nopaste<CR>
+
 
 " Use Ack instead of Grep when available
 let g:ackprg="ack -H --nogroup --column"
@@ -253,10 +254,7 @@ autocmd BufRead COMMIT_EDITMSG setlocal nocursorline
 "  #Ruby
 "  ---------------------------------------------------------------------------
 
-" let g:ruby_doc_command='open'
-
-au BufRead,BufNewFile *.rb set filetype=ruby.rails.rspec
-au BufRead,BufNewFile Guardfile,Procfile,*.ru set filetype=ruby
+au BufRead,BufNewFile *.rb,Guardfile,Procfile,*.ru set filetype=ruby
 
 " Replace Ruby 1.8 style hashes with shorter Ruby 1.9 style
 map <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/<CR>
@@ -288,7 +286,7 @@ let g:NERDTreeIgnore=['\.git$','\.sass-cache', '\.DS_Store']
 " ctrlp
 map <leader>t :CtrlP<cr>
 map <leader>b :CtrlPBuffer<cr>
-let g:ctrlp_custom_ignore = '\.git$\|tmp$\|_deploy$'
+let g:ctrlp_custom_ignore = '\.git$\|tmp$\|_deploy\|bin$'
 let g:ctrlp_clear_cache_on_exit = 1
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip

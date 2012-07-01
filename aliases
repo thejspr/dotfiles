@@ -7,12 +7,6 @@ alias pam='polyamory'
 export EDITOR=vim
 alias time='/usr/bin/time'
 
-alias t='task'
-
-#filetypes
-#alias -s rb=mvim
-#alias -s log=mvim
-
 #vim
 alias vim='mvim -v'
 alias tmux="TERM=screen-256color-bce tmux"
@@ -45,15 +39,16 @@ alias -g W='|wc'
 #git
 g() {
   if [[ $# == '0' ]]; then
-    command git status -sb
+    command hub status -sb
   else
-    command git "$@";
+    command hub "$@";
   fi
 }
 grmb() { git push origin :"$@"; git branch -D "$@" }
 
 alias gd='g d'
 alias gl='g l'
+alias gr='g r'
 
 #bundler
 alias bs='bundle show'
@@ -63,6 +58,10 @@ alias migrate='rake db:migrate && rake db:test:clone_structure'
 alias rs='rails server thin'
 alias rc='rails console'
 alias rg='rails generate'
+
+reset_db() {
+  rake db:drop && rake db:create && migrate && rake db:seed
+}
 
 #logs, #rails
 alias devlog='tail -f ./log/development.log'
@@ -85,7 +84,6 @@ alias h="heroku"
 hpush() { git add -A; git commit -m "$*"; git push heroku master; }
 
 #servers
-alias prgs='ssh thejspr.com'
 myip() { elinks -dump http://checkip.dyndns.org:8245/ }
 
 #msc
