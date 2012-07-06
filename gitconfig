@@ -24,7 +24,10 @@
   l = !git log --oneline --decorate --graph -20
   r = remote
   rc = !git add -A && git rebase --continue
-  alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
+  ribbon = tag --force _ribbon origin/master
+  amend = !git add --all && git commit -v --amend
+  catchup = log --patch --reverse --topo-order _ribbon..origin/master
+  aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
 [apply]
   whitespace = nowarn
 [branch]

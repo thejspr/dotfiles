@@ -58,10 +58,8 @@ alias migrate='rake db:migrate && rake db:test:clone_structure'
 alias rs='rails server thin'
 alias rc='rails console'
 alias rg='rails generate'
-
-reset_db() {
-  rake db:drop && rake db:create && migrate && rake db:seed
-}
+alias uni='unicorn -c config/unicorn.rb -p'
+alias reset_db='rake db:drop db:setup db:test:prepare'
 
 #logs, #rails
 alias devlog='tail -f ./log/development.log'

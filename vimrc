@@ -21,9 +21,8 @@ Bundle 'ervandew/supertab'
 " Bundle 'Shougo/neocomplcache'
 
 " autoclose
-" Bundle 'kana/vim-smartinput'
-" Bundle 'Auto-Pairs'
-Bundle 'Raimondi/delimitMate'
+Bundle 'Auto-Pairs'
+" Bundle 'Raimondi/delimitMate'
 " Bundle 'Townk/vim-autoclose'
 
 " UI
@@ -74,6 +73,7 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 " trial plugins
 Bundle 'rstacruz/sparkup'
 Bundle 'YankRing.vim'
+Bundle 'Conque-Shell'
 
 filetype plugin indent on
 runtime macros/matchit.vim
@@ -157,6 +157,7 @@ nnoremap <leader><leader> <c-^>
 noremap <C-s> :w<CR>
 vnoremap <C-s> <ESC>:w<CR>
 inoremap <C-s> <ESC>:w<CR>
+command Wq :wq
 
 " Searching / moving
 set hlsearch
