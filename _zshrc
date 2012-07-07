@@ -1,13 +1,5 @@
-# https://github.com/rupa/z
- . `brew --prefix`/etc/profile.d/z.sh
- function precmd () {
-  z --add "$(pwd -P )"
- }
-
-# Alias and function definitions.
-if [ -f ~/.aliases ]; then
-  . ~/.aliases
-fi
+# Vi editing mode
+set -o vi
 
 # disable terminal locking
 stty -ixon -ixoff
@@ -40,3 +32,15 @@ if [ -f ~/.beh_ec2_auth ]; then
 fi
 export SKIP_COVERAGE=true
 export PROFILE=default
+
+# https://github.com/rupa/z
+ . `brew --prefix`/etc/profile.d/z.sh
+ function precmd () {
+  z --add "$(pwd -P )"
+ }
+
+# Alias and function definitions.
+if [ -f ~/.aliases ]; then
+  . ~/.aliases
+fi
+

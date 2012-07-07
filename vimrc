@@ -74,6 +74,7 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'rstacruz/sparkup'
 Bundle 'YankRing.vim'
 Bundle 'Conque-Shell'
+Bundle 'tpope/vim-cucumber'
 
 filetype plugin indent on
 runtime macros/matchit.vim
@@ -157,7 +158,7 @@ nnoremap <leader><leader> <c-^>
 noremap <C-s> :w<CR>
 vnoremap <C-s> <ESC>:w<CR>
 inoremap <C-s> <ESC>:w<CR>
-command Wq :wq
+command! Wq :wq
 
 " Searching / moving
 set hlsearch
@@ -167,7 +168,7 @@ set smartcase
 set gdefault
 set showmatch
 " turn search highlight off
-nnoremap <leader><space> :noh<cr>
+nnoremap <cr> :nohlsearch<cr>
 " search (forwards)
 nmap <space> /
 " search (backwards)

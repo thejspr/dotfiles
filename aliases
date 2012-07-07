@@ -1,17 +1,25 @@
+#ruby
+alias rb='rbenv'
+alias rv='ruby -v'
+alias wr='ps aux | grep ruby'
+alias sg='guard'
+
+# ruby testing
+alias cuc='cucumber'
+
 # msc
 alias youtube-dl='noglob youtube-dl'
 
 #testing
 alias pam='polyamory'
 
-export EDITOR=vim
 alias time='/usr/bin/time'
 
 #vim
+export EDITOR=vim
 alias vim='mvim -v'
+alias vi='vim'
 alias tmux="TERM=screen-256color-bce tmux"
-
-alias cuc='cucumber'
 
 #evently
 alias risky='RISKY=true'
@@ -67,11 +75,6 @@ alias testlog='tail -f ./log/test.log'
 
 #ctags
 alias rctags='ctags -R --exclude=.git --exclude=log --exclude=public *'
-
-#ruby
-alias rb='rbenv'
-alias rv='ruby -v'
-alias wr='ps aux | grep ruby'
 
 #rake
 alias rt='rake -T'
