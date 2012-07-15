@@ -1,5 +1,5 @@
 # Vi editing mode
-set -o vi
+# set -o vi
 
 # disable terminal locking
 stty -ixon -ixoff
@@ -44,3 +44,8 @@ if [ -f ~/.aliases ]; then
   . ~/.aliases
 fi
 
+# Clojure
+if [[ ! $CLASSPATH == *clojure-contrib* ]]; then
+  export CLASSPATH=/usr/local/Cellar/clojure-contrib/1.2.0/clojure-contrib.jar
+  # export CLASSPATH=/usr/local/Cellar/clojure-contrib/1.2.0/clojure-contrib.jar:$CLASSPATH
+fi

@@ -6,6 +6,9 @@ endif
 
 filetype off                   " must be off before Vundle has run
 
+command! BI :BundleInstall
+command! BC :BundleClean
+command! BU :BundleInstall!
 set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
@@ -18,7 +21,6 @@ Bundle 'xolox/vim-easytags'
 
 " helpers
 Bundle 'ervandew/supertab'
-" Bundle 'Shougo/neocomplcache'
 
 " autoclose
 Bundle 'Auto-Pairs'
@@ -71,10 +73,11 @@ Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 
 " trial plugins
-Bundle 'rstacruz/sparkup'
-Bundle 'YankRing.vim'
-Bundle 'Conque-Shell'
-Bundle 'tpope/vim-cucumber'
+" Bundle 'YankRing.vim'
+" Bundle 'rstacruz/sparkup'
+" Bundle 'Conque-Shell'
+"http://yanpritzker.com/2011/10/26/colorful-vim-ruby-tests-and-debugging/
+" Bundle 'skwp/vim-ruby-conque'
 
 filetype plugin indent on
 runtime macros/matchit.vim
@@ -106,10 +109,6 @@ set foldlevelstart=99
 " Supertab
 let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 let g:SuperTabLongestHighlight = 1
-" neocomplcache
-" imap  <silent><expr><tab> neocomplcache#sources#snippets_complete#expandable() ? "\<plug>(neocomplcache_snippets_expand)" : (pumvisible() ? "\<c-e>" : "\<tab>")
-" smap  <tab> <right><plug>(neocomplcache_snippets_jump)
-" inoremap <expr><c-e> neocomplcache#complete_common_string()
 
 "  ---------------------------------------------------------------------------
 "  UI
@@ -124,7 +123,8 @@ set showmode
 set showcmd
 set hidden
 set wildmenu
-set wildmode=list:longest,full
+" set wildmode=list:longest,full
+set wildmode=longest,list:longest
 set cursorline
 set ttyfast
 set ruler
@@ -168,7 +168,7 @@ set smartcase
 set gdefault
 set showmatch
 " turn search highlight off
-nnoremap <cr> :nohlsearch<cr>
+nnoremap <leader><space> :nohlsearch<cr>
 " search (forwards)
 nmap <space> /
 " search (backwards)
@@ -193,7 +193,6 @@ vmap <C-c> "+y
 vmap <C-v> :set paste<CR>"+p:set nopaste<CR>
 imap <C-c> <esc>"+y
 imap <C-v> <esc>:set paste<CR>"+p:set nopaste<CR>
-
 
 " Use Ack instead of Grep when available
 let g:ackprg="ack -H --nogroup --column"
@@ -234,6 +233,9 @@ inoremap <C-j> <Esc>:m+<CR>
 inoremap <C-k> <Esc>:m-2<CR>
 vnoremap <C-j> :m'>+<CR>gv
 vnoremap <C-k> :m-2<CR>gv
+
+" easier deletion
+nmap \ dd
 
 "  ---------------------------------------------------------------------------
 "  Function Keys
@@ -311,7 +313,7 @@ nnoremap // :TComment<CR>
 vnoremap // :TComment<CR>
 
 " Use only current file to autocomplete from tags
-set complete=.,w,b,u,t,i
+set complete=.,w,b,u,],t,i
 
 "  ---------------------------------------------------------------------------
 "  Directories
@@ -373,23 +375,100 @@ map <leader>r :call RunNearestTest()<cr>
 " "  n... :  where to save the viminfo files
 set viminfo='10,\"100,:50,n~/.viminfo
 
-function! ResCur()
-  if line("'\"") <= line("$")
-    normal! g`"
-    return 1
-  endif
+autocmd BufReadPost *
+  \ if line("'\"") > 0 && line("'\"") <= line("$") |
+  \   exe "normal g`\"" |
+  \ endif
+
+" TEMPOARY STUFF -------------------------------------------------------------
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PROMOTE VARIABLE TO RSPEC LET
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! PromoteToLet()
+  :normal! dd
+  " :exec '?^\s*it\>'
+  :normal! P
+  :.s/\(\w\+\) = \(.*\)$/let(:\1) { \2 }/
+  :normal ==
 endfunction
+:command! PromoteToLet :call PromoteToLet()
+:map <leader>p :PromoteToLet<cr>
 
-augroup resCur
-  autocmd!
-  autocmd BufWinEnter * call ResCur()
-augroup END
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" EXTRACT VARIABLE (SKETCHY)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! ExtractVariable()
+    let name = input("Variable name: ")
+    if name == ''
+        return
+    endif
+    " Enter visual mode (not sure why this is needed since we're already in
+    " visual mode anyway)
+    normal! gv
 
-"Disable arrows
-" map   <up>    <nop>
-" map   <down>  <nop>
-" map   <left>  <nop>
-" map   <right> <nop>
-" imap  <up>    <nop>
-" imap  <down>  <nop>
-" imap  <left>  <nop>
+    " Replace selected text with the variable name
+    exec "normal c" . name
+    " Define the variable on the line above
+    exec "normal! O" . name . " = "
+    " Paste the original selected text to be the variable value
+    normal! $p
+endfunction
+vnoremap <leader>e :call ExtractVariable()<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" INLINE VARIABLE (SKETCHY)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! InlineVariable()
+    " Copy the variable under the cursor into the 'a' register
+    :let l:tmp_a = @a
+    :normal "ayiw
+    " Delete variable and equals sign
+    :normal 2daW
+    " Delete the expression into the 'b' register
+    :let l:tmp_b = @b
+    :normal "bd$
+    " Delete the remnants of the line
+    :normal dd
+    " Go to the end of the previous line so we can start our search for the
+    " usage of the variable to replace. Doing '0' instead of 'k$' doesn't
+    " work; I'm not sure why.
+    normal k$
+    " Find the next occurence of the variable
+    exec '/\<' . @a . '\>'
+    " Replace that occurence with the text we yanked
+    exec ':.s/\<' . @a . '\>/' . @b
+    :let @a = l:tmp_a
+    :let @b = l:tmp_b
+endfunction
+nnoremap <leader>ri :call InlineVariable()<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" MULTIPURPOSE TAB KEY
+" Indent if we're at the beginning of a line. Else, do completion.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <s-tab> <c-n>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" MY FUNCTIONS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+function! InlineBlock()
+  normal ?docw{€krx endce}v%:join
+endfunction
+map <leader>s :call InlineBlock()<cr>
+
+function! ExpandBlock()
+  normal 0 {cwdo |n€kb €kra€kb }€klDoend
+endfunction
+map <leader>S :call ExpandBlock()<cr>
+

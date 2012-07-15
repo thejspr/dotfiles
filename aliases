@@ -9,6 +9,7 @@ alias cuc='cucumber'
 
 # msc
 alias youtube-dl='noglob youtube-dl'
+alias brewup='brew update && brew outdated && brew cleanup'
 
 #testing
 alias pam='polyamory'
@@ -94,6 +95,7 @@ alias grep='grep --color=auto'
 
 # system and files editing
 alias ea='vim ~/.aliases'
+alias gea='vim ~/.gitconfig'
 alias ez='vim ~/Code/dotfiles/zshrc'
 alias ez_='vim ~/Code/dotfiles/_zshrc'
 alias sr='source ~/.zshrc'
