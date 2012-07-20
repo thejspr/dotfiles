@@ -19,7 +19,7 @@ alias time='/usr/bin/time'
 #vim
 export EDITOR=vim
 alias vim='mvim -v'
-alias vi='vim'
+alias e='vim'
 alias tmux="TERM=screen-256color-bce tmux"
 
 #evently

@@ -73,8 +73,11 @@ Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 
 " trial plugins
-" Bundle 'YankRing.vim'
-" Bundle 'rstacruz/sparkup'
+Bundle 'YankRing.vim'
+Bundle 'kogakure/vim-sparkup'
+Bundle 'scratch.vim'
+
+" Maybe's
 " Bundle 'Conque-Shell'
 "http://yanpritzker.com/2011/10/26/colorful-vim-ruby-tests-and-debugging/
 " Bundle 'skwp/vim-ruby-conque'
@@ -123,8 +126,7 @@ set showmode
 set showcmd
 set hidden
 set wildmenu
-" set wildmode=list:longest,full
-set wildmode=longest,list:longest
+set wildmode=list:longest,full
 set cursorline
 set ttyfast
 set ruler
@@ -269,6 +271,14 @@ let g:ruby_doc_command='open'
 "  ---------------------------------------------------------------------------
 "  Plugins
 "  ---------------------------------------------------------------------------
+
+" Sparkup
+augroup sparkup_types
+  " Remove ALL autocommands of the current group.
+  autocmd!
+  " Add sparkup to new filetypes
+  autocmd FileType erb runtime! ftplugin/html/sparkup.vim
+augroup END
 
 " Fugitive
 nmap <leader>gs :Gstatus<CR><C-w>10+

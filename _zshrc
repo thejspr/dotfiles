@@ -43,6 +43,9 @@ export PROFILE=default
 if [ -f ~/.aliases ]; then
   . ~/.aliases
 fi
+if [ -f ~/.functions ]; then
+  . ~/.functions
+fi
 
 # Clojure
 if [[ ! $CLASSPATH == *clojure-contrib* ]]; then
