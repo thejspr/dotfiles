@@ -22,12 +22,13 @@
   ms = checkout master
   co = checkout
   b = branch
-  l = !git log --oneline --decorate --graph -20
+  ls = log --oneline --decorate --graph -20
+  l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(black)<%an>%Creset' --abbrev-commit --date=relative -20
   r = remote
   rc = !git add -A && git rebase --continue
   rbm = !git checkout master && git pull && git checkout - && git rebase master
-  ribbon = tag --force _ribbon origin/master
   amend = !git add --all && git commit -v --amend
+  ribbon = tag --force _ribbon origin/master
   catchup = log --patch --reverse --topo-order _ribbon..origin/master
   aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
 [apply]

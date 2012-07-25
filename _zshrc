@@ -26,6 +26,8 @@ export RUBY_HEAP_FREE_MIN=500000
 export RBX_ROOT=$HOME/.rbenv/versions/rbx-2.0.0-dev
 export RBXOPT=-X19
 
+unalias rake
+
 # Work
 if [ -f ~/.beh_ec2_auth ]; then
   . ~/.beh_ec2_auth

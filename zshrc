@@ -9,7 +9,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Set to the name theme to load.
 export ZSH_THEME="thejspr"
 
-# OFF
+# OFF: vi-mode
 plugins=(git bundler brew heroku redis-cli history-substring-search gem)
 
 source $ZSH/oh-my-zsh.sh
@@ -26,7 +26,7 @@ else
   export RBENV_ROOT="$rbenv_root"
 fi
 
-export PATH=/usr/local/bin:~/bin:/Library/PostgreSQL/9.1/bin:${rbenv_root}/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:~/bin:/Library/PostgreSQL/9.1/bin:${rbenv_root}/bin:$PATH
 eval "$(rbenv init - --no-rehash)"
 
 unalias ruby
