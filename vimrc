@@ -73,7 +73,7 @@ Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 
 " trial plugins
-Bundle 'YankRing.vim'
+" Bundle 'YankRing.vim'
 Bundle 'kogakure/vim-sparkup'
 Bundle 'scratch.vim'
 
@@ -81,7 +81,7 @@ Bundle 'scratch.vim'
 " Bundle 'Conque-Shell'
 "http://yanpritzker.com/2011/10/26/colorful-vim-ruby-tests-and-debugging/
 " Bundle 'skwp/vim-ruby-conque'
-Bundle 'benmills/vimux'
+" Bundle 'benmills/vimux'
 
 filetype plugin indent on
 runtime macros/matchit.vim
