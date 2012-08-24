@@ -8,7 +8,7 @@ filetype off                   " must be off before Vundle has run
 
 command! BI :BundleInstall
 command! BC :BundleClean
-command! BU :BundleInstall!
+command! -bang BU :BundleInstall!
 set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
@@ -74,7 +74,7 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 
 " trial plugins
 " Bundle 'YankRing.vim'
-Bundle 'kogakure/vim-sparkup'
+" Bundle 'kogakure/vim-sparkup'
 Bundle 'scratch.vim'
 
 " Maybe's
@@ -82,6 +82,7 @@ Bundle 'scratch.vim'
 "http://yanpritzker.com/2011/10/26/colorful-vim-ruby-tests-and-debugging/
 " Bundle 'skwp/vim-ruby-conque'
 " Bundle 'benmills/vimux'
+Bundle 'Syntastic'
 
 filetype plugin indent on
 runtime macros/matchit.vim
@@ -141,6 +142,16 @@ set mousehide
 " Resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="
 
+set splitbelow
+set splitright
+
+" Fix annoyances
+nnoremap <F1> <nop>
+nnoremap Q <nop>
+nnoremap K <nop>
+" keep curson in place when joining lines
+nnoremap J mzJ`z
+
 "  ---------------------------------------------------------------------------
 "  Text Formatting
 "  ---------------------------------------------------------------------------
@@ -157,16 +168,27 @@ set colorcolumn=80
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
 
+nmap <F1> <nop>
+
 " save shortcut
 noremap <C-s> :w<CR>
 vnoremap <C-s> <ESC>:w<CR>
 inoremap <C-s> <ESC>:w<CR>
-command! Wq :wq
+if has("user_commands")
+  command! -bang -nargs=? -complete=file E e<bang> <args>
+  command! -bang -nargs=? -complete=file W w<bang> <args>
+  command! -bang -nargs=? -complete=file Wq wq<bang> <args>
+  command! -bang -nargs=? -complete=file WQ wq<bang> <args>
+  command! -bang Wa wa<bang>
+  command! -bang WA wa<bang>
+  command! -bang Q q<bang>
+  command! -bang QA qa<bang>
+  command! -bang Qa qa<bang>
+endif
 
 " Searching / moving
 set hlsearch
 set incsearch
-set ignorecase
 set smartcase
 set gdefault
 set showmatch
@@ -274,12 +296,12 @@ let g:ruby_doc_command='open'
 "  ---------------------------------------------------------------------------
 
 " Sparkup
-augroup sparkup_types
-  " Remove ALL autocommands of the current group.
-  autocmd!
-  " Add sparkup to new filetypes
-  autocmd FileType erb runtime! ftplugin/html/sparkup.vim
-augroup END
+" augroup sparkup_types
+"   " Remove ALL autocommands of the current group.
+"   autocmd!
+"   " Add sparkup to new filetypes
+"   autocmd FileType erb runtime! ftplugin/html/sparkup.vim
+" augroup END
 
 " Fugitive
 nmap <leader>gs :Gstatus<CR><C-w>10+
@@ -296,7 +318,7 @@ let g:NERDTreeShowHidden=1
 let g:NERDTreeShowBookmarks = 0
 let g:NERDTreeWinPos = "left"
 let g:NERDTreeWinSize = 30
-let g:NERDTreeIgnore=['\.git$','\.sass-cache', '\.DS_Store']
+let g:NERDTreeIgnore=['\.git$','\.sass-cache', '\.DS_Store', '\.bundle', 'coverage']
 
 " ctrlp
 map <leader>t :CtrlP<cr>
@@ -313,6 +335,7 @@ set wildignore+=spec/dummy/**
 
 " Center screen when scrolling search results
 nnoremap n nzz
+nnoremap } }zz
 nnoremap N Nzz
 nnoremap * *zz
 nnoremap # #zz

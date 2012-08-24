@@ -1,12 +1,9 @@
-# todo.txt
-export TODOTXT_DEFAULT_ACTION=ls
-alias t='todo.sh -d /path/to/your/todo.cfg'
-
 #ruby
 alias rb='rbenv'
 alias rv='ruby -v'
 alias wr='ps aux | grep ruby'
 alias sg='guard'
+alias kg='kill -9 %bundled_guard'
 
 # ruby testing
 alias cuc='cucumber'
@@ -83,6 +80,7 @@ alias rctags='ctags -R --exclude=.git --exclude=log --exclude=public *'
 
 #rake
 alias rt='rake -T'
+alias rr='rake routes'
 
 #heroku
 alias h="heroku"
