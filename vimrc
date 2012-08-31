@@ -7,8 +7,8 @@ endif
 filetype off                   " must be off before Vundle has run
 
 command! BI :BundleInstall
+command! -bang BI :BundleInstall!
 command! BC :BundleClean
-command! -bang BU :BundleInstall!
 set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
