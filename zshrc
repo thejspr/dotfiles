@@ -50,10 +50,7 @@ export SKIP_COVERAGE=true
 export PROFILE=default
 
 # https://github.com/rupa/z
- . `brew --prefix`/etc/profile.d/z.sh
- function precmd () {
-  z --add "$(pwd -P )"
- }
+. `brew --prefix`/etc/profile.d/z.sh
 
 # Alias and function definitions.
 if [ -f ~/.aliases ]; then
@@ -63,12 +60,9 @@ if [ -f ~/.functions ]; then
   . ~/.functions
 fi
 
-# Clojure
-if [[ ! $CLASSPATH == *clojure-contrib* ]]; then
-  export CLASSPATH=/usr/local/Cellar/clojure-contrib/1.2.0/clojure-contrib.jar
-  # export CLASSPATH=/usr/local/Cellar/clojure-contrib/1.2.0/clojure-contrib.jar:$CLASSPATH
-fi
+export GNUTERM=x11
 
-__git_files () {
-  _wanted files expl 'local files' _files
-}
+# Clojure
+# if [[ ! $CLASSPATH == *clojure-contrib* ]]; then
+#   export CLASSPATH=/usr/local/Cellar/clojure-contrib/1.2.0/clojure-contrib.jar
+# fi

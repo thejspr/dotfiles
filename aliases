@@ -1,6 +1,10 @@
-push_browse() {
+push_branch() {
   branch_name=$(git symbolic-ref HEAD 2>/dev/null | cut -d"/" -f 3)
   git push --set-upstream origin $branch_name
+
+  if [[ ! $# == '0' ]]; then
+    git pull-request
+  fi
   git browse
 }
 
@@ -12,15 +16,9 @@ alias sg='guard'
 alias kg='kill -9 %bundled_guard'
 alias kf='kill -9 %1'
 
-# ruby testing
-alias cuc='cucumber'
-
 # msc
 alias youtube-dl='noglob youtube-dl'
-alias brewup='brew update && brew outdated && brew cleanup'
-
-#testing
-alias pam='polyamory'
+alias bup='brew update && echo "==> Outdated Formula" && brew outdated && brew cleanup'
 
 alias time='/usr/bin/time'
 
@@ -31,27 +29,15 @@ alias e='vim'
 alias tmux="TERM=screen-256color-bce tmux"
 
 #evently
-alias risky='RISKY=true'
-alias dq='DO_NOT_QUIT_BROWSER=true'
 alias rsq='ps -ef | grep resque'
-local_broadcast() { DO_NOT_QUIT_BROWSER=true RAILS_ENV=production rake broadcast:work QUEUE="$1" }
-
-#broadcast spec runners
-rsh() { be rspec spec/broadcast/sites/helpers/"$1"_helper_spec.rb"$2" }
-rss() { LIVE=true be rspec spec/broadcast/sites/"$1"_spec.rb"$2" }
 
 # tail server rails log
 tail_server() { ssh -t "$1" tail -f /var/www/bullseye/production/current/log/production.log }
 tail_test_server() { ssh -t "$1" tail -f /var/www/bullseye/testing/current/log/production.log }
 
 #conviniences
-# alias -g A='|ack'
-alias -g L='|less'
 alias -g V='|vim -'
-alias -g M='|mvim -'
 alias -g G='|grep'
-alias -g N='&>/dev/null&'
-alias -g W='|wc'
 
 #git
 g() {
@@ -61,7 +47,7 @@ g() {
     command hub "$@";
   fi
 }
-grmb() { git push origin :"$@"; git branch -D "$@" }
+grmb() { git push origin :"$@"; git branch -d "$@" }
 
 alias gd='g d'
 alias gl='g l'
@@ -75,7 +61,6 @@ alias migrate='rake db:migrate && rake db:test:clone_structure'
 alias rs='rails server thin'
 alias rc='rails console'
 alias rg='rails generate'
-alias uni='unicorn -c config/unicorn.rb -p'
 alias reset_db='rake db:drop db:setup db:test:prepare'
 
 #logs, #rails
@@ -91,7 +76,6 @@ alias rr='rake routes'
 
 #heroku
 alias h="heroku"
-# complete -o default -o nospace -F _heroke h
 hpush() { git add -A; git commit -m "$*"; git push heroku master; }
 
 #servers
@@ -104,7 +88,5 @@ alias grep='grep --color=auto'
 
 # system and files editing
 alias ea='vim ~/.aliases'
-alias gea='vim ~/.gitconfig'
 alias ez='vim ~/Code/dotfiles/zshrc'
-alias ez_='vim ~/Code/dotfiles/_zshrc'
 alias sr='source ~/.zshrc'

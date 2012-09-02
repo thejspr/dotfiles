@@ -16,7 +16,6 @@ Bundle 'gmarik/vundle'
 " essentials
 Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-repeat'
-" Bundle 'sjl/vitality.vim'
 Bundle 'xolox/vim-easytags'
 
 " helpers
@@ -24,8 +23,6 @@ Bundle 'ervandew/supertab'
 
 " autoclose
 Bundle 'Auto-Pairs'
-" Bundle 'Raimondi/delimitMate'
-" Bundle 'Townk/vim-autoclose'
 
 " UI
 Bundle 'Lokaltog/vim-powerline'
@@ -60,7 +57,6 @@ Bundle 'sickill/vim-pasta'
 Bundle 'pangloss/vim-javascript'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'leshill/vim-json'
-Bundle 'itspriddle/vim-jquery'
 
 " msc languages
 Bundle 'tpope/vim-markdown'
@@ -74,15 +70,6 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 
 " trial plugins
 " Bundle 'YankRing.vim'
-" Bundle 'kogakure/vim-sparkup'
-Bundle 'scratch.vim'
-
-" Maybe's
-" Bundle 'Conque-Shell'
-"http://yanpritzker.com/2011/10/26/colorful-vim-ruby-tests-and-debugging/
-" Bundle 'skwp/vim-ruby-conque'
-" Bundle 'benmills/vimux'
-Bundle 'Syntastic'
 
 filetype plugin indent on
 runtime macros/matchit.vim
