@@ -37,7 +37,6 @@ Bundle 'godlygeek/tabular'
 
 " plugins
 Bundle 'tpope/vim-fugitive'
-Bundle 'msanders/snipmate.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'vim-scripts/L9'
 
@@ -68,8 +67,11 @@ Bundle 'matchit.zip'
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 
-" trial plugins
-" Bundle 'YankRing.vim'
+" SnipMate
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "honza/snipmate-snippets"
+Bundle "garbas/vim-snipmate"
 
 filetype plugin indent on
 runtime macros/matchit.vim
@@ -305,7 +307,7 @@ let g:NERDTreeShowHidden=1
 let g:NERDTreeShowBookmarks = 0
 let g:NERDTreeWinPos = "left"
 let g:NERDTreeWinSize = 30
-let g:NERDTreeIgnore=['\.git$','\.sass-cache', '\.DS_Store', '\.bundle', 'coverage']
+let g:NERDTreeIgnore=['\.git$','\.sass-cache', '\.DS_Store', '\.bundle', 'coverage', '\.pygments-cache', '\.themes']
 
 " ctrlp
 map <leader>t :CtrlP<cr>
