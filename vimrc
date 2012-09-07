@@ -73,12 +73,15 @@ Bundle "tomtom/tlib_vim"
 Bundle "honza/snipmate-snippets"
 Bundle "garbas/vim-snipmate"
 
+" new stuff
+Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+
 filetype plugin indent on
 runtime macros/matchit.vim
 
 syntax enable
 set background=dark
-colorscheme solarized
+colorscheme Tomorrow-Night
 
 "  ---------------------------------------------------------------------------
 "  General
@@ -494,4 +497,3 @@ function! ExpandBlock()
   normal 0 {cwdo |n€kb €kra€kb }€klDoend
 endfunction
 map <leader>S :call ExpandBlock()<cr>
-

@@ -7,6 +7,8 @@ push_branch() {
   fi
   git browse
 }
+travis() { open 'https://magnum.travis-ci.com/#!/evently/app/builds' }
+alias tt='tail -f log/test.log'
 
 #ruby
 alias rb='rbenv'
@@ -40,6 +42,7 @@ alias -g V='|vim -'
 alias -g G='|grep'
 
 #git
+alias eag='vim ~/.gitconfig'
 g() {
   if [[ $# == '0' ]]; then
     command hub status -sb
@@ -77,6 +80,7 @@ alias rr='rake routes'
 #heroku
 alias h="heroku"
 hpush() { git add -A; git commit -m "$*"; git push heroku master; }
+alias hc="heroku run console"
 
 #servers
 myip() { elinks -dump http://checkip.dyndns.org:8245/ }
