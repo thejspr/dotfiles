@@ -7,7 +7,7 @@ endif
 filetype off                   " must be off before Vundle has run
 
 command! BI :BundleInstall
-command! -bang BI :BundleInstall!
+command! -bang BU :BundleInstall!
 command! BC :BundleClean
 set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -75,6 +75,7 @@ Bundle "garbas/vim-snipmate"
 
 " new stuff
 Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+Bundle 'octave.vim'
 
 filetype plugin indent on
 runtime macros/matchit.vim
