@@ -7,6 +7,6 @@ if File.exist?(rails) && defined?(Rails)
 end
 
 def env
-  Rails.env.production? ? "\e[1;31m#{Rails.env}\e[0m> " : "#{Rails.env}> "
+  Rails.env.production? ? "\e[1;31m#{Rails.env}\e[0m > " : "#{Rails.env}> "
 end
 

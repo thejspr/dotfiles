@@ -61,6 +61,7 @@ Bundle 'leshill/vim-json'
 Bundle 'tpope/vim-markdown'
 Bundle 'panozzaj/vim-autocorrect'
 Bundle 'bbommarito/vim-slim'
+Bundle 'octave.vim'
 
 " MatchIt
 Bundle 'matchit.zip'
@@ -70,12 +71,13 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 " SnipMate
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
-Bundle "honza/snipmate-snippets"
+Bundle "git@github.com:thejspr/snipmate-snippets.git"
 Bundle "garbas/vim-snipmate"
 
 " new stuff
 Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
-Bundle 'octave.vim'
+Bundle 'AndrewRadev/switch.vim'
+nnoremap - :Switch<cr>
 
 filetype plugin indent on
 runtime macros/matchit.vim
@@ -202,7 +204,7 @@ command! Ev :e ~/.vimrc
 " When vimrc is edited, reload it
 au! BufWritePost .vimrc source %
 " scratch buffer
-command! Es :e ~/scratch-buffer.txt
+command! Es :e ~/.scratch-buffer.rb
 
 " Copy/paste
 noremap <C-c> "+y
