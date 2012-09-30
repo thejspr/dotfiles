@@ -10,7 +10,7 @@ export ZSH=$HOME/.oh-my-zsh
 export ZSH_THEME="thejspr"
 
 # OFF: vi-mode
-plugins=(git bundler brew heroku redis-cli history-substring-search gem)
+plugins=(git bundler brew heroku redis-cli history-substring-search gem zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -62,7 +62,7 @@ fi
 
 export GNUTERM=x11
 
-# Clojure
+#Clojure
 # if [[ ! $CLASSPATH == *clojure-contrib* ]]; then
 #   export CLASSPATH=/usr/local/Cellar/clojure-contrib/1.2.0/clojure-contrib.jar
 # fi

@@ -27,7 +27,9 @@
   r = remote
   rc = !git add -A && git rebase --continue
   rbm = !git checkout master && git pull && git checkout - && git rebase master
-  amend = !git add -A && commit -v --amend
+  amend = !git add -A && git commit -v --amend
+  amendf = !git add -A && git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - --amend
+  amendff = !git amendf && git push -ff
   wip = !git add --all && git commit -m 'wip'
   ribbon = tag --force _ribbon origin/master
   catchup = log --patch --reverse --topo-order _ribbon..origin/master

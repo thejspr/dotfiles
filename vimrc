@@ -78,13 +78,14 @@ Bundle "garbas/vim-snipmate"
 Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Bundle 'AndrewRadev/switch.vim'
 nnoremap - :Switch<cr>
+Bundle 'sql.vim'
 
 filetype plugin indent on
 runtime macros/matchit.vim
 
 syntax enable
 set background=dark
-colorscheme Tomorrow-Night
+colorscheme Tomorrow-Night-Eighties
 
 "  ---------------------------------------------------------------------------
 "  General
@@ -166,6 +167,7 @@ nnoremap <leader><leader> <c-^>
 nmap <F1> <nop>
 
 " save shortcut
+command! Wqa :wqa
 noremap <C-s> :w<CR>
 vnoremap <C-s> <ESC>:w<CR>
 inoremap <C-s> <ESC>:w<CR>
@@ -256,6 +258,7 @@ vnoremap <C-k> :m-2<CR>gv
 
 " easier deletion
 nmap \ dd
+vmap \ dd
 
 "  ---------------------------------------------------------------------------
 "  Function Keys

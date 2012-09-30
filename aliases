@@ -32,6 +32,7 @@ alias tmux="TERM=screen-256color-bce tmux"
 
 #evently
 alias rsq='ps -ef | grep resque'
+local_broadcast() { DO_NOT_QUIT_BROWSER=true RAILS_ENV=production bundle exec rake broadcast:work QUEUE="$1" }
 
 # tail server rails log
 tail_server() { ssh -t "$1" tail -f /var/www/bullseye/production/current/log/production.log }

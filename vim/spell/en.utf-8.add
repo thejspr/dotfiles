@@ -94,3 +94,5 @@ localhost
 webdriver
 apps
 google
+params
+Airbrake
