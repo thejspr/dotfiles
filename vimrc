@@ -1,9 +1,7 @@
 set nocompatible               " be iMproved
-
 if !isdirectory(expand("~/.vim/bundle/vundle/.git"))
   !git clone git://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 endif
-
 filetype off                   " must be off before Vundle has run
 
 command! BI :BundleInstall
@@ -86,10 +84,8 @@ colorscheme Tomorrow-Night-Eighties
 "  ---------------------------------------------------------------------------
 "  General
 "  ---------------------------------------------------------------------------
-filetype plugin indent on
 let mapleader = ","
 let g:mapleader = ","
-" set modelines=0
 set history=1000
 set nobackup
 set nowritebackup
@@ -138,7 +134,6 @@ set splitbelow
 set splitright
 
 " Fix annoyances
-nnoremap <F1> <nop>
 nnoremap Q <nop>
 nnoremap K <nop>
 " keep curson in place when joining lines
@@ -158,32 +153,55 @@ set colorcolumn=80
 "  Mappings
 "  ---------------------------------------------------------------------------
 " Zeus
+" -- rspec
 function! RSpecFile()
+  :w
   execute("!clear && zeus rspec " . expand("%p"))
 endfunction
 command! RSpecFile call RSpecFile()
 map <leader>R :call RSpecFile() <CR>
 
 function! RSpecCurrent()
+  :w
   execute("!clear && zeus rspec " . expand("%p") . ":" . line("."))
 endfunction
 command! RSpecCurrent call RSpecCurrent()
 map <leader>r :call RSpecCurrent() <CR>
 
+" -- cucumber
+function! CucumberFile()
+  :w
+  execute("!clear && zeus cucumber " . expand("%p"))
+endfunction
+command! CucumberFile call CucumberFile()
+map <leader>K :call CucumberFile() <CR>
+
+function! CucumberCurrent()
+  :w
+  execute("!clear && zeus cucumber " . expand("%p") . ":" . line("."))
+endfunction
+command! CucumberCurrent call CucumberCurrent()
+map <leader>k :call CucumberCurrent() <CR>
+
+function! RunAllZeus()
+  :w
+  execute("!clear && zeus rspec spec && zeus cucumber")
+endfunction
+command! ZeusAll call RunAllZeus()
+
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
 
 " JSON
-au BufRead,BufNewFile *.json set filetype=json foldmethod=syntax
-au FileType json command -range=% -nargs=* Tidy <line1>,<line2>! json_xs -f json -t json-pretty
-
-nmap <F1> <nop>
+au BufRead,BufWrite,BufNewFile *.json set filetype=json foldmethod=syntax
+au! FileType json command -range=% -nargs=* Tidy <line1>,<line2>! json_xs -f json -t json-pretty
 
 " save shortcut
+nmap <c-s> :w<CR>
+vmap <c-s> <ESC>:w<CR>
+imap <c-s> <ESC>:w<CR>
 command! Wqa :wqa
-noremap <C-s> :w<CR>
-vnoremap <C-s> <ESC>:w<CR>
-inoremap <C-s> <ESC>:w<CR>
+
 if has("user_commands")
   command! -bang -nargs=? -complete=file E e<bang> <args>
   command! -bang -nargs=? -complete=file W w<bang> <args>
@@ -210,6 +228,7 @@ nmap <space> /
 map <m-space> ?
 " find/replace shortcut
 noremap <leader>f :%s///<left><left>
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 " Auto format
 map === mmgg=G`m^zz
@@ -286,7 +305,6 @@ endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
 
-
 "  ---------------------------------------------------------------------------
 "  Function Keys
 "  ---------------------------------------------------------------------------
@@ -319,14 +337,6 @@ let g:ruby_doc_command='open'
 "  ---------------------------------------------------------------------------
 "  Plugins
 "  ---------------------------------------------------------------------------
-
-" Sparkup
-" augroup sparkup_types
-"   " Remove ALL autocommands of the current group.
-"   autocmd!
-"   " Add sparkup to new filetypes
-"   autocmd FileType erb runtime! ftplugin/html/sparkup.vim
-" augroup END
 
 " Fugitive
 nmap <leader>gs :Gstatus<CR><C-w>10+
@@ -393,17 +403,3 @@ autocmd BufReadPost *
   \ if line("'\"") > 0 && line("'\"") <= line("$") |
   \   exe "normal g`\"" |
   \ endif
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" MY FUNCTIONS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-function! InlineBlock()
-  normal ?docw{€krx endce}v%:join
-endfunction
-map <leader>s :call InlineBlock()<cr>
-
-function! ExpandBlock()
-  normal 0 {cwdo |n€kb €kra€kb }€klDoend
-endfunction
-map <leader>S :call ExpandBlock()<cr>
