@@ -22,8 +22,8 @@
   ms = checkout master
   co = checkout
   b = branch
-  ls = log --oneline --decorate --graph -20
-  l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(black)<%an>%Creset' --abbrev-commit --date=relative -20
+  ls = log --oneline --decorate --graph -14
+  l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(black)<%an>%Creset' --abbrev-commit --date=relative -15
   r = remote
   rc = !git add -A && git rebase --continue
   rbm = !git checkout master && git pull && git checkout - && git rebase master

@@ -80,6 +80,10 @@ runtime macros/matchit.vim
 syntax enable
 set background=dark
 colorscheme Tomorrow-Night-Eighties
+set nocursorcolumn
+set nocursorline
+set synmaxcol=128
+syntax sync minlines=256
 
 "  ---------------------------------------------------------------------------
 "  General
@@ -96,6 +100,9 @@ set undodir=~/.tmp,/tmp
 set foldlevelstart=99
 :au FocusLost * silent! wa "save all buffers when focus os lost
 
+set shell=zsh
+" set shellcmdflag=-ic
+
 "  ---------------------------------------------------------------------------
 "  Completion
 "  ---------------------------------------------------------------------------
@@ -109,7 +116,7 @@ let g:SuperTabLongestHighlight = 1
 set title
 set encoding=utf-8
 set ffs=unix,mac,dos
-set scrolloff=7
+set scrolloff=4
 set autoindent
 set smartindent
 set showmode
@@ -117,8 +124,8 @@ set showcmd
 set hidden
 set wildmenu
 set wildmode=list:longest,full
-set cursorline
 set ttyfast
+set ttyscroll=3
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
@@ -153,48 +160,43 @@ set colorcolumn=80
 "  Mappings
 "  ---------------------------------------------------------------------------
 " Zeus
+let s:testexec = "!clear && zeus "
 " -- rspec
 function! RSpecFile()
   :w
-  execute("!clear && zeus rspec " . expand("%p"))
+  execute(s:testexec . "rspec " . expand("%p"))
 endfunction
 command! RSpecFile call RSpecFile()
-map <leader>R :call RSpecFile() <CR>
+map <leader>R :call RSpecFile()<CR>
 
 function! RSpecCurrent()
   :w
-  execute("!clear && zeus rspec " . expand("%p") . ":" . line("."))
+  execute(s:testexec . "rspec " . expand("%p") . ":" . line("."))
 endfunction
 command! RSpecCurrent call RSpecCurrent()
-map <leader>r :call RSpecCurrent() <CR>
+map <leader>r :call RSpecCurrent()<CR>
 
 " -- cucumber
 function! CucumberFile()
   :w
-  execute("!clear && zeus cucumber " . expand("%p"))
+  execute(s:testexec . "cucumber " . expand("%p"))
 endfunction
 command! CucumberFile call CucumberFile()
-map <leader>K :call CucumberFile() <CR>
+map <leader>K :call CucumberFile()<CR>
 
 function! CucumberCurrent()
   :w
-  execute("!clear && zeus cucumber " . expand("%p") . ":" . line("."))
+  execute(s:testexec . "cucumber " . expand("%p") . ":" . line("."))
 endfunction
 command! CucumberCurrent call CucumberCurrent()
-map <leader>k :call CucumberCurrent() <CR>
-
-function! RunAllZeus()
-  :w
-  execute("!clear && zeus rspec spec && zeus cucumber")
-endfunction
-command! ZeusAll call RunAllZeus()
+map <leader>k :call CucumberCurrent()<CR>
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
 
 " JSON
 au BufRead,BufWrite,BufNewFile *.json set filetype=json foldmethod=syntax
-au! FileType json command -range=% -nargs=* Tidy <line1>,<line2>! json_xs -f json -t json-pretty
+au! FileType json command! -range=% -nargs=* Tidy <line1>,<line2>! json_xs -f json -t json-pretty
 
 " save shortcut
 nmap <c-s> :w<CR>
@@ -239,14 +241,6 @@ command! Ev :e ~/.vimrc
 au! BufWritePost .vimrc source %
 " scratch buffer
 command! Es :e ~/.scratch-buffer.rb
-
-" Copy/paste
-noremap <C-c> "+y
-noremap <C-v> :set paste<CR>"+p:set nopaste<CR>
-vmap <C-c> "+y
-vmap <C-v> :set paste<CR>"+p:set nopaste<CR>
-imap <C-c> <esc>"+y
-imap <C-v> <esc>:set paste<CR>"+p:set nopaste<CR>
 
 " Use Ack instead of Grep when available
 let g:ackprg="ack -H --nogroup --column"
@@ -403,3 +397,14 @@ autocmd BufReadPost *
   \ if line("'\"") > 0 && line("'\"") <= line("$") |
   \   exe "normal g`\"" |
   \ endif
+
+" copy/paste in/out of vim
+" http://vim.wikia.com/wiki/In_line_copy_and_paste_to_system_clipboard
+" http://vim.wikia.com/wiki/Mac_OS_X_clipboard_sharing
+" set clipboard=unnamed
+" nmap <C-c> y
+" vmap <C-c> y
+" imap <C-c> <ESC>y
+" nmap <C-v> p
+" vmap <C-v> p
+" imap <C-v> <ESC>pa

@@ -20,7 +20,7 @@ stty -ixon -ixoff
 
 unsetopt correct_all
 
-export PATH=/usr/local/bin:/usr/local/sbin:~/bin:/Applications/Postgres.app/Contents/MacOS/bin:~/.rbenv/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:~/bin:/Applications/Postgres.app/Contents/MacOS/bin:~/.rbenv/bin:/usr/local/share/npm/bin:$PATH
 eval "$(rbenv init - --no-rehash)"
 
 # Ruby
@@ -29,6 +29,7 @@ export RUBY_HEAP_SLOTS_INCREMENT=1000000
 export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
 export RUBY_GC_MALLOC_LIMIT=1000000000
 export RUBY_HEAP_FREE_MIN=500000
+export DEFER_GC=true
 unalias rake
 unalias ruby
 
@@ -46,3 +47,5 @@ export PROFILE=default
 # Alias and function definitions.
 . ~/.aliases
 # . ~/.functions
+#
+export GNUTERM=x11
