@@ -77,9 +77,9 @@ nnoremap - :Switch<cr>
 filetype plugin indent on
 runtime macros/matchit.vim
 
-syntax enable
-set background=dark
-colorscheme Tomorrow-Night-Eighties
+syntax off
+" set background=dark
+" colorscheme Tomorrow-Night-Eighties
 set nocursorcolumn
 set nocursorline
 set synmaxcol=128
