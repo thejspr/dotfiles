@@ -98,6 +98,8 @@ alias rr='rake routes'
 alias h="heroku"
 hpush() { git add -A; git commit -m "$*"; git push; git push heroku master; }
 alias hc="heroku run console"
+alias hc="heroku logs -t"
+alias hp="git push heroku master"
 
 #servers
 myip() { elinks -dump http://checkip.dyndns.org:8245/ }

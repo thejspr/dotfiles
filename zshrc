@@ -20,7 +20,8 @@ stty -ixon -ixoff
 
 unsetopt correct_all
 
-export PATH=/usr/local/bin:/usr/local/sbin:~/bin:/Applications/Postgres.app/Contents/MacOS/bin:~/.rbenv/bin:/usr/local/share/npm/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:~/bin:/Applications/Postgres.app/Contents/MacOS/bin:~/.rbenv/bin:$PATH
+export PATH=$PATH:/usr/local/share/python:/usr/local/share/npm/bin
 eval "$(rbenv init - --no-rehash)"
 
 # Ruby

@@ -77,7 +77,7 @@ nnoremap - :Switch<cr>
 filetype plugin indent on
 runtime macros/matchit.vim
 
-syntax off
+syntax on
 " set background=dark
 " colorscheme Tomorrow-Night-Eighties
 set nocursorcolumn
@@ -153,43 +153,38 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set nowrap
-set textwidth=80
-set colorcolumn=80
+" set textwidth=80
+" set colorcolumn=80
 
 "  ---------------------------------------------------------------------------
 "  Mappings
 "  ---------------------------------------------------------------------------
-" Zeus
-let s:testexec = "!clear && zeus "
-" -- rspec
-function! RSpecFile()
-  :w
-  execute(s:testexec . "rspec " . expand("%p"))
-endfunction
-command! RSpecFile call RSpecFile()
-map <leader>R :call RSpecFile()<CR>
+" Run tests
 
-function! RSpecCurrent()
+fun! RunTest(cmd)
   :w
-  execute(s:testexec . "rspec " . expand("%p") . ":" . line("."))
-endfunction
-command! RSpecCurrent call RSpecCurrent()
-map <leader>r :call RSpecCurrent()<CR>
 
-" -- cucumber
-function! CucumberFile()
-  :w
-  execute(s:testexec . "cucumber " . expand("%p"))
-endfunction
-command! CucumberFile call CucumberFile()
-map <leader>K :call CucumberFile()<CR>
+  if filereadable('zeus.json')
+    let s:prefix = "!clear && zeus "
+  else
+    let s:prefix = "!clear && "
+  endif
 
-function! CucumberCurrent()
-  :w
-  execute(s:testexec . "cucumber " . expand("%p") . ":" . line("."))
-endfunction
-command! CucumberCurrent call CucumberCurrent()
-map <leader>k :call CucumberCurrent()<CR>
+  execute(s:prefix . a:cmd)
+endfu
+
+" rspec whole file
+map <leader>R :call RunTest("rspec " . expand("%p"))<CR>
+
+" rspec current line
+map <leader>r :call RunTest("rspec " . expand("%p") . ":" . line("."))<CR>
+
+" cucumber whole file
+map <leader>K :call RunTest("cucumber " . expand("%p"))<CR>
+
+" cucumber current line
+map <leader>k :call RunTest("cucumber " . expand("%p") . ":" . line("."))<CR>
+" ------------------------------------------------------------------
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
