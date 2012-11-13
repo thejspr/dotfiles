@@ -120,6 +120,7 @@ set scrolloff=4
 set autoindent
 set smartindent
 set showmode
+set modeline
 set showcmd
 set hidden
 set wildmenu
@@ -315,7 +316,7 @@ autocmd BufRead COMMIT_EDITMSG setlocal nocursorline
 "  #Ruby
 "  ---------------------------------------------------------------------------
 
-au BufRead,BufNewFile *.rb,Guardfile,Procfile,*.ru set filetype=ruby
+au BufRead,BufNewFile *.rb,Guardfile,Procfile,*.ru,pryrc set filetype=ruby
 
 " Replace Ruby 1.8 style hashes with shorter Ruby 1.9 style
 map <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/<CR>
@@ -403,3 +404,13 @@ autocmd BufReadPost *
 " nmap <C-v> p
 " vmap <C-v> p
 " imap <C-v> <ESC>pa
+
+" disable arrow keys
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
