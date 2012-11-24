@@ -70,20 +70,22 @@ Bundle "git@github.com:thejspr/snipmate-snippets.git"
 Bundle "garbas/vim-snipmate"
 
 " new stuff
-Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Bundle 'AndrewRadev/switch.vim'
 nnoremap - :Switch<cr>
+Bundle 'roman/golden-ratio'
+let g:golden_ratio_autocommand = 0
+nmap <C-w>- <Plug>(golden_ratio_resize)
+Bundle 'Liquid-Carbon'
 
 filetype plugin indent on
 runtime macros/matchit.vim
 
 syntax on
-" set background=dark
-" colorscheme Tomorrow-Night-Eighties
 set nocursorcolumn
 set nocursorline
-set synmaxcol=128
+set synmaxcol=256
 syntax sync minlines=256
+colorscheme liquidcarbon
 
 "  ---------------------------------------------------------------------------
 "  General
@@ -100,7 +102,7 @@ set undodir=~/.tmp,/tmp
 set foldlevelstart=99
 :au FocusLost * silent! wa "save all buffers when focus os lost
 
-set shell=zsh
+" set shell=zsh
 " set shellcmdflag=-ic
 
 "  ---------------------------------------------------------------------------
@@ -154,7 +156,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set nowrap
-" set textwidth=80
+set textwidth=80
 " set colorcolumn=80
 
 "  ---------------------------------------------------------------------------
@@ -309,8 +311,8 @@ nmap <F6> :%s/\s*$//<CR>:noh<CR>
 "  ---------------------------------------------------------------------------
 "  #Git
 "  ---------------------------------------------------------------------------
-autocmd BufRead COMMIT_EDITMSG setlocal spell!
-autocmd BufRead COMMIT_EDITMSG setlocal nocursorline
+" autocmd BufRead COMMIT_EDITMSG setlocal spell!
+" autocmd BufRead COMMIT_EDITMSG setlocal nocursorline
 
 "  ---------------------------------------------------------------------------
 "  #Ruby
@@ -397,20 +399,40 @@ autocmd BufReadPost *
 " copy/paste in/out of vim
 " http://vim.wikia.com/wiki/In_line_copy_and_paste_to_system_clipboard
 " http://vim.wikia.com/wiki/Mac_OS_X_clipboard_sharing
-" set clipboard=unnamed
-" nmap <C-c> y
-" vmap <C-c> y
-" imap <C-c> <ESC>y
-" nmap <C-v> p
-" vmap <C-v> p
-" imap <C-v> <ESC>pa
+set clipboard+=unnamed
+nmap <C-c> y
+vmap <C-c> y
+nmap <C-v> p
+vmap <C-v> p
 
 " disable arrow keys
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
-imap <up> <nop>
-imap <down> <nop>
-imap <left> <nop>
-imap <right> <nop>
+" map <up> <nop>
+" map <down> <nop>
+" map <left> <nop>
+" map <right> <nop>
+" imap <up> <nop>
+" imap <down> <nop>
+" imap <left> <nop>
+" imap <right> <nop>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" OpenChangedFiles COMMAND
+" Open a split for each dirty file in git
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! OpenChangedFiles()
+  only " Close all windows, unless they're modified
+  let status = system('git status -s | grep "^ \?\(M\|A\|UU\)" | sed "s/^.\{3\}//"')
+  let filenames = split(status, "\n")
+  exec "edit " . filenames[0]
+  for filename in filenames[1:]
+    exec "sp " . filename
+  endfor
+endfunction
+command! OpenChangedFiles :call OpenChangedFiles()
+
+" PROJECT SPEED!
+" Reduce timeout after <ESC> is recvd. This is only a good idea on fast links.
+set ttimeout
+set ttimeoutlen=20
+set notimeout
+set ambiwidth=double " powerline char width fix
+set lazyredraw

@@ -1,0 +1,34 @@
+export PATH=/usr/local/bin:/usr/local/sbin:~/bin:~/.rbenv/bin:$PATH
+export PATH=/Library/PostgreSQL/9.2/bin:$PATH
+export PATH=$PATH:/usr/local/share/python:/usr/local/share/npm/bin
+export PATH=$PATH:~/Code/scripts
+
+eval "$(rbenv init - --no-rehash)"
+
+export EDITOR=vim
+export VISUAL=vim
+
+# Ruby
+export RUBY_HEAP_MIN_SLOTS=1000000
+export RUBY_HEAP_SLOTS_INCREMENT=1000000
+export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
+export RUBY_GC_MALLOC_LIMIT=1000000000
+export RUBY_HEAP_FREE_MIN=500000
+export DEFER_GC=true
+
+export GNUTERM=x11
+
+# Work
+if [ -f ~/.beh_ec2_auth ]; then
+  . ~/.beh_ec2_auth
+fi
+
+export SKIP_COVERAGE=true
+export CI=false
+export PROFILE=default
+
+# https://github.com/rupa/z
+. `brew --prefix`/etc/profile.d/z.sh
+
+# Alias and function definitions.
+. ~/Code/dotfiles/aliases
