@@ -1,8 +1,8 @@
-set nocompatible               " be iMproved
+set nocompatible " be iMproved
 if !isdirectory(expand("~/.vim/bundle/vundle/.git"))
   !git clone git://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 endif
-filetype off                   " must be off before Vundle has run
+filetype off " must be off before Vundle has run
 
 command! BI :BundleInstall
 command! -bang BU :BundleInstall!
@@ -16,17 +16,11 @@ Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-repeat'
 Bundle 'xolox/vim-easytags'
 
-" helpers
-Bundle 'ervandew/supertab'
-
-" UI
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'bitc/vim-bad-whitespace'
-
 " textwrangling
 Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-surround'
 Bundle 'tomtom/tcomment_vim'
+Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
 
 " plugins
@@ -69,13 +63,21 @@ Bundle "tomtom/tlib_vim"
 Bundle "git@github.com:thejspr/snipmate-snippets.git"
 Bundle "garbas/vim-snipmate"
 
+" UI
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'bitc/vim-bad-whitespace'
+Bundle 'Liquid-Carbon'
+
 " new stuff
 Bundle 'AndrewRadev/switch.vim'
 nnoremap - :Switch<cr>
 Bundle 'roman/golden-ratio'
 let g:golden_ratio_autocommand = 0
 nmap <C-w>- <Plug>(golden_ratio_resize)
-Bundle 'Liquid-Carbon'
+Bundle 'vim-scripts/VimClojure'
+" Settings for VimClojure
+let vimclojure#ParenRainbow=1
+let vimclojure#HighlightBuiltins=1
 
 filetype plugin indent on
 runtime macros/matchit.vim
@@ -100,9 +102,9 @@ set vb
 set undofile
 set undodir=~/.tmp,/tmp
 set foldlevelstart=99
-:au FocusLost * silent! wa "save all buffers when focus os lost
+:au FocusLost * silent! wa "save all buffers when focus is lost
 
-" set shell=zsh
+set shell=zsh
 " set shellcmdflag=-ic
 
 "  ---------------------------------------------------------------------------
@@ -163,7 +165,6 @@ set textwidth=80
 "  Mappings
 "  ---------------------------------------------------------------------------
 " Run tests
-
 fun! RunTest(cmd)
   :w
 
@@ -187,7 +188,6 @@ map <leader>K :call RunTest("cucumber " . expand("%p"))<CR>
 
 " cucumber current line
 map <leader>k :call RunTest("cucumber " . expand("%p") . ":" . line("."))<CR>
-" ------------------------------------------------------------------
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
@@ -300,7 +300,6 @@ inoremap <s-tab> <c-n>
 "  ---------------------------------------------------------------------------
 "  Function Keys
 "  ---------------------------------------------------------------------------
-
 map <F1> :set nowrap! <CR>
 noremap <F2> :NERDTreeToggle<CR>
 set pastetoggle=<F3>
@@ -311,13 +310,12 @@ nmap <F6> :%s/\s*$//<CR>:noh<CR>
 "  ---------------------------------------------------------------------------
 "  #Git
 "  ---------------------------------------------------------------------------
-" autocmd BufRead COMMIT_EDITMSG setlocal spell!
-" autocmd BufRead COMMIT_EDITMSG setlocal nocursorline
+autocmd BufRead COMMIT_EDITMSG setlocal spell!
+autocmd BufRead COMMIT_EDITMSG setlocal nocursorline
 
 "  ---------------------------------------------------------------------------
 "  #Ruby
 "  ---------------------------------------------------------------------------
-
 au BufRead,BufNewFile *.rb,Guardfile,Procfile,*.ru,pryrc set filetype=ruby
 
 " Replace Ruby 1.8 style hashes with shorter Ruby 1.9 style
@@ -329,7 +327,6 @@ let g:ruby_doc_command='open'
 "  ---------------------------------------------------------------------------
 "  Plugins
 "  ---------------------------------------------------------------------------
-
 " Fugitive
 nmap <leader>gs :Gstatus<CR><C-w>10+
 noremap <leader>gc :Gcommit -v<CR><C-w>15+
@@ -350,7 +347,7 @@ let g:NERDTreeIgnore=['\.git$','\.sass-cache', '\.DS_Store', '\.bundle', 'covera
 " ctrlp
 map <leader>t :CtrlP<cr>
 map <leader>b :CtrlPBuffer<cr>
-let g:ctrlp_custom_ignore = '\.git$\|tmp$\|_deploy\|bin$'
+let g:ctrlp_custom_ignore = '\.git$\|tmp$\|_deploy$'
 let g:ctrlp_clear_cache_on_exit = 1
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
@@ -405,15 +402,6 @@ vmap <C-c> y
 nmap <C-v> p
 vmap <C-v> p
 
-" disable arrow keys
-" map <up> <nop>
-" map <down> <nop>
-" map <left> <nop>
-" map <right> <nop>
-" imap <up> <nop>
-" imap <down> <nop>
-" imap <left> <nop>
-" imap <right> <nop>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " OpenChangedFiles COMMAND
 " Open a split for each dirty file in git

@@ -17,6 +17,7 @@
 [alias]
   aa = add --all
   c = commit -v
+  ca = !git add -A && git commit -v
   d = diff
   dc = diff --cached
   ms = checkout master
