@@ -91,4 +91,5 @@ alias cd..='cd ..'
 # system and files editing
 alias ea='vim ~/Code/dotfiles/aliases'
 alias ez='vim ~/Code/dotfiles/zsh_mods'
-alias sr='source ~/.zshrc'
+alias ezz='vim ~/.zpreztorc'
+alias sr='exec zsh'
