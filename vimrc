@@ -12,12 +12,13 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " essentials
-Bundle 'mileszs/ack.vim'
-Bundle 'tpope/vim-repeat'
+Bundle 'epmatsw/ag.vim'
+" Bundle 'tpope/vim-repeat'
 Bundle 'xolox/vim-easytags'
+Bundle 'kien/ctrlp.vim'
 
 " textwrangling
-Bundle 'tpope/vim-speeddating'
+" Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-surround'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'ervandew/supertab'
@@ -25,8 +26,7 @@ Bundle 'godlygeek/tabular'
 
 " plugins
 Bundle 'tpope/vim-fugitive'
-Bundle 'kien/ctrlp.vim'
-Bundle 'vim-scripts/L9'
+" Bundle 'vim-scripts/L9'
 
 " File management
 Bundle 'scrooloose/nerdtree'
@@ -35,8 +35,8 @@ Bundle 'tpope/vim-eunuch'
 " Ruby
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-rake'
-Bundle 'vim-ruby/vim-ruby'
+" Bundle 'tpope/vim-rake'
+" Bundle 'vim-ruby/vim-ruby'
 Bundle 'lucapette/vim-ruby-doc'
 Bundle 'sickill/vim-pasta'
 
@@ -47,15 +47,14 @@ Bundle 'leshill/vim-json'
 
 " msc languages
 Bundle 'tpope/vim-markdown'
-Bundle 'panozzaj/vim-autocorrect'
+" Bundle 'panozzaj/vim-autocorrect'
 Bundle 'bbommarito/vim-slim'
-Bundle 'octave.vim'
 Bundle 'sql.vim'
 
 " MatchIt
-Bundle 'matchit.zip'
-Bundle 'kana/vim-textobj-user'
-Bundle 'nelstrom/vim-textobj-rubyblock'
+" Bundle 'matchit.zip'
+" Bundle 'kana/vim-textobj-user'
+" Bundle 'nelstrom/vim-textobj-rubyblock'
 
 " SnipMate
 Bundle "MarcWeber/vim-addon-mw-utils"
@@ -65,19 +64,16 @@ Bundle "garbas/vim-snipmate"
 
 " UI
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'bitc/vim-bad-whitespace'
 Bundle 'Liquid-Carbon'
 
 " new stuff
-Bundle 'AndrewRadev/switch.vim'
-nnoremap - :Switch<cr>
-Bundle 'roman/golden-ratio'
-let g:golden_ratio_autocommand = 0
-nmap <C-w>- <Plug>(golden_ratio_resize)
-Bundle 'vim-scripts/VimClojure'
+" Bundle 'roman/golden-ratio'
+" let g:golden_ratio_autocommand = 0
+" nmap <C-w>- <Plug>(golden_ratio_resize)
+" Bundle 'vim-scripts/VimClojure'
 " Settings for VimClojure
-let vimclojure#ParenRainbow=1
-let vimclojure#HighlightBuiltins=1
+" let vimclojure#ParenRainbow=1
+" let vimclojure#HighlightBuiltins=1
 
 filetype plugin indent on
 runtime macros/matchit.vim
@@ -87,6 +83,7 @@ set nocursorcolumn
 set nocursorline
 set synmaxcol=256
 syntax sync minlines=256
+set t_Co=256
 colorscheme liquidcarbon
 
 "  ---------------------------------------------------------------------------
@@ -94,9 +91,10 @@ colorscheme liquidcarbon
 "  ---------------------------------------------------------------------------
 let mapleader = ","
 let g:mapleader = ","
-set history=1000
+set history=100
 set nobackup
 set nowritebackup
+set notimeout
 set noswapfile
 set vb
 set undofile
@@ -128,15 +126,19 @@ set modeline
 set showcmd
 set hidden
 set wildmenu
-set wildmode=list:longest,full
+set wildmode=list:longest,list:full
 set ttyfast
 set ttyscroll=3
+set ttimeout
+set ttimeoutlen=10
+" set lazyredraw
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
 set number
 
 set mouse=a
+set ttymouse=xterm2
 set mousehide
 
 " Resize splits when the win{is resized
@@ -240,10 +242,10 @@ au! BufWritePost .vimrc source %
 " scratch buffer
 command! Es :e ~/.scratch-buffer.rb
 
-" Use Ack instead of Grep when available
-let g:ackprg="ack -H --nogroup --column"
-nnoremap <leader>a :Ack
-nnoremap <leader>A :Ack <cword><CR>
+" Use Ag instead of Grep when available
+let g:ackprg="ag -H --nogroup --column"
+nnoremap <leader>a :Ag
+nnoremap <leader>A :Ag <cword><CR>
 
 " Spell checking
 set spellfile+=~/.vim/spell/en.utf-8.add
@@ -396,31 +398,8 @@ autocmd BufReadPost *
 " copy/paste in/out of vim
 " http://vim.wikia.com/wiki/In_line_copy_and_paste_to_system_clipboard
 " http://vim.wikia.com/wiki/Mac_OS_X_clipboard_sharing
-set clipboard+=unnamed
-nmap <C-c> y
-vmap <C-c> y
-nmap <C-v> p
-vmap <C-v> p
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" OpenChangedFiles COMMAND
-" Open a split for each dirty file in git
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! OpenChangedFiles()
-  only " Close all windows, unless they're modified
-  let status = system('git status -s | grep "^ \?\(M\|A\|UU\)" | sed "s/^.\{3\}//"')
-  let filenames = split(status, "\n")
-  exec "edit " . filenames[0]
-  for filename in filenames[1:]
-    exec "sp " . filename
-  endfor
-endfunction
-command! OpenChangedFiles :call OpenChangedFiles()
-
-" PROJECT SPEED!
-" Reduce timeout after <ESC> is recvd. This is only a good idea on fast links.
-set ttimeout
-set ttimeoutlen=20
-set notimeout
-set ambiwidth=double " powerline char width fix
-set lazyredraw
+set clipboard=unnamed
+" Fixes pasting
+noremap <leader>y "*y
+noremap <leader>p :set paste<CR>"*p<CR>:set nopaste<CR>
+noremap <leader>P :set paste<CR>"*P<CR>:set nopaste<CR>"
