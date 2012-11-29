@@ -32,3 +32,6 @@ export PROFILE=default
 
 # Alias and function definitions.
 . ~/Code/dotfiles/aliases
+
+export JAVACMD=`which drip`
+export DRIP_INIT_CLASS=org.jruby.main.DripMain
