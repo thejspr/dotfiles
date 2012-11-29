@@ -318,7 +318,7 @@ autocmd BufRead COMMIT_EDITMSG setlocal nocursorline
 "  ---------------------------------------------------------------------------
 "  #Ruby
 "  ---------------------------------------------------------------------------
-au BufRead,BufNewFile *.rb,Guardfile,Procfile,*.ru,pryrc set filetype=ruby
+au BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Thorfile,Vagrantfile,Procfile,pryrc,config.ru,.caprc,.irbrc,irb_tempfile*} set ft=ruby
 
 " Replace Ruby 1.8 style hashes with shorter Ruby 1.9 style
 map <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/<CR>
@@ -340,24 +340,26 @@ map <Leader>v :Rview<space>
 
 " NERDTree
 let g:NERDTreeQuitOnOpen=0
-let g:NERDTreeShowHidden=1
 let g:NERDTreeShowBookmarks = 0
 let g:NERDTreeWinPos = "left"
 let g:NERDTreeWinSize = 30
-let g:NERDTreeIgnore=['\.git$','\.sass-cache', '\.DS_Store', '\.bundle', 'coverage', '\.pygments-cache', '\.themes']
+" let g:NERDTreeIgnore=['\.git$','\.sass-cache', '\.DS_Store', '\.bundle', 'coverage', '\.pygments-cache', '\.themes']
+let NERDTreeShowHidden=0
+let NERDTreeShowBookmarks=0
+let g:NERDTreeChDirMode=2
 
 " ctrlp
 map <leader>t :CtrlP<cr>
 map <leader>b :CtrlPBuffer<cr>
 let g:ctrlp_custom_ignore = '\.git$\|tmp$\|_deploy$'
-let g:ctrlp_clear_cache_on_exit = 1
+let g:ctrlp_working_path_mode = 2
+let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_extensions = ['tag']
+" let g:ctrlp_clear_cache_on_exit = 1
 
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-set wildignore+=*.o,*~,*.obj,.git/**,tmp/**,app/assets/images/**,public/**
-set wildignore+=*.class,*.doc,*.lock,**.png,**.jpg,**.jpeg
-set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**,solr/**
-set wildignore+=doc/**,rdoc/**
-set wildignore+=spec/dummy/**
+set wildignore+=*/.hg/*,*/.svn/*,*/vendor/cache/*,*/public/system/*,*/tmp/*,*/log/*,*/.git/*,*/.jhw-cache/*,*/solr/data/*,*/node_modules/*,*/.DS_Store
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*~,*.obj,.git/**,tmp/**,app/assets/images/**,public/**,*.class,*.doc,*.lock,**.png,**.jpg,**.jpeg
+set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**,solr/**,doc/**,rdoc/**,spec/dummy/**
 
 " Center screen when scrolling search results
 nnoremap n nzz
