@@ -13,12 +13,10 @@ Bundle 'gmarik/vundle'
 
 " essentials
 Bundle 'epmatsw/ag.vim'
-" Bundle 'tpope/vim-repeat'
 Bundle 'xolox/vim-easytags'
 Bundle 'kien/ctrlp.vim'
 
 " textwrangling
-" Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-surround'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'ervandew/supertab'
@@ -35,8 +33,6 @@ Bundle 'tpope/vim-eunuch'
 " Ruby
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-rails'
-" Bundle 'tpope/vim-rake'
-" Bundle 'vim-ruby/vim-ruby'
 Bundle 'lucapette/vim-ruby-doc'
 Bundle 'sickill/vim-pasta'
 
@@ -47,14 +43,8 @@ Bundle 'leshill/vim-json'
 
 " msc languages
 Bundle 'tpope/vim-markdown'
-" Bundle 'panozzaj/vim-autocorrect'
 Bundle 'bbommarito/vim-slim'
 Bundle 'sql.vim'
-
-" MatchIt
-" Bundle 'matchit.zip'
-" Bundle 'kana/vim-textobj-user'
-" Bundle 'nelstrom/vim-textobj-rubyblock'
 
 " SnipMate
 Bundle "MarcWeber/vim-addon-mw-utils"
@@ -86,9 +76,6 @@ syntax sync minlines=256
 set t_Co=256
 colorscheme liquidcarbon
 
-"  ---------------------------------------------------------------------------
-"  General
-"  ---------------------------------------------------------------------------
 let mapleader = ","
 let g:mapleader = ","
 set history=100
@@ -105,16 +92,11 @@ set foldlevelstart=99
 set shell=zsh
 " set shellcmdflag=-ic
 
-"  ---------------------------------------------------------------------------
-"  Completion
-"  ---------------------------------------------------------------------------
 " Supertab
 let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 let g:SuperTabLongestHighlight = 1
 
-"  ---------------------------------------------------------------------------
-"  UI
-"  ---------------------------------------------------------------------------
+" UI
 set title
 set encoding=utf-8
 set ffs=unix,mac,dos
@@ -131,7 +113,6 @@ set ttyfast
 set ttyscroll=3
 set ttimeout
 set ttimeoutlen=10
-" set lazyredraw
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
@@ -153,19 +134,14 @@ nnoremap K <nop>
 " keep curson in place when joining lines
 nnoremap J mzJ`z
 
-"  ---------------------------------------------------------------------------
-"  Text Formatting
-"  ---------------------------------------------------------------------------
+" Text Formatting
 set tabstop=2
 set shiftwidth=2
 set expandtab
 set nowrap
 set textwidth=80
-" set colorcolumn=80
 
-"  ---------------------------------------------------------------------------
-"  Mappings
-"  ---------------------------------------------------------------------------
+" Mappings
 " Run tests
 fun! RunTest(cmd)
   :w
@@ -299,9 +275,7 @@ endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
 
-"  ---------------------------------------------------------------------------
-"  Function Keys
-"  ---------------------------------------------------------------------------
+" Function Keys
 map <F1> :set nowrap! <CR>
 noremap <F2> :NERDTreeToggle<CR>
 set pastetoggle=<F3>
@@ -309,15 +283,11 @@ nmap <F4> <Plug>Kwbd
 " F5 Ctrlp refresh
 nmap <F6> :%s/\s*$//<CR>:noh<CR>
 
-"  ---------------------------------------------------------------------------
-"  #Git
-"  ---------------------------------------------------------------------------
+" Git
 autocmd BufRead COMMIT_EDITMSG setlocal spell!
 autocmd BufRead COMMIT_EDITMSG setlocal nocursorline
 
-"  ---------------------------------------------------------------------------
-"  #Ruby
-"  ---------------------------------------------------------------------------
+" Ruby
 au BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Thorfile,Vagrantfile,Procfile,pryrc,config.ru,.caprc,.irbrc,irb_tempfile*} set ft=ruby
 
 " Replace Ruby 1.8 style hashes with shorter Ruby 1.9 style
@@ -326,9 +296,6 @@ map <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/<CR>
 " https://github.com/lucapette/vim-ruby-doc
 let g:ruby_doc_command='open'
 
-"  ---------------------------------------------------------------------------
-"  Plugins
-"  ---------------------------------------------------------------------------
 " Fugitive
 nmap <leader>gs :Gstatus<CR><C-w>10+
 noremap <leader>gc :Gcommit -v<CR><C-w>15+
@@ -343,9 +310,7 @@ let g:NERDTreeQuitOnOpen=0
 let g:NERDTreeShowBookmarks = 0
 let g:NERDTreeWinPos = "left"
 let g:NERDTreeWinSize = 30
-" let g:NERDTreeIgnore=['\.git$','\.sass-cache', '\.DS_Store', '\.bundle', 'coverage', '\.pygments-cache', '\.themes']
 let NERDTreeShowHidden=0
-let NERDTreeShowBookmarks=0
 let g:NERDTreeChDirMode=2
 
 " ctrlp
@@ -353,7 +318,7 @@ map <leader>t :CtrlP<cr>
 map <leader>b :CtrlPBuffer<cr>
 let g:ctrlp_custom_ignore = '\.git$\|tmp$\|_deploy$'
 let g:ctrlp_working_path_mode = 2
-let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_match_window_reversed = 1
 let g:ctrlp_extensions = ['tag']
 " let g:ctrlp_clear_cache_on_exit = 1
 
@@ -377,9 +342,6 @@ vnoremap // :TComment<CR>
 " Use only current file to autocomplete from tags
 set complete=.,w,b,u,],t,i
 
-"  ---------------------------------------------------------------------------
-"  Directories
-"  ---------------------------------------------------------------------------
 " Ctags path (brew install ctags)
 let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
 
