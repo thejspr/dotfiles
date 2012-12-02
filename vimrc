@@ -4,9 +4,6 @@ if !isdirectory(expand("~/.vim/bundle/vundle/.git"))
 endif
 filetype off " must be off before Vundle has run
 
-command! BI :BundleInstall
-command! -bang BU :BundleInstall!
-command! BC :BundleClean
 set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
@@ -57,13 +54,6 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'Liquid-Carbon'
 
 " new stuff
-" Bundle 'roman/golden-ratio'
-" let g:golden_ratio_autocommand = 0
-" nmap <C-w>- <Plug>(golden_ratio_resize)
-" Bundle 'vim-scripts/VimClojure'
-" Settings for VimClojure
-" let vimclojure#ParenRainbow=1
-" let vimclojure#HighlightBuiltins=1
 
 filetype plugin indent on
 runtime macros/matchit.vim
@@ -214,9 +204,14 @@ map === mmgg=G`m^zz
 " edit .vimrc
 command! Ev :e ~/.vimrc
 " When vimrc is edited, reload it
-au! BufWritePost .vimrc source %
-" scratch buffer
-command! Es :e ~/.scratch-buffer.rb
+augroup vimrcs
+  au!
+  au bufwritepost ~/.vimrc 
+  \ source ~/.vimrc |
+  \ if exists('g:Powerline_loaded') |
+    \ silent! call Pl#Load() |
+  \ endif 
+augroup END
 
 " Use Ag instead of Grep when available
 let g:ackprg="ag -H --nogroup --column"
@@ -363,7 +358,7 @@ autocmd BufReadPost *
 " http://vim.wikia.com/wiki/In_line_copy_and_paste_to_system_clipboard
 " http://vim.wikia.com/wiki/Mac_OS_X_clipboard_sharing
 set clipboard=unnamed
-" Fixes pasting
-noremap <leader>y "*y
-noremap <leader>p :set paste<CR>"*p<CR>:set nopaste<CR>
-noremap <leader>P :set paste<CR>"*P<CR>:set nopaste<CR>"
+" map <leader>y "*y
+map <C-c> "*y
+map <C-v> :set paste<CR>"*p<CR>:set nopaste<CR>
+imap <C-v> <esc>:set paste<CR>"*P<CR>:set nopaste<CR>

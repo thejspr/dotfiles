@@ -25,6 +25,7 @@ alias zaa='zrs && zc'
 # msc
 alias youtube-dl='noglob youtube-dl'
 alias bup='brew update && echo "==> Outdated Formula" && brew outdated && brew cleanup'
+alias bu='brew upgrade'
 
 alias time='/usr/bin/time'
 
@@ -54,6 +55,7 @@ g() {
   fi
 }
 grmb() { git push origin :"$@"; git branch -d "$@" }
+grmbf() { git push origin :"$@"; git branch -D "$@" }
 alias gd='g d'
 alias gl='g l'
 alias gr='g r'
