@@ -1,7 +1,6 @@
 export PATH=/usr/local/bin:/usr/local/sbin:~/bin:~/.rbenv/bin:$PATH
-export PATH=/Library/PostgreSQL/9.2/bin:$PATH
+export PATH=/Library/PostgreSQL/9.2/bin:~/Code/scripts:$PATH
 export PATH=$PATH:/usr/local/share/python:/usr/local/share/npm/bin
-export PATH=$PATH:~/Code/scripts
 
 eval "$(rbenv init - --no-rehash)"
 
@@ -19,13 +18,13 @@ export DEFER_GC=true
 export GNUTERM=x11
 
 # Work
-if [ -f ~/.beh_ec2_auth ]; then
+# if [ -f ~/.beh_ec2_auth ]; then
   . ~/.beh_ec2_auth
-fi
+# fi
 
-export SKIP_COVERAGE=true
-export CI=false
-export PROFILE=default
+# export SKIP_COVERAGE=true
+# export CI=false
+# export PROFILE=default
 
 # https://github.com/rupa/z
 . `brew --prefix`/etc/profile.d/z.sh

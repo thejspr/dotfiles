@@ -10,8 +10,9 @@ Bundle 'gmarik/vundle'
 
 " essentials
 Bundle 'epmatsw/ag.vim'
-Bundle 'xolox/vim-easytags'
+" Bundle 'xolox/vim-easytags'
 Bundle 'kien/ctrlp.vim'
+Bundle 'rgarver/Kwbd.vim'
 
 " textwrangling
 Bundle 'tpope/vim-surround'
@@ -21,7 +22,7 @@ Bundle 'godlygeek/tabular'
 
 " plugins
 Bundle 'tpope/vim-fugitive'
-" Bundle 'vim-scripts/L9'
+Bundle 'tpope/vim-git'
 
 " File management
 Bundle 'scrooloose/nerdtree'
@@ -51,20 +52,19 @@ Bundle "garbas/vim-snipmate"
 
 " UI
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'Liquid-Carbon'
+Bundle 'Solarized'
 
 " new stuff
+Bundle 'Handlebars'
 
 filetype plugin indent on
 runtime macros/matchit.vim
 
 syntax on
 set nocursorcolumn
-set nocursorline
-set synmaxcol=256
-syntax sync minlines=256
-set t_Co=256
-colorscheme liquidcarbon
+set cursorline
+set background=dark
+colorscheme solarized
 
 let mapleader = ","
 let g:mapleader = ","
@@ -78,9 +78,8 @@ set undofile
 set undodir=~/.tmp,/tmp
 set foldlevelstart=99
 :au FocusLost * silent! wa "save all buffers when focus is lost
-
-set shell=zsh
-" set shellcmdflag=-ic
+set guioptions-=L
+set guifont=Menlo\ Regular:h13
 
 " Supertab
 let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
@@ -99,24 +98,21 @@ set showcmd
 set hidden
 set wildmenu
 set wildmode=list:longest,list:full
-set ttyfast
-set ttyscroll=3
-set ttimeout
-set ttimeoutlen=10
+" set ttyfast
+" set ttyscroll=3
+" set ttimeout
+" set ttimeoutlen=10
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
 set number
 
-set mouse=a
-set ttymouse=xterm2
-set mousehide
+" set mouse=a
+" set mousehide
+set gcr=a:blinkon0
 
 " Resize splits when the win{is resized
 au VimResized * exe "normal! \<c-w>="
-
-set splitbelow
-set splitright
 
 " Fix annoyances
 nnoremap Q <nop>
@@ -131,30 +127,22 @@ set expandtab
 set nowrap
 set textwidth=80
 
-" Mappings
 " Run tests
 fun! RunTest(cmd)
   :w
-
   if filereadable('zeus.json')
-    let s:prefix = "!clear && zeus "
+    let s:prefix = "!zeus "
   else
-    let s:prefix = "!clear && "
+    let s:prefix = "!zeus "
   endif
-
   execute(s:prefix . a:cmd)
 endfu
 
-" rspec whole file
-map <leader>R :call RunTest("rspec " . expand("%p"))<CR>
-
-" rspec current line
-map <leader>r :call RunTest("rspec " . expand("%p") . ":" . line("."))<CR>
-
-" cucumber whole file
+" rspec
+map <leader>R :call RunTest("rspec " . expand("%p") . " --no-color")<CR>
+map <leader>r :call RunTest("rspec " . expand("%p") . ":" . line(".") . " --no-color")<CR>
+" cucumber
 map <leader>K :call RunTest("cucumber " . expand("%p"))<CR>
-
-" cucumber current line
 map <leader>k :call RunTest("cucumber " . expand("%p") . ":" . line("."))<CR>
 
 " Switch between the last two files
@@ -163,24 +151,6 @@ nnoremap <leader><leader> <c-^>
 " JSON
 au BufRead,BufWrite,BufNewFile *.json set filetype=json foldmethod=syntax
 au! FileType json command! -range=% -nargs=* Tidy <line1>,<line2>! json_xs -f json -t json-pretty
-
-" save shortcut
-nmap <c-s> :w<CR>
-vmap <c-s> <ESC>:w<CR>
-imap <c-s> <ESC>:w<CR>
-command! Wqa :wqa
-
-if has("user_commands")
-  command! -bang -nargs=? -complete=file E e<bang> <args>
-  command! -bang -nargs=? -complete=file W w<bang> <args>
-  command! -bang -nargs=? -complete=file Wq wq<bang> <args>
-  command! -bang -nargs=? -complete=file WQ wq<bang> <args>
-  command! -bang Wa wa<bang>
-  command! -bang WA wa<bang>
-  command! -bang Q q<bang>
-  command! -bang QA qa<bang>
-  command! -bang Qa qa<bang>
-endif
 
 " Searching / moving
 set hlsearch
@@ -236,10 +206,10 @@ vnoremap < <gv
 vnoremap > >gv
 
 " easy split navigation
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+nnoremap <C-left> <C-w>h
+nnoremap <C-down> <C-w>j
+nnoremap <C-up> <C-w>k
+nnoremap <C-right> <C-w>l
 
 " improve movement on wrapped lines
 nnoremap j gj
@@ -252,10 +222,6 @@ inoremap <C-j> <Esc>:m+<CR>
 inoremap <C-k> <Esc>:m-2<CR>
 vnoremap <C-j> :m'>+<CR>gv
 vnoremap <C-k> :m-2<CR>gv
-
-" easier deletion
-nmap \ dd
-vmap \ dd
 
 " MULTIPURPOSE TAB KEY
 " Indent if we're at the beginning of a line. Else, do completion.
@@ -315,24 +281,23 @@ let g:ctrlp_custom_ignore = '\.git$\|tmp$\|_deploy$'
 let g:ctrlp_working_path_mode = 2
 let g:ctrlp_match_window_reversed = 1
 let g:ctrlp_extensions = ['tag']
-" let g:ctrlp_clear_cache_on_exit = 1
 
 set wildignore+=*/.hg/*,*/.svn/*,*/vendor/cache/*,*/public/system/*,*/tmp/*,*/log/*,*/.git/*,*/.jhw-cache/*,*/solr/data/*,*/node_modules/*,*/.DS_Store
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*~,*.obj,.git/**,tmp/**,app/assets/images/**,public/**,*.class,*.doc,*.lock,**.png,**.jpg,**.jpeg
 set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**,solr/**,doc/**,rdoc/**,spec/dummy/**
 
 " Center screen when scrolling search results
-nnoremap n nzz
-nnoremap } }zz
-nnoremap N Nzz
-nnoremap * *zz
-nnoremap # #zz
-nnoremap g* g*zz
-nnoremap g# g#zz
+" nnoremap n nzz
+" nnoremap } }zz
+" nnoremap N Nzz
+" nnoremap * *zz
+" nnoremap # #zz
+" nnoremap g* g*zz
+" nnoremap g# g#zz
 
 " tComment
-nnoremap // :TComment<CR>
-vnoremap // :TComment<CR>
+nmap // :TComment<CR>
+vmap // :TComment<CR>
 
 " Use only current file to autocomplete from tags
 set complete=.,w,b,u,],t,i
@@ -340,25 +305,7 @@ set complete=.,w,b,u,],t,i
 " Ctags path (brew install ctags)
 let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
 
-" position
-" Tell vim to remember certain things when we exit
-" "  '10  :  marks will be remembered for up to 10 previously edited files
-" "  "100 :  will save up to 100 lines for each register
-" "  :50  :  up to 20 lines of command-line history will be remembered
-" "  %    :  saves and restores the buffer list
-" "  n... :  where to save the viminfo files
-set viminfo='10,\"100,:50,n~/.viminfo
-
 autocmd BufReadPost *
   \ if line("'\"") > 0 && line("'\"") <= line("$") |
   \   exe "normal g`\"" |
   \ endif
-
-" copy/paste in/out of vim
-" http://vim.wikia.com/wiki/In_line_copy_and_paste_to_system_clipboard
-" http://vim.wikia.com/wiki/Mac_OS_X_clipboard_sharing
-set clipboard=unnamed
-" map <leader>y "*y
-map <C-c> "*y
-map <C-v> :set paste<CR>"*p<CR>:set nopaste<CR>
-imap <C-v> <esc>:set paste<CR>"*P<CR>:set nopaste<CR>
