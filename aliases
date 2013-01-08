@@ -70,17 +70,18 @@ push_branch() {
 }
 
 #rails
-alias migrate='rake db:migrate && rake db:test:clone_structure'
-alias rs='rails server thin'
-alias rc='rails console'
-alias rg='rails generate'
+alias migrate='be rake db:migrate db:test:clone_structure'
+alias rs='be rails server'
+alias rsp='be rails server puma'
+alias rc='drip kill; be rails console'
+alias rg='be rails generate'
 
 #ctags
 alias rctags='ctags -R --exclude=.git --exclude=log --exclude=public *'
 
 #rake
-alias rt='rake -T'
-alias rr='rake routes'
+alias rt='bundle exec rake -T'
+alias rr='bundle exec rake routes'
 
 #heroku
 alias h="heroku"

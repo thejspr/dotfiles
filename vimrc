@@ -10,9 +10,9 @@ Bundle 'gmarik/vundle'
 
 " essentials
 Bundle 'epmatsw/ag.vim'
-" Bundle 'xolox/vim-easytags'
 Bundle 'kien/ctrlp.vim'
 Bundle 'rgarver/Kwbd.vim'
+Bundle 'AutoTag'
 
 " textwrangling
 Bundle 'tpope/vim-surround'
@@ -33,6 +33,7 @@ Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-rails'
 Bundle 'lucapette/vim-ruby-doc'
 Bundle 'sickill/vim-pasta'
+Bundle 'tpope/vim-bundler'
 
 " JavaScript
 Bundle 'pangloss/vim-javascript'
@@ -41,8 +42,7 @@ Bundle 'leshill/vim-json'
 
 " msc languages
 Bundle 'tpope/vim-markdown'
-Bundle 'bbommarito/vim-slim'
-Bundle 'sql.vim'
+Bundle 'slim-template/vim-slim'
 
 " SnipMate
 Bundle "MarcWeber/vim-addon-mw-utils"

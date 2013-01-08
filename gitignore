@@ -8,3 +8,7 @@ tmp.txt
 tags
 latest.dump
 Vagrantfile
+tags
+gems.tags
+tmp/tags
+.ruby-version

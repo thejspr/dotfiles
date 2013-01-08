@@ -11,8 +11,8 @@
 [push]
 	default = tracking
 [core]
-  excludesfile = /Users/jesper/.gitignore
-  editor = mvim -v
+	excludesfile = /Users/jesper/.gitignore
+	editor = mvim -f
 	whitespace = trailing-space,space-before-tab
 [alias]
   aa = add --all
@@ -46,13 +46,7 @@
 [diff]
 	renames = copies
 	mnemonicprefix = true
-	tool = Kaleidoscope
 [merge]
 	stat = true
-	tool = Kaleidoscope
 [difftool]
-	prompt = false
-[difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-[mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	prompt = true

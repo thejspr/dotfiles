@@ -1,8 +1,15 @@
-export PATH=/usr/local/bin:/usr/local/sbin:~/bin:~/.rbenv/bin:$PATH
+export PATH=~/bin:~/.rbenv/bin:$PATH
 export PATH=/Library/PostgreSQL/9.2/bin:~/Code/scripts:$PATH
 export PATH=$PATH:/usr/local/share/python:/usr/local/share/npm/bin
 
 eval "$(rbenv init - --no-rehash)"
+
+# prezto customizations
+bindkey -e
+unset -f trash
+
+# include zsh completions
+fpath=(/usr/local/share/zsh/site-functions $fpath)
 
 export EDITOR=vim
 export VISUAL=vim
@@ -32,5 +39,5 @@ export GNUTERM=x11
 # Alias and function definitions.
 . ~/Code/dotfiles/aliases
 
-export JAVACMD=`which drip`
-export DRIP_INIT_CLASS=org.jruby.main.DripMain
+# export JAVACMD=`which drip`
+# export DRIP_INIT_CLASS=org.jruby.main.DripMain
