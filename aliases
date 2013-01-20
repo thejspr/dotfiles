@@ -1,4 +1,3 @@
-travis() { open 'https://next.travis-ci.com/' }
 alias tt='tail -f log/test.log | grep -v "TRUNCATE"'
 alias ack='ag'
 alias tri='rails s trinidad'

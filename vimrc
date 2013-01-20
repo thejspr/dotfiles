@@ -47,7 +47,7 @@ Bundle 'slim-template/vim-slim'
 " SnipMate
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
-Bundle "git@github.com:thejspr/snipmate-snippets.git"
+Bundle "thejspr/snipmate-snippets"
 Bundle "garbas/vim-snipmate"
 
 " UI
@@ -56,6 +56,10 @@ Bundle 'Solarized'
 
 " new stuff
 Bundle 'Handlebars'
+Bundle 'VimClojure'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'gcmt/tube.vim'
+let g:tube_terminal = 'iterm'
 
 filetype plugin indent on
 runtime macros/matchit.vim
@@ -98,10 +102,6 @@ set showcmd
 set hidden
 set wildmenu
 set wildmode=list:longest,list:full
-" set ttyfast
-" set ttyscroll=3
-" set ttimeout
-" set ttimeoutlen=10
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
@@ -287,13 +287,13 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*~,*.obj,.git/**,tmp/**,app/assets/
 set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**,solr/**,doc/**,rdoc/**,spec/dummy/**
 
 " Center screen when scrolling search results
-" nnoremap n nzz
-" nnoremap } }zz
-" nnoremap N Nzz
-" nnoremap * *zz
-" nnoremap # #zz
-" nnoremap g* g*zz
-" nnoremap g# g#zz
+nnoremap n nzz
+nnoremap } }zz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
 
 " tComment
 nmap // :TComment<CR>
@@ -309,3 +309,28 @@ autocmd BufReadPost *
   \ if line("'\"") > 0 && line("'\"") <= line("$") |
   \   exe "normal g`\"" |
   \ endif
+
+" Run tests
+fun! RunTest(cmd)
+  :w
+
+  if filereadable('zeus.json')
+    let s:prefix = "Tube zeus "
+  else
+    let s:prefix = "Tube be "
+  endif
+
+  execute(s:prefix . a:cmd)
+endfu
+
+" rspec whole file
+map <leader>R :call RunTest("rspec " . expand("%p"))<CR>
+
+" rspec current line
+map <leader>r :call RunTest("rspec " . expand("%p") . ":" . line("."))<CR>
+
+" cucumber whole file
+map <leader>K :call RunTest("cucumber " . expand("%p"))<CR>
+
+" cucumber current line
+map <leader>k :call RunTest("cucumber " . expand("%p") . ":" . line("."))<CR>
