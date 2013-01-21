@@ -54,10 +54,21 @@ Bundle "garbas/vim-snipmate"
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'Solarized'
 
+" Clojure
+Bundle 'guns/vim-clojure-static'
+Bundle 'tpope/vim-foreplay'
+Bundle 'kien/rainbow_parentheses.vim'
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
 " new stuff
 Bundle 'Handlebars'
-Bundle 'VimClojure'
 Bundle 'Lokaltog/vim-easymotion'
+let g:EasyMotion_leader_key = '<Leader>'
+let g:EasyMotion_mapping_t = '_t'
+let g:EasyMotion_mapping_f = '_f'
 Bundle 'gcmt/tube.vim'
 let g:tube_terminal = 'iterm'
 

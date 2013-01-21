@@ -1,13 +1,9 @@
 alias tt='tail -f log/test.log | grep -v "TRUNCATE"'
-alias ack='ag'
-alias tri='rails s trinidad'
 
 #ruby
 alias rb='rbenv'
 alias rv='ruby -v'
 alias wr='ps aux | grep ruby | grep -v jruby'
-alias sg='bundle exec guard'
-alias kg='kill -9 %bundled_guard'
 alias kf='kill -9 %1'
 alias kk='kill -9'
 alias be='bundle exec'
@@ -25,7 +21,6 @@ alias zaa='zrs; zc'
 alias youtube-dl='noglob youtube-dl'
 alias bup='brew update && echo "==> Outdated Formula" && brew outdated && brew cleanup'
 alias bu='brew upgrade'
-
 alias time='/usr/bin/time'
 
 #vim
@@ -39,11 +34,8 @@ alias rsq='ps -ef | grep resque'
 local_broadcast() { DO_NOT_QUIT_BROWSER=true RAILS_ENV=production bundle exec rake broadcast:work QUEUE="$1" }
 alias rspl='z splat && rs -p4000'
 
-# tail server rails log
-tail_server() { ssh -t "$1" tail -f /var/www/bullseye/production/current/log/production.log }
-
 #conviniences
-alias -g V='|vim -'
+alias -g V='|mvim -'
 alias -g G='|grep --color'
 
 #git
@@ -57,26 +49,25 @@ g() {
 alias gd='g d'
 alias gl='g l'
 alias gr='g r'
+alias gc='g commit -v'
 push_branch() {
   branch_name=$(git symbolic-ref HEAD 2>/dev/null | cut -d"/" -f 3)
   git push --set-upstream origin $branch_name
 
   if [[ ! $# == '0' ]]; then
-    git pull-request
+    hub pull-request
   fi
 
-  git browse
+  hub browse
 }
 
 #rails
 alias migrate='be rake db:migrate db:test:clone_structure'
-alias rs='be rails server'
-alias rsp='be rails server puma'
-alias rc='drip kill; be rails console'
-alias rg='be rails generate'
-
-#ctags
-alias rctags='ctags -R --exclude=.git --exclude=log --exclude=public *'
+alias ber'bundle exec rails'
+alias rs='ber server'
+alias rsp='ber server puma'
+alias rc='ber console'
+alias rg='ber generate'
 
 #rake
 alias rt='bundle exec rake -T'
@@ -84,7 +75,7 @@ alias rr='bundle exec rake routes'
 
 #heroku
 alias h="heroku"
-hpush() { git add -A; git commit -m "$*"; git push; git push heroku master; }
+hpush() { git add -A; git commit -m "$*"; git push; git push production master; }
 alias hc="heroku run console"
 alias hl="heroku logs -t"
 
@@ -94,7 +85,7 @@ alias mx='chmod +x'
 alias cd..='cd ..'
 
 # system and files editing
-alias ea='vim ~/Code/dotfiles/aliases'
-alias ez='vim ~/Code/dotfiles/zsh_mods'
-alias ezz='vim ~/.zpreztorc'
+alias ea='mvim ~/Code/dotfiles/aliases'
+alias ez='mvim ~/Code/dotfiles/zsh_mods'
+alias ezz='mvim ~/.zpreztorc'
 alias sr='exec zsh'

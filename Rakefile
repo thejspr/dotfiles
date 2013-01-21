@@ -1,15 +1,14 @@
-desc "Setup Vim bundles"
+desc 'Setup Vim bundles'
 task :vim do
   root = File.expand_path(File,join("..", File.dirname(__FILE__)))
 
   puts 'Installing Bundles'
   system "vim -c BundleInstall! -c q -c q -u bundles.vim"
 
-  system cmds.join(' && ')
   puts "Vim setup done"
 end
 
-IGNORE    = %w(Gemfile Gemfile.lock githooks iterm scripts Rakefile _zshrc .git .gitignore)
+IGNORE    = %w{Gemfile Gemfile.lock Rakefile .git .gitignore zsh_mods}
 NO_PREFIX = %w(bin)
 
 desc "Create symlinks"
@@ -39,4 +38,10 @@ task :links do
   puts "Finished updating symlinks"
 end
 
-task :default => ['links']
+task default: ['links']
+
+desc 'Install common gems'
+task :gems do
+  gems = %w{pry rbenv-rehash cheat}
+  gems.each { |g| system("gem install #{g}") }
+end

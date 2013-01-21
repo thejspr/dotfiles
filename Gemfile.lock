@@ -1,23 +1,10 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    awesome_print (1.0.2)
-    coderay (1.0.5)
-    method_source (0.7.0)
-    pry (0.9.8.2)
-      coderay (~> 1.0.5)
-      method_source (~> 0.7)
-      slop (>= 2.4.4, < 3)
-    pry-nav (0.2.0)
-      pry (~> 0.9.8.1)
-    rbenv-rehash (0.2)
-    slop (2.4.4)
+    rake (10.0.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  awesome_print
-  pry
-  pry-nav
-  rbenv-rehash
+  rake
