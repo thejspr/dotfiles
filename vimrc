@@ -12,7 +12,6 @@ Bundle 'gmarik/vundle'
 Bundle 'epmatsw/ag.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'AutoTag'
-Bundle 'fholgado/minibufexpl.vim'
 
 " textwrangling
 Bundle 'tpope/vim-surround'
@@ -211,20 +210,25 @@ noremap <leader>sp [s
 noremap <leader>sa zg
 noremap <leader>sd z=
 
+" Buffer management
+noremap <tab> :bn<CR>
+noremap <S-tab> :bp<CR>
+noremap <f4> :bd<CR>
+
 " reselect visual lock after indent/outdent
 vnoremap < <gv
 vnoremap > >gv
 
+" easy split navigation
+nnoremap <C-left> <C-w>h
+nnoremap <C-down> <C-w>j
+nnoremap <C-up> <C-w>k
+nnoremap <C-right> <C-w>l
+
 " improve movement on wrapped lines
 nnoremap j gj
-
-" minibufferexplorer
-let g:miniBufExplMapWindowNavVim = 1 
-let g:miniBufExplMapWindowNavArrows = 1 
-let g:miniBufExplMapCTabSwitchBufs = 1 
-let g:miniBufExplModSelTarget = 1 
-
 nnoremap k gk
+
 " move lines vertivally
 noremap <C-j> :m+<CR>
 noremap <C-k> :m-2<CR>
@@ -250,7 +254,6 @@ inoremap <s-tab> <c-n>
 map <F1> :set nowrap! <CR>
 noremap <F2> :NERDTreeToggle<CR>
 set pastetoggle=<F3>
-nmap <F4> :bd<CR>
 " F5 Ctrlp refresh
 nmap <F6> :%s/\s*$//<CR>:noh<CR>
 
