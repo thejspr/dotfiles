@@ -11,8 +11,8 @@ Bundle 'gmarik/vundle'
 " essentials
 Bundle 'epmatsw/ag.vim'
 Bundle 'kien/ctrlp.vim'
-Bundle 'rgarver/Kwbd.vim'
 Bundle 'AutoTag'
+Bundle 'fholgado/minibufexpl.vim'
 
 " textwrangling
 Bundle 'tpope/vim-surround'
@@ -20,7 +20,7 @@ Bundle 'tomtom/tcomment_vim'
 Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
 
-" plugins
+" Git
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-git'
 
@@ -68,7 +68,10 @@ Bundle 'Handlebars'
 Bundle 'Lokaltog/vim-easymotion'
 let g:EasyMotion_leader_key = '<Leader>'
 let g:EasyMotion_mapping_t = '_t'
+let g:EasyMotion_mapping_T = '_T'
 let g:EasyMotion_mapping_f = '_f'
+let g:EasyMotion_mapping_k = '_k'
+let g:EasyMotion_mapping_K = '_K'
 Bundle 'gcmt/tube.vim'
 let g:tube_terminal = 'iterm'
 
@@ -208,24 +211,20 @@ noremap <leader>sp [s
 noremap <leader>sa zg
 noremap <leader>sd z=
 
-" Switch between buffers
-noremap <tab> :bn<CR>
-noremap <S-tab> :bp<CR>
-
 " reselect visual lock after indent/outdent
 vnoremap < <gv
 vnoremap > >gv
 
-" easy split navigation
-nnoremap <C-left> <C-w>h
-nnoremap <C-down> <C-w>j
-nnoremap <C-up> <C-w>k
-nnoremap <C-right> <C-w>l
-
 " improve movement on wrapped lines
 nnoremap j gj
-nnoremap k gk
 
+" minibufferexplorer
+let g:miniBufExplMapWindowNavVim = 1 
+let g:miniBufExplMapWindowNavArrows = 1 
+let g:miniBufExplMapCTabSwitchBufs = 1 
+let g:miniBufExplModSelTarget = 1 
+
+nnoremap k gk
 " move lines vertivally
 noremap <C-j> :m+<CR>
 noremap <C-k> :m-2<CR>
@@ -251,7 +250,7 @@ inoremap <s-tab> <c-n>
 map <F1> :set nowrap! <CR>
 noremap <F2> :NERDTreeToggle<CR>
 set pastetoggle=<F3>
-nmap <F4> <Plug>Kwbd
+nmap <F4> :bd<CR>
 " F5 Ctrlp refresh
 nmap <F6> :%s/\s*$//<CR>:noh<CR>
 
@@ -281,13 +280,14 @@ map <Leader>v :Rview<space>
 let g:NERDTreeQuitOnOpen=0
 let g:NERDTreeShowBookmarks = 0
 let g:NERDTreeWinPos = "left"
-let g:NERDTreeWinSize = 30
+let g:NERDTreeWinSize = 25
 let NERDTreeShowHidden=0
 let g:NERDTreeChDirMode=2
 
 " ctrlp
 map <leader>t :CtrlP<cr>
 map <leader>b :CtrlPBuffer<cr>
+map <leader>r :CtrlPMRUFiles<cr>
 let g:ctrlp_custom_ignore = '\.git$\|tmp$\|_deploy$'
 let g:ctrlp_working_path_mode = 2
 let g:ctrlp_match_window_reversed = 1
@@ -322,26 +322,33 @@ autocmd BufReadPost *
   \ endif
 
 " Run tests
-fun! RunTest(cmd)
-  :w
-
-  if filereadable('zeus.json')
-    let s:prefix = "Tube zeus "
-  else
-    let s:prefix = "Tube be "
+function! TubeThis(...) abort
+  let l:cmd = []
+  let l:path = expand('%')
+ 
+  if filewritable('.zeus.sock')
+    call add(l:cmd, 'zeus')
+  elseif filereadable('Gemfile')
+    call add(l:cmd, 'bundle exec')
   endif
+ 
+  if l:path =~# '_spec\.rb$'
+    let l:executable = 'rspec'
+  else
+    let l:executable = &ft
+  end
+ 
+  if exists('a:1')
+    silent call extend(l:cmd, [l:executable, l:path . ':' . a:1])
+  else
+    silent call extend(l:cmd, [l:executable, l:path])
+  end
+ 
+  let l:cmd_string = join(l:cmd, ' ')
+ 
+  exe 'Tube ' . l:cmd_string
+endfunction
 
-  execute(s:prefix . a:cmd)
-endfu
-
-" rspec whole file
-map <leader>R :call RunTest("rspec " . expand("%p"))<CR>
-
-" rspec current line
-map <leader>r :call RunTest("rspec " . expand("%p") . ":" . line("."))<CR>
-
-" cucumber whole file
-map <leader>K :call RunTest("cucumber " . expand("%p"))<CR>
-
-" cucumber current line
-map <leader>k :call RunTest("cucumber " . expand("%p") . ":" . line("."))<CR>
+nmap <Leader>d :call TubeThis(line('.'))<CR>
+nmap <Leader>D :call TubeThis()<CR>
+nmap <Leader>§ :TubeLastCommand<CR>

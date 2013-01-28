@@ -63,7 +63,7 @@ push_branch() {
 
 #rails
 alias migrate='be rake db:migrate db:test:clone_structure'
-alias ber'bundle exec rails'
+alias ber='bundle exec rails'
 alias rs='ber server'
 alias rsp='ber server puma'
 alias rc='ber console'

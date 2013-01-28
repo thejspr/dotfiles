@@ -22,8 +22,6 @@ export RUBY_GC_MALLOC_LIMIT=1000000000
 export RUBY_HEAP_FREE_MIN=500000
 export DEFER_GC=10
 
-export GNUTERM=x11
-
 # Work
 # if [ -f ~/.beh_ec2_auth ]; then
   . ~/.beh_ec2_auth
