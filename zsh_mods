@@ -11,8 +11,8 @@ unset -f trash
 # include zsh completions
 fpath=(/usr/local/share/zsh/site-functions $fpath)
 
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR=mvim
+export VISUAL=mvim
 
 # Ruby
 export RUBY_HEAP_MIN_SLOTS=1000000
@@ -24,12 +24,8 @@ export DEFER_GC=10
 
 # Work
 # if [ -f ~/.beh_ec2_auth ]; then
-  . ~/.beh_ec2_auth
+. ~/.beh_ec2_auth
 # fi
-
-# export SKIP_COVERAGE=true
-# export CI=false
-# export PROFILE=default
 
 # https://github.com/rupa/z
 . `brew --prefix`/etc/profile.d/z.sh
