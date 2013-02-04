@@ -12,6 +12,7 @@ Bundle 'gmarik/vundle'
 Bundle 'epmatsw/ag.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'AutoTag'
+Bundle 'Raimondi/delimitMate'
 
 " textwrangling
 Bundle 'tpope/vim-surround'
@@ -26,6 +27,7 @@ Bundle 'tpope/vim-git'
 " File management
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-eunuch'
+Bundle 'kwbdi.vim'
 
 " Ruby
 Bundle 'tpope/vim-endwise'
@@ -38,10 +40,13 @@ Bundle 'tpope/vim-bundler'
 Bundle 'pangloss/vim-javascript'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'leshill/vim-json'
+Bundle 'nono/vim-handlebars'
 
 " msc languages
 Bundle 'tpope/vim-markdown'
 Bundle 'slim-template/vim-slim'
+Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+au FileType handlebars runtime! ftplugin/html/sparkup.vim
 
 " SnipMate
 Bundle "MarcWeber/vim-addon-mw-utils"
@@ -63,7 +68,6 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 " new stuff
-Bundle 'Handlebars'
 Bundle 'Lokaltog/vim-easymotion'
 let g:EasyMotion_leader_key = '<Leader>'
 let g:EasyMotion_mapping_t = '_t'
@@ -165,6 +169,9 @@ nnoremap <leader><leader> <c-^>
 au BufRead,BufWrite,BufNewFile *.json set filetype=json foldmethod=syntax
 au! FileType json command! -range=% -nargs=* Tidy <line1>,<line2>! json_xs -f json -t json-pretty
 
+" Handlebars
+au BufRead *.hbs set filetype=handlebars
+
 " Searching / moving
 set hlsearch
 set incsearch
@@ -213,7 +220,7 @@ noremap <leader>sd z=
 " Buffer management
 noremap <tab> :bn<CR>
 noremap <S-tab> :bp<CR>
-noremap <f4> :bd<CR>
+map <f4> <Plug>Kwbd
 
 " reselect visual lock after indent/outdent
 vnoremap < <gv
@@ -284,6 +291,7 @@ let g:NERDTreeQuitOnOpen=0
 let g:NERDTreeShowBookmarks = 0
 let g:NERDTreeWinPos = "left"
 let g:NERDTreeWinSize = 25
+let g:NERDTreeAutoDeleteBuffer=1
 let NERDTreeShowHidden=0
 let g:NERDTreeChDirMode=2
 
