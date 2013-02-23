@@ -1,4 +1,8 @@
+" vim: foldmethod=marker
 set nocompatible " be iMproved
+
+" Bundles {{{
+
 if !isdirectory(expand("~/.vim/bundle/vundle/.git"))
   !git clone git://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 endif
@@ -26,6 +30,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
+Bundle 'chip/vim-fat-finger'
 
 " File management & Git
 Bundle 'scrooloose/nerdtree'
@@ -57,6 +62,7 @@ au FileType handlebars runtime! ftplugin/html/sparkup.vim
 " UI
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'Solarized'
+Bundle 'restore_view.vim'
 
 " Clojure
 " Bundle 'guns/vim-clojure-static'
@@ -81,6 +87,9 @@ let g:tube_terminal = 'iterm'
 filetype plugin indent on
 runtime macros/matchit.vim
 
+" }}}
+
+" Settings {{{
 syntax on
 set nocursorcolumn
 set cursorline
@@ -102,17 +111,15 @@ set guioptions-=L
 set guifont=Menlo\ Regular:h13
 
 "folding settings
-set foldlevelstart=99
-set foldmethod=syntax
+" set foldlevelstart=99
+" set foldmethod=syntax
 set foldnestmax=10
-set nofoldenable
-set foldlevel=1
+set foldenable
+" set foldlevel=1
 
-" Supertab
-let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
-let g:SuperTabLongestHighlight = 1
+" }}}
 
-" UI
+" UI {{{
 set title
 set encoding=utf-8
 set ffs=unix,mac,dos
@@ -139,33 +146,43 @@ set gcr=a:blinkon0
 " Resize splits when the win{is resized
 au VimResized * exe "normal! \<c-w>="
 
-"" Fix annoyances
-nnoremap Q <nop>
-nnoremap K <nop>
-" keep curson in place when joining lines
-nnoremap J mzJ`z
-
 " Text Formatting
 set tabstop=2
 set shiftwidth=2
 set expandtab
 set nowrap
 set textwidth=80
+" }}}
 
-" JSON
-au BufRead,BufWrite,BufNewFile *.json set filetype=json foldmethod=syntax
-au! FileType json command! -range=% -nargs=* Tidy <line1>,<line2>! json_xs -f json -t json-pretty
+" Msc annoyances {{{
+nnoremap Q <nop>
+nnoremap K <nop>
+nnoremap J mzJ`z " keep curson in place when joining lines
 
-" Handlebars
-au BufRead *.hbs set filetype=handlebars
+" reselect visual lock after indent/outdent
+vnoremap < <gv
+vnoremap > >gv
 
-" Searching / moving
+" Center screen when scrolling search results
+nnoremap n nzz
+nnoremap } }zz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
+
+" improve movement on wrapped lines
+nnoremap j gj
+nnoremap k gk
+" }}}
+
+" Searching / moving & Ag {{{
 set hlsearch
 set incsearch
 set smartcase
 set gdefault
 set showmatch
-" turn search highlight off
 nnoremap <leader><space> :nohlsearch<cr>
 " search (forwards)
 nmap <space> /
@@ -175,27 +192,14 @@ map <m-space> ?
 noremap <leader>f :%s///<left><left>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
-" Auto format
-map === mmgg=G`m^zz
-
-" edit .vimrc
-command! Ev :e ~/.vimrc
-" When vimrc is edited, reload it
-augroup vimrcs
-  au!
-  au bufwritepost ~/.vimrc 
-  \ source ~/.vimrc |
-  \ if exists('g:Powerline_loaded') |
-    \ silent! call Pl#Load() |
-  \ endif 
-augroup END
-
 " Use Ag instead of Grep when available
 let g:ackprg="ag -H --nogroup --column"
 nnoremap <leader>a :Ag
 nnoremap <leader>A :Ag <cword><CR>
 
-" Spell checking
+" }}}
+
+" Spell checking {{{
 set spellfile+=~/.vim/spell/en.utf-8.add
 set dict+=~/.vim/spell/en.utf-8.add
 noremap <leader>ss :setlocal spell!<cr>
@@ -203,76 +207,9 @@ noremap <leader>sn ]s
 noremap <leader>sp [s
 noremap <leader>sa zg
 noremap <leader>sd z=
+"}}}
 
-" Buffer management
-noremap <tab> :bn<CR>
-noremap <S-tab> :bp<CR>
-map <f4> <Plug>Kwbd
-
-" reselect visual lock after indent/outdent
-vnoremap < <gv
-vnoremap > >gv
-
-" easy split navigation
-nnoremap <C-left> <C-w>h
-nnoremap <C-down> <C-w>j
-nnoremap <C-up> <C-w>k
-nnoremap <C-right> <C-w>l
-
-" improve movement on wrapped lines
-nnoremap j gj
-nnoremap k gk
-
-" move lines vertivally
-noremap <C-j> :m+<CR>
-noremap <C-k> :m-2<CR>
-inoremap <C-j> <Esc>:m+<CR>
-inoremap <C-k> <Esc>:m-2<CR>
-vnoremap <C-j> :m'>+<CR>gv
-vnoremap <C-k> :m-2<CR>gv
-
-" MULTIPURPOSE TAB KEY
-" Indent if we're at the beginning of a line. Else, do completion.
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
-endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-inoremap <s-tab> <c-n>
-
-" Function Keys
-map <F1> :set nowrap! <CR>
-noremap <F2> :NERDTreeToggle<CR>
-set pastetoggle=<F3>
-" F5 Ctrlp refresh
-nmap <F6> :%s/\s*$//<CR>:noh<CR>
-
-" Git
-autocmd BufRead COMMIT_EDITMSG setlocal spell!
-autocmd BufRead COMMIT_EDITMSG setlocal nocursorline
-
-" Ruby
-au BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Thorfile,Vagrantfile,Procfile,pryrc,config.ru,.caprc,.irbrc,irb_tempfile*} set ft=ruby
-
-" Replace Ruby 1.8 style hashes with shorter Ruby 1.9 style
-map <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/<CR>
-
-" https://github.com/lucapette/vim-ruby-doc
-let g:ruby_doc_command='open'
-
-" Fugitive
-nmap <leader>gs :Gstatus<CR><C-w>10+
-noremap <leader>gc :Gcommit -v<CR><C-w>15+
-
-" Rails.vim
-map <Leader>m :Rmodel<space>
-map <Leader>c :Rcontroller<space>
-map <Leader>v :Rview<space>
-
+" Nerdtree & ctrlp {{{
 " NERDTree
 let g:NERDTreeQuitOnOpen=0
 let g:NERDTreeShowBookmarks = 0
@@ -295,36 +232,137 @@ let g:ctrlp_extensions = ['tag']
 set wildignore+=*/.hg/*,*/.svn/*,*/vendor/cache/*,*/public/system/*,*/tmp/*,*/log/*,*/.git/*,*/.jhw-cache/*,*/solr/data/*,*/node_modules/*,*/.DS_Store
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*~,*.obj,.git/**,tmp/**,app/assets/images/**,public/**,*.class,*.doc,*.lock,**.png,**.jpg,**.jpeg
 set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**,solr/**,doc/**,rdoc/**,spec/dummy/**
+" }}}
 
-" Center screen when scrolling search results
-nnoremap n nzz
-nnoremap } }zz
-nnoremap N Nzz
-nnoremap * *zz
-nnoremap # #zz
-nnoremap g* g*zz
-nnoremap g# g#zz
+" Movement and navigation {{{
+" Buffer management
+noremap <tab> :bn<CR>
+noremap <S-tab> :bp<CR>
+map <f4> <Plug>Kwbd
+
+" easy split navigation
+nnoremap <C-left> <C-w>h
+nnoremap <C-down> <C-w>j
+nnoremap <C-up> <C-w>k
+nnoremap <C-right> <C-w>l
+
+" move lines vertivally
+noremap <C-j> :m+<CR>
+noremap <C-k> :m-2<CR>
+inoremap <C-j> <Esc>:m+<CR>
+inoremap <C-k> <Esc>:m-2<CR>
+vnoremap <C-j> :m'>+<CR>gv
+vnoremap <C-k> :m-2<CR>gv
+" }}}
+
+" Edit .vimrc {{{
+command! Ev :e ~/.vimrc
+" When vimrc is edited, reload it
+augroup vimrcs
+  au!
+  au bufwritepost ~/.vimrc 
+  \ source ~/.vimrc |
+  \ if exists('g:Powerline_loaded') |
+    \ silent! call Pl#Load() |
+  \ endif 
+augroup END
+
+" }}}
+
+" Tab key {{{
+let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+let g:SuperTabLongestHighlight = 1
+
+" MULTIPURPOSE TAB KEY
+" Indent if we're at the beginning of a line. Else, do completion.
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <s-tab> <c-n>
+
+" }}}
+
+" Function Keys {{{
+map <F1> :set nowrap! <CR>
+noremap <F2> :NERDTreeToggle<CR>
+set pastetoggle=<F3>
+" F5 Ctrlp refresh
+nmap <F6> :%s/\s*$//<CR>:noh<CR>
+" }}}
+
+" Msc mappings {{{
 
 " tComment
 nmap // :TComment<CR>
 vmap // :TComment<CR>
 
-" Use only current file to autocomplete from tags
-set complete=.,w,b,u,],t,i
+" Auto format
+map === mmgg=G`m^zz
+" }}}
 
-" Ctags path (brew install ctags)
+" Ruby {{{
+au BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Thorfile,Vagrantfile,Procfile,pryrc,config.ru,.caprc,.irbrc,irb_tempfile*} set ft=ruby
+
+" Replace Ruby 1.8 style hashes with shorter Ruby 1.9 style
+map <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/<CR>
+
+" https://github.com/lucapette/vim-ruby-doc
+let g:ruby_doc_command='open'
+
+" Fugitive
+nmap <leader>gs :Gstatus<CR><C-w>10+
+noremap <leader>gc :Gcommit -v<CR><C-w>15+
+
+" Rails.vim
+map <Leader>m :Rmodel<space>
+map <Leader>c :Rcontroller<space>
+map <Leader>v :Rview<space>
+
+" }}}
+
+" JavaScript & JSON {{{
+au BufRead,BufWrite,BufNewFile *.json set filetype=json foldmethod=syntax
+au! FileType json command! -range=% -nargs=* Tidy <line1>,<line2>! json_xs -f json -t json-pretty
+
+" Handlebars
+au BufRead *.hbs set filetype=handlebars
+
+" }}}
+
+" Git {{{
+autocmd BufRead COMMIT_EDITMSG setlocal spell!
+autocmd BufRead COMMIT_EDITMSG setlocal nocursorline
+" }}}
+
+" Ctags {{{
 let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
 
 let g:tagbar_type_javascript = {
   \ 'ctagsbin' : '/path/to/jsctags'
 \ }
 
-autocmd BufReadPost *
-  \ if line("'\"") > 0 && line("'\"") <= line("$") |
-  \   exe "normal g`\"" |
-  \ endif
+let g:tagbar_type_ruby = {
+  \ 'kinds' : [
+    \ 'm:modules',
+    \ 'c:classes',
+    \ 'd:describes',
+    \ 'C:contexts',
+    \ 'f:methods',
+    \ 'F:singleton methods'
+  \ ]
+\ }
 
-" Run tests
+" Use only current file to autocomplete from tags
+set complete=.,w,b,u,],t,i
+" }}}
+
+" Tube.vim {{{
 function! TubeThis(...) abort
   let l:cmd = []
   let l:path = expand('%')
@@ -356,7 +394,10 @@ nmap <Leader>x :call TubeThis(line('.'))<CR>
 nmap <Leader>X :call TubeThis()<CR>
 nmap <Leader>§ :TubeLastCommand<CR>
 
-" Simple snippets
+" }}}
+
+" Snippets {{{
 :ia pry require 'pry'; binding.pry
 :ia #! #!/usr/bin/env 
 :ia sh require 'spec_helper'
+" }}}
