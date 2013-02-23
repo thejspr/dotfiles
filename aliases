@@ -28,7 +28,7 @@ alias time='/usr/bin/time'
 
 #vim
 export EDITOR=mvim
-alias e='mvim'
+alias e='mvim -v'
 alias vim'mvim'
 alias vi='mvim -v'
 

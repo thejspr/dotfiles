@@ -1,8 +1,5 @@
-" vim: foldmethod=marker
-set nocompatible " be iMproved
-
 " Bundles {{{
-
+" Init {{{
 if !isdirectory(expand("~/.vim/bundle/vundle/.git"))
   !git clone git://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 endif
@@ -15,56 +12,67 @@ Bundle 'gmarik/vundle'
 command! BI :BundleInstall
 command! -bang BU :BundleInstall!
 command! BC :BundleClean
+" }}}
 
-" essentials
+" Essentials {{{
 Bundle 'epmatsw/ag.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Raimondi/delimitMate'
+Bundle 'gcmt/tube.vim'
+" }}}
 
-" Code navigation
+" Code navigation {{{
 Bundle 'AutoTag'
 Bundle 'majutsushi/tagbar'
+Bundle 'Lokaltog/vim-easymotion'
+" }}}
 
-" textwrangling
+" Textwrangling {{{
 Bundle 'tpope/vim-surround'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
 Bundle 'chip/vim-fat-finger'
+" }}}
 
-" File management & Git
+" File management & Git {{{
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-eunuch'
 Bundle 'kwbdi.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-git'
+" }}}
 
-" Ruby
+" Ruby {{{
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-rails'
 Bundle 'lucapette/vim-ruby-doc'
 Bundle 'sickill/vim-pasta'
 Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-rake'
+"}}}
 
-" JavaScript
+" JavaScript {{{
 Bundle 'pangloss/vim-javascript'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'JSON.vim'
 Bundle 'nono/vim-handlebars'
+" }}}
 
-" msc languages
+" Msc languages {{{
 Bundle 'tpope/vim-markdown'
 Bundle 'slim-template/vim-slim'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-au FileType handlebars runtime! ftplugin/html/sparkup.vim
+" }}}
 
-" UI
+" UI {{{
 Bundle 'Lokaltog/vim-powerline'
+" Bundle 'Lokaltog/powerline' , {'rtp': 'powerline/bindings/vim'}
 Bundle 'Solarized'
 Bundle 'restore_view.vim'
+" }}}
 
-" Clojure
+" Clojure (off) {{{
 " Bundle 'guns/vim-clojure-static'
 " Bundle 'tpope/vim-foreplay'
 " Bundle 'kien/rainbow_parentheses.vim'
@@ -72,54 +80,43 @@ Bundle 'restore_view.vim'
 " au Syntax * RainbowParenthesesLoadRound
 " au Syntax * RainbowParenthesesLoadSquare
 " au Syntax * RainbowParenthesesLoadBraces
+"}}}
 
-" new stuff
-Bundle 'Lokaltog/vim-easymotion'
-let g:EasyMotion_leader_key = '<Leader>'
-let g:EasyMotion_mapping_t = '_t'
-let g:EasyMotion_mapping_T = '_T'
-let g:EasyMotion_mapping_f = '_f'
-let g:EasyMotion_mapping_k = '_k'
-let g:EasyMotion_mapping_K = '_K'
-Bundle 'gcmt/tube.vim'
-let g:tube_terminal = 'iterm'
+" new stuff {{{
+" }}}
 
+" Outro {{{
 filetype plugin indent on
 runtime macros/matchit.vim
-
+" }}}
 " }}}
 
 " Settings {{{
+set nocompatible " be iMproved
+set history=200
+set nobackup
+set nowritebackup
+set notimeout
+set noswapfile
+set undofile
+set undodir=~/.tmp,/tmp
+:au FocusLost * silent! wa "save all buffers when focus is lost
+" }}}
+
+" UI {{{
+if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
+  set t_Co=256
+endif
+
+" set guioptions-=L
+" set guifont=Menlo\ Regular:h13
+
 syntax on
 set nocursorcolumn
 set cursorline
 set background=dark
 colorscheme solarized
 
-let mapleader = ","
-let g:mapleader = ","
-set history=100
-set nobackup
-set nowritebackup
-set notimeout
-set noswapfile
-set vb
-set undofile
-set undodir=~/.tmp,/tmp
-:au FocusLost * silent! wa "save all buffers when focus is lost
-set guioptions-=L
-set guifont=Menlo\ Regular:h13
-
-"folding settings
-" set foldlevelstart=99
-" set foldmethod=syntax
-set foldnestmax=10
-set foldenable
-" set foldlevel=1
-
-" }}}
-
-" UI {{{
 set title
 set encoding=utf-8
 set ffs=unix,mac,dos
@@ -139,10 +136,6 @@ set number
 set splitbelow
 set splitright
 
-" set mouse=a
-" set mousehide
-set gcr=a:blinkon0
-
 " Resize splits when the win{is resized
 au VimResized * exe "normal! \<c-w>="
 
@@ -152,6 +145,38 @@ set shiftwidth=2
 set expandtab
 set nowrap
 set textwidth=80
+" }}}
+
+" Key mappings {{{
+let mapleader = ","
+let g:mapleader = ","
+
+nmap <CR> :write<CR>
+
+" tComment
+nmap // :TComment<CR>
+vmap // :TComment<CR>
+
+" Auto format
+map === mmgg=G`m^zz
+" }}}
+
+" Tab key {{{
+let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+let g:SuperTabLongestHighlight = 1
+
+" MULTIPURPOSE TAB KEY
+" Indent if we're at the beginning of a line. Else, do completion.
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <s-tab> <c-n>
 " }}}
 
 " Msc annoyances {{{
@@ -177,16 +202,15 @@ nnoremap j gj
 nnoremap k gk
 " }}}
 
-" Searching / moving & Ag {{{
+" Searching {{{
 set hlsearch
 set incsearch
 set smartcase
 set gdefault
 set showmatch
+
 nnoremap <leader><space> :nohlsearch<cr>
-" search (forwards)
 nmap <space> /
-" search (backwards)
 map <m-space> ?
 " find/replace shortcut
 noremap <leader>f :%s///<left><left>
@@ -196,49 +220,12 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 let g:ackprg="ag -H --nogroup --column"
 nnoremap <leader>a :Ag
 nnoremap <leader>A :Ag <cword><CR>
-
-" }}}
-
-" Spell checking {{{
-set spellfile+=~/.vim/spell/en.utf-8.add
-set dict+=~/.vim/spell/en.utf-8.add
-noremap <leader>ss :setlocal spell!<cr>
-noremap <leader>sn ]s
-noremap <leader>sp [s
-noremap <leader>sa zg
-noremap <leader>sd z=
-"}}}
-
-" Nerdtree & ctrlp {{{
-" NERDTree
-let g:NERDTreeQuitOnOpen=0
-let g:NERDTreeShowBookmarks = 0
-let g:NERDTreeWinPos = "left"
-let g:NERDTreeWinSize = 25
-let g:NERDTreeAutoDeleteBuffer=1
-let NERDTreeShowHidden=0
-let g:NERDTreeChDirMode=2
-
-" ctrlp
-map <leader>, :CtrlP<cr>
-map <leader>t :CtrlP<cr>
-map <leader>b :CtrlPBuffer<cr>
-map <leader>r :CtrlPMRUFiles<cr>
-let g:ctrlp_custom_ignore = '\.git$\|tmp$\|_deploy$'
-let g:ctrlp_working_path_mode = 2
-let g:ctrlp_match_window_reversed = 1
-let g:ctrlp_extensions = ['tag']
-
-set wildignore+=*/.hg/*,*/.svn/*,*/vendor/cache/*,*/public/system/*,*/tmp/*,*/log/*,*/.git/*,*/.jhw-cache/*,*/solr/data/*,*/node_modules/*,*/.DS_Store
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*~,*.obj,.git/**,tmp/**,app/assets/images/**,public/**,*.class,*.doc,*.lock,**.png,**.jpg,**.jpeg
-set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**,solr/**,doc/**,rdoc/**,spec/dummy/**
 " }}}
 
 " Movement and navigation {{{
 " Buffer management
 noremap <tab> :bn<CR>
 noremap <S-tab> :bp<CR>
-map <f4> <Plug>Kwbd
 
 " easy split navigation
 nnoremap <C-left> <C-w>h
@@ -255,6 +242,51 @@ vnoremap <C-j> :m'>+<CR>gv
 vnoremap <C-k> :m-2<CR>gv
 " }}}
 
+" Spell checking {{{
+set spellfile+=~/.vim/spell/en.utf-8.add
+set dict+=~/.vim/spell/en.utf-8.add
+noremap <leader>ss :setlocal spell!<cr>
+noremap <leader>sn ]s
+noremap <leader>sp [s
+noremap <leader>sa zg
+noremap <leader>sd z=
+"}}}
+
+" Folding {{{
+set foldnestmax=10
+set foldenable
+" }}}
+
+" Nerdtree & ctrlp {{{
+" NERDTree
+let g:NERDTreeQuitOnOpen=0
+let g:NERDTreeShowBookmarks = 0
+let g:NERDTreeWinPos = "left"
+let g:NERDTreeWinSize = 25
+let g:NERDTreeAutoDeleteBuffer=1
+let NERDTreeShowHidden=0
+let g:NERDTreeChDirMode=2
+
+" ctrlp
+let g:ctrlp_map = '<Leader>t'
+let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|mp3|)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_match_window_reversed = 1
+let g:ctrlp_match_window_bottom = 1
+let g:ctrlp_extensions = ['tag']
+let g:ctrlp_dotfiles = 0
+let g:ctrlp_switch_buffer = 0
+
+map ; :CtrlP<cr>
+map <leader>t :CtrlP<cr>
+map <leader>b :CtrlPBuffer<cr>
+map <leader>r :CtrlPMRUFiles<cr>
+
+set wildignore+=*/.hg/*,*/.svn/*,*/vendor/cache/*,*/public/system/*,*/tmp/*,*/log/*,*/.git/*,*/.jhw-cache/*,*/solr/data/*,*/node_modules/*,*/.DS_Store
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*~,*.obj,.git/**,tmp/**,app/assets/images/**,public/**,*.class,*.doc,*.lock,**.png,**.jpg,**.jpeg
+set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**,solr/**,doc/**,rdoc/**,spec/dummy/**
+" }}}
+
 " Edit .vimrc {{{
 command! Ev :e ~/.vimrc
 " When vimrc is edited, reload it
@@ -266,44 +298,15 @@ augroup vimrcs
     \ silent! call Pl#Load() |
   \ endif 
 augroup END
-
-" }}}
-
-" Tab key {{{
-let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
-let g:SuperTabLongestHighlight = 1
-
-" MULTIPURPOSE TAB KEY
-" Indent if we're at the beginning of a line. Else, do completion.
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
-endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-inoremap <s-tab> <c-n>
-
 " }}}
 
 " Function Keys {{{
 map <F1> :set nowrap! <CR>
 noremap <F2> :NERDTreeToggle<CR>
 set pastetoggle=<F3>
+map <f4> <Plug>Kwbd
 " F5 Ctrlp refresh
-nmap <F6> :%s/\s*$//<CR>:noh<CR>
-" }}}
-
-" Msc mappings {{{
-
-" tComment
-nmap // :TComment<CR>
-vmap // :TComment<CR>
-
-" Auto format
-map === mmgg=G`m^zz
+nmap <F6> :%s/\s*$//<CR>:noh<CR> " EOL whitespace removal
 " }}}
 
 " Ruby {{{
@@ -315,37 +318,32 @@ map <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/<CR>
 " https://github.com/lucapette/vim-ruby-doc
 let g:ruby_doc_command='open'
 
-" Fugitive
-nmap <leader>gs :Gstatus<CR><C-w>10+
-noremap <leader>gc :Gcommit -v<CR><C-w>15+
-
 " Rails.vim
 map <Leader>m :Rmodel<space>
 map <Leader>c :Rcontroller<space>
 map <Leader>v :Rview<space>
-
 " }}}
 
 " JavaScript & JSON {{{
 au BufRead,BufWrite,BufNewFile *.json set filetype=json foldmethod=syntax
 au! FileType json command! -range=% -nargs=* Tidy <line1>,<line2>! json_xs -f json -t json-pretty
 
-" Handlebars
-au BufRead *.hbs set filetype=handlebars
-
+au BufRead *.hbs set filetype=handlebars " Handlebars
+au FileType handlebars runtime! ftplugin/html/sparkup.vim
 " }}}
 
 " Git {{{
+" Fugitive
+nmap <leader>gs :Gstatus<CR><C-w>10+
+noremap <leader>gc :Gcommit -v<CR><C-w>15+
+
 autocmd BufRead COMMIT_EDITMSG setlocal spell!
 autocmd BufRead COMMIT_EDITMSG setlocal nocursorline
 " }}}
 
 " Ctags {{{
 let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
-
-let g:tagbar_type_javascript = {
-  \ 'ctagsbin' : '/path/to/jsctags'
-\ }
+let g:tagbar_type_javascript = { 'ctagsbin' : '/usr/local/share/npm/bin/jsctags' }
 
 let g:tagbar_type_ruby = {
   \ 'kinds' : [
@@ -363,6 +361,8 @@ set complete=.,w,b,u,],t,i
 " }}}
 
 " Tube.vim {{{
+let g:tube_terminal = 'iterm'
+
 function! TubeThis(...) abort
   let l:cmd = []
   let l:path = expand('%')
@@ -393,11 +393,21 @@ endfunction
 nmap <Leader>x :call TubeThis(line('.'))<CR>
 nmap <Leader>X :call TubeThis()<CR>
 nmap <Leader>§ :TubeLastCommand<CR>
-
 " }}}
+
+" EasyMotion {{{
+let g:EasyMotion_leader_key = '<Leader>'
+let g:EasyMotion_mapping_t = '_t'
+let g:EasyMotion_mapping_T = '_T'
+let g:EasyMotion_mapping_f = '_f'
+let g:EasyMotion_mapping_k = '_k'
+let g:EasyMotion_mapping_K = '_K'
+"}}}
 
 " Snippets {{{
 :ia pry require 'pry'; binding.pry
 :ia #! #!/usr/bin/env 
 :ia sh require 'spec_helper'
 " }}}
+
+" vim: foldmethod=marker
