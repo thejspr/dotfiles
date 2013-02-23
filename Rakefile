@@ -26,6 +26,6 @@ task default: :links
 
 desc 'Install common gems'
 task :gems do
-  gems = %w{pry rbenv-rehash cheat}
+  gems = %w{pry rbenv-rehash cheat gem-ctags}
   gems.each { |g| system("gem install #{g}") }
 end

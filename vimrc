@@ -8,11 +8,18 @@ set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 
+command! BI :BundleInstall
+command! -bang BU :BundleInstall!
+command! BC :BundleClean
+
 " essentials
 Bundle 'epmatsw/ag.vim'
 Bundle 'kien/ctrlp.vim'
-Bundle 'AutoTag'
 Bundle 'Raimondi/delimitMate'
+
+" Code navigation
+Bundle 'AutoTag'
+Bundle 'majutsushi/tagbar'
 
 " textwrangling
 Bundle 'tpope/vim-surround'
@@ -20,14 +27,12 @@ Bundle 'tomtom/tcomment_vim'
 Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
 
-" Git
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-git'
-
-" File management
+" File management & Git
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-eunuch'
 Bundle 'kwbdi.vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-git'
 
 " Ruby
 Bundle 'tpope/vim-endwise'
@@ -35,11 +40,12 @@ Bundle 'tpope/vim-rails'
 Bundle 'lucapette/vim-ruby-doc'
 Bundle 'sickill/vim-pasta'
 Bundle 'tpope/vim-bundler'
+Bundle 'tpope/vim-rake'
 
 " JavaScript
 Bundle 'pangloss/vim-javascript'
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'leshill/vim-json'
+Bundle 'JSON.vim'
 Bundle 'nono/vim-handlebars'
 
 " msc languages
@@ -48,24 +54,18 @@ Bundle 'slim-template/vim-slim'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 au FileType handlebars runtime! ftplugin/html/sparkup.vim
 
-" SnipMate
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "thejspr/snipmate-snippets"
-Bundle "garbas/vim-snipmate"
-
 " UI
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'Solarized'
 
 " Clojure
-Bundle 'guns/vim-clojure-static'
-Bundle 'tpope/vim-foreplay'
-Bundle 'kien/rainbow_parentheses.vim'
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+" Bundle 'guns/vim-clojure-static'
+" Bundle 'tpope/vim-foreplay'
+" Bundle 'kien/rainbow_parentheses.vim'
+" au VimEnter * RainbowParenthesesToggle
+" au Syntax * RainbowParenthesesLoadRound
+" au Syntax * RainbowParenthesesLoadSquare
+" au Syntax * RainbowParenthesesLoadBraces
 
 " new stuff
 Bundle 'Lokaltog/vim-easymotion'
@@ -97,10 +97,16 @@ set noswapfile
 set vb
 set undofile
 set undodir=~/.tmp,/tmp
-set foldlevelstart=99
 :au FocusLost * silent! wa "save all buffers when focus is lost
 set guioptions-=L
 set guifont=Menlo\ Regular:h13
+
+"folding settings
+set foldlevelstart=99
+set foldmethod=syntax
+set foldnestmax=10
+set nofoldenable
+set foldlevel=1
 
 " Supertab
 let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
@@ -123,6 +129,8 @@ set ruler
 set backspace=indent,eol,start
 set laststatus=2
 set number
+set splitbelow
+set splitright
 
 " set mouse=a
 " set mousehide
@@ -131,7 +139,7 @@ set gcr=a:blinkon0
 " Resize splits when the win{is resized
 au VimResized * exe "normal! \<c-w>="
 
-" Fix annoyances
+"" Fix annoyances
 nnoremap Q <nop>
 nnoremap K <nop>
 " keep curson in place when joining lines
@@ -143,27 +151,6 @@ set shiftwidth=2
 set expandtab
 set nowrap
 set textwidth=80
-
-" Run tests
-fun! RunTest(cmd)
-  :w
-  if filereadable('zeus.json')
-    let s:prefix = "!zeus "
-  else
-    let s:prefix = "!zeus "
-  endif
-  execute(s:prefix . a:cmd)
-endfu
-
-" rspec
-map <leader>R :call RunTest("rspec " . expand("%p") . " --no-color")<CR>
-map <leader>r :call RunTest("rspec " . expand("%p") . ":" . line(".") . " --no-color")<CR>
-" cucumber
-map <leader>K :call RunTest("cucumber " . expand("%p"))<CR>
-map <leader>k :call RunTest("cucumber " . expand("%p") . ":" . line("."))<CR>
-
-" Switch between the last two files
-nnoremap <leader><leader> <c-^>
 
 " JSON
 au BufRead,BufWrite,BufNewFile *.json set filetype=json foldmethod=syntax
@@ -296,6 +283,7 @@ let NERDTreeShowHidden=0
 let g:NERDTreeChDirMode=2
 
 " ctrlp
+map <leader>, :CtrlP<cr>
 map <leader>t :CtrlP<cr>
 map <leader>b :CtrlPBuffer<cr>
 map <leader>r :CtrlPMRUFiles<cr>
@@ -327,6 +315,10 @@ set complete=.,w,b,u,],t,i
 " Ctags path (brew install ctags)
 let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
 
+let g:tagbar_type_javascript = {
+  \ 'ctagsbin' : '/path/to/jsctags'
+\ }
+
 autocmd BufReadPost *
   \ if line("'\"") > 0 && line("'\"") <= line("$") |
   \   exe "normal g`\"" |
@@ -339,8 +331,8 @@ function! TubeThis(...) abort
  
   if filewritable('.zeus.sock')
     call add(l:cmd, 'zeus')
-  elseif filereadable('Gemfile')
-    call add(l:cmd, 'bundle exec')
+  " elseif filereadable('Gemfile')
+  "   call add(l:cmd, 'bundle exec')
   endif
  
   if l:path =~# '_spec\.rb$'
@@ -360,6 +352,11 @@ function! TubeThis(...) abort
   exe 'Tube ' . l:cmd_string
 endfunction
 
-nmap <Leader>d :call TubeThis(line('.'))<CR>
-nmap <Leader>D :call TubeThis()<CR>
+nmap <Leader>x :call TubeThis(line('.'))<CR>
+nmap <Leader>X :call TubeThis()<CR>
 nmap <Leader>§ :TubeLastCommand<CR>
+
+" Simple snippets
+:ia pry require 'pry'; binding.pry
+:ia #! #!/usr/bin/env 
+:ia sh require 'spec_helper'

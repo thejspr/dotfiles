@@ -7,6 +7,7 @@ eval "$(rbenv init - --no-rehash)"
 # prezto customizations
 bindkey -e
 unset -f trash
+zstyle ':completion:*:*:git:*' script /usr/local/etc/bash_completion.d/git-completion.bash
 
 # include zsh completions
 fpath=(/usr/local/share/zsh/site-functions $fpath)
@@ -33,5 +34,6 @@ export DEFER_GC=10
 # Alias and function definitions.
 . ~/Code/dotfiles/aliases
 
+export JRUBY_OPTS='-J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -X-C'
 export JAVACMD=`which drip`
 # export DRIP_INIT_CLASS=org.jruby.main.DripMain

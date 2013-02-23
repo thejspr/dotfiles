@@ -8,6 +8,9 @@ alias kf='kill -9 %1'
 alias kk='kill -9'
 alias be='bundle exec'
 
+#guard
+alias sg='bundle exec guard'
+
 #testing
 alias zz='zeus'
 alias zs='zeus start'
@@ -84,9 +87,13 @@ alias hl="heroku logs -t"
 myip() { elinks -dump http://checkip.dyndns.org:8245/ }
 alias mx='chmod +x'
 alias cd..='cd ..'
+alias ll='ls -la'
 
 # system and files editing
 alias ea='mvim ~/Code/dotfiles/aliases'
 alias ez='mvim ~/Code/dotfiles/zsh_mods'
 alias ezz='mvim ~/.zpreztorc'
 alias sr='exec zsh'
+
+# new
+alias cm='chromarks'
