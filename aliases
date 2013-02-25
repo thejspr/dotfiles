@@ -27,7 +27,6 @@ alias bu='brew upgrade'
 alias time='/usr/bin/time'
 
 #vim
-export EDITOR=mvim
 alias e='mvim -v'
 alias vim'mvim'
 alias vi='mvim -v'
@@ -38,7 +37,7 @@ local_broadcast() { DO_NOT_QUIT_BROWSER=true RAILS_ENV=production bundle exec ra
 alias rspl='z splat && rs -p4000'
 
 #conviniences
-alias -g V='|mvim -'
+alias -g V='|e -'
 alias -g G='|grep --color'
 
 #git
@@ -90,9 +89,9 @@ alias cd..='cd ..'
 alias ll='ls -la'
 
 # system and files editing
-alias ea='mvim ~/Code/dotfiles/aliases'
-alias ez='mvim ~/Code/dotfiles/zsh_mods'
-alias ezz='mvim ~/.zpreztorc'
+alias ea='e ~/Code/dotfiles/aliases'
+alias ez='e ~/Code/dotfiles/zsh_mods'
+alias ezz='e ~/.zpreztorc'
 alias sr='exec zsh'
 
 # new

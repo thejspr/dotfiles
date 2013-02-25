@@ -104,12 +104,8 @@ set undodir=~/.tmp,/tmp
 " }}}
 
 " UI {{{
-if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
-  set t_Co=256
-endif
-
-" set guioptions-=L
-" set guifont=Menlo\ Regular:h13
+set guioptions-=L
+set guifont=Menlo\ Regular:h13
 
 syntax on
 set nocursorcolumn
@@ -226,6 +222,7 @@ nnoremap <leader>A :Ag <cword><CR>
 " Buffer management
 noremap <tab> :bn<CR>
 noremap <S-tab> :bp<CR>
+nnoremap <leader>l :ls<cr>:b<space>
 
 " easy split navigation
 nnoremap <C-left> <C-w>h
@@ -405,9 +402,8 @@ let g:EasyMotion_mapping_K = '_K'
 "}}}
 
 " Snippets {{{
-:ia pry require 'pry'; binding.pry
-:ia #! #!/usr/bin/env 
-:ia sh require 'spec_helper'
+ia pry require 'pry'; binding.pry
+ia #! #!/usr/bin/env 
+ia sh require 'spec_helper'
 " }}}
-
 " vim: foldmethod=marker
