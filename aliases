@@ -3,11 +3,31 @@ alias tt='tail -f log/test.log | grep -v "TRUNCATE"'
 #ruby
 alias rb='rbenv'
 alias rv='ruby -v'
-alias wr='ps aux | grep ruby | grep -v jruby'
+alias wr='ps aux | grep ruby'
 alias kf='kill -9 %1'
 alias kk='kill -9'
-alias be='bundle exec'
+alias nodrip='JAVACMD=`which java`'
+alias be='nodrip bundle exec'
 
+#rails
+alias migrate='br db:migrate db:test:clone_structure'
+alias ber='be rails'
+alias rs='ber server'
+alias rsp='ber server puma'
+alias rc='ber console'
+alias rg='ber generate'
+
+#rake
+alias br='be rake'
+alias rt='br -T'
+alias rr='br routes'
+
+#heroku
+alias h="heroku"
+hpush() { git add -A; git commit -m "$*"; git push; git push production master; }
+alias hc="heroku run console"
+alias hl="heroku logs -t"
+#
 #guard
 alias sg='bundle exec guard'
 
@@ -62,25 +82,6 @@ push_branch() {
 
   hub browse
 }
-
-#rails
-alias migrate='br db:migrate db:test:clone_structure'
-alias ber='bundle exec rails'
-alias rs='ber server'
-alias rsp='ber server puma'
-alias rc='ber console'
-alias rg='ber generate'
-
-#rake
-alias br='bundle exec rake'
-alias rt='br -T'
-alias rr='br routes'
-
-#heroku
-alias h="heroku"
-hpush() { git add -A; git commit -m "$*"; git push; git push production master; }
-alias hc="heroku run console"
-alias hl="heroku logs -t"
 
 #msc
 myip() { elinks -dump http://checkip.dyndns.org:8245/ }

@@ -41,6 +41,7 @@ Bundle 'tpope/vim-eunuch'
 Bundle 'kwbdi.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-git'
+Bundle 'LargeFile'
 " }}}
 
 " Ruby {{{
@@ -105,7 +106,7 @@ set undodir=~/.tmp,/tmp
 
 " UI {{{
 set guioptions-=L
-set guifont=Menlo\ Regular:h13
+set guifont=Menlo\ Regular:h14
 
 syntax on
 set nocursorcolumn
