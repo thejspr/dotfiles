@@ -32,11 +32,9 @@ alias h="heroku"
 hpush() { git add -A; git commit -m "$*"; git push; git push production master; }
 alias hc="heroku run console"
 alias hl="heroku logs -t"
-#
-#guard
-alias sg='bundle exec guard'
 
 #testing
+alias sg='bundle exec guard'
 alias zz='zeus'
 alias zs='zeus start'
 alias zr='zeus rspec'
@@ -52,9 +50,14 @@ alias bu='brew upgrade'
 alias time='/usr/bin/time'
 
 #vim
-alias e='mvim -v'
-alias vim'mvim'
-alias vi='mvim -v'
+if $JSPRMAC; then
+  alias e='mvim -v'
+else
+  alias e='vim'
+fi
+
+alias vim'e'
+alias vi='e'
 
 #evently
 alias rsq='ps -ef | grep resque'
