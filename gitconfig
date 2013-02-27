@@ -12,7 +12,7 @@
 	default = tracking
 [core]
 	excludesfile = ~/.gitignore
-	editor = mvim -f
+	editor = mvim -v -f
 	whitespace = trailing-space,space-before-tab
 [alias]
   aa = add --all

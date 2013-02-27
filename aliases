@@ -1,4 +1,8 @@
-alias tt='tail -f log/test.log | grep -v "TRUNCATE"'
+#servers
+alias ec2='mosh --ssh "ssh -i ~/.ssh/jsprkey.pem -p 22" ec2'
+
+#tmux
+alias ta='tmux attach'
 
 #ruby
 alias rb='rbenv'
@@ -10,6 +14,7 @@ alias nodrip='JAVACMD=`which java`'
 alias be='nodrip bundle exec'
 
 #rails
+alias tt='tail -f log/test.log | grep -v "TRUNCATE"'
 alias migrate='br db:migrate db:test:clone_structure'
 alias ber='be rails'
 alias rs='ber server'
