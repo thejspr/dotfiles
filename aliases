@@ -3,6 +3,7 @@ alias ec2='mosh --ssh "ssh -i ~/.ssh/jsprkey.pem -p 22" ec2'
 
 #tmux
 alias ta='tmux attach'
+alias tc='tmux'
 
 #ruby
 alias rb='rbenv'
