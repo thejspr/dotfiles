@@ -1,19 +1,33 @@
 export PATH=~/bin:~/.rbenv/bin:$PATH
-export PATH=/Library/PostgreSQL/9.2/bin:~/Code/scripts:$PATH
-export PATH=$PATH:/usr/local/share/python:/usr/local/share/npm/bin
+
+if [ $(hostname) = "jspr.local" ]; then
+  export PATH=/Library/PostgreSQL/9.2/bin:~/Code/scripts:$PATH
+  export PATH=$PATH:/usr/local/share/python:/usr/local/share/npm/bin
+
+  export EDITOR=mvim
+  export VISUAL=mvim
+
+  # Work
+  . ~/.beh_ec2_auth
+
+  # https://github.com/rupa/z
+  . `brew --prefix`/etc/profile.d/z.sh
+
+  # JRuby
+  export JRUBY_OPTS='-J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -X-C'
+  export JAVACMD=`which drip`
+  # export DRIP_INIT_CLASS=org.jruby.main.DripMain
+elif [ $(hostname) = "ip-10-56-62-189" ]; then
+fi
 
 eval "$(rbenv init - --no-rehash)"
 
 # prezto customizations
 bindkey -e
-unset -f trash
-zstyle ':completion:*:*:git:*' script /usr/local/etc/bash_completion.d/git-completion.bash
+# zstyle ':completion:*:*:git:*' script /usr/local/etc/bash_completion.d/git-completion.bash
 
 # include zsh completions
 fpath=(/usr/local/share/zsh/site-functions $fpath)
-
-export EDITOR=mvim
-export VISUAL=mvim
 
 # Ruby
 export RUBY_HEAP_MIN_SLOTS=1000000
@@ -21,20 +35,6 @@ export RUBY_HEAP_SLOTS_INCREMENT=1000000
 export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
 export RUBY_GC_MALLOC_LIMIT=1000000000
 export RUBY_HEAP_FREE_MIN=500000
-export DEFER_GC=10
-
-# Work
-# if [ -f ~/.beh_ec2_auth ]; then
-. ~/.beh_ec2_auth
-# fi
-
-# https://github.com/rupa/z
-. `brew --prefix`/etc/profile.d/z.sh
 
 # Alias and function definitions.
-. ~/Code/dotfiles/aliases
-
-# JRuby 
-export JRUBY_OPTS='-J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -X-C'
-export JAVACMD=`which drip`
-# export DRIP_INIT_CLASS=org.jruby.main.DripMain
+. ~/code/dotfiles/aliases
