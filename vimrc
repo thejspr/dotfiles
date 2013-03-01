@@ -46,6 +46,8 @@ Bundle 'LargeFile'
 " }}}
 
 " Ruby {{{
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-rbenv'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-rails'
 Bundle 'lucapette/vim-ruby-doc'
