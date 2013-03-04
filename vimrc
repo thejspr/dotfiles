@@ -45,6 +45,8 @@ Bundle 'LargeFile'
 " }}}
 
 " Ruby {{{
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-rbenv'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-rails'
 Bundle 'lucapette/vim-ruby-doc'
@@ -403,8 +405,8 @@ let g:EasyMotion_mapping_K = '_K'
 "}}}
 
 " Snippets {{{
-ia pry require 'pry'; binding.pry
-ia #! #!/usr/bin/env 
-ia sh require 'spec_helper'
+ia epry require 'pry'; binding.pry
+ia e#! #!/usr/bin/env 
+ia esh require 'spec_helper'
 " }}}
 " vim: foldmethod=marker
