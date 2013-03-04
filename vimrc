@@ -19,7 +19,6 @@ Bundle 'epmatsw/ag.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'gcmt/tube.vim'
-Bundle 'tpope/vim-sensible'
 " }}}
 
 " Code navigation {{{
@@ -98,6 +97,13 @@ runtime macros/matchit.vim
 " Settings {{{
 set nocompatible " be iMproved
 set history=200
+set nobackup
+set nowritebackup
+set notimeout
+set noswapfile
+set undofile
+set undodir=~/.tmp,/tmp
+:au FocusLost * silent! wa "save all buffers when focus is lost
 " }}}
 
 " UI {{{
@@ -107,19 +113,24 @@ set guifont=Menlo\ Regular:h14
 syntax on
 set nocursorcolumn
 set cursorline
-set colorcolumn=80
 set background=dark
 colorscheme solarized
 
 set title
+set encoding=utf-8
+set ffs=unix,mac,dos
 set scrolloff=4
+set autoindent
 set smartindent
 set showmode
 set modeline
 set showcmd
 set hidden
+set wildmenu
 set wildmode=list:longest,list:full
 set ruler
+set backspace=indent,eol,start
+set laststatus=2
 set number
 set splitbelow
 set splitright
@@ -150,7 +161,6 @@ map === mmgg=G`m^zz
 " }}}
 
 " Tab key {{{
-set smarttab
 let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 let g:SuperTabLongestHighlight = 1
 
@@ -193,7 +203,10 @@ nnoremap k gk
 
 " Searching {{{
 set hlsearch
+set incsearch
 set smartcase
+set gdefault
+set showmatch
 
 nnoremap <leader><space> :nohlsearch<cr>
 nmap <space> /
@@ -396,8 +409,4 @@ ia pry require 'pry'; binding.pry
 ia #! #!/usr/bin/env 
 ia sh require 'spec_helper'
 " }}}
-
-" New stuff {{{
-" }}}
-
 " vim: foldmethod=marker
