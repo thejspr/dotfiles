@@ -1,0 +1,7 @@
+export JSPRMAC=false
+export EDITOR=vim
+
+# z
+. ~/z/z.sh
+
+# vim: ft=sh
