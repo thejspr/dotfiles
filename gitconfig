@@ -12,6 +12,7 @@
 	default = tracking
 [core]
 	excludesfile = ~/.gitignore
+  editor = vim
 	whitespace = trailing-space,space-before-tab
 [alias]
   aa = add --all

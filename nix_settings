@@ -1,3 +1,4 @@
+# vim: ft=sh
 export JSPRMAC=false
 export EDITOR=vim
 export RAILS_ENV=production
@@ -5,4 +6,27 @@ export RAILS_ENV=production
 # z
 . ~/z/z.sh
 
-# vim: ft=sh
+# ssh-agent
+# Check to see if SSH Agent is already running
+agent_pid="$(ps -ef | grep "ssh-agent" | grep -v "grep" | awk '{print($2)}')"
+
+# If the agent is not running (pid is zero length string)
+if [[ -z "$agent_pid" ]]; then
+  # Start up SSH Agent
+  eval "$(ssh-agent)"
+
+  # if you have a passphrase on your key file you may or may
+  # not want to add it when logging in, so comment this out
+  # if asking for the passphrase annoys you
+  ssh-add
+else
+  # Connect to the currently running ssh-agent
+  agent_ppid="$(($agent_pid - 1))"
+  agent_sock="$(find /tmp -path "*ssh*" -type s -iname "agent.$agent_ppid")"
+
+  echo "Agent pid $agent_pid"
+  export SSH_AGENT_PID="$agent_pid"
+
+  echo "Agent sock $agent_sock"
+  export SSH_AUTH_SOCK="$agent_sock"
+fi
