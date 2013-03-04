@@ -110,6 +110,7 @@ set undodir=~/.tmp,/tmp
 set guioptions-=L
 set guifont=Menlo\ Regular:h14
 
+set t_Co=256
 syntax on
 set nocursorcolumn
 set cursorline
