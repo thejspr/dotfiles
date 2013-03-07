@@ -159,6 +159,12 @@ vmap // :TComment<CR>
 
 " Auto format
 map === mmgg=G`m^zz
+
+" No arror keys
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
 " }}}
 
 " Tab key {{{
