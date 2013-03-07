@@ -1,6 +1,6 @@
 desc "Create dotfile symlinks"
 task :links do
-  IGNORES = %w{Rakefile zsh_mods}
+  IGNORES = %w{Rakefile zsh_mods init}
 
   Dir.glob("*").each do |file|
     next if IGNORES.include?(file)
@@ -28,4 +28,11 @@ desc 'Install common gems'
 task :gems do
   gems = %w{pry rbenv-rehash cheat gem-ctags}
   gems.each { |g| system("gem install #{g}") }
+end
+
+desc 'Install homebrew kegs'
+task :brews do
+  kegs = %w{drip ctags hub macvim mongodb mosh mysql rbenv
+            redis the_silver_searcher tree z}
+  kegs.each { |k| system("brew install #{k}") }
 end

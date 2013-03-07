@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# vim: ft=sh
+
+# Homebrew
+ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+
+# Ruby
+brew install rbenv
+eval "$(rbenv init -)"
+rbenv install 1.9.3-p392
+gem update --system
+gem install bundler
+
+# Dotfiles
+mkdir -p code
+cd code
+git clone git@github.com:thejspr/dotfiles.git
+cd dotfiles
+rake links
+
+# Install brews and gems
+rake brews
+rake gems
