@@ -33,6 +33,6 @@ end
 desc 'Install homebrew kegs'
 task :brews do
   kegs = %w{drip ctags hub macvim mongodb mosh mysql rbenv
-            redis the_silver_searcher tree z}
+            redis the_silver_searcher tree z zsh}
   kegs.each { |k| system("brew install #{k}") }
 end
