@@ -161,10 +161,10 @@ vmap // :TComment<CR>
 map === mmgg=G`m^zz
 
 " No arror keys
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
+" noremap <Up> <NOP>
+" noremap <Down> <NOP>
+" noremap <Left> <NOP>
+" noremap <Right> <NOP>
 " }}}
 
 " Tab key {{{
