@@ -1,5 +1,7 @@
 export PATH=~/bin:~/.rbenv/bin:$PATH
 
+autoload zmv
+
 if [ $(hostname) = "jspr.local" ]; then
   . ~/.mac_settings
 elif [ $(hostname) = "ip-10-56-62-189" ]; then
