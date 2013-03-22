@@ -53,6 +53,8 @@ Bundle 'lucapette/vim-ruby-doc'
 Bundle 'sickill/vim-pasta'
 Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-rake'
+Bundle 'kana/vim-textobj-user'
+Bundle 'nelstrom/vim-textobj-rubyblock'
 "}}}
 
 " JavaScript {{{
@@ -75,17 +77,18 @@ Bundle 'Solarized'
 Bundle 'restore_view.vim'
 " }}}
 
-" Clojure (off) {{{
-" Bundle 'guns/vim-clojure-static'
-" Bundle 'tpope/vim-foreplay'
-" Bundle 'kien/rainbow_parentheses.vim'
-" au VimEnter * RainbowParenthesesToggle
-" au Syntax * RainbowParenthesesLoadRound
-" au Syntax * RainbowParenthesesLoadSquare
-" au Syntax * RainbowParenthesesLoadBraces
+" Clojure {{{
+Bundle 'guns/vim-clojure-static'
+Bundle 'tpope/vim-foreplay'
+Bundle 'kien/rainbow_parentheses.vim'
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 "}}}
 
 " new stuff {{{
+Bundle 'Sirupsen/vim-execrus'
 " }}}
 
 " Outro {{{
@@ -273,6 +276,7 @@ let g:NERDTreeWinSize = 25
 let g:NERDTreeAutoDeleteBuffer=1
 let NERDTreeShowHidden=0
 let g:NERDTreeChDirMode=2
+let NERDTreeHijackNetrw=1
 
 " ctrlp
 let g:ctrlp_map = '<Leader>t'

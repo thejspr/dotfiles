@@ -12,6 +12,7 @@ alias kf='kill -9 %1'
 alias kk='kill -9'
 alias nodrip='JAVACMD=`which java`'
 alias be='nodrip bundle exec'
+alias bi='bundle install'
 
 #rails
 alias tt='tail -f log/test.log | grep -v "TRUNCATE"'
@@ -61,7 +62,7 @@ alias vi='e'
 
 #evently
 alias rsq='ps -ef | grep resque'
-local_broadcast() { DO_NOT_QUIT_BROWSER=true RAILS_ENV=production bundle exec rake broadcast:work QUEUE="$1" }
+local_broadcast() { DO_NOT_QUIT_BROWSER=true RAILS_ENV=production be rake broadcast:work QUEUE="$1" }
 alias rspl='z splat && rs -p4000'
 
 #conviniences
