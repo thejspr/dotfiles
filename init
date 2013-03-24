@@ -35,7 +35,7 @@ done
 chsh -s /usr/local/bin/zsh
 echo "source '/Users/jesper/Code/dotfiles/zsh_mods'" >> ~/.zshrc
 
-
 #Launch vim to install plugins
-cd ~
-vim
+mkdir -p ~/.vim
+ln -s ~/code/dotfiles/UltiSnips ~/.vim/UltiSnips
+vim -c BundleInstall

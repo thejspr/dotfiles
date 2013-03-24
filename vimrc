@@ -44,6 +44,10 @@ Bundle 'tpope/vim-git'
 Bundle 'LargeFile'
 " }}}
 
+" Snippets {{{
+Bundle 'SirVer/ultisnips'
+"}}}
+
 " Ruby {{{
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rbenv'
@@ -107,6 +111,10 @@ set noswapfile
 set undofile
 set undodir=~/.tmp,/tmp
 :au FocusLost * silent! wa "save all buffers when focus is lost
+" }}}
+
+" Mouse {{{
+set mouse=a
 " }}}
 
 " UI {{{
@@ -377,12 +385,14 @@ let g:tube_terminal = 'iterm'
 function! TubeThis(...) abort
   let l:cmd = []
   let l:path = expand('%')
+
+  call add(l:cmd, 'clear &&')
  
-  if filewritable('.zeus.sock')
-    call add(l:cmd, 'zeus')
+  " if filewritable('.zeus.sock')
+  "   call add(l:cmd, 'zeus')
   " elseif filereadable('Gemfile')
   "   call add(l:cmd, 'bundle exec')
-  endif
+  " endif
  
   if l:path =~# '_spec\.rb$'
     let l:executable = 'rspec'
@@ -415,9 +425,4 @@ let g:EasyMotion_mapping_k = '_k'
 let g:EasyMotion_mapping_K = '_K'
 "}}}
 
-" Snippets {{{
-ia ppry require 'pry'; binding.pry
-ia #! #!/usr/bin/env 
-ia sh require 'spec_helper'
-" }}}
 " vim: foldmethod=marker
