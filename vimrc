@@ -25,6 +25,7 @@ Bundle 'gcmt/tube.vim'
 Bundle 'AutoTag'
 Bundle 'majutsushi/tagbar'
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'nelstrom/vim-visual-star-search'
 " }}}
 
 " Textwrangling {{{
@@ -77,7 +78,7 @@ Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 " UI {{{
 Bundle 'Lokaltog/vim-powerline'
 " Bundle 'Lokaltog/powerline' , {'rtp': 'powerline/bindings/vim'}
-Bundle 'Solarized'
+Bundle 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
 Bundle 'restore_view.vim'
 " }}}
 
@@ -121,12 +122,10 @@ set mouse=a
 set guioptions-=L
 set guifont=Menlo\ Regular:h14
 
-set t_Co=256
 syntax on
 set nocursorcolumn
 set cursorline
-set background=dark
-colorscheme solarized
+colorscheme Tomorrow-Night
 
 set title
 set encoding=utf-8
@@ -156,7 +155,7 @@ set shiftwidth=2
 set expandtab
 set nowrap
 set textwidth=80
-" }}}
+"}}}
 
 " Key mappings {{{
 let mapleader = ","
@@ -176,7 +175,12 @@ map === mmgg=G`m^zz
 " noremap <Down> <NOP>
 " noremap <Left> <NOP>
 " noremap <Right> <NOP>
-" }}}
+
+" Fix save annoyances
+cnoreabbrev W w
+cnoreabbrev Wq wq
+cnoreabbrev Wqa wqa
+"}}}
 
 " Tab key {{{
 let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
@@ -390,8 +394,8 @@ function! TubeThis(...) abort
  
   " if filewritable('.zeus.sock')
   "   call add(l:cmd, 'zeus')
-  " elseif filereadable('Gemfile')
-  "   call add(l:cmd, 'bundle exec')
+  " if filereadable('Gemfile')
+    " call add(l:cmd, 'bundle exec')
   " endif
  
   if l:path =~# '_spec\.rb$'
