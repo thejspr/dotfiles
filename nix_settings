@@ -1,7 +1,7 @@
 # vim: ft=sh
 export JSPRMAC=false
 export EDITOR=vim
-export RAILS_ENV=production
+# export RAILS_ENV=production
 
 # z
 . ~/z/z.sh

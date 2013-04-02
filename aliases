@@ -55,6 +55,7 @@ if $JSPRMAC; then
   alias e='mvim -v'
 else
   alias e='vim'
+  alias aup='sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoclean'
 fi
 
 alias vim'e'

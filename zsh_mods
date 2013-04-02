@@ -6,6 +6,8 @@ if [ $(hostname) = "jspr.local" ]; then
   . ~/.mac_settings
 elif [ $(hostname) = "ip-10-56-62-189" ]; then
   . ~/.nix_settings
+else
+  . ~/.nix_settings
 fi
 
 eval "$(rbenv init - --no-rehash)"

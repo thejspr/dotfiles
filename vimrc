@@ -34,6 +34,8 @@ Bundle 'tomtom/tcomment_vim'
 Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
 Bundle 'chip/vim-fat-finger'
+Bundle 'AndrewRadev/switch.vim'
+nnoremap - :Switch<cr>
 " }}}
 
 " File management & Git {{{
@@ -124,7 +126,7 @@ set guifont=Menlo\ Regular:h14
 
 syntax on
 set nocursorcolumn
-set cursorline
+set nocursorline
 colorscheme Tomorrow-Night
 
 set title
