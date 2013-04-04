@@ -55,16 +55,11 @@ if $JSPRMAC; then
   alias e='mvim -v'
 else
   alias e='vim'
-  alias aup='sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoclean'
+  alias aup='sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoclean && sudo apt-get autoremove'
 fi
 
 alias vim'e'
 alias vi='e'
-
-#evently
-alias rsq='ps -ef | grep resque'
-local_broadcast() { DO_NOT_QUIT_BROWSER=true RAILS_ENV=production be rake broadcast:work QUEUE="$1" }
-alias rspl='z splat && rs -p4000'
 
 #conviniences
 alias -g V='|e -'
@@ -77,6 +72,10 @@ g() {
   else
     command git "$@";
   fi
+}
+gcm() {
+  git add -A;
+  git commit -m "$*";
 }
 alias gd='g d'
 alias gl='g l'
