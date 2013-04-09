@@ -53,6 +53,7 @@ alias time='/usr/bin/time'
 #vim
 if $JSPRMAC; then
   alias e='mvim -v'
+  alias vim='mvim -v'
 else
   alias e='vim'
   alias aup='sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoclean && sudo apt-get autoremove'
@@ -73,9 +74,9 @@ g() {
     command git "$@";
   fi
 }
-gcm() {
-  git add -A;
-  git commit -m "$*";
+gcam() {
+  command git add -A;
+  command git commit -m "$*";
 }
 alias gd='g d'
 alias gl='g l'

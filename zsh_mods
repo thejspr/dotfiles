@@ -1,11 +1,10 @@
 export PATH=~/bin:~/.rbenv/bin:$PATH
+# export PATH=$PATH:/Applications/Xcode.app/Contents/Developer/usr/bin
 
 autoload zmv
 
-if [ $(hostname) = "jspr.local" ]; then
+if [ $(hostname) = "jesper.local" ]; then
   . ~/.mac_settings
-elif [ $(hostname) = "ip-10-56-62-189" ]; then
-  . ~/.nix_settings
 else
   . ~/.nix_settings
 fi
@@ -13,11 +12,8 @@ fi
 eval "$(rbenv init - --no-rehash)"
 
 # prezto customizations
+unalias g
 bindkey -e
-# zstyle ':completion:*:*:git:*' script /usr/local/etc/bash_completion.d/git-completion.bash
-
-# include zsh completions
-fpath=(/usr/local/share/zsh/site-functions $fpath)
 
 # Ruby
 export RUBY_HEAP_MIN_SLOTS=1000000

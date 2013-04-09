@@ -1,19 +1,15 @@
 export JSPRMAC=true
-export PATH=/Library/PostgreSQL/9.2/bin:~/Code/scripts:$PATH
-export PATH=$PATH:/usr/local/share/python:/usr/local/share/npm/bin
+export PATH=~/Code/scripts:$PATH
 
 export EDITOR=mvim
 export VISUAL=mvim
-
-# Work
-. ~/.beh_ec2_auth
 
 # https://github.com/rupa/z
 . `brew --prefix`/etc/profile.d/z.sh
 
 # JRuby
 export JRUBY_OPTS='-J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -X-C'
-export JAVACMD=`which drip`
+# export JAVACMD=`which drip`
 # export DRIP_INIT_CLASS=org.jruby.main.DripMain
 
 # vim: ft=sh
