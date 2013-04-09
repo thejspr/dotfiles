@@ -9,7 +9,7 @@ export VISUAL=mvim
 
 # JRuby
 export JRUBY_OPTS='-J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -X-C'
-# export JAVACMD=`which drip`
+export JAVACMD=`which drip`
 # export DRIP_INIT_CLASS=org.jruby.main.DripMain
 
 # vim: ft=sh
