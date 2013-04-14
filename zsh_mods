@@ -1,5 +1,4 @@
 export PATH=~/bin:~/.rbenv/bin:$PATH
-# export PATH=$PATH:/Applications/Xcode.app/Contents/Developer/usr/bin
 
 autoload zmv
 

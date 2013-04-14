@@ -1,3 +1,12 @@
+# new
+alias geeknote='python ~/Code/libs/geeknote/geeknote.py'
+alias worklog='geeknote edit worklog'
+
+# work
+alias bec='be cucumber'
+alias r2c='./script/console --irb=pry'
+alias ts='be thin start'
+
 #servers
 alias ec2='mosh --ssh "ssh -i ~/.ssh/jsprkey.pem -p 22" ec2'
 
@@ -11,7 +20,8 @@ alias wr='ps aux | grep ruby'
 alias kf='kill -9 %1'
 alias kk='kill -9'
 alias nodrip='JAVACMD=`which java`'
-alias be='nodrip bundle exec'
+alias be='bundle exec'
+alias bu='bundle update'
 alias bi='bundle install'
 
 #rails
@@ -36,31 +46,24 @@ alias hl="heroku logs -t"
 
 #testing
 alias sg='bundle exec guard'
-alias zz='zeus'
-alias zs='zeus start'
-alias zr='zeus rspec'
-alias zrs='zeus rspec spec'
-alias zc='zeus cucumber'
-alias zx='rm -rf .zeus.sock'
-alias zaa='zrs; zc'
 
 # msc
 alias youtube-dl='noglob youtube-dl'
-alias bup='brew update && echo "==> Outdated Formula" && brew outdated && brew cleanup'
-alias bu='brew upgrade'
 alias time='/usr/bin/time'
 
 #vim
 if $JSPRMAC; then
   alias e='mvim -v'
   alias vim='mvim -v'
+  alias bup='brew update && echo "==> Outdated Formula" && brew outdated && brew cleanup'
+  alias bu='brew upgrade'
 else
   alias e='vim'
   alias aup='sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoclean && sudo apt-get autoremove'
 fi
 
 alias vim'e'
-alias vi='e'
+alias vi='vim'
 
 #conviniences
 alias -g V='|e -'
@@ -82,16 +85,6 @@ alias gd='g d'
 alias gl='g l'
 alias gr='g r'
 alias gc='g commit -v'
-push_branch() {
-  branch_name=$(git symbolic-ref HEAD 2>/dev/null | cut -d"/" -f 3)
-  git push --set-upstream origin $branch_name
-
-  if [[ ! $# == '0' ]]; then
-    hub pull-request
-  fi
-
-  hub browse
-}
 
 #msc
 myip() { elinks -dump http://checkip.dyndns.org:8245/ }
