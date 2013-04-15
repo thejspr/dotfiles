@@ -36,6 +36,7 @@ Bundle 'godlygeek/tabular'
 Bundle 'chip/vim-fat-finger'
 Bundle 'AndrewRadev/switch.vim'
 nnoremap - :Switch<cr>
+Bundle 'terryma/vim-multiple-cursors'
 " }}}
 
 " File management & Git {{{
@@ -127,6 +128,7 @@ set guifont=Menlo\ Regular:h14
 syntax on
 set nocursorcolumn
 set nocursorline
+set colorcolumn=80
 colorscheme Tomorrow-Night
 
 set title

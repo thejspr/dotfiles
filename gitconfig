@@ -47,5 +47,6 @@
 	mnemonicprefix = true
 [merge]
 	stat = true
+	tool = opendiff
 [difftool]
 	prompt = true
