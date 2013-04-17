@@ -6,6 +6,7 @@ alias worklog='geeknote edit worklog'
 alias bec='be cucumber'
 alias r2c='./script/console --irb=pry'
 alias ts='be thin start'
+alias resass='be compass clean && be compass compile'
 
 #servers
 alias ec2='mosh --ssh "ssh -i ~/.ssh/jsprkey.pem -p 22" ec2'

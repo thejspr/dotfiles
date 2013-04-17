@@ -394,7 +394,7 @@ function! TubeThis(...) abort
   let l:cmd = []
   let l:path = expand('%')
 
-  call add(l:cmd, 'clear &&')
+  " call add(l:cmd, 'clear &&')
  
   " if filewritable('.zeus.sock')
   "   call add(l:cmd, 'zeus')
