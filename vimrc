@@ -394,19 +394,19 @@ function! TubeThis(...) abort
   let l:cmd = []
   let l:path = expand('%')
 
-  " call add(l:cmd, 'clear &&')
- 
-  " if filewritable('.zeus.sock')
-  "   call add(l:cmd, 'zeus')
-  " if filereadable('Gemfile')
-    " call add(l:cmd, 'bundle exec')
-  " endif
- 
   if l:path =~# '_spec\.rb$'
-    let l:executable = 'rspec'
+    if filewritable('script/server')
+      let l:executable = 'spec'
+    else
+      let l:executable = 'rspec'
+    endif
   else
     let l:executable = &ft
-  end
+  endif
+
+  if filereadable('Gemfile')
+    call add(l:cmd, 'be')
+  endif
  
   if exists('a:1')
     silent call extend(l:cmd, [l:executable, l:path . ':' . a:1])

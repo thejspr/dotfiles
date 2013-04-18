@@ -50,3 +50,5 @@
 	tool = opendiff
 [difftool]
 	prompt = true
+[pivotal]
+	full-name = Jesper Kjeldgaard
