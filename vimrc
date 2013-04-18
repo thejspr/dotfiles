@@ -83,6 +83,7 @@ Bundle 'Lokaltog/vim-powerline'
 " Bundle 'Lokaltog/powerline' , {'rtp': 'powerline/bindings/vim'}
 Bundle 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
 Bundle 'restore_view.vim'
+Bundle 'regedarek/ZoomWin'
 " }}}
 
 " Clojure {{{
@@ -96,7 +97,6 @@ au Syntax * RainbowParenthesesLoadBraces
 "}}}
 
 " new stuff {{{
-Bundle 'Sirupsen/vim-execrus'
 " }}}
 
 " Outro {{{
@@ -151,7 +151,7 @@ set splitbelow
 set splitright
 
 " Resize splits when the win{is resized
-au VimResized * exe "normal! \<c-w>="
+au VimResized * wincmd =
 
 " Text Formatting
 set tabstop=2
