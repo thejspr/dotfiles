@@ -37,6 +37,8 @@ Bundle 'chip/vim-fat-finger'
 Bundle 'AndrewRadev/switch.vim'
 nnoremap - :Switch<cr>
 Bundle 'terryma/vim-multiple-cursors'
+Bundle 'YankRing.vim'
+nnoremap <silent> <leader>y :YRShow<CR>
 " }}}
 
 " File management & Git {{{
