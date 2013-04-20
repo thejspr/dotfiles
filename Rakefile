@@ -1,6 +1,6 @@
 desc "Create dotfile symlinks"
 task :links do
-  IGNORES = %w{Rakefile zsh_mods init UltiSnips}
+  IGNORES = %w{Rakefile zsh_mods init UltiSnips README.md}
 
   Dir.glob("*").each do |file|
     next if IGNORES.include?(file)
@@ -12,7 +12,6 @@ task :links do
     end
 
     file_target = File.expand_path(target)
-    puts file_target
 
     next if File.exists?(file_target) || File.symlink?(file_target)
 
