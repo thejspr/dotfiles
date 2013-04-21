@@ -81,6 +81,8 @@ Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 " }}}
 
 " UI {{{
+" iterm2 support
+Bundle 'sjl/vitality.vim'
 Bundle 'Lokaltog/vim-powerline'
 " Bundle 'Lokaltog/powerline' , {'rtp': 'powerline/bindings/vim'}
 Bundle 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
@@ -167,14 +169,14 @@ set textwidth=80
 let mapleader = ","
 let g:mapleader = ","
 
-nmap <CR> :write<CR>
+nnoremap <CR> :write<CR>
 
 " tComment
-nmap // :TComment<CR>
-vmap // :TComment<CR>
+nnoremap // :TComment<CR>
+vnoremap // :TComment<CR>
 
 " Auto format
-map === mmgg=G`m^zz
+noremap === mmgg=G`m^zz
 
 " No arror keys
 " noremap <Up> <NOP>
@@ -237,8 +239,8 @@ set gdefault
 set showmatch
 
 nnoremap <leader><space> :nohlsearch<cr>
-nmap <space> /
-map <m-space> ?
+nnoremap <space> /
+noremap <m-space> ?
 " find/replace shortcut
 noremap <leader>f :%s///<left><left>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
@@ -306,10 +308,10 @@ let g:ctrlp_extensions = ['tag']
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
 
-map ; :CtrlP<cr>
-map <leader>t :CtrlP<cr>
-map <leader>b :CtrlPBuffer<cr>
-map <leader>r :CtrlPMRUFiles<cr>
+noremap ; :CtrlP<cr>
+noremap <leader>t :CtrlP<cr>
+noremap <leader>b :CtrlPBuffer<cr>
+noremap <leader>r :CtrlPMRUFiles<cr>
 
 set wildignore+=*/.hg/*,*/.svn/*,*/vendor/cache/*,*/public/system/*,*/tmp/*,*/log/*,*/.git/*,*/.jhw-cache/*,*/solr/data/*,*/node_modules/*,*/.DS_Store
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*~,*.obj,.git/**,tmp/**,app/assets/images/**,public/**,*.class,*.doc,*.lock,**.png,**.jpg,**.jpeg
@@ -330,27 +332,27 @@ augroup END
 " }}}
 
 " Function Keys {{{
-map <F1> :set nowrap! <CR>
+noremap <F1> :set nowrap! <CR>
 noremap <F2> :NERDTreeToggle<CR>
 set pastetoggle=<F3>
-map <f4> <Plug>Kwbd
+noremap <f4> <Plug>Kwbd
 " F5 Ctrlp refresh
-nmap <F6> :%s/\s*$//<CR>:noh<CR> " EOL whitespace removal
+nnoremap <F6> :%s/\s*$//<CR>:noh<CR> " EOL whitespace removal
 " }}}
 
 " Ruby {{{
 au BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Thorfile,Vagrantfile,Procfile,pryrc,config.ru,.caprc,.irbrc,irb_tempfile*} set ft=ruby
 
 " Replace Ruby 1.8 style hashes with shorter Ruby 1.9 style
-map <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/<CR>
+noremap <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/<CR>
 
 " https://github.com/lucapette/vim-ruby-doc
 let g:ruby_doc_command='open'
 
 " Rails.vim
-map <Leader>m :Rmodel<space>
-map <Leader>c :Rcontroller<space>
-map <Leader>v :Rview<space>
+noremap <Leader>m :Rmodel<space>
+noremap <Leader>c :Rcontroller<space>
+noremap <Leader>v :Rview<space>
 " }}}
 
 " JavaScript & JSON {{{
@@ -363,7 +365,7 @@ au FileType handlebars runtime! ftplugin/html/sparkup.vim
 
 " Git {{{
 " Fugitive
-nmap <leader>gs :Gstatus<CR><C-w>10+
+nnoremap <leader>gs :Gstatus<CR><C-w>10+
 noremap <leader>gc :Gcommit -v<CR><C-w>15+
 
 autocmd BufRead COMMIT_EDITMSG setlocal spell!
@@ -421,9 +423,9 @@ function! TubeThis(...) abort
   exe 'Tube ' . l:cmd_string
 endfunction
 
-nmap <Leader>x :call TubeThis(line('.'))<CR>
-nmap <Leader>X :call TubeThis()<CR>
-nmap <Leader>§ :TubeLastCommand<CR>
+nnoremap <Leader>x :call TubeThis(line('.'))<CR>
+nnoremap <Leader>X :call TubeThis()<CR>
+nnoremap <Leader>§ :TubeLastCommand<CR>
 " }}}
 
 " EasyMotion {{{
