@@ -69,6 +69,7 @@ alias vi='vim'
 #conviniences
 alias -g V='|e -'
 alias -g G='|grep --color'
+alias -g A='|ag --color'
 
 #git
 g() {
