@@ -1,7 +1,5 @@
 export PATH=~/bin:~/.rbenv/bin:$PATH
 
-autoload zmv
-
 if [ $(hostname) = "jesper.local" ]; then
   . ~/.mac_settings
 else
@@ -11,8 +9,11 @@ fi
 eval "$(rbenv init - --no-rehash)"
 
 # prezto customizations
+autoload zmv
 unalias g
 bindkey -e
+compdef g=git
+fpath=(/usr/local/share/zsh-completions $fpath)
 
 # Ruby
 export RUBY_HEAP_MIN_SLOTS=1000000
