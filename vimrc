@@ -101,6 +101,7 @@ au Syntax * RainbowParenthesesLoadBraces
 "}}}
 
 " new stuff {{{
+Bundle 'terryma/vim-expand-region'
 " }}}
 
 " Outro {{{
@@ -188,6 +189,10 @@ noremap === mmgg=G`m^zz
 cnoreabbrev W w
 cnoreabbrev Wq wq
 cnoreabbrev Wqa wqa
+"}}}
+
+" UltiSnips {{{
+set runtimepath+=~/.vim/bundle/ultisnips
 "}}}
 
 " Tab key {{{
@@ -335,7 +340,7 @@ augroup END
 noremap <F1> :set nowrap! <CR>
 noremap <F2> :NERDTreeToggle<CR>
 set pastetoggle=<F3>
-noremap <f4> <Plug>Kwbd
+nmap <f4> <Plug>Kwbd
 " F5 Ctrlp refresh
 nnoremap <F6> :%s/\s*$//<CR>:noh<CR> " EOL whitespace removal
 " }}}

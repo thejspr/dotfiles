@@ -11,4 +11,3 @@ Vagrantfile
 tags
 gems.tags
 tmp/tags
-.ruby-version
