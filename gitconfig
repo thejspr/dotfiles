@@ -34,6 +34,8 @@
   rbm = !git checkout master && git pull && git checkout - && git rebase master
   rc = !git add -A && git rebase --continue
   wip = !git add --all && git commit -m 'wip'
+  ribbon = tag --force _ribbon origin/master
+  catchup = log --patch --reverse --topo-order _ribbon..origin/master
 [apply]
   whitespace = nowarn
 [branch]
