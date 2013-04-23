@@ -47,9 +47,15 @@
 [diff]
 	renames = copies
 	mnemonicprefix = true
+[mergetool]
+  prompt = false
+[mergetool "mvimdiff"]
+  cmd="mvim -c 'Gdiff' $MERGED" # use fugitive.vim for 3-way merge
+  keepbackup=false
 [merge]
-	stat = true
-	tool = opendiff
+  summary = true
+  verbosity = 1
+  tool = mvimdiff
 [difftool]
 	prompt = true
 [pivotal]
