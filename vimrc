@@ -86,6 +86,7 @@ Bundle 'sjl/vitality.vim'
 Bundle 'Lokaltog/vim-powerline'
 " Bundle 'Lokaltog/powerline' , {'rtp': 'powerline/bindings/vim'}
 Bundle 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
+Bundle 'Solarized'
 Bundle 'restore_view.vim'
 Bundle 'regedarek/ZoomWin'
 " }}}
@@ -102,6 +103,7 @@ au Syntax * RainbowParenthesesLoadBraces
 
 " new stuff {{{
 Bundle 'terryma/vim-expand-region'
+Bundle 'szw/vim-g'
 " }}}
 
 " Outro {{{
@@ -132,9 +134,10 @@ set guifont=Menlo\ Regular:h14
 
 syntax on
 set nocursorcolumn
-set nocursorline
+set cursorline
 set colorcolumn=80
-colorscheme Tomorrow-Night
+set background=dark
+colorscheme solarized
 
 set title
 set encoding=utf-8
