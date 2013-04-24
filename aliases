@@ -50,7 +50,6 @@ alias sg='bundle exec guard'
 
 # msc
 alias youtube-dl='noglob youtube-dl'
-alias time='/usr/bin/time'
 
 #vim
 if $JSPRMAC; then
