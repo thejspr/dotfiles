@@ -49,7 +49,7 @@
 	mnemonicprefix = true
 [merge]
 	stat = true
-	tool = opendiff
+	tool = vimdiff
 [difftool]
 	prompt = true
 [pivotal]

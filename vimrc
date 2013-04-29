@@ -104,6 +104,7 @@ au Syntax * RainbowParenthesesLoadBraces
 " new stuff {{{
 Bundle 'terryma/vim-expand-region'
 Bundle 'szw/vim-g'
+Bundle 'tpope/vim-ragtag'
 " }}}
 
 " Outro {{{
@@ -255,8 +256,8 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 " Use Ag instead of Grep when available
 let g:ackprg="ag -H --nogroup --column"
-nnoremap <leader>a :Ag
-nnoremap <leader>A :Ag <cword><CR>
+" nnoremap <leader>a :Ag
+nnoremap <leader>a :Ag <cword><CR>
 " }}}
 
 " Movement and navigation {{{
@@ -314,7 +315,7 @@ let g:ctrlp_match_window_reversed = 1
 let g:ctrlp_match_window_bottom = 1
 let g:ctrlp_extensions = ['tag']
 let g:ctrlp_dotfiles = 0
-let g:ctrlp_switch_buffer = 0
+let g:ctrlp_switch_buffer = 1
 
 noremap ; :CtrlP<cr>
 noremap <leader>t :CtrlP<cr>
@@ -428,7 +429,7 @@ function! TubeThis(...) abort
  
   let l:cmd_string = join(l:cmd, ' ')
  
-  exe 'Tube ' . l:cmd_string
+  exe 'Tube ' . l:cmd_string . ' --drb'
 endfunction
 
 nnoremap <Leader>x :call TubeThis(line('.'))<CR>
@@ -436,13 +437,8 @@ nnoremap <Leader>X :call TubeThis()<CR>
 nnoremap <Leader>§ :TubeLastCommand<CR>
 " }}}
 
-" EasyMotion {{{
-let g:EasyMotion_leader_key = '<Leader>'
-let g:EasyMotion_mapping_t = '_t'
-let g:EasyMotion_mapping_T = '_T'
-let g:EasyMotion_mapping_f = '_f'
-let g:EasyMotion_mapping_k = '_k'
-let g:EasyMotion_mapping_K = '_K'
+" New stuff {{{
+command! Es :vsplit ~/Dropbox/scratch.txt
 "}}}
 
 " vim: foldmethod=marker

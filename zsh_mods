@@ -6,6 +6,7 @@ else
   . ~/.nix_settings
 fi
 
+export RUBY_BUILD_CACHE_PATH=true
 eval "$(rbenv init - --no-rehash)"
 
 # prezto customizations
@@ -14,6 +15,7 @@ unalias g
 bindkey -e
 compdef g=git
 fpath=(/usr/local/share/zsh-completions $fpath)
+alias tar='/usr/local/bin/gtar'
 
 # Ruby
 export RUBY_HEAP_MIN_SLOTS=1000000
