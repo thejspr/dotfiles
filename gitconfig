@@ -16,27 +16,27 @@
   editor = vim
 	whitespace = trailing-space,space-before-tab
 [alias]
-  aa = add --all
-  aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
-  amend = !git add -A && git commit -v --amend
-  amendf = !git add -A && git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - --amend
+  aa      = add --all
+  aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^= ]*\\)=\\(.*\\)/\\1\\\t=> \\2/' | sort
+  amend   = !git add -A && git commit -v --amend
+  amendf  = !git add -A && git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - --amend
   amendff = !git amendf && git push -ff
-  b = branch
-  c = commit -v
-  ca = !git add -A && git commit -v
-  co = checkout
-  d = diff
-  dc = diff --cached
-  l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(black)<%an>%Creset' --abbrev-commit --date=relative -15
-  ls = log --oneline --decorate --graph -14
-  ms = checkout master
-  r = remote
-  rbm = !git checkout master && git pull && git checkout - && git rebase master
-  rc = !git add -A && git rebase --continue
-  wip = !git add --all && git commit -m 'wip'
-  ribbon = tag --force _ribbon origin/master
+  b       = branch
+  c       = commit -v
+  ca      = !git add -A && git commit -v
+  co      = checkout
+  d       = diff
+  dc      = diff --cached
+  l       = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(black)<%an>%Creset' --abbrev-commit --date=relative --no-merges -15
+  lm      = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(black)<%an>%Creset' --abbrev-commit --date=relative -15
+  ms      = checkout master
+  r       = remote
+  rbm     = !git checkout master && git pull && git checkout - && git rebase master
+  rc      = !git add -A && git rebase --continue
+  wip     = !git add --all && git commit -m 'wip'
+  ribbon  = tag --force _ribbon origin/master
   catchup = log --patch --reverse --topo-order _ribbon..origin/master
-  edit = !vim `git status --porcelain | sed -ne 's/^ M //p'`
+  edit    = !vim `git status --porcelain | sed -ne 's/^ M //p'`
 [apply]
   whitespace = nowarn
 [branch]

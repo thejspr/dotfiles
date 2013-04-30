@@ -323,7 +323,7 @@ noremap <leader>b :CtrlPBuffer<cr>
 noremap <leader>r :CtrlPMRUFiles<cr>
 
 set wildignore+=*/.hg/*,*/.svn/*,*/vendor/cache/*,*/public/system/*,*/tmp/*,*/log/*,*/.git/*,*/.jhw-cache/*,*/solr/data/*,*/node_modules/*,*/.DS_Store
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*~,*.obj,.git/**,tmp/**,app/assets/images/**,public/**,*.class,*.doc,*.lock,**.png,**.jpg,**.jpeg
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*~,*.obj,.git/**,tmp/**,app/assets/images/**,*.class,*.doc,*.lock,**.png,**.jpg,**.jpeg
 set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**,solr/**,doc/**,rdoc/**,spec/dummy/**
 " }}}
 
@@ -407,8 +407,9 @@ function! TubeThis(...) abort
   let l:cmd = []
   let l:path = expand('%')
 
-  if l:path =~# '_spec\.rb$'
-    if filewritable('script/server')
+  " if l:path =~# '_spec\.rb$'
+  if l:path =~# 'spec'
+    if filereadable('script/server')
       let l:executable = 'spec'
     else
       let l:executable = 'rspec'
@@ -418,7 +419,7 @@ function! TubeThis(...) abort
   endif
 
   if filereadable('Gemfile')
-    call add(l:cmd, 'be')
+    silent call add(l:cmd, 'be')
   endif
  
   if exists('a:1')
@@ -427,9 +428,13 @@ function! TubeThis(...) abort
     silent call extend(l:cmd, [l:executable, l:path])
   end
  
+  if filereadable('.spork')
+    silent call add(l:cmd, '--drb')
+  endif
+
   let l:cmd_string = join(l:cmd, ' ')
- 
-  exe 'Tube ' . l:cmd_string . ' --drb'
+
+  exe 'Tube ' . l:cmd_string
 endfunction
 
 nnoremap <Leader>x :call TubeThis(line('.'))<CR>
