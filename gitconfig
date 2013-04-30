@@ -36,6 +36,7 @@
   wip = !git add --all && git commit -m 'wip'
   ribbon = tag --force _ribbon origin/master
   catchup = log --patch --reverse --topo-order _ribbon..origin/master
+  edit = !vim `git status --porcelain | sed -ne 's/^ M //p'`
 [apply]
   whitespace = nowarn
 [branch]
