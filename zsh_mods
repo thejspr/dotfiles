@@ -1,6 +1,7 @@
 export PATH=~/bin:~/.rbenv/bin:$PATH
 
 if [ $(hostname) = "jesper.local" ]; then
+  unalias g
   . ~/.mac_settings
 else
   . ~/.nix_settings
@@ -9,9 +10,12 @@ fi
 export RUBY_BUILD_CACHE_PATH=true
 eval "$(rbenv init - --no-rehash)"
 
+# hub alias
+# DISABLED: clashes with git-whistles
+# eval "$(hub alias -s)"
+
 # prezto customizations
 autoload zmv
-unalias g
 bindkey -e
 compdef g=git
 fpath=(/usr/local/share/zsh-completions $fpath)

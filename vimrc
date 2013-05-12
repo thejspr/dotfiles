@@ -92,13 +92,14 @@ Bundle 'regedarek/ZoomWin'
 " }}}
 
 " Clojure {{{
-Bundle 'guns/vim-clojure-static'
-Bundle 'tpope/vim-foreplay'
+Bundle 'tpope/vim-fireplace'
+Bundle 'tpope/vim-classpath'
+" Bundle 'guns/vim-clojure-static'
 Bundle 'kien/rainbow_parentheses.vim'
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+au VimEnter *.clj RainbowParenthesesToggle
+au Syntax *.clj RainbowParenthesesLoadRound
+au Syntax *.clj RainbowParenthesesLoadSquare
+au Syntax *.clj RainbowParenthesesLoadBraces
 "}}}
 
 " new stuff {{{
@@ -322,9 +323,9 @@ noremap <leader>t :CtrlP<cr>
 noremap <leader>b :CtrlPBuffer<cr>
 noremap <leader>r :CtrlPMRUFiles<cr>
 
-set wildignore+=*/.hg/*,*/.svn/*,*/vendor/cache/*,*/public/system/*,*/tmp/*,*/log/*,*/.git/*,*/.jhw-cache/*,*/solr/data/*,*/node_modules/*,*/.DS_Store
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*~,*.obj,.git/**,tmp/**,app/assets/images/**,*.class,*.doc,*.lock,**.png,**.jpg,**.jpeg
-set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**,solr/**,doc/**,rdoc/**,spec/dummy/**
+set wildignore+=,*/vendor/cache/*,*/public/system/*,*/tmp/*,*/.git/*,*/.jhw-cache/*,*/node_modules/*,*/.DS_Store
+set wildignore+=*/tmp/*,*.so,*.swp,*.o,*~,*.obj,.git/**,tmp/**,app/assets/images/**,*.class,*.doc,*.lock,**.png,**.jpg,**.jpeg
+set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**,spec/dummy/**
 " }}}
 
 " Edit .vimrc {{{
@@ -357,6 +358,12 @@ noremap <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/<CR>
 
 " https://github.com/lucapette/vim-ruby-doc
 let g:ruby_doc_command='open'
+let g:ruby_doc_rails_host='http://railsapi.com/doc/rails-v2.3.8_rspec-v1.3.2_rspecrails-v1.3.4_ruby-v1.8/?q='
+" let g:ruby_doc_rspec_host=
+" let g:ruby_doc_rails_host=
+" map RB :call rubydoc#search('rails',expand('<cword>'))<CR>"
+" map RS :call rubydoc#search('rspec',expand('<cword>'))<CR>"
+map RR :call rubydoc#search('rails',expand('<cword>'))<CR>"
 
 " Rails.vim
 noremap <Leader>m :Rmodel<space>
@@ -408,7 +415,7 @@ function! TubeThis(...) abort
   let l:path = expand('%')
 
   " if l:path =~# '_spec\.rb$'
-  if l:path =~# 'spec'
+  if l:path =~# '_spec'
     if filereadable('script/server')
       let l:executable = 'spec'
     else

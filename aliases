@@ -3,10 +3,11 @@ alias geeknote='python ~/Code/libs/geeknote/geeknote.py'
 alias worklog='geeknote edit worklog'
 
 # work
-alias bec='be cucumber'
 alias r2c='./script/console --irb=pry'
 alias ts='be thin start'
 alias resass='be compass clean && be compass compile'
+export INT='hosts-nps/integration/catalogue-phase-01-535647'
+export STG='staging2.hosts'
 
 #servers
 alias ec2='mosh --ssh "ssh -i ~/.ssh/jsprkey.pem -p 22" ec2'
@@ -47,6 +48,7 @@ alias hl="heroku logs -t"
 
 #testing
 alias sg='bundle exec guard'
+alias bec='be cucumber'
 
 # msc
 alias youtube-dl='noglob youtube-dl'

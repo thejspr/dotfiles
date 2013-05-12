@@ -26,7 +26,9 @@
   ca      = !git add -A && git commit -v
   co      = checkout
   d       = diff
+  ds      = diff --stat
   dc      = diff --cached
+  dcs     = diff --cached --stat
   l       = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(black)<%an>%Creset' --abbrev-commit --date=relative --no-merges -15
   lm      = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(black)<%an>%Creset' --abbrev-commit --date=relative -15
   ms      = checkout master
@@ -37,6 +39,9 @@
   ribbon  = tag --force _ribbon origin/master
   catchup = log --patch --reverse --topo-order _ribbon..origin/master
   edit    = !vim `git status --porcelain | sed -ne 's/^ M //p'`
+
+  int     = checkout hosts-nps/integration/catalogue-phase-01-535647
+  stg     = checkout staging2.hosts
 [apply]
   whitespace = nowarn
 [branch]
@@ -52,6 +57,6 @@
 	stat = true
 	tool = vimdiff
 [difftool]
-	prompt = true
+	prompt = false
 [pivotal]
 	full-name = Jesper Kjeldgaard
