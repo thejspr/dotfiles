@@ -323,8 +323,8 @@ noremap <leader>t :CtrlP<cr>
 noremap <leader>b :CtrlPBuffer<cr>
 noremap <leader>r :CtrlPMRUFiles<cr>
 
-set wildignore+=,*/vendor/cache/*,*/public/system/*,*/tmp/*,*/.git/*,*/.jhw-cache/*,*/node_modules/*,*/.DS_Store
-set wildignore+=*/tmp/*,*.so,*.swp,*.o,*~,*.obj,.git/**,tmp/**,app/assets/images/**,*.class,*.doc,*.lock,**.png,**.jpg,**.jpeg
+set wildignore+=*/vendor/cache/*,*/public/system/*,*/tmp/*,*/.git/*,*/node_modules/*,*/.DS_Store
+set wildignore+=*/tmp/*,*.so,*.swp,*.o,*~,*.obj,.git/**,tmp/**,app/assets/images/**,*.class,*.lock,**.png,**.jpg,**.jpeg
 set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**,spec/dummy/**
 " }}}
 

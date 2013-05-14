@@ -5,6 +5,7 @@ alias worklog='geeknote edit worklog'
 # work
 alias r2c='./script/console --irb=pry'
 alias ts='be thin start'
+alias bsc='be spork cucumber'
 alias resass='be compass clean && be compass compile'
 export INT='hosts-nps/integration/catalogue-phase-01-535647'
 export STG='staging2.hosts'

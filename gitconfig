@@ -29,8 +29,8 @@
   ds      = diff --stat
   dc      = diff --cached
   dcs     = diff --cached --stat
-  l       = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(black)<%an>%Creset' --abbrev-commit --date=relative --no-merges -15
-  lm      = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(black)<%an>%Creset' --abbrev-commit --date=relative -15
+  l       = log --graph --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(black)<%an>%Creset' --abbrev-commit --date=relative --no-merges -15
+  lm      = log --graph --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(black)<%an>%Creset' --abbrev-commit --date=relative -15
   ms      = checkout master
   r       = remote
   rbm     = !git checkout master && git pull && git checkout - && git rebase master
