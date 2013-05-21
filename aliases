@@ -7,6 +7,7 @@ alias r2c='./script/console --irb=pry'
 alias ts='be thin start'
 alias bsc='be spork cucumber'
 alias resass='be compass clean && be compass compile'
+alias tlog='ssh -t staging2 "tail -f /var/www/housetrip/current/log/staging2.hosts.log"'
 export INT='hosts-nps/integration/catalogue-phase-01-535647'
 export STG='staging2.hosts'
 
@@ -111,6 +112,7 @@ alias gd='g d'
 alias gl='g l'
 alias gr='g r'
 alias gc='g commit -v'
+alias git-new-workdir='~/Code/libs/git/contrib/workdir/git-new-workdir'
 
 #msc
 myip() { elinks -dump http://checkip.dyndns.org:8245/ }
