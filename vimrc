@@ -78,13 +78,12 @@ Bundle 'nono/vim-handlebars'
 Bundle 'tpope/vim-markdown'
 Bundle 'slim-template/vim-slim'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+Bundle 'scrooloose/syntastic'
 " }}}
 
 " UI {{{
 " iterm2 support
 Bundle 'sjl/vitality.vim'
-Bundle 'Lokaltog/vim-powerline'
-" Bundle 'Lokaltog/powerline' , {'rtp': 'powerline/bindings/vim'}
 Bundle 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
 Bundle 'Solarized'
 Bundle 'restore_view.vim'
@@ -333,11 +332,7 @@ command! Ev :e ~/.vimrc
 " When vimrc is edited, reload it
 augroup vimrcs
   au!
-  au bufwritepost ~/.vimrc 
-  \ source ~/.vimrc |
-  \ if exists('g:Powerline_loaded') |
-    \ silent! call Pl#Load() |
-  \ endif 
+  au bufwritepost ~/.vimrc source ~/.vimrc
 augroup END
 " }}}
 
