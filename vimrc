@@ -1,5 +1,7 @@
 " Bundles {{{
 " Init {{{
+let g:ruby_path = system('echo $HOME/.rbenv/shims')
+
 if !isdirectory(expand("~/.vim/bundle/vundle/.git"))
   !git clone git://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 endif
@@ -22,10 +24,9 @@ Bundle 'gcmt/tube.vim'
 " }}}
 
 " Code navigation {{{
-Bundle 'AutoTag'
-Bundle 'majutsushi/tagbar'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'nelstrom/vim-visual-star-search'
+" Bundle 'szw/vim-tags'
 " }}}
 
 " Textwrangling {{{
@@ -47,7 +48,6 @@ Bundle 'tpope/vim-eunuch'
 Bundle 'kwbdi.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-git'
-Bundle 'LargeFile'
 " }}}
 
 " Snippets {{{
@@ -56,13 +56,13 @@ Bundle 'SirVer/ultisnips'
 
 " Ruby {{{
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-rbenv'
+" Bundle 'tpope/vim-rbenv'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-rails'
 Bundle 'lucapette/vim-ruby-doc'
 Bundle 'sickill/vim-pasta'
-Bundle 'tpope/vim-bundler'
-Bundle 'tpope/vim-rake'
+" Bundle 'tpope/vim-bundler'
+" Bundle 'tpope/vim-rake'
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 "}}}
@@ -74,20 +74,23 @@ Bundle 'JSON.vim'
 Bundle 'nono/vim-handlebars'
 " }}}
 
-" Msc languages {{{
+" Markup languages {{{
 Bundle 'tpope/vim-markdown'
 Bundle 'slim-template/vim-slim'
+Bundle 'tpope/vim-ragtag'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'scrooloose/syntastic'
+" }}}
+
+" Msc languages {{{
 " }}}
 
 " UI {{{
 " iterm2 support
 Bundle 'sjl/vitality.vim'
-Bundle 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
 Bundle 'Solarized'
 Bundle 'restore_view.vim'
 Bundle 'regedarek/ZoomWin'
+Bundle 'Lokaltog/vim-powerline'
 " }}}
 
 " Clojure {{{
@@ -104,7 +107,6 @@ au Syntax *.clj RainbowParenthesesLoadBraces
 " new stuff {{{
 Bundle 'terryma/vim-expand-region'
 Bundle 'szw/vim-g'
-Bundle 'tpope/vim-ragtag'
 " }}}
 
 " Outro {{{
@@ -332,7 +334,11 @@ command! Ev :e ~/.vimrc
 " When vimrc is edited, reload it
 augroup vimrcs
   au!
-  au bufwritepost ~/.vimrc source ~/.vimrc
+  au bufwritepost ~/.vimrc
+  \ source ~/.vimrc |
+  \ if exists('g:Powerline_loaded') |
+    \ silent! call Pl#Load() |
+  \ endif
 augroup END
 " }}}
 
@@ -384,22 +390,6 @@ autocmd BufRead COMMIT_EDITMSG setlocal nocursorline
 " }}}
 
 " Ctags {{{
-let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
-let g:tagbar_type_javascript = { 'ctagsbin' : '/usr/local/share/npm/bin/jsctags' }
-
-let g:tagbar_type_ruby = {
-  \ 'kinds' : [
-    \ 'm:modules',
-    \ 'c:classes',
-    \ 'd:describes',
-    \ 'C:contexts',
-    \ 'f:methods',
-    \ 'F:singleton methods'
-  \ ]
-\ }
-
-" Use only current file to autocomplete from tags
-set complete=.,w,b,u,],t,i
 " }}}
 
 " Tube.vim {{{
@@ -444,8 +434,27 @@ nnoremap <Leader>X :call TubeThis()<CR>
 nnoremap <Leader>§ :TubeLastCommand<CR>
 " }}}
 
+" Statusline {{{
+" set statusline=
+" set statusline +=%#Identifier#\ %n\ %*                  " buffer number
+" set statusline +=%#PreProc#%{&ff}%*                     " file format
+" set statusline +=%#Number#%y%*                          " file type
+" set statusline +=%#String#\ %<%t%*                      " full path
+" set statusline +=%#SpecialKey#%m%*                      " modified flag
+" set statusline +=%=%*                                   " separator
+" set statusline +=%#Identifier#%5l%*                     " current line
+" set statusline +=%#SpecialKey#/%L%*                     " total lines
+" set statusline +=%#Identifier#%4v\ %*                   " virtual column number
+" set statusline +=%#SpecialKey#0x%04B\ %*                " character under cursor
+let g:Powerline_symbols = 'unicode'
+let g:Powerline_theme = 'solarized256'
+let g:Powerline_colorscheme = 'solarized256'
+"}}}
+
 " New stuff {{{
 command! Es :vsplit ~/Dropbox/scratch.txt
+" set verbosefile=~/.verbose.log
+" set verbose=15
 "}}}
 
 " vim: foldmethod=marker

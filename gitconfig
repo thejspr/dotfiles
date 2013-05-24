@@ -15,6 +15,7 @@
 	excludesfile = ~/.gitignore
   editor = vim
 	whitespace = trailing-space,space-before-tab
+  pager = less -FRX
 [alias]
   aa      = add --all
   aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^= ]*\\)=\\(.*\\)/\\1\\\t=> \\2/' | sort
