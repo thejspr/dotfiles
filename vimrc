@@ -126,6 +126,7 @@ set noswapfile
 set undofile
 set undodir=~/.tmp,/tmp
 :au FocusLost * silent! wa "save all buffers when focus is lost
+set formatoptions-=or " do not continue comments on newlines
 " }}}
 
 " Mouse {{{
