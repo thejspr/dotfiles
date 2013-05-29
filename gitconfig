@@ -40,6 +40,7 @@
   ribbon  = tag --force _ribbon origin/master
   catchup = log --patch --reverse --topo-order _ribbon..origin/master
   edit    = !mvim -v `git status --porcelain | sed -ne 's/^ M //p'`
+  mt      = mergetool
 
   int     = checkout hosts-nps/integration/catalogue-phase-01-535647
   stg     = checkout staging2.hosts
