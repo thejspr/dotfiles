@@ -65,6 +65,7 @@ Bundle 'sickill/vim-pasta'
 " Bundle 'tpope/vim-rake'
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'ecomba/vim-ruby-refactoring'
 "}}}
 
 " JavaScript {{{
@@ -75,7 +76,7 @@ Bundle 'nono/vim-handlebars'
 " }}}
 
 " Markup languages {{{
-Bundle 'tpope/vim-markdown'
+Bundle 'plasticboy/vim-markdown'
 Bundle 'slim-template/vim-slim'
 Bundle 'tpope/vim-ragtag'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -87,7 +88,7 @@ Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 " UI {{{
 " iterm2 support
 Bundle 'sjl/vitality.vim'
-Bundle 'Solarized'
+Bundle 'altercation/vim-colors-solarized'
 Bundle 'restore_view.vim'
 Bundle 'regedarek/ZoomWin'
 Bundle 'Lokaltog/vim-powerline'
@@ -312,10 +313,10 @@ let NERDTreeHijackNetrw=1
 " ctrlp
 let g:ctrlp_map = '<Leader>t'
 let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|mp3|)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py|_site'
-let g:ctrlp_working_path_mode = 0
+let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_match_window_reversed = 1
 let g:ctrlp_match_window_bottom = 1
-let g:ctrlp_extensions = ['tag']
+" let g:ctrlp_extensions = ['tag']
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 1
 
@@ -325,7 +326,7 @@ noremap <leader>b :CtrlPBuffer<cr>
 noremap <leader>r :CtrlPMRUFiles<cr>
 
 set wildignore+=*/vendor/cache/*,*/public/system/*,*/tmp/*,*/.git/*,*/node_modules/*,*/.DS_Store
-set wildignore+=*/tmp/*,*.so,*.swp,*.o,*~,*.obj,.git/**,tmp/**,app/assets/images/**,*.class,*.lock,**.png,**.jpg,**.jpeg
+set wildignore+=*/tmp/*,*.so,*.swp,*.o,*~,*.obj,tmp/**,app/assets/images/**,*.class,*.lock,**.png,**.jpg,**.jpeg
 set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**,spec/dummy/**
 " }}}
 
@@ -399,21 +400,20 @@ function! TubeThis(...) abort
   let l:cmd = []
   let l:path = expand('%')
 
-  " if l:path =~# '_spec\.rb$'
   if l:path =~# '_spec'
     if filereadable('script/server')
-      let l:executable = 'spec'
+      let l:executable = 'script/spec'
     else
       let l:executable = 'rspec'
     endif
   else
     let l:executable = &ft
+
+    if filereadable('Gemfile')
+      silent call add(l:cmd, 'be')
+    endif
   endif
 
-  if filereadable('Gemfile')
-    silent call add(l:cmd, 'be')
-  endif
- 
   if exists('a:1')
     silent call extend(l:cmd, [l:executable, l:path . ':' . a:1])
   else
@@ -435,17 +435,6 @@ nnoremap <Leader>§ :TubeLastCommand<CR>
 " }}}
 
 " Statusline {{{
-" set statusline=
-" set statusline +=%#Identifier#\ %n\ %*                  " buffer number
-" set statusline +=%#PreProc#%{&ff}%*                     " file format
-" set statusline +=%#Number#%y%*                          " file type
-" set statusline +=%#String#\ %<%t%*                      " full path
-" set statusline +=%#SpecialKey#%m%*                      " modified flag
-" set statusline +=%=%*                                   " separator
-" set statusline +=%#Identifier#%5l%*                     " current line
-" set statusline +=%#SpecialKey#/%L%*                     " total lines
-" set statusline +=%#Identifier#%4v\ %*                   " virtual column number
-" set statusline +=%#SpecialKey#0x%04B\ %*                " character under cursor
 let g:Powerline_symbols = 'unicode'
 let g:Powerline_theme = 'solarized256'
 let g:Powerline_colorscheme = 'solarized256'
