@@ -108,6 +108,8 @@ au Syntax *.clj RainbowParenthesesLoadBraces
 " new stuff {{{
 Bundle 'terryma/vim-expand-region'
 Bundle 'szw/vim-g'
+Bundle 'rizzatti/funcoo.vim'
+Bundle 'rizzatti/dash.vim'
 " }}}
 
 " Outro {{{
@@ -443,8 +445,6 @@ let g:Powerline_colorscheme = 'solarized256'
 
 " New stuff {{{
 command! Es :vsplit ~/Dropbox/scratch.txt
-" set verbosefile=~/.verbose.log
-" set verbose=15
-"}}}
+"}}
 
 " vim: foldmethod=marker

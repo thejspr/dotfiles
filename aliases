@@ -1,6 +1,9 @@
 # new
 alias geeknote='python ~/Code/libs/geeknote/geeknote.py'
 alias worklog='geeknote edit worklog'
+dash(){
+  open "dash://$@"
+}
 
 # work
 alias r2c='./script/console --irb=pry'
