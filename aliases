@@ -11,7 +11,7 @@ alias ts='be thin start'
 alias bsc='be spork cucumber'
 alias resass='be compass clean && be compass compile'
 alias tlog='ssh -t staging2 "tail -f /var/www/housetrip/current/log/staging2.hosts.log"'
-export INT='hosts-nps/integration/catalogue-phase-01-535647'
+export INT='hosts-nps/property-preview-51306953'
 export STG='staging2.hosts'
 
 #servers
@@ -82,17 +82,13 @@ alias youtube-dl='noglob youtube-dl'
 
 #vim
 if $JSPRMAC; then
-  alias e='mvim -v'
-  alias vim='mvim -v'
+  alias e='vim'
   alias bup='brew update && echo "==> Outdated Formula" && brew outdated && brew cleanup'
   alias bu='brew upgrade'
 else
   alias e='vim'
   alias aup='sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoclean && sudo apt-get autoremove'
 fi
-
-alias vim'e'
-alias vi='vim'
 
 #conviniences
 alias -g V='|e -'

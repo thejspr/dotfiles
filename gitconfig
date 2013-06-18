@@ -5,16 +5,16 @@
 [github]
   user = thejspr
 [color]
-	ui = auto
+  ui = auto
 [mergetool]
   keepBackup = false
-	prompt = true
+  prompt = true
 [push]
-	default = tracking
+  default = tracking
 [core]
-	excludesfile = ~/.gitignore
+  excludesfile = ~/.gitignore
   editor = vim
-	whitespace = trailing-space,space-before-tab
+  whitespace = trailing-space,space-before-tab
   pager = less -FRX
 [alias]
   aa      = add --all
@@ -42,24 +42,24 @@
   edit    = !mvim -v `git status --porcelain | sed -ne 's/^ M //p'`
   mt      = mergetool
 
-  int     = checkout hosts-nps/integration/catalogue-phase-01-535647
-  stg     = checkout staging2.hosts
+  int     = !git checkout $INT
+  stg     = !git checkout $STG
+  list-branch-tests = "! git diff --diff-filter=ACMRTUXB --name-only master -- spec features "
 [apply]
   whitespace = nowarn
 [branch]
-	autosetupmerge = true
-  autosetuprebase = always
+  autosetupmerge = true
 [advice]
-	pushNonFastForward = false
-	statusHints = false
+  pushNonFastForward = false
+  statusHints = false
 [diff]
-	renames = copies
-	mnemonicprefix = true
+  renames = copies
+  mnemonicprefix = true
 [merge]
-	stat = true
-	tool = vimdiff
-	prompt = false
+  stat = true
+  tool = vimdiff
+  prompt = false
 [difftool]
-	prompt = false
+  prompt = false
 [pivotal]
-	full-name = Jesper Kjeldgaard
+  full-name = Jesper Kjeldgaard

@@ -33,4 +33,4 @@ export RUBY_HEAP_FREE_MIN=500000
 
 # work
 eval "$($HOME/.ht/bin/ht init -)"
-export SPLIT_CSS_FOR_IE=true
+# export SPLIT_CSS_FOR_IE=true

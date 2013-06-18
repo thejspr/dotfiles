@@ -76,7 +76,7 @@ Bundle 'nono/vim-handlebars'
 " }}}
 
 " Markup languages {{{
-Bundle 'plasticboy/vim-markdown'
+Bundle 'tpope/vim-markdown'
 Bundle 'slim-template/vim-slim'
 Bundle 'tpope/vim-ragtag'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -143,7 +143,7 @@ syntax on
 set nocursorcolumn
 set cursorline
 set colorcolumn=80
-set background=dark
+set background=light
 colorscheme solarized
 
 set title
@@ -174,6 +174,7 @@ set shiftwidth=2
 set expandtab
 set nowrap
 set textwidth=80
+set list listchars=trail:·
 "}}}
 
 " Key mappings {{{
