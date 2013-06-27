@@ -143,7 +143,7 @@ syntax on
 set nocursorcolumn
 set cursorline
 set colorcolumn=80
-set background=light
+set background=dark
 colorscheme solarized
 
 set title
