@@ -38,8 +38,6 @@ Bundle 'chip/vim-fat-finger'
 Bundle 'AndrewRadev/switch.vim'
 nnoremap - :Switch<cr>
 Bundle 'terryma/vim-multiple-cursors'
-Bundle 'YankRing.vim'
-nnoremap <silent> <leader>y :YRShow<CR>
 " }}}
 
 " File management & Git {{{
@@ -408,14 +406,13 @@ function! TubeThis(...) abort
     if filereadable('script/server')
       let l:executable = 'script/spec'
     else
-      let l:executable = 'rspec'
+      let l:executable = 'be rspec'
     endif
   else
     let l:executable = &ft
-
-    if filereadable('Gemfile')
-      silent call add(l:cmd, 'be')
-    endif
+"   if filereadable('Gemfile')
+"     silent call add(l:cmd, 'be')
+"   endif
   endif
 
   if exists('a:1')
@@ -448,4 +445,9 @@ let g:Powerline_colorscheme = 'solarized256'
 command! Es :vsplit ~/Dropbox/scratch.txt
 "}}
 
+function! FormatJson()
+  exe '%!python -m json.tool'
+endfunction
+
 " vim: foldmethod=marker
+
