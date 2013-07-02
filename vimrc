@@ -410,9 +410,9 @@ function! TubeThis(...) abort
     endif
   else
     let l:executable = &ft
-"   if filereadable('Gemfile')
-"     silent call add(l:cmd, 'be')
-"   endif
+    if filereadable('Gemfile')
+      silent call add(l:cmd, 'be')
+    endif
   endif
 
   if exists('a:1')
@@ -420,7 +420,7 @@ function! TubeThis(...) abort
   else
     silent call extend(l:cmd, [l:executable, l:path])
   end
- 
+
   if filereadable('.spork')
     silent call add(l:cmd, '--drb')
   endif
@@ -446,6 +446,7 @@ command! Es :vsplit ~/Dropbox/scratch.txt
 "}}
 
 function! FormatJson()
+  set ft=json
   exe '%!python -m json.tool'
 endfunction
 

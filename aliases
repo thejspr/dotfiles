@@ -128,7 +128,3 @@ alias sr='exec zsh'
 
 # new
 alias cm='chromarks'
-
-ht_depl() {
-  bundle exec cap "$@" deploy && growlnotify -s -m "$@" deployed || growlnotify -s -m "Deploy to $@ failed"
-}
