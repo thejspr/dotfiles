@@ -89,25 +89,26 @@ Bundle 'sjl/vitality.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'restore_view.vim'
 Bundle 'regedarek/ZoomWin'
-Bundle 'Lokaltog/vim-powerline'
+" Bundle 'Lokaltog/vim-powerline'
+Bundle 'bling/vim-airline'
+let g:airline_enable_bufferline=0
+let g:airline_powerline_fonts=1
 " }}}
 
 " Clojure {{{
-Bundle 'tpope/vim-fireplace'
-Bundle 'tpope/vim-classpath'
+" Bundle 'tpope/vim-fireplace'
+" Bundle 'tpope/vim-classpath'
 " Bundle 'guns/vim-clojure-static'
-Bundle 'kien/rainbow_parentheses.vim'
-au VimEnter *.clj RainbowParenthesesToggle
-au Syntax *.clj RainbowParenthesesLoadRound
-au Syntax *.clj RainbowParenthesesLoadSquare
-au Syntax *.clj RainbowParenthesesLoadBraces
+" Bundle 'kien/rainbow_parentheses.vim'
+" au VimEnter *.clj RainbowParenthesesToggle
+" au Syntax *.clj RainbowParenthesesLoadRound
+" au Syntax *.clj RainbowParenthesesLoadSquare
+" au Syntax *.clj RainbowParenthesesLoadBraces
 "}}}
 
 " new stuff {{{
-Bundle 'terryma/vim-expand-region'
-Bundle 'szw/vim-g'
-Bundle 'rizzatti/funcoo.vim'
-Bundle 'rizzatti/dash.vim'
+" Bundle 'terryma/vim-expand-region'
+" Bundle 'szw/vim-g'
 " }}}
 
 " Outro {{{
@@ -260,8 +261,7 @@ noremap <leader>f :%s///<left><left>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 " Use Ag instead of Grep when available
-let g:ackprg="ag -H --nogroup --column"
-" nnoremap <leader>a :Ag
+let g:ackprg="ag! -H --nogroup --column"
 nnoremap <leader>a :Ag <cword><CR>
 " }}}
 
@@ -397,6 +397,7 @@ autocmd BufRead COMMIT_EDITMSG setlocal nocursorline
 
 " Tube.vim {{{
 let g:tube_terminal = 'iterm'
+" let g:tube_always_clear_screen = 1
 
 function! TubeThis(...) abort
   let l:cmd = []
@@ -443,6 +444,7 @@ let g:Powerline_colorscheme = 'solarized256'
 
 " New stuff {{{
 command! Es :vsplit ~/Dropbox/scratch.txt
+command! Ew :vsplit ~/Dropbox/worklog.txt
 "}}
 
 function! FormatJson()
