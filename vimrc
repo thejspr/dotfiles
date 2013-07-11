@@ -26,10 +26,11 @@ Bundle 'gcmt/tube.vim'
 " Code navigation {{{
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'nelstrom/vim-visual-star-search'
+Bundle 'terryma/vim-multiple-cursors'
 " Bundle 'szw/vim-tags'
 " }}}
 
-" Textwrangling {{{
+" Text {{{
 Bundle 'tpope/vim-surround'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'ervandew/supertab'
@@ -37,30 +38,23 @@ Bundle 'godlygeek/tabular'
 Bundle 'chip/vim-fat-finger'
 Bundle 'AndrewRadev/switch.vim'
 nnoremap - :Switch<cr>
-Bundle 'terryma/vim-multiple-cursors'
+Bundle 'SirVer/ultisnips'
 " }}}
 
 " File management & Git {{{
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-eunuch'
 Bundle 'kwbdi.vim'
-Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-git'
+Bundle 'tpope/vim-fugitive'
 " }}}
-
-" Snippets {{{
-Bundle 'SirVer/ultisnips'
-"}}}
 
 " Ruby {{{
 Bundle 'vim-ruby/vim-ruby'
-" Bundle 'tpope/vim-rbenv'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-rails'
 Bundle 'lucapette/vim-ruby-doc'
 Bundle 'sickill/vim-pasta'
-" Bundle 'tpope/vim-bundler'
-" Bundle 'tpope/vim-rake'
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'ecomba/vim-ruby-refactoring'
@@ -70,7 +64,6 @@ Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'pangloss/vim-javascript'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'JSON.vim'
-Bundle 'nono/vim-handlebars'
 " }}}
 
 " Markup languages {{{
@@ -80,16 +73,12 @@ Bundle 'tpope/vim-ragtag'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 " }}}
 
-" Msc languages {{{
-" }}}
-
 " UI {{{
 " iterm2 support
 Bundle 'sjl/vitality.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'restore_view.vim'
 Bundle 'regedarek/ZoomWin'
-" Bundle 'Lokaltog/vim-powerline'
 Bundle 'bling/vim-airline'
 let g:airline_enable_bufferline=0
 let g:airline_powerline_fonts=1
@@ -107,8 +96,6 @@ let g:airline_powerline_fonts=1
 "}}}
 
 " new stuff {{{
-" Bundle 'terryma/vim-expand-region'
-" Bundle 'szw/vim-g'
 " }}}
 
 " Outro {{{
@@ -261,8 +248,8 @@ noremap <leader>f :%s///<left><left>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 " Use Ag instead of Grep when available
-let g:ackprg="ag! -H --nogroup --column"
-nnoremap <leader>a :Ag <cword><CR>
+let g:ackprg="ag -H --nogroup --column"
+nnoremap <leader>a :Ag! <cword><CR>
 " }}}
 
 " Movement and navigation {{{
@@ -314,12 +301,12 @@ let NERDTreeHijackNetrw=1
 
 " ctrlp
 let g:ctrlp_map = '<Leader>t'
-let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|mp3|)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py|_site'
+let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|mp3|)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py|_site|gh-pages'
 let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_match_window_reversed = 1
 let g:ctrlp_match_window_bottom = 1
 " let g:ctrlp_extensions = ['tag']
-let g:ctrlp_dotfiles = 0
+let g:ctrlp_dotfiles = 1
 let g:ctrlp_switch_buffer = 1
 
 noremap ; :CtrlP<cr>
