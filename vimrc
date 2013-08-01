@@ -53,7 +53,6 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-rails'
-Bundle 'lucapette/vim-ruby-doc'
 Bundle 'sickill/vim-pasta'
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
@@ -80,6 +79,7 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'restore_view.vim'
 Bundle 'regedarek/ZoomWin'
 Bundle 'bling/vim-airline'
+let g:airline_theme='simple'
 let g:airline_enable_bufferline=0
 let g:airline_powerline_fonts=1
 " }}}
@@ -129,6 +129,7 @@ syntax on
 set nocursorcolumn
 set cursorline
 set colorcolumn=80
+set synmaxcol=200
 set background=dark
 colorscheme solarized
 
@@ -176,7 +177,7 @@ vnoremap // :TComment<CR>
 " Auto format
 noremap === mmgg=G`m^zz
 
-" No arror keys
+" No arrow keys
 " noremap <Up> <NOP>
 " noremap <Down> <NOP>
 " noremap <Left> <NOP>
@@ -196,7 +197,6 @@ set runtimepath+=~/.vim/bundle/ultisnips
 let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 let g:SuperTabLongestHighlight = 1
 
-" MULTIPURPOSE TAB KEY
 " Indent if we're at the beginning of a line. Else, do completion.
 function! InsertTabWrapper()
     let col = col('.') - 1
@@ -301,11 +301,10 @@ let NERDTreeHijackNetrw=1
 
 " ctrlp
 let g:ctrlp_map = '<Leader>t'
-let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|mp3|)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py|_site|gh-pages'
+let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|mp3|)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py|_site|gh-pages|dist|bower_components|.tmp'
 let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_match_window_reversed = 1
 let g:ctrlp_match_window_bottom = 1
-" let g:ctrlp_extensions = ['tag']
 let g:ctrlp_dotfiles = 1
 let g:ctrlp_switch_buffer = 1
 
@@ -316,12 +315,12 @@ noremap <leader>r :CtrlPMRUFiles<cr>
 
 set wildignore+=*/vendor/cache/*,*/public/system/*,*/tmp/*,*/.git/*,*/node_modules/*,*/.DS_Store
 set wildignore+=*/tmp/*,*.so,*.swp,*.o,*~,*.obj,tmp/**,app/assets/images/**,*.class,*.lock,**.png,**.jpg,**.jpeg
-set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**,spec/dummy/**
+set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**,spec/dummy/**,dist/**
 " }}}
 
 " Edit .vimrc {{{
 command! Ev :e ~/.vimrc
-" When vimrc is edited, reload it
+" Reload vimrc when saved
 augroup vimrcs
   au!
   au bufwritepost ~/.vimrc
@@ -347,15 +346,6 @@ au BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Thorfile,Vagrantfile,Procfile,pr
 " Replace Ruby 1.8 style hashes with shorter Ruby 1.9 style
 noremap <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/<CR>
 
-" https://github.com/lucapette/vim-ruby-doc
-let g:ruby_doc_command='open'
-let g:ruby_doc_rails_host='http://railsapi.com/doc/rails-v2.3.8_rspec-v1.3.2_rspecrails-v1.3.4_ruby-v1.8/?q='
-" let g:ruby_doc_rspec_host=
-" let g:ruby_doc_rails_host=
-" map RB :call rubydoc#search('rails',expand('<cword>'))<CR>"
-" map RS :call rubydoc#search('rspec',expand('<cword>'))<CR>"
-map RR :call rubydoc#search('rails',expand('<cword>'))<CR>"
-
 " Rails.vim
 noremap <Leader>m :Rmodel<space>
 noremap <Leader>c :Rcontroller<space>
@@ -377,9 +367,6 @@ noremap <leader>gc :Gcommit -v<CR><C-w>15+
 
 autocmd BufRead COMMIT_EDITMSG setlocal spell!
 autocmd BufRead COMMIT_EDITMSG setlocal nocursorline
-" }}}
-
-" Ctags {{{
 " }}}
 
 " Tube.vim {{{
@@ -420,7 +407,7 @@ endfunction
 
 nnoremap <Leader>x :call TubeThis(line('.'))<CR>
 nnoremap <Leader>X :call TubeThis()<CR>
-nnoremap <Leader>§ :TubeLastCommand<CR>
+nnoremap <Leader>§ :TubeLastCmd<CR>
 " }}}
 
 " Statusline {{{
@@ -439,5 +426,6 @@ function! FormatJson()
   exe '%!python -m json.tool'
 endfunction
 
-" vim: foldmethod=marker
+set clipboard=unnamed
 
+" vim: foldmethod=marker
