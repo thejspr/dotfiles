@@ -128,3 +128,4 @@ alias sr='exec zsh'
 
 # new
 alias cm='chromarks'
+alias wiki='cd ~/Dropbox/wiki && soywiki'

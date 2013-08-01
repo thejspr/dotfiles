@@ -419,7 +419,6 @@ let g:Powerline_colorscheme = 'solarized256'
 " New stuff {{{
 command! Es :vsplit ~/Dropbox/scratch.txt
 command! Ew :vsplit ~/Dropbox/worklog.txt
-"}}
 
 function! FormatJson()
   set ft=json
@@ -427,5 +426,6 @@ function! FormatJson()
 endfunction
 
 set clipboard=unnamed
+"}}
 
 " vim: foldmethod=marker

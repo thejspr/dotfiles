@@ -4,9 +4,11 @@ INTERVAL = 10
 
 duration = ARGV.any? ? ARGV.first.to_i : 30
 
+Kernel.trap( "INT" ) { say('Woah! Where are you going?'); exit(0) }
+
 def say(msg, options = {})
   options.merge!({ '-n' => 'Pomodoro' })
-  puts "#{Time.now}: #{msg}"
+  puts "#{Time.now.strftime('%H:%M')} - #{msg}"
   system("growlnotify #{options.to_a.join(' ')} -m '#{msg}'")
 end
 
