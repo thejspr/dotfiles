@@ -26,22 +26,23 @@
   b       = branch
   c       = commit -v
   ca      = !git add -A && git commit -v
+  catchup = log --patch --reverse --topo-order _ribbon..origin/master
   co      = checkout
+  ctags   = !.git/hooks/ctags
   d       = diff
-  ds      = diff --stat
   dc      = diff --cached
   dcs     = diff --cached --stat
+  ds      = diff --stat
+  edit    = !mvim -v `git status --porcelain | sed -ne 's/^ M //p'`
   l       = log --graph --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(black)<%an>%Creset' --abbrev-commit --date=relative -20
   lm      = log --graph --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(black)<%an>%Creset' --abbrev-commit --date=relative  --no-merges -20
   ms      = checkout master
+  mt      = mergetool
   r       = remote
   rbm     = !git checkout master && git pull && git checkout - && git rebase master
   rc      = !git add -A && git rebase --continue
-  wip     = !git add --all && git commit -m 'wip'
   ribbon  = tag --force _ribbon origin/master
-  catchup = log --patch --reverse --topo-order _ribbon..origin/master
-  edit    = !mvim -v `git status --porcelain | sed -ne 's/^ M //p'`
-  mt      = mergetool
+  wip     = !git add --all && git commit -m 'wip'
 
   int     = !git checkout $INT
   stg     = !git checkout $STG
@@ -64,3 +65,5 @@
   prompt = false
 [pivotal]
   full-name = Jesper Kjeldgaard
+[init]
+  templatedir = ~/.git_template
