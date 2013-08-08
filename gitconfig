@@ -17,7 +17,8 @@
   whitespace = trailing-space,space-before-tab
   pager = less -FRX
 [alias]
-  aa      = add --all
+  a      = add --all
+  aa     = add -A
   aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^= ]*\\)=\\(.*\\)/\\1\\\t=> \\2/' | sort
   amend   = !git add -A && git commit -v --amend
   amendf  = !git add -A && git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - --amend

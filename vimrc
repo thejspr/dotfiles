@@ -1,7 +1,5 @@
 " Bundles {{{
 " Init {{{
-let g:ruby_path = system('echo $HOME/.rbenv/shims')
-
 if !isdirectory(expand("~/.vim/bundle/vundle/.git"))
   !git clone git://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 endif
@@ -21,6 +19,7 @@ Bundle 'epmatsw/ag.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'gcmt/tube.vim'
+Bundle 'tpope/vim-repeat'
 " }}}
 
 " Code navigation {{{
@@ -54,6 +53,7 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-rails'
 Bundle 'sickill/vim-pasta'
+let g:pasta_disabled_filetypes = ['sass', 'coffee', 'yaml']
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'ecomba/vim-ruby-refactoring'
@@ -67,9 +67,11 @@ Bundle 'JSON.vim'
 
 " Markup languages {{{
 Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-haml'
 Bundle 'slim-template/vim-slim'
 Bundle 'tpope/vim-ragtag'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+Bundle 'groenewege/vim-less'
 " }}}
 
 " UI {{{
@@ -131,6 +133,8 @@ set cursorline
 set colorcolumn=80
 set synmaxcol=200
 set background=dark
+" set background=light
+map <f7> :let &background = ( &background == "dark"? "light" : "dark")<CR>
 colorscheme solarized
 
 set title
@@ -302,16 +306,23 @@ let NERDTreeHijackNetrw=1
 " ctrlp
 let g:ctrlp_map = '<Leader>t'
 let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|mp3|)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py|_site|gh-pages|dist|bower_components|.tmp'
-let g:ctrlp_working_path_mode = 'r'
+" let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_match_window_reversed = 1
 let g:ctrlp_match_window_bottom = 1
-let g:ctrlp_dotfiles = 1
+let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 1
 
 noremap ; :CtrlP<cr>
 noremap <leader>t :CtrlP<cr>
 noremap <leader>b :CtrlPBuffer<cr>
 noremap <leader>r :CtrlPMRUFiles<cr>
+
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
 
 set wildignore+=*/vendor/cache/*,*/public/system/*,*/tmp/*,*/.git/*,*/node_modules/*,*/.DS_Store
 set wildignore+=*/tmp/*,*.so,*.swp,*.o,*~,*.obj,tmp/**,app/assets/images/**,*.class,*.lock,**.png,**.jpg,**.jpeg

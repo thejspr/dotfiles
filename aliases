@@ -11,7 +11,7 @@ alias ts='be thin start'
 alias bsc='be spork cucumber'
 alias resass='be compass clean && be compass compile'
 alias tlog='ssh -t staging2 "tail -f /var/www/housetrip/current/log/staging2.hosts.log"'
-export INT='hosts-nps/property-preview-51306953'
+export INT='host-nps/integration/photos1.1'
 export STG='staging2.hosts'
 
 #servers
