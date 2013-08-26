@@ -35,8 +35,8 @@ export SOURCE_ANNOTATION_DIRECTORIES='features'
 # work
 eval "$($HOME/.ht/bin/ht init -)"
 export DISABLE_GROWL=YES
+export INTEGRITY_HOST=localhost
 # export SPLIT_CSS_FOR_IE=true
-
 
 # JAVA
 export JAVA_HOME="$(/usr/libexec/java_home)"

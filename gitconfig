@@ -34,8 +34,8 @@
   dcs     = diff --cached --stat
   ds      = diff --stat
   edit    = !mvim -v `git status --porcelain | sed -ne 's/^ M //p'`
-  l       = log --graph --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(black)<%an>%Creset' --abbrev-commit --date=relative -20
-  lm      = log --graph --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(black)<%an>%Creset' --abbrev-commit --date=relative  --no-merges -20
+  l       = log --graph --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(black)<%an>%Creset' --abbrev-commit --date=relative -14
+  lm      = log --graph --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(black)<%an>%Creset' --abbrev-commit --date=relative  --no-merges -15
   ms      = checkout master
   mt      = mergetool
   r       = remote
@@ -46,7 +46,6 @@
 
   int     = !git checkout $INT
   stg     = !git checkout $STG
-  list-branch-tests = "! git diff --diff-filter=ACMRTUXB --name-only master -- spec features "
 [apply]
   whitespace = nowarn
 [branch]

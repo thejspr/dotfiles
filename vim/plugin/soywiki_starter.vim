@@ -9,7 +9,7 @@ let g:SoyWikiStarterLoaded = 1
 
 
 func! Soywiki()
-  source /Users/jesper/.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/soywiki-0.9.2/lib/soywiki.vim
+  source /Users/jesper/.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/soywiki-0.9.6/lib/soywiki.vim
 endfunc
 
 command! -bar -nargs=0 Soywiki :call Soywiki()

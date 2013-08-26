@@ -11,11 +11,15 @@ alias ts='be thin start'
 alias bsc='be spork cucumber'
 alias resass='be compass clean && be compass compile'
 alias tlog='ssh -t staging2 "tail -f /var/www/housetrip/current/log/staging2.hosts.log"'
+nb(){
+  git co -b host-nps/$@
+}
 export INT='host-nps/integration/photos1.1'
 export STG='staging2.hosts'
 
 #servers
 alias ec2='mosh --ssh "ssh -i ~/.ssh/jsprkey.pem -p 22" ec2'
+alias servers='cat ~/.ssh/config'
 
 #tmux
 alias tm='tmux attach || tmux new'
@@ -78,7 +82,7 @@ alias sg='bundle exec guard'
 alias bec='be cucumber'
 
 # msc
-alias youtube-dl='noglob youtube-dl'
+alias yt='cd ~/Movies && noglob youtube-dl -t'
 
 #vim
 if $JSPRMAC; then
