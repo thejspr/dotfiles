@@ -52,6 +52,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-bundler'
 Bundle 'sickill/vim-pasta'
 let g:pasta_disabled_filetypes = ['sass', 'coffee', 'yaml']
 Bundle 'kana/vim-textobj-user'
@@ -98,6 +99,7 @@ let g:airline_powerline_fonts=1
 "}}}
 
 " new stuff {{{
+Bundle "zweifisch/pipe2eval"
 " }}}
 
 " Outro {{{
@@ -117,6 +119,7 @@ set undofile
 set undodir=~/.tmp,/tmp
 :au FocusLost * silent! wa "save all buffers when focus is lost
 set formatoptions-=or " do not continue comments on newlines
+set clipboard=unnamed
 " }}}
 
 " Mouse {{{
@@ -124,6 +127,11 @@ set mouse=a
 " }}}
 
 " UI {{{
+set background=dark
+" set background=light
+map <f7> :let &background = ( &background == "dark"? "light" : "dark")<CR>
+colorscheme solarized
+
 set guioptions-=L
 set guifont=Menlo\ Regular:h14
 
@@ -132,10 +140,6 @@ set nocursorcolumn
 set cursorline
 set colorcolumn=80
 set synmaxcol=200
-set background=dark
-" set background=light
-map <f7> :let &background = ( &background == "dark"? "light" : "dark")<CR>
-colorscheme solarized
 
 set title
 set encoding=utf-8
@@ -252,7 +256,7 @@ noremap <leader>f :%s///<left><left>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 " Use Ag instead of Grep when available
-let g:ackprg="ag -H --nogroup --column"
+let g:ackprg="ag -H --nogroup --column --nocolor -m 1000"
 nnoremap <leader>a :Ag! <cword><CR>
 " }}}
 
@@ -312,7 +316,6 @@ let g:ctrlp_match_window_bottom = 1
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 1
 
-noremap ; :CtrlP<cr>
 noremap <leader>t :CtrlP<cr>
 noremap <leader>b :CtrlPBuffer<cr>
 noremap <leader>r :CtrlPMRUFiles<cr>
@@ -361,7 +364,11 @@ noremap <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/<CR>
 noremap <Leader>m :Rmodel<space>
 noremap <Leader>c :Rcontroller<space>
 noremap <Leader>v :Rview<space>
-" }}}
+
+autocmd User Rails silent! Rnavcommand decorator      app/decorators            -glob=**/* -suffix=_decorator.rb
+autocmd User Rails silent! Rnavcommand feature        features                  -glob=**/* -suffix=.feature
+autocmd User Rails silent! Rnavcommand job            app/jobs                  -glob=**/* -suffix=_job.rb
+autocmd User Rails silent! Rnavcommand stepdefinition features/step_definitions -glob=**/* -suffix=_steps.rb" }}}
 
 " JavaScript & JSON {{{
 au BufRead,BufWrite,BufNewFile *.json set filetype=json foldmethod=syntax
@@ -369,6 +376,11 @@ au! FileType json command! -range=% -nargs=* Tidy <line1>,<line2>! json_xs -f js
 
 au BufRead *.hbs set filetype=handlebars " Handlebars
 au FileType handlebars runtime! ftplugin/html/sparkup.vim
+
+function! FormatJson()
+  set ft=json
+  exe '%!python -m json.tool'
+endfunction
 " }}}
 
 " Git {{{
@@ -382,7 +394,7 @@ autocmd BufRead COMMIT_EDITMSG setlocal nocursorline
 
 " Tube.vim {{{
 let g:tube_terminal = 'iterm'
-" let g:tube_always_clear_screen = 1
+let g:tube_always_clear_screen = 0
 
 function! TubeThis(...) abort
   let l:cmd = []
@@ -422,21 +434,13 @@ nnoremap <Leader>§ :TubeLastCmd<CR>
 " }}}
 
 " Statusline {{{
-let g:Powerline_symbols = 'unicode'
+" let g:Powerline_symbols = 'unicode'
 let g:Powerline_theme = 'solarized256'
 let g:Powerline_colorscheme = 'solarized256'
 "}}}
 
 " New stuff {{{
 command! Es :vsplit ~/Dropbox/scratch.txt
-command! Ew :vsplit ~/Dropbox/worklog.txt
-
-function! FormatJson()
-  set ft=json
-  exe '%!python -m json.tool'
-endfunction
-
-set clipboard=unnamed
 "}}
 
 " vim: foldmethod=marker
