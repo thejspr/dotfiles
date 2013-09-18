@@ -14,7 +14,7 @@ alias tlog='ssh -t staging2 "tail -f /var/www/housetrip/current/log/staging2.hos
 nb(){
   git co -b host-nps/$@
 }
-export INT='host-nps/integration/photos1.1'
+export INT='host-nps/integration/photos1.2'
 export STG='staging2.hosts'
 
 #servers
@@ -80,6 +80,8 @@ alias hl="heroku logs -t"
 #testing
 alias sg='bundle exec guard'
 alias bec='be cucumber'
+alias gcuc="git status -sb | awk '{print $2}' | ag '\.feature' | xargs bundle exec cucumber"
+alias gspec="git status -sb | awk '{print $2}' | ag '_spec' | xargs script/spec"
 
 # msc
 alias yt='cd ~/Movies && noglob youtube-dl -t'

@@ -40,3 +40,6 @@ export INTEGRITY_HOST=localhost
 
 # JAVA
 export JAVA_HOME="$(/usr/libexec/java_home)"
+
+# Vim
+export PIP2EVAL_TMP_FILE_PATH=/tmp/shms
