@@ -33,7 +33,7 @@
   dc      = diff --cached
   dcs     = diff --cached --stat
   ds      = diff --stat
-  edit    = !mvim -v `git status --porcelain | sed -ne 's/^ M //p'`
+  edit    = !git status -sb | awk '{print $2}' | xargs -o mvim -v
   l       = log --graph --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(black)<%an>%Creset' --abbrev-commit --date=relative -14
   lm      = log --graph --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(black)<%an>%Creset' --abbrev-commit --date=relative  --no-merges -15
   ms      = checkout master
@@ -66,3 +66,5 @@
   full-name = Jesper Kjeldgaard
 [init]
   templatedir = ~/.git_template
+[gc]
+  auto = 1
