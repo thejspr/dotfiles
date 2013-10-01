@@ -1,11 +1,11 @@
-export PATH=~/bin:~/.rbenv/bin:$PATH
+export PATH=$(rbenv root)/shims:$(rbenv root)/bin:~/bin:$PATH
 
-if [ $(hostname) = "jesper.local" ]; then
+# if [ $(hostname) = "jesper.local" ]; then
   unalias g
   . ~/.mac_settings
-else
-  . ~/.nix_settings
-fi
+# else
+  # . ~/.nix_settings
+# fi
 
 export RUBY_BUILD_CACHE_PATH=true
 eval "$(rbenv init - --no-rehash)"

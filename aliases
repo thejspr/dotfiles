@@ -15,6 +15,7 @@ nb(){
   git co -b host-nps/$@
 }
 export INT='host-nps/integration/photos1.2'
+export INT2='integration/team-rocket-launcher/event-tracker-service-779126'
 export STG='staging2.hosts'
 
 #servers

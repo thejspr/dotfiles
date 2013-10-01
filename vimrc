@@ -79,7 +79,7 @@ Bundle 'groenewege/vim-less'
 " iterm2 support
 Bundle 'sjl/vitality.vim'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'restore_view.vim'
+" Bundle 'restore_view.vim'
 Bundle 'regedarek/ZoomWin'
 Bundle 'bling/vim-airline'
 let g:airline_theme='simple'
@@ -120,9 +120,6 @@ set undodir=~/.tmp,/tmp
 :au FocusLost * silent! wa "save all buffers when focus is lost
 set formatoptions-=or " do not continue comments on newlines
 set clipboard=unnamed
-" }}}
-
-" Mouse {{{
 set mouse=a
 " }}}
 
@@ -309,7 +306,7 @@ let NERDTreeHijackNetrw=1
 
 " ctrlp
 let g:ctrlp_map = '<Leader>t'
-let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|mp3|)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py|_site|gh-pages|dist|bower_components|.tmp'
+let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|mp3|)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py|_site|gh-pages|dist|bower_components|.tmp|images'
 " let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_match_window_reversed = 1
 let g:ctrlp_match_window_bottom = 1
@@ -364,11 +361,7 @@ noremap <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/<CR>
 noremap <Leader>m :Rmodel<space>
 noremap <Leader>c :Rcontroller<space>
 noremap <Leader>v :Rview<space>
-
-autocmd User Rails silent! Rnavcommand decorator      app/decorators            -glob=**/* -suffix=_decorator.rb
-autocmd User Rails silent! Rnavcommand feature        features                  -glob=**/* -suffix=.feature
-autocmd User Rails silent! Rnavcommand job            app/jobs                  -glob=**/* -suffix=_job.rb
-autocmd User Rails silent! Rnavcommand stepdefinition features/step_definitions -glob=**/* -suffix=_steps.rb" }}}
+" }}}
 
 " JavaScript & JSON {{{
 au BufRead,BufWrite,BufNewFile *.json set filetype=json foldmethod=syntax
@@ -381,6 +374,8 @@ function! FormatJson()
   set ft=json
   exe '%!python -m json.tool'
 endfunction
+
+" au BufRead *.js set foldmethod=syntax foldlevel=2
 " }}}
 
 " Git {{{
