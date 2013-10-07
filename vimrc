@@ -71,7 +71,8 @@ Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-haml'
 Bundle 'slim-template/vim-slim'
 Bundle 'tpope/vim-ragtag'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+Bundle 'mattn/emmet-vim'
+" let g:user_emmet_leader_key = '<C-q>'
 Bundle 'groenewege/vim-less'
 " }}}
 
@@ -79,7 +80,7 @@ Bundle 'groenewege/vim-less'
 " iterm2 support
 Bundle 'sjl/vitality.vim'
 Bundle 'altercation/vim-colors-solarized'
-" Bundle 'restore_view.vim'
+Bundle 'restore_view.vim'
 Bundle 'regedarek/ZoomWin'
 Bundle 'bling/vim-airline'
 let g:airline_theme='simple'
@@ -125,7 +126,7 @@ set mouse=a
 
 " UI {{{
 set background=dark
-" set background=light
+set background=light
 map <f7> :let &background = ( &background == "dark"? "light" : "dark")<CR>
 colorscheme solarized
 
