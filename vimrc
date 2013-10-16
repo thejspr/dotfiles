@@ -126,7 +126,7 @@ set mouse=a
 
 " UI {{{
 set background=dark
-set background=light
+" set background=light
 map <f7> :let &background = ( &background == "dark"? "light" : "dark")<CR>
 colorscheme solarized
 
@@ -191,6 +191,7 @@ noremap === mmgg=G`m^zz
 
 " Fix save annoyances
 cnoreabbrev W w
+cnoreabbrev Wa wa
 cnoreabbrev Wq wq
 cnoreabbrev Wqa wqa
 "}}}
@@ -376,7 +377,7 @@ function! FormatJson()
   exe '%!python -m json.tool'
 endfunction
 
-" au BufRead *.js set foldmethod=syntax foldlevel=2
+au BufRead *.js set foldmethod=syntax foldlevel=5
 " }}}
 
 " Git {{{
@@ -386,6 +387,7 @@ noremap <leader>gc :Gcommit -v<CR><C-w>15+
 
 autocmd BufRead COMMIT_EDITMSG setlocal spell!
 autocmd BufRead COMMIT_EDITMSG setlocal nocursorline
+autocmd BufRead COMMIT_EDITMSG setlocal colorcolumn=72
 " }}}
 
 " Tube.vim {{{
