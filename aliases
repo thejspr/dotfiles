@@ -14,8 +14,7 @@ alias tlog='ssh -t staging2 "tail -f /var/www/housetrip/current/log/staging2.hos
 nb(){
   git co -b host-nps/$@
 }
-export INT='host-nps/integration/photos1.2'
-export INT2='integration/team-rocket-launcher/event-tracker-service-779126'
+export INT='host-nps/integration/project-pepe'
 export STG='staging2.hosts'
 
 #servers
@@ -35,6 +34,13 @@ alias nodrip='JAVACMD=`which java`'
 alias be='bundle exec'
 alias bu='bundle update'
 alias bi='bundle install'
+bes () {
+  if [ -f ./script/spec ]; then
+    ./script/spec
+  else
+    be rspec
+  fi
+}
 
 #rails
 alias tt='tail -f log/test.log | grep -v "DELETE FROM" -v | grep -v "TRUNCATE"'

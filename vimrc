@@ -101,6 +101,7 @@ let g:airline_powerline_fonts=1
 
 " new stuff {{{
 Bundle "zweifisch/pipe2eval"
+Bundle "fisadev/vim-ctrlp-cmdpalette"
 " }}}
 
 " Outro {{{
@@ -135,7 +136,7 @@ set guifont=Menlo\ Regular:h14
 
 syntax on
 set nocursorcolumn
-set cursorline
+set nocursorline
 set colorcolumn=80
 set synmaxcol=200
 
@@ -257,6 +258,7 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 " Use Ag instead of Grep when available
 let g:ackprg="ag -H --nogroup --column --nocolor -m 1000"
 nnoremap <leader>a :Ag! <cword><CR>
+nnoremap \ :Ag<SPACE>
 " }}}
 
 " Movement and navigation {{{
@@ -318,12 +320,14 @@ let g:ctrlp_switch_buffer = 1
 noremap <leader>t :CtrlP<cr>
 noremap <leader>b :CtrlPBuffer<cr>
 noremap <leader>r :CtrlPMRUFiles<cr>
+noremap <leader>c :CtrlPCmdPalette<cr>
 
+" Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
 if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_use_caching = 0
 endif
 
 set wildignore+=*/vendor/cache/*,*/public/system/*,*/tmp/*,*/.git/*,*/node_modules/*,*/.DS_Store
@@ -361,7 +365,7 @@ noremap <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/<CR>
 
 " Rails.vim
 noremap <Leader>m :Rmodel<space>
-noremap <Leader>c :Rcontroller<space>
+" noremap <Leader>c :Rcontroller<space>
 noremap <Leader>v :Rview<space>
 " }}}
 
@@ -377,7 +381,7 @@ function! FormatJson()
   exe '%!python -m json.tool'
 endfunction
 
-au BufRead *.js set foldmethod=syntax foldlevel=5
+" au BufRead *.js set foldmethod=syntax foldlevel=5
 " }}}
 
 " Git {{{
@@ -439,6 +443,15 @@ let g:Powerline_colorscheme = 'solarized256'
 
 " New stuff {{{
 command! Es :vsplit ~/Dropbox/scratch.txt
+
+" inoremap  <Up>     <NOP>
+" inoremap  <Down>   <NOP>
+" inoremap  <Left>   <NOP>
+" inoremap  <Right>  <NOP>
+" noremap   <Up>     <NOP>
+" noremap   <Down>   <NOP>
+" noremap   <Left>   <NOP>
+" noremap   <Right>  <NOP>
 "}}
 
 " vim: foldmethod=marker

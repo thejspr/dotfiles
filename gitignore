@@ -12,3 +12,4 @@ tags
 gems.tags
 tmp/tags
 .spork
+.vagrant
