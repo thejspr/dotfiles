@@ -102,6 +102,7 @@ let g:airline_powerline_fonts=1
 " new stuff {{{
 Bundle "zweifisch/pipe2eval"
 Bundle "fisadev/vim-ctrlp-cmdpalette"
+Bundle "sk1418/Join"
 " }}}
 
 " Outro {{{
@@ -304,8 +305,8 @@ let g:NERDTreeShowBookmarks = 0
 let g:NERDTreeWinPos = "left"
 let g:NERDTreeWinSize = 25
 let g:NERDTreeAutoDeleteBuffer=1
-let NERDTreeShowHidden=0
 let g:NERDTreeChDirMode=2
+let NERDTreeShowHidden=0
 let NERDTreeHijackNetrw=1
 
 " ctrlp
