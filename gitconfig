@@ -65,4 +65,4 @@
 [init]
   templatedir = ~/.git_template
 [gc]
-  auto = 1
+  auto = 0

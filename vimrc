@@ -23,10 +23,9 @@ Bundle 'tpope/vim-repeat'
 " }}}
 
 " Code navigation {{{
-Bundle 'Lokaltog/vim-easymotion'
+" Bundle 'Lokaltog/vim-easymotion'
 Bundle 'nelstrom/vim-visual-star-search'
 Bundle 'terryma/vim-multiple-cursors'
-" Bundle 'szw/vim-tags'
 " }}}
 
 " Text {{{
@@ -57,13 +56,11 @@ Bundle 'sickill/vim-pasta'
 let g:pasta_disabled_filetypes = ['sass', 'coffee', 'yaml']
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
-Bundle 'ecomba/vim-ruby-refactoring'
 "}}}
 
 " JavaScript {{{
 Bundle 'pangloss/vim-javascript'
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'JSON.vim'
 " }}}
 
 " Markup languages {{{
@@ -73,7 +70,6 @@ Bundle 'slim-template/vim-slim'
 Bundle 'tpope/vim-ragtag'
 Bundle 'mattn/emmet-vim'
 " let g:user_emmet_leader_key = '<C-q>'
-Bundle 'groenewege/vim-less'
 " }}}
 
 " UI {{{
@@ -168,7 +164,6 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set nowrap
-set textwidth=80
 set list listchars=trail:·
 "}}}
 
@@ -184,18 +179,6 @@ vnoremap // :TComment<CR>
 
 " Auto format
 noremap === mmgg=G`m^zz
-
-" No arrow keys
-" noremap <Up> <NOP>
-" noremap <Down> <NOP>
-" noremap <Left> <NOP>
-" noremap <Right> <NOP>
-
-" Fix save annoyances
-cnoreabbrev W w
-cnoreabbrev Wa wa
-cnoreabbrev Wq wq
-cnoreabbrev Wqa wqa
 "}}}
 
 " UltiSnips {{{
@@ -222,7 +205,7 @@ inoremap <s-tab> <c-n>
 " Msc annoyances {{{
 nnoremap Q <nop>
 nnoremap K <nop>
-nnoremap J mzJ`z " keep curson in place when joining lines
+nnoremap J mzJ`z " keep cursor in place when joining lines
 
 " reselect visual lock after indent/outdent
 vnoremap < <gv
@@ -240,6 +223,12 @@ nnoremap g# g#zz
 " improve movement on wrapped lines
 nnoremap j gj
 nnoremap k gk
+
+" Fix save annoyances
+cnoreabbrev W w
+cnoreabbrev Wa wa
+cnoreabbrev Wq wq
+cnoreabbrev Wqa wqa
 " }}}
 
 " Searching {{{
@@ -312,7 +301,6 @@ let NERDTreeHijackNetrw=1
 " ctrlp
 let g:ctrlp_map = '<Leader>t'
 let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|mp3|)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py|_site|gh-pages|dist|bower_components|.tmp|images'
-" let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_match_window_reversed = 1
 let g:ctrlp_match_window_bottom = 1
 let g:ctrlp_dotfiles = 0
@@ -321,7 +309,6 @@ let g:ctrlp_switch_buffer = 1
 noremap <leader>t :CtrlP<cr>
 noremap <leader>b :CtrlPBuffer<cr>
 noremap <leader>r :CtrlPMRUFiles<cr>
-noremap <leader>c :CtrlPCmdPalette<cr>
 
 " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
 if executable('ag')
@@ -374,15 +361,13 @@ noremap <Leader>v :Rview<space>
 au BufRead,BufWrite,BufNewFile *.json set filetype=json foldmethod=syntax
 au! FileType json command! -range=% -nargs=* Tidy <line1>,<line2>! json_xs -f json -t json-pretty
 
-au BufRead *.hbs set filetype=handlebars " Handlebars
+au BufRead *.hbs set filetype=handlebars
 au FileType handlebars runtime! ftplugin/html/sparkup.vim
 
 function! FormatJson()
   set ft=json
   exe '%!python -m json.tool'
 endfunction
-
-" au BufRead *.js set foldmethod=syntax foldlevel=5
 " }}}
 
 " Git {{{
@@ -449,10 +434,10 @@ command! Es :vsplit ~/Dropbox/scratch.txt
 " inoremap  <Down>   <NOP>
 " inoremap  <Left>   <NOP>
 " inoremap  <Right>  <NOP>
-" noremap   <Up>     <NOP>
-" noremap   <Down>   <NOP>
-" noremap   <Left>   <NOP>
-" noremap   <Right>  <NOP>
+noremap   <Up>     <NOP>
+noremap   <Down>   <NOP>
+noremap   <Left>   <NOP>
+noremap   <Right>  <NOP>
 "}}
 
 " vim: foldmethod=marker
