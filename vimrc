@@ -8,7 +8,6 @@ filetype off " must be off before Vundle has run
 set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
-
 command! BI :BundleInstall
 command! -bang BU :BundleInstall!
 command! BC :BundleClean
@@ -23,7 +22,6 @@ Bundle 'tpope/vim-repeat'
 " }}}
 
 " Code navigation {{{
-" Bundle 'Lokaltog/vim-easymotion'
 Bundle 'nelstrom/vim-visual-star-search'
 Bundle 'terryma/vim-multiple-cursors'
 " }}}
@@ -89,7 +87,6 @@ Bundle "sk1418/Join"
 
 " Outro {{{
 filetype plugin indent on
-runtime macros/matchit.vim
 " }}}
 " }}}
 
