@@ -83,19 +83,7 @@ let g:airline_enable_bufferline=0
 let g:airline_powerline_fonts=0
 " }}}
 
-" Clojure {{{
-" Bundle 'tpope/vim-fireplace'
-" Bundle 'tpope/vim-classpath'
-" Bundle 'guns/vim-clojure-static'
-" Bundle 'kien/rainbow_parentheses.vim'
-" au VimEnter *.clj RainbowParenthesesToggle
-" au Syntax *.clj RainbowParenthesesLoadRound
-" au Syntax *.clj RainbowParenthesesLoadSquare
-" au Syntax *.clj RainbowParenthesesLoadBraces
-"}}}
-
 " new stuff {{{
-Bundle "zweifisch/pipe2eval"
 Bundle "sk1418/Join"
 " }}}
 
