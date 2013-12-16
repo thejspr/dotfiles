@@ -77,11 +77,10 @@ Bundle 'mattn/emmet-vim'
 Bundle 'sjl/vitality.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'restore_view.vim'
-Bundle 'regedarek/ZoomWin'
 Bundle 'bling/vim-airline'
 let g:airline_theme='simple'
 let g:airline_enable_bufferline=0
-let g:airline_powerline_fonts=1
+let g:airline_powerline_fonts=0
 " }}}
 
 " Clojure {{{
@@ -97,7 +96,6 @@ let g:airline_powerline_fonts=1
 
 " new stuff {{{
 Bundle "zweifisch/pipe2eval"
-Bundle "fisadev/vim-ctrlp-cmdpalette"
 Bundle "sk1418/Join"
 " }}}
 
@@ -116,7 +114,6 @@ set notimeout
 set noswapfile
 set undofile
 set undodir=~/.tmp,/tmp
-:au FocusLost * silent! wa "save all buffers when focus is lost
 set formatoptions-=or " do not continue comments on newlines
 set clipboard=unnamed
 set mouse=a
@@ -170,8 +167,6 @@ set list listchars=trail:·
 " Key mappings {{{
 let mapleader = ","
 let g:mapleader = ","
-
-nnoremap <CR> :write<CR>
 
 " tComment
 nnoremap // :TComment<CR>
@@ -242,36 +237,16 @@ set showmatch
 
 nnoremap <leader><space> :nohlsearch<cr>
 nnoremap <space> /
-noremap <m-space> ?
 " find/replace shortcut
 noremap <leader>f :%s///<left><left>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
-" Use Ag instead of Grep when available
-let g:ackprg="ag -H --nogroup --column --nocolor -m 1000"
-nnoremap <leader>a :Ag! <cword><CR>
-nnoremap \ :Ag<SPACE>
 " }}}
 
 " Movement and navigation {{{
 " Buffer management
 noremap <tab> :bn<CR>
 noremap <S-tab> :bp<CR>
-nnoremap <leader>l :ls<cr>:b<space>
-
-" easy split navigation
-nnoremap <C-left> <C-w>h
-nnoremap <C-down> <C-w>j
-nnoremap <C-up> <C-w>k
-nnoremap <C-right> <C-w>l
-
-" move lines vertivally
-noremap <C-j> :m+<CR>
-noremap <C-k> :m-2<CR>
-inoremap <C-j> <Esc>:m+<CR>
-inoremap <C-k> <Esc>:m-2<CR>
-vnoremap <C-j> :m'>+<CR>gv
-vnoremap <C-k> :m-2<CR>gv
 " }}}
 
 " Spell checking {{{
@@ -293,7 +268,6 @@ set foldenable
 " NERDTree
 let g:NERDTreeQuitOnOpen=0
 let g:NERDTreeShowBookmarks = 0
-let g:NERDTreeWinPos = "left"
 let g:NERDTreeWinSize = 25
 let g:NERDTreeAutoDeleteBuffer=1
 let g:NERDTreeChDirMode=2
@@ -320,8 +294,13 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-set wildignore+=*/vendor/cache/*,*/public/system/*,*/tmp/*,*/.git/*,*/node_modules/*,*/.DS_Store
-set wildignore+=*/tmp/*,*.so,*.swp,*.o,*~,*.obj,tmp/**,app/assets/images/**,*.class,*.lock,**.png,**.jpg,**.jpeg
+" Use Ag instead of Grep
+let g:ackprg="ag -H --nogroup --column --nocolor -m 1000"
+nnoremap <leader>a :Ag! <cword><CR>
+nnoremap \ :Ag<SPACE>
+
+set wildignore+=*/public/system/*,*/.git/*,*/node_modules/*,*/.DS_Store
+set wildignore+=*/tmp/*,tmp/**,**.png,**.jpg,**.jpeg
 set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**,spec/dummy/**,dist/**
 " }}}
 
@@ -348,23 +327,20 @@ nnoremap <F6> :%s/\s*$//<CR>:noh<CR> " EOL whitespace removal
 " }}}
 
 " Ruby {{{
-au BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Thorfile,Vagrantfile,Procfile,pryrc,config.ru,.caprc,.irbrc,irb_tempfile*} set ft=ruby
+au BufRead,BufNewFile {Thorfile,Vagrantfile,Procfile,pryrc,config.ru} set ft=ruby
 
 " Replace Ruby 1.8 style hashes with shorter Ruby 1.9 style
 noremap <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/<CR>
 
 " Rails.vim
 noremap <Leader>m :Rmodel<space>
-" noremap <Leader>c :Rcontroller<space>
+noremap <Leader>c :Rcontroller<space>
 noremap <Leader>v :Rview<space>
 " }}}
 
 " JavaScript & JSON {{{
 au BufRead,BufWrite,BufNewFile *.json set filetype=json foldmethod=syntax
 au! FileType json command! -range=% -nargs=* Tidy <line1>,<line2>! json_xs -f json -t json-pretty
-
-au BufRead *.hbs set filetype=handlebars
-au FileType handlebars runtime! ftplugin/html/sparkup.vim
 
 function! FormatJson()
   set ft=json
@@ -376,10 +352,7 @@ endfunction
 " Fugitive
 nnoremap <leader>gs :Gstatus<CR><C-w>10+
 noremap <leader>gc :Gcommit -v<CR><C-w>15+
-
-autocmd BufRead COMMIT_EDITMSG setlocal spell!
-autocmd BufRead COMMIT_EDITMSG setlocal nocursorline
-autocmd BufRead COMMIT_EDITMSG setlocal colorcolumn=72
+autocmd BufRead COMMIT_EDITMSG setlocal spell! nocursorline colorcolumn=72
 " }}}
 
 " Tube.vim {{{
@@ -423,19 +396,9 @@ nnoremap <Leader>X :call TubeThis()<CR>
 nnoremap <Leader>§ :TubeLastCmd<CR>
 " }}}
 
-" Statusline {{{
-" let g:Powerline_symbols = 'unicode'
-let g:Powerline_theme = 'solarized256'
-let g:Powerline_colorscheme = 'solarized256'
-"}}}
-
 " New stuff {{{
 command! Es :vsplit ~/Dropbox/scratch.txt
 
-" inoremap  <Up>     <NOP>
-" inoremap  <Down>   <NOP>
-" inoremap  <Left>   <NOP>
-" inoremap  <Right>  <NOP>
 " noremap   <Up>     <NOP>
 " noremap   <Down>   <NOP>
 " noremap   <Left>   <NOP>
