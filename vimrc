@@ -229,6 +229,8 @@ cnoreabbrev W w
 cnoreabbrev Wa wa
 cnoreabbrev Wq wq
 cnoreabbrev Wqa wqa
+map <C-s> <esc>:w<CR>
+imap <C-s> <esc>:w<CR>
 " }}}
 
 " Searching {{{
@@ -434,10 +436,10 @@ command! Es :vsplit ~/Dropbox/scratch.txt
 " inoremap  <Down>   <NOP>
 " inoremap  <Left>   <NOP>
 " inoremap  <Right>  <NOP>
-noremap   <Up>     <NOP>
-noremap   <Down>   <NOP>
-noremap   <Left>   <NOP>
-noremap   <Right>  <NOP>
+" noremap   <Up>     <NOP>
+" noremap   <Down>   <NOP>
+" noremap   <Left>   <NOP>
+" noremap   <Right>  <NOP>
 "}}
 
 " vim: foldmethod=marker

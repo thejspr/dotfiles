@@ -1,8 +1,8 @@
 export JSPRMAC=true
 export PATH=/usr/local/bin:$PATH:/usr/local/share/npm/bin
 
-export EDITOR=mvim
-export VISUAL=mvim
+export EDITOR=vim
+export VISUAL=vim
 
 # https://github.com/rupa/z
 . `brew --prefix`/etc/profile.d/z.sh
