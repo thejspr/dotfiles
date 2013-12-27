@@ -1,5 +1,3 @@
-export PATH=$(rbenv root)/shims:$(rbenv root)/bin:~/bin:$PATH
-
 # if [ $(hostname) = "jesper.local" ]; then
   unalias g
   . ~/.mac_settings
@@ -9,6 +7,7 @@ export PATH=$(rbenv root)/shims:$(rbenv root)/bin:~/bin:$PATH
 
 export RUBY_BUILD_CACHE_PATH=true
 eval "$(rbenv init - --no-rehash)"
+export PATH=./bin:~/bin:$PATH
 
 # hub alias
 # DISABLED: clashes with git-whistles
@@ -40,6 +39,3 @@ export INTEGRITY_HOST=localhost
 
 # JAVA
 export JAVA_HOME="$(/usr/libexec/java_home)"
-
-# Vim
-export PIP2EVAL_TMP_FILE_PATH=/tmp/shms

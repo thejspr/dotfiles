@@ -83,6 +83,11 @@ let g:airline_powerline_fonts=0
 
 " new stuff {{{
 Bundle "sk1418/Join"
+Bundle 'Keithbsmiley/investigate.vim'
+let g:investigate_use_dash=1
+let g:investigate_dash_for_ruby="rails"
+let g:investigate_dash_for_slim="rails"
+map <leader>d :call investigate#Investigate()<CR>
 " }}}
 
 " Outro {{{
@@ -349,10 +354,14 @@ function! TubeThis(...) abort
   let l:path = expand('%')
 
   if l:path =~# '_spec'
-    if filereadable('script/server')
-      let l:executable = 'script/spec'
+    if filereadable('.spring')
+      let l:executable = 'bin/rspec'
     else
-      let l:executable = 'be rspec'
+      if filereadable('script/server')
+        let l:executable = 'be spec'
+      else
+        let l:executable = 'be rspec'
+      endif
     endif
   else
     let l:executable = &ft
