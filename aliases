@@ -36,7 +36,7 @@ alias bu='bundle update'
 alias bi='bundle install'
 bes () {
   if [ -f ./script/spec ]; then
-    ./script/spec
+    be spec
   else
     be rspec
   fi

@@ -32,8 +32,6 @@ Bundle 'tomtom/tcomment_vim'
 Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
 Bundle 'chip/vim-fat-finger'
-Bundle 'AndrewRadev/switch.vim'
-nnoremap - :Switch<cr>
 Bundle 'SirVer/ultisnips'
 " }}}
 
@@ -88,6 +86,7 @@ let g:investigate_use_dash=1
 let g:investigate_dash_for_ruby="rails"
 let g:investigate_dash_for_slim="rails"
 map <leader>d :call investigate#Investigate()<CR>
+Bundle 'mattn/gist-vim'
 " }}}
 
 " Outro {{{
@@ -392,6 +391,7 @@ nnoremap <Leader>§ :TubeLastCmd<CR>
 
 " New stuff {{{
 command! Es :vsplit ~/Dropbox/scratch.txt
+nmap <leader><space> :Tube<space>
 
 " noremap   <Up>     <NOP>
 " noremap   <Down>   <NOP>
