@@ -1,10 +1,10 @@
+" vim: foldmethod=marker
 " Bundles {{{
 " Init {{{
 if !isdirectory(expand("~/.vim/bundle/vundle/.git"))
   !git clone git://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 endif
 filetype off " must be off before Vundle has run
-
 set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
@@ -71,7 +71,7 @@ Bundle 'mattn/emmet-vim'
 " UI {{{
 " iterm2 support
 Bundle 'sjl/vitality.vim'
-Bundle 'altercation/vim-colors-solarized'
+" Bundle 'altercation/vim-colors-solarized'
 Bundle 'restore_view.vim'
 Bundle 'bling/vim-airline'
 let g:airline_theme='simple'
@@ -87,11 +87,11 @@ let g:investigate_dash_for_ruby="rails"
 let g:investigate_dash_for_slim="rails"
 map <leader>d :call investigate#Investigate()<CR>
 Bundle 'mattn/gist-vim'
+Bundle 'junegunn/seoul256.vim'
 " }}}
 
-" Outro {{{
 filetype plugin indent on
-" }}}
+set runtimepath+=~/.vim/bundle/ultisnips
 " }}}
 
 " Settings {{{
@@ -106,13 +106,15 @@ set undodir=~/.tmp,/tmp
 set formatoptions-=or " do not continue comments on newlines
 set clipboard=unnamed
 set mouse=a
+set foldnestmax=10
+set foldenable
 " }}}
 
 " UI {{{
 set background=dark
 " set background=light
-map <f7> :let &background = ( &background == "dark"? "light" : "dark")<CR>
-colorscheme solarized
+" colorscheme solarized
+colorscheme seoul256
 
 set guioptions-=L
 set guifont=Menlo\ Regular:h14
@@ -121,8 +123,7 @@ syntax on
 set nocursorcolumn
 set nocursorline
 set colorcolumn=80
-set synmaxcol=200
-
+set synmaxcol=140
 set title
 set encoding=utf-8
 set ffs=unix,mac,dos
@@ -160,13 +161,11 @@ let g:mapleader = ","
 " tComment
 nnoremap // :TComment<CR>
 vnoremap // :TComment<CR>
-
 " Auto format
 noremap === mmgg=G`m^zz
-"}}}
-
-" UltiSnips {{{
-set runtimepath+=~/.vim/bundle/ultisnips
+" Buffer management
+noremap <tab> :bn<CR>
+noremap <S-tab> :bp<CR>
 "}}}
 
 " Tab key {{{
@@ -190,11 +189,9 @@ inoremap <s-tab> <c-n>
 nnoremap Q <nop>
 nnoremap K <nop>
 nnoremap J mzJ`z " keep cursor in place when joining lines
-
 " reselect visual lock after indent/outdent
 vnoremap < <gv
 vnoremap > >gv
-
 " Center screen when scrolling search results
 nnoremap n nzz
 nnoremap } }zz
@@ -203,18 +200,14 @@ nnoremap * *zz
 nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
-
 " improve movement on wrapped lines
 nnoremap j gj
 nnoremap k gk
-
 " Fix save annoyances
 cnoreabbrev W w
 cnoreabbrev Wa wa
 cnoreabbrev Wq wq
 cnoreabbrev Wqa wqa
-map <C-s> <esc>:w<CR>
-imap <C-s> <esc>:w<CR>
 " }}}
 
 " Searching {{{
@@ -224,18 +217,11 @@ set smartcase
 set gdefault
 set showmatch
 
-nnoremap <leader><space> :nohlsearch<cr>
+nnoremap <leader><leader> :nohlsearch<cr>
 nnoremap <space> /
-" find/replace shortcut
 noremap <leader>f :%s///<left><left>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
-" }}}
-
-" Movement and navigation {{{
-" Buffer management
-noremap <tab> :bn<CR>
-noremap <S-tab> :bp<CR>
 " }}}
 
 " Spell checking {{{
@@ -247,11 +233,6 @@ noremap <leader>sp [s
 noremap <leader>sa zg
 noremap <leader>sd z=
 "}}}
-
-" Folding {{{
-set foldnestmax=10
-set foldenable
-" }}}
 
 " Nerdtree & ctrlp {{{
 " NERDTree
@@ -275,7 +256,6 @@ noremap <leader>t :CtrlP<cr>
 noremap <leader>b :CtrlPBuffer<cr>
 noremap <leader>r :CtrlPMRUFiles<cr>
 
-" Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
 if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
@@ -286,7 +266,6 @@ endif
 " Use Ag instead of Grep
 let g:ackprg="ag -H --nogroup --column --nocolor -m 1000"
 nnoremap <leader>a :Ag! <cword><CR>
-nnoremap \ :Ag<SPACE>
 
 set wildignore+=*/public/system/*,*/.git/*,*/node_modules/*,*/.DS_Store
 set wildignore+=*/tmp/*,tmp/**,**.png,**.jpg,**.jpeg
@@ -310,9 +289,10 @@ augroup END
 noremap <F1> :set nowrap! <CR>
 noremap <F2> :NERDTreeToggle<CR>
 set pastetoggle=<F3>
-nmap <f4> <Plug>Kwbd
+nnoremap <f4> <Plug>Kwbd
 " F5 Ctrlp refresh
 nnoremap <F6> :%s/\s*$//<CR>:noh<CR> " EOL whitespace removal
+nnoremap <f7> :let &background = ( &background == "dark"? "light" : "dark")<CR>
 " }}}
 
 " Ruby {{{
@@ -328,9 +308,6 @@ noremap <Leader>v :Rview<space>
 " }}}
 
 " JavaScript & JSON {{{
-au BufRead,BufWrite,BufNewFile *.json set filetype=json foldmethod=syntax
-au! FileType json command! -range=% -nargs=* Tidy <line1>,<line2>! json_xs -f json -t json-pretty
-
 function! FormatJson()
   set ft=json
   exe '%!python -m json.tool'
@@ -338,7 +315,6 @@ endfunction
 " }}}
 
 " Git {{{
-" Fugitive
 nnoremap <leader>gs :Gstatus<CR><C-w>10+
 noremap <leader>gc :Gcommit -v<CR><C-w>15+
 autocmd BufRead COMMIT_EDITMSG setlocal spell! nocursorline colorcolumn=72
@@ -387,16 +363,13 @@ endfunction
 nnoremap <Leader>x :call TubeThis(line('.'))<CR>
 nnoremap <Leader>X :call TubeThis()<CR>
 nnoremap <Leader>§ :TubeLastCmd<CR>
+nmap <leader><space> :Tube<space>
 " }}}
 
 " New stuff {{{
 command! Es :vsplit ~/Dropbox/scratch.txt
-nmap <leader><space> :Tube<space>
-
 " noremap   <Up>     <NOP>
 " noremap   <Down>   <NOP>
 " noremap   <Left>   <NOP>
 " noremap   <Right>  <NOP>
 "}}
-
-" vim: foldmethod=marker
