@@ -72,6 +72,7 @@ Bundle 'mattn/emmet-vim'
 " iterm2 support
 Bundle 'sjl/vitality.vim'
 " Bundle 'altercation/vim-colors-solarized'
+Bundle 'junegunn/seoul256.vim'
 Bundle 'restore_view.vim'
 Bundle 'bling/vim-airline'
 let g:airline_theme='simple'
@@ -85,9 +86,9 @@ Bundle 'Keithbsmiley/investigate.vim'
 let g:investigate_use_dash=1
 let g:investigate_dash_for_ruby="rails"
 let g:investigate_dash_for_slim="rails"
-map <leader>d :call investigate#Investigate()<CR>
+let g:investigate_dash_for_haml="rails"
+map! <leader>i :call investigate#Investigate()<CR>
 Bundle 'mattn/gist-vim'
-Bundle 'junegunn/seoul256.vim'
 " }}}
 
 filetype plugin indent on
@@ -289,7 +290,7 @@ augroup END
 noremap <F1> :set nowrap! <CR>
 noremap <F2> :NERDTreeToggle<CR>
 set pastetoggle=<F3>
-nnoremap <f4> <Plug>Kwbd
+nmap <f4> <Plug>Kwbd
 " F5 Ctrlp refresh
 nnoremap <F6> :%s/\s*$//<CR>:noh<CR> " EOL whitespace removal
 nnoremap <f7> :let &background = ( &background == "dark"? "light" : "dark")<CR>
@@ -372,4 +373,21 @@ command! Es :vsplit ~/Dropbox/scratch.txt
 " noremap   <Down>   <NOP>
 " noremap   <Left>   <NOP>
 " noremap   <Right>  <NOP>
+map <c-s> <esc>:w<CR>
+imap <c-s> <esc>:w<CR>
+Bundle 'wakatime/vim-wakatime'
+" Highlight words to avoid in tech writing
+" =======================================
+" obviously, basically, simply, of course, clearly,
+" just, everyone knows, However, So, easy
+" http://css-tricks.com/words-avoid-educational-writing/
+highlight TechWordsToAvoid ctermbg=red ctermfg=white
+function! MatchTechWordsToAvoid()
+  match TechWordsToAvoid /\c\<\(obviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however\|so,\|easy\)\>/
+endfunction
+autocmd FileType markdown call MatchTechWordsToAvoid()
+autocmd BufWinEnter *.md call MatchTechWordsToAvoid()
+autocmd InsertEnter *.md call MatchTechWordsToAvoid()
+autocmd InsertLeave *.md call MatchTechWordsToAvoid()
+autocmd BufWinLeave *.md call clearmatches()
 "}}

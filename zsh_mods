@@ -1,3 +1,4 @@
+stty -ixon
 # if [ $(hostname) = "jesper.local" ]; then
   unalias g
   . ~/.mac_settings
