@@ -87,8 +87,12 @@ let g:investigate_use_dash=1
 let g:investigate_dash_for_ruby="rails"
 let g:investigate_dash_for_slim="rails"
 let g:investigate_dash_for_haml="rails"
-map! <leader>i :call investigate#Investigate()<CR>
+map <leader>o :call investigate#Investigate()<CR>
+Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
+let g:gist_open_browser_after_post = 1
+let g:gist_post_private = 1
+let g:gist_clip_command = 'pbcopy'
 " }}}
 
 filetype plugin indent on
