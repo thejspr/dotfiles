@@ -36,6 +36,7 @@ export RUBY_GC_MALLOC_LIMIT=1000000000
 eval "$($HOME/.ht/bin/ht init -)"
 export DISABLE_GROWL=YES
 export INTEGRITY_HOST=localhost
+export APP_DOMAIN=localhost
 # export SPLIT_CSS_FOR_IE=true
 
 # JAVA
