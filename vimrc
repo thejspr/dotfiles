@@ -108,7 +108,6 @@ set notimeout
 set noswapfile
 set undofile
 set undodir=~/.tmp,/tmp
-" set formatoptions-=or " do not continue comments on newlines
 set clipboard=unnamed
 set mouse=a
 set foldnestmax=10
@@ -121,7 +120,7 @@ set background=dark
 " colorscheme solarized
 colorscheme seoul256
 
-set guioptions-=L
+" set guioptions-=L
 set guifont=Menlo\ Regular:h14
 
 syntax on
@@ -155,7 +154,7 @@ au VimResized * wincmd =
 set tabstop=2
 set shiftwidth=2
 set expandtab
-set nowrap
+" set nowrap
 set list listchars=trail:·
 "}}}
 

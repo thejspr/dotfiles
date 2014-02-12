@@ -7,7 +7,7 @@ ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
 # Ruby
 brew install rbenv
 eval "$(rbenv init -)"
-rbenv install 1.9.3-p392
+rbenv install 2.1.0-p0
 gem update --system
 gem install bundler
 
@@ -20,10 +20,6 @@ fi
 cd dotfiles
 git pull origin master
 rake links
-
-# Install brews and gems
-rake brews
-rake gems
 
 #Prezto
 zsh
