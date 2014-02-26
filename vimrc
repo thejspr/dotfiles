@@ -154,7 +154,7 @@ au VimResized * wincmd =
 set tabstop=2
 set shiftwidth=2
 set expandtab
-" set nowrap
+set nowrap
 set list listchars=trail:·
 "}}}
 
@@ -168,8 +168,11 @@ vnoremap // :TComment<CR>
 " Auto format
 noremap === mmgg=G`m^zz
 " Buffer management
-noremap <tab> :bn<CR>
-noremap <S-tab> :bp<CR>
+" noremap <tab> :bn<CR>
+" noremap <S-tab> :bp<CR>
+" Tab management
+noremap <tab> gt
+noremap <S-tab> gT
 "}}}
 
 " Tab key {{{
@@ -379,18 +382,4 @@ command! Es :vsplit ~/Dropbox/scratch.txt
 map <c-s> <esc>:w<CR>
 imap <c-s> <esc>:w<CR>
 Bundle 'wakatime/vim-wakatime'
-" Highlight words to avoid in tech writing
-" =======================================
-" obviously, basically, simply, of course, clearly,
-" just, everyone knows, However, So, easy
-" http://css-tricks.com/words-avoid-educational-writing/
-highlight TechWordsToAvoid ctermbg=red ctermfg=white
-function! MatchTechWordsToAvoid()
-  match TechWordsToAvoid /\c\<\(obviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however\|so,\|easy\)\>/
-endfunction
-autocmd FileType markdown call MatchTechWordsToAvoid()
-autocmd BufWinEnter *.md call MatchTechWordsToAvoid()
-autocmd InsertEnter *.md call MatchTechWordsToAvoid()
-autocmd InsertLeave *.md call MatchTechWordsToAvoid()
-autocmd BufWinLeave *.md call clearmatches()
 "}}
