@@ -41,3 +41,7 @@ export APP_DOMAIN=localhost
 
 # JAVA
 export JAVA_HOME="$(/usr/libexec/java_home)"
+
+#libsass
+export SASS_LIBSASS_PATH=~/Code/HouseTrip/libsass
+export PATH=$PATH:/Users/jesper/Code/HouseTrip/sassc/bin
