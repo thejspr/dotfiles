@@ -10,6 +10,9 @@ latest.dump
 Vagrantfile
 tags
 gems.tags
+.gemtags
 tmp/tags
 .spork
 .vagrant
+
+is-it-green

@@ -41,9 +41,12 @@
   r       = remote
   rc      = !git add -A && git rebase --continue
   wip     = !git add --all && git commit -m 'wip'
+  res     = !git reset head~1
 
   int     = !git checkout $INT
   stg     = !git checkout $STG
+
+  cleanup = !git remote prune origin && git prune && git gc &&  git branch --merged
 [apply]
   whitespace = nowarn
 [branch]
