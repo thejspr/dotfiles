@@ -1,4 +1,5 @@
 # new
+alias ff='find . -iname'
 alias geeknote='python ~/Code/libs/geeknote/geeknote.py'
 alias worklog='geeknote edit worklog'
 dash(){
