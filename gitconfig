@@ -38,6 +38,7 @@
                 --date=relative -14
   ms      = checkout master
   mt      = mergetool
+  mm      = !git fetch && git merge origin/master
   r       = remote
   rc      = !git add -A && git rebase --continue
   wip     = !git add --all && git commit -m 'wip'
