@@ -31,7 +31,7 @@
   dc      = diff --cached
   dcs     = diff --cached --stat
   ds      = diff --stat
-  edit    = !git status -sb | tail +2 | grep -v '^ D' | awk '{print $2}' | xargs -o mvim -v
+  edit    = !git status -sb | tail +2 | grep -v '^ D' | awk '{print $2}' | xargs -o mvim -v -p
   l       = log --graph \
                 --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(black)<%an>%Creset' \
                 --abbrev-commit \
