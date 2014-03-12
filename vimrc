@@ -82,17 +82,12 @@ let g:airline_powerline_fonts=0
 
 " new stuff {{{
 Bundle "sk1418/Join"
-Bundle 'Keithbsmiley/investigate.vim'
-let g:investigate_use_dash=1
-let g:investigate_dash_for_ruby="rails"
-let g:investigate_dash_for_slim="rails"
-let g:investigate_dash_for_haml="rails"
-map <leader>q :call investigate#Investigate()<CR>
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 let g:gist_open_browser_after_post = 1
 let g:gist_post_private = 1
 let g:gist_clip_command = 'pbcopy'
+Bundle 'nelstrom/vim-qargs'
 " }}}
 
 filetype plugin indent on
@@ -224,7 +219,7 @@ set smartcase
 set gdefault
 set showmatch
 
-nnoremap <leader><leader> :nohlsearch<cr>
+nnoremap <C-l> :noh<cr>
 nnoremap <space> /
 noremap <leader>f :%s///<left><left>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
