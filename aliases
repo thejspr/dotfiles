@@ -11,12 +11,10 @@ alias r2c='./script/console --irb=pry'
 alias ts='be thin start'
 alias bsc='be spork cucumber'
 alias resass='be compass clean && be compass compile'
-alias tlog='ssh -t staging2 "tail -f /var/www/housetrip/current/log/staging2.hosts.log"'
 nb(){
   git co -b host-nps/$@
 }
-export INT='host-nps/integration/project-pepe'
-export STG='staging2.hosts'
+export STG='staging6'
 
 #servers
 alias ec2='mosh --ssh "ssh -i ~/.ssh/jsprkey.pem -p 22" ec2'
@@ -138,8 +136,8 @@ alias ea='e ~/Code/dotfiles/aliases'
 alias eg='e ~/Code/dotfiles/gitconfig'
 alias ez='e ~/Code/dotfiles/zsh_mods'
 alias ezz='e ~/.zpreztorc'
+alias es='e ~/.ssh/config'
 alias sr='exec zsh'
 
 # new
 alias cm='chromarks'
-alias wiki='cd ~/Dropbox/wiki && soywiki'
