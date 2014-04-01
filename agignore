@@ -1,3 +1,7 @@
 tags
 po/
 payment/
+app/assets/images
+public/images
+public/system
+tmp/
