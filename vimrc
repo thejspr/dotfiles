@@ -71,8 +71,8 @@ Bundle 'mattn/emmet-vim'
 " UI {{{
 " iterm2 support
 Bundle 'sjl/vitality.vim'
-" Bundle 'altercation/vim-colors-solarized'
-Bundle 'junegunn/seoul256.vim'
+Bundle 'altercation/vim-colors-solarized'
+" Bundle 'junegunn/seoul256.vim'
 Bundle 'restore_view.vim'
 Bundle 'bling/vim-airline'
 let g:airline_theme='simple'
@@ -107,13 +107,17 @@ set clipboard=unnamed
 set mouse=a
 set foldnestmax=10
 set foldenable
+" use the old regex engine for better performance
+" http://stackoverflow.com/questions/16902317/vim-slow-with-ruby-syntax-highlighting
+" let g:ruby_path="/Users/jesper/.rbenv/shims/ruby"
+set re=1
 " }}}
 
 " UI {{{
 set background=dark
 " set background=light
-" colorscheme solarized
-colorscheme seoul256
+colorscheme solarized
+" colorscheme seoul256
 
 " set guioptions-=L
 set guifont=Menlo\ Regular:h14
@@ -275,7 +279,7 @@ set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**,spec/dummy/**,di
 " }}}
 
 " Edit .vimrc {{{
-command! Ev :e ~/.vimrc
+command! Ev :tabe ~/.vimrc
 " Reload vimrc when saved
 augroup vimrcs
   au!
@@ -301,12 +305,14 @@ nnoremap <f7> :let &background = ( &background == "dark"? "light" : "dark")<CR>
 au BufRead,BufNewFile {Thorfile,Vagrantfile,Procfile,pryrc,config.ru} set ft=ruby
 
 " Replace Ruby 1.8 style hashes with shorter Ruby 1.9 style
-noremap <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/<CR>
+noremap <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/c<CR>
+" noremap <leader>h :%s/:\(\w\+\)\(\s*=>\s*\)/\1: /gc<CR>
 
 " Rails.vim
-noremap <Leader>m :Rmodel<space>
-noremap <Leader>c :Rcontroller<space>
-noremap <Leader>v :Rview<space>
+noremap <Leader>m :RTmodel<space>
+noremap <Leader>c :RTcontroller<space>
+noremap <Leader>v :RTview<space>
+set path+=.
 " }}}
 
 " JavaScript & JSON {{{
@@ -377,4 +383,6 @@ command! Es :vsplit ~/Dropbox/scratch.txt
 map <c-s> <esc>:w<CR>
 imap <c-s> <esc>:w<CR>
 Bundle 'wakatime/vim-wakatime'
+map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>"
+Bundle 'tpope/vim-dispatch'
 "}}

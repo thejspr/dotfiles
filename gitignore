@@ -16,3 +16,4 @@ tmp/tags
 .vagrant
 
 is-it-green
+vendor/plugins/rails-dev-boost/
