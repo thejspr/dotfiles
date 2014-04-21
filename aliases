@@ -1,10 +1,9 @@
 # new
 alias ff='find . -iname'
-alias geeknote='python ~/Code/libs/geeknote/geeknote.py'
-alias worklog='geeknote edit worklog'
 dash(){
   open "dash://$@"
 }
+alias mx='tmuxinator'
 
 # work
 alias r2c='./script/console --irb=pry'
@@ -127,7 +126,6 @@ alias git-new-workdir='~/Code/libs/git/contrib/workdir/git-new-workdir'
 
 #msc
 myip() { elinks -dump http://checkip.dyndns.org:8245/ }
-alias mx='chmod +x'
 alias cd..='cd ..'
 alias ll='ls -la'
 

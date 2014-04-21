@@ -49,7 +49,7 @@ Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-bundler'
 Bundle 'sickill/vim-pasta'
-let g:pasta_disabled_filetypes = ['sass', 'coffee', 'yaml']
+" let g:pasta_disabled_filetypes = ['sass', 'coffee', 'yaml']
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 "}}}
@@ -88,6 +88,7 @@ let g:gist_open_browser_after_post = 1
 let g:gist_post_private = 1
 let g:gist_clip_command = 'pbcopy'
 Bundle 'nelstrom/vim-qargs'
+Bundle 'tpope/vim-vinegar'
 " }}}
 
 filetype plugin indent on
@@ -103,7 +104,7 @@ set notimeout
 set noswapfile
 set undofile
 set undodir=~/.tmp,/tmp
-set clipboard=unnamed
+" set clipboard=unnamed
 set mouse=a
 set foldnestmax=10
 set foldenable
