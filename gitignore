@@ -14,6 +14,7 @@ gems.tags
 tmp/tags
 .spork
 .vagrant
+.bundle/
 
 is-it-green
 vendor/plugins/rails-dev-boost/

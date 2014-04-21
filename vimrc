@@ -126,7 +126,7 @@ syntax on
 set nocursorcolumn
 set nocursorline
 set colorcolumn=80
-set synmaxcol=140
+" set synmaxcol=140
 set title
 set encoding=utf-8
 set ffs=unix,mac,dos
@@ -305,7 +305,7 @@ nnoremap <f7> :let &background = ( &background == "dark"? "light" : "dark")<CR>
 au BufRead,BufNewFile {Thorfile,Vagrantfile,Procfile,pryrc,config.ru} set ft=ruby
 
 " Replace Ruby 1.8 style hashes with shorter Ruby 1.9 style
-noremap <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/c<CR>
+noremap <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
 " noremap <leader>h :%s/:\(\w\+\)\(\s*=>\s*\)/\1: /gc<CR>
 
 " Rails.vim
@@ -375,7 +375,7 @@ nmap <leader><space> :Tube<space>
 " }}}
 
 " New stuff {{{
-command! Es :vsplit ~/Dropbox/scratch.txt
+command! Es :vsplit ~/Dropbox\ (Personal)/scratch.txt
 " noremap   <Up>     <NOP>
 " noremap   <Down>   <NOP>
 " noremap   <Left>   <NOP>
@@ -384,5 +384,5 @@ map <c-s> <esc>:w<CR>
 imap <c-s> <esc>:w<CR>
 Bundle 'wakatime/vim-wakatime'
 map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>"
-Bundle 'tpope/vim-dispatch'
+" Bundle 'tpope/vim-dispatch'
 "}}
