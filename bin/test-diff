@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+# vim: ft=ruby
+
+class String
+  def red;            "\033[31m#{self}\033[0m" end
+  def green;          "\033[32m#{self}\033[0m" end
+  def blue;           "\033[34m#{self}\033[0m" end
+  def magenta;        "\033[35m#{self}\033[0m" end
+  def cyan;           "\033[36m#{self}\033[0m" end
+  def bold;           "\033[1m#{self}\033[22m" end
+end
+
+class TestDiff < Struct.new(:cmd, :filter)
+  def git_cmd
+    "git diff master --name-only | grep #{filter} | awk '{print $1}' | xargs"
+  end
+
+  def command
+    "bundle exec #{cmd} $(#{git_cmd})"
+  end
+
+  def run
+    puts "Running: #{cmd.bold}"
+    system(git_cmd + "\n")
+    system(command)
+  end
+end
+
+TestDiff.new('spec', 'spec').run && TestDiff.new('cucumber', 'feature').run
+
+if $? && $?.exitstatus != 0
+  puts $?
+end
