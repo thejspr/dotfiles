@@ -104,7 +104,7 @@ set notimeout
 set noswapfile
 set undofile
 set undodir=~/.tmp,/tmp
-" set clipboard=unnamed
+set clipboard=unnamed
 set mouse=a
 set foldnestmax=10
 set foldenable
