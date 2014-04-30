@@ -17,7 +17,6 @@ command! BC :BundleClean
 Bundle 'epmatsw/ag.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Raimondi/delimitMate'
-Bundle 'gcmt/tube.vim'
 Bundle 'tpope/vim-repeat'
 " }}}
 
@@ -343,50 +342,7 @@ noremap <leader>gc :Gcommit -v<CR><C-w>15+
 autocmd BufRead COMMIT_EDITMSG setlocal spell! nocursorline colorcolumn=72
 " }}}
 
-" Tube.vim {{{
-let g:tube_terminal = 'iterm'
-let g:tube_always_clear_screen = 0
-
-function! TubeThis(...) abort
-  let l:cmd = []
-  let l:path = expand('%')
-
-  if l:path =~# '_spec'
-    if filereadable('.spring')
-      let l:executable = 'bin/rspec'
-    else
-      if filereadable('script/server')
-        let l:executable = 'be spec'
-      else
-        let l:executable = 'be rspec'
-      endif
-    endif
-  else
-    let l:executable = &ft
-    if filereadable('Gemfile')
-      silent call add(l:cmd, 'be')
-    endif
-  endif
-
-  if exists('a:1')
-    silent call extend(l:cmd, [l:executable, l:path . ':' . a:1])
-  else
-    silent call extend(l:cmd, [l:executable, l:path])
-  end
-
-  if filereadable('.spork')
-    silent call add(l:cmd, '--drb')
-  endif
-
-  let l:cmd_string = join(l:cmd, ' ')
-
-  exe 'Tube ' . l:cmd_string
-endfunction
-
-" nnoremap <Leader>x :call TubeThis(line('.'))<CR>
-" nnoremap <Leader>X :call TubeThis()<CR>
-" nnoremap <Leader>§ :TubeLastCmd<CR>
-" nmap <leader><space> :Tube<space>
+" Tmux and testing {{{
 nnoremap <Leader>x :VroomRunNearestTest<CR>
 nnoremap <Leader>X :VroomRunTest<CR>
 nnoremap <Leader>§ :VimuxRunLastCommand<CR>
@@ -399,5 +355,4 @@ command! Es :vsplit ~/Dropbox\ (Personal)/scratch.txt
 " noremap   <Down>   <NOP>
 " noremap   <Left>   <NOP>
 " noremap   <Right>  <NOP>
-map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>"
 "}}
