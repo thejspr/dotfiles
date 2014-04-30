@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-# vim: ft=ruby
 
 class String
   def red;            "\033[31m#{self}\033[0m" end
@@ -20,7 +19,7 @@ class TestDiff < Struct.new(:cmd, :filter)
   end
 
   def run
-    puts "Running: #{cmd.bold}"
+    puts "Running: #{cmd.blue}"
     system(git_cmd + "\n")
     system(command)
   end

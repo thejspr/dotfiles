@@ -80,6 +80,15 @@ let g:airline_enable_bufferline=0
 let g:airline_powerline_fonts=0
 " }}}
 
+" tmux and testing {{{
+Bundle 'benmills/vimux'
+Bundle 'skalnik/vim-vroom'
+let g:vroom_use_vimux = 1
+let g:vroom_cucumber_path = 'cucumber'
+let g:vroom_spec_command = 'spec'
+let g:vroom_rspec_version = '1.x'
+" }}}
+
 " new stuff {{{
 Bundle "sk1418/Join"
 Bundle 'mattn/webapi-vim'
@@ -88,6 +97,7 @@ let g:gist_open_browser_after_post = 1
 let g:gist_post_private = 1
 let g:gist_clip_command = 'pbcopy'
 Bundle 'nelstrom/vim-qargs'
+" use - to open a nerdtree
 Bundle 'tpope/vim-vinegar'
 " }}}
 
@@ -104,7 +114,9 @@ set notimeout
 set noswapfile
 set undofile
 set undodir=~/.tmp,/tmp
-set clipboard=unnamed
+if $TMUX == ''
+  set clipboard+=unnamed
+endif
 set mouse=a
 set foldnestmax=10
 set foldenable
@@ -215,6 +227,8 @@ cnoreabbrev W w
 cnoreabbrev Wa wa
 cnoreabbrev Wq wq
 cnoreabbrev Wqa wqa
+map <c-s> <esc>:w<CR>
+imap <c-s> <esc>:w<CR>
 " }}}
 
 " Searching {{{
@@ -369,10 +383,14 @@ function! TubeThis(...) abort
   exe 'Tube ' . l:cmd_string
 endfunction
 
-nnoremap <Leader>x :call TubeThis(line('.'))<CR>
-nnoremap <Leader>X :call TubeThis()<CR>
-nnoremap <Leader>§ :TubeLastCmd<CR>
-nmap <leader><space> :Tube<space>
+" nnoremap <Leader>x :call TubeThis(line('.'))<CR>
+" nnoremap <Leader>X :call TubeThis()<CR>
+" nnoremap <Leader>§ :TubeLastCmd<CR>
+" nmap <leader><space> :Tube<space>
+nnoremap <Leader>x :VroomRunNearestTest<CR>
+nnoremap <Leader>X :VroomRunTest<CR>
+nnoremap <Leader>§ :VimuxRunLastCommand<CR>
+" nmap <leader><space> call VimuxRunCommand()<space>
 " }}}
 
 " New stuff {{{
@@ -381,9 +399,5 @@ command! Es :vsplit ~/Dropbox\ (Personal)/scratch.txt
 " noremap   <Down>   <NOP>
 " noremap   <Left>   <NOP>
 " noremap   <Right>  <NOP>
-map <c-s> <esc>:w<CR>
-imap <c-s> <esc>:w<CR>
-Bundle 'wakatime/vim-wakatime'
 map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>"
-" Bundle 'tpope/vim-dispatch'
 "}}

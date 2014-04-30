@@ -1,9 +1,8 @@
 # new
 alias ff='find . -iname'
-dash(){
-  open "dash://$@"
-}
+dash(){ open "dash://$@" }
 alias mx='tmuxinator'
+emx(){ vim ~/.tmuxinator/$@.yml }
 
 # work
 alias r2c='./script/console --irb=pry'
@@ -133,6 +132,7 @@ alias ll='ls -la'
 alias ea='e ~/Code/dotfiles/aliases'
 alias eg='e ~/Code/dotfiles/gitconfig'
 alias ez='e ~/Code/dotfiles/zsh_mods'
+alias et='e ~/Code/dotfiles/tmux.conf'
 alias ezz='e ~/.zpreztorc'
 alias es='e ~/.ssh/config'
 alias sr='exec zsh'
