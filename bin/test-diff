@@ -9,7 +9,15 @@ class String
   def bold;           "\033[1m#{self}\033[22m" end
 end
 
-class TestDiff < Struct.new(:cmd, :filter)
+class TestDiff
+
+  attr_reader :cmd, :filter
+
+  def initialize(cmd, filter)
+    @cmd = filter
+    @filter = filter
+  end
+
   def git_cmd
     "git diff master --name-only | grep #{filter} | awk '{print $1}' | xargs"
   end

@@ -28,10 +28,13 @@ Bundle 'terryma/vim-multiple-cursors'
 " Text {{{
 Bundle 'tpope/vim-surround'
 Bundle 'tomtom/tcomment_vim'
-Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
 Bundle 'chip/vim-fat-finger'
 Bundle 'SirVer/ultisnips'
+let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsJumpForwardTrigger="<c-f>"
+let g:UltiSnipsJumpBackwardTrigger="<s-c-f>"
+let g:UltiSnipsEditSplit="vertical"
 " }}}
 
 " File management & Git {{{
@@ -40,6 +43,10 @@ Bundle 'tpope/vim-eunuch'
 Bundle 'kwbdi.vim'
 Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-fugitive'
+Bundle 'mattn/gist-vim'
+let g:gist_open_browser_after_post = 1
+let g:gist_post_private = 1
+let g:gist_clip_command = 'pbcopy'
 " }}}
 
 " Ruby {{{
@@ -64,7 +71,8 @@ Bundle 'tpope/vim-haml'
 Bundle 'slim-template/vim-slim'
 Bundle 'tpope/vim-ragtag'
 Bundle 'mattn/emmet-vim'
-" let g:user_emmet_leader_key = '<C-q>'
+" let user_emmet_expandabbr_key = '<c-d>'
+let user_emmet_leader_key = '<C-d>'
 " }}}
 
 " UI {{{
@@ -91,13 +99,9 @@ let g:vroom_rspec_version = '1.x'
 " new stuff {{{
 Bundle "sk1418/Join"
 Bundle 'mattn/webapi-vim'
-Bundle 'mattn/gist-vim'
-let g:gist_open_browser_after_post = 1
-let g:gist_post_private = 1
-let g:gist_clip_command = 'pbcopy'
-Bundle 'nelstrom/vim-qargs'
 " use - to open a nerdtree
 Bundle 'tpope/vim-vinegar'
+Bundle 'Valloric/YouCompleteMe'
 " }}}
 
 filetype plugin indent on
@@ -150,7 +154,7 @@ set modeline
 set showcmd
 set hidden
 set wildmenu
-set wildmode=list:longest,list:full
+" set wildmode=list:longest,list:full
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
@@ -187,20 +191,6 @@ noremap <S-tab> gT
 "}}}
 
 " Tab key {{{
-let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
-let g:SuperTabLongestHighlight = 1
-
-" Indent if we're at the beginning of a line. Else, do completion.
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
-endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-inoremap <s-tab> <c-n>
 " }}}
 
 " Msc annoyances {{{
@@ -343,10 +333,10 @@ autocmd BufRead COMMIT_EDITMSG setlocal spell! nocursorline colorcolumn=72
 " }}}
 
 " Tmux and testing {{{
-nnoremap <Leader>x :VroomRunNearestTest<CR>
-nnoremap <Leader>X :VroomRunTest<CR>
-nnoremap <Leader>§ :VimuxRunLastCommand<CR>
-" nmap <leader><space> call VimuxRunCommand()<space>
+nnoremap <Leader>x :VroomRunNearestTest<cr>
+nnoremap <Leader>X :VroomRunTest<cr>
+nnoremap <Leader>§ :VimuxRunLastCommand<cr>
+nmap <leader><space> :VimuxPromptCommand<cr>
 " }}}
 
 " New stuff {{{

@@ -1,6 +1,6 @@
 # RSpec
 snippet desc "RSpec describe block" b
-describe '$1' do
+describe $1 do
   $2
 end
 endsnippet
@@ -9,4 +9,8 @@ snippet it "RSpec it block" b
 it '$1' do
   $2
 end
+endsnippet
+
+snippet let "RSpec let block" b
+let(:$1) { $2 }
 endsnippet
