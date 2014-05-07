@@ -32,8 +32,8 @@ Bundle 'godlygeek/tabular'
 Bundle 'chip/vim-fat-finger'
 Bundle 'SirVer/ultisnips'
 let g:UltiSnipsExpandTrigger="<c-e>"
-let g:UltiSnipsJumpForwardTrigger="<c-f>"
-let g:UltiSnipsJumpBackwardTrigger="<s-c-f>"
+let g:UltiSnipsJumpForwardTrigger="<c-e>"
+let g:UltiSnipsJumpBackwardTrigger="<s-c-e>"
 let g:UltiSnipsEditSplit="vertical"
 " }}}
 
