@@ -42,7 +42,7 @@ bes () {
 
 #rails
 alias tt='tail -f log/test.log | grep -v "DELETE FROM" -v | grep -v "TRUNCATE"'
-alias migrate='br db:migrate db:test:clone_structure'
+alias migrate='be rake db:migrate db:test:clone_structure'
 alias ber='be rails'
 alias rsp='ber server puma'
 
@@ -70,11 +70,9 @@ rs () {
   fi
 }
 
-
 #rake
-alias br='be rake'
-alias rt='br -T'
-alias rr='br routes'
+alias rt='be rake -T'
+alias rr='be rake routes'
 
 #heroku
 alias h="heroku"
