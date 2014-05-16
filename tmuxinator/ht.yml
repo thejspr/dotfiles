@@ -19,12 +19,7 @@ pre_window: rbenv shell 1.9.3-p545
 # tmux_command: byobu
 
 windows:
-  - editor:
-    layout: main-horizontal
-    panes:
-      - echo testing...
-      - vim
-  - git: gb && gl
+  - editor: g
   - console: bundle exec script/console --irb=pry
-  - server: bundle exec unicorn_rails -p3000
+  - server: bundle exec unicorn_rails -c ./config/unicorn/development.rb
   - logs: tail -f log/development.log

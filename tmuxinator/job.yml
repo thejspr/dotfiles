@@ -1,0 +1,14 @@
+name: studiz
+root: ~/Code/jobsite
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+pre_window: rbenv shell 2.1.2
+
+windows:
+  - editor:
+      layout: 9701,272x72,0,0[272x55,0,0,56,272x16,0,56,60]
+      panes:
+        - g
+        - bundle exec guard
+  - console: bundle exec rails c
+  - server: bundle exec unicorn -c ./config/unicorn.rb

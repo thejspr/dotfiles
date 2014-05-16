@@ -5,10 +5,10 @@ root: ~/Code/measurehub
 # socket_name: foo
 
 # Runs before everything. Use it to start daemons etc.
-# pre: sudo /etc/rc.d/mysqld start
+pre: cd ~/Code/measurehub
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
-pre_window: rbenv shell 2.1.1
+pre_window: rbenv shell 2.1.2
 
 # Pass command line options to tmux. Useful for specifying a different tmux.conf.
 # tmux_options: -f ~/.tmux.mac.conf
@@ -20,7 +20,7 @@ windows:
   - editor:
       layout: 9701,272x72,0,0[272x55,0,0,56,272x16,0,56,60]
       panes:
-        - vim
+        - g
         - bundle exec guard
   - console: bundle exec rails c
-  - server: bundle exec rails s -p 5000
+  - server: bundle exec unicorn -p 5000
