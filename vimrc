@@ -92,8 +92,13 @@ Bundle 'benmills/vimux'
 Bundle 'skalnik/vim-vroom'
 let g:vroom_use_vimux = 1
 let g:vroom_cucumber_path = 'cucumber'
-let g:vroom_spec_command = 'spec'
-let g:vroom_rspec_version = '1.x'
+if filereadable("bin/rspec")
+  let g:vroom_spec_command = 'rspec'
+  let g:vroom_rspec_version = '3.x'
+else
+  let g:vroom_spec_command = 'spec'
+  let g:vroom_rspec_version = '1.x'
+endif
 " }}}
 
 " new stuff {{{
@@ -117,9 +122,7 @@ set notimeout
 set noswapfile
 set undofile
 set undodir=~/.tmp,/tmp
-if $TMUX == ''
-  set clipboard+=unnamed
-endif
+set clipboard=unnamed
 set mouse=a
 set foldnestmax=10
 set foldenable
