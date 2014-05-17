@@ -18,6 +18,7 @@ Bundle 'epmatsw/ag.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'tpope/vim-repeat'
+Bundle 'Valloric/YouCompleteMe'
 " }}}
 
 " Code navigation {{{
@@ -42,6 +43,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-fugitive'
+Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 let g:gist_open_browser_after_post = 1
 let g:gist_post_private = 1
@@ -80,9 +82,12 @@ Bundle 'altercation/vim-colors-solarized'
 " Bundle 'junegunn/seoul256.vim'
 Bundle 'restore_view.vim'
 Bundle 'bling/vim-airline'
-let g:airline_theme='simple'
+let g:airline_theme='powerlineish'
 let g:airline_enable_bufferline=0
-let g:airline_powerline_fonts=0
+" let g:airline_powerline_fonts=0
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline_section_z=''
 " }}}
 
 " tmux and testing {{{
@@ -100,11 +105,11 @@ endif
 " }}}
 
 " new stuff {{{
-Bundle "sk1418/Join"
-Bundle 'mattn/webapi-vim'
 " use - to open a nerdtree
 Bundle 'tpope/vim-vinegar'
-Bundle 'Valloric/YouCompleteMe'
+Bundle 'terryma/vim-expand-region'
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 " }}}
 
 filetype plugin indent on
@@ -198,6 +203,7 @@ noremap <S-tab> gT
 nnoremap Q <nop>
 nnoremap K <nop>
 nnoremap J mzJ`z " keep cursor in place when joining lines
+map q: :q
 " reselect visual lock after indent/outdent
 vnoremap < <gv
 vnoremap > >gv
