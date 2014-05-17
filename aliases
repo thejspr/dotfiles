@@ -24,7 +24,7 @@ alias tm='tmux attach || tmux new'
 
 #ruby
 alias rb='rbenv'
-alias rv='ruby -v'
+alias rv='rbenv version'
 alias wr='ps aux | grep ruby'
 alias kf='kill -9 %1'
 alias kk='kill -9'
