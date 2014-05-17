@@ -40,7 +40,6 @@ let g:UltiSnipsEditSplit="vertical"
 " File management & Git {{{
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-eunuch'
-Bundle 'kwbdi.vim'
 Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-fugitive'
 Bundle 'mattn/gist-vim'
@@ -53,7 +52,6 @@ let g:gist_clip_command = 'pbcopy'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-bundler'
 Bundle 'sickill/vim-pasta'
 " let g:pasta_disabled_filetypes = ['sass', 'coffee', 'yaml']
 Bundle 'kana/vim-textobj-user'
@@ -302,7 +300,7 @@ augroup END
 noremap <F1> :set nowrap! <CR>
 noremap <F2> :NERDTreeToggle<CR>
 set pastetoggle=<F3>
-nmap <f4> <Plug>Kwbd
+nmap <f4> :b#<bar>bd#<CR>
 " F5 Ctrlp refresh
 nnoremap <F6> :%s/\s*$//<CR>:noh<CR> " EOL whitespace removal
 nnoremap <f7> :let &background = ( &background == "dark"? "light" : "dark")<CR>
