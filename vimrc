@@ -110,6 +110,7 @@ Bundle 'tpope/vim-vinegar'
 Bundle 'terryma/vim-expand-region'
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
+Bundle 'rizzatti/dash.vim'
 " }}}
 
 filetype plugin indent on

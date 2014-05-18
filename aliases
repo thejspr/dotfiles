@@ -3,7 +3,6 @@ alias ff='find . -iname'
 dash(){ open "dash://$@" }
 alias mx='tmuxinator'
 emx(){ vim ~/.tmuxinator/$@.yml }
-alias t='tmux'
 
 # work
 alias r2c='./script/console --irb=pry'
