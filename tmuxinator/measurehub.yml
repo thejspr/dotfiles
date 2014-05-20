@@ -1,4 +1,4 @@
-name: studiz
+name: measurehub
 root: ~/Code/measurehub
 
 # Optional tmux socket
@@ -22,5 +22,8 @@ windows:
       panes:
         - g
         - bundle exec guard
-  - console: bundle exec rails c
-  - server: bundle exec unicorn -p 5000
+  - app:
+      layout: even-vertical
+      panes:
+        - bundle exec rails c
+        - bundle exec unicorn -p 5000

@@ -321,9 +321,9 @@ noremap <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
 " noremap <leader>h :%s/:\(\w\+\)\(\s*=>\s*\)/\1: /gc<CR>
 
 " Rails.vim
-noremap <Leader>m :RTmodel<space>
-noremap <Leader>c :RTcontroller<space>
-noremap <Leader>v :RTview<space>
+noremap <Leader>m :Emodel<space>
+noremap <Leader>c :Econtroller<space>
+noremap <Leader>v :Eview<space>
 set path+=.
 " }}}
 
