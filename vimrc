@@ -32,6 +32,7 @@ Bundle 'tomtom/tcomment_vim'
 Bundle 'godlygeek/tabular'
 Bundle 'chip/vim-fat-finger'
 Bundle 'SirVer/ultisnips'
+let g:UltiSnipsSnippetsDir='~/Code/dotfiles/UltiSnips'
 let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsJumpForwardTrigger="<c-e>"
 let g:UltiSnipsJumpBackwardTrigger="<s-c-e>"
@@ -190,11 +191,11 @@ vnoremap // :TComment<CR>
 " Auto format
 noremap === mmgg=G`m^zz
 " Buffer management
-" noremap <tab> :bn<CR>
-" noremap <S-tab> :bp<CR>
+noremap <tab> :bn<CR>
+noremap <S-tab> :bp<CR>
 " Tab management
-noremap <tab> gt
-noremap <S-tab> gT
+" noremap <a-right> gt
+" noremap <a-left> gT
 "}}}
 
 " Tab key {{{
@@ -307,7 +308,8 @@ augroup END
 noremap <F1> :set nowrap! <CR>
 noremap <F2> :NERDTreeToggle<CR>
 set pastetoggle=<F3>
-nmap <f4> :b#<bar>bd#<CR>
+" nmap <f4> :b#<bar>bd#<CR>
+nmap <f4> :bdelete<cr>
 " F5 Ctrlp refresh
 nnoremap <F6> :%s/\s*$//<CR>:noh<CR> " EOL whitespace removal
 nnoremap <f7> :let &background = ( &background == "dark"? "light" : "dark")<CR>
