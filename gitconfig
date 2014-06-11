@@ -46,7 +46,7 @@
   int     = !git checkout $INT
   stg     = !git checkout $STG
 
-  cleanup = !git remote prune origin && git prune && git gc &&  git branch --merged
+  cleanup = !git remote prune origin && git gc --prune=now --aggressive &&  git branch --merged
 [apply]
   whitespace = nowarn
 [branch]

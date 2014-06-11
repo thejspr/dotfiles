@@ -112,6 +112,7 @@ Bundle 'terryma/vim-expand-region'
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 Bundle 'rizzatti/dash.vim'
+Bundle 'AndrewRadev/splitjoin.vim'
 " }}}
 
 filetype plugin indent on
