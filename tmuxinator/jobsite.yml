@@ -1,4 +1,4 @@
-name: studiz
+name: jobsite
 root: ~/Code/jobsite
 
 pre: cd ~/Code/jobsite
