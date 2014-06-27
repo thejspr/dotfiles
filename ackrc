@@ -14,5 +14,6 @@
 --ignore-dir=tmp
 --ignore-dir=doc
 --ignore-dir=coverage
+--ignore-dir=app/assets/images/v4/glyphs
 
 --sort-files
