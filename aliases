@@ -3,6 +3,8 @@ alias ff='find . -iname'
 dash(){ open "dash://$@" }
 alias mx='tmuxinator'
 emx(){ vim ~/.tmuxinator/$@.yml }
+alias todo='z list && vim *.txt'
+alias ru='kill -s HUP `cat ~/Code/HouseTrip/web-app/tmp/pids/unicorn.pid`'
 
 # work
 alias r2c='./script/console --irb=pry'
