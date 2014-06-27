@@ -1,14 +1,10 @@
 stty -ixon
-# if [ $(hostname) = "jesper.local" ]; then
-  unalias g
-  . ~/.mac_settings
-# else
-  # . ~/.nix_settings
-# fi
+unalias g
+. ~/.mac_settings
 
 export RUBY_BUILD_CACHE_PATH=true
 eval "$(rbenv init - --no-rehash)"
-export PATH=./bin:~/bin:$PATH
+# export PATH=./bin:~/bin:$PATH
 
 # hub alias
 # DISABLED: clashes with git-whistles
@@ -39,10 +35,6 @@ export APP_DOMAIN=localhost
 
 # JAVA
 export JAVA_HOME="$(/usr/libexec/java_home)"
-
-#libsass
-export SASS_LIBSASS_PATH=~/Code/HouseTrip/libsass
-export PATH=$PATH:/Users/jesper/Code/HouseTrip/sassc/bin
 
 # docker
 export DOCKER_HOST=tcp://localhost:4243
