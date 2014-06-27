@@ -1,6 +1,4 @@
-# ~/.tmuxinator/ht.yml
-
-name: ht
+name: HouseTrip
 root: ~/Code/HouseTrip/web-app
 
 # Optional tmux socket
@@ -10,7 +8,7 @@ root: ~/Code/HouseTrip/web-app
 pre: cd ~/Code/HouseTrip/web-app
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
-pre_window: rbenv shell 1.9.3-p545
+pre_window: rbenv shell 2.1.2
 
 # Pass command line options to tmux. Useful for specifying a different tmux.conf.
 # tmux_options: -f ~/.tmux.mac.conf
@@ -20,6 +18,11 @@ pre_window: rbenv shell 1.9.3-p545
 
 windows:
   - editor: g
-  - console: bundle exec script/console --irb=pry
   - server: bundle exec unicorn_rails -c ./config/unicorn/development.rb
-  - logs: tail -f log/development.log
+  - console: bundle exec script/console --irb=pry
+  - todo: todo
+  - logs:
+      layout: even-horizontal
+      panes:
+        - sass: ./script/sass
+        - logs: tail -f log/development.log
