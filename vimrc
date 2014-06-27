@@ -32,7 +32,7 @@ Bundle 'tomtom/tcomment_vim'
 Bundle 'godlygeek/tabular'
 Bundle 'chip/vim-fat-finger'
 Bundle 'SirVer/ultisnips'
-let g:UltiSnipsSnippetsDir='~/Code/dotfiles/UltiSnips'
+let g:UltiSnipsSnippetsDir='/Users/jesper/Code/dotfiles/UltiSnips'
 let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsJumpForwardTrigger="<c-e>"
 let g:UltiSnipsJumpBackwardTrigger="<s-c-e>"
@@ -96,7 +96,7 @@ Bundle 'benmills/vimux'
 Bundle 'skalnik/vim-vroom'
 let g:vroom_use_vimux = 1
 let g:vroom_cucumber_path = 'cucumber'
-if filereadable("bin/rspec")
+if filereadable("bin/rails")
   let g:vroom_spec_command = 'rspec'
   let g:vroom_rspec_version = '3.x'
 else
@@ -113,6 +113,8 @@ vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 Bundle 'rizzatti/dash.vim'
 Bundle 'AndrewRadev/splitjoin.vim'
+Bundle 'nelstrom/vim-qargs'
+Bundle 'kwbdi.vim'
 " }}}
 
 filetype plugin indent on
@@ -266,7 +268,7 @@ let NERDTreeHijackNetrw=1
 
 " ctrlp
 let g:ctrlp_map = '<Leader>t'
-let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|mp3|)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py|_site|gh-pages|dist|bower_components|.tmp|images'
+let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|mp3|svg|)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py|_site|gh-pages|dist|bower_components|.tmp|images'
 let g:ctrlp_match_window_reversed = 1
 let g:ctrlp_match_window_bottom = 1
 let g:ctrlp_dotfiles = 0
@@ -287,7 +289,7 @@ endif
 let g:ackprg="ag -H --nogroup --column --nocolor -m 1000"
 nnoremap <leader>a :Ag! <cword><CR>
 
-set wildignore+=*/public/system/*,*/.git/*,*/node_modules/*,*/.DS_Store
+set wildignore+=*/public/system/*,*/.git/*,*/node_modules/*,*/.DS_Store,*.svg
 set wildignore+=*/tmp/*,tmp/**,**.png,**.jpg,**.jpeg
 set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**,spec/dummy/**,dist/**
 " }}}
@@ -309,7 +311,7 @@ augroup END
 noremap <F1> :set nowrap! <CR>
 noremap <F2> :NERDTreeToggle<CR>
 set pastetoggle=<F3>
-" nmap <f4> :b#<bar>bd#<CR>
+nmap <f4> <Plug>Kwbd
 nmap <f4> :bdelete<cr>
 " F5 Ctrlp refresh
 nnoremap <F6> :%s/\s*$//<CR>:noh<CR> " EOL whitespace removal
