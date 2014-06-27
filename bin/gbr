@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# quickly find a branch, using the team name as the first argument and autocomplete
+# to narrow it down further.
+
+# requires "selecta" (garybernhardt/selecta) installable via brew on MacOS
+
+set -e
+
+if [[ -z "$1" ]]; then
+  echo 'Please provide suffix as argument'
+  exit 0
+fi
+
+git checkout $(git branch | grep $1 | selecta)
