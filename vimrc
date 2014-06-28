@@ -1,88 +1,86 @@
 " vim: foldmethod=marker
-" Bundles {{{
+" Plugins {{{
 " Init {{{
-if !isdirectory(expand("~/.vim/bundle/vundle/.git"))
-  !git clone git://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-endif
+set nocompatible
 filetype off " must be off before Vundle has run
-set runtimepath+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
-command! BI :BundleInstall
-command! -bang BU :BundleInstall!
-command! BC :BundleClean
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+command! BI :PluginInstall
+command! -bang BU :PluginInstall!
+command! BC :PluginClean
 " }}}
 
 " Essentials {{{
-Bundle 'epmatsw/ag.vim'
-Bundle 'kien/ctrlp.vim'
-Bundle 'Raimondi/delimitMate'
-Bundle 'tpope/vim-repeat'
-Bundle 'Valloric/YouCompleteMe'
+Plugin 'epmatsw/ag.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'tpope/vim-repeat'
+Plugin 'Valloric/YouCompleteMe'
 " }}}
 
 " Code navigation {{{
-Bundle 'nelstrom/vim-visual-star-search'
-Bundle 'terryma/vim-multiple-cursors'
+Plugin 'nelstrom/vim-visual-star-search'
+Plugin 'terryma/vim-multiple-cursors'
 " }}}
 
 " Text {{{
-Bundle 'tpope/vim-surround'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'godlygeek/tabular'
-Bundle 'chip/vim-fat-finger'
-Bundle 'SirVer/ultisnips'
-let g:UltiSnipsSnippetsDir='/Users/jesper/Code/dotfiles/UltiSnips'
+Plugin 'tpope/vim-surround'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'godlygeek/tabular'
+Plugin 'chip/vim-fat-finger'
+Plugin 'SirVer/ultisnips'
 let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsJumpForwardTrigger="<c-e>"
 let g:UltiSnipsJumpBackwardTrigger="<s-c-e>"
 let g:UltiSnipsEditSplit="vertical"
+Plugin 'thejspr/vim-snippets'
 " }}}
 
 " File management & Git {{{
-Bundle 'scrooloose/nerdtree'
-Bundle 'tpope/vim-eunuch'
-Bundle 'tpope/vim-git'
-Bundle 'tpope/vim-fugitive'
-Bundle 'mattn/webapi-vim'
-Bundle 'mattn/gist-vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-git'
+Plugin 'tpope/vim-fugitive'
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/gist-vim'
 let g:gist_open_browser_after_post = 1
 let g:gist_post_private = 1
 let g:gist_clip_command = 'pbcopy'
 " }}}
 
 " Ruby {{{
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-rails'
-Bundle 'sickill/vim-pasta'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-rails'
+Plugin 'sickill/vim-pasta'
 " let g:pasta_disabled_filetypes = ['sass', 'coffee', 'yaml']
-Bundle 'kana/vim-textobj-user'
-Bundle 'nelstrom/vim-textobj-rubyblock'
+Plugin 'kana/vim-textobj-user'
+Plugin 'nelstrom/vim-textobj-rubyblock'
 "}}}
 
 " JavaScript {{{
-Bundle 'pangloss/vim-javascript'
-Bundle 'kchmck/vim-coffee-script'
+Plugin 'pangloss/vim-javascript'
+Plugin 'kchmck/vim-coffee-script'
 " }}}
 
 " Markup languages {{{
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-haml'
-Bundle 'slim-template/vim-slim'
-Bundle 'tpope/vim-ragtag'
-Bundle 'mattn/emmet-vim'
+Plugin 'tpope/vim-markdown'
+Plugin 'tpope/vim-haml'
+Plugin 'slim-template/vim-slim'
+Plugin 'tpope/vim-ragtag'
+Plugin 'mattn/emmet-vim'
 " let user_emmet_expandabbr_key = '<c-d>'
 let user_emmet_leader_key = '<C-d>'
 " }}}
 
 " UI {{{
 " iterm2 support
-Bundle 'sjl/vitality.vim'
-Bundle 'altercation/vim-colors-solarized'
-" Bundle 'junegunn/seoul256.vim'
-Bundle 'restore_view.vim'
-Bundle 'bling/vim-airline'
+Plugin 'sjl/vitality.vim'
+Plugin 'altercation/vim-colors-solarized'
+" Plugin 'junegunn/seoul256.vim'
+Plugin 'restore_view.vim'
+Plugin 'bling/vim-airline'
 let g:airline_theme='powerlineish'
 let g:airline_enable_bufferline=0
 " let g:airline_powerline_fonts=0
@@ -92,8 +90,8 @@ let g:airline_section_z=''
 " }}}
 
 " tmux and testing {{{
-Bundle 'benmills/vimux'
-Bundle 'skalnik/vim-vroom'
+Plugin 'benmills/vimux'
+Plugin 'skalnik/vim-vroom'
 let g:vroom_use_vimux = 1
 let g:vroom_cucumber_path = 'cucumber'
 if filereadable("bin/rails")
@@ -107,22 +105,22 @@ endif
 
 " new stuff {{{
 " use - to open a nerdtree
-Bundle 'tpope/vim-vinegar'
-Bundle 'terryma/vim-expand-region'
+Plugin 'tpope/vim-vinegar'
+Plugin 'terryma/vim-expand-region'
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
-Bundle 'rizzatti/dash.vim'
-Bundle 'AndrewRadev/splitjoin.vim'
-Bundle 'nelstrom/vim-qargs'
-Bundle 'kwbdi.vim'
+Plugin 'rizzatti/dash.vim'
+Plugin 'AndrewRadev/splitjoin.vim'
+Plugin 'nelstrom/vim-qargs'
+Plugin 'kwbdi.vim'
 " }}}
 
+call vundle#end() 
 filetype plugin indent on
-set runtimepath+=~/.vim/bundle/ultisnips
+" set runtimepath+=~/.vim/bundle/ultisnips
 " }}}
 
 " Settings {{{
-set nocompatible " be iMproved
 set history=200
 set nobackup
 set nowritebackup
