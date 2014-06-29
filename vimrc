@@ -26,7 +26,7 @@ Plugin 'terryma/vim-multiple-cursors'
 
 " Text {{{
 Plugin 'tpope/vim-surround'
-Plugin 'tomtom/tcomment_vim'
+Plugin 'tpope/vim-commentary'
 Plugin 'godlygeek/tabular'
 Plugin 'chip/vim-fat-finger'
 Plugin 'SirVer/ultisnips'
@@ -187,8 +187,8 @@ let mapleader = ","
 let g:mapleader = ","
 
 " tComment
-nnoremap // :TComment<CR>
-vnoremap // :TComment<CR>
+nnoremap // :Commentary<CR>
+vnoremap // :Commentary<CR>
 " Auto format
 noremap === mmgg=G`m^zz
 " Buffer management
