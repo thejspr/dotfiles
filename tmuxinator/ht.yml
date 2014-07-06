@@ -1,4 +1,4 @@
-name: HouseTrip
+name: ht
 root: ~/Code/HouseTrip/web-app
 
 # Optional tmux socket

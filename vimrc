@@ -31,8 +31,8 @@ Plugin 'godlygeek/tabular'
 Plugin 'chip/vim-fat-finger'
 Plugin 'SirVer/ultisnips'
 let g:UltiSnipsExpandTrigger="<c-e>"
-let g:UltiSnipsJumpForwardTrigger="<c-e>"
-let g:UltiSnipsJumpBackwardTrigger="<s-c-e>"
+" let g:UltiSnipsJumpForwardTrigger="<c-e>"
+" let g:UltiSnipsJumpBackwardTrigger="<s-c-e>"
 let g:UltiSnipsEditSplit="vertical"
 Plugin 'thejspr/vim-snippets'
 " }}}
@@ -115,12 +115,13 @@ Plugin 'nelstrom/vim-qargs'
 Plugin 'kwbdi.vim'
 " }}}
 
-call vundle#end() 
+call vundle#end()
 filetype plugin indent on
 " set runtimepath+=~/.vim/bundle/ultisnips
 " }}}
 
 " Settings {{{
+set shell=/usr/local/bin/zsh
 set history=200
 set nobackup
 set nowritebackup
@@ -314,6 +315,10 @@ nmap <f4> :bdelete<cr>
 " F5 Ctrlp refresh
 nnoremap <F6> :%s/\s*$//<CR>:noh<CR> " EOL whitespace removal
 nnoremap <f7> :let &background = ( &background == "dark"? "light" : "dark")<CR>
+" }}}
+
+" Text and Markdown {{{
+autocmd bufreadpre *.md setlocal textwidth=80
 " }}}
 
 " Ruby {{{

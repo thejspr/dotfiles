@@ -5,23 +5,11 @@ alias mx='tmuxinator'
 emx(){ vim ~/.tmuxinator/$@.yml }
 alias todo='z list && vim +NERDTree'
 alias ru='kill -s HUP `cat ~/Code/HouseTrip/web-app/tmp/pids/unicorn.pid`'
+mkcd() { dir="$*"; mkdir -p "$dir" && cd "$dir"; }
 
 # work
 alias r2c='./script/console --irb=pry'
-alias ts='be thin start'
-alias bsc='be spork cucumber'
-alias resass='be compass clean && be compass compile'
-nb(){
-  git co -b host-nps/$@
-}
 export STG='staging6'
-
-#servers
-alias ec2='mosh --ssh "ssh -i ~/.ssh/jsprkey.pem -p 22" ec2'
-alias servers='cat ~/.ssh/config'
-
-#tmux
-alias tm='tmux attach || tmux new'
 
 #ruby
 alias rb='rbenv'
@@ -29,23 +17,12 @@ alias rv='rbenv version'
 alias wr='ps aux | grep ruby'
 alias kf='kill -9 %1'
 alias kk='kill -9'
-alias nodrip='JAVACMD=`which java`'
 alias be='bundle exec'
 alias bu='bundle update'
-alias bi='bundle install'
-bes () {
-  if [ -f ./script/spec ]; then
-    be spec
-  else
-    be rspec
-  fi
-}
 
 #rails
 alias tt='tail -f log/test.log | grep -v "DELETE FROM" -v | grep -v "TRUNCATE"'
 alias migrate='be rake db:migrate db:test:clone_structure'
-alias ber='be rails'
-alias rsp='ber server puma'
 
 rc () {
   if [ -f ./script/console ]; then
@@ -65,7 +42,7 @@ rg () {
 
 rs () {
   if [ -f ./script/server ]; then
-    ./script/server $@
+    UNICORN_WORKERS=1 bundle exec unicorn_rails -c ./config/unicorn/development.rb $@
   else
     rails s $@
   fi
@@ -86,19 +63,23 @@ alias sg='bundle exec guard'
 alias bec='be cucumber'
 alias gcuc="git status -sb | awk '{print $2}' | ag '\.feature' | xargs bundle exec cucumber"
 alias gspec="git status -sb | awk '{print $2}' | ag '_spec' | xargs script/spec"
-
-# msc
-alias yt='cd ~/Movies && noglob youtube-dl -t'
+bes () {
+  if [ -f ./script/spec ]; then
+    be spec
+  else
+    be rspec
+  fi
+}
 
 #vim
 if $JSPRMAC; then
-  alias e='mvim -v'
-  alias bup='brew update && echo "==> Outdated Formula" && brew outdated && brew cleanup'
-  alias bu='brew upgrade'
-else
-  alias e='vim'
-  alias aup='sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoclean && sudo apt-get autoremove'
-fi
+alias e='mvim -v'
+# alias e='vim'
+# alias aup='sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoclean && sudo apt-get autoremove'
+
+# homebrew
+alias bup='brew update && echo "==> Outdated Formula" && brew outdated && brew cleanup'
+alias bu='brew upgrade'
 
 #conviniences
 alias -g V='|e -'
@@ -136,6 +117,3 @@ alias et='e ~/Code/dotfiles/tmux.conf'
 alias ezz='e ~/.zpreztorc'
 alias es='e ~/.ssh/config'
 alias sr='exec zsh'
-
-# new
-alias cm='chromarks'

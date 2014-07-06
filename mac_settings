@@ -1,5 +1,5 @@
 export JSPRMAC=true
-export PATH=/usr/local/bin:$PATH:/usr/local/share/npm/bin
+export PATH=/usr/local/bin:/usr/local/share/npm/bin:$PATH
 
 export EDITOR=vim
 export VISUAL=vim
