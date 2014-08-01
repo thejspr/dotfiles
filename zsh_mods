@@ -1,5 +1,5 @@
 stty -ixon
-unalias g
+# unalias g
 . ~/.mac_settings
 
 export RUBY_BUILD_CACHE_PATH=true
@@ -29,7 +29,6 @@ export RUBY_HEAP_FREE_MIN=100000
 # work
 eval "$($HOME/.ht/bin/ht init -)"
 export DISABLE_GROWL=YES
-export INTEGRITY_HOST=localhost
 export APP_DOMAIN=localhost
 # export SPLIT_CSS_FOR_IE=true
 
@@ -37,7 +36,7 @@ export APP_DOMAIN=localhost
 export JAVA_HOME="$(/usr/libexec/java_home)"
 
 # docker
-export DOCKER_HOST=tcp://localhost:4243
+eval `docker-osx env`
 
 fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then
@@ -50,3 +49,7 @@ fancy-ctrl-z () {
 }
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
+
+# Golang
+export GOPATH=$HOME/Code/go
+export PATH=$PATH:/usr/local/opt/go/libexec/bin
