@@ -31,8 +31,8 @@ Plugin 'godlygeek/tabular'
 Plugin 'chip/vim-fat-finger'
 Plugin 'SirVer/ultisnips'
 let g:UltiSnipsExpandTrigger="<c-e>"
-" let g:UltiSnipsJumpForwardTrigger="<c-e>"
-" let g:UltiSnipsJumpBackwardTrigger="<s-c-e>"
+let g:UltiSnipsJumpForwardTrigger="<c-e>"
+let g:UltiSnipsJumpBackwardTrigger="<s-c-e>"
 let g:UltiSnipsEditSplit="vertical"
 Plugin 'thejspr/vim-snippets'
 " }}}
@@ -56,7 +56,6 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-rails'
 Plugin 'sickill/vim-pasta'
-" let g:pasta_disabled_filetypes = ['sass', 'coffee', 'yaml']
 Plugin 'kana/vim-textobj-user'
 Plugin 'nelstrom/vim-textobj-rubyblock'
 "}}}
@@ -74,6 +73,7 @@ Plugin 'tpope/vim-ragtag'
 Plugin 'mattn/emmet-vim'
 " let user_emmet_expandabbr_key = '<c-d>'
 " let user_emmet_leader_key = '<C-d>'
+Plugin 'fatih/vim-go'
 " }}}
 
 " UI {{{
@@ -83,9 +83,10 @@ Plugin 'altercation/vim-colors-solarized'
 " Plugin 'junegunn/seoul256.vim'
 Plugin 'restore_view.vim'
 Plugin 'bling/vim-airline'
-let g:airline_theme='powerlineish'
+" let g:airline_theme='powerlineish'
 let g:airline_enable_bufferline=0
-" let g:airline_powerline_fonts=0
+let g:airline_powerline_fonts=0
+let g:airline#extensions#hunks#enabled = 0
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_section_z=''
@@ -111,18 +112,15 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'terryma/vim-expand-region'
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
-Plugin 'rizzatti/dash.vim'
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'airblade/vim-gitgutter'
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 let g:gitgutter_map_keys = 0 " turn off all key mappings"
-Plugin 'fatih/vim-go'
 " }}}
 
 call vundle#end()
 filetype plugin indent on
-" set runtimepath+=~/.vim/bundle/ultisnips
 " }}}
 
 " Settings {{{
@@ -146,9 +144,10 @@ let macvim_skip_colorscheme=1
 " }}}
 
 " UI {{{
-set background=dark
+" set background=dark
 set background=light
 colorscheme solarized
+hi clear SignColumn
 " colorscheme seoul256
 
 " set guioptions-=L
@@ -158,11 +157,11 @@ syntax on
 set nocursorcolumn
 set nocursorline
 set colorcolumn=80
-" set synmaxcol=140
+set synmaxcol=140
 set title
 set encoding=utf-8
 set ffs=unix,mac,dos
-" set scrolloff=4
+set scrolloff=4
 set autoindent
 set smartindent
 set showmode
@@ -362,6 +361,24 @@ nnoremap <Leader>§ :VimuxRunLastCommand<cr>
 nmap <leader><space> :VimuxPromptCommand<cr>
 " }}}
 
+" Timeout {{{
+set timeout " Do time out on mappings and others
+set timeoutlen=1000 " Wait {num} ms before timing out a mapping
+
+" When you’re pressing Escape to leave insert mode in the terminal, it will by
+" default take a second or another keystroke to leave insert mode completely
+" and update the statusline. This fixes that. I got this from:
+" https://powerline.readthedocs.org/en/latest/tipstricks.html#vim
+if !has('gui_running')
+  set ttimeoutlen=10
+  augroup FastEscape
+    autocmd!
+    au InsertEnter * set timeoutlen=0
+    au InsertLeave * set timeoutlen=1000
+  augroup END
+endif
+" }}}
+
 " New stuff {{{
 command! Es :vsplit ~/Dropbox\ (Personal)/scratch.txt
 " noremap   <Up>     <NOP>
@@ -370,4 +387,4 @@ command! Es :vsplit ~/Dropbox\ (Personal)/scratch.txt
 " noremap   <Right>  <NOP>
 
 command! Todo set autoread | set nowrap | :args *.txt | all
-"}}
+" }}}
