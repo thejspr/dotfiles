@@ -1,11 +1,11 @@
-name: ht
-root: ~/Code/HouseTrip/web-app
+name: kanban-style
+root: ~/Code/HouseTrip/kanban-style
 
 # Optional tmux socket
 # socket_name: foo
 
 # Runs before everything. Use it to start daemons etc.
-pre: cd ~/Code/HouseTrip/web-app
+pre: cd ~/Code/HouseTrip/kanban-style
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
 pre_window: rbenv shell 2.1.2
@@ -17,11 +17,9 @@ pre_window: rbenv shell 2.1.2
 # tmux_command: byobu
 
 windows:
-  - editor: g
-  - server: bundle exec unicorn_rails -c ./config/unicorn/development.rb
-  - console: bundle exec script/console --irb=pry
-  - logs:
-      layout: even-horizontal
+  - editor: vim
+  - app:
+      layout: even-vertical
       panes:
-        - sass: ./script/sass
-        - logs: tail -f log/development.log
+        - bundle exec rails c
+        - bundle exec rails s -p 7000

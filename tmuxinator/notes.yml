@@ -1,14 +1,16 @@
-name: ht
-root: ~/Code/HouseTrip/web-app
+# ~/.tmuxinator/notes.yml
+
+name: notes
+root: ~/Dropbox/notes
 
 # Optional tmux socket
 # socket_name: foo
 
 # Runs before everything. Use it to start daemons etc.
-pre: cd ~/Code/HouseTrip/web-app
+pre: cd ~/Dropbox/notes
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
-pre_window: rbenv shell 2.1.2
+# pre_window: rbenv shell 2.0.0-p247
 
 # Pass command line options to tmux. Useful for specifying a different tmux.conf.
 # tmux_options: -f ~/.tmux.mac.conf
@@ -17,11 +19,4 @@ pre_window: rbenv shell 2.1.2
 # tmux_command: byobu
 
 windows:
-  - editor: g
-  - server: bundle exec unicorn_rails -c ./config/unicorn/development.rb
-  - console: bundle exec script/console --irb=pry
-  - logs:
-      layout: even-horizontal
-      panes:
-        - sass: ./script/sass
-        - logs: tail -f log/development.log
+  - editor: vim +NERDTree

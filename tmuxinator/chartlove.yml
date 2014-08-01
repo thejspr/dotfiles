@@ -1,11 +1,11 @@
-name: ht
-root: ~/Code/HouseTrip/web-app
+name: chartlove
+root: ~/Code/chartlove
 
 # Optional tmux socket
 # socket_name: foo
 
 # Runs before everything. Use it to start daemons etc.
-pre: cd ~/Code/HouseTrip/web-app
+pre: cd ~/Code/chartlove
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
 pre_window: rbenv shell 2.1.2
@@ -17,11 +17,13 @@ pre_window: rbenv shell 2.1.2
 # tmux_command: byobu
 
 windows:
-  - editor: g
-  - server: bundle exec unicorn_rails -c ./config/unicorn/development.rb
-  - console: bundle exec script/console --irb=pry
-  - logs:
-      layout: even-horizontal
+  - editor:
+      layout: 9701,272x72,0,0[272x55,0,0,56,272x16,0,56,60]
       panes:
-        - sass: ./script/sass
-        - logs: tail -f log/development.log
+        - g
+        - bundle exec guard
+  - app:
+      layout: even-vertical
+      panes:
+        - bundle exec rails c
+        - bundle exec unicorn -p 6000
