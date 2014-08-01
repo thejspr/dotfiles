@@ -1,7 +1,6 @@
 [user]
   name = Jesper Kjeldgaard
   email = jkjeldgaard@housetrip.com
-  ; email = thejspr@gmail.com
 [github]
   user = thejspr
 [color]
@@ -18,35 +17,33 @@
 [alias]
   a      = add --all
   aa     = add -A
-  aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^= ]*\\)=\\(.*\\)/\\1\\\t=> \\2/' | sort
-  amend   = !git add -A && git commit -v --amend
-  amendf  = !git add -A && git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - --amend
-  amendff = !git amendf && git push -ff
-  b       = branch
-  c       = commit -v
-  ca      = !git add -A && git commit -v
-  co      = checkout
-  ctags   = !.git/hooks/ctags
-  d       = diff
-  dc      = diff --cached
-  dcs     = diff --cached --stat
-  ds      = diff --stat
-  edit    = !git status -sb | tail +2 | grep -v '^ D' | awk '{print $2}' | xargs -o mvim -v -p
-  l       = log --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(black)<%an>%Creset' \
-                --abbrev-commit \
-                --date=relative -14
-  ms      = checkout master
-  mt      = mergetool
-  mm      = !git fetch && git merge origin/master
-  r       = remote
-  rc      = !git add -A && git rebase --continue
-  wip     = !git add --all && git commit -m 'wip'
-  res     = !git reset head~1
+  amend  = commit -a --amend
+  amendf = !git add -A && git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - --amend
+  b      = branch
+  c      = commit -v
+  ca     = !git add -A && git commit -v
+  co     = checkout
+  d      = diff
+  dc     = diff --cached
+  dcs    = diff --cached --stat
+  ds     = diff --stat
+  edit   = !git status -sb | tail +2 | grep -v '^ D' | awk '{print $2}' | xargs -o mvim -v
+  l      = log --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(black)<%an>%Creset' \
+               --abbrev-commit \
+               --date=relative -14
+  ms     = checkout master
+  mt     = mergetool
+  mm     = !git fetch && git merge origin/master
+  r      = remote
+  rc     = !git add -A && git rebase --continue
+  wip    = !git add -u && git commit -m 'WIP'
+  undo   = reset head~1 --mixed
+  wipe   = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
 
-  int     = !git checkout $INT
-  stg     = !git checkout $STG
+  stg    = !git checkout $STG
 
-  cleanup = !git remote prune origin && git gc --prune=now &&  git branch --merged
+  cleanup = !git remote prune origin && git gc --prune=now && git bclean
+  bclean = "!f() { git branch --merged ${1-master} | grep -vE "(master|production)" | xargs -r git branch -d; }; f"
 [apply]
   whitespace = nowarn
 [branch]
