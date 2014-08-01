@@ -10,16 +10,17 @@ class String
 end
 
 class TestDiff
+  IGNORES = "'(support|spec_helper)'"
 
   attr_reader :cmd, :filter
 
   def initialize(cmd, filter)
-    @cmd = filter
+    @cmd = cmd
     @filter = filter
   end
 
   def git_cmd
-    "git diff master --name-only | grep #{filter} | awk '{print $1}' | xargs"
+    "git diff master --name-only | grep #{filter} | grep -vE #{IGNORES} | awk '{print $1}' | xargs"
   end
 
   def command
@@ -33,7 +34,7 @@ class TestDiff
   end
 end
 
-TestDiff.new('spec', 'spec').run && TestDiff.new('cucumber', 'feature').run
+TestDiff.new('spec', 'spec').run && TestDiff.new('cucumber', '.feature').run
 
 if $? && $?.exitstatus != 0
   puts $?
