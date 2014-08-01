@@ -47,6 +47,8 @@ Plugin 'mattn/gist-vim'
 let g:gist_open_browser_after_post = 1
 let g:gist_post_private = 1
 let g:gist_clip_command = 'pbcopy'
+Plugin 'nelstrom/vim-qargs'
+Plugin 'kwbdi.vim'
 " }}}
 
 " Ruby {{{
@@ -71,7 +73,7 @@ Plugin 'slim-template/vim-slim'
 Plugin 'tpope/vim-ragtag'
 Plugin 'mattn/emmet-vim'
 " let user_emmet_expandabbr_key = '<c-d>'
-let user_emmet_leader_key = '<C-d>'
+" let user_emmet_leader_key = '<C-d>'
 " }}}
 
 " UI {{{
@@ -111,8 +113,11 @@ vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 Plugin 'rizzatti/dash.vim'
 Plugin 'AndrewRadev/splitjoin.vim'
-Plugin 'nelstrom/vim-qargs'
-Plugin 'kwbdi.vim'
+Plugin 'airblade/vim-gitgutter'
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
+let g:gitgutter_map_keys = 0 " turn off all key mappings"
+Plugin 'fatih/vim-go'
 " }}}
 
 call vundle#end()
@@ -135,13 +140,14 @@ set foldnestmax=10
 set foldenable
 " use the old regex engine for better performance
 " http://stackoverflow.com/questions/16902317/vim-slow-with-ruby-syntax-highlighting
-" let g:ruby_path="/Users/jesper/.rbenv/shims/ruby"
-set re=1
+let g:ruby_path="/Users/jesper/.rbenv/shims/ruby"
+" set re=1
+let macvim_skip_colorscheme=1
 " }}}
 
 " UI {{{
 set background=dark
-" set background=light
+set background=light
 colorscheme solarized
 " colorscheme seoul256
 
@@ -156,7 +162,7 @@ set colorcolumn=80
 set title
 set encoding=utf-8
 set ffs=unix,mac,dos
-set scrolloff=4
+" set scrolloff=4
 set autoindent
 set smartindent
 set showmode
@@ -310,15 +316,16 @@ augroup END
 noremap <F1> :set nowrap! <CR>
 noremap <F2> :NERDTreeToggle<CR>
 set pastetoggle=<F3>
+" nmap <f4> :bp\|bd<cr>
 nmap <f4> <Plug>Kwbd
-nmap <f4> :bdelete<cr>
 " F5 Ctrlp refresh
 nnoremap <F6> :%s/\s*$//<CR>:noh<CR> " EOL whitespace removal
 nnoremap <f7> :let &background = ( &background == "dark"? "light" : "dark")<CR>
 " }}}
 
-" Text and Markdown {{{
+" Go, Text and Markdown {{{
 autocmd bufreadpre *.md setlocal textwidth=80
+autocmd bufreadpre *.gp setlocal nolist
 " }}}
 
 " Ruby {{{
@@ -361,4 +368,6 @@ command! Es :vsplit ~/Dropbox\ (Personal)/scratch.txt
 " noremap   <Down>   <NOP>
 " noremap   <Left>   <NOP>
 " noremap   <Right>  <NOP>
+
+command! Todo set autoread | set nowrap | :args *.txt | all
 "}}
