@@ -30,6 +30,7 @@ export RUBY_HEAP_FREE_MIN=100000
 eval "$($HOME/.ht/bin/ht init -)"
 export DISABLE_GROWL=YES
 export APP_DOMAIN=localhost
+function deploy { ht staging-deploy "$1" --channel bookings --user jesper --staging staging6 }
 # export SPLIT_CSS_FOR_IE=true
 
 # JAVA

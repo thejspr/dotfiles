@@ -10,4 +10,3 @@ windows:
         - vim
         - bundle exec guard
   - server: bundle exec rails s
-  - console: bundle exec rails c

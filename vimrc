@@ -65,15 +65,17 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
 " }}}
 
-" Markup languages {{{
+" Msc languages {{{
 Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-haml'
 Plugin 'slim-template/vim-slim'
 Plugin 'tpope/vim-ragtag'
+let g:ragtag_global_maps = 1
 Plugin 'mattn/emmet-vim'
-" let user_emmet_expandabbr_key = '<c-d>'
-" let user_emmet_leader_key = '<C-d>'
+let g:user_emmet_leader_key='<c-e>'
+let user_emmet_expandabbr_key = '<c-e>'
 Plugin 'fatih/vim-go'
+Plugin 'sheerun/vim-polyglot'
 " }}}
 
 " UI {{{
@@ -133,7 +135,6 @@ set noswapfile
 set undofile
 set undodir=~/.tmp,/tmp
 set clipboard=unnamed
-set mouse=a
 set foldnestmax=10
 set foldenable
 " use the old regex engine for better performance
@@ -141,6 +142,10 @@ set foldenable
 let g:ruby_path="/Users/jesper/.rbenv/shims/ruby"
 " set re=1
 let macvim_skip_colorscheme=1
+
+set ttyfast
+set ttymouse=xterm2
+set mouse=a
 " }}}
 
 " UI {{{
@@ -151,7 +156,7 @@ hi clear SignColumn
 " colorscheme seoul256
 
 " set guioptions-=L
-set guifont=Menlo\ Regular:h14
+" set guifont=Menlo\ Regular:h14
 
 syntax on
 set nocursorcolumn
@@ -191,6 +196,7 @@ set list listchars=trail:·
 " Key mappings {{{
 let mapleader = ","
 let g:mapleader = ","
+" let mapleader = "\<Space>" todo
 
 " tComment
 nnoremap // :Commentary<CR>
@@ -232,8 +238,8 @@ cnoreabbrev W w
 cnoreabbrev Wa wa
 cnoreabbrev Wq wq
 cnoreabbrev Wqa wqa
-map <c-s> <esc>:w<CR>
-imap <c-s> <esc>:w<CR>
+" map <c-s> <esc>:w<CR>
+" imap <c-s> <esc>:w<CR>
 " }}}
 
 " Searching {{{
@@ -243,7 +249,7 @@ set smartcase
 set gdefault
 set showmatch
 
-nnoremap <C-l> :noh<cr>
+nnoremap <c-l> :noh<cr>
 nnoremap <space> /
 noremap <leader>f :%s///<left><left>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
@@ -299,15 +305,11 @@ set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**,spec/dummy/**,di
 " }}}
 
 " Edit .vimrc {{{
-command! Ev :tabe ~/.vimrc
+command! Ev :vsplit ~/.vimrc
 " Reload vimrc when saved
 augroup vimrcs
   au!
-  au bufwritepost ~/.vimrc
-  \ source ~/.vimrc |
-  \ if exists('g:Powerline_loaded') |
-    \ silent! call Pl#Load() |
-  \ endif
+  au bufwritepost ~/.vimrc source ~/.vimrc
 augroup END
 " }}}
 
@@ -387,4 +389,15 @@ command! Es :vsplit ~/Dropbox\ (Personal)/scratch.txt
 " noremap   <Right>  <NOP>
 
 command! Todo set autoread | set nowrap | :args *.txt | all
+" allow quit via single keypress (Q)
+map Q :wqa<CR>
+
+command! -nargs=1 Silent
+  \ | execute ':silent !'.<q-args>
+  \ | execute ':redraw!'
+
+function! Open()
+  let l:file = substitute(expand('%:p'), " ", "%20", "g")
+  execute ":silent !open 'marked://".l:file."'" | execute ':redraw!'
+endfunction
 " }}}

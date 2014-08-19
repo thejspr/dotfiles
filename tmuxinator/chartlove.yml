@@ -22,8 +22,4 @@ windows:
       panes:
         - g
         - bundle exec guard
-  - app:
-      layout: even-vertical
-      panes:
-        - bundle exec rails c
-        - bundle exec unicorn -p 6000
+  - console: bundle exec rails c

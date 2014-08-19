@@ -3,7 +3,7 @@ alias ff='find . -iname'
 dash(){ open "dash://$@" }
 alias mx='tmuxinator'
 emx(){ vim ~/.tmuxinator/$@.yml }
-alias todo='z list && vim +Todo'
+alias todo='z lists && vim +Todo'
 alias ru='kill -s HUP `cat ~/Code/HouseTrip/web-app/tmp/pids/unicorn.pid`'
 mkcd() { dir="$*"; mkdir -p "$dir" && cd "$dir"; }
 
@@ -64,7 +64,7 @@ alias bec='be cucumber'
 alias gcuc="git status -sb | awk '{print $2}' | ag '\.feature' | xargs bundle exec cucumber"
 alias gspec="git status -sb | awk '{print $2}' | ag '_spec' | xargs script/spec"
 bes () {
-  if [ -f ./script/rails ]; then
+  if [ -f ./script/ci ]; then
     be spec
   else
     be rspec
