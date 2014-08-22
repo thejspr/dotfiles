@@ -316,7 +316,7 @@ set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**,spec/dummy/**,di
 " }}}
 
 " Edit .vimrc {{{
-command! Ev :vsplit ~/.vimrc
+command! Ev :tabe ~/.vimrc
 " Reload vimrc when saved
 augroup vimrcs
   au!
@@ -328,9 +328,8 @@ augroup END
 noremap <F1> :set nowrap! <CR>
 noremap <F2> :NERDTreeToggle<CR>
 set pastetoggle=<F3>
-" nmap <f4> :bp\|bd<cr>
 nmap <f4> <Plug>Kwbd
-" F5 Ctrlp refresh
+" F5 off
 nnoremap <F6> :%s/\s*$//<CR>:noh<CR> " EOL whitespace removal
 nnoremap <f7> :let &background = ( &background == "dark"? "light" : "dark")<CR>
 " }}}
@@ -342,16 +341,15 @@ autocmd bufreadpre *.gp setlocal nolist
 
 " Ruby {{{
 au BufRead,BufNewFile {Thorfile,Vagrantfile,Procfile,pryrc,config.ru} set ft=ruby
+au BufRead {app/*.rb,spec/.*rb} set path+=.
 
 " Replace Ruby 1.8 style hashes with shorter Ruby 1.9 style
 noremap <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
-" noremap <leader>h :%s/:\(\w\+\)\(\s*=>\s*\)/\1: /gc<CR>
 
 " Rails.vim
 noremap <Leader>m :Emodel<space>
 noremap <Leader>c :Econtroller<space>
 noremap <Leader>v :Eview<space>
-set path+=.
 " }}}
 
 " Git {{{
@@ -386,22 +384,11 @@ endif
 " }}}
 
 " New stuff {{{
-command! Es :vsplit ~/Dropbox\ (Personal)/scratch.txt
 " noremap   <Up>     <NOP>
 " noremap   <Down>   <NOP>
 " noremap   <Left>   <NOP>
 " noremap   <Right>  <NOP>
 
-command! Todo set autoread | set nowrap | :args *.txt | all
 " allow quit via single keypress (Q)
 map Q :wqa<CR>
-
-command! -nargs=1 Silent
-  \ | execute ':silent !'.<q-args>
-  \ | execute ':redraw!'
-
-function! Open()
-  let l:file = substitute(expand('%:p'), " ", "%20", "g")
-  execute ":silent !open 'marked://".l:file."'" | execute ':redraw!'
-endfunction
 " }}}
