@@ -14,6 +14,7 @@ command! BC :PluginClean
 " Essentials {{{
 Plugin 'epmatsw/ag.vim'
 Plugin 'kien/ctrlp.vim'
+Plugin 'JazzCore/ctrlp-cmatcher'
 Plugin 'Raimondi/delimitMate'
 Plugin 'tpope/vim-repeat'
 Plugin 'Valloric/YouCompleteMe'
@@ -110,12 +111,6 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'terryma/vim-expand-region'
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
-" Plugin 'xolox/vim-misc'
-" Plugin 'xolox/vim-easytags'
-" let g:easytags_async = 1
-" let g:easytags_events = ['BufWritePost']
-" let g:easytags_python_enabled = 1
-Plugin 'JazzCore/ctrlp-cmatcher'
 " }}}
 
 call vundle#end()
