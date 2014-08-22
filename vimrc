@@ -57,11 +57,6 @@ Plugin 'nelstrom/vim-textobj-rubyblock'
 Plugin 'tpope/vim-cucumber'
 "}}}
 
-" JavaScript {{{
-Plugin 'pangloss/vim-javascript'
-Plugin 'kchmck/vim-coffee-script'
-" }}}
-
 " Msc languages {{{
 Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-haml'
@@ -72,7 +67,7 @@ Plugin 'mattn/emmet-vim'
 let g:user_emmet_leader_key='<c-e>'
 let user_emmet_expandabbr_key = '<c-e>'
 Plugin 'fatih/vim-go'
-Plugin 'sheerun/vim-polyglot'
+Plugin 'pangloss/vim-javascript'
 " }}}
 
 " UI {{{
@@ -92,7 +87,7 @@ let g:airline_section_z=''
 Plugin 'airblade/vim-gitgutter'
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
-let g:gitgutter_map_keys = 0 " turn off all key mappings"
+let g:gitgutter_map_keys = 0
 " }}}
 
 " tmux and testing {{{
