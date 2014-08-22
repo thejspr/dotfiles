@@ -35,6 +35,7 @@ let g:UltiSnipsJumpForwardTrigger="<c-e>"
 let g:UltiSnipsJumpBackwardTrigger="<s-c-e>"
 let g:UltiSnipsEditSplit="vertical"
 Plugin 'thejspr/vim-snippets'
+Plugin 'AndrewRadev/splitjoin.vim'
 " }}}
 
 " File management & Git {{{
@@ -58,6 +59,7 @@ Plugin 'tpope/vim-rails'
 Plugin 'sickill/vim-pasta'
 Plugin 'kana/vim-textobj-user'
 Plugin 'nelstrom/vim-textobj-rubyblock'
+Plugin 'tpope/vim-cucumber'
 "}}}
 
 " JavaScript {{{
@@ -92,6 +94,10 @@ let g:airline#extensions#hunks#enabled = 0
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_section_z=''
+Plugin 'airblade/vim-gitgutter'
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
+let g:gitgutter_map_keys = 0 " turn off all key mappings"
 " }}}
 
 " tmux and testing {{{
@@ -114,11 +120,12 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'terryma/vim-expand-region'
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
-Plugin 'AndrewRadev/splitjoin.vim'
-Plugin 'airblade/vim-gitgutter'
-let g:gitgutter_realtime = 0
-let g:gitgutter_eager = 0
-let g:gitgutter_map_keys = 0 " turn off all key mappings"
+" Plugin 'xolox/vim-misc'
+" Plugin 'xolox/vim-easytags'
+" let g:easytags_async = 1
+" let g:easytags_events = ['BufWritePost']
+" let g:easytags_python_enabled = 1
+Plugin 'JazzCore/ctrlp-cmatcher'
 " }}}
 
 call vundle#end()
@@ -149,8 +156,8 @@ set mouse=a
 " }}}
 
 " UI {{{
-" set background=dark
-set background=light
+set background=dark
+" set background=light
 colorscheme solarized
 hi clear SignColumn
 " colorscheme seoul256
@@ -278,11 +285,15 @@ let NERDTreeHijackNetrw=1
 
 " ctrlp
 let g:ctrlp_map = '<Leader>t'
-let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|mp3|svg|)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py|_site|gh-pages|dist|bower_components|.tmp|images'
-let g:ctrlp_match_window_reversed = 1
-let g:ctrlp_match_window_bottom = 1
-let g:ctrlp_dotfiles = 0
-let g:ctrlp_switch_buffer = 1
+" let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|mp3|svg|)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py|_site|gh-pages|dist|bower_components|.tmp|images'
+" let g:ctrlp_match_window_reversed = 1
+" let g:ctrlp_match_window_bottom = 1
+" let g:ctrlp_switch_buffer = 1
+let g:ctrlp_match_func = { 'match' : 'matcher#cmatch' }
+let g:ctrlp_match_window = 'order:ttb,max:20'
+let g:ctrlp_user_command = 'ag %s -lU --hidden --nocolor -g ""'
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_use_caching = 0
 
 noremap <leader>t :CtrlP<cr>
 noremap <leader>b :CtrlPBuffer<cr>
@@ -343,13 +354,6 @@ noremap <Leader>v :Eview<space>
 set path+=.
 " }}}
 
-" JavaScript & JSON {{{
-function! FormatJson()
-  set ft=json
-  exe '%!python -m json.tool'
-endfunction
-" }}}
-
 " Git {{{
 nnoremap <leader>gs :Gstatus<CR><C-w>10+
 noremap <leader>gc :Gcommit -v<CR><C-w>15+
@@ -359,7 +363,7 @@ autocmd BufRead COMMIT_EDITMSG setlocal spell! nocursorline colorcolumn=72
 " Tmux and testing {{{
 nnoremap <Leader>x :VroomRunNearestTest<cr>
 nnoremap <Leader>X :VroomRunTest<cr>
-nnoremap <Leader>§ :VimuxRunLastCommand<cr>
+nnoremap <Leader>§ :wa<cr>:VimuxRunLastCommand<cr>
 nmap <leader><space> :VimuxPromptCommand<cr>
 " }}}
 
