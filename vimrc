@@ -43,11 +43,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-fugitive'
-Plugin 'mattn/webapi-vim'
-Plugin 'mattn/gist-vim'
-let g:gist_open_browser_after_post = 1
-let g:gist_post_private = 1
-let g:gist_clip_command = 'pbcopy'
 Plugin 'nelstrom/vim-qargs'
 Plugin 'kwbdi.vim'
 " }}}
