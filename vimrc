@@ -144,14 +144,12 @@ set undodir=~/.tmp,/tmp
 set clipboard=unnamed
 set foldnestmax=10
 set foldenable
-" use the old regex engine for better performance
-" http://stackoverflow.com/questions/16902317/vim-slow-with-ruby-syntax-highlighting
-let g:ruby_path="/Users/jesper/.rbenv/shims/ruby"
-" set re=1
 let macvim_skip_colorscheme=1
 
 set ttyfast
 set ttymouse=xterm2
+set timeout " Do time out on mappings and others
+set timeoutlen=1000 " Wait {num} ms before timing out a mapping
 set mouse=a
 " }}}
 
@@ -161,9 +159,6 @@ set background=dark
 colorscheme solarized
 hi clear SignColumn
 " colorscheme seoul256
-
-" set guioptions-=L
-" set guifont=Menlo\ Regular:h14
 
 syntax on
 set nocursorcolumn
@@ -203,29 +198,18 @@ set list listchars=trail:·
 " Key mappings {{{
 let mapleader = ","
 let g:mapleader = ","
-" let mapleader = "\<Space>" todo
 
 " tComment
 nnoremap // :Commentary<CR>
 vnoremap // :Commentary<CR>
-" Auto format
-noremap === mmgg=G`m^zz
 " Buffer management
 noremap <tab> :bn<CR>
 noremap <S-tab> :bp<CR>
-" Tab management
-" noremap <a-right> gt
-" noremap <a-left> gT
 "}}}
 
-" Tab key {{{
-" }}}
-
 " Msc annoyances {{{
-nnoremap Q <nop>
 nnoremap K <nop>
 nnoremap J mzJ`z " keep cursor in place when joining lines
-map q: :q
 " reselect visual lock after indent/outdent
 vnoremap < <gv
 vnoremap > >gv
@@ -245,8 +229,12 @@ cnoreabbrev W w
 cnoreabbrev Wa wa
 cnoreabbrev Wq wq
 cnoreabbrev Wqa wqa
+
 " map <c-s> <esc>:w<CR>
 " imap <c-s> <esc>:w<CR>
+
+" allow quit via single keypress (Q)
+map Q :wqa<CR>
 " }}}
 
 " Searching {{{
@@ -271,6 +259,7 @@ noremap <leader>sn ]s
 noremap <leader>sp [s
 noremap <leader>sa zg
 noremap <leader>sd z=
+autocmd BufRead COMMIT_EDITMSG setlocal spell! colorcolumn=72
 "}}}
 
 " Nerdtree & ctrlp {{{
@@ -285,10 +274,6 @@ let NERDTreeHijackNetrw=1
 
 " ctrlp
 let g:ctrlp_map = '<Leader>t'
-" let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|mp3|svg|)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py|_site|gh-pages|dist|bower_components|.tmp|images'
-" let g:ctrlp_match_window_reversed = 1
-" let g:ctrlp_match_window_bottom = 1
-" let g:ctrlp_switch_buffer = 1
 let g:ctrlp_match_func = { 'match' : 'matcher#cmatch' }
 let g:ctrlp_match_window = 'order:ttb,max:20'
 let g:ctrlp_user_command = 'ag %s -lU --hidden --nocolor -g ""'
@@ -298,13 +283,6 @@ let g:ctrlp_use_caching = 0
 noremap <leader>t :CtrlP<cr>
 noremap <leader>b :CtrlPBuffer<cr>
 noremap <leader>r :CtrlPMRUFiles<cr>
-
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-  let g:ctrlp_use_caching = 0
-endif
 
 " Use Ag instead of Grep
 let g:ackprg="ag -H --nogroup --column --nocolor -m 1000"
@@ -352,12 +330,6 @@ noremap <Leader>c :Econtroller<space>
 noremap <Leader>v :Eview<space>
 " }}}
 
-" Git {{{
-nnoremap <leader>gs :Gstatus<CR><C-w>10+
-noremap <leader>gc :Gcommit -v<CR><C-w>15+
-autocmd BufRead COMMIT_EDITMSG setlocal spell! nocursorline colorcolumn=72
-" }}}
-
 " Tmux and testing {{{
 nnoremap <Leader>x :VroomRunNearestTest<cr>
 nnoremap <Leader>X :VroomRunTest<cr>
@@ -365,30 +337,9 @@ nnoremap <Leader>§ :wa<cr>:VimuxRunLastCommand<cr>
 nmap <leader><space> :VimuxPromptCommand<cr>
 " }}}
 
-" Timeout {{{
-set timeout " Do time out on mappings and others
-set timeoutlen=1000 " Wait {num} ms before timing out a mapping
-
-" When you’re pressing Escape to leave insert mode in the terminal, it will by
-" default take a second or another keystroke to leave insert mode completely
-" and update the statusline. This fixes that. I got this from:
-" https://powerline.readthedocs.org/en/latest/tipstricks.html#vim
-if !has('gui_running')
-  set ttimeoutlen=10
-  augroup FastEscape
-    autocmd!
-    au InsertEnter * set timeoutlen=0
-    au InsertLeave * set timeoutlen=1000
-  augroup END
-endif
-" }}}
-
 " New stuff {{{
 " noremap   <Up>     <NOP>
 " noremap   <Down>   <NOP>
 " noremap   <Left>   <NOP>
 " noremap   <Right>  <NOP>
-
-" allow quit via single keypress (Q)
-map Q :wqa<CR>
 " }}}
