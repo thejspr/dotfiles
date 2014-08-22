@@ -292,7 +292,7 @@ noremap <F1> :set nowrap! <CR>
 noremap <F2> :NERDTreeToggle<CR>
 set pastetoggle=<F3>
 nmap <f4> <Plug>Kwbd
-" F5 off
+noremap <F5> :NERDTreeFind<CR>
 nnoremap <F6> :%s/\s*$//<CR>:noh<CR> " EOL whitespace removal
 nnoremap <f7> :let &background = ( &background == "dark"? "light" : "dark")<CR>
 " }}}
