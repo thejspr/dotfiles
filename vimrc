@@ -37,6 +37,8 @@ let g:UltiSnipsJumpBackwardTrigger="<s-c-e>"
 let g:UltiSnipsEditSplit="vertical"
 Plugin 'thejspr/vim-snippets'
 Plugin 'AndrewRadev/splitjoin.vim'
+nmap sj :SplitjoinSplit<cr>
+nmap sk :SplitjoinJoin<cr>
 " }}}
 
 " File management & Git {{{
@@ -66,7 +68,7 @@ Plugin 'tpope/vim-ragtag'
 let g:ragtag_global_maps = 1
 Plugin 'mattn/emmet-vim'
 let g:user_emmet_leader_key='<c-e>'
-let user_emmet_expandabbr_key = '<c-e>'
+" let user_emmet_expandabbr_key = '<c-e>'
 Plugin 'fatih/vim-go'
 Plugin 'pangloss/vim-javascript'
 " }}}
@@ -78,7 +80,7 @@ Plugin 'altercation/vim-colors-solarized'
 " Plugin 'junegunn/seoul256.vim'
 Plugin 'restore_view.vim'
 Plugin 'bling/vim-airline'
-" let g:airline_theme='powerlineish'
+let g:airline_theme='powerlineish'
 let g:airline_enable_bufferline=0
 let g:airline_powerline_fonts=0
 let g:airline#extensions#hunks#enabled = 0
@@ -177,12 +179,13 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set nowrap
-set list listchars=trail:·
+" set list listchars=trail:·
+set list listchars=tab:»·,trail:·
 "}}}
 
 " Key mappings {{{
-let mapleader = ","
-let g:mapleader = ","
+let mapleader = "\<Space>"
+map , <leader>
 
 " tComment
 nnoremap // :Commentary<CR>
@@ -214,12 +217,29 @@ cnoreabbrev W w
 cnoreabbrev Wa wa
 cnoreabbrev Wq wq
 cnoreabbrev Wqa wqa
+map q: :q
 
-" map <c-s> <esc>:w<CR>
-" imap <c-s> <esc>:w<CR>
+nnoremap <Leader>w :w<CR>
+
+" Automatically jump to end of text you pasted
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
 
 " allow quit via single keypress (Q)
 map Q :wqa<CR>
+
+
+" vp doesn't replace paste buffer
+function! RestoreRegister()
+  let @" = s:restore_reg
+  return ''
+endfunction
+function! s:Repl()
+  let s:restore_reg = @"
+  return "p@=RestoreRegister()\<cr>"
+endfunction
+vmap <silent> <expr> p <sid>Repl()
 " }}}
 
 " Searching {{{
@@ -230,7 +250,7 @@ set gdefault
 set showmatch
 
 nnoremap <c-l> :noh<cr>
-nnoremap <space> /
+" nnoremap <space> /
 noremap <leader>f :%s///<left><left>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
@@ -300,6 +320,7 @@ nnoremap <f7> :let &background = ( &background == "dark"? "light" : "dark")<CR>
 " Go, Text and Markdown {{{
 autocmd bufreadpre *.md setlocal textwidth=80
 autocmd bufreadpre *.gp setlocal nolist
+autocmd bufreadpre */todos/* setlocal nolist
 " }}}
 
 " Ruby {{{
