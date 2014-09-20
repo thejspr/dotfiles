@@ -41,6 +41,7 @@
   wipe   = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
 
   stg    = !git checkout $STG
+  stg1   = !git checkout staging1
   mstg   = !git checkout $STG && git pull && git merge -
 
   cleanup = !git co master && git pull && git remote prune origin && git gc --prune=now && git bclean

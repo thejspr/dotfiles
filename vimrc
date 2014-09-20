@@ -71,6 +71,7 @@ let g:user_emmet_leader_key='<c-e>'
 " let user_emmet_expandabbr_key = '<c-e>'
 Plugin 'fatih/vim-go'
 Plugin 'pangloss/vim-javascript'
+Plugin 'kchmck/vim-coffee-script'
 " }}}
 
 " UI {{{
@@ -113,6 +114,7 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'terryma/vim-expand-region'
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
+Plugin 'christoomey/vim-tmux-navigator'
 " }}}
 
 call vundle#end()
@@ -249,7 +251,7 @@ set smartcase
 set gdefault
 set showmatch
 
-nnoremap <c-l> :noh<cr>
+noremap <leader>, :noh<cr>
 " nnoremap <space> /
 noremap <leader>f :%s///<left><left>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
@@ -318,9 +320,9 @@ nnoremap <f7> :let &background = ( &background == "dark"? "light" : "dark")<CR>
 " }}}
 
 " Go, Text and Markdown {{{
-autocmd bufreadpre *.md setlocal textwidth=80
 autocmd bufreadpre *.gp setlocal nolist
 autocmd bufreadpre */todos/* setlocal nolist
+autocmd bufreadpre *.md setlocal textwidth=80 com=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,b:- formatoptions=tcroqln
 " }}}
 
 " Ruby {{{
@@ -348,4 +350,5 @@ nmap <leader><space> :VimuxPromptCommand<cr>
 " noremap   <Down>   <NOP>
 " noremap   <Left>   <NOP>
 " noremap   <Right>  <NOP>
+imap jj <Esc>
 " }}}

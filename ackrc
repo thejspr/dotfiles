@@ -15,5 +15,7 @@
 --ignore-dir=doc
 --ignore-dir=coverage
 --ignore-dir=app/assets/images/v4/glyphs
+--ignore-dir=.sass-cache/
+--ignore-dir=.git/
 
 --sort-files
