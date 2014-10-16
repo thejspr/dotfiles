@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+set -e
+
+bundle update $*
+
+git add -A
+
+git commit -m "update $*"
+
+git show
