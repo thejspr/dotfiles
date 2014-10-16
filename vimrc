@@ -3,100 +3,99 @@
 " Init {{{
 set nocompatible
 filetype off " must be off before Vundle has run
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
-command! BI :PluginInstall
-command! -bang BU :PluginInstall!
-command! BC :PluginClean
+call plug#begin('~/.vim/plugged')
+command! BI :PlugInstall
+command! -bang BU :PlugInstall!
+command! BC :PlugClean
 " }}}
 
 " Essentials {{{
-Plugin 'epmatsw/ag.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'JazzCore/ctrlp-cmatcher'
-Plugin 'Raimondi/delimitMate'
-Plugin 'tpope/vim-repeat'
-Plugin 'Valloric/YouCompleteMe'
+Plug 'epmatsw/ag.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'JazzCore/ctrlp-cmatcher'
+Plug 'Raimondi/delimitMate'
+Plug 'tpope/vim-repeat'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
 " }}}
 
 " Code navigation {{{
-Plugin 'nelstrom/vim-visual-star-search'
-Plugin 'terryma/vim-multiple-cursors'
+Plug 'nelstrom/vim-visual-star-search'
+Plug 'terryma/vim-multiple-cursors'
 " }}}
 
 " Text {{{
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-commentary'
-Plugin 'godlygeek/tabular'
-Plugin 'chip/vim-fat-finger'
-Plugin 'SirVer/ultisnips'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'godlygeek/tabular'
+Plug 'chip/vim-fat-finger'
+Plug 'SirVer/ultisnips'
 let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsJumpForwardTrigger="<c-e>"
 let g:UltiSnipsJumpBackwardTrigger="<s-c-e>"
 let g:UltiSnipsEditSplit="vertical"
-Plugin 'thejspr/vim-snippets'
-Plugin 'AndrewRadev/splitjoin.vim'
+Plug 'thejspr/vim-snippets'
+Plug 'AndrewRadev/splitjoin.vim'
 nmap sj :SplitjoinSplit<cr>
 nmap sk :SplitjoinJoin<cr>
 " }}}
 
 " File management & Git {{{
-Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-git'
-Plugin 'tpope/vim-fugitive'
-Plugin 'nelstrom/vim-qargs'
-Plugin 'kwbdi.vim'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-fugitive'
+Plug 'nelstrom/vim-qargs'
+Plug 'kwbdi.vim'
 " }}}
 
 " Ruby {{{
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-rails'
-Plugin 'sickill/vim-pasta'
-Plugin 'kana/vim-textobj-user'
-Plugin 'nelstrom/vim-textobj-rubyblock'
-Plugin 'tpope/vim-cucumber'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-rails'
+Plug 'sickill/vim-pasta'
+Plug 'kana/vim-textobj-user'
+Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'tpope/vim-cucumber'
 "}}}
 
 " Msc languages {{{
-Plugin 'tpope/vim-markdown'
-Plugin 'tpope/vim-haml'
-Plugin 'slim-template/vim-slim'
-Plugin 'tpope/vim-ragtag'
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-haml'
+Plug 'slim-template/vim-slim'
+Plug 'tpope/vim-ragtag'
 let g:ragtag_global_maps = 1
-Plugin 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim'
 let g:user_emmet_leader_key='<c-e>'
 " let user_emmet_expandabbr_key = '<c-e>'
-Plugin 'fatih/vim-go'
-Plugin 'pangloss/vim-javascript'
-Plugin 'kchmck/vim-coffee-script'
+Plug 'fatih/vim-go'
+Plug 'pangloss/vim-javascript'
+Plug 'kchmck/vim-coffee-script'
 " }}}
 
 " UI {{{
 " iterm2 support
-Plugin 'sjl/vitality.vim'
-Plugin 'altercation/vim-colors-solarized'
-" Plugin 'junegunn/seoul256.vim'
-Plugin 'restore_view.vim'
-Plugin 'bling/vim-airline'
-let g:airline_theme='powerlineish'
+Plug 'sjl/vitality.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'junegunn/seoul256.vim'
+Plug 'restore_view.vim'
+Plug 'bling/vim-airline'
+" let g:airline_theme='gotham256'
 let g:airline_enable_bufferline=0
 let g:airline_powerline_fonts=0
 let g:airline#extensions#hunks#enabled = 0
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_section_z=''
-Plugin 'airblade/vim-gitgutter'
+let g:airline#extensions#tabline#enabled = 1
+Plug 'airblade/vim-gitgutter'
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 let g:gitgutter_map_keys = 0
 " }}}
 
 " tmux and testing {{{
-Plugin 'benmills/vimux'
-Plugin 'skalnik/vim-vroom'
+Plug 'benmills/vimux'
+Plug 'skalnik/vim-vroom'
 let g:vroom_use_vimux = 1
 let g:vroom_cucumber_path = 'cucumber'
 if filereadable("bin/rails")
@@ -110,14 +109,14 @@ endif
 
 " new stuff {{{
 " use - to open a nerdtree
-Plugin 'tpope/vim-vinegar'
-Plugin 'terryma/vim-expand-region'
+Plug 'tpope/vim-vinegar'
+Plug 'terryma/vim-expand-region'
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
-Plugin 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-navigator'
 " }}}
 
-call vundle#end()
+call plug#end()
 filetype plugin indent on
 " }}}
 
@@ -145,7 +144,7 @@ set mouse=a
 " UI {{{
 set background=dark
 " set background=light
-colorscheme solarized
+colorscheme seoul256
 hi clear SignColumn
 " colorscheme seoul256
 
@@ -183,6 +182,10 @@ set expandtab
 set nowrap
 " set list listchars=trail:·
 set list listchars=tab:»·,trail:·
+
+if has("gui_running")
+  set guifont=Monaco:h12
+endif
 "}}}
 
 " Key mappings {{{
@@ -281,11 +284,11 @@ let NERDTreeHijackNetrw=1
 
 " ctrlp
 let g:ctrlp_map = '<Leader>t'
-let g:ctrlp_match_func = { 'match' : 'matcher#cmatch' }
-let g:ctrlp_match_window = 'order:ttb,max:20'
-let g:ctrlp_user_command = 'ag %s -lU --hidden --nocolor -g ""'
+let g:ctrlp_match_window = 'order:ttb,max:10'
+" let g:ctrlp_match_func = { 'match' : 'matcher#cmatch' }
+" let g:ctrlp_user_command = 'ag %s -lU --hidden --nocolor -g ""'
 let g:ctrlp_show_hidden = 1
-let g:ctrlp_use_caching = 0
+let g:ctrlp_use_caching = 1
 
 noremap <leader>t :CtrlP<cr>
 noremap <leader>b :CtrlPBuffer<cr>
@@ -351,4 +354,6 @@ nmap <leader><space> :VimuxPromptCommand<cr>
 " noremap   <Left>   <NOP>
 " noremap   <Right>  <NOP>
 imap jj <Esc>
+noremap <silent> <F10> :let @+=expand("%")<CR>
+set shell=/bin/sh
 " }}}
