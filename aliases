@@ -1,15 +1,9 @@
 # new
 alias ff='find . -iname'
-dash(){ open "dash://$@" }
 alias mx='tmuxinator'
 emx(){ vim ~/.tmuxinator/$@.yml }
 alias todo='z lists && vim +Todo'
-alias ru='kill -s HUP `cat ~/Code/HouseTrip/web-app/tmp/pids/unicorn.pid`'
 mkcd() { dir="$*"; mkdir -p "$dir" && cd "$dir"; }
-
-# work
-alias r2c='./script/console --irb=pry'
-export STG='staging6'
 
 #ruby
 alias rb='rbenv'
@@ -19,10 +13,6 @@ alias kf='kill -9 %1'
 alias kk='kill -9'
 alias be='bundle exec'
 alias bu='bundle update'
-
-#rails
-alias tt='tail -f log/test.log | grep -v "DELETE FROM" -v | grep -v "TRUNCATE"'
-alias migrate='be rake db:migrate db:test:clone_structure'
 
 rc () {
   if [ -f ./script/console ]; then

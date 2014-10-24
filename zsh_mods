@@ -6,10 +6,6 @@ export RUBY_BUILD_CACHE_PATH=true
 eval "$(rbenv init - --no-rehash)"
 export PATH=./bin:~/bin:/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH
 
-# hub alias
-# DISABLED: clashes with git-whistles
-# eval "$(hub alias -s)"
-
 # prezto customizations
 autoload zmv
 bindkey -e
@@ -26,12 +22,12 @@ export RUBY_HEAP_FREE_MIN=100000
 # Alias and function definitions.
 . ~/code/dotfiles/aliases
 
-# work
-eval "$($HOME/.ht/bin/ht init -)"
-export DISABLE_GROWL=YES
-export APP_DOMAIN=localhost
-function deploy { bundle install && ht staging-deploy "$1" --channel mobile-conversion --user jesper --staging staging6 }
-# export SPLIT_CSS_FOR_IE=true
+# Source housetrip settings
+. ~/code/dotfiles/housetrip
+
+# hub alias
+# DISABLED: clashes with git-whistles
+# eval "$(hub alias -s)"
 
 # JAVA
 export JAVA_HOME="$(/usr/libexec/java_home)"
