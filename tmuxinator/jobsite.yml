@@ -2,7 +2,7 @@ name: jobsite
 root: ~/Code/jobsite
 
 pre: cd ~/Code/jobsite
-pre_window: rbenv shell 2.1.2
+pre_window: rbenv shell 2.1.3
 
 windows:
   - editor:

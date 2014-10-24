@@ -12,7 +12,7 @@ command! BC :PlugClean
 " Essentials {{{
 Plug 'epmatsw/ag.vim'
 Plug 'kien/ctrlp.vim'
-Plug 'JazzCore/ctrlp-cmatcher'
+Plug 'JazzCore/ctrlp-cmatcher', { 'do': './install.sh' }
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-repeat'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
@@ -285,10 +285,11 @@ let NERDTreeHijackNetrw=1
 " ctrlp
 let g:ctrlp_map = '<Leader>t'
 let g:ctrlp_match_window = 'order:ttb,max:10'
-" let g:ctrlp_match_func = { 'match' : 'matcher#cmatch' }
-" let g:ctrlp_user_command = 'ag %s -lU --hidden --nocolor -g ""'
+let g:ctrlp_match_func = { 'match' : 'matcher#cmatch' }
+set grepprg=ag\ --nogroup\ --nocolor
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_show_hidden = 1
-let g:ctrlp_use_caching = 1
+let g:ctrlp_use_caching = 0
 
 noremap <leader>t :CtrlP<cr>
 noremap <leader>b :CtrlPBuffer<cr>
@@ -330,7 +331,7 @@ autocmd bufreadpre *.md setlocal textwidth=80 com=s1:/*,mb:*,ex:*/,://,b:#,:%,:X
 
 " Ruby {{{
 au BufRead,BufNewFile {Thorfile,Vagrantfile,Procfile,pryrc,config.ru} set ft=ruby
-au BufRead {app/*.rb,spec/.*rb} set path+=.
+" au BufRead {app/*.rb,spec/.*rb} set path+=.
 
 " Replace Ruby 1.8 style hashes with shorter Ruby 1.9 style
 noremap <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
