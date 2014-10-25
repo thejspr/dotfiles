@@ -54,6 +54,7 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
 Plug 'sickill/vim-pasta'
 Plug 'kana/vim-textobj-user'
+runtime macros/matchit.vim
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'tpope/vim-cucumber'
 "}}}
