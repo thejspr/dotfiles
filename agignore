@@ -5,3 +5,5 @@ app/assets/images
 public/images
 public/system
 tmp/
+log/
+coverage/
