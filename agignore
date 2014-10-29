@@ -4,6 +4,7 @@ payment/
 app/assets/images
 public/images
 public/system
+public/assets
 tmp/
 log/
 coverage/
