@@ -6,6 +6,6 @@ bundle update $*
 
 git add -A
 
-git commit -m "update $*"
+git commit -m "Upgrade $*"
 
 git show

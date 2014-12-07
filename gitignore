@@ -20,3 +20,4 @@ _site
 
 is-it-green
 vendor/plugins/rails-dev-boost/
+.agignore

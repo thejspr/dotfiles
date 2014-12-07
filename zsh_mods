@@ -1,3 +1,4 @@
+export KEYTIMEOUT=1
 stty -ixon
 # unalias g
 . ~/.mac_settings

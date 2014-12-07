@@ -137,17 +137,23 @@ let macvim_skip_colorscheme=1
 
 set ttyfast
 set ttymouse=xterm2
-set timeout " Do time out on mappings and others
-set timeoutlen=1000 " Wait {num} ms before timing out a mapping
 set mouse=a
+" set timeout " Do time out on mappings and others
+set timeoutlen=1000 " Wait {num} ms before timing out a mapping
+set ttimeoutlen=10
+augroup FastEscape
+  autocmd!
+  au InsertEnter * set timeoutlen=0
+  au InsertLeave * set timeoutlen=1000
+augroup END
 " }}}
 
 " UI {{{
 set background=dark
 " set background=light
-colorscheme seoul256
-hi clear SignColumn
 " colorscheme seoul256
+colorscheme solarized
+hi clear SignColumn
 
 syntax on
 set nocursorcolumn
@@ -351,13 +357,14 @@ nmap <leader><space> :VimuxPromptCommand<cr>
 " }}}
 
 " New stuff {{{
-" noremap   <Up>     <NOP>
-" noremap   <Down>   <NOP>
-" noremap   <Left>   <NOP>
-" noremap   <Right>  <NOP>
+nnoremap   <Up>     <NOP>
+nnoremap   <Down>   <NOP>
+nnoremap   <Left>   <NOP>
+nnoremap   <Right>  <NOP>
+
 imap jj <Esc>
 noremap <silent> <F10> :let @+=expand("%")<CR>
-set shell=/bin/sh
+" set shell=/bin/sh
 
 " Move visual block
 vnoremap J :m '>+1<CR>gv=gv
