@@ -357,10 +357,10 @@ nmap <leader><space> :VimuxPromptCommand<cr>
 " }}}
 
 " New stuff {{{
-nnoremap   <Up>     <NOP>
-nnoremap   <Down>   <NOP>
-nnoremap   <Left>   <NOP>
-nnoremap   <Right>  <NOP>
+" nnoremap   <Up>     <NOP>
+" nnoremap   <Down>   <NOP>
+" nnoremap   <Left>   <NOP>
+" nnoremap   <Right>  <NOP>
 
 imap jj <Esc>
 noremap <silent> <F10> :let @+=expand("%")<CR>
