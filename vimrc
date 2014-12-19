@@ -152,7 +152,10 @@ augroup END
 set background=dark
 " set background=light
 " colorscheme seoul256
-colorscheme solarized
+try
+  colorscheme solarized
+catch /^Vim\%((\a\+)\)\=:E185/
+endtry
 hi clear SignColumn
 
 syntax on
