@@ -5,11 +5,12 @@
 
 # requires "selecta" (garybernhardt/selecta) installable via brew on MacOS
 
-set -e
+# set -e
+
+cmd=peco
 
 if [[ -z "$1" ]]; then
-  echo 'Please provide suffix as argument'
-  exit 0
+  git branch | cut -c 3- | $cmd | xargs git checkout
+else
+  git checkout $(git branch | grep $1 | $cmd)
 fi
-
-git checkout $(git branch | grep $1 | selecta)

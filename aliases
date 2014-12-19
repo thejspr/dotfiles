@@ -63,6 +63,7 @@ bes () {
 
 #vim
 alias e='mvim -v'
+alias vim='mvim -v'
 # alias e='vim'
 # alias aup='sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoclean && sudo apt-get autoremove'
 
