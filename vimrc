@@ -15,7 +15,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'JazzCore/ctrlp-cmatcher', { 'do': './install.sh' }
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-repeat'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
 " }}}
 
 " Code navigation {{{
@@ -27,7 +27,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'godlygeek/tabular'
-Plug 'chip/vim-fat-finger'
+" Plug 'chip/vim-fat-finger'
 Plug 'SirVer/ultisnips'
 let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsJumpForwardTrigger="<c-e>"
@@ -44,7 +44,7 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
-Plug 'nelstrom/vim-qargs'
+" Plug 'nelstrom/vim-qargs'
 Plug 'kwbdi.vim'
 " }}}
 
@@ -56,7 +56,7 @@ Plug 'sickill/vim-pasta'
 Plug 'kana/vim-textobj-user'
 runtime macros/matchit.vim
 Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'tpope/vim-cucumber'
+" Plug 'tpope/vim-cucumber'
 "}}}
 
 " Msc languages {{{
@@ -68,7 +68,7 @@ let g:ragtag_global_maps = 1
 Plug 'mattn/emmet-vim'
 let g:user_emmet_leader_key='<c-e>'
 " let user_emmet_expandabbr_key = '<c-e>'
-Plug 'fatih/vim-go'
+" Plug 'fatih/vim-go'
 Plug 'pangloss/vim-javascript'
 Plug 'kchmck/vim-coffee-script'
 " }}}
@@ -111,9 +111,6 @@ endif
 " new stuff {{{
 " use - to open a nerdtree
 Plug 'tpope/vim-vinegar'
-Plug 'terryma/vim-expand-region'
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
 Plug 'christoomey/vim-tmux-navigator'
 " }}}
 
@@ -126,7 +123,6 @@ set shell=/usr/local/bin/zsh
 set history=200
 set nobackup
 set nowritebackup
-set notimeout
 set noswapfile
 set undofile
 set undodir=~/.tmp,/tmp
