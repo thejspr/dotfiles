@@ -15,7 +15,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'JazzCore/ctrlp-cmatcher', { 'do': './install.sh' }
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-repeat'
-" Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
 " }}}
 
 " Code navigation {{{
@@ -29,9 +29,9 @@ Plug 'tpope/vim-commentary'
 Plug 'godlygeek/tabular'
 " Plug 'chip/vim-fat-finger'
 Plug 'SirVer/ultisnips'
-let g:UltiSnipsExpandTrigger="<c-e>"
-let g:UltiSnipsJumpForwardTrigger="<c-e>"
-let g:UltiSnipsJumpBackwardTrigger="<s-c-e>"
+let g:UltiSnipsExpandTrigger="<c-l>"
+let g:UltiSnipsJumpForwardTrigger="<c-l>"
+let g:UltiSnipsJumpBackwardTrigger="<s-c-l>"
 let g:UltiSnipsEditSplit="vertical"
 Plug 'thejspr/vim-snippets'
 Plug 'AndrewRadev/splitjoin.vim'
@@ -66,7 +66,7 @@ Plug 'slim-template/vim-slim'
 Plug 'tpope/vim-ragtag'
 let g:ragtag_global_maps = 1
 Plug 'mattn/emmet-vim'
-let g:user_emmet_leader_key='<c-e>'
+" let g:user_emmet_leader_key='<c-y>'
 " let user_emmet_expandabbr_key = '<c-e>'
 " Plug 'fatih/vim-go'
 Plug 'pangloss/vim-javascript'
