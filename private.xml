@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Change OPTION_L + ; to æ.</name>
+    <identifier>private.alt_to_danish_ae</identifier>
+    <autogen>
+      __KeyToKey__
+      KeyCode::SEMICOLON, ModifierFlag::OPTION_L,
+      KeyCode::QUOTE, ModifierFlag::OPTION_L
+    </autogen>
+  </item>
+
+  <item>
+    <name>Change OPTION_L + [ to å.</name>
+    <identifier>private.alt_to_danish_aa</identifier>
+    <autogen>
+      __KeyToKey__
+      KeyCode::BRACKET_LEFT, ModifierFlag::OPTION_L,
+      KeyCode::A, ModifierFlag::OPTION_L
+    </autogen>
+  </item>
+
+  <item>
+    <name>Change OPTION_L + ' to ø.</name>
+    <identifier>private.alt_to_danish_oe</identifier>
+    <autogen>
+      __KeyToKey__
+      KeyCode::QUOTE, ModifierFlag::OPTION_L,
+      KeyCode::O, ModifierFlag::OPTION_L
+    </autogen>
+  </item>
+</root>

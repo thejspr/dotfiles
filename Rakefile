@@ -1,6 +1,6 @@
 desc "Create dotfile symlinks"
 task :links do
-  IGNORES = %w{Rakefile Brewfile zsh_mods init UltiSnips README.md rbenv tmux}
+  IGNORES = %w{Rakefile Brewfile zsh_mods init UltiSnips README.md rbenv tmux private.xml}
 
   Dir.glob("*").each do |file|
     next if IGNORES.include?(file)
