@@ -3,6 +3,7 @@ stty -ixon
 # unalias g
 . ~/.mac_settings
 
+export EDITOR='mvim -v'
 export RUBY_BUILD_CACHE_PATH=true
 eval "$(rbenv init - --no-rehash)"
 export PATH=./bin:~/bin:/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH

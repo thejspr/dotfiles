@@ -1,9 +1,11 @@
 # new
 alias ff='find . -iname'
-alias mx='tmuxinator'
-emx(){ vim ~/.tmuxinator/$@.yml }
-alias todo='z lists && vim +Todo'
 mkcd() { dir="$*"; mkdir -p "$dir" && cd "$dir"; }
+
+# tmux
+alias mx='tmuxinator'
+alias tma='tmux attach -t'
+emx(){ mvim -v ~/.tmuxinator/$@.yml }
 
 #ruby
 alias rb='rbenv'
@@ -13,30 +15,9 @@ alias kf='kill -9 %1'
 alias kk='kill -9'
 alias be='bundle exec'
 alias bu='bundle update'
-
-rc () {
-  if [ -f ./script/console ]; then
-    ./script/console --irb=pry $@
-  else
-    rails c $@
-  fi
-}
-
-rg () {
-  if [ -f ./script/generate ]; then
-    ./script/generate $@
-  else
-    rails g $@
-  fi
-}
-
-rs () {
-  if [ -f ./script/server ]; then
-    UNICORN_WORKERS=1 bundle exec unicorn_rails -c ./config/unicorn/development.rb $@
-  else
-    rails s $@
-  fi
-}
+alias rs='rails s'
+alias rg='rails g'
+alias rc='rails c'
 
 #rake
 alias rt='be rake -T'
@@ -51,21 +32,11 @@ alias hl="heroku logs -t"
 #testing
 alias sg='bundle exec guard'
 alias bec='be cucumber'
-alias gcuc="git status -sb | awk '{print $2}' | ag '\.feature' | xargs bundle exec cucumber"
-alias gspec="git status -sb | awk '{print $2}' | ag '_spec' | xargs script/spec"
-bes () {
-  if [ -f ./script/ci ]; then
-    be spec
-  else
-    be rspec
-  fi
-}
+alias bes='be rspec'
 
 #vim
 alias e='mvim -v'
 alias vim='mvim -v'
-# alias e='vim'
-# alias aup='sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoclean && sudo apt-get autoremove'
 
 # homebrew
 alias bup='brew update && echo "==> Outdated Formula" && brew outdated && brew cleanup'
@@ -104,6 +75,5 @@ alias ea='e ~/Code/dotfiles/aliases'
 alias eg='e ~/Code/dotfiles/gitconfig'
 alias ez='e ~/Code/dotfiles/zsh_mods'
 alias et='e ~/Code/dotfiles/tmux.conf'
-alias ezz='e ~/.zpreztorc'
 alias es='e ~/.ssh/config'
 alias sr='exec zsh'

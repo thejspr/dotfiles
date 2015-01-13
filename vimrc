@@ -99,13 +99,8 @@ Plug 'benmills/vimux'
 Plug 'skalnik/vim-vroom'
 let g:vroom_use_vimux = 1
 let g:vroom_cucumber_path = 'cucumber'
-if filereadable("bin/rails")
-  let g:vroom_spec_command = 'rspec'
-  let g:vroom_rspec_version = '3.x'
-else
-  let g:vroom_spec_command = 'spec'
-  let g:vroom_rspec_version = '1.x'
-endif
+let g:vroom_spec_command = 'rspec'
+let g:vroom_rspec_version = '3.x'
 " }}}
 
 " new stuff {{{
@@ -170,7 +165,6 @@ set modeline
 set showcmd
 set hidden
 set wildmenu
-" set wildmode=list:longest,list:full
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
@@ -186,7 +180,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set nowrap
-" set list listchars=trail:·
+set textwidth=80
 set list listchars=tab:»·,trail:·
 
 if has("gui_running")

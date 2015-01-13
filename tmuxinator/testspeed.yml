@@ -1,12 +1,9 @@
 name: testspeed
 root: ~/Code/testspeed
 
-pre_window: rbenv shell 2.1.2
+pre_window: rbenv shell 2.2.0
 
 windows:
-  - editor:
-      layout: 9701,272x72,0,0[272x55,0,0,56,272x16,0,56,60]
-      panes:
-        - vim
-        - bundle exec guard
-  - server: bundle exec rails s
+  - editor: g
+  - console: bundle exec rails c
+  - server: bundle exec foreman start
