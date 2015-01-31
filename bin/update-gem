@@ -4,6 +4,8 @@ set -e
 
 bundle update $*
 
+bundle exec rspec
+
 git add -A
 
 git commit -m "Upgrade $*"

@@ -326,7 +326,7 @@ nnoremap <f7> :let &background = ( &background == "dark"? "light" : "dark")<CR>
 " Go, Text and Markdown {{{
 autocmd bufreadpre *.gp setlocal nolist
 autocmd bufreadpre */todos/* setlocal nolist
-autocmd bufreadpre *.md setlocal textwidth=80 com=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,b:- formatoptions=tcroqln
+autocmd bufreadpre *.md setlocal textwidth=80 com=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,b:- formatoptions=tcroqln filetype=markdown
 " }}}
 
 " Ruby {{{
@@ -366,3 +366,5 @@ vnoremap K :m '<-2<CR>gv=gv
 " set lisp
 inoremap <c-s> <c-o>:w<cr>
 " }}}
+
+" vim: textwidth=200
