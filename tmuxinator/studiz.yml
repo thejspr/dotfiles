@@ -20,5 +20,5 @@ pre_window: rbenv shell 2.1.5
 
 windows:
   - editor: g
-  - server: bundle exec rails s -p 4000
   - console: bundle exec rails c
+  - server: bundle exec rails s -p 4000

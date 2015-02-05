@@ -25,9 +25,6 @@ export SKIP_COVERAGE=1
 # Alias and function definitions.
 . ~/code/dotfiles/aliases
 
-# Source housetrip settings
-. ~/code/dotfiles/housetrip
-
 # hub alias
 # DISABLED: clashes with git-whistles
 # eval "$(hub alias -s)"
