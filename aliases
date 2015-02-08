@@ -18,6 +18,7 @@ alias bu='bundle update'
 alias rs='rails s'
 alias rg='rails g'
 alias rc='rails c'
+alias migrate='be rake db:migrate'
 
 #rake
 alias rt='be rake -T'
