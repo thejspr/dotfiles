@@ -56,7 +56,6 @@ Plug 'sickill/vim-pasta'
 Plug 'kana/vim-textobj-user'
 runtime macros/matchit.vim
 Plug 'nelstrom/vim-textobj-rubyblock'
-" Plug 'tpope/vim-cucumber'
 "}}}
 
 " Msc languages {{{
@@ -129,14 +128,6 @@ let macvim_skip_colorscheme=1
 set ttyfast
 set ttymouse=xterm2
 set mouse=a
-" set timeout " Do time out on mappings and others
-set timeoutlen=1000 " Wait {num} ms before timing out a mapping
-set ttimeoutlen=10
-augroup FastEscape
-  autocmd!
-  au InsertEnter * set timeoutlen=0
-  au InsertLeave * set timeoutlen=1000
-augroup END
 " }}}
 
 " UI {{{
@@ -233,18 +224,6 @@ nnoremap <silent> p p`]
 
 " allow quit via single keypress (Q)
 map Q :wqa<CR>
-
-
-" vp doesn't replace paste buffer
-function! RestoreRegister()
-  let @" = s:restore_reg
-  return ''
-endfunction
-function! s:Repl()
-  let s:restore_reg = @"
-  return "p@=RestoreRegister()\<cr>"
-endfunction
-vmap <silent> <expr> p <sid>Repl()
 " }}}
 
 " Searching {{{
