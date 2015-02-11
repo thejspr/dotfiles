@@ -1,12 +1,10 @@
 export KEYTIMEOUT=1
 stty -ixon
-# unalias g
-. ~/.mac_settings
 
-export EDITOR='mvim -v'
-export RUBY_BUILD_CACHE_PATH=true
-eval "$(rbenv init - --no-rehash)"
+export PATH=/usr/local/bin:/usr/local/share/npm/bin:$PATH
 export PATH=./bin:~/bin:/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH
+export EDITOR='mvim -v'
+eval "$(rbenv init - --no-rehash)"
 
 # prezto customizations
 autoload zmv
@@ -16,11 +14,21 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 alias tar='/usr/local/bin/gtar'
 
 # Ruby
+export RUBY_BUILD_CACHE_PATH=true
 export RUBY_HEAP_SLOTS_INCREMENT=10000
 export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1.8
 export RUBY_GC_MALLOC_LIMIT=59000000
 export RUBY_HEAP_FREE_MIN=100000
 export SKIP_COVERAGE=1
+
+# JRuby
+export JRUBY_OPTS='-J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -X-C'
+export JAVA_HOME="$(/usr/libexec/java_home)"
+# export JAVACMD=`which drip`
+# export DRIP_INIT_CLASS=org.jruby.main.DripMain
+
+# https://github.com/rupa/z
+. /usr/local/etc/profile.d/z.sh
 
 # Alias and function definitions.
 . ~/code/dotfiles/aliases
@@ -28,9 +36,6 @@ export SKIP_COVERAGE=1
 # hub alias
 # DISABLED: clashes with git-whistles
 # eval "$(hub alias -s)"
-
-# JAVA
-export JAVA_HOME="$(/usr/libexec/java_home)"
 
 fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then
@@ -47,8 +52,6 @@ bindkey '^Z' fancy-ctrl-z
 # Golang
 export GOPATH=$HOME/Code/go
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
-
-source ~/.private
 
 # $(boot2docker shellinit)
 export DOCKER_HOST=tcp://192.168.59.103:2376
