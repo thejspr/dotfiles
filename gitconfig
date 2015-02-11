@@ -35,7 +35,7 @@
   ms     = checkout master
   pro    = checkout production
   mt     = mergetool
-  mm     = !git fetch && git merge origin/master
+  mm     = merge master
   r      = remote
   rc     = !git add -A && git rebase --continue
   wip    = !git add --all && git commit -m 'WIP'

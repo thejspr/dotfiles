@@ -8,7 +8,7 @@ root: ~/Code/measurehub
 pre: cd ~/Code/measurehub
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
-pre_window: rbenv shell 2.1.5
+pre_window: rbenv shell 2.2.0
 
 # Pass command line options to tmux. Useful for specifying a different tmux.conf.
 # tmux_options: -f ~/.tmux.mac.conf
@@ -17,13 +17,9 @@ pre_window: rbenv shell 2.1.5
 # tmux_command: byobu
 
 windows:
-  - editor:
-      layout: 9701,272x72,0,0[272x55,0,0,56,272x16,0,56,60]
-      panes:
-        - g
-        - bundle exec guard
+  - editor: g
   - app:
       layout: even-vertical
       panes:
+        - rs -p 7000
         - bundle exec rails c
-        - bundle exec unicorn -p 5000
