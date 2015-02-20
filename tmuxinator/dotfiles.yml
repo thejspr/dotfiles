@@ -1,0 +1,7 @@
+name: dotfiles
+root: ~/Code/dotfiles
+
+pre: cd ~/Code/dotfiles
+
+windows:
+  - editor: g

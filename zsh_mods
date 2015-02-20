@@ -1,5 +1,5 @@
-export KEYTIMEOUT=1
-stty -ixon
+# export KEYTIMEOUT=1
+# stty -ixon
 
 export PATH=/usr/local/bin:/usr/local/share/npm/bin:$PATH
 export PATH=./bin:~/bin:/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH
@@ -22,8 +22,8 @@ export RUBY_HEAP_FREE_MIN=100000
 export SKIP_COVERAGE=1
 
 # JRuby
-export JRUBY_OPTS='-J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -X-C'
-export JAVA_HOME="$(/usr/libexec/java_home)"
+# export JRUBY_OPTS='-J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -X-C'
+# export JAVA_HOME="$(/usr/libexec/java_home)"
 # export JAVACMD=`which drip`
 # export DRIP_INIT_CLASS=org.jruby.main.DripMain
 

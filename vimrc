@@ -255,7 +255,7 @@ autocmd BufRead COMMIT_EDITMSG setlocal spell! colorcolumn=72
 " NERDTree
 let g:NERDTreeQuitOnOpen=0
 let g:NERDTreeShowBookmarks = 0
-let g:NERDTreeWinSize = 20
+let g:NERDTreeWinSize = 25
 let g:NERDTreeAutoDeleteBuffer=1
 let g:NERDTreeChDirMode=2
 let NERDTreeShowHidden=0
