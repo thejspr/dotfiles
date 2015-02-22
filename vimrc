@@ -97,7 +97,7 @@ let g:gitgutter_map_keys = 0
 Plug 'benmills/vimux'
 Plug 'skalnik/vim-vroom'
 let g:vroom_use_vimux = 1
-let g:vroom_cucumber_path = 'cucumber'
+let g:vroom_cucumber_path = 'spinach'
 let g:vroom_spec_command = 'rspec'
 let g:vroom_rspec_version = '3.x'
 " }}}
@@ -209,13 +209,20 @@ nnoremap g# g#zz
 nnoremap j gj
 nnoremap k gk
 " Fix save annoyances
-cnoreabbrev W w
-cnoreabbrev Wa wa
-cnoreabbrev Wq wq
-cnoreabbrev Wqa wqa
-map q: :q
+cabbrev W w
+cabbrev Wa wa
+cabbrev Wq wq
+cabbrev Wqa wqa
+cabbrev ew wq
+cabbrev qw wq
 
 nnoremap <Leader>w :w<CR>
+autocmd InsertLeave * if expand('%') != '' | update | endif
+
+" Enter command with one keystroke
+nnoremap ; :
+nnoremap : ;
+nnoremap ! :!
 
 " Automatically jump to end of text you pasted
 vnoremap <silent> y y`]
@@ -269,6 +276,7 @@ set grepprg=ag\ --nogroup\ --nocolor
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_use_caching = 0
+let g:ctrlp_mruf_relative = 1
 
 noremap <leader>t :CtrlP<cr>
 noremap <leader>b :CtrlPBuffer<cr>
@@ -334,16 +342,7 @@ nmap <leader><space> :VimuxPromptCommand<cr>
 " nnoremap   <Left>   <NOP>
 " nnoremap   <Right>  <NOP>
 
-imap jj <Esc>
-noremap <silent> <F10> :let @+=expand("%")<CR>
-" set shell=/bin/sh
-
-" Move visual block
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
-
 " set lisp
-inoremap <c-s> <c-o>:w<cr>
 " }}}
 
-" vim: textwidth=200
+" vim: textwidth=120
