@@ -79,8 +79,6 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'junegunn/seoul256.vim'
 Plug 'restore_view.vim'
 Plug 'bling/vim-airline'
-" let g:airline_theme='gotham256'
-let g:airline_enable_bufferline=0
 let g:airline_powerline_fonts=0
 let g:airline#extensions#hunks#enabled = 0
 let g:airline_left_sep=''
@@ -98,6 +96,7 @@ Plug 'benmills/vimux'
 Plug 'skalnik/vim-vroom'
 let g:vroom_use_vimux = 1
 let g:vroom_cucumber_path = 'spinach'
+let g:vroom_use_colors = 0
 let g:vroom_spec_command = 'rspec'
 let g:vroom_rspec_version = '3.x'
 " }}}
