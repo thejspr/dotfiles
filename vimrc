@@ -77,13 +77,13 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'sjl/vitality.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'junegunn/seoul256.vim'
-Plug 'restore_view.vim'
+" Plug 'restore_view.vim'
 Plug 'bling/vim-airline'
-let g:airline_powerline_fonts=0
-let g:airline#extensions#hunks#enabled = 0
+" let g:airline_powerline_fonts=0
+" let g:airline#extensions#hunks#enabled = 0
 let g:airline_left_sep=''
 let g:airline_right_sep=''
-let g:airline_section_z=''
+" let g:airline_section_z=''
 let g:airline#extensions#tabline#enabled = 1
 Plug 'airblade/vim-gitgutter'
 let g:gitgutter_realtime = 0
@@ -105,6 +105,8 @@ let g:vroom_rspec_version = '3.x'
 " use - to open a nerdtree
 Plug 'tpope/vim-vinegar'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'junegunn/goyo.vim'
+let g:goyo_width=100
 " }}}
 
 call plug#end()
@@ -244,6 +246,11 @@ noremap <leader>, :noh<cr>
 noremap <leader>f :%s///<left><left>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
+
+autocmd BufReadPost *
+  \ if line("'\"") > 0 && line("'\"") <= line("$") |
+  \ exe "normal g`\"" |
+  \ endif
 " }}}
 
 " Spell checking {{{
@@ -332,7 +339,7 @@ noremap <Leader>v :Eview<space>
 nnoremap <Leader>x :VroomRunNearestTest<cr>
 nnoremap <Leader>X :VroomRunTest<cr>
 nnoremap <Leader>§ :wa<cr>:VimuxRunLastCommand<cr>
-nmap <leader><space> :VimuxPromptCommand<cr>
+" map <leader>q :VimuxPromptCommand<cr>
 " }}}
 
 " New stuff {{{
@@ -342,6 +349,7 @@ nmap <leader><space> :VimuxPromptCommand<cr>
 " nnoremap   <Right>  <NOP>
 
 " set lisp
+autocmd FileType * set iskeyword=@,48-57,_,-,?,!,192-255
 " }}}
 
 " vim: textwidth=120
