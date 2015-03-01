@@ -181,7 +181,7 @@ endif
 "}}}
 
 " Key mappings {{{
-let mapleader = "\<Space>"
+" let mapleader = "\<Space>"
 map , <leader>
 
 " tComment
@@ -336,10 +336,10 @@ noremap <Leader>v :Eview<space>
 " }}}
 
 " Tmux and testing {{{
-nnoremap <Leader>x :VroomRunNearestTest<cr>
-nnoremap <Leader>X :VroomRunTest<cr>
-nnoremap <Leader>§ :wa<cr>:VimuxRunLastCommand<cr>
-" map <leader>q :VimuxPromptCommand<cr>
+nnoremap <leader>x :VroomRunNearestTest<cr>
+nnoremap <leader>X :VroomRunTest<cr>
+nnoremap <leader>§ :VimuxRunLastCommand<cr>
+nnoremap <leader><space> :VimuxPromptCommand<cr>
 " }}}
 
 " New stuff {{{
