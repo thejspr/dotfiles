@@ -33,7 +33,13 @@ alias hl="heroku logs -t"
 #testing
 alias sg='bundle exec guard'
 alias bec='be cucumber'
-alias bes='be rspec'
+bes() {
+  if [ -f './bin/rspec' ]; then
+    ./bin/rspec
+  else
+    bundle exec rspec
+  fi
+}
 
 #vim
 alias e='mvim -v'
