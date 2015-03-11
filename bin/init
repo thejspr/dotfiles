@@ -1,15 +1,14 @@
 #!/usr/bin/env bash
-# vim: ft=sh
 
 # Homebrew
 ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
 
 # Ruby
-brew install rbenv
+brew install rbenv ruby-build
 eval "$(rbenv init -)"
-rbenv install 2.1.0-p0
+rbenv install 2.2.0
 gem update --system
-gem install bundler
+gem install bundler tmuxinator
 
 # Dotfiles
 mkdir -p code
@@ -22,8 +21,9 @@ git pull origin master
 rake links
 
 #Prezto
+cd ~
 zsh
-git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+git clone --recursive https://github.com/thejspr/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 setopt EXTENDED_GLOB
 for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
   ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
@@ -31,7 +31,12 @@ done
 chsh -s /usr/local/bin/zsh
 echo "source '/Users/jesper/Code/dotfiles/zsh_mods'" >> ~/.zshrc
 
+# Install brew bundles
+brew tap Homebrew/brewdler
+cd ~/code/dotfiles
+brew brewdle
+
 #Launch vim to install plugins
 mkdir -p ~/.vim
 ln -s ~/code/dotfiles/UltiSnips ~/.vim/UltiSnips
-vim -c BundleInstall
+vim -c PlugInstall

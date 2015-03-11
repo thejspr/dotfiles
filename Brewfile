@@ -1,48 +1,47 @@
-tap phinze/cask
-install brew-cask
+brew caskroom/cask/brew-cask
 
-install apple-gcc42
-install cmake
-install cscope
-install ctags
-install curl
-install drip
-install entr
-install gettext
+cask brew google-chrome
+cask brew iterm2
+cask brew slack
+cask brew evernote
+cask brew spotify
+
+brew apple-gcc42
+brew cmake
+brew cscope
+brew ctags
+brew curl
+brew drip
+brew entr
+brew gettext
 link -f gettext
-install git
-install git-extras
-install htop-osx
-install hub
-install imagemagick
-install libxml2
-install macvim
-install memcached
-install mongodb
-install mysql
-install neo4j
-install nginx
-install node
-install openssl
-install phantomjs
-install postgresql
+brew git
+brew git-extras
+brew htop-osx
+brew hub
+brew imagemagick
+brew libxml2
+brew macvim
+brew node
+brew openssl
+brew phantomjs
+brew postgresql
 
-install rbenv
-install rbenv-gem-rehash
-install rbenv-default-gems
+brew rbenv
+brew rbenv-gem-rehash
+brew rbenv-default-gems
+brew ruby-build
 
-install readline
-install reattach-to-user-namespace
-install redis
-install rename
-install ruby-build
-install sqlite
-install the_silver_searcher
-install tmux
-install tree
-install wget
-install youtube-dl
-install yuicompressor
-install z
-install zsh
-install zsh-completions
+brew readline
+brew reattach-to-user-namespace
+brew redis
+brew sqlite
+brew the_silver_searcher
+brew tmux
+brew tree
+brew wget
+brew youtube-dl
+brew yuicompressor
+brew z
+brew zsh
+brew zsh-completions

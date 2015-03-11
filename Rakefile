@@ -5,7 +5,7 @@ task :links do
   Dir.glob("*").each do |file|
     next if IGNORES.include?(file)
 
-    if %w(bin Gemfile).include?(file)
+    if file == 'bin'
       target = "~/#{file}"
     else
       target = "~/.#{file}"
