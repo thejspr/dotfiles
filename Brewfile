@@ -1,47 +1,62 @@
-brew caskroom/cask/brew-cask
+tap 'homebrew/brewdler'
+tap 'homebrew/dupes'
+tap 'homebrew/versions'
+tap 'neovim/neovim'
+tap 'peco/peco'
+tap 'thoughtbot/formulae'
 
-cask brew google-chrome
-cask brew iterm2
-cask brew slack
-cask brew evernote
-cask brew spotify
+brew 'ack'
+brew 'apple-gcc42'
+brew 'caskroom/cask/brew-cask'
+brew 'cmake'
+brew 'ctags'
+brew 'curl'
+brew 'drip'
+brew 'elasticsearch'
+brew 'elinks'
+brew 'entr'
+brew 'gettext'
+brew 'git'
+brew 'git-extras'
+brew 'gnu-tar'
+brew 'graphviz'
+brew 'htop-osx'
+brew 'hub'
+brew 'libxml2'
+brew 'macvim'
+brew 'mobile-shell'
+brew 'mysql'
+brew 'nginx'
+brew 'node'
+brew 'openssl'
+brew 'optipng'
+brew 'peco'
+brew 'phantomjs'
+brew 'rbenv', args: ['HEAD']
+brew 'readline'
+brew 'reattach-to-user-namespace'
+brew 'redis'
+brew 'ruby-build'
+brew 's3cmd', args: ['HEAD']
+brew 'sqlite'
+brew 'the_silver_searcher'
+brew 'tig'
+brew 'tmux'
+brew 'tree'
+brew 'v8'
+brew 'watch'
+brew 'webp'
+brew 'wget'
+brew 'youtube-dl'
+brew 'yuicompressor'
+brew 'z'
+brew 'zlib'
+brew 'zsh'
+brew 'zsh-completions'
 
-brew apple-gcc42
-brew cmake
-brew cscope
-brew ctags
-brew curl
-brew drip
-brew entr
-brew gettext
-link -f gettext
-brew git
-brew git-extras
-brew htop-osx
-brew hub
-brew imagemagick
-brew libxml2
-brew macvim
-brew node
-brew openssl
-brew phantomjs
-brew postgresql
-
-brew rbenv
-brew rbenv-gem-rehash
-brew rbenv-default-gems
-brew ruby-build
-
-brew readline
-brew reattach-to-user-namespace
-brew redis
-brew sqlite
-brew the_silver_searcher
-brew tmux
-brew tree
-brew wget
-brew youtube-dl
-brew yuicompressor
-brew z
-brew zsh
-brew zsh-completions
+cask 'google-chrome'
+cask 'virtualbox'
+cask 'iterm2'
+cask 'slack'
+cask 'evernote'
+cask 'spotify'
