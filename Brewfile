@@ -1,4 +1,3 @@
-tap 'homebrew/brewdler'
 tap 'homebrew/dupes'
 tap 'homebrew/versions'
 tap 'neovim/neovim'
