@@ -57,6 +57,7 @@
 [diff]
   renames = copies
   mnemonicprefix = true
+  algorithm = patience
 [merge]
   stat = true
   tool = vimdiff
@@ -67,3 +68,5 @@
   full-name = Jesper Kjeldgaard
 [gc]
   auto = 0
+[heroku]
+  account = me

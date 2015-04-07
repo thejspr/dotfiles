@@ -95,7 +95,7 @@ let g:gitgutter_map_keys = 0
 Plug 'benmills/vimux'
 Plug 'skalnik/vim-vroom'
 let g:vroom_use_vimux = 1
-let g:vroom_cucumber_path = 'spinach'
+let g:vroom_cucumber_path = 'cucumber'
 let g:vroom_use_colors = 0
 let g:vroom_spec_command = 'rspec'
 let g:vroom_rspec_version = '3.x'
@@ -107,6 +107,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/goyo.vim'
 let g:goyo_width=100
+Plug 'gabesoft/vim-ags'
 " }}}
 
 call plug#end()
@@ -218,7 +219,7 @@ cabbrev ew wq
 cabbrev qw wq
 
 nnoremap <Leader>w :w<CR>
-autocmd InsertLeave * if expand('%') != '' | update | endif
+" autocmd InsertLeave * if expand('%') != '' | update | endif
 
 " Enter command with one keystroke
 nnoremap ; :
@@ -268,7 +269,7 @@ autocmd BufRead COMMIT_EDITMSG setlocal spell! colorcolumn=72
 " NERDTree
 let g:NERDTreeQuitOnOpen=0
 let g:NERDTreeShowBookmarks = 0
-let g:NERDTreeWinSize = 25
+let g:NERDTreeWinSize = 20
 let g:NERDTreeAutoDeleteBuffer=1
 let g:NERDTreeChDirMode=2
 let NERDTreeShowHidden=0
@@ -349,7 +350,7 @@ nnoremap <leader><space> :VimuxPromptCommand<cr>
 " nnoremap   <Right>  <NOP>
 
 " set lisp
-autocmd FileType * set iskeyword=@,48-57,_,-,?,!,192-255
+au BufRead,BufNewFile *.tpl.html set textwidth=120
 " }}}
 
 " vim: textwidth=120
