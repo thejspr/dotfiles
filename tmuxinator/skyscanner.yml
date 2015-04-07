@@ -1,14 +1,14 @@
-name: measurehub
-root: ~/Code/measurehub
+name: skyscanner
+root: ~/code/skyscanner/tmc
 
 # Optional tmux socket
 # socket_name: foo
 
 # Runs before everything. Use it to start daemons etc.
-pre: cd ~/Code/measurehub
+pre: cd ~/code/skyscanner/tmc
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
-pre_window: rbenv shell 2.2.1
+pre_window: rbenv shell 2.2.0
 
 # Pass command line options to tmux. Useful for specifying a different tmux.conf.
 # tmux_options: -f ~/.tmux.mac.conf
@@ -18,8 +18,5 @@ pre_window: rbenv shell 2.2.1
 
 windows:
   - editor: g
-  - app:
-      layout: even-vertical
-      panes:
-        - rs -p 7000
-        - bundle exec rails c
+  - grunt: cd client && npm install && bower install && grunt dev
+  - server: bundle install && bundle exec rake db:migrate db:test:prepare && rails server
