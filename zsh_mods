@@ -4,7 +4,7 @@
 export EDITOR='mvim -v'
 eval "$(rbenv init - --no-rehash)"
 export PATH=/usr/local/bin:/usr/local/share/npm/bin:$PATH
-export PATH=./bin:~/bin:/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH
+export PATH=./bin:~/bin:/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH
 
 # prezto customizations
 autoload zmv
