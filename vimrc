@@ -2,11 +2,8 @@
 " Plugins {{{
 " Init {{{
 set nocompatible
-filetype off " must be off before Vundle has run
+filetype off
 call plug#begin('~/.vim/plugged')
-command! BI :PlugInstall
-command! -bang BU :PlugInstall!
-command! BC :PlugClean
 " }}}
 
 " Essentials {{{
@@ -27,7 +24,6 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'godlygeek/tabular'
-" Plug 'chip/vim-fat-finger'
 Plug 'SirVer/ultisnips'
 let g:UltiSnipsExpandTrigger="<c-l>"
 let g:UltiSnipsJumpForwardTrigger="<c-l>"
@@ -44,7 +40,6 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
-" Plug 'nelstrom/vim-qargs'
 Plug 'kwbdi.vim'
 " }}}
 
@@ -67,9 +62,6 @@ let g:ragtag_global_maps = 1
 Plug 'mattn/emmet-vim'
 " let g:user_emmet_leader_key='<c-y>'
 " let user_emmet_expandabbr_key = '<c-e>'
-" Plug 'fatih/vim-go'
-Plug 'pangloss/vim-javascript'
-Plug 'kchmck/vim-coffee-script'
 " }}}
 
 " UI {{{
@@ -96,9 +88,18 @@ Plug 'benmills/vimux'
 Plug 'skalnik/vim-vroom'
 let g:vroom_use_vimux = 1
 let g:vroom_cucumber_path = 'cucumber'
-let g:vroom_use_colors = 0
+let g:vroom_use_colors = 1
 let g:vroom_spec_command = 'rspec'
-let g:vroom_rspec_version = '3.x'
+let g:vroom_use_bundle_exec = 0
+" }}}
+
+" javascript {{{
+Plug 'othree/javascript-libraries-syntax.vim'
+let g:used_javascript_libs = 'underscore,angularjs,jasmine'
+Plug 'elzr/vim-json'
+au BufRead *.json set conceallevel=0
+let g:vim_json_syntax_conceal=0
+Plug 'othree/yajs.vim'
 " }}}
 
 " new stuff {{{
@@ -108,6 +109,8 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/goyo.vim'
 let g:goyo_width=100
 Plug 'gabesoft/vim-ags'
+Plug 'gorodinskiy/vim-coloresque'
+Plug 'wakatime/vim-wakatime'
 " }}}
 
 call plug#end()
@@ -125,7 +128,6 @@ set undodir=~/.tmp,/tmp
 set clipboard=unnamed
 set foldnestmax=10
 set foldenable
-let macvim_skip_colorscheme=1
 
 set ttyfast
 set ttymouse=xterm2
@@ -219,7 +221,7 @@ cabbrev ew wq
 cabbrev qw wq
 
 nnoremap <Leader>w :w<CR>
-" autocmd InsertLeave * if expand('%') != '' | update | endif
+autocmd InsertLeave * if expand('%') != '' | update | endif
 
 " Enter command with one keystroke
 nnoremap ; :
@@ -314,7 +316,6 @@ set pastetoggle=<F3>
 nmap <f4> <Plug>Kwbd
 noremap <F5> :NERDTreeFind<CR>
 nnoremap <F6> :%s/\s*$//<CR>:noh<CR> " EOL whitespace removal
-nnoremap <f7> :let &background = ( &background == "dark"? "light" : "dark")<CR>
 " }}}
 
 " Go, Text and Markdown {{{
@@ -325,7 +326,6 @@ autocmd bufreadpre *.md setlocal textwidth=80 com=s1:/*,mb:*,ex:*/,://,b:#,:%,:X
 
 " Ruby {{{
 au BufRead,BufNewFile {Thorfile,Vagrantfile,Procfile,pryrc,config.ru} set ft=ruby
-" au BufRead {app/*.rb,spec/.*rb} set path+=.
 
 " Replace Ruby 1.8 style hashes with shorter Ruby 1.9 style
 noremap <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
@@ -334,6 +334,10 @@ noremap <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
 noremap <Leader>m :Emodel<space>
 noremap <Leader>c :Econtroller<space>
 noremap <Leader>v :Eview<space>
+" }}}
+
+" JavaScript {{{
+au BufRead,BufNewFile *.tpl.html set textwidth=120
 " }}}
 
 " Tmux and testing {{{
@@ -348,9 +352,6 @@ nnoremap <leader><space> :VimuxPromptCommand<cr>
 " nnoremap   <Down>   <NOP>
 " nnoremap   <Left>   <NOP>
 " nnoremap   <Right>  <NOP>
-
-" set lisp
-au BufRead,BufNewFile *.tpl.html set textwidth=120
 " }}}
 
 " vim: textwidth=120
