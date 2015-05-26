@@ -34,11 +34,14 @@ alias sg='bundle exec guard'
 alias bec='be cucumber'
 bes() {
   if [ -f './bin/rspec' ]; then
-    ./bin/rspec
+    ./bin/rspec $*
   else
-    bundle exec rspec
+    bundle exec rspec $*
   fi
 }
+alias specs='z tmc && rspec --tag ~type:feature'
+alias aspecs='z tmc && rspec --tag type:feature && specs'
+alias skarma='z client && grunt karma'
 
 #vim
 alias e='mvim -v'
@@ -70,6 +73,7 @@ alias gl='g l'
 alias gr='g r'
 alias gc='g commit -v'
 alias git-new-workdir='~/Code/libs/git/contrib/workdir/git-new-workdir'
+alias gpr='gpc && hub browse'
 
 #msc
 myip() { elinks -dump http://checkip.dyndns.org:8245/ }
