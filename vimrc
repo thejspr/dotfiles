@@ -221,7 +221,7 @@ cabbrev ew wq
 cabbrev qw wq
 
 nnoremap <Leader>w :w<CR>
-autocmd InsertLeave * if expand('%') != '' | update | endif
+" autocmd InsertLeave * if expand('%') != '' | update | endif
 
 " Enter command with one keystroke
 nnoremap ; :

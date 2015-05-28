@@ -1,6 +1,3 @@
-# export KEYTIMEOUT=1
-# stty -ixon
-
 export EDITOR='mvim -v'
 eval "$(rbenv init - --no-rehash)"
 export PATH=/usr/local/bin:/usr/local/share/npm/bin:$PATH
@@ -27,15 +24,14 @@ export SKIP_COVERAGE=1
 # export JAVACMD=`which drip`
 # export DRIP_INIT_CLASS=org.jruby.main.DripMain
 
+# hub alias
+eval "$(hub alias -s)"
+
 # https://github.com/rupa/z
 . /usr/local/etc/profile.d/z.sh
 
 # Alias and function definitions.
 . ~/code/dotfiles/aliases
-
-# hub alias
-# DISABLED: clashes with git-whistles
-# eval "$(hub alias -s)"
 
 fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then

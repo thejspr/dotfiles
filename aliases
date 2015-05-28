@@ -58,7 +58,7 @@ alias -g A='|ag --color'
 
 #git
 g() {
-  if [[ $# == '0' ]]; then
+  if [[ $# -eq 0 ]]; then
     command git status -sb
   else
     command git "$@";
