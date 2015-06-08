@@ -301,7 +301,7 @@ set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**,spec/dummy/**,di
 " }}}
 
 " Edit .vimrc {{{
-command! Ev :tabe ~/.vimrc
+command! Ev :e ~/.vimrc
 " Reload vimrc when saved
 augroup vimrcs
   au!
