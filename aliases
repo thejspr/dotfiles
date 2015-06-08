@@ -26,7 +26,7 @@ alias rr='be rake routes'
 #heroku
 alias h="heroku"
 hpush() { git add -A; git commit -m "$*"; git push; git push production master; }
-alias hc="heroku run console"
+alias hc="heroku run rails console"
 alias hl="heroku logs -t"
 
 #testing
@@ -59,9 +59,9 @@ alias -g A='|ag --color'
 #git
 g() {
   if [[ $# -eq 0 ]]; then
-    command git status -sb
+    command hub status -sb
   else
-    command git "$@";
+    command hub "$@";
   fi
 }
 gcam() {
