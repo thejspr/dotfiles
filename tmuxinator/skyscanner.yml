@@ -3,7 +3,7 @@ root: ~/code/skyscanner/tmc
 
 pre: cd ~/code/skyscanner/tmc
 
-pre_window: rbenv shell 2.2.0
+pre_window: rbenv shell 2.2.2
 
 windows:
   - editor: ssh-add ~/.ssh/skyscanner/id_rsa && mailcatcher && g

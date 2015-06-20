@@ -40,7 +40,8 @@ bes() {
   fi
 }
 alias specs='z tmc && rspec --tag ~type:feature'
-alias aspecs='z tmc && rspec --tag type:feature && specs'
+alias fspecs='z tmc && rspec --tag type:feature'
+alias aspecs='fspecs && specs'
 alias skarma='z client && grunt karma'
 
 #vim
