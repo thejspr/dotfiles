@@ -8,7 +8,7 @@ pre_window: rbenv shell 2.2.2
 windows:
   - editor: ssh-add ~/.ssh/skyscanner/id_rsa && mailcatcher && g
   - grunt: z client && npm install && bower update && grunt dev
-  - server: bundle install && bundle exec rake db:migrate && DISABLE_UAS=true rails server
+  - server: bundle install && rake db:migrate && rails server
   - backend:
       layout: even-vertical
       panes:
