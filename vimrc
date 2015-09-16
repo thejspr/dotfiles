@@ -48,14 +48,14 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
 Plug 'sickill/vim-pasta'
-Plug 'kana/vim-textobj-user'
-runtime macros/matchit.vim
-Plug 'nelstrom/vim-textobj-rubyblock'
+" Plug 'kana/vim-textobj-user'
+" runtime macros/matchit.vim
+" Plug 'nelstrom/vim-textobj-rubyblock'
 "}}}
 
 " Msc languages {{{
 Plug 'tpope/vim-markdown'
-Plug 'tpope/vim-haml'
+" Plug 'tpope/vim-haml'
 Plug 'slim-template/vim-slim'
 Plug 'tpope/vim-ragtag'
 let g:ragtag_global_maps = 1
@@ -68,7 +68,7 @@ Plug 'mattn/emmet-vim'
 " iterm2 support
 Plug 'sjl/vitality.vim'
 Plug 'altercation/vim-colors-solarized'
-Plug 'junegunn/seoul256.vim'
+" Plug 'junegunn/seoul256.vim'
 " Plug 'restore_view.vim'
 Plug 'bling/vim-airline'
 " let g:airline_powerline_fonts=0
@@ -94,23 +94,19 @@ let g:vroom_use_bundle_exec = 0
 " }}}
 
 " javascript {{{
-Plug 'othree/javascript-libraries-syntax.vim'
-let g:used_javascript_libs = 'underscore,angularjs,jasmine'
+" Plug 'othree/javascript-libraries-syntax.vim'
+" let g:used_javascript_libs = 'underscore,angularjs,jasmine'
 Plug 'elzr/vim-json'
 au BufRead *.json set conceallevel=0
 let g:vim_json_syntax_conceal=0
 Plug 'othree/yajs.vim'
+Plug 'kchmck/vim-coffee-script'
 " }}}
 
 " new stuff {{{
-" use - to open a nerdtree
-Plug 'tpope/vim-vinegar'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'junegunn/goyo.vim'
-let g:goyo_width=100
 Plug 'gabesoft/vim-ags'
-Plug 'gorodinskiy/vim-coloresque'
-Plug 'wakatime/vim-wakatime'
+Plug 'tpope/vim-obsession'
 " }}}
 
 call plug#end()
@@ -132,6 +128,7 @@ set foldenable
 set ttyfast
 set ttymouse=xterm2
 set mouse=a
+set iskeyword-=.
 " }}}
 
 " UI {{{
@@ -245,7 +242,7 @@ set gdefault
 set showmatch
 
 noremap <leader>, :noh<cr>
-" nnoremap <space> /
+nnoremap <space> /
 noremap <leader>f :%s///<left><left>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
@@ -282,7 +279,7 @@ let g:ctrlp_map = '<Leader>t'
 let g:ctrlp_match_window = 'order:ttb,max:10'
 let g:ctrlp_match_func = { 'match' : 'matcher#cmatch' }
 set grepprg=ag\ --nogroup\ --nocolor
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+" let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_use_caching = 0
 let g:ctrlp_mruf_relative = 1
@@ -292,7 +289,7 @@ noremap <leader>b :CtrlPBuffer<cr>
 noremap <leader>r :CtrlPMRUFiles<cr>
 
 " Use Ag instead of Grep
-let g:ackprg="ag -H --nogroup --column --nocolor -m 1000"
+" let g:ackprg="ag -H --nogroup --column --nocolor -m 1000"
 nnoremap <leader>a :Ag! <cword><CR>
 
 set wildignore+=*/public/system/*,*/.git/*,*/node_modules/*,*/.DS_Store,*.svg

@@ -17,11 +17,11 @@ alias be='bundle exec'
 alias rs='rails s'
 alias rg='rails g'
 alias rc='rails c'
-alias migrate='be rake db:migrate'
+alias migrate='rake db:migrate'
 
 #rake
-alias rt='be rake -T'
-alias rr='be rake routes'
+alias rt='rake -T'
+alias rr='rake routes'
 
 #heroku
 alias h="heroku"
@@ -31,7 +31,7 @@ alias hl="heroku logs -t"
 
 #testing
 alias sg='bundle exec guard'
-alias bec='be cucumber'
+alias bec='cucumber'
 bes() {
   if [ -f './bin/rspec' ]; then
     ./bin/rspec $*

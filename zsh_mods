@@ -3,6 +3,10 @@ eval "$(rbenv init - --no-rehash)"
 export PATH=/usr/local/bin:/usr/local/share/npm/bin:$PATH
 export PATH=./bin:~/bin:/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH
 
+# Android
+export PATH=~/Applications/android-sdk-macosx/tools:$PATH
+export ANDROID_SDK_ROOT=~/Applications/android-sdk-macosx
+
 # prezto customizations
 autoload zmv
 bindkey -e
@@ -16,7 +20,6 @@ export RUBY_HEAP_SLOTS_INCREMENT=10000
 export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1.8
 export RUBY_GC_MALLOC_LIMIT=59000000
 export RUBY_HEAP_FREE_MIN=100000
-export SKIP_COVERAGE=1
 
 # JRuby
 # export JRUBY_OPTS='-J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -X-C'
@@ -53,3 +56,5 @@ export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export DOCKER_HOST=tcp://192.168.59.103:2376
 export DOCKER_CERT_PATH=/Users/jesper/.boot2docker/certs/boot2docker-vm
 export DOCKER_TLS_VERIFY=1
+
+source ~/.secrets

@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+N = 3
+
+timings = []
+
+N.times do |i|
+  start_time = Time.now
+
+  system(ARGV.join(' ') + ' >> /dev/null')
+
+  end_time = Time.now
+
+  elapsed_time = end_time - start_time
+
+  timings << elapsed_time
+
+  puts "Run #{i + 1}: took #{elapsed_time.round(2)} seconds"
+end
+
+puts "Average: #{(timings.inject(&:+) / N).round(2)}"
+
+# vim: ft=ruby

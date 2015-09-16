@@ -1,0 +1,22 @@
+name: gomore
+root: ~/Code/gomore/gomore-web
+
+# Runs before everything. Use it to start daemons etc.
+pre: cd ~/Code/gomore/gomore-web
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.2.0
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+windows:
+  - editor: g
+  - app:
+      layout: even-vertical
+      panes:
+        - unicorn -p 3000
+        - RAILS_ENV=test rake db:drop db:setup && pry -r./config/environment
