@@ -48,9 +48,9 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
 Plug 'sickill/vim-pasta'
-" Plug 'kana/vim-textobj-user'
-" runtime macros/matchit.vim
-" Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'kana/vim-textobj-user'
+runtime macros/matchit.vim
+Plug 'nelstrom/vim-textobj-rubyblock'
 "}}}
 
 " Msc languages {{{
@@ -133,7 +133,7 @@ set iskeyword-=.
 
 " UI {{{
 set background=dark
-set background=light
+" set background=light
 " colorscheme seoul256
 try
   colorscheme solarized
