@@ -1,4 +1,3 @@
-" vim: foldmethod=marker
 " Plugins {{{
 " Init {{{
 set nocompatible
@@ -122,8 +121,6 @@ set noswapfile
 set undofile
 set undodir=~/.tmp,/tmp
 set clipboard=unnamed
-set foldnestmax=10
-set foldenable
 
 set ttyfast
 set ttymouse=xterm2
@@ -131,9 +128,17 @@ set mouse=a
 set iskeyword-=.
 " }}}
 
+" Folding {{{
+set foldenable
+set foldnestmax=10
+" set foldlevel=2
+set foldlevelstart=2
+set foldmethod=indent
+" }}}
+
 " UI {{{
-set background=dark
-" set background=light
+" set background=dark
+set background=light
 " colorscheme seoul256
 try
   colorscheme solarized
@@ -316,9 +321,8 @@ noremap <F5> :NERDTreeFind<CR>
 nnoremap <F6> :%s/\s*$//<CR>:noh<CR> " EOL whitespace removal
 " }}}
 
-" Go, Text and Markdown {{{
+" Go and Markdown {{{
 autocmd bufreadpre *.gp setlocal nolist
-autocmd bufreadpre */todos/* setlocal nolist
 autocmd bufreadpre *.md setlocal textwidth=80 com=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,b:- formatoptions=tcroqln filetype=markdown
 " }}}
 
@@ -353,3 +357,4 @@ nnoremap <leader><space> :VimuxPromptCommand<cr>
 " }}}
 
 " vim: textwidth=120
+" vim:foldmethod=marker:foldlevel=0:textwidth=120:colorcolumn=120
