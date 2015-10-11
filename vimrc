@@ -12,7 +12,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'JazzCore/ctrlp-cmatcher', { 'do': './install.sh' }
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-repeat'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 " }}}
 
 " Code navigation {{{
@@ -281,7 +281,7 @@ let g:ctrlp_match_func = { 'match' : 'matcher#cmatch' }
 set grepprg=ag\ --nogroup\ --nocolor
 " let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_show_hidden = 1
-let g:ctrlp_use_caching = 0
+let g:ctrlp_use_caching = 1
 let g:ctrlp_mruf_relative = 1
 
 noremap <leader>t :CtrlP<cr>
@@ -295,6 +295,7 @@ nnoremap <leader>a :Ag! <cword><CR>
 set wildignore+=*/public/system/*,*/.git/*,*/node_modules/*,*/.DS_Store,*.svg
 set wildignore+=*/tmp/*,tmp/**,**.png,**.jpg,**.jpeg
 set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**,spec/dummy/**,dist/**
+set wildignore+=*/FlexWin,*/html_5-klik,*_site
 " }}}
 
 " Edit .vimrc {{{
