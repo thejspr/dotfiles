@@ -106,6 +106,8 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'gabesoft/vim-ags'
 Plug 'tpope/vim-obsession'
+Plug 'sjl/gundo.vim'
+nnoremap <leader>u :GundoToggle<cr>
 " }}}
 
 call plug#end()
