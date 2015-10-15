@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+
+require 'net/http'
+require 'json'
+
+token = ENV['GITHUB_TOKEN']
+issue_id = ARGV.first
+
+# get org and repo
+repo_url = `git config --get remote.origin.url`.strip
+repo = /([\w,-]*\/.*)\.git/.match(repo_url)[1]
+
+unless token || issue_id || repo
+  puts "Missing parameter. Known values: issue-id=#{issue_id.inspect} repo=#{repo.inspect} token=#{token.inspect}"
+  exit(1)
+end
+
+# fetch issue details
+uri = URI.parse("https://api.github.com/repos/#{repo}/issues/#{issue_id}?access_token=#{token}")
+json = Net::HTTP.get(uri)
+response = JSON.parse(json)
+
+title = response['title']
+  .downcase
+  .gsub(/[^0-9A-Za-z\s]/, '') # remove special characters
+  .gsub(' ', '-').strip # replace whitespace with dash
+
+# checkout branch
+system "git checkout -b #{title}"
