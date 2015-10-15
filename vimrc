@@ -93,8 +93,8 @@ let g:vroom_use_bundle_exec = 0
 " }}}
 
 " javascript {{{
-" Plug 'othree/javascript-libraries-syntax.vim'
-" let g:used_javascript_libs = 'underscore,angularjs,jasmine'
+Plug 'othree/javascript-libraries-syntax.vim'
+let g:used_javascript_libs = 'underscore,angularjs,jasmine'
 Plug 'elzr/vim-json'
 au BufRead *.json set conceallevel=0
 let g:vim_json_syntax_conceal=0
@@ -134,7 +134,7 @@ set iskeyword-=.
 set foldenable
 set foldnestmax=10
 " set foldlevel=2
-set foldlevelstart=2
+set foldlevelstart=10
 set foldmethod=indent
 " }}}
 
@@ -303,6 +303,7 @@ set wildignore+=*/public/system/*,*/.git/*,*/node_modules/*,*/.DS_Store,*.svg
 set wildignore+=*/tmp/*,tmp/**,**.png,**.jpg,**.jpeg
 set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**,spec/dummy/**,dist/**
 set wildignore+=*/FlexWin,*/html_5-klik,*_site
+set wildignore+=*/platforms,*/www/
 " }}}
 
 " Edit .vimrc {{{
