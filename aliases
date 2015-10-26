@@ -3,9 +3,7 @@ alias ff='find . -iname'
 mkcd() { dir="$*"; mkdir -p "$dir" && cd "$dir"; }
 
 # tmux
-alias mx='tmuxinator'
 alias tma='tmux attach -t'
-emx(){ mvim -v ~/.tmuxinator/$@.yml }
 
 #ruby
 alias rb='rbenv'

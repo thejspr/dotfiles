@@ -50,6 +50,7 @@ Plug 'sickill/vim-pasta'
 Plug 'kana/vim-textobj-user'
 runtime macros/matchit.vim
 Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'tpope/vim-bundler'
 "}}}
 
 " Msc languages {{{
@@ -124,8 +125,6 @@ set undofile
 set undodir=~/.tmp,/tmp
 set clipboard=unnamed
 
-set ttyfast
-set ttymouse=xterm2
 set mouse=a
 set iskeyword-=.
 " }}}
@@ -154,7 +153,7 @@ set nocursorline
 set colorcolumn=80
 set synmaxcol=140
 set title
-set encoding=utf-8
+" set encoding=utf-8
 set ffs=unix,mac,dos
 set scrolloff=4
 set autoindent
