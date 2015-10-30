@@ -21,7 +21,7 @@
   ca     = !git add -A && git commit -v
   co     = checkout
   ci     = !hub ci-status -v | awk '{print $2}' | xargs open
-  d      = diff
+  d      = !clear && git diff
   dc     = diff --cached
   dcs    = diff --cached --stat
   dm     = !clear && git diff master
