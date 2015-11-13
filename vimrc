@@ -324,8 +324,8 @@ nnoremap <F6> :%s/\s*$//<CR>:noh<CR> " EOL whitespace removal
 " }}}
 
 " Go and Markdown {{{
-autocmd bufreadpre *.gp setlocal nolist
-autocmd bufreadpre *.md setlocal textwidth=80 com=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,b:- formatoptions=tcroqln filetype=markdown
+" autocmd bufreadpre *.gp setlocal nolist
+" autocmd bufreadpre *.md setlocal textwidth=80 com=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,b:- formatoptions=tcroqln filetype=markdown
 " }}}
 
 " Ruby {{{
