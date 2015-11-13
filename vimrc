@@ -138,8 +138,8 @@ set foldmethod=indent
 " }}}
 
 " UI {{{
-" set background=dark
-set background=light
+set background=dark
+" set background=light
 " colorscheme seoul256
 try
   colorscheme solarized
@@ -356,6 +356,9 @@ nnoremap <leader><space> :VimuxPromptCommand<cr>
 " nnoremap   <Down>   <NOP>
 " nnoremap   <Left>   <NOP>
 " nnoremap   <Right>  <NOP>
+
+noremap <c-k> :call feedkeys( line('.')==1 ? '' : 'ddkP' )<CR>
+noremap <c-j> ddp
 " }}}
 
 " vim: textwidth=120
