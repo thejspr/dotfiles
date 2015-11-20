@@ -22,6 +22,7 @@
   co     = checkout
   ci     = !hub ci-status -v | awk '{print $2}' | xargs open
   d      = !clear && git diff
+  dev    = checkout develop
   dc     = diff --cached
   dcs    = diff --cached --stat
   dm     = !clear && git diff master
@@ -47,6 +48,10 @@
 
   cl = !git co master && git pull && git remote prune origin && git bclean
   bclean = "!f() { git branch --merged ${1-master} | grep -vE '(master|production)' | xargs git branch -d; }; f"
+
+
+  dcl = !git co develop && git pull && git remote prune origin && git dbclean
+  dbclean = "!f() { git branch --merged ${1-develop} | grep -vE '(master|production)' | xargs git branch -d; }; f"
 [apply]
   whitespace = nowarn
 [branch]
