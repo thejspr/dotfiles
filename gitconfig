@@ -51,7 +51,7 @@
 
 
   dcl = !git co develop && git pull && git remote prune origin && git dbclean
-  dbclean = "!f() { git branch --merged ${1-develop} | grep -vE '(master|production)' | xargs git branch -d; }; f"
+  dbclean = "!f() { git branch --merged ${1-develop} | grep -vE '(master|develop)' | xargs git branch -d; }; f"
 [apply]
   whitespace = nowarn
 [branch]
