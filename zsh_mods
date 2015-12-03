@@ -4,8 +4,7 @@ export PATH=/usr/local/bin:/usr/local/share/npm/bin:$PATH
 export PATH=./bin:~/bin:/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH
 
 # Android
-export PATH=~/Applications/android-sdk-macosx/tools:$PATH
-export ANDROID_SDK_ROOT=~/Applications/android-sdk-macosx
+export PATH=/Applications/Android\ Studio.app/Contents/gradle/gradle-2.8/bin:$PATH
 
 # prezto customizations
 autoload zmv
