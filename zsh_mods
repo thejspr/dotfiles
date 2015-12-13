@@ -5,6 +5,8 @@ export PATH=./bin:~/bin:/Applications/Postgres.app/Contents/Versions/9.4/bin:$PA
 
 # Android
 export PATH=/Applications/Android\ Studio.app/Contents/gradle/gradle-2.8/bin:$PATH
+export PATH=/Users/jesper/Library/Android/sdk/platform-tools:$PATH
+export PATH=/Users/jesper/Library/Android/sdk/tools:$PATH
 
 # prezto customizations
 autoload zmv
