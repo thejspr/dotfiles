@@ -2,6 +2,12 @@
 
 require 'net/http'
 require 'json'
+require 'io/console'
+
+trap 'SIGINT' do
+  puts "Exiting"
+  exit 130
+end
 
 token = ENV['GITHUB_TOKEN']
 issue_id = ARGV.first
@@ -23,7 +29,21 @@ response = JSON.parse(json)
 title = response['title']
   .downcase
   .gsub(/[^0-9A-Za-z\s]/, '') # remove special characters
-  .gsub(' ', '-').strip # replace whitespace with dash
+  .gsub(/\s+/, '-').strip # replace whitespace with dash
 
-# checkout branch
-system "git checkout -b #{title}"
+# checkout branch, using git-flow style for app repos
+if Dir.getwd.split('/').last.include?('app')
+  print "Input branch type (default is 'bugfix'): "
+  branch_type = STDIN.gets.strip
+
+  branch_type = 'bugfix' if branch_type.empty?
+
+  if %w(feature bugfix release).include?(branch_type)
+    system "git checkout -b #{branch_type}/#{issue_id}-#{title}"
+  else
+    puts "Invalid branch type: #{branch_type.inspect}. Aborting"
+    exit(1)
+  end
+else
+  system "git checkout -b #{title}"
+end
