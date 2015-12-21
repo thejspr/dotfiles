@@ -359,6 +359,8 @@ nnoremap <leader><space> :VimuxPromptCommand<cr>
 
 noremap <c-k> :call feedkeys( line('.')==1 ? '' : 'ddkP' )<CR>
 noremap <c-j> ddp
+
+au BufRead,BufNewFile COMMIT_EDITMSG set ft=diff
 " }}}
 
 " vim: textwidth=120
