@@ -267,7 +267,6 @@ noremap <leader>sn ]s
 noremap <leader>sp [s
 noremap <leader>sa zg
 noremap <leader>sd z=
-autocmd BufRead COMMIT_EDITMSG setlocal spell! colorcolumn=72
 "}}}
 
 " Nerdtree & ctrlp {{{
@@ -360,7 +359,7 @@ nnoremap <leader><space> :VimuxPromptCommand<cr>
 noremap <c-k> :call feedkeys( line('.')==1 ? '' : 'ddkP' )<CR>
 noremap <c-j> ddp
 
-au BufRead,BufNewFile COMMIT_EDITMSG set ft=diff
+au BufRead,BufNewFile COMMIT_EDITMSG setlocal ft=diff spell!
 " }}}
 
 " vim: textwidth=120
