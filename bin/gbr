@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 
-# quickly find a branch, using the team name as the first argument and autocomplete
-# to narrow it down further.
+# quickly find a branch, using any part of the name to narrow it down further.
+# requires "peco" (`brew install peco`) installed
 
-# requires "selecta" (garybernhardt/selecta) installable via brew on MacOS
+set -e
 
-# set -e
-
-cmd=peco
+cmd='peco --select-1'
 
 if [[ -z "$1" ]]; then
   git branch | cut -c 3- | $cmd | xargs git checkout
