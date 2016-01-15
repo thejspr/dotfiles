@@ -77,7 +77,7 @@ alias gpr='gpc && hub browse'
 #msc
 myip() { elinks -dump http://checkip.dyndns.org:8245/ }
 alias cd..='cd ..'
-alias ll='ls -la'
+alias ll='ls -l'
 
 # system and files editing
 alias ea='e ~/Code/dotfiles/aliases'
