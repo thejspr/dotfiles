@@ -14,7 +14,13 @@ issue_id = ARGV.first
 
 # get org and repo
 repo_url = `git config --get remote.origin.url`.strip
-repo = /([\w,-]*\/.*)\.git/.match(repo_url)[1]
+
+if repo_url ~! /^http/
+  # TODO: does not work with https endpoints
+  repo = /([\w,-]*\/.*)\.git/.match(repo_url)[1]
+else
+  repo = "gomore/#{Dir.pwd.split('/').last}"
+end
 
 unless token || issue_id || repo
   puts "Missing parameter. Known values: issue-id=#{issue_id.inspect} repo=#{repo.inspect} token=#{token.inspect}"
