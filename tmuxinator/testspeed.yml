@@ -1,9 +1,0 @@
-name: testspeed
-root: ~/Code/testspeed
-
-pre_window: rbenv shell 2.2.0
-
-windows:
-  - editor: g
-  - console: bundle exec rails c
-  - server: bundle exec foreman start
