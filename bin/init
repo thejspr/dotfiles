@@ -6,9 +6,8 @@ ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
 # Ruby
 brew install rbenv ruby-build
 eval "$(rbenv init -)"
-rbenv install 2.2.0
+rbenv install 2.3.0
 gem update --system
-gem install bundler tmuxinator
 
 # Dotfiles
 mkdir -p code
