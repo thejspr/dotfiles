@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+# usage: issue-branch <issue-id>
+#
+# Requirements:
+# - Ruby
+# - a github token (as GITHUB_TOKEN) in the environment
+# - if the repo name includes the word "app" it uses git-flow style branch naming
+
 require 'net/http'
 require 'json'
 require 'io/console'
