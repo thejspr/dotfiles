@@ -13,11 +13,8 @@ token = ENV['GITHUB_TOKEN']
 issue_id = ARGV.first
 
 # get org and repo
-repo_url = `git config --get remote.origin.url`.strip
-
-# TODO: does not work with https endpoints
-# repo = /([\w,-]*\/.*)\.git/.match(repo_url)[1]
-repo = "gomore/#{Dir.pwd.split('/').last}"
+origin = `git config --get remote.origin.url`.strip
+repo = URI.parse(origin.gsub('.git', '')).path[1..-1]
 
 unless token || issue_id || repo
   puts "Missing parameter. Known values: issue-id=#{issue_id.inspect} repo=#{repo.inspect} token=#{token.inspect}"
@@ -35,7 +32,7 @@ title = response['title']
   .gsub(/\s+/, '-').strip # replace whitespace with dash
 
 # checkout branch, using git-flow style for app repos
-if Dir.getwd.split('/').last.include?('app')
+if repo.include?('app')
   print "Input branch type (default is 'bugfix'): "
   branch_type = STDIN.gets.strip
 
