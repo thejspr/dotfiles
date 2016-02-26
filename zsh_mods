@@ -4,9 +4,11 @@ export PATH=/usr/local/bin:/usr/local/share/npm/bin:$PATH
 export PATH=./bin:~/bin:/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH
 
 # Android
+export JAVA_HOME=$(/usr/libexec/java_home)
 export PATH=/Applications/Android\ Studio.app/Contents/gradle/gradle-2.8/bin:$PATH
 export PATH=/Users/jesper/Library/Android/sdk/platform-tools:$PATH
 export PATH=/Users/jesper/Library/Android/sdk/tools:$PATH
+export PATH=/Users/jesper/Library/Android/sdk/build-tools/21.1.2:$PATH
 
 # prezto customizations
 autoload zmv
@@ -52,10 +54,5 @@ bindkey '^Z' fancy-ctrl-z
 # Golang
 export GOPATH=$HOME/Code/go
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
-
-# $(boot2docker shellinit)
-export DOCKER_HOST=tcp://192.168.59.103:2376
-export DOCKER_CERT_PATH=/Users/jesper/.boot2docker/certs/boot2docker-vm
-export DOCKER_TLS_VERIFY=1
 
 source ~/.secrets
