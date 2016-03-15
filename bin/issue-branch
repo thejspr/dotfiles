@@ -54,3 +54,12 @@ if repo.include?('app')
 else
   system "git checkout -b #{title}"
 end
+
+# TODO: Assign issue to current user
+# email = `git config --get user.email`.strip
+
+# if Net::HTTP.post(uri, { assignee: email })
+#   puts "Issue assigned to: " + email
+# else
+#   puts "Assigning failed"
+# end
