@@ -5,10 +5,9 @@ vim/backup/
 .DS_Store
 .rbenv-version
 tmp.txt
-tags
 latest.dump
+/tags
 Vagrantfile
-tags
 gems.tags
 .gemtags
 tmp/tags

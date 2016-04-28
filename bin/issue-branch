@@ -45,7 +45,7 @@ if repo.include?('app')
 
   branch_type = 'bugfix' if branch_type.empty?
 
-  if %w(feature bugfix release).include?(branch_type)
+  if %w(feature bugfix release test).include?(branch_type)
     system "git checkout -b #{branch_type}/#{issue_id}-#{title}"
   else
     puts "Invalid branch type: #{branch_type.inspect}. Aborting"
