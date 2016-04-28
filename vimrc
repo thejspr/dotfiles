@@ -227,9 +227,9 @@ nnoremap <Leader>w :w<CR>
 " autocmd InsertLeave * if expand('%') != '' | update | endif
 
 " Enter command with one keystroke
-nnoremap ; :
-nnoremap : ;
-nnoremap ! :!
+" nnoremap ; :
+" nnoremap : ;
+" nnoremap ! :!
 
 " Automatically jump to end of text you pasted
 vnoremap <silent> y y`]
@@ -322,11 +322,6 @@ noremap <F5> :NERDTreeFind<CR>
 nnoremap <F6> :%s/\s*$//<CR>:noh<CR> " EOL whitespace removal
 " }}}
 
-" Go and Markdown {{{
-" autocmd bufreadpre *.gp setlocal nolist
-" autocmd bufreadpre *.md setlocal textwidth=80 com=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,b:- formatoptions=tcroqln filetype=markdown
-" }}}
-
 " Ruby {{{
 au BufRead,BufNewFile {Thorfile,Vagrantfile,Procfile,pryrc,config.ru} set ft=ruby
 
@@ -362,5 +357,4 @@ noremap <c-j> ddp
 au BufRead,BufNewFile COMMIT_EDITMSG setlocal ft=diff spell!
 " }}}
 
-" vim: textwidth=120
 " vim:foldmethod=marker:foldlevel=0:textwidth=120:colorcolumn=120
