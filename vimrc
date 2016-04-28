@@ -23,12 +23,12 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'godlygeek/tabular'
-Plug 'SirVer/ultisnips'
-let g:UltiSnipsExpandTrigger="<c-l>"
-let g:UltiSnipsJumpForwardTrigger="<c-l>"
-let g:UltiSnipsJumpBackwardTrigger="<s-c-l>"
-let g:UltiSnipsEditSplit="vertical"
-Plug 'thejspr/vim-snippets'
+" Plug 'SirVer/ultisnips'
+" let g:UltiSnipsExpandTrigger="<c-l>"
+" let g:UltiSnipsJumpForwardTrigger="<c-l>"
+" let g:UltiSnipsJumpBackwardTrigger="<s-c-l>"
+" let g:UltiSnipsEditSplit="vertical"
+" Plug 'thejspr/vim-snippets'
 Plug 'AndrewRadev/splitjoin.vim'
 nmap sj :SplitjoinSplit<cr>
 nmap sk :SplitjoinJoin<cr>
@@ -107,8 +107,8 @@ Plug 'mxw/vim-jsx'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'gabesoft/vim-ags'
 Plug 'tpope/vim-obsession'
-Plug 'sjl/gundo.vim'
-nnoremap <leader>u :GundoToggle<cr>
+" Plug 'sjl/gundo.vim'
+" nnoremap <leader>u :GundoToggle<cr>
 " }}}
 
 call plug#end()
