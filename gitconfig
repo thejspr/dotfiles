@@ -44,7 +44,6 @@
   rh     = reset --hard
   wip    = !git add --all && git commit -m 'WIP'
   undo   = reset head~1 --mixed
-  wipe   = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
 
   stg    = !git checkout staging
   mstg   = !git checkout staging && git pull && git merge -

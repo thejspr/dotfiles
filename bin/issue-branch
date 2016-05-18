@@ -38,6 +38,8 @@ title = response['title']
   .gsub(/[^0-9A-Za-z\s]/, '') # remove special characters
   .gsub(/\s+/, '-').strip # replace whitespace with dash
 
+puts "Issue: #{response['title']}"
+
 # checkout branch, using git-flow style for app repos
 if repo.include?('app')
   print "Input branch type (default is 'bugfix'): "
