@@ -98,7 +98,7 @@ Plug 'elzr/vim-json'
 au BufRead *.json set conceallevel=0
 let g:vim_json_syntax_conceal=0
 " Plug 'othree/yajs.vim'
-" Plug 'kchmck/vim-coffee-script'
+Plug 'kchmck/vim-coffee-script'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 " }}}

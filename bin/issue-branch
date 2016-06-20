@@ -54,7 +54,7 @@ if repo.include?('app')
     exit(1)
   end
 else
-  system "git checkout -b #{title}"
+  system "git checkout -b #{issue_id}-#{title}"
 end
 
 # TODO: Assign issue to current user
