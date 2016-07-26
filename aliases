@@ -16,6 +16,7 @@ alias rs='rails s'
 alias rg='rails g'
 alias rc='rails c'
 alias migrate='rake db:migrate'
+alias upgrade_gems="bundle update && rspec && git add -A && git commit -m 'Gem upgrades' && git push"
 
 #rake
 alias rt='rake -T'
@@ -28,8 +29,6 @@ alias hc="heroku run rails console"
 alias hl="heroku logs -t"
 
 #testing
-alias sg='bundle exec guard'
-alias bec='cucumber'
 bes() {
   if [ -f './bin/rspec' ]; then
     ./bin/rspec $*
@@ -40,7 +39,6 @@ bes() {
 alias specs='z tmc && rspec --tag ~type:feature'
 alias fspecs='z tmc && rspec --tag type:feature'
 alias aspecs='fspecs && specs'
-alias skarma='z client && grunt karma'
 
 #vim
 alias e='mvim -v'
