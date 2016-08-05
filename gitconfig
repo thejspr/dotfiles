@@ -12,7 +12,7 @@
   editor = mvim -v
   whitespace = trailing-space,space-before-tab
   ignorecase = false
-	pager = diff-so-fancy | less --tabs=4 -RFX
+  pager = diff-so-fancy | less --tabs=4 -RFX
 [alias]
   a      = add --all
   aa     = add -A
@@ -85,6 +85,6 @@
 [difftool]
   prompt = false
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true

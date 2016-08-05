@@ -299,7 +299,7 @@ nnoremap <leader>a :Ag! <cword><CR>
 
 set wildignore+=*/public/system/*,*/.git/*,*/node_modules/*,*/.DS_Store,*.svg
 set wildignore+=*/tmp/*,tmp/**,**.png,**.jpg,**.jpeg
-set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**,spec/dummy/**,dist/**
+set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**,dist/**
 set wildignore+=*/FlexWin,*/html_5-klik,*_site
 set wildignore+=*/platforms,*/www/
 " }}}

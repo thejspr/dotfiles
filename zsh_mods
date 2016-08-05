@@ -50,3 +50,6 @@ export GOPATH=$HOME/Code/go
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 
 source ~/.secrets
+
+export NVM_DIR="$HOME/.nvm"
+. "$(brew --prefix nvm)/nvm.sh"
