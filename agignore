@@ -8,3 +8,4 @@ public/assets
 tmp/
 log/
 coverage/
+client/coverage/

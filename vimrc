@@ -69,7 +69,6 @@ Plug 'mattn/emmet-vim'
 Plug 'sjl/vitality.vim'
 Plug 'altercation/vim-colors-solarized'
 " Plug 'junegunn/seoul256.vim'
-" Plug 'restore_view.vim'
 Plug 'bling/vim-airline'
 " let g:airline_powerline_fonts=0
 " let g:airline#extensions#hunks#enabled = 0
@@ -87,7 +86,6 @@ let g:gitgutter_map_keys = 0
 Plug 'benmills/vimux'
 Plug 'skalnik/vim-vroom'
 let g:vroom_use_vimux = 1
-let g:vroom_cucumber_path = 'cucumber'
 let g:vroom_use_colors = 1
 let g:vroom_spec_command = 'rspec'
 let g:vroom_use_bundle_exec = 0
@@ -109,6 +107,9 @@ Plug 'gabesoft/vim-ags'
 Plug 'tpope/vim-obsession'
 " Plug 'sjl/gundo.vim'
 " nnoremap <leader>u :GundoToggle<cr>
+Plug 'wakatime/vim-wakatime'
+Plug 'scrooloose/syntastic'
+Plug 'gcorne/vim-sass-lint'
 " }}}
 
 call plug#end()
@@ -273,7 +274,7 @@ noremap <leader>sd z=
 " NERDTree
 let g:NERDTreeQuitOnOpen=0
 let g:NERDTreeShowBookmarks = 0
-let g:NERDTreeWinSize = 20
+let g:NERDTreeWinSize = 25
 let g:NERDTreeAutoDeleteBuffer=1
 let g:NERDTreeChDirMode=2
 let NERDTreeShowHidden=0
@@ -343,6 +344,37 @@ nnoremap <leader>x :VroomRunNearestTest<cr>
 nnoremap <leader>X :VroomRunTest<cr>
 nnoremap <leader>§ :VimuxRunLastCommand<cr>
 nnoremap <leader><space> :VimuxPromptCommand<cr>
+" }}}
+
+" Syntastic {{{
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_loc_list_height = 6
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_javascript_checkers = ['eslint']
+
+" Override eslint with local version where necessary.
+let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
+if matchstr(local_eslint, "^\/\\w") == ''
+  let local_eslint = getcwd() . "/" . local_eslint
+endif
+if executable(local_eslint)
+  let g:syntastic_javascript_eslint_exec = local_eslint
+endif
+
+let g:syntastic_sass_checkers=["sass_lint"]
+let g:syntastic_scss_checkers=["sass_lint"]
+
+" highlight link SyntasticErrorSign SignColumn
+" highlight link SyntasticWarningSign SignColumn
+" highlight link SyntasticStyleErrorSign SignColumn
+" highlight link SyntasticStyleWarningSign SignColumn
 " }}}
 
 " New stuff {{{
