@@ -50,7 +50,7 @@
   mstg   = !git checkout staging && git pull && git merge -
 
   cl = !git co master && git pull && git remote prune origin && git bclean
-  bclean = "!f() { git branch --merged ${1-master} | grep -vE '(master|production|release)' | xargs git branch -d; }; f"
+  bclean = "!f() { git branch --merged ${1-master} | grep -vE '(master|production|release|develop)' | xargs git branch -d; }; f"
 
 
   dcl = !git co develop && git pull && git remote prune origin && git dbclean
