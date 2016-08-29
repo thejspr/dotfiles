@@ -16,7 +16,7 @@ alias rs='rails s'
 alias rg='rails g'
 alias rc='rails c'
 alias migrate='rake db:migrate'
-alias upgrade_gems="bundle update && rspec && git add -A && git commit -m 'Gem upgrades' && git show && git push"
+alias upgrade_gems="bundle update && rspec && git add -A && git commit -m 'Gem upgrades' && git push"
 
 #rake
 alias rt='rake -T'
