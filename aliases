@@ -41,8 +41,8 @@ alias fspecs='z tmc && rspec --tag type:feature'
 alias aspecs='fspecs && specs'
 
 #vim
-alias e='mvim -v'
-alias vim='mvim -v'
+alias e='nvim'
+alias vim='nvim'
 
 # homebrew
 alias bup='brew update && echo "==> Outdated Formula" && brew outdated && brew cleanup'
