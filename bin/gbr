@@ -5,10 +5,4 @@
 
 set -e
 
-cmd='peco --select-1'
-
-if [[ -z "$1" ]]; then
-  git branch | cut -c 3- | $cmd | xargs git checkout
-else
-  git checkout $(git branch | grep $1 | $cmd)
-fi
+git checkout $(git branch | peco --select-1 --layout=bottom-up --query=$1)
