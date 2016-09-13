@@ -110,6 +110,7 @@ Plug 'tpope/vim-obsession'
 Plug 'wakatime/vim-wakatime'
 Plug 'scrooloose/syntastic'
 Plug 'gcorne/vim-sass-lint'
+Plug 'neomake/neomake'
 " }}}
 
 call plug#end()
@@ -139,8 +140,8 @@ set foldmethod=indent
 " }}}
 
 " UI {{{
-" set background=light
-set background=dark
+set background=light
+" set background=dark
 " colorscheme seoul256
 try
   colorscheme solarized
@@ -303,6 +304,7 @@ set wildignore+=*/tmp/*,tmp/**,**.png,**.jpg,**.jpeg
 set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**,dist/**
 set wildignore+=*/FlexWin,*/html_5-klik,*_site
 set wildignore+=*/platforms,*/www/
+set wildignore+=*/coverage/*
 " }}}
 
 " Edit .vimrc {{{
@@ -351,10 +353,23 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
+" Run NeoMake on read and write operations
+autocmd! BufReadPost,BufWritePost * Neomake
+
+" " Disable inherited syntastic
+let g:syntastic_mode_map = {
+  \ "mode": "passive",
+  \ "active_filetypes": ['ruby'],
+  \ "passive_filetypes": ['eslint'] }
+
+let g:neomake_serialize = 1
+let g:neomake_serialize_abort_on_error = 1
+
+
+" let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_loc_list_height = 6
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_disabled_filetypes=['java']
 let g:syntastic_javascript_checkers = ['eslint']
@@ -371,11 +386,6 @@ endif
 
 let g:syntastic_sass_checkers=["sass_lint"]
 let g:syntastic_scss_checkers=["sass_lint"]
-
-" highlight link SyntasticErrorSign SignColumn
-" highlight link SyntasticWarningSign SignColumn
-" highlight link SyntasticStyleErrorSign SignColumn
-" highlight link SyntasticStyleWarningSign SignColumn
 " }}}
 
 " New stuff {{{

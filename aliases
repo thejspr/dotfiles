@@ -26,6 +26,7 @@ alias rr='rake routes'
 alias h="heroku"
 hpush() { git add -A; git commit -m "$*"; git push; git push production master; }
 alias hc="heroku run rails console"
+alias hp="git push production master"
 alias hl="heroku logs -t"
 
 #testing
