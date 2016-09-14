@@ -110,7 +110,6 @@ Plug 'tpope/vim-obsession'
 Plug 'wakatime/vim-wakatime'
 Plug 'scrooloose/syntastic'
 Plug 'gcorne/vim-sass-lint'
-Plug 'neomake/neomake'
 " }}}
 
 call plug#end()
@@ -353,19 +352,6 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-" Run NeoMake on read and write operations
-autocmd! BufReadPost,BufWritePost * Neomake
-
-" " Disable inherited syntastic
-let g:syntastic_mode_map = {
-  \ "mode": "passive",
-  \ "active_filetypes": ['ruby'],
-  \ "passive_filetypes": ['eslint'] }
-
-let g:neomake_serialize = 1
-let g:neomake_serialize_abort_on_error = 1
-
-
 " let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_loc_list_height = 6
 " let g:syntastic_auto_loc_list = 1
@@ -373,7 +359,7 @@ let g:neomake_serialize_abort_on_error = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_disabled_filetypes=['java']
 let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_mode_map = { 'mode': 'passive' }
+" let g:syntastic_mode_map = { 'mode': 'passive' }
 
 " Override eslint with local version where necessary.
 let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
