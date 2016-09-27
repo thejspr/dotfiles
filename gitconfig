@@ -45,6 +45,7 @@
   rh     = reset --hard
   wip    = !git add --all && git commit -m 'WIP'
   undo   = reset head~1 --mixed
+  fix    = !git amendf && git push
 
   stg    = !git checkout staging
   mstg   = !git checkout staging && git pull && git merge -
