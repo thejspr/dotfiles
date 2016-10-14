@@ -124,7 +124,7 @@ set nowritebackup
 set noswapfile
 set undofile
 set undodir=~/.tmp,/tmp
-set clipboard=unnamed
+" set clipboard=unnamed
 
 set mouse=a
 set iskeyword-=.
@@ -139,8 +139,8 @@ set foldmethod=indent
 " }}}
 
 " UI {{{
-set background=light
-" set background=dark
+" set background=light
+set background=dark
 " colorscheme seoul256
 try
   colorscheme solarized

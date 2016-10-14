@@ -1,6 +1,7 @@
 # new
 alias ff='find . -iname'
 mkcd() { dir="$*"; mkdir -p "$dir" && cd "$dir"; }
+alias nb='npm run build'
 
 # tmux
 alias tma='tmux attach -t'
