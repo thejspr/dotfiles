@@ -2,6 +2,7 @@
 alias ff='find . -iname'
 mkcd() { dir="$*"; mkdir -p "$dir" && cd "$dir"; }
 alias nb='npm run build'
+alias gpf='FORCE=1 git push origin master'
 
 # tmux
 alias tma='tmux attach -t'
