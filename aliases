@@ -2,7 +2,7 @@
 alias ff='find . -iname'
 mkcd() { dir="$*"; mkdir -p "$dir" && cd "$dir"; }
 alias nb='npm run build'
-alias gpf='FORCE=1 git push origin master'
+alias gpf='FORCE=1 git push'
 
 # tmux
 alias tma='tmux attach -t'
@@ -17,7 +17,7 @@ alias be='bundle exec'
 alias rs='rails s'
 alias rg='rails g'
 alias rc='rails c'
-alias migrate='rake db:migrate'
+alias migrate='rake db:migrate db:test:prepare'
 alias upgrade_gems="bundle update && rspec && git add -A && git commit -m 'Gem upgrades' && git push"
 
 #rake

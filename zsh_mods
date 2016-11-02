@@ -2,6 +2,7 @@ export EDITOR='nvim'
 eval "$(rbenv init - --no-rehash)"
 export PATH=/usr/local/bin:/usr/local/share/npm/bin:$PATH
 export PATH=./bin:~/bin:/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH
+export PATH="$PATH:$HOME/.yarn/bin"
 
 # Android
 export JAVA_HOME=$(/usr/libexec/java_home)
