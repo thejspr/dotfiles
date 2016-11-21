@@ -11,7 +11,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'JazzCore/ctrlp-cmatcher', { 'do': './install.sh' }
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-repeat'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'ervandew/supertab'
 " }}}
 
 " Code navigation {{{
@@ -45,7 +46,7 @@ Plug 'kwbdi.vim'
 " Ruby {{{
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-rails'
+" Plug 'tpope/vim-rails'
 Plug 'sickill/vim-pasta'
 Plug 'kana/vim-textobj-user'
 runtime macros/matchit.vim
@@ -139,8 +140,8 @@ set foldmethod=indent
 " }}}
 
 " UI {{{
-" set background=light
-set background=dark
+set background=light
+" set background=dark
 " colorscheme seoul256
 try
   colorscheme solarized
