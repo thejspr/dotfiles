@@ -6,6 +6,7 @@ alias gpf='FORCE=1 git push'
 
 # tmux
 alias tma='tmux attach -t'
+alias tms='tmux start-server; tmux attach'
 
 #ruby
 alias rb='rbenv'
