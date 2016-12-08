@@ -6,7 +6,6 @@ call plug#begin('~/.vim/plugged')
 " }}}
 
 " Essentials {{{
-Plug 'epmatsw/ag.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'JazzCore/ctrlp-cmatcher', { 'do': './install.sh' }
 Plug 'Raimondi/delimitMate'
@@ -18,6 +17,11 @@ Plug 'ervandew/supertab'
 " Code navigation {{{
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'mileszs/ack.vim'
+cnoreabbrev ag Ack
+cnoreabbrev aG Ack
+cnoreabbrev Ag Ack
+cnoreabbrev AG Ack
 " }}}
 
 " Text {{{
@@ -46,7 +50,7 @@ Plug 'kwbdi.vim'
 " Ruby {{{
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-endwise'
-" Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rails'
 Plug 'sickill/vim-pasta'
 Plug 'kana/vim-textobj-user'
 runtime macros/matchit.vim
@@ -104,13 +108,14 @@ Plug 'mxw/vim-jsx'
 
 " new stuff {{{
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'gabesoft/vim-ags'
 Plug 'tpope/vim-obsession'
 " Plug 'sjl/gundo.vim'
 " nnoremap <leader>u :GundoToggle<cr>
 Plug 'wakatime/vim-wakatime'
 Plug 'scrooloose/syntastic'
 Plug 'gcorne/vim-sass-lint'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+let g:deoplete#enable_at_startup = 1
 " }}}
 
 call plug#end()
@@ -285,8 +290,6 @@ let NERDTreeHijackNetrw=1
 let g:ctrlp_map = '<Leader>t'
 let g:ctrlp_match_window = 'order:ttb,max:10'
 let g:ctrlp_match_func = { 'match' : 'matcher#cmatch' }
-set grepprg=ag\ --nogroup\ --nocolor
-" let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_use_caching = 1
 let g:ctrlp_mruf_relative = 1
@@ -296,8 +299,8 @@ noremap <leader>b :CtrlPBuffer<cr>
 noremap <leader>r :CtrlPMRUFiles<cr>
 
 " Use Ag instead of Grep
-" let g:ackprg="ag -H --nogroup --column --nocolor -m 1000"
-nnoremap <leader>a :Ag! <cword><CR>
+let g:ackprg = 'ag --vimgrep'
+nnoremap <leader>a :Ack! <cword><CR>
 
 set wildignore+=*/public/system/*,*/.git/*,*/node_modules/*,*/.DS_Store,*.svg
 set wildignore+=*/tmp/*,tmp/**,**.png,**.jpg,**.jpeg
