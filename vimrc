@@ -28,12 +28,12 @@ cnoreabbrev AG Ack
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'godlygeek/tabular'
-" Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 " let g:UltiSnipsExpandTrigger="<c-l>"
 " let g:UltiSnipsJumpForwardTrigger="<c-l>"
 " let g:UltiSnipsJumpBackwardTrigger="<s-c-l>"
 " let g:UltiSnipsEditSplit="vertical"
-" Plug 'thejspr/vim-snippets'
+Plug 'thejspr/vim-snippets'
 Plug 'AndrewRadev/splitjoin.vim'
 nmap sj :SplitjoinSplit<cr>
 nmap sk :SplitjoinJoin<cr>
@@ -64,9 +64,6 @@ Plug 'tpope/vim-markdown'
 Plug 'slim-template/vim-slim'
 Plug 'tpope/vim-ragtag'
 let g:ragtag_global_maps = 1
-Plug 'mattn/emmet-vim'
-" let g:user_emmet_leader_key='<c-y>'
-" let user_emmet_expandabbr_key = '<c-e>'
 " }}}
 
 " UI {{{
