@@ -29,7 +29,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'godlygeek/tabular'
 Plug 'SirVer/ultisnips'
-" let g:UltiSnipsExpandTrigger="<c-l>"
+let g:UltiSnipsExpandTrigger="<tab>"
 " let g:UltiSnipsJumpForwardTrigger="<c-l>"
 " let g:UltiSnipsJumpBackwardTrigger="<s-c-l>"
 " let g:UltiSnipsEditSplit="vertical"
