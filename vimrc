@@ -95,9 +95,6 @@ let g:vroom_use_bundle_exec = 0
 
 " javascript {{{
 Plug 'elzr/vim-json'
-au BufRead *.json set conceallevel=0
-let g:vim_json_syntax_conceal=0
-" Plug 'othree/yajs.vim'
 Plug 'kchmck/vim-coffee-script'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -143,7 +140,7 @@ set foldmethod=indent
 
 " UI {{{
 set background=light
-" set background=dark
+set background=dark
 " colorscheme seoul256
 try
   colorscheme solarized
