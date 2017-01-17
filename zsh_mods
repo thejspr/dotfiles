@@ -2,7 +2,7 @@ export EDITOR='nvim'
 eval "$(rbenv init - --no-rehash)"
 export PATH=/usr/local/bin:/usr/local/share/npm/bin:$PATH
 export PATH=./bin:~/bin:/Applications/Postgres.app/Contents/Versions/9.6/bin:$PATH
-export PATH="$PATH:$HOME/.yarn/bin"
+export PATH="$PATH:`yarn global bin`"
 export TERM=screen-256color
 
 # Android
