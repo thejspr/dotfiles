@@ -1,3 +1,4 @@
+export HISTCONTROL=ignoreboth:erasedups
 export EDITOR='nvim'
 eval "$(rbenv init - --no-rehash)"
 export PATH=/usr/local/bin:/usr/local/share/npm/bin:$PATH
