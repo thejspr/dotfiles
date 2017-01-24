@@ -48,11 +48,7 @@ fancy-ctrl-z () {
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
-# Golang
-export GOPATH=$HOME/Code/go
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
-
 source ~/.secrets
 
 export NVM_DIR="$HOME/.nvm"
-. "$(brew --prefix nvm)/nvm.sh"
+. "/usr/local/opt/nvm/nvm.sh" --no-use
