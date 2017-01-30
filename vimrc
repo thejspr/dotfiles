@@ -110,6 +110,7 @@ Plug 'scrooloose/syntastic'
 Plug 'gcorne/vim-sass-lint'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
+Plug 'vim-scripts/restore_view.vim'
 " }}}
 
 call plug#end()
@@ -140,7 +141,7 @@ set foldmethod=indent
 
 " UI {{{
 set background=light
-set background=dark
+" set background=dark
 " colorscheme seoul256
 try
   colorscheme solarized
@@ -307,9 +308,12 @@ set wildignore+=*/coverage/*
 " Edit .vimrc {{{
 command! Ev :e ~/.vimrc
 " Reload vimrc when saved
-augroup vimrcs
-  au!
-  au bufwritepost ~/.vimrc source ~/.vimrc
+augroup FileTypeVim
+   autocmd!
+   " Source your vimrc on save
+   autocmd! BufWritePost .vimrc source %
+   " Apply modeline option after re-openning the vimrc file (that is after sourcing it)
+   autocmd! BufWritePost .vimrc set modeline | doautocmd BufRead
 augroup END
 " }}}
 
@@ -373,15 +377,10 @@ let g:syntastic_scss_checkers=["sass_lint"]
 " }}}
 
 " New stuff {{{
-" nnoremap   <Up>     <NOP>
-" nnoremap   <Down>   <NOP>
-" nnoremap   <Left>   <NOP>
-" nnoremap   <Right>  <NOP>
-
 noremap <c-k> :call feedkeys( line('.')==1 ? '' : 'ddkP' )<CR>
 noremap <c-j> ddp
 
 au BufRead,BufNewFile COMMIT_EDITMSG setlocal ft=diff spell!
 " }}}
 
-" vim:foldmethod=marker:foldlevel=0:textwidth=120:colorcolumn=120
+" xvim: foldmethod=marker:foldlevel=0:textwidth=120:colorcolumn=120
