@@ -108,9 +108,10 @@ Plug 'tpope/vim-obsession'
 Plug 'wakatime/vim-wakatime'
 " Plug 'scrooloose/syntastic'
 Plug 'gcorne/vim-sass-lint'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-let g:deoplete#enable_at_startup = 1
 Plug 'vim-scripts/restore_view.vim'
+Plug 'ajh17/VimCompletesMe'
+autocmd FileType text,markdown let b:vcm_tab_complete = 'dict'
+Plug 'ludovicchabant/vim-gutentags'
 " }}}
 
 call plug#end()
