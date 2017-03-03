@@ -21,3 +21,6 @@ is-it-green
 vendor/plugins/rails-dev-boost/
 .agignore
 node_modules/
+
+tags.temp
+tags.back

@@ -4,6 +4,7 @@ mkcd() { dir="$*"; mkdir -p "$dir" && cd "$dir"; }
 alias nb='npm run build'
 alias gpf='FORCE=1 git push'
 alias gph='git push production master'
+alias bef='bundle exec foreman start -f Procfile.dev'
 
 # tmux
 alias tma='tmux attach -t'

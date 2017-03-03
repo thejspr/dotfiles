@@ -142,7 +142,7 @@ set foldmethod=indent
 
 " UI {{{
 set background=light
-" set background=dark
+set background=dark
 " colorscheme seoul256
 try
   colorscheme solarized
