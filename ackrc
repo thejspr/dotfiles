@@ -4,7 +4,6 @@
 --type-add=js=json,.js.erb,.coffee
 
 # add types ack doesn't know about
---type-set=cucumber=feature
 --type-set=css=sass
 --type-set=MARKDOWN=md,mkd,markdown
 --type-set=RDOC=rdoc
