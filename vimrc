@@ -105,13 +105,16 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-obsession'
 " Plug 'sjl/gundo.vim'
 " nnoremap <leader>u :GundoToggle<cr>
-Plug 'wakatime/vim-wakatime'
+" Plug 'wakatime/vim-wakatime'
 " Plug 'scrooloose/syntastic'
 Plug 'gcorne/vim-sass-lint'
 Plug 'vim-scripts/restore_view.vim'
 Plug 'ajh17/VimCompletesMe'
 autocmd FileType text,markdown let b:vcm_tab_complete = 'dict'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'wikitopian/hardmode'
+autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
+nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
 " }}}
 
 call plug#end()
@@ -126,7 +129,6 @@ set nowritebackup
 set noswapfile
 set undofile
 set undodir=~/.tmp,/tmp
-" set clipboard=unnamed
 
 set mouse=a
 set iskeyword-=.
@@ -142,7 +144,7 @@ set foldmethod=indent
 
 " UI {{{
 set background=light
-set background=dark
+" set background=dark
 " colorscheme seoul256
 try
   colorscheme solarized
