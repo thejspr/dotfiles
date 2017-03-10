@@ -106,7 +106,6 @@ Plug 'tpope/vim-obsession'
 " Plug 'sjl/gundo.vim'
 " nnoremap <leader>u :GundoToggle<cr>
 " Plug 'wakatime/vim-wakatime'
-" Plug 'scrooloose/syntastic'
 Plug 'gcorne/vim-sass-lint'
 Plug 'vim-scripts/restore_view.vim'
 Plug 'ajh17/VimCompletesMe'
@@ -350,33 +349,6 @@ nnoremap <leader>x :VroomRunNearestTest<cr>
 nnoremap <leader>X :VroomRunTest<cr>
 nnoremap <leader>§ :VimuxRunLastCommand<cr>
 nnoremap <leader><space> :VimuxPromptCommand<cr>
-" }}}
-
-" Syntastic {{{
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_loc_list_height = 6
-" let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_disabled_filetypes=['java']
-let g:syntastic_javascript_checkers = ['eslint']
-" let g:syntastic_mode_map = { 'mode': 'passive' }
-
-" Override eslint with local version where necessary.
-let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
-if matchstr(local_eslint, "^\/\\w") == ''
-  let local_eslint = getcwd() . "/" . local_eslint
-endif
-if executable(local_eslint)
-  let g:syntastic_javascript_eslint_exec = local_eslint
-endif
-
-let g:syntastic_sass_checkers=["sass_lint"]
-let g:syntastic_scss_checkers=["sass_lint"]
 " }}}
 
 " New stuff {{{
