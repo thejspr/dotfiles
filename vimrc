@@ -103,9 +103,7 @@ Plug 'mxw/vim-jsx'
 " new stuff {{{
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-obsession'
-" Plug 'sjl/gundo.vim'
-" nnoremap <leader>u :GundoToggle<cr>
-" Plug 'wakatime/vim-wakatime'
+Plug 'wakatime/vim-wakatime'
 Plug 'gcorne/vim-sass-lint'
 Plug 'vim-scripts/restore_view.vim'
 Plug 'ajh17/VimCompletesMe'
@@ -359,6 +357,10 @@ noremap <c-j> ddp
 au BufRead,BufNewFile COMMIT_EDITMSG setlocal ft=diff spell!
 
 autocmd InsertLeave * write
+let g:netrw_banner=0
+let g:netrw_altv=1
+let g:netrw_liststyle=3
+Plug 'tpope/vim-vinegar'
 " }}}
 
 " xvim: foldmethod=marker:foldlevel=0:textwidth=120:colorcolumn=120
