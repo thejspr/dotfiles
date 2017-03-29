@@ -112,8 +112,9 @@ Plug 'ajh17/VimCompletesMe'
 autocmd FileType text,markdown let b:vcm_tab_complete = 'dict'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'wikitopian/hardmode'
+let g:HardMode_level='wannabe'
 autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
-nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
+nnoremap <leader>e <Esc>:call ToggleHardMode()<CR>
 " }}}
 
 call plug#end()
@@ -356,6 +357,8 @@ noremap <c-k> :call feedkeys( line('.')==1 ? '' : 'ddkP' )<CR>
 noremap <c-j> ddp
 
 au BufRead,BufNewFile COMMIT_EDITMSG setlocal ft=diff spell!
+
+autocmd InsertLeave * write
 " }}}
 
 " xvim: foldmethod=marker:foldlevel=0:textwidth=120:colorcolumn=120
