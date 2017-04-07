@@ -37,6 +37,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 nmap sj :SplitjoinSplit<cr>
 nmap sk :SplitjoinJoin<cr>
 Plug 'mattn/emmet-vim'
+let g:user_emmet_settings={'javascript.jsx': {'extends':'jsx'}}
 " }}}
 
 " File management & Git {{{
@@ -356,7 +357,7 @@ noremap <c-j> ddp
 
 au BufRead,BufNewFile COMMIT_EDITMSG setlocal ft=diff spell!
 
-autocmd InsertLeave * write
+" autocmd InsertLeave * write
 let g:netrw_banner=0
 let g:netrw_altv=1
 let g:netrw_liststyle=3
