@@ -10,7 +10,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'JazzCore/ctrlp-cmatcher', { 'do': './install.sh' }
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-repeat'
-" Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'ervandew/supertab'
 " }}}
 
@@ -18,6 +17,9 @@ Plug 'ervandew/supertab'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'mileszs/ack.vim'
+" Use Ag instead of Grep
+let g:ackprg = 'ag --vimgrep'
+nnoremap <leader>a :Ack! <cword><CR>
 cnoreabbrev ag Ack
 cnoreabbrev aG Ack
 cnoreabbrev Ag Ack
@@ -28,11 +30,6 @@ cnoreabbrev AG Ack
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'godlygeek/tabular'
-" Plug 'SirVer/ultisnips'
-" let g:UltiSnipsExpandTrigger="<c-l>"
-" let g:UltiSnipsJumpForwardTrigger="<c-l>"
-" let g:UltiSnipsJumpBackwardTrigger="<s-c-l>"
-let g:UltiSnipsEditSplit="vertical"
 Plug 'AndrewRadev/splitjoin.vim'
 nmap sj :SplitjoinSplit<cr>
 nmap sk :SplitjoinJoin<cr>
@@ -61,8 +58,6 @@ Plug 'tpope/vim-bundler'
 
 " Msc languages {{{
 Plug 'tpope/vim-markdown'
-" Plug 'tpope/vim-haml'
-Plug 'slim-template/vim-slim'
 Plug 'tpope/vim-ragtag'
 let g:ragtag_global_maps = 1
 " }}}
@@ -96,17 +91,13 @@ let g:vroom_use_bundle_exec = 0
 
 " javascript {{{
 Plug 'elzr/vim-json'
-Plug 'kchmck/vim-coffee-script'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 " }}}
 
 " new stuff {{{
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-obsession'
 Plug 'wakatime/vim-wakatime'
-Plug 'gcorne/vim-sass-lint'
-Plug 'vim-scripts/restore_view.vim'
 Plug 'ajh17/VimCompletesMe'
 autocmd FileType text,markdown let b:vcm_tab_complete = 'dict'
 Plug 'ludovicchabant/vim-gutentags'
@@ -157,7 +148,6 @@ set nocursorline
 set colorcolumn=80
 set synmaxcol=140
 set title
-" set encoding=utf-8
 set ffs=unix,mac,dos
 set scrolloff=4
 set autoindent
@@ -174,7 +164,7 @@ set number
 set splitbelow
 set splitright
 
-" Resize splits when the win{is resized
+" Resize splits when the win is resized
 au VimResized * wincmd =
 
 " Text Formatting
@@ -294,10 +284,6 @@ let g:ctrlp_mruf_relative = 1
 noremap <leader>t :CtrlP<cr>
 noremap <leader>b :CtrlPBuffer<cr>
 noremap <leader>r :CtrlPMRUFiles<cr>
-
-" Use Ag instead of Grep
-let g:ackprg = 'ag --vimgrep'
-nnoremap <leader>a :Ack! <cword><CR>
 
 set wildignore+=*/public/system/*,*/.git/*,*/node_modules/*,*/.DS_Store,*.svg
 set wildignore+=*/tmp/*,tmp/**,**.png,**.jpg,**.jpeg
