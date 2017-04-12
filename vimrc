@@ -6,11 +6,11 @@ call plug#begin('~/.vim/plugged')
 " }}}
 
 " Essentials {{{
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'JazzCore/ctrlp-cmatcher', { 'do': './install.sh' }
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-repeat'
 Plug 'ervandew/supertab'
+Plug 'junegunn/fzf', { 'dir': '/usr/local/opt/fzf', 'do': './install --all' }
+noremap <leader>t :FZF<cr>
 " }}}
 
 " Code navigation {{{
@@ -273,18 +273,6 @@ let g:NERDTreeAutoDeleteBuffer=1
 let g:NERDTreeChDirMode=2
 let NERDTreeShowHidden=0
 let NERDTreeHijackNetrw=1
-
-" ctrlp
-let g:ctrlp_map = '<Leader>t'
-let g:ctrlp_match_window = 'order:ttb,max:10'
-let g:ctrlp_match_func = { 'match' : 'matcher#cmatch' }
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_use_caching = 1
-let g:ctrlp_mruf_relative = 1
-
-noremap <leader>t :CtrlP<cr>
-noremap <leader>b :CtrlPBuffer<cr>
-noremap <leader>r :CtrlPMRUFiles<cr>
 
 set wildignore+=*/public/system/*,*/.git/*,*/node_modules/*,*/.DS_Store,*.svg
 set wildignore+=*/tmp/*,tmp/**,**.png,**.jpg,**.jpeg
