@@ -81,12 +81,18 @@ let g:gitgutter_map_keys = 0
 " }}}
 
 " tmux and testing {{{
-Plug 'benmills/vimux'
-Plug 'skalnik/vim-vroom'
-let g:vroom_use_vimux = 1
-let g:vroom_use_colors = 1
-let g:vroom_spec_command = 'rspec'
-let g:vroom_use_bundle_exec = 0
+Plug 'janko-m/vim-test'
+" let test#strategy = "basic"
+let test#custom_strategies = {
+  \ 'nearest': 'basic',
+  \ 'file':    'basic',
+  \ 'suite':   'neovim',
+\}
+nmap <silent> <leader>x :TestNearest<CR>
+nmap <silent> <leader>X :TestFile<CR>
+nmap <silent> <leader>A :TestSuite<CR>
+nmap <silent> <leader>§ :TestLast<CR>
+" nmap <silent> <leader>g :TestVisit<CR>
 " }}}
 
 " javascript {{{
@@ -217,7 +223,6 @@ cabbrev ew wq
 cabbrev qw wq
 
 nnoremap <Leader>w :w<CR>
-" autocmd InsertLeave * if expand('%') != '' | update | endif
 
 " Enter command with one keystroke
 " nnoremap ; :
@@ -228,9 +233,6 @@ nnoremap <Leader>w :w<CR>
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
-
-" allow quit via single keypress (Q)
-map Q :wqa<CR>
 " }}}
 
 " Searching {{{
@@ -244,7 +246,6 @@ noremap <leader>, :noh<cr>
 nnoremap <space> /
 noremap <leader>f :%s///<left><left>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
-
 
 autocmd BufReadPost *
   \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -260,6 +261,7 @@ noremap <leader>sn ]s
 noremap <leader>sp [s
 noremap <leader>sa zg
 noremap <leader>sd z=
+au BufRead,BufNewFile COMMIT_EDITMSG setlocal ft=diff spell!
 "}}}
 
 " Nerdtree & ctrlp {{{
@@ -325,28 +327,9 @@ noremap <Leader>c :Econtroller<space>
 noremap <Leader>v :Eview<space>
 " }}}
 
-" JavaScript {{{
-au BufRead,BufNewFile *.tpl.html set textwidth=120
-" }}}
-
-" Tmux and testing {{{
-nnoremap <leader>x :VroomRunNearestTest<cr>
-nnoremap <leader>X :VroomRunTest<cr>
-nnoremap <leader>§ :VimuxRunLastCommand<cr>
-nnoremap <leader><space> :VimuxPromptCommand<cr>
-" }}}
-
 " New stuff {{{
 noremap <c-k> :call feedkeys( line('.')==1 ? '' : 'ddkP' )<CR>
 noremap <c-j> ddp
-
-au BufRead,BufNewFile COMMIT_EDITMSG setlocal ft=diff spell!
-
-" autocmd InsertLeave * write
-let g:netrw_banner=0
-let g:netrw_altv=1
-let g:netrw_liststyle=3
-Plug 'tpope/vim-vinegar'
 " }}}
 
 " vim: foldmethod=marker:foldlevel=1:textwidth=120:colorcolumn=120
