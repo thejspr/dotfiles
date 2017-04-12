@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # quickly find a branch, using any part of the name to narrow it down further.
-# requires "peco" (`brew install peco`) installed
+# requires "FZF" (`brew install fzf`) installed
 
 set -e
 
-git checkout $(git branch | peco --select-1 --layout=bottom-up --query=$1)
+git checkout $(git branch | fzf --select-1 --query=$1)
