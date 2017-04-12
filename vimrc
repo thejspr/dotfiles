@@ -9,7 +9,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-repeat'
 Plug 'ervandew/supertab'
-Plug 'junegunn/fzf', { 'dir': '/usr/local/opt/fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': './install --all' }
 noremap <leader>t :FZF<cr>
 " }}}
 
@@ -81,13 +81,15 @@ let g:gitgutter_map_keys = 0
 " }}}
 
 " tmux and testing {{{
+Plug 'benmills/vimux'
+nnoremap <leader><space> :VimuxPromptCommand<cr>
 Plug 'janko-m/vim-test'
-" let test#strategy = "basic"
-let test#custom_strategies = {
-  \ 'nearest': 'basic',
-  \ 'file':    'basic',
-  \ 'suite':   'neovim',
-\}
+let test#strategy = "vimux"
+" let test#custom_strategies = {
+"   \ 'nearest': 'basic',
+"   \ 'file':    'basic',
+"   \ 'suite':   'neovim',
+" \}
 nmap <silent> <leader>x :TestNearest<CR>
 nmap <silent> <leader>X :TestFile<CR>
 nmap <silent> <leader>A :TestSuite<CR>
