@@ -127,7 +127,6 @@ set iskeyword-=.
 " Folding {{{
 set foldenable
 set foldnestmax=10
-" set foldlevel=2
 set foldlevelstart=10
 set foldmethod=indent
 " }}}
@@ -350,4 +349,4 @@ let g:netrw_liststyle=3
 Plug 'tpope/vim-vinegar'
 " }}}
 
-" xvim: foldmethod=marker:foldlevel=0:textwidth=120:colorcolumn=120
+" vim: foldmethod=marker:foldlevel=1:textwidth=120:colorcolumn=120
