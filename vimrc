@@ -11,6 +11,8 @@ Plug 'tpope/vim-repeat'
 Plug 'ervandew/supertab'
 Plug 'junegunn/fzf', { 'do': './install --all' }
 noremap <leader>t :FZF<cr>
+let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
+let g:fzf_layout = { 'down': '~20%' }
 " }}}
 
 " Code navigation {{{
@@ -65,8 +67,6 @@ let g:ragtag_global_maps = 1
 " UI {{{
 " iterm2 support
 Plug 'sjl/vitality.vim'
-Plug 'altercation/vim-colors-solarized'
-" Plug 'junegunn/seoul256.vim'
 Plug 'bling/vim-airline'
 " let g:airline_powerline_fonts=0
 " let g:airline#extensions#hunks#enabled = 0
@@ -78,6 +78,7 @@ Plug 'airblade/vim-gitgutter'
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 let g:gitgutter_map_keys = 0
+Plug 'dracula/vim'
 " }}}
 
 " tmux and testing {{{
@@ -93,7 +94,7 @@ let test#strategy = "vimux"
 nmap <silent> <leader>x :TestNearest<CR>
 nmap <silent> <leader>X :TestFile<CR>
 nmap <silent> <leader>A :TestSuite<CR>
-nmap <silent> <leader>§ :TestLast<CR>
+nmap <silent> <leader>§ :VimuxRunLastCommand<CR>
 " nmap <silent> <leader>g :TestVisit<CR>
 " }}}
 
@@ -144,10 +145,9 @@ set background=light
 " set background=dark
 " colorscheme seoul256
 try
-  colorscheme solarized
-catch /^Vim\%((\a\+)\)\=:E185/
+  colorscheme dracula
+catch /:E185/
 endtry
-hi clear SignColumn
 
 syntax on
 set nocursorcolumn
@@ -275,25 +275,10 @@ let g:NERDTreeAutoDeleteBuffer=1
 let g:NERDTreeChDirMode=2
 let NERDTreeShowHidden=0
 let NERDTreeHijackNetrw=1
-
-set wildignore+=*/public/system/*,*/.git/*,*/node_modules/*,*/.DS_Store,*.svg
-set wildignore+=*/tmp/*,tmp/**,**.png,**.jpg,**.jpeg
-set wildignore+=*.sass-cache/**,build/**,coverage/**,_deploy/**,dist/**
-set wildignore+=*/FlexWin,*/html_5-klik,*_site
-set wildignore+=*/platforms,*/www/
-set wildignore+=*/coverage/*
 " }}}
 
 " Edit .vimrc {{{
 command! Ev :e ~/.vimrc
-" Reload vimrc when saved
-augroup FileTypeVim
-   autocmd!
-   " Source your vimrc on save
-   autocmd! BufWritePost .vimrc source %
-   " Apply modeline option after re-openning the vimrc file (that is after sourcing it)
-   autocmd! BufWritePost .vimrc set modeline | doautocmd BufRead
-augroup END
 " }}}
 
 " Function Keys {{{
