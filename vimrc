@@ -44,7 +44,7 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
-Plug 'kwbdi.vim'
+Plug 'vim-scripts/kwbdi.vim'
 " }}}
 
 " Ruby {{{
@@ -79,6 +79,7 @@ let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 let g:gitgutter_map_keys = 0
 Plug 'dracula/vim'
+Plug 'altercation/vim-colors-solarized'
 " }}}
 
 " tmux and testing {{{
@@ -141,11 +142,10 @@ set foldmethod=indent
 " }}}
 
 " UI {{{
-set background=light
-" set background=dark
-" colorscheme seoul256
 try
   colorscheme dracula
+  " set background=light
+  " colorscheme solarized
 catch /:E185/
 endtry
 

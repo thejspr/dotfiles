@@ -6,7 +6,7 @@ ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
 # Ruby
 brew install rbenv ruby-build
 eval "$(rbenv init -)"
-rbenv install 2.3.0
+rbenv install 2.4.0
 gem update --system
 
 # Dotfiles
@@ -37,5 +37,4 @@ brew brewdle
 
 #Launch vim to install plugins
 mkdir -p ~/.vim
-ln -s ~/code/dotfiles/UltiSnips ~/.vim/UltiSnips
 vim -c PlugInstall
