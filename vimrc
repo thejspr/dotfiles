@@ -121,6 +121,9 @@ call plug#end()
 filetype plugin indent on
 " }}}
 
+let g:python2_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
+
 " Settings {{{
 set shell=/usr/local/bin/zsh
 set history=200
@@ -142,10 +145,13 @@ set foldmethod=indent
 " }}}
 
 " UI {{{
+" let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+" set termguicolors
 try
-  colorscheme dracula
-  " set background=light
-  " colorscheme solarized
+  " set background=dark
+  " colorscheme dracula
+  set background=light
+  colorscheme solarized
 catch /:E185/
 endtry
 
