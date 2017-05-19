@@ -1,10 +1,5 @@
 # new
 alias ff='find . -iname'
-mkcd() { dir="$*"; mkdir -p "$dir" && cd "$dir"; }
-alias nb='npm run build'
-alias gpf='FORCE=1 git push'
-alias gph='git push production master'
-alias bef='bundle exec foreman start -f Procfile.dev'
 alias yr='yarn run'
 
 # tmux
@@ -19,10 +14,13 @@ alias wr='ps aux | grep ruby'
 alias kf='kill -9 %1'
 alias kk='kill -9'
 alias be='bundle exec'
+
+# rails
 alias rs='rails s'
 alias rg='rails g'
 alias rc='rails c'
 alias migrate='rake db:migrate db:test:prepare'
+alias bef='bundle exec foreman start -f Procfile.dev'
 alias upgrade_gems="bundle update && rspec && git add -A && git commit -m 'Gem upgrades' && git push"
 
 #rake
@@ -33,17 +31,9 @@ alias rr='rake routes'
 alias h="heroku"
 hpush() { git add -A; git commit -m "$*"; git push production master; }
 alias hc="heroku run rails console"
-alias hp="git push production master"
 alias hl="heroku logs -t"
 
 #testing
-bes() {
-  if [ -f './bin/rspec' ]; then
-    ./bin/rspec $*
-  else
-    bundle exec rspec $*
-  fi
-}
 alias specs='z tmc && rspec --tag ~type:feature'
 alias fspecs='z tmc && rspec --tag type:feature'
 alias aspecs='fspecs && specs'
@@ -51,8 +41,6 @@ alias aspecs='fspecs && specs'
 #vim
 alias e='nvim'
 alias vim='nvim'
-# alias e='mvim -v'
-# alias vim='mvim -v'
 
 # homebrew
 alias bup='brew update && echo "==> Outdated Formula" && brew outdated && brew cleanup'
@@ -75,12 +63,16 @@ gcam() {
   command git add -A;
   command git commit -m "$*";
 }
-alias gd='g d'
-alias gl='g l'
-alias gr='g r'
-alias gc='g commit -v'
-alias git-new-workdir='~/Code/libs/git/contrib/workdir/git-new-workdir'
+alias gb='git branch'
+alias gg='git grep'
+alias gp='git push'
+alias gd='git d'
+alias gl='git l'
+alias gr='git r'
+alias gc='git commit -v'
+alias gca='git commit -v -a'
 alias gpr='gpc && hub browse'
+alias gpf='FORCE=1 git push --force-with-lease'
 
 #msc
 myip() { elinks -dump http://checkip.dyndns.org:8245/ }
