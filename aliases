@@ -34,8 +34,8 @@ alias hc="heroku run rails console"
 alias hl="heroku logs -t"
 
 #testing
-alias specs='z tmc && rspec --tag ~type:feature'
-alias fspecs='z tmc && rspec --tag type:feature'
+alias specs='rspec --tag ~type:feature'
+alias fspecs='rspec --tag type:feature'
 alias aspecs='fspecs && specs'
 
 #vim
