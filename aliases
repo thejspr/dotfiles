@@ -64,15 +64,17 @@ gcam() {
   command git commit -m "$*";
 }
 alias gb='git branch'
-alias gg='git grep'
-alias gp='git push'
-alias gd='git d'
-alias gl='git l'
-alias gr='git r'
+alias gbX='git branch --delete --force'
+alias gbx='git branch --delete'
 alias gc='git commit -v'
 alias gca='git commit -v -a'
-alias gpr='gpc && hub browse'
+alias gd='git d'
+alias gg='git grep'
+alias gl='git l'
+alias gp='git push'
 alias gpf='FORCE=1 git push --force-with-lease'
+alias gpr='gpc && hub browse'
+alias gr='git r'
 
 #msc
 myip() { elinks -dump http://checkip.dyndns.org:8245/ }
