@@ -16,7 +16,8 @@ export ANDROID_HOME=/Users/jesper/Library/Android/sdk
 # prezto customizations
 autoload zmv
 bindkey -e
-# compdef g=git
+# unalias g
+compdef g=git
 fpath=(/usr/local/share/zsh-completions $fpath)
 alias tar='/usr/local/bin/gtar'
 

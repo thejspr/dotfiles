@@ -107,7 +107,6 @@ Plug 'mxw/vim-jsx'
 
 " new stuff {{{
 Plug 'tpope/vim-obsession'
-Plug 'wakatime/vim-wakatime'
 Plug 'ajh17/VimCompletesMe'
 autocmd FileType text,markdown let b:vcm_tab_complete = 'dict'
 Plug 'ludovicchabant/vim-gutentags'
@@ -115,6 +114,8 @@ Plug 'wikitopian/hardmode'
 let g:HardMode_level='wannabe'
 autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
 nnoremap <leader>e <Esc>:call ToggleHardMode()<CR>
+Plug 'neomake/neomake'
+autocmd! BufWritePost * Neomake
 " }}}
 
 call plug#end()
