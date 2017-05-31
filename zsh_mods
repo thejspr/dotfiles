@@ -50,6 +50,3 @@ zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
 source ~/.secrets
-
-export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh" --no-use

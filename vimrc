@@ -6,7 +6,7 @@ call plug#begin('~/.vim/plugged')
 " }}}
 
 " Essentials {{{
-Plug 'Raimondi/delimitMate'
+" Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-repeat'
 Plug 'ervandew/supertab'
 Plug 'junegunn/fzf', { 'do': './install --all' }
@@ -103,6 +103,7 @@ nmap <silent> <leader>§ :VimuxRunLastCommand<CR>
 Plug 'elzr/vim-json'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'roxma/nvim-cm-tern', {'do': 'npm install'}
 " }}}
 
 " new stuff {{{
@@ -116,6 +117,7 @@ autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
 nnoremap <leader>e <Esc>:call ToggleHardMode()<CR>
 Plug 'neomake/neomake'
 autocmd! BufWritePost * Neomake
+" Plug 'roxma/nvim-completion-manager'
 " }}}
 
 call plug#end()
