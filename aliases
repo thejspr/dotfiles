@@ -17,7 +17,7 @@ alias be='bundle exec'
 
 # rails
 alias rs='rails s'
-alias rg='rails g'
+alias rag='rails g'
 alias rc='rails c'
 alias migrate='rake db:migrate db:test:prepare'
 alias bef='bundle exec foreman start -f Procfile.dev'

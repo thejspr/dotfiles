@@ -19,8 +19,11 @@ let g:fzf_layout = { 'down': '~20%' }
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'mileszs/ack.vim'
-" Use Ag instead of Grep
-let g:ackprg = 'ag --vimgrep'
+
+" Use Ripgrep instead of Grep
+set grepprg=rg\ --vimgrep\ --no-heading'
+set grepformat=%f:%l:%c:%m,%f:%l:%m
+let g:ackprg = 'rg --vimgrep --no-heading'
 nnoremap <leader>a :Ack! <cword><CR>
 cnoreabbrev ag Ack
 cnoreabbrev aG Ack
@@ -95,7 +98,7 @@ let test#strategy = "vimux"
 nmap <silent> <leader>x :TestNearest<CR>
 nmap <silent> <leader>X :TestFile<CR>
 nmap <silent> <leader>A :TestSuite<CR>
-nmap <silent> <leader>§ :VimuxRunLastCommand<CR>
+nmap <silent> <leader>r :VimuxRunLastCommand<CR>
 " nmap <silent> <leader>g :TestVisit<CR>
 " }}}
 
@@ -103,7 +106,6 @@ nmap <silent> <leader>§ :VimuxRunLastCommand<CR>
 Plug 'elzr/vim-json'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'roxma/nvim-cm-tern', {'do': 'npm install'}
 " }}}
 
 " new stuff {{{
@@ -314,6 +316,8 @@ noremap <Leader>v :Eview<space>
 " New stuff {{{
 noremap <c-k> :call feedkeys( line('.')==1 ? '' : 'ddkP' )<CR>
 noremap <c-j> ddp
+
+set relativenumber
 " }}}
 
 " vim: foldmethod=marker:foldlevel=1:textwidth=120:colorcolumn=120
