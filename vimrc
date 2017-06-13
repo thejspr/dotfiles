@@ -18,13 +18,12 @@ let g:fzf_layout = { 'down': '~20%' }
 " Code navigation {{{
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'mileszs/ack.vim'
+Plug 'mhinz/vim-grepper'
 
 " Use Ripgrep instead of Grep
 set grepprg=rg\ --vimgrep\ --no-heading'
 set grepformat=%f:%l:%c:%m,%f:%l:%m
-let g:ackprg = 'rg --vimgrep --no-heading'
-nnoremap <leader>a :Ack! <cword><CR>
+nnoremap <leader>a :GrepperRg <cword><CR>
 cnoreabbrev ag Ack
 cnoreabbrev aG Ack
 cnoreabbrev Ag Ack
