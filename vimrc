@@ -15,19 +15,17 @@ let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
 let g:fzf_layout = { 'down': '~20%' }
 " }}}
 
-" Code navigation {{{
-Plug 'nelstrom/vim-visual-star-search'
+" Search & Code navigation {{{
 Plug 'terryma/vim-multiple-cursors'
 Plug 'mhinz/vim-grepper'
 
 " Use Ripgrep instead of Grep
-set grepprg=rg\ --vimgrep\ --no-heading'
-set grepformat=%f:%l:%c:%m,%f:%l:%m
+" set grepprg=rg\ --vimgrep\ --no-heading'
+" set grepformat=%f:%l:%c:%m,%f:%l:%m
 nnoremap <leader>a :GrepperRg <cword><CR>
-cnoreabbrev ag Ack
-cnoreabbrev aG Ack
-cnoreabbrev Ag Ack
-cnoreabbrev AG Ack
+nnoremap <leader>g :Grepper -tool rg<cr>
+nnoremap <leader>G :Grepper -tool git<cr>
+nnoremap <leader>* :Grepper -tool ag -cword -noprompt<cr>
 " }}}
 
 " Text {{{
@@ -174,15 +172,25 @@ set modeline
 set showcmd
 set hidden
 set wildmenu
+set wildmode=full
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
 set number
 set splitbelow
 set splitright
+set infercase
 
 " Resize splits when the win is resized
 au VimResized * wincmd =
+
+" https://bluz71.github.io/2017/05/15/vim-tips-tricks.html
+set autoread
+augroup autoSaveAndRead
+  autocmd!
+  autocmd TextChanged,InsertLeave,FocusLost * silent! wall
+  autocmd CursorHold * silent! checktime
+augroup END
 
 " Text Formatting
 set tabstop=2
