@@ -103,6 +103,7 @@ nmap <silent> <leader>r :VimuxRunLastCommand<CR>
 Plug 'elzr/vim-json'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'sbdchd/neoformat'
 " }}}
 
 " new stuff {{{
@@ -323,8 +324,6 @@ noremap <Leader>v :Eview<space>
 " New stuff {{{
 noremap <c-k> :call feedkeys( line('.')==1 ? '' : 'ddkP' )<CR>
 noremap <c-j> ddp
-
-set relativenumber
 " }}}
 
 " vim: foldmethod=marker:foldlevel=1:textwidth=120:colorcolumn=120
