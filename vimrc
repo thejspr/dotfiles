@@ -25,7 +25,8 @@ Plug 'mhinz/vim-grepper'
 nnoremap <leader>a :GrepperRg <cword><CR>
 nnoremap <leader>g :Grepper -tool rg<cr>
 nnoremap <leader>G :Grepper -tool git<cr>
-nnoremap <leader>* :Grepper -tool ag -cword -noprompt<cr>
+nnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
+vnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
 " }}}
 
 " Text {{{
@@ -115,9 +116,17 @@ Plug 'wikitopian/hardmode'
 let g:HardMode_level='wannabe'
 autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
 nnoremap <leader>e <Esc>:call ToggleHardMode()<CR>
-Plug 'neomake/neomake'
-autocmd! BufWritePost * Neomake
-" Plug 'roxma/nvim-completion-manager'
+Plug 'w0rp/ale'
+let g:ale_fixers = {
+  \ 'javascript': ['eslint']
+  \ }
+let g:ale_linters = {
+  \ 'javascript': ['eslint'],
+  \ 'eruby': ['']
+  \ }
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 " }}}
 
 call plug#end()
@@ -151,9 +160,9 @@ set foldmethod=indent
 " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " set termguicolors
 try
-  " set background=dark
+  set background=dark
   " colorscheme dracula
-  set background=light
+  " set background=light
   colorscheme solarized
 catch /:E185/
 endtry
@@ -190,7 +199,7 @@ set autoread
 augroup autoSaveAndRead
   autocmd!
   autocmd TextChanged,InsertLeave,FocusLost * silent! wall
-  autocmd CursorHold * silent! checktime
+  " autocmd CursorHold * silent! checktime
 augroup END
 
 " Text Formatting
