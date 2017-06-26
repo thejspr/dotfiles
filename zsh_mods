@@ -50,3 +50,5 @@ zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
 source ~/.secrets
+
+source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"

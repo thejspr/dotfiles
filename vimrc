@@ -79,7 +79,6 @@ Plug 'airblade/vim-gitgutter'
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 let g:gitgutter_map_keys = 0
-Plug 'dracula/vim'
 Plug 'altercation/vim-colors-solarized'
 " }}}
 
@@ -127,6 +126,7 @@ let g:ale_linters = {
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+Plug 'morhetz/gruvbox'
 " }}}
 
 call plug#end()
@@ -161,9 +161,9 @@ set foldmethod=indent
 " set termguicolors
 try
   set background=dark
-  " colorscheme dracula
   " set background=light
-  colorscheme solarized
+  " colorscheme solarized
+  colorscheme gruvbox
 catch /:E185/
 endtry
 
