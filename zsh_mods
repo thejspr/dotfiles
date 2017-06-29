@@ -1,17 +1,11 @@
 export HISTCONTROL=ignoreboth:erasedups
 export EDITOR='nvim'
+export BUNDLER_EDITOR='nvim'
 eval "$(rbenv init - --no-rehash)"
 export PATH=/usr/local/bin:/usr/local/share/npm/bin:$PATH
 export PATH=./bin:~/bin:/Applications/Postgres.app/Contents/Versions/9.6/bin:$PATH
 export PATH="$PATH:`yarn global bin`"
 export SHELL=/usr/local/bin/zsh
-
-# Android
-export JAVA_HOME=$(/usr/libexec/java_home)
-export PATH=/Users/jesper/Library/Android/sdk/platform-tools:$PATH
-export PATH=/Users/jesper/Library/Android/sdk/tools:$PATH
-export PATH=/Users/jesper/Library/Android/sdk/build-tools/24.0.3:$PATH
-export ANDROID_HOME=/Users/jesper/Library/Android/sdk
 
 # prezto customizations
 autoload zmv
