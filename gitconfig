@@ -29,7 +29,7 @@
   dcs    = diff --cached --stat
   dm     = !clear && git diff master
   ds     = diff --stat
-  edit   = !git status -sb | tail +2 | grep -v '^ D' | awk '{print $2}' | xargs -o nvim -v
+  edit   = !git status -sb | tail +2 | grep -v '^ D' | awk '{print $2}' | xargs -o nvim
   gc     = gc --prune=now
   l      = log --oneline --decorate -16
   ll     = log --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(black)<%an>%Creset' \
@@ -83,4 +83,4 @@
   smudge = git-lfs smudge %f
   required = true
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
