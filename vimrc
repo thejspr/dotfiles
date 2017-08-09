@@ -196,11 +196,11 @@ au VimResized * wincmd =
 
 " https://bluz71.github.io/2017/05/15/vim-tips-tricks.html
 set autoread
-augroup autoSaveAndRead
-  autocmd!
-  autocmd TextChanged,InsertLeave,FocusLost * silent! wall
-  " autocmd CursorHold * silent! checktime
-augroup END
+" augroup autoSaveAndRead
+"   autocmd!
+"   autocmd TextChanged,InsertLeave,FocusLost * silent! wall
+"   " autocmd CursorHold * silent! checktime
+" augroup END
 
 " Text Formatting
 set tabstop=2
