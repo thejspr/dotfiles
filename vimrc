@@ -161,7 +161,7 @@ set foldmethod=indent
 " set termguicolors
 try
   set background=dark
-  " set background=light
+  set background=light
   " colorscheme solarized
   colorscheme gruvbox
 catch /:E185/
@@ -333,6 +333,25 @@ noremap <Leader>v :Eview<space>
 " New stuff {{{
 noremap <c-k> :call feedkeys( line('.')==1 ? '' : 'ddkP' )<CR>
 noremap <c-j> ddp
+
+function! s:buflist()
+  redir => ls
+  silent ls
+  redir END
+  return split(ls, '\n')
+endfunction
+
+function! s:bufopen(e)
+  execute 'buffer' matchstr(a:e, '^[ 0-9]*')
+endfunction
+
+" buffer search/switch
+nnoremap <silent> <Leader>b :call fzf#run({
+\   'source':  reverse(<sid>buflist()),
+\   'sink':    function('<sid>bufopen'),
+\   'options': '+m',
+\   'down':    len(<sid>buflist()) + 2
+\ })<CR>
 " }}}
 
 " vim: foldmethod=marker:foldlevel=1:textwidth=120:colorcolumn=120

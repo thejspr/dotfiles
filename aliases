@@ -20,7 +20,7 @@ alias rs='rails s'
 alias rag='rails g'
 alias rc='rails c'
 alias migrate='rake db:migrate db:test:prepare'
-alias bef='bundle exec foreman start -f Procfile.dev'
+alias bef='pkill node; bundle exec foreman start -f Procfile.dev'
 alias upgrade_gems="bundle update && rspec && git add -A && git commit -m 'Gem upgrades' && git push"
 
 #rake
