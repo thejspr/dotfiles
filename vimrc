@@ -263,6 +263,12 @@ nnoremap <Leader>w :w<CR>
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
+
+" Move windows with ctrl + home row
+nmap <C-h> :wincmd h<CR>
+nmap <C-j> :wincmd j<CR>
+nmap <C-k> :wincmd k<CR>
+nmap <C-l> :wincmd l<CR>
 " }}}
 
 " Searching {{{
@@ -331,8 +337,9 @@ noremap <Leader>v :Eview<space>
 " }}}
 
 " New stuff {{{
-noremap <c-k> :call feedkeys( line('.')==1 ? '' : 'ddkP' )<CR>
-noremap <c-j> ddp
+" Move lines with alt + home row
+noremap <m-k> :call feedkeys( line('.')==1 ? '' : 'ddkP' )<CR>
+noremap <m-j> ddp
 
 function! s:buflist()
   redir => ls
