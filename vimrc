@@ -161,7 +161,7 @@ set foldmethod=indent
 " set termguicolors
 try
   set background=dark
-  set background=light
+  " set background=light
   " colorscheme solarized
   colorscheme gruvbox
 catch /:E185/
