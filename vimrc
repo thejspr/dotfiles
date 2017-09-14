@@ -13,6 +13,7 @@ Plug 'junegunn/fzf', { 'do': './install --all' }
 noremap <leader>t :FZF<cr>
 let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
 let g:fzf_layout = { 'down': '~20%' }
+let g:fzf_history_dir = '~/.vim/history'
 " }}}
 
 " Search & Code navigation {{{
@@ -160,10 +161,10 @@ set foldmethod=indent
 " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " set termguicolors
 try
-  set background=dark
-  " set background=light
-  " colorscheme solarized
-  colorscheme gruvbox
+  " set background=dark
+  set background=light
+  colorscheme solarized
+  " colorscheme gruvbox
 catch /:E185/
 endtry
 
@@ -196,11 +197,11 @@ au VimResized * wincmd =
 
 " https://bluz71.github.io/2017/05/15/vim-tips-tricks.html
 set autoread
-" augroup autoSaveAndRead
-"   autocmd!
-"   autocmd TextChanged,InsertLeave,FocusLost * silent! wall
-"   " autocmd CursorHold * silent! checktime
-" augroup END
+augroup autoSaveAndRead
+  autocmd!
+  autocmd TextChanged,InsertLeave,FocusLost * silent! wall
+  " autocmd CursorHold * silent! checktime
+augroup END
 
 " Text Formatting
 set tabstop=2
