@@ -17,9 +17,7 @@ let g:fzf_history_dir = '~/.vim/history'
 " }}}
 
 " Search & Code navigation {{{
-Plug 'terryma/vim-multiple-cursors'
 Plug 'mhinz/vim-grepper'
-
 " Use Ripgrep instead of Grep
 " set grepprg=rg\ --vimgrep\ --no-heading'
 " set grepformat=%f:%l:%c:%m,%f:%l:%m
@@ -161,8 +159,8 @@ set foldmethod=indent
 " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " set termguicolors
 try
-  " set background=dark
-  set background=light
+  set background=dark
+  " set background=light
   colorscheme solarized
   " colorscheme gruvbox
 catch /:E185/
