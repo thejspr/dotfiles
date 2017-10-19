@@ -6,11 +6,13 @@ call plug#begin('~/.vim/plugged')
 " }}}
 
 " Essentials {{{
-" Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-repeat'
 Plug 'ervandew/supertab'
-Plug 'junegunn/fzf', { 'do': './install --all' }
-noremap <leader>t :FZF<cr>
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+noremap <leader>t :Files<cr>
+noremap <leader>b :Buffers<cr>
+noremap <leader>r :History<cr>
 let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
 let g:fzf_layout = { 'down': '~20%' }
 let g:fzf_history_dir = '~/.vim/history'
@@ -69,13 +71,14 @@ Plug 'ludovicchabant/vim-gutentags'
 " UI {{{
 " iterm2 support
 Plug 'sjl/vitality.vim'
-Plug 'bling/vim-airline'
+Plug 'itchyny/lightline.vim'
+" Plug 'bling/vim-airline'
 " let g:airline_powerline_fonts=0
 " let g:airline#extensions#hunks#enabled = 0
-let g:airline_left_sep=''
-let g:airline_right_sep=''
+" let g:airline_left_sep=''
+" let g:airline_right_sep=''
 " let g:airline_section_z=''
-let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#enabled = 1
 Plug 'altercation/vim-colors-solarized'
 " }}}
 
@@ -92,7 +95,7 @@ let test#strategy = "vimux"
 nmap <silent> <leader>x :TestNearest<CR>
 nmap <silent> <leader>X :TestFile<CR>
 nmap <silent> <leader>A :TestSuite<CR>
-nmap <silent> <leader>r :VimuxRunLastCommand<CR>
+nmap <silent> <leader>§ :VimuxRunLastCommand<CR>
 " nmap <silent> <leader>g :TestVisit<CR>
 " }}}
 
@@ -212,12 +215,8 @@ endif
 "}}}
 
 " Key mappings {{{
-" let mapleader = "\<Space>"
 map , <leader>
 
-" tComment
-nnoremap // :Commentary<CR>
-vnoremap // :Commentary<CR>
 " Buffer management
 noremap <tab> :bn<CR>
 noremap <S-tab> :bp<CR>
@@ -336,25 +335,6 @@ noremap <Leader>v :Eview<space>
 " Move lines with alt + home row
 noremap <m-k> :call feedkeys( line('.')==1 ? '' : 'ddkP' )<CR>
 noremap <m-j> ddp
-
-function! s:buflist()
-  redir => ls
-  silent ls
-  redir END
-  return split(ls, '\n')
-endfunction
-
-function! s:bufopen(e)
-  execute 'buffer' matchstr(a:e, '^[ 0-9]*')
-endfunction
-
-" buffer search/switch
-nnoremap <silent> <Leader>b :call fzf#run({
-\   'source':  reverse(<sid>buflist()),
-\   'sink':    function('<sid>bufopen'),
-\   'options': '+m',
-\   'down':    len(<sid>buflist()) + 2
-\ })<CR>
 " }}}
 
 " vim: foldmethod=marker:foldlevel=1:textwidth=120:colorcolumn=120
