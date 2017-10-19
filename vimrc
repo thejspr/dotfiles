@@ -62,6 +62,8 @@ Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-ragtag'
 let g:ragtag_global_maps = 1
+Plug 'sbdchd/neoformat'
+Plug 'ludovicchabant/vim-gutentags'
 " }}}
 
 " UI {{{
@@ -98,18 +100,18 @@ nmap <silent> <leader>r :VimuxRunLastCommand<CR>
 Plug 'elzr/vim-json'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'sbdchd/neoformat'
 " }}}
 
 " new stuff {{{
 Plug 'tpope/vim-obsession'
 Plug 'ajh17/VimCompletesMe'
 autocmd FileType text,markdown let b:vcm_tab_complete = 'dict'
-Plug 'ludovicchabant/vim-gutentags'
+
 Plug 'wikitopian/hardmode'
 let g:HardMode_level='wannabe'
 autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
 nnoremap <leader>e <Esc>:call ToggleHardMode()<CR>
+
 Plug 'w0rp/ale'
 let g:ale_fixers = {
   \ 'javascript': ['eslint']
@@ -121,7 +123,6 @@ let g:ale_linters = {
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-Plug 'morhetz/gruvbox'
 " }}}
 
 call plug#end()
