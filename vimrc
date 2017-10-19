@@ -74,10 +74,6 @@ let g:airline_left_sep=''
 let g:airline_right_sep=''
 " let g:airline_section_z=''
 let g:airline#extensions#tabline#enabled = 1
-Plug 'airblade/vim-gitgutter'
-let g:gitgutter_realtime = 0
-let g:gitgutter_eager = 0
-let g:gitgutter_map_keys = 0
 Plug 'altercation/vim-colors-solarized'
 " }}}
 
