@@ -13,16 +13,12 @@ Plug 'junegunn/fzf.vim'
 noremap <leader>t :Files<cr>
 noremap <leader>b :Buffers<cr>
 noremap <leader>r :History<cr>
-let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
-let g:fzf_layout = { 'down': '~20%' }
+let g:fzf_layout = { 'down': '~25%' }
 let g:fzf_history_dir = '~/.vim/history'
 " }}}
 
 " Search & Code navigation {{{
 Plug 'mhinz/vim-grepper'
-" Use Ripgrep instead of Grep
-" set grepprg=rg\ --vimgrep\ --no-heading'
-" set grepformat=%f:%l:%c:%m,%f:%l:%m
 nnoremap <leader>a :GrepperRg <cword><CR>
 nnoremap <leader>g :Grepper -tool rg<cr>
 nnoremap <leader>G :Grepper -tool git<cr>
