@@ -62,20 +62,15 @@ Plug 'tpope/vim-ragtag'
 let g:ragtag_global_maps = 1
 Plug 'sbdchd/neoformat'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'sheerun/vim-polyglot'
 " }}}
 
 " UI {{{
 " iterm2 support
 Plug 'sjl/vitality.vim'
 Plug 'itchyny/lightline.vim'
-" Plug 'bling/vim-airline'
-" let g:airline_powerline_fonts=0
-" let g:airline#extensions#hunks#enabled = 0
-" let g:airline_left_sep=''
-" let g:airline_right_sep=''
-" let g:airline_section_z=''
-" let g:airline#extensions#tabline#enabled = 1
 Plug 'altercation/vim-colors-solarized'
+Plug 'rakr/vim-one'
 " }}}
 
 " tmux and testing {{{
@@ -152,13 +147,14 @@ set foldmethod=indent
 " }}}
 
 " UI {{{
-" let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-" set termguicolors
+set termguicolors
 try
+  " colorscheme solarized
+  " colorscheme gruvbox
+  colorscheme one
+  let g:one_allow_italics = 1
   set background=dark
   " set background=light
-  colorscheme solarized
-  " colorscheme gruvbox
 catch /:E185/
 endtry
 
