@@ -177,6 +177,7 @@ set wildmode=full
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
+set statusline+=%f
 set number
 set splitbelow
 set splitright
