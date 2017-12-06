@@ -117,6 +117,9 @@ let g:ale_linters = {
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'justinmk/vim-sneak'
+map s <Plug>Sneak_s
 " }}}
 
 call plug#end()
@@ -147,6 +150,8 @@ set foldmethod=indent
 " }}}
 
 " UI {{{
+set t_8b=^[[48;2;%lu;%lu;%lum
+set t_8f=^[[38;2;%lu;%lu;%lum
 set termguicolors
 try
   " colorscheme solarized
@@ -162,6 +167,7 @@ syntax on
 set nocursorcolumn
 set nocursorline
 set colorcolumn=80
+highlight ColorColumn guibg=#000000
 set synmaxcol=140
 set title
 set ffs=unix,mac,dos
@@ -190,7 +196,8 @@ au VimResized * wincmd =
 set autoread
 augroup autoSaveAndRead
   autocmd!
-  autocmd TextChanged,InsertLeave,FocusLost * silent! wall
+  autocmd FocusLost * silent! wall
+  " autocmd TextChanged,InsertLeave,FocusLost * silent! wall
   " autocmd CursorHold * silent! checktime
 augroup END
 
