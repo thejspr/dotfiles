@@ -120,6 +120,8 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'justinmk/vim-sneak'
 map s <Plug>Sneak_s
+
+Plug 'christoomey/vim-tmux-navigator'
 " }}}
 
 call plug#end()
@@ -244,26 +246,13 @@ cabbrev W w
 cabbrev Wa wa
 cabbrev Wq wq
 cabbrev Wqa wqa
-cabbrev ew wq
-cabbrev qw wq
 
 nnoremap <Leader>w :w<CR>
-
-" Enter command with one keystroke
-" nnoremap ; :
-" nnoremap : ;
-" nnoremap ! :!
 
 " Automatically jump to end of text you pasted
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
-
-" Move windows with ctrl + home row
-nmap <C-h> :wincmd h<CR>
-nmap <C-j> :wincmd j<CR>
-nmap <C-k> :wincmd k<CR>
-nmap <C-l> :wincmd l<CR>
 " }}}
 
 " Searching {{{
