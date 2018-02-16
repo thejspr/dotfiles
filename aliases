@@ -5,7 +5,7 @@ alias yr='yarn run'
 # tmux
 alias tma='tmux attach -t'
 alias tms='tmux start-server; tmux attach'
-alias tmux='TERM=xterm-256color tmux'
+alias tmux='tmux'
 
 #ruby
 alias rb='rbenv'
@@ -18,6 +18,7 @@ alias be='bundle exec'
 # rails
 alias rs='rails s'
 alias rag='rails g'
+alias ragm='rails generate migration'
 alias rc='rails c'
 alias migrate='rake db:migrate db:test:prepare'
 alias bef='pkill node; bundle exec foreman start -f Procfile.dev'
