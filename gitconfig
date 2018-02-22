@@ -39,7 +39,7 @@
   pro    = checkout production
   mt     = mergetool
   mm     = merge master
-  pc     = !git push -u origin $(git symbolic-ref --short HEAD)
+  pc     = !FORCE=1 git push -u origin $(git symbolic-ref --short HEAD)
   r      = remote
   rc     = !git add -A && git rebase --continue
   rh     = reset --hard

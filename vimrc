@@ -262,6 +262,8 @@ set smartcase
 set gdefault
 set showmatch
 
+set wildignore+=node_modules/*,bower_components/*
+
 noremap <leader>, :noh<cr>
 nnoremap <space> /
 noremap <leader>f :%s///<left><left>
