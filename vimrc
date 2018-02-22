@@ -262,6 +262,7 @@ set smartcase
 set gdefault
 set showmatch
 
+let g:gutentags_ctags_executable='/usr/local/bin/ctags'
 set wildignore+=node_modules/*,bower_components/*
 
 noremap <leader>, :noh<cr>
