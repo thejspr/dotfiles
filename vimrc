@@ -155,21 +155,19 @@ set foldmethod=indent
 set t_8b=^[[48;2;%lu;%lu;%lum
 set t_8f=^[[38;2;%lu;%lu;%lum
 set termguicolors
-try
-  " colorscheme solarized
-  " colorscheme gruvbox
-  colorscheme one
-  let g:one_allow_italics = 1
-  set background=dark
-  " set background=light
-catch /:E185/
-endtry
+set t_Co=256
+" colorscheme gruvbox
+let g:one_allow_italics = 1
+" colorscheme one
+
+" set background=dark
+set background=light
+colorscheme solarized
 
 syntax on
 set nocursorcolumn
 set nocursorline
 set colorcolumn=80
-highlight ColorColumn guibg=#000000
 set synmaxcol=140
 set title
 set ffs=unix,mac,dos
@@ -264,6 +262,7 @@ set showmatch
 
 let g:gutentags_ctags_executable='/usr/local/bin/ctags'
 set wildignore+=node_modules/*,bower_components/*
+set wildignore+=app/assets/images/**/*
 
 noremap <leader>, :noh<cr>
 nnoremap <space> /
@@ -287,8 +286,7 @@ noremap <leader>sd z=
 au BufRead,BufNewFile COMMIT_EDITMSG setlocal ft=diff spell!
 "}}}
 
-" Nerdtree & ctrlp {{{
-" NERDTree
+" Nerdtree {{{
 let g:NERDTreeQuitOnOpen=0
 let g:NERDTreeShowBookmarks = 0
 let g:NERDTreeWinSize = 25
@@ -324,9 +322,6 @@ noremap <Leader>v :Eview<space>
 " }}}
 
 " New stuff {{{
-" Move lines with alt + home row
-noremap <m-k> :call feedkeys( line('.')==1 ? '' : 'ddkP' )<CR>
-noremap <m-j> ddp
 " }}}
 
 " vim: foldmethod=marker:foldlevel=1:textwidth=120:colorcolumn=120
