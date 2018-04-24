@@ -3,9 +3,7 @@ alias ff='find . -iname'
 alias yr='yarn run'
 
 # tmux
-alias tma='tmux attach -t'
-alias tms='tmux start-server; tmux attach'
-alias tmux='tmux'
+alias tma='tmux attach'
 
 #ruby
 alias rb='rbenv'
