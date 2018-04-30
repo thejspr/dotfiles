@@ -160,8 +160,8 @@ set t_Co=256
 let g:one_allow_italics = 1
 " colorscheme one
 
-" set background=dark
-set background=light
+set background=dark
+" set background=light
 colorscheme solarized
 
 syntax on
