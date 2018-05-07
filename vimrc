@@ -325,3 +325,4 @@ noremap <Leader>v :Eview<space>
 " }}}
 
 " vim: foldmethod=marker:foldlevel=1:textwidth=120:colorcolumn=120
+highlight ColorColumn ctermbg=160 guibg=#036986
