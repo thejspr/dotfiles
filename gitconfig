@@ -71,7 +71,7 @@
   auto = 0
 [heroku]
   account = me
-  tool = mvimdiff
+  tool = vimdiff
 [mergetool]
   prompt = false
   keepBackup = false
@@ -86,4 +86,4 @@
 [credential]
   helper = osxkeychain
 [merge]
-	tool = opendiff
+  tool = opendiff
