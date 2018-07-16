@@ -106,7 +106,6 @@ let g:HardMode_level='wannabe'
 autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
 nnoremap <leader>e <Esc>:call ToggleHardMode()<CR>
 
-Plug 'w0rp/ale'
 let g:ale_fixers = {
   \ 'javascript': ['eslint']
   \ }
@@ -114,9 +113,22 @@ let g:ale_linters = {
   \ 'javascript': ['eslint'],
   \ 'eruby': ['']
   \ }
+let g:ale_linters_explicit = 1
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_fixers = {
+  \ 'javascript': ['eslint']
+  \ }
+let g:ale_linters = {
+  \ 'javascript': ['eslint'],
+  \ 'eruby': [''],
+  \ 'ruby': ['rubocop']
+  \ }
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+Plug 'w0rp/ale'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'justinmk/vim-sneak'
 map s <Plug>Sneak_s
