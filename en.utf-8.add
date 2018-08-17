@@ -171,3 +171,8 @@ SnackTrack
 MailChimp
 stylesheet
 signups
+SemaphoreCI
+dynos
+buildpacks
+buildpack
+NodeJS
