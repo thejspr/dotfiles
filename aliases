@@ -2,6 +2,7 @@
 alias ff='find . -iname'
 alias yr='yarn run'
 alias neovim-upgrade='brew reinstall --HEAD neovim && gem install neovim && pip3 install neovim --upgrade && npm install -g neovim'
+alias ci='open https://semaphoreci.com/thejspr/reklameskyen'
 
 # tmux
 alias tma='tmux attach'
