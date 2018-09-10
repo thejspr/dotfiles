@@ -6,7 +6,7 @@ ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
 # Ruby
 brew install rbenv ruby-build
 eval "$(rbenv init -)"
-rbenv install 2.4.0
+rbenv install 2.5.1
 gem update --system
 
 # Dotfiles
@@ -31,9 +31,8 @@ chsh -s /usr/local/bin/zsh
 echo "source '/Users/jesper/Code/dotfiles/zsh_mods'" >> ~/.zshrc
 
 # Install brew bundles
-brew tap Homebrew/brewdler
 cd ~/code/dotfiles
-brew brewdle
+brew bundle
 
 #Launch vim to install plugins
 mkdir -p ~/.vim
