@@ -32,3 +32,5 @@ brew 'youtube-dl'
 brew 'z'
 brew 'zsh'
 brew 'zsh-completions'
+
+cask 'iterm2'
