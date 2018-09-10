@@ -3,6 +3,7 @@ alias ff='find . -iname'
 alias yr='yarn run'
 alias neovim-upgrade='brew reinstall --HEAD neovim && gem install neovim && pip3 install neovim --upgrade && npm install -g neovim'
 alias ci='open https://semaphoreci.com/thejspr/reklameskyen'
+alias nl='open https://app.netlify.com/sites/grafikondemand/deploys'
 
 # tmux
 alias tma='tmux attach'
@@ -24,6 +25,7 @@ alias migrate='rake db:migrate db:test:prepare'
 alias bef='pkill node; bundle exec foreman start -f Procfile.dev'
 alias upgrade_gems="bundle update && rspec && git add -A && git commit -m 'Gem upgrades' && git push"
 alias ber="be rubocop --auto-correct"
+alias bea="be rubocop --auto-gen-config"
 
 #rake
 alias rt='rake -T'
