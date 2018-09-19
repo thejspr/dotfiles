@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Homebrew
-ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # Ruby
 brew install rbenv ruby-build
@@ -13,7 +13,7 @@ gem update --system
 mkdir -p code
 cd code
 if [ ! -d 'dotfiles' ]; then
-  git clone git@github.com:thejspr/dotfiles.git
+  git clone https://github.com/thejspr/dotfiles.git
 fi
 cd dotfiles
 git pull origin master
@@ -28,12 +28,13 @@ for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
   ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
 done
 chsh -s /usr/local/bin/zsh
-echo "source '/Users/jesper/Code/dotfiles/zsh_mods'" >> ~/.zshrc
+echo 'source "${ZDOTDIR:-$HOME}/code/dotfiles/zsh_mods"' >> ~/.zshrc
 
 # Install brew bundles
 cd ~/code/dotfiles
 brew bundle
 
-#Launch vim to install plugins
+# Launch vim to install plugins
+# 1. https://neovim.io/doc/user/nvim.html#nvim-from-vim
 mkdir -p ~/.vim
 vim -c PlugInstall
