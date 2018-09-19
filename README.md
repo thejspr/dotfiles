@@ -3,5 +3,5 @@
 ## Install
 
 ```` bash
-curl -L https://raw.github.com/thejspr/dotfiles/master/bin/init | bash
+curl -L https://raw.githubusercontent.com/thejspr/dotfiles/master/init | bash
 ````
