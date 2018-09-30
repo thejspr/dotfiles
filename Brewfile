@@ -1,10 +1,5 @@
-tap 'homebrew/cask'
-tap 'homebrew/dupes'
-tap 'homebrew/versions'
-tap 'thoughtbot/formulae'
 tap "heroku/brew"
 
-brew 'apple-gcc42'
 brew 'cmake'
 brew 'ctags'
 brew 'curl'
@@ -19,18 +14,13 @@ brew 'neovim', args: ['HEAD']
 brew 'node'
 brew 'openssl'
 brew 'optipng'
-brew 'phantomjs'
 brew 'rbenv', args: ['HEAD']
 brew 'readline'
 brew 'reattach-to-user-namespace'
 brew 'redis'
 brew 'ruby-build'
-brew 'sqlite'
 brew 'tmux'
 brew 'wget'
 brew 'youtube-dl'
 brew 'z'
-brew 'zsh'
 brew 'zsh-completions'
-
-cask 'iterm2'
