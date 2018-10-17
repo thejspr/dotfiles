@@ -24,6 +24,10 @@ nnoremap <leader>g :Grepper -tool rg<cr>
 nnoremap <leader>G :Grepper -tool git<cr>
 nnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
 vnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
+
+Plug 'wikitopian/hardmode'
+let g:HardMode_level='wannabe'
+autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
 " }}}
 
 " Text {{{
@@ -40,6 +44,7 @@ let g:user_emmet_settings = {
 \      'quote_char': "'",
 \  },
 \}
+Plug 'terryma/vim-multiple-cursors'
 " }}}
 
 " File management & Git {{{
@@ -68,6 +73,30 @@ let g:ragtag_global_maps = 1
 Plug 'sbdchd/neoformat'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'sheerun/vim-polyglot'
+
+let g:ale_fixers = {
+  \ 'javascript': ['eslint']
+  \ }
+let g:ale_linters = {
+  \ 'javascript': ['eslint'],
+  \ 'eruby': ['']
+  \ }
+let g:ale_linters_explicit = 1
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_fixers = {
+  \ 'javascript': ['eslint']
+  \ }
+let g:ale_linters = {
+  \ 'javascript': ['eslint'],
+  \ 'eruby': [''],
+  \ 'ruby': ['rubocop']
+  \ }
+let g:ale_sign_error = '●'
+let g:ale_sign_warning = '.'
+let g:ale_lint_on_enter = 0
+Plug 'w0rp/ale'
 " }}}
 
 " UI {{{
@@ -75,10 +104,10 @@ Plug 'sheerun/vim-polyglot'
 Plug 'sjl/vitality.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'altercation/vim-colors-solarized'
-Plug 'rakr/vim-one'
 " }}}
 
 " tmux and testing {{{
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 nnoremap <leader><space> :VimuxPromptCommand<cr>
 Plug 'janko-m/vim-test'
@@ -105,40 +134,6 @@ Plug 'mxw/vim-jsx'
 Plug 'tpope/vim-obsession'
 Plug 'ajh17/VimCompletesMe'
 autocmd FileType text,markdown let b:vcm_tab_complete = 'dict'
-
-Plug 'wikitopian/hardmode'
-let g:HardMode_level='wannabe'
-autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
-nnoremap <leader>e <Esc>:call ToggleHardMode()<CR>
-
-let g:ale_fixers = {
-  \ 'javascript': ['eslint']
-  \ }
-let g:ale_linters = {
-  \ 'javascript': ['eslint'],
-  \ 'eruby': ['']
-  \ }
-let g:ale_linters_explicit = 1
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_fixers = {
-  \ 'javascript': ['eslint']
-  \ }
-let g:ale_linters = {
-  \ 'javascript': ['eslint'],
-  \ 'eruby': [''],
-  \ 'ruby': ['rubocop']
-  \ }
-let g:ale_sign_error = '●'
-let g:ale_sign_warning = '.'
-let g:ale_lint_on_enter = 0
-Plug 'w0rp/ale'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'justinmk/vim-sneak'
-map s <Plug>Sneak_s
-
-Plug 'christoomey/vim-tmux-navigator'
 " }}}
 
 call plug#end()
