@@ -169,14 +169,6 @@ set foldmethod=indent
 " }}}
 
 " UI {{{
-set t_8b=^[[48;2;%lu;%lu;%lum
-set t_8f=^[[38;2;%lu;%lu;%lum
-set termguicolors
-set t_Co=256
-" colorscheme gruvbox
-let g:one_allow_italics = 1
-" colorscheme one
-
 set background=dark
 " set background=light
 colorscheme solarized
@@ -343,4 +335,3 @@ noremap tt :NERDTreeToggle<CR>
 " }}}
 
 " vim: foldmethod=marker:foldlevel=1:textwidth=120:colorcolumn=120
-" highlight ColorColumn ctermbg=160 guibg=#036986
