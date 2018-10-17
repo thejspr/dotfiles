@@ -34,7 +34,12 @@ Plug 'AndrewRadev/splitjoin.vim'
 nmap sj :SplitjoinSplit<cr>
 nmap sk :SplitjoinJoin<cr>
 Plug 'mattn/emmet-vim'
-let g:user_emmet_settings={'javascript.jsx': {'extends':'jsx'}}
+let g:user_emmet_settings = {
+\  'javascript.jsx' : {
+\      'extends': 'jsx',
+\      'quote_char': "'",
+\  },
+\}
 " }}}
 
 " File management & Git {{{
@@ -125,9 +130,9 @@ let g:ale_linters = {
   \ 'eruby': [''],
   \ 'ruby': ['rubocop']
   \ }
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_sign_error = '●'
+let g:ale_sign_warning = '.'
+let g:ale_lint_on_enter = 0
 Plug 'w0rp/ale'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'justinmk/vim-sneak'
@@ -173,7 +178,7 @@ let g:one_allow_italics = 1
 " colorscheme one
 
 set background=dark
-set background=light
+" set background=light
 colorscheme solarized
 
 syntax on
@@ -313,11 +318,7 @@ command! Ev :e ~/.vimrc
 " }}}
 
 " Function Keys {{{
-noremap <F1> :set nowrap! <CR>
-noremap <F2> :NERDTreeToggle<CR>
 set pastetoggle=<F3>
-nmap <f4> <Plug>Kwbd
-noremap <F5> :NERDTreeFind<CR>
 nnoremap <F6> :%s/\s*$//<CR>:noh<CR> " EOL whitespace removal
 " }}}
 
@@ -334,7 +335,12 @@ noremap <Leader>v :Eview<space>
 " }}}
 
 " New stuff {{{
+" Make `jj` and `jk` throw you into normal mode
+inoremap jj <esc>
+inoremap jk <esc>
+map <c-x> <Plug>Kwbd<CR>
+noremap tt :NERDTreeToggle<CR>
 " }}}
 
 " vim: foldmethod=marker:foldlevel=1:textwidth=120:colorcolumn=120
-highlight ColorColumn ctermbg=160 guibg=#036986
+" highlight ColorColumn ctermbg=160 guibg=#036986
