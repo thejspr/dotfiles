@@ -132,8 +132,10 @@ Plug 'mxw/vim-jsx'
 
 " new stuff {{{
 Plug 'tpope/vim-obsession'
-Plug 'ajh17/VimCompletesMe'
-autocmd FileType text,markdown let b:vcm_tab_complete = 'dict'
+" Plug 'ajh17/VimCompletesMe'
+" autocmd FileType text,markdown let b:vcm_tab_complete = 'dict'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+let g:deoplete#enable_at_startup = 1
 " }}}
 
 call plug#end()
