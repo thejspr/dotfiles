@@ -265,6 +265,7 @@ set incsearch
 set smartcase
 set gdefault
 set showmatch
+set inccommand=nosplit
 
 let g:gutentags_ctags_executable='/usr/local/bin/ctags'
 set wildignore+=node_modules/*,bower_components/*
