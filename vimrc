@@ -27,7 +27,7 @@ vnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
 
 Plug 'wikitopian/hardmode'
 let g:HardMode_level='wannabe'
-autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
+" autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
 " }}}
 
 " Text {{{
@@ -166,8 +166,8 @@ set foldmethod=indent
 " }}}
 
 " UI {{{
-set background=dark
-" set background=light
+" set background=dark
+set background=light
 colorscheme solarized
 
 syntax on
