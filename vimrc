@@ -43,6 +43,8 @@ let g:user_emmet_settings = {
 \      'extends': 'jsx',
 \      'quote_char': "'",
 \  },
+\  'html' : { 'quote_char': "'" },
+\  'erb' : { 'quote_char': "'" }
 \}
 Plug 'terryma/vim-multiple-cursors'
 " }}}
