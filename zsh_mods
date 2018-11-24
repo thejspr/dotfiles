@@ -47,5 +47,4 @@ bindkey '^Z' fancy-ctrl-z
 
 source ~/.secrets
 
-$(heroku autocomplete:script zsh)
 prompt pure

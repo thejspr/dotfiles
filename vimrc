@@ -74,6 +74,7 @@ Plug 'tpope/vim-ragtag'
 let g:ragtag_global_maps = 1
 Plug 'sbdchd/neoformat'
 Plug 'ludovicchabant/vim-gutentags'
+let g:gutentags_trace = 0
 Plug 'sheerun/vim-polyglot'
 
 let g:ale_fixers = {
