@@ -61,11 +61,11 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>1069 546 656 312 0 0 3440 1417 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>2230 398 700 622 0 0 3440 1417 </string>
+	<string>1435 691 700 622 0 0 2560 1417 </string>
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>870 940 928 394 0 0 3440 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1680 1027 0 0 1680 1027 </string>
+	<string>0 0 1279 1417 0 0 2560 1417 </string>
 	<key>NeverWarnAboutShortLivedSessions_19C89A14-4BCA-4095-9B6D-03C54DE540D5</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_19C89A14-4BCA-4095-9B6D-03C54DE540D5_selection</key>
@@ -817,6 +817,8 @@
 	<string>/Users/thejspr/code/dotfiles/iterm2</string>
 	<key>PromptOnQuit</key>
 	<false/>
+	<key>SUAutomaticallyUpdate</key>
+	<true/>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedAlternateAppNameKey</key>
@@ -826,11 +828,13 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-11-20T05:31:08Z</date>
+	<date>2018-11-27T10:26:11Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
+	<key>findMode_iTerm</key>
+	<integer>0</integer>
 	<key>iTerm Version</key>
 	<string>3.2.5</string>
 </dict>
