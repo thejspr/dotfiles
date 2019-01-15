@@ -332,6 +332,7 @@ inoremap jj <esc>
 inoremap jk <esc>
 map <c-x> <Plug>Kwbd<CR>
 noremap tt :NERDTreeToggle<CR>
+noremap <Leader>F :Neoformat<CR>
 " }}}
 
 " vim: foldmethod=marker:foldlevel=1:textwidth=120:colorcolumn=120
