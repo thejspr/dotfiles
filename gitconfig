@@ -43,7 +43,6 @@
   undo   = reset head~1 --mixed
 
   cl = !git co master && git pull && git remote prune origin && git bclean && bundle install --quiet
-  bclean = "!f() { git branch --merged master | grep -vE '(master|production|release|develop)' | xargs git branch -d; }; f"
 [apply]
   whitespace = nowarn
 [branch]

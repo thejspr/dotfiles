@@ -80,6 +80,7 @@ alias gp='git push'
 alias gpf='FORCE=1 git push --force-with-lease'
 alias gpr='gpc && hub browse'
 alias gr='git r'
+alias gcl='git pull && git branch --merged master | grep -vE "(master|production|release|develop)" | xargs git branch -d'
 
 #msc
 myip() { elinks -dump http://checkip.dyndns.org:8245/ }
