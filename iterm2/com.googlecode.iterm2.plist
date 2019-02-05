@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AllowClipboardAccess</key>
+	<true/>
 	<key>AppleAntiAliasingThreshold</key>
 	<integer>1</integer>
 	<key>AppleScrollAnimationEnabled</key>
@@ -59,13 +61,15 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>1069 546 656 312 0 0 3440 1417 </string>
+	<string>1062 585 656 178 0 0 3440 1417 </string>
+	<key>NSWindow Frame SUAutomaticUpdateAlert</key>
+	<string>894 1032 616 174 0 0 3440 1417 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>1435 691 700 622 0 0 2560 1417 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>870 940 928 394 0 0 3440 1417 </string>
+	<string>802 983 928 394 0 0 3440 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1279 1417 0 0 2560 1417 </string>
+	<string>1720 0 1720 1417 0 0 3440 1417 </string>
 	<key>NeverWarnAboutShortLivedSessions_19C89A14-4BCA-4095-9B6D-03C54DE540D5</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_19C89A14-4BCA-4095-9B6D-03C54DE540D5_selection</key>
@@ -682,7 +686,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>Menlo-Regular 15</string>
+			<string>RobotoMono-Regular 16</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -828,7 +832,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-11-27T10:26:11Z</date>
+	<date>2019-01-23T17:32:22Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>WordCharacters</key>
@@ -836,6 +840,6 @@
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.2.5</string>
+	<string>3.2.6</string>
 </dict>
 </plist>

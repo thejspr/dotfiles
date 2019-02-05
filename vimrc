@@ -72,24 +72,18 @@ Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-ragtag'
 let g:ragtag_global_maps = 1
-Plug 'sbdchd/neoformat'
-Plug 'ludovicchabant/vim-gutentags'
+" Plug 'ludovicchabant/vim-gutentags'
 let g:gutentags_trace = 0
 Plug 'sheerun/vim-polyglot'
 
-let g:ale_fixers = {
-  \ 'javascript': ['eslint']
-  \ }
-let g:ale_linters = {
-  \ 'javascript': ['eslint'],
-  \ 'eruby': ['']
-  \ }
 let g:ale_linters_explicit = 1
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_fixers = {
-  \ 'javascript': ['eslint']
+  \ 'javascript': ['eslint'],
+  \ 'ruby': ['rubocop'],
+  \ 'scss': ['prettier']
   \ }
 let g:ale_linters = {
   \ 'javascript': ['eslint'],
@@ -169,8 +163,8 @@ set foldmethod=indent
 " }}}
 
 " UI {{{
-" set background=dark
-set background=light
+set background=dark
+" set background=light
 colorscheme solarized
 
 syntax on
@@ -332,7 +326,7 @@ inoremap jj <esc>
 inoremap jk <esc>
 map <c-x> <Plug>Kwbd<CR>
 noremap tt :NERDTreeToggle<CR>
-noremap <Leader>F :Neoformat<CR>
+noremap <Leader>F :ALEFix<CR>
 " }}}
 
 " vim: foldmethod=marker:foldlevel=1:textwidth=120:colorcolumn=120
