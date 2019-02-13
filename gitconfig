@@ -17,7 +17,7 @@
   a      = add --all
   aa     = add -A
   ac     = !git add . && git commit -am
-  amend  = commit -a --amend --no-edit
+  amend  = commit -a --amend
   amendf = !git add -A && git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - --amend
   b      = branch
   c      = commit -v
