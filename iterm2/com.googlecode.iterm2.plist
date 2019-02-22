@@ -61,13 +61,13 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>1062 585 656 178 0 0 3440 1417 </string>
+	<string>391 367 656 94 0 0 1680 1050 </string>
 	<key>NSWindow Frame SUAutomaticUpdateAlert</key>
 	<string>894 1032 616 174 0 0 3440 1417 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>1435 691 700 622 0 0 2560 1417 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>802 983 928 394 0 0 3440 1417 </string>
+	<string>268 604 918 423 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>1720 0 1720 1417 0 0 3440 1417 </string>
 	<key>NeverWarnAboutShortLivedSessions_19C89A14-4BCA-4095-9B6D-03C54DE540D5</key>
@@ -264,13 +264,13 @@
 			<key>Background Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.21176470588235294</real>
+				<real>0.8901960784313725</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.16862745098039217</real>
+				<real>0.96470588235294119</real>
 				<key>Red Component</key>
-				<real>0.0</real>
+				<real>0.99215686274509807</real>
 			</dict>
 			<key>Background Image Location</key>
 			<string></string>
@@ -294,13 +294,13 @@
 			<key>Bold Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.63137254901960782</real>
+				<real>0.45882352941176469</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.63137254901960782</real>
+				<real>0.43137254901960786</real>
 				<key>Red Component</key>
-				<real>0.57647058823529407</real>
+				<real>0.34509803921568627</real>
 			</dict>
 			<key>Character Encoding</key>
 			<integer>4</integer>
@@ -313,13 +313,13 @@
 			<key>Cursor Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.58823529411764708</real>
+				<real>0.51372549019607838</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.58039215686274515</real>
+				<real>0.4823529411764706</real>
 				<key>Red Component</key>
-				<real>0.51372549019607838</real>
+				<real>0.396078431372549</real>
 			</dict>
 			<key>Cursor Guide Color</key>
 			<dict>
@@ -337,13 +337,13 @@
 			<key>Cursor Text Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.25882352941176473</real>
+				<real>0.83529411764705885</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.21176470588235294</real>
+				<real>0.90980392156862744</real>
 				<key>Red Component</key>
-				<real>0.027450980392156862</real>
+				<real>0.93333333333333335</real>
 			</dict>
 			<key>Custom Command</key>
 			<string>No</string>
@@ -360,13 +360,13 @@
 			<key>Foreground Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.58823529411764708</real>
+				<real>0.51372549019607838</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.58039215686274515</real>
+				<real>0.4823529411764706</real>
 				<key>Red Component</key>
-				<real>0.51372549019607838</real>
+				<real>0.396078431372549</real>
 			</dict>
 			<key>Guid</key>
 			<string>19C89A14-4BCA-4095-9B6D-03C54DE540D5</string>
@@ -686,7 +686,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>RobotoMono-Regular 16</string>
+			<string>RobotoMono-Regular 15</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -702,24 +702,24 @@
 			<key>Selected Text Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.63137254901960782</real>
+				<real>0.45882352941176469</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.63137254901960782</real>
+				<real>0.43137254901960786</real>
 				<key>Red Component</key>
-				<real>0.57647058823529407</real>
+				<real>0.34509803921568627</real>
 			</dict>
 			<key>Selection Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.25882352941176473</real>
+				<real>0.83529411764705885</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.21176470588235294</real>
+				<real>0.90980392156862744</real>
 				<key>Red Component</key>
-				<real>0.027450980392156862</real>
+				<real>0.93333333333333335</real>
 			</dict>
 			<key>Send Code When Idle</key>
 			<false/>
@@ -832,7 +832,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-01-23T17:32:22Z</date>
+	<date>2019-02-14T08:35:51Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>WordCharacters</key>
