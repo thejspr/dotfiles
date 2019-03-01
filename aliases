@@ -22,15 +22,13 @@ alias rs='rails s'
 alias rag='rails g'
 alias ragm='rails generate migration'
 alias rc='rails c'
-alias migrate='rake db:migrate db:test:prepare'
+alias migrate='rails db:migrate db:test:prepare'
 alias bef='pkill node; bundle exec foreman start -f Procfile.dev'
 alias upgrade_gems="bundle update && rspec && git add -A && git commit -m 'Gem upgrades' && git push"
 alias ber="be rubocop --auto-correct"
 alias bea="be rubocop --auto-gen-config"
-
-#rake
-alias rt='rake -T'
-alias rr='rake routes'
+alias rt='rails -T'
+alias rr='rails routes'
 
 #heroku
 alias h="heroku"
