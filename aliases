@@ -16,6 +16,7 @@ alias wr='ps aux | grep ruby'
 alias kf='kill -9 %1'
 alias kk='kill -9'
 alias be='bundle exec'
+alias grep='ggrep'
 
 # rails
 alias rs='rails s'
