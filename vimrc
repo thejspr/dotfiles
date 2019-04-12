@@ -163,7 +163,7 @@ set foldmethod=indent
 " }}}
 
 " UI {{{
-" set background=dark
+set background=dark
 set background=light
 colorscheme solarized
 
