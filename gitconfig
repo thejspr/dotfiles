@@ -29,8 +29,8 @@
   ds     = diff --stat
   edit   = !git status -sb | tail +2 | grep -v '^ D' | awk '{print $2}' | xargs -o nvim
   gc     = gc --prune=now
-  ll     = log --oneline --decorate -16
-  l      = log --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(black)<%an>%Creset' \
+  l      = log --oneline --decorate -16
+  ll     = log --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(black)<%an>%Creset' \
                --abbrev-commit \
                --date=relative -16
   ms     = checkout master
