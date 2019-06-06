@@ -83,7 +83,8 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_fixers = {
   \ 'javascript': ['eslint'],
   \ 'ruby': ['rubocop'],
-  \ 'scss': ['prettier']
+  \ 'scss': ['prettier'],
+  \ 'html': ['prettier']
   \ }
 let g:ale_linters = {
   \ 'javascript': ['eslint'],
@@ -163,7 +164,7 @@ set foldmethod=indent
 " }}}
 
 " UI {{{
-set background=dark
+set termguicolors
 set background=light
 colorscheme solarized
 
