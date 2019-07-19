@@ -8,6 +8,9 @@ call plug#begin('~/.vim/plugged')
 " Essentials {{{
 Plug 'tpope/vim-repeat'
 Plug 'ervandew/supertab'
+" }}}
+
+" Search & Code navigation {{{
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 noremap <leader>t :Files<cr>
@@ -15,19 +18,12 @@ noremap <leader>b :Buffers<cr>
 noremap <leader>r :History<cr>
 let g:fzf_layout = { 'down': '~25%' }
 let g:fzf_history_dir = '~/.vim/history'
-" }}}
-
-" Search & Code navigation {{{
 Plug 'mhinz/vim-grepper'
 nnoremap <leader>a :GrepperRg <cword><CR>
 nnoremap <leader>g :Grepper -tool rg<cr>
 nnoremap <leader>G :Grepper -tool git<cr>
 nnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
 vnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
-
-Plug 'wikitopian/hardmode'
-let g:HardMode_level='wannabe'
-" autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
 " }}}
 
 " Text {{{
@@ -62,10 +58,6 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
 Plug 'sickill/vim-pasta'
-Plug 'kana/vim-textobj-user'
-runtime macros/matchit.vim
-Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'tpope/vim-bundler'
 "}}}
 
 " Msc languages {{{
@@ -110,28 +102,14 @@ Plug 'benmills/vimux'
 nnoremap <leader><space> :VimuxPromptCommand<cr>
 Plug 'janko-m/vim-test'
 let test#strategy = "vimux"
-" let test#custom_strategies = {
-"   \ 'nearest': 'basic',
-"   \ 'file':    'basic',
-"   \ 'suite':   'neovim',
-" \}
 nmap <silent> <leader>x :TestNearest<CR>
 nmap <silent> <leader>X :TestFile<CR>
 nmap <silent> <leader>A :TestSuite<CR>
 nmap <silent> <leader>§ :VimuxRunLastCommand<CR>
-" nmap <silent> <leader>g :TestVisit<CR>
-" }}}
-
-" javascript {{{
-Plug 'elzr/vim-json'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
 " }}}
 
 " new stuff {{{
 Plug 'tpope/vim-obsession'
-" Plug 'ajh17/VimCompletesMe'
-" autocmd FileType text,markdown let b:vcm_tab_complete = 'dict'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
 " }}}
