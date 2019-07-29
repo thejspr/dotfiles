@@ -1,6 +1,6 @@
 [user]
-	name = Jesper Kjeldgaard
-	email = thejspr@gmail.com
+  name = Jesper Kjeldgaard
+  email = thejspr@gmail.com
 [github]
   user = thejspr
 [color]
@@ -67,10 +67,11 @@
 [difftool]
   prompt = false
 [filter "lfs"]
-  clean = git-lfs clean %f
-  smudge = git-lfs smudge %f
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
   required = true
+  process = git-lfs filter-process
 [credential]
   helper = osxkeychain
 [merge]
-	tool = opendiff
+  tool = opendiff
