@@ -42,7 +42,7 @@
   wip    = !git add --all && git commit -m 'WIP'
   undo   = reset head~1 --mixed
 
-  cl = !git co master && git pull && git remote prune origin && bundle install --quiet && yarn install --silent
+  cl = !git co master && git pull && git remote prune origin && bundle install --quiet
 [apply]
   whitespace = nowarn
 [branch]

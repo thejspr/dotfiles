@@ -3,7 +3,7 @@ export EDITOR='nvim'
 export BUNDLER_EDITOR='nvim'
 eval "$(rbenv init - --no-rehash)"
 export PATH=/usr/local/bin:/usr/local/share/npm/bin:$PATH
-export PATH=./bin:~/bin:/Applications/Postgres.app/Contents/Versions/10/bin:$PATH
+export PATH=./bin:~/bin:/Applications/Postgres.app/Contents/Versions/11/bin:$PATH
 export PATH="$PATH:`yarn global bin`"
 export PATH="$PATH:$PWD/bin"
 export SHELL=/usr/local/bin/zsh
