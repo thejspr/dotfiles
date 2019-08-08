@@ -13,7 +13,8 @@ Plug 'ervandew/supertab'
 " Search & Code navigation {{{
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
-noremap <leader>t :Files<cr>
+noremap <leader>t :GFiles<cr>
+noremap <leader>T :Files<cr>
 noremap <leader>b :Buffers<cr>
 noremap <leader>r :History<cr>
 let g:fzf_layout = { 'down': '~25%' }
@@ -99,6 +100,8 @@ Plug 'altercation/vim-colors-solarized'
 " tmux and testing {{{
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
+let g:VimuxOrientation = "h"
+let g:VimuxHeight = "45"
 nnoremap <leader><space> :VimuxPromptCommand<cr>
 Plug 'janko-m/vim-test'
 let test#strategy = "vimux"
@@ -118,12 +121,9 @@ call plug#end()
 filetype plugin indent on
 " }}}
 
-let g:python2_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
-
 " Settings {{{
 set shell=/usr/local/bin/zsh
-set history=200
+set history=500
 set nobackup
 set nowritebackup
 set noswapfile
@@ -144,6 +144,7 @@ set foldmethod=indent
 " UI {{{
 set termguicolors
 set background=light
+" set background=dark
 colorscheme solarized
 
 syntax on
@@ -190,10 +191,6 @@ set expandtab
 set nowrap
 set textwidth=80
 set list listchars=tab:»·,trail:·
-
-if has("gui_running")
-  set guifont=Monaco:h12
-endif
 "}}}
 
 " Key mappings {{{
@@ -227,8 +224,6 @@ cabbrev Wa wa
 cabbrev Wq wq
 cabbrev Wqa wqa
 
-nnoremap <Leader>w :w<CR>
-
 " Automatically jump to end of text you pasted
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
@@ -245,6 +240,7 @@ set showmatch
 let g:gutentags_ctags_executable='/usr/local/bin/ctags'
 set wildignore+=node_modules/*,bower_components/*
 set wildignore+=app/assets/images/**/*
+set wildignore+=vendor/cache/**/*
 
 noremap <leader>, :noh<cr>
 nnoremap <space> /
@@ -276,6 +272,7 @@ let g:NERDTreeAutoDeleteBuffer=1
 let g:NERDTreeChDirMode=2
 let NERDTreeShowHidden=0
 let NERDTreeHijackNetrw=1
+noremap tt :NERDTreeToggle<CR>
 " }}}
 
 " Edit .vimrc {{{
@@ -288,8 +285,6 @@ nnoremap <F6> :%s/\s*$//<CR>:noh<CR> " EOL whitespace removal
 " }}}
 
 " Ruby {{{
-au BufRead,BufNewFile {Thorfile,Vagrantfile,Procfile,pryrc,config.ru} set ft=ruby
-
 " Replace Ruby 1.8 style hashes with shorter Ruby 1.9 style
 noremap <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
 
@@ -304,7 +299,6 @@ noremap <Leader>v :Eview<space>
 inoremap jj <esc>
 inoremap jk <esc>
 map <c-x> <Plug>Kwbd<CR>
-noremap tt :NERDTreeToggle<CR>
 noremap <Leader>F :ALEFix<CR>
 au BufReadPost *.html set formatoptions-=t
 " }}}
