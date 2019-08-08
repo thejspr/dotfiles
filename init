@@ -3,12 +3,6 @@
 # Homebrew
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-# Ruby
-brew install rbenv ruby-build
-eval "$(rbenv init -)"
-rbenv install 2.5.1
-gem update --system
-
 # Dotfiles
 mkdir -p code
 cd code
@@ -33,6 +27,10 @@ echo 'source "${ZDOTDIR:-$HOME}/code/dotfiles/zsh_mods"' >> ~/.zshrc
 # Install brew bundles
 cd ~/code/dotfiles
 brew bundle
+
+# Ruby
+rbenv install 2.6.3
+gem update --system
 
 # Launch vim to install plugins
 # 1. https://neovim.io/doc/user/nvim.html#nvim-from-vim
