@@ -13,9 +13,9 @@ task :links do
 
     file_target = File.expand_path(target)
 
-    next if File.exists?(file_target) || File.symlink?(file_target)
+    # next if File.exists?(file_target) || File.symlink?(file_target)
 
-    cmd = "ln -s #{File.expand_path(file)} #{file_target}"
+    cmd = "ln -sf #{File.expand_path(file)} #{file_target}"
     puts cmd
     system(cmd)
   end

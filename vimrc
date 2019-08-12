@@ -115,6 +115,10 @@ nmap <silent> <leader>§ :VimuxRunLastCommand<CR>
 Plug 'tpope/vim-obsession'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
+Plug '907th/vim-auto-save'
+let g:auto_save = 1
+let g:auto_save_silent = 0
+let g:auto_save_events = ["InsertLeave", "TextChanged", "FocusLost"]
 " }}}
 
 call plug#end()
@@ -177,11 +181,9 @@ au VimResized * wincmd =
 
 " https://bluz71.github.io/2017/05/15/vim-tips-tricks.html
 set autoread
-augroup autoSaveAndRead
+augroup autoRead
   autocmd!
   autocmd FocusLost * silent! wall
-  " autocmd TextChanged,InsertLeave,FocusLost * silent! wall
-  " autocmd CursorHold * silent! checktime
 augroup END
 
 " Text Formatting
