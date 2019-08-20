@@ -12,7 +12,6 @@
   editor = NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim
   whitespace = trailing-space,space-before-tab
   ignorecase = false
-  pager = diff-so-fancy | less --tabs=4 -RFX
 [alias]
   a      = add --all
   aa     = add -A
