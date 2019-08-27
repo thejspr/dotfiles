@@ -13,8 +13,8 @@ Plug 'ervandew/supertab'
 " Search & Code navigation {{{
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
-noremap <leader>t :GFiles<cr>
-noremap <leader>T :Files<cr>
+noremap <leader>t :Files<cr>
+noremap <leader>T :GFiles<cr>
 noremap <leader>b :Buffers<cr>
 noremap <leader>r :History<cr>
 let g:fzf_layout = { 'down': '~25%' }
@@ -94,7 +94,7 @@ Plug 'w0rp/ale'
 " iterm2 support
 Plug 'sjl/vitality.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'altercation/vim-colors-solarized'
+Plug 'chriskempson/base16-vim'
 " }}}
 
 " tmux and testing {{{
@@ -148,8 +148,9 @@ set foldmethod=indent
 " UI {{{
 set termguicolors
 set background=light
+colorscheme base16-tomorrow
 " set background=dark
-colorscheme solarized
+" colorscheme base16-tomorrow-night
 
 syntax on
 set nocursorcolumn
@@ -269,11 +270,12 @@ au BufRead,BufNewFile COMMIT_EDITMSG setlocal ft=diff spell!
 " Nerdtree {{{
 let g:NERDTreeQuitOnOpen=0
 let g:NERDTreeShowBookmarks = 0
-let g:NERDTreeWinSize = 25
+let g:NERDTreeWinSize = 24
 let g:NERDTreeAutoDeleteBuffer=1
 let g:NERDTreeChDirMode=2
 let NERDTreeShowHidden=0
 let NERDTreeHijackNetrw=1
+let NERDTreeNaturalSort=1
 noremap tt :NERDTreeToggle<CR>
 " }}}
 
