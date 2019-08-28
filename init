@@ -13,16 +13,9 @@ cd dotfiles
 git pull origin master
 rake links
 
-#Prezto
-cd ~
-zsh
-git clone --recursive https://github.com/thejspr/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-setopt EXTENDED_GLOB
-for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-done
-chsh -s /usr/local/bin/zsh
-echo 'source "${ZDOTDIR:-$HOME}/code/dotfiles/zsh_mods"' >> ~/.zshrc
+# oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+echo 'source "~/code/dotfiles/zsh_mods"' >> ~/.zshrc
 
 # Install brew bundles
 cd ~/code/dotfiles

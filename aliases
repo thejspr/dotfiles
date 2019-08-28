@@ -56,6 +56,7 @@ alias -g G='|grep --color'
 alias -g A='|ag --color'
 
 #git
+unalias g
 g() {
   if [[ $# -eq 0 ]]; then
     command hub status -sb
@@ -63,6 +64,7 @@ g() {
     command hub "$@";
   fi
 }
+unalias gcam
 gcam() {
   command git add -A;
   command git commit -m "$*";
@@ -90,7 +92,7 @@ alias ll='ls -l'
 alias ea='e ~/Code/dotfiles/aliases'
 alias eg='e ~/Code/dotfiles/gitconfig'
 alias ez='e ~/Code/dotfiles/zsh_mods'
-alias ezz='e ~/.zpreztorc'
+alias ezz='e ~/.zshrc'
 alias et='e ~/Code/dotfiles/tmux.conf'
 alias es='e ~/.ssh/config'
 alias sr='exec zsh'

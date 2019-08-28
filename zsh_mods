@@ -2,7 +2,6 @@
 export HISTCONTROL=ignoreboth:erasedups
 export EDITOR='nvim'
 export BUNDLER_EDITOR='nvim'
-eval "$(rbenv init - --no-rehash)"
 export PATH=/usr/local/bin:/usr/local/share/npm/bin:$PATH
 export PATH=./bin:~/bin:/Applications/Postgres.app/Contents/Versions/11/bin:$PATH
 export PATH="$PATH:`yarn global bin`"
@@ -33,9 +32,6 @@ export PATH=$PATH:$GOROOT/bin
 # hub alias
 eval "$(hub alias -s)"
 
-# https://github.com/rupa/z
-. /usr/local/etc/profile.d/z.sh
-
 # Alias and function definitions.
 . ~/code/dotfiles/aliases
 
@@ -56,5 +52,4 @@ source ~/.secrets
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 
-prompt pure
 # zprof
