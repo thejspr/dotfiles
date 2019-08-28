@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-npm install --global pure-prompt
-
 # Neovim
 brew upgrade neovim
 gem install neovim
