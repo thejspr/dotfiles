@@ -9,12 +9,12 @@ export PATH="$PATH:$PWD/bin"
 export SHELL=/usr/local/bin/zsh
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
-# prezto customizations
 autoload zmv
 bindkey -e
 compdef g=git
 fpath=(/usr/local/share/zsh-completions $fpath)
 alias tar='/usr/local/bin/gtar'
+unalias gbr
 
 # Ruby
 export RUBY_BUILD_CACHE_PATH=true
