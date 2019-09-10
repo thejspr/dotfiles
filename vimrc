@@ -28,7 +28,7 @@ vnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
 " }}}
 
 " Text {{{
-Plug 'tpope/vim-surround'
+Plug 'machakann/vim-sandwich'
 Plug 'tpope/vim-commentary'
 Plug 'godlygeek/tabular'
 Plug 'AndrewRadev/splitjoin.vim'
@@ -109,10 +109,11 @@ nmap <silent> <leader>x :TestNearest<CR>
 nmap <silent> <leader>X :TestFile<CR>
 nmap <silent> <leader>A :TestSuite<CR>
 nmap <silent> <leader>§ :VimuxRunLastCommand<CR>
+let test#ruby#rspec#executable = 'bundle exec rspec'
 " }}}
 
 " new stuff {{{
-Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-obsession' " sessions mgmt
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
 Plug '907th/vim-auto-save'
@@ -236,7 +237,7 @@ nnoremap <silent> p p`]
 " Searching {{{
 set hlsearch
 set incsearch
-set smartcase
+set ignorecase smartcase
 set gdefault
 set showmatch
 
@@ -305,6 +306,9 @@ inoremap jk <esc>
 map <c-x> <Plug>Kwbd<CR>
 noremap <Leader>F :ALEFix<CR>
 au BufReadPost *.html set formatoptions-=t
+nnoremap [<space>  O<esc>j
+nnoremap ]<space>  o<esc>k
+nnoremap ; :
 " }}}
 
 " vim: foldmethod=marker:foldlevel=1:textwidth=120:colorcolumn=120
