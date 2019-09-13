@@ -93,7 +93,6 @@ Plug 'w0rp/ale'
 " UI {{{
 " iterm2 support
 Plug 'sjl/vitality.vim'
-Plug 'itchyny/lightline.vim'
 Plug 'chriskempson/base16-vim'
 " }}}
 
