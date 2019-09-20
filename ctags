@@ -1,3 +1,8 @@
 --recurse=yes
 --tag-relative=yes
 --exclude=.git
+--exclude=bower_components
+--exclude=node_modules
+--exclude=vendor
+--exclude=*.js
+--exclude=*.sql

@@ -19,7 +19,7 @@
   amend  = commit -a --amend
   amendf = !git add -A && git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - --amend
   b      = branch
-  bclean = !git branch --merged | grep -v master | xargs -n 1 git branch -d
+  bclean = !git co master && git branch --merged | grep -v master | xargs -n 1 git branch -d
   c      = commit -v
   ca     = !git add -A && git commit -v
   co     = checkout
