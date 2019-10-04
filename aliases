@@ -47,7 +47,7 @@ alias e='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 alias vim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 
 # homebrew
-alias bup='brew update && echo "==> Outdated Formula" && brew outdated'
+alias bup='brew update && echo "==> Outdated Formula" && brew outdated && brew cask outdated'
 alias bu='brew upgrade'
 
 #conviniences

@@ -52,4 +52,6 @@ source ~/.secrets
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh" --no-use  # This loads nvm
 
+GPG_TTY=$(tty)
+export GPG_TTY
 # zprof

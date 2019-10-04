@@ -62,7 +62,7 @@ Plug 'sickill/vim-pasta'
 "}}}
 
 " Msc languages {{{
-Plug 'tpope/vim-markdown'
+Plug 'plasticboy/vim-markdown'
 Plug 'tpope/vim-ragtag'
 let g:ragtag_global_maps = 1
 " Plug 'ludovicchabant/vim-gutentags'
@@ -147,10 +147,10 @@ set foldmethod=indent
 
 " UI {{{
 set termguicolors
-set background=light
-colorscheme base16-tomorrow
-" set background=dark
-" colorscheme base16-tomorrow-night
+" set background=light
+" colorscheme base16-tomorrow
+set background=dark
+colorscheme base16-tomorrow-night
 
 syntax on
 set nocursorcolumn
@@ -221,16 +221,6 @@ nnoremap g# g#zz
 " improve movement on wrapped lines
 nnoremap j gj
 nnoremap k gk
-" Fix save annoyances
-cabbrev W w
-cabbrev Wa wa
-cabbrev Wq wq
-cabbrev Wqa wqa
-
-" Automatically jump to end of text you pasted
-vnoremap <silent> y y`]
-vnoremap <silent> p p`]
-nnoremap <silent> p p`]
 " }}}
 
 " Searching {{{
@@ -305,8 +295,6 @@ inoremap jk <esc>
 map <c-x> <Plug>Kwbd<CR>
 noremap <Leader>F :ALEFix<CR>
 au BufReadPost *.html set formatoptions-=t
-nnoremap [<space>  O<esc>j
-nnoremap ]<space>  o<esc>k
 nnoremap ; :
 " }}}
 
