@@ -113,12 +113,13 @@ let test#ruby#rspec#executable = 'bundle exec rspec'
 
 " new stuff {{{
 Plug 'tpope/vim-obsession' " sessions mgmt
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-let g:deoplete#enable_at_startup = 1
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" let g:deoplete#enable_at_startup = 1
 Plug '907th/vim-auto-save'
 let g:auto_save = 1
 let g:auto_save_silent = 0
 let g:auto_save_events = ["InsertLeave", "TextChanged", "FocusLost"]
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " }}}
 
 call plug#end()
