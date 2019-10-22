@@ -297,6 +297,7 @@ map <c-x> <Plug>Kwbd<CR>
 noremap <Leader>F :ALEFix<CR>
 au BufReadPost *.html set formatoptions-=t
 nnoremap ; :
+noremap ff :set foldlevel=1<cr>
 " }}}
 
 " vim: foldmethod=marker:foldlevel=1:textwidth=120:colorcolumn=120
