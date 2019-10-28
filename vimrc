@@ -150,8 +150,8 @@ set foldmethod=indent
 set termguicolors
 set background=light
 colorscheme base16-tomorrow
-" set background=dark
-" colorscheme base16-tomorrow-night
+set background=dark
+colorscheme base16-tomorrow-night
 
 syntax on
 set nocursorcolumn
@@ -298,6 +298,7 @@ noremap <Leader>F :ALEFix<CR>
 au BufReadPost *.html set formatoptions-=t
 nnoremap ; :
 noremap ff :set foldlevel=1<cr>
+noremap fa :set foldlevel=20<cr>
 " }}}
 
 " vim: foldmethod=marker:foldlevel=1:textwidth=120:colorcolumn=120
