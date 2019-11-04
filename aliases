@@ -1,8 +1,8 @@
 # new
 alias ff='find . -iname'
 alias yr='yarn run'
-alias ci='open https://circleci.com/gh/thejspr'
-alias nl='open https://app.netlify.com/sites/grafikondemand/deploys'
+alias ci='open https://circleci.com/gh/team-peanut'
+alias nl='open https://app.netlify.com/sites'
 alias fails='rspec --only-failures'
 alias ls='exa'
 
