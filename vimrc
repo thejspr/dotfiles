@@ -113,8 +113,6 @@ let test#ruby#rspec#executable = 'bundle exec rspec'
 
 " new stuff {{{
 Plug 'tpope/vim-obsession' " sessions mgmt
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" let g:deoplete#enable_at_startup = 1
 Plug '907th/vim-auto-save'
 let g:auto_save = 1
 let g:auto_save_silent = 0
@@ -135,9 +133,7 @@ set nowritebackup
 set noswapfile
 set undofile
 set undodir=~/.tmp,/tmp
-
 set mouse=a
-set iskeyword-=.
 " }}}
 
 " Folding {{{
@@ -208,18 +204,9 @@ noremap <S-tab> :bp<CR>
 
 " Msc annoyances {{{
 nnoremap K <nop>
-nnoremap J mzJ`z " keep cursor in place when joining lines
 " reselect visual lock after indent/outdent
 vnoremap < <gv
 vnoremap > >gv
-" Center screen when scrolling search results
-nnoremap n nzz
-nnoremap } }zz
-nnoremap N Nzz
-nnoremap * *zz
-nnoremap # #zz
-nnoremap g* g*zz
-nnoremap g# g#zz
 " improve movement on wrapped lines
 nnoremap j gj
 nnoremap k gk
@@ -266,7 +253,6 @@ let g:NERDTreeWinSize = 24
 let g:NERDTreeAutoDeleteBuffer=1
 let g:NERDTreeChDirMode=2
 let NERDTreeShowHidden=0
-let NERDTreeHijackNetrw=1
 let NERDTreeNaturalSort=1
 noremap tt :NERDTreeToggle<CR>
 " }}}
@@ -277,13 +263,9 @@ command! Ev :e ~/.vimrc
 
 " Function Keys {{{
 set pastetoggle=<F3>
-nnoremap <F6> :%s/\s*$//<CR>:noh<CR> " EOL whitespace removal
 " }}}
 
 " Ruby {{{
-" Replace Ruby 1.8 style hashes with shorter Ruby 1.9 style
-noremap <leader>h :%s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
-
 " Rails.vim
 noremap <Leader>m :Emodel<space>
 noremap <Leader>c :Econtroller<space>
@@ -295,7 +277,6 @@ noremap <Leader>v :Eview<space>
 inoremap jj <esc>
 inoremap jk <esc>
 map <c-x> <Plug>Kwbd<CR>
-noremap <Leader>F :ALEFix<CR>
 au BufReadPost *.html set formatoptions-=t
 nnoremap ; :
 noremap ff :set foldlevel=1<cr>
