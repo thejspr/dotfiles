@@ -51,6 +51,7 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb' " Gbrowse handlers for github
 Plug 'vim-scripts/kwbdi.vim'
 " }}}
 
@@ -87,8 +88,9 @@ let g:ale_linters = {
 let g:ale_sign_error = '●'
 let g:ale_sign_warning = '.'
 let g:ale_lint_on_enter = 0
+let g:ale_enabled = 0
 Plug 'w0rp/ale'
-" }}}
+"  }}}
 
 " UI {{{
 " iterm2 support
@@ -119,6 +121,7 @@ let g:auto_save_silent = 0
 let g:auto_save_events = ["InsertLeave", "TextChanged", "FocusLost"]
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mhinz/vim-startify'
+Plug 'wakatime/vim-wakatime'
 " }}}
 
 call plug#end()
@@ -147,8 +150,8 @@ set foldmethod=indent
 set termguicolors
 set background=light
 colorscheme base16-tomorrow
-set background=dark
-colorscheme base16-tomorrow-night
+" set background=dark
+" colorscheme base16-tomorrow-night
 
 syntax on
 set nocursorcolumn
