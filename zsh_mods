@@ -6,6 +6,7 @@ export PATH=/usr/local/bin:/usr/local/share/npm/bin:$PATH
 export PATH=./bin:~/bin:/Applications/Postgres.app/Contents/Versions/11/bin:$PATH
 export PATH="$PATH:`yarn global bin`"
 export PATH="$PATH:$PWD/bin"
+export PATH="$PATH:~/code/bin"
 export SHELL=/usr/local/bin/zsh
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
