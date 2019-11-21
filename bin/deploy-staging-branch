@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -e
+
+git checkout staging
+
+git pull
+
+git merge $1
+
+git push
+
+~/code/peanut/peanutweb/bin/deploy staging staging
+
+ssh peanut-staging 'sudo /srv/peanutweb/bin/restart'

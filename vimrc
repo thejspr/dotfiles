@@ -126,6 +126,7 @@ let test#ruby#rspec#executable = 'bundle exec rspec'
 Plug 'wakatime/vim-wakatime'
 Plug 'jiangmiao/auto-pairs'
 Plug 'luochen1990/rainbow'
+Plug 'airblade/vim-gitgutter'
 " }}}
 
 call plug#end()
