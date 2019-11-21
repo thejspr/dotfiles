@@ -8,7 +8,7 @@
 [push]
   default = tracking
 [core]
-  excludesfile = ~/.gitignore
+  excludesfile = /Users/jesper/.gitignore
   editor = NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim
   whitespace = trailing-space,space-before-tab
   ignorecase = false
@@ -63,7 +63,7 @@
   prompt = false
   keepBackup = false
 [diff]
-  tool = vimdiff
+	tool = vimdiff
 [difftool]
   prompt = false
 [filter "lfs"]
@@ -74,4 +74,10 @@
 [credential]
   helper = osxkeychain
 [merge]
-  tool = opendiff
+	tool = vimdiff
+[difftool "sourcetree"]
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path = 
+[mergetool "sourcetree"]
+  cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true

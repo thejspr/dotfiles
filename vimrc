@@ -8,6 +8,13 @@ call plug#begin('~/.vim/plugged')
 " Essentials {{{
 Plug 'tpope/vim-repeat'
 Plug 'ervandew/supertab'
+Plug 'vim-scripts/kwbdi.vim'
+Plug 'tpope/vim-obsession' " sessions mgmt
+Plug '907th/vim-auto-save'
+let g:auto_save = 1
+let g:auto_save_silent = 0
+let g:auto_save_events = ["InsertLeave", "TextChanged", "FocusLost"]
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " }}}
 
 " Search & Code navigation {{{
@@ -19,6 +26,7 @@ noremap <leader>b :Buffers<cr>
 noremap <leader>r :History<cr>
 let g:fzf_layout = { 'down': '~25%' }
 let g:fzf_history_dir = '~/.vim/history'
+
 Plug 'mhinz/vim-grepper'
 nnoremap <leader>a :GrepperRg <cword><CR>
 nnoremap <leader>g :Grepper -tool rg<cr>
@@ -28,21 +36,12 @@ vnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
 " }}}
 
 " Text {{{
-Plug 'machakann/vim-sandwich'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
 Plug 'AndrewRadev/splitjoin.vim'
 nmap sj :SplitjoinSplit<cr>
 nmap sk :SplitjoinJoin<cr>
-Plug 'mattn/emmet-vim'
-let g:user_emmet_settings = {
-\  'javascript.jsx' : {
-\      'extends': 'jsx',
-\      'quote_char': "'",
-\  },
-\  'html' : { 'quote_char': "'" },
-\  'erb' : { 'quote_char': "'" }
-\}
 Plug 'terryma/vim-multiple-cursors'
 " }}}
 
@@ -52,7 +51,6 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb' " Gbrowse handlers for github
-Plug 'vim-scripts/kwbdi.vim'
 " }}}
 
 " Ruby {{{
@@ -90,12 +88,23 @@ let g:ale_sign_warning = '.'
 let g:ale_lint_on_enter = 0
 let g:ale_enabled = 0
 Plug 'w0rp/ale'
+
+Plug 'mattn/emmet-vim'
+let g:user_emmet_settings = {
+\  'javascript.jsx' : {
+\      'extends': 'jsx',
+\      'quote_char': "'",
+\  },
+\  'html' : { 'quote_char': "'" },
+\  'erb' : { 'quote_char': "'" }
+\}
 "  }}}
 
 " UI {{{
-" iterm2 support
-Plug 'sjl/vitality.vim'
+Plug 'sjl/vitality.vim' " iterm2 support
 Plug 'chriskempson/base16-vim'
+Plug 'mhinz/vim-startify'
+let g:startify_change_to_dir = 0
 " }}}
 
 " tmux and testing {{{
@@ -114,14 +123,9 @@ let test#ruby#rspec#executable = 'bundle exec rspec'
 " }}}
 
 " new stuff {{{
-Plug 'tpope/vim-obsession' " sessions mgmt
-Plug '907th/vim-auto-save'
-let g:auto_save = 1
-let g:auto_save_silent = 0
-let g:auto_save_events = ["InsertLeave", "TextChanged", "FocusLost"]
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'mhinz/vim-startify'
 Plug 'wakatime/vim-wakatime'
+Plug 'jiangmiao/auto-pairs'
+Plug 'luochen1990/rainbow'
 " }}}
 
 call plug#end()
@@ -150,8 +154,8 @@ set foldmethod=indent
 set termguicolors
 set background=light
 colorscheme base16-tomorrow
-set background=dark
-colorscheme base16-tomorrow-night
+" set background=dark
+" colorscheme base16-tomorrow-night
 
 syntax on
 set nocursorcolumn
