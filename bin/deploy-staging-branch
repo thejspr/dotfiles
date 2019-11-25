@@ -13,3 +13,5 @@ git push
 ~/code/peanut/peanutweb/bin/deploy staging staging
 
 ssh peanut-staging 'sudo /srv/peanutweb/bin/restart'
+
+git checkout $1

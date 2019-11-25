@@ -155,8 +155,8 @@ set foldmethod=indent
 set termguicolors
 set background=light
 colorscheme base16-tomorrow
-" set background=dark
-" colorscheme base16-tomorrow-night
+set background=dark
+colorscheme base16-tomorrow-night
 
 syntax on
 set nocursorcolumn
