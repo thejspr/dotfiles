@@ -281,7 +281,6 @@ noremap <Leader>v :Eview<space>
 " }}}
 
 " New stuff {{{
-" Make `jj` and `jk` throw you into normal mode
 inoremap jj <esc>
 inoremap jk <esc>
 map <c-x> <Plug>Kwbd<CR>

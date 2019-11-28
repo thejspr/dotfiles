@@ -6,6 +6,7 @@ alias nl='open https://app.netlify.com/sites'
 alias fails='rspec --only-failures'
 alias ls='exa'
 alias yt='youtube-dl'
+alias aws='aws2'
 
 # tmux
 alias tma='tmux attach'
