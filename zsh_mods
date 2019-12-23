@@ -1,7 +1,7 @@
 # zmodload zsh/zprof # uncomment for zsh startup testing `time  zsh -i -c exit`
 export HISTCONTROL=ignoreboth:erasedups
-export EDITOR='nvim'
-export BUNDLER_EDITOR='nvim'
+export EDITOR='vim'
+export BUNDLER_EDITOR='vim'
 export PATH=/usr/local/bin:/usr/local/share/npm/bin:$PATH
 export PATH=./bin:~/bin:/Applications/Postgres.app/Contents/Versions/11/bin:$PATH
 export PATH="$PATH:`yarn global bin`"
@@ -48,7 +48,7 @@ fancy-ctrl-z () {
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
-source ~/.secrets
+[ -s "~/.secrets" ] && source ~/.secrets
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh" --no-use  # This loads nvm

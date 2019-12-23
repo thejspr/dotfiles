@@ -4,7 +4,6 @@ alias yr='yarn run'
 alias ci='open https://circleci.com/gh/team-peanut'
 alias nl='open https://app.netlify.com/sites'
 alias fails='rspec --only-failures'
-alias ls='exa'
 alias yt='youtube-dl'
 alias aws='aws2'
 
@@ -45,8 +44,7 @@ alias fspecs='rspec --tag type:feature'
 alias aspecs='fspecs && specs'
 
 #vim
-alias e='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
-alias vim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
+alias e='vim'
 
 # homebrew
 alias bup='brew update && echo "==> Outdated Formula" && brew outdated && brew cask outdated'
@@ -91,11 +89,11 @@ alias cd..='cd ..'
 alias ll='ls -l'
 
 # system and files editing
-alias ea='e ~/Code/dotfiles/aliases'
-alias eg='e ~/Code/dotfiles/gitconfig'
-alias ez='e ~/Code/dotfiles/zsh_mods'
+alias ea='e ~/code/dotfiles/aliases'
+alias eg='e ~/code/dotfiles/gitconfig'
+alias ez='e ~/code/dotfiles/zsh_mods'
 alias eb='e ~/code/dotfiles/bin'
 alias ezz='e ~/.zshrc'
-alias et='e ~/Code/dotfiles/tmux.conf'
+alias et='e ~/code/dotfiles/tmux.conf'
 alias es='e ~/.ssh/config'
 alias sr='exec zsh'
