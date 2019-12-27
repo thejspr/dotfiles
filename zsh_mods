@@ -2,22 +2,35 @@
 export HISTCONTROL=ignoreboth:erasedups
 export EDITOR='vim'
 export BUNDLER_EDITOR='vim'
-export PATH=/usr/local/bin:/usr/local/share/npm/bin:$PATH
-export PATH=./bin:~/bin:/Applications/Postgres.app/Contents/Versions/11/bin:$PATH
 export PATH="$PATH:`yarn global bin`"
 export PATH="$PATH:$PWD/bin"
 export PATH="$PATH:~/code/bin"
-export SHELL=/usr/local/bin/zsh
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
 autoload zmv
 bindkey -e
 compdef g=git
 fpath=(/usr/local/share/zsh-completions $fpath)
-alias tar='/usr/local/bin/gtar'
-unalias gbr
+
+if [[ -v MAC ]]; then
+  export SHELL=/usr/local/bin/zsh
+  export PATH=/usr/local/bin:/usr/local/share/npm/bin:$PATH
+  export PATH=./bin:~/bin:/Applications/Postgres.app/Contents/Versions/11/bin:$PATH
+  export GOROOT=/usr/local/opt/go/libexec
+  alias tar='/usr/local/bin/gtar'
+  unalias gbr
+
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh" --no-use  # This loads nvm
+else
+  source ~/.z.sh/z.sh
+  export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm
+fi
 
 # Ruby
+export PATH="$HOME/.rbenv/bin::$PATH"
+eval "$(rbenv init -)"
 export RUBY_BUILD_CACHE_PATH=true
 export RUBY_HEAP_SLOTS_INCREMENT=10000
 export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1.8
@@ -26,7 +39,6 @@ export RUBY_HEAP_FREE_MIN=100000
 
 # Go
 export GOPATH=$HOME/golang
-export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 
@@ -48,10 +60,7 @@ fancy-ctrl-z () {
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
-[ -s "~/.secrets" ] && source ~/.secrets
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh" --no-use  # This loads nvm
+source ~/.secrets
 
 GPG_TTY=$(tty)
 export GPG_TTY

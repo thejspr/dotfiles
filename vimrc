@@ -134,7 +134,7 @@ filetype plugin indent on
 " }}}
 
 " Settings {{{
-set shell=/usr/local/bin/zsh
+" set shell=/usr/bin/zsh
 set history=500
 set nobackup
 set nowritebackup
