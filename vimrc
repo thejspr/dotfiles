@@ -18,7 +18,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " }}}
 
 " Search & Code navigation {{{
-Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 noremap <leader>t :Files<cr>
 noremap <leader>T :GFiles<cr>
@@ -102,7 +102,8 @@ let g:user_emmet_settings = {
 
 " UI {{{
 Plug 'sjl/vitality.vim' " iterm2 support
-Plug 'chriskempson/base16-vim'
+" Plug 'chriskempson/base16-vim'
+Plug 'altercation/vim-colors-solarized'
 Plug 'mhinz/vim-startify'
 let g:startify_change_to_dir = 0
 " }}}
@@ -152,11 +153,11 @@ set foldmethod=indent
 " }}}
 
 " UI {{{
-set termguicolors
-set background=light
-colorscheme base16-tomorrow
+" set termguicolors
 set background=dark
-colorscheme base16-tomorrow-night
+colorscheme solarized
+
+set t_ut=
 
 syntax on
 set nocursorcolumn
