@@ -6,6 +6,7 @@ alias nl='open https://app.netlify.com/sites'
 alias fails='rspec --only-failures'
 alias yt='youtube-dl'
 alias aws='aws2'
+alias jrnl='e "~/Dropbox/notes/journal/$(date "+%Y-%m-%d").md"'
 
 # tmux
 alias tma='tmux attach'
