@@ -23,10 +23,11 @@ if [[ -v MAC ]]; then
   export NVM_DIR="$HOME/.nvm"
   [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh" --no-use  # This loads nvm
 else
-  source ~/.z.sh/z.sh
   export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm
 fi
+
+source ~/.z.sh/z.sh
 
 # Ruby
 export PATH="$HOME/.rbenv/bin::$PATH"
