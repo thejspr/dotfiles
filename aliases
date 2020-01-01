@@ -1,8 +1,6 @@
 # new
 alias ff='find . -iname'
 alias yr='yarn run'
-alias ci='open https://circleci.com/gh/team-peanut'
-alias nl='open https://app.netlify.com/sites'
 alias fails='rspec --only-failures'
 alias yt='youtube-dl'
 alias aws='aws2'
@@ -18,8 +16,12 @@ alias kf='kill -9 %1'
 alias kk='kill -9'
 alias be='bundle exec'
 
+alias ci='open https://circleci.com/gh/team-peanut'
+alias nl='open https://app.netlify.com/sites'
+
 if [[ -v MAC ]]; then
   alias grep='ggrep'
+else
 fi
 
 # rails

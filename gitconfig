@@ -9,7 +9,7 @@
   default = tracking
 [core]
   excludesfile = /Users/jesper/.gitignore
-  editor = NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim
+  editor = vim
   whitespace = trailing-space,space-before-tab
   ignorecase = false
 [alias]
@@ -27,7 +27,7 @@
   d      = !clear && git diff
   dc     = diff --cached
   ds     = diff --stat
-  edit   = !git status -sb | tail +2 | grep -v '^ D' | awk '{print $2}' | xargs -o nvim
+  edit   = !git status -sb | tail +2 | grep -v '^ D' | awk '{print $2}' | xargs -o vim
   gc     = gc --prune=now
   l      = log --oneline --decorate -16
   ll     = log --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(black)<%an>%Creset' \
@@ -58,12 +58,11 @@
   auto = 0
 [heroku]
   account = me
-  tool = vimdiff
 [mergetool]
   prompt = false
   keepBackup = false
 [diff]
-	tool = vimdiff
+  tool = vimdiff
 [difftool]
   prompt = false
 [filter "lfs"]
@@ -74,10 +73,4 @@
 [credential]
   helper = osxkeychain
 [merge]
-	tool = vimdiff
-[difftool "sourcetree"]
-  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-  path = 
-[mergetool "sourcetree"]
-  cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-  trustExitCode = true
+  tool = vimdiff

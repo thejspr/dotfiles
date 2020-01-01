@@ -126,6 +126,7 @@ let test#ruby#rspec#executable = 'bundle exec rspec'
 " new stuff {{{
 Plug 'wakatime/vim-wakatime'
 Plug 'jiangmiao/auto-pairs'
+let g:AutoPairsShortcutFastWrap = "<C-f>"
 Plug 'luochen1990/rainbow'
 Plug 'airblade/vim-gitgutter'
 " }}}
@@ -154,7 +155,7 @@ set foldmethod=indent
 
 " UI {{{
 " set termguicolors
-set background=dark
+set background=light
 colorscheme solarized
 
 set t_ut=
@@ -290,5 +291,8 @@ nnoremap ; :
 noremap ff :set foldlevel=1<cr>
 noremap fa :set foldlevel=20<cr>
 " }}}
+
+set encoding=utf-8
+setglobal fileencoding=utf-8
 
 " vim: foldmethod=marker:foldlevel=1:textwidth=120:colorcolumn=120
