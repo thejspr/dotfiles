@@ -129,6 +129,7 @@ Plug 'jiangmiao/auto-pairs'
 let g:AutoPairsShortcutFastWrap = "<C-f>"
 Plug 'luochen1990/rainbow'
 Plug 'airblade/vim-gitgutter'
+Plug 'masukomi/vim-markdown-folding'
 " }}}
 
 call plug#end()
