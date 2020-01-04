@@ -12,6 +12,7 @@ autoload zmv
 bindkey -e
 compdef g=git
 fpath=(/usr/local/share/zsh-completions $fpath)
+unalias gbr
 
 if [[ -v MAC ]]; then
   export SHELL=/usr/local/bin/zsh
@@ -19,7 +20,6 @@ if [[ -v MAC ]]; then
   export PATH=./bin:~/bin:/Applications/Postgres.app/Contents/Versions/11/bin:$PATH
   export GOROOT=/usr/local/opt/go/libexec
   alias tar='/usr/local/bin/gtar'
-  unalias gbr
 
   export NVM_DIR="$HOME/.nvm"
   [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh" --no-use  # This loads nvm
