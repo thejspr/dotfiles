@@ -5,6 +5,7 @@ alias fails='rspec --only-failures'
 alias yt='youtube-dl'
 alias aws='aws2'
 alias jrnl='e "~/Dropbox/notes/journal/$(date "+%Y-%m-%d").md"'
+alias t='trailer'
 
 # tmux
 alias tma='tmux attach'

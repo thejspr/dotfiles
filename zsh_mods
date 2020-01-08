@@ -4,7 +4,6 @@ export EDITOR='vim'
 export BUNDLER_EDITOR='vim'
 export PATH="$PATH:`yarn global bin`"
 export PATH="$PATH:$PWD/bin"
-export PATH="$PATH:~/code/bin"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 export LESS='-F -g -i -M -R -S -w -X -z-4'
 
@@ -26,12 +25,13 @@ if [[ -v MAC ]]; then
 else
   export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm
+  export PATH="$PATH:/home/jesper/apps/swift/usr/bin"
 fi
 
 source ~/.z.sh/z.sh
 
 # Ruby
-export PATH="$HOME/.rbenv/bin::$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 export RUBY_BUILD_CACHE_PATH=true
 export RUBY_HEAP_SLOTS_INCREMENT=10000
