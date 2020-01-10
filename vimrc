@@ -156,7 +156,7 @@ set foldmethod=indent
 
 " UI {{{
 " set termguicolors
-set background=light
+set background=dark
 colorscheme solarized
 
 set t_ut=
