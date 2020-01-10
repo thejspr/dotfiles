@@ -8,7 +8,7 @@
 [push]
   default = tracking
 [core]
-  excludesfile = /Users/jesper/.gitignore
+  excludesfile = ~/.gitignore
   editor = vim
   whitespace = trailing-space,space-before-tab
   ignorecase = false
@@ -40,7 +40,7 @@
   rc     = !git add -A && git rebase --continue
   rh     = reset --hard
   wip    = !git add --all && git commit -m 'WIP'
-  undo   = reset head~1 --mixed
+  undo   = reset HEAD~1 --mixed
 
   cl = !git co master && git pull && git remote prune origin && bundle install --quiet
 [apply]

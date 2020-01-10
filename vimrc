@@ -64,7 +64,7 @@ Plug 'sickill/vim-pasta'
 Plug 'plasticboy/vim-markdown'
 Plug 'tpope/vim-ragtag'
 let g:ragtag_global_maps = 1
-" Plug 'ludovicchabant/vim-gutentags'
+Plug 'ludovicchabant/vim-gutentags'
 let g:gutentags_trace = 0
 Plug 'sheerun/vim-polyglot'
 
@@ -127,6 +127,7 @@ let test#ruby#rspec#executable = 'bundle exec rspec'
 Plug 'wakatime/vim-wakatime'
 Plug 'jiangmiao/auto-pairs'
 let g:AutoPairsShortcutFastWrap = "<C-f>"
+au Filetype markdown let b:AutoPairs = {"(": ")"}
 Plug 'luochen1990/rainbow'
 Plug 'airblade/vim-gitgutter'
 Plug 'masukomi/vim-markdown-folding'
@@ -230,7 +231,7 @@ set ignorecase smartcase
 set gdefault
 set showmatch
 
-let g:gutentags_ctags_executable='/usr/local/bin/ctags'
+" let g:gutentags_ctags_executable='/usr/local/bin/ctags'
 set wildignore+=node_modules/*,bower_components/*
 set wildignore+=app/assets/images/**/*
 set wildignore+=vendor/cache/**/*
