@@ -4,7 +4,10 @@ alias yr='yarn run'
 alias fails='rspec --only-failures'
 alias yt='youtube-dl'
 alias aws='aws2'
-alias jrnl='e "~/Dropbox/notes/journal/$(date "+%Y-%m-%d").md"'
+jrnl() {
+  cp ~/Dropbox/notes/journal/.template ~/Dropbox/notes/journal/$(date "+%Y-%m-%d").md
+  vim ~/Dropbox/notes/journal/$(date "+%Y-%m-%d").md
+}
 alias t='trailer'
 alias tua='trailer update all'
 
