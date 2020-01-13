@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+# Create a new journal document or open an existing one.
+
+filename = File.expand_path("~/Dropbox/notes/journal/#{Time.now.strftime('%Y-%m-%d')}.md")
+
+unless File.exists?(filename)
+  system "cp ~/Dropbox/notes/journal/.template #{filename}"
+end
+
+system "vim #{filename}"
