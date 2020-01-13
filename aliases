@@ -6,6 +6,7 @@ alias yt='youtube-dl'
 alias aws='aws2'
 alias jrnl='e "~/Dropbox/notes/journal/$(date "+%Y-%m-%d").md"'
 alias t='trailer'
+alias tua='trailer update all'
 
 # tmux
 alias tma='tmux attach'
@@ -38,6 +39,9 @@ alias ber="be rubocop --auto-correct"
 alias bea="be rubocop --auto-gen-config"
 alias rt='rails -T'
 alias rr='rails routes'
+
+#Peanut
+alias reset_dev_db='rails db:drop db:create db:migrate db:data && rails runner ../seed-user.rb && RAILS_ENV=test rails db:migrate db:data'
 
 #heroku
 alias h="heroku"
