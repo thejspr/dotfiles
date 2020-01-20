@@ -2,5 +2,6 @@ vim/bundle/
 vim/view/
 vim/UltiSnips
 *.spl
-bin/skype4cocoa
 iterm2/
+bin/skype4cocoa
+bin/helm
