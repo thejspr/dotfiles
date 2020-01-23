@@ -157,7 +157,7 @@ set foldmethod=indent
 
 " UI {{{
 " set termguicolors
-set background=dark
+set background=light
 colorscheme solarized
 
 set t_ut=
@@ -289,7 +289,6 @@ inoremap jj <esc>
 inoremap jk <esc>
 map <c-x> <Plug>Kwbd<CR>
 au BufReadPost *.html set formatoptions-=t
-nnoremap ; :
 noremap ff :set foldlevel=1<cr>
 noremap fa :set foldlevel=20<cr>
 " }}}
