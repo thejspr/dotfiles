@@ -6,6 +6,7 @@ export PATH="$PATH:`yarn global bin`"
 export PATH="$PATH:$PWD/bin"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 export LESS='-F -g -i -M -R -S -w -X -z-4'
+export ERL_AFLAGS="-kernel shell_history enabled"
 
 autoload zmv
 bindkey -e
