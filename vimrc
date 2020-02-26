@@ -24,7 +24,7 @@ noremap <leader>t :Files<cr>
 noremap <leader>T :GFiles<cr>
 noremap <leader>b :Buffers<cr>
 noremap <leader>r :History<cr>
-let g:fzf_layout = { 'down': '~25%' }
+let g:fzf_layout = { 'down': '~30%' }
 let g:fzf_history_dir = '~/.vim/history'
 
 Plug 'mhinz/vim-grepper'
@@ -102,7 +102,6 @@ let g:user_emmet_settings = {
 
 " UI {{{
 Plug 'sjl/vitality.vim' " iterm2 support
-" Plug 'chriskempson/base16-vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'mhinz/vim-startify'
 let g:startify_change_to_dir = 0
@@ -129,7 +128,6 @@ let g:AutoPairsShortcutFastWrap = "<C-f>"
 au Filetype markdown let b:AutoPairs = {"(": ")"}
 Plug 'luochen1990/rainbow'
 Plug 'airblade/vim-gitgutter'
-Plug 'masukomi/vim-markdown-folding'
 " }}}
 
 call plug#end()
