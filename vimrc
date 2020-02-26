@@ -156,7 +156,12 @@ set foldmethod=indent
 
 " UI {{{
 " set termguicolors
-set background=light
+let bgcolor=$BGCOLOR
+if bgcolor == 'dark'
+  set background=dark
+else
+  set background=light
+endif
 colorscheme solarized
 
 set t_ut=

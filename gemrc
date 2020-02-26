@@ -5,4 +5,4 @@
 :update_sources: true
 :verbose: false
 
-gem: --no-rdoc --no-ri
+gem: --no-document
