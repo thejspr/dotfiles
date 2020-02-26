@@ -124,7 +124,6 @@ let test#ruby#rspec#executable = 'bundle exec rspec'
 " }}}
 
 " new stuff {{{
-Plug 'wakatime/vim-wakatime'
 Plug 'jiangmiao/auto-pairs'
 let g:AutoPairsShortcutFastWrap = "<C-f>"
 au Filetype markdown let b:AutoPairs = {"(": ")"}
@@ -291,6 +290,8 @@ map <c-x> <Plug>Kwbd<CR>
 au BufReadPost *.html set formatoptions-=t
 noremap ff :set foldlevel=1<cr>
 noremap fa :set foldlevel=20<cr>
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
 " }}}
 
 set encoding=utf-8

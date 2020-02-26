@@ -3,7 +3,6 @@ alias ff='find . -iname'
 alias yr='yarn run'
 alias fails='rspec --only-failures'
 alias yt='youtube-dl'
-alias aws='aws2'
 alias t='trailer'
 alias tua='trailer update all'
 
@@ -18,11 +17,12 @@ alias kf='kill -9 %1'
 alias kk='kill -9'
 alias be='bundle exec'
 
-alias ci='open https://circleci.com/gh/team-peanut'
+alias ci='open https://circleci.com/gh/team-peanut/peanutweb'
 alias nl='open https://app.netlify.com/sites'
 
 if [[ -v MAC ]]; then
   alias grep='ggrep'
+  alias aws='aws2'
 else
 fi
 
