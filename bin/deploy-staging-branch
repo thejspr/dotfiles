@@ -10,8 +10,6 @@ git merge $1
 
 git push
 
-~/code/peanut/peanutweb/bin/deploy staging staging
-
-ssh peanut-staging 'sudo /srv/peanutweb/bin/restart'
+bundle exec cap staging deploy
 
 git checkout $1
