@@ -24,6 +24,8 @@ if [[ -v MAC ]]; then
   alias grep='ggrep'
   alias aws='aws2'
 else
+  alias pbcopy="xclip -selection c"
+  alias pbpaste="xclip -selection clipboard -o"
 fi
 
 # rails
