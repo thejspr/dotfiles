@@ -15,6 +15,13 @@ let g:auto_save = 1
 let g:auto_save_silent = 0
 let g:auto_save_events = ["InsertLeave", "TextChanged", "FocusLost"]
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+  let g:coc_global_extensions += ['coc-prettier']
+endif
+
+if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+  let g:coc_global_extensions += ['coc-eslint']
+endif
 " }}}
 
 " Search & Code navigation {{{
@@ -67,27 +74,7 @@ let g:ragtag_global_maps = 1
 Plug 'ludovicchabant/vim-gutentags'
 let g:gutentags_trace = 0
 Plug 'sheerun/vim-polyglot'
-
-let g:ale_linters_explicit = 1
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_fixers = {
-  \ 'javascript': ['eslint'],
-  \ 'ruby': ['rubocop'],
-  \ 'scss': ['prettier'],
-  \ 'html': ['prettier']
-  \ }
-let g:ale_linters = {
-  \ 'javascript': ['eslint'],
-  \ 'eruby': [''],
-  \ 'ruby': ['rubocop']
-  \ }
-let g:ale_sign_error = '●'
-let g:ale_sign_warning = '.'
-let g:ale_lint_on_enter = 0
-let g:ale_enabled = 0
-Plug 'w0rp/ale'
+Plug 'pangloss/vim-javascript'
 
 Plug 'mattn/emmet-vim'
 let g:user_emmet_settings = {
