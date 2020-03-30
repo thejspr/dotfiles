@@ -15,13 +15,6 @@ let g:auto_save = 1
 let g:auto_save_silent = 0
 let g:auto_save_events = ["InsertLeave", "TextChanged", "FocusLost"]
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
-  let g:coc_global_extensions += ['coc-prettier']
-endif
-
-if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
-  let g:coc_global_extensions += ['coc-eslint']
-endif
 " }}}
 
 " Search & Code navigation {{{
@@ -122,7 +115,6 @@ filetype plugin indent on
 " }}}
 
 " Settings {{{
-" set shell=/usr/bin/zsh
 set history=500
 set nobackup
 set nowritebackup
@@ -130,6 +122,34 @@ set noswapfile
 set undofile
 set undodir=~/.tmp,/tmp
 set mouse=a
+" }}}
+
+" CoC {{{
+set updatetime=300
+" set shortmess+=c
+" set cmdheight=2
+set signcolumn=yes
+
+let g:coc_global_extensions = ['coc-solargraph']
+
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
+
+" if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+"   let g:coc_global_extensions += ['coc-prettier']
+" endif
+
+" if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+"   let g:coc_global_extensions += ['coc-eslint']
+" endif
 " }}}
 
 " Folding {{{
