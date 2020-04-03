@@ -6,6 +6,9 @@ alias yt='youtube-dl'
 alias t='trailer'
 alias tua='trailer update all'
 
+# linux
+alias aptu='sudo apt update && sudo apt upgrade'
+
 # tmux
 alias tma='tmux attach'
 
