@@ -103,9 +103,10 @@ let test#ruby#rspec#executable = 'bundle exec rspec'
 " }}}
 
 " new stuff {{{
-Plug 'jiangmiao/auto-pairs'
-let g:AutoPairsShortcutFastWrap = "<C-f>"
-au Filetype markdown let b:AutoPairs = {"(": ")"}
+" Plug 'jiangmiao/auto-pairs'
+" let g:AutoPairsFlyMode = 1
+" let g:AutoPairsShortcutFastWrap = "<C-f>"
+" au Filetype markdown let b:AutoPairs = {"(": ")"}
 Plug 'luochen1990/rainbow'
 Plug 'airblade/vim-gitgutter'
 " }}}

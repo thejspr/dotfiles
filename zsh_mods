@@ -66,6 +66,8 @@ bindkey '^Z' fancy-ctrl-z
 
 source ~/.secrets
 
+eval $(thefuck --alias)
+
 GPG_TTY=$(tty)
 export GPG_TTY
 # zprof
