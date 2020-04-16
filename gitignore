@@ -24,6 +24,5 @@ vendor/plugins/rails-dev-boost/
 node_modules/
 storage/
 
-tags
 tags.temp
 tags.back

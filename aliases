@@ -1,10 +1,8 @@
-# new
-alias ff='find . -iname'
-alias yr='yarn run'
 alias fails='rspec --only-failures'
 alias yt='youtube-dl'
 alias t='trailer'
 alias tua='trailer update all'
+alias bt-connect='echo "connect 38:18:4C:BD:EB:B8\nquit" | bluetoothctl'
 
 # linux
 alias aptu='sudo apt update && sudo apt upgrade'

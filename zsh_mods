@@ -9,6 +9,8 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 export ERL_AFLAGS="-kernel shell_history enabled"
 export BGCOLOR=light
 
+# alias python=python3
+
 autoload zmv
 bindkey -e
 compdef g=git
