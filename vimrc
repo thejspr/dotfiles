@@ -306,5 +306,6 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 
 set encoding=utf-8
 setglobal fileencoding=utf-8
+set scrolloff=25
 
 " vim: foldmethod=marker:foldlevel=1:textwidth=120:colorcolumn=120

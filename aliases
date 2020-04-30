@@ -1,8 +1,11 @@
+# new
+alias ff='find . -iname'
+alias yr='yarn run'
 alias fails='rspec --only-failures'
 alias yt='youtube-dl'
 alias t='trailer'
 alias tua='trailer update all'
-alias bt-connect='echo "connect 38:18:4C:BD:EB:B8\nquit" | bluetoothctl'
+alias btc='echo "connect 38:18:4C:BD:EB:B8\nquit" | bluetoothctl'
 
 # linux
 alias aptu='sudo apt update && sudo apt upgrade'
@@ -102,10 +105,9 @@ alias cd..='cd ..'
 alias ll='ls -l'
 
 # system and files editing
-alias ea='e ~/code/dotfiles/aliases'
-alias eg='e ~/code/dotfiles/gitconfig'
+alias ea='e ~/.aliases'
+alias eg='e ~/.gitconfig'
 alias ez='e ~/code/dotfiles/zsh_mods'
-alias eb='e ~/code/dotfiles/bin'
 alias ezz='e ~/.zshrc'
 alias et='e ~/code/dotfiles/tmux.conf'
 alias es='e ~/.ssh/config'
