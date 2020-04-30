@@ -42,6 +42,8 @@
   wip    = !git add --all && git commit -m 'WIP'
   undo   = reset HEAD~1 --mixed
 
+  stg    = checkout staging
+
   cl = !git co master && git pull && git remote prune origin
 [apply]
   whitespace = nowarn

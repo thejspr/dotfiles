@@ -52,7 +52,7 @@ export PATH=$PATH:$GOROOT/bin
 eval "$(hub alias -s)"
 
 # Alias and function definitions.
-. ~/code/dotfiles/aliases
+. ~/.aliases
 
 fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then

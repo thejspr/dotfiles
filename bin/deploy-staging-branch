@@ -2,14 +2,25 @@
 
 set -e
 
-git checkout staging
+branch=$1
 
-git pull
+if [ -z "$branch" ]
+then
+  branch="$(git rev-parse --abbrev-ref HEAD)"
+fi
 
-git merge $1
+read -p "Deploy branch: $branch ?" -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$  ]]
+then
+  git checkout staging
+  git pull
+  git merge $branch
+  git push
 
-git push
+  bundle exec cap staging deploy
 
-bundle exec cap staging deploy
-
-git checkout $1
+  git checkout $branch
+else
+  echo 'aborting...'
+fi
