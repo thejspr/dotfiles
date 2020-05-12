@@ -20,7 +20,7 @@ unalias gbr
 if [[ -v MAC ]]; then
   export SHELL=/usr/local/bin/zsh
   export PATH=/usr/local/bin:/usr/local/share/npm/bin:$PATH
-  export PATH=./bin:~/bin:/Applications/Postgres.app/Contents/Versions/11/bin:$PATH
+  export PATH=./bin:~/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
   export GOROOT=/usr/local/opt/go/libexec
   alias tar='/usr/local/bin/gtar'
 
