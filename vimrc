@@ -302,6 +302,7 @@ noremap ff :set foldlevel=1<cr>
 noremap fa :set foldlevel=20<cr>
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
+cnoreabbrev pu PlugUpdate
 " }}}
 
 set encoding=utf-8
