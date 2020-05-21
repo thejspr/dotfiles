@@ -236,7 +236,7 @@ nnoremap k gk
 " Searching {{{
 set hlsearch
 set incsearch
-set ignorecase smartcase
+set smartcase
 set gdefault
 set showmatch
 

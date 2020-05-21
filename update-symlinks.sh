@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-IGNORES = %w{zsh_mods ctags README.md update-symlinks.sh}
+IGNORES = %w{zsh_mods ctags tags README.md update-symlinks.sh}
 
 Dir.glob("*").each do |file|
   next if IGNORES.include?(file)

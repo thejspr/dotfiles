@@ -11,16 +11,17 @@ fi
 
 read -p "Deploy branch: $branch ?" -n 1 -r
 echo
+
 if [[ $REPLY =~ ^[Yy]$  ]]
 then
   git checkout staging
   git pull
-  git merge $branch
+  git merge $branch --no-edit
   git push
 
   bundle exec cap staging deploy
 
   git checkout $branch
 else
-  echo 'aborting...'
+  echo "aborting..."
 fi
