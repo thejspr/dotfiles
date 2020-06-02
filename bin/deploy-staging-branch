@@ -9,8 +9,9 @@ then
   branch="$(git rev-parse --abbrev-ref HEAD)"
 fi
 
-read -p "Deploy branch: $branch ?" -n 1 -r
-echo
+# read -p "Deploy branch: $branch ?" -n 1 -r
+# echo
+REPLY=y
 
 if [[ $REPLY =~ ^[Yy]$  ]]
 then
