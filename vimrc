@@ -82,8 +82,9 @@ let g:user_emmet_settings = {
 
 " UI {{{
 Plug 'sjl/vitality.vim' " iterm2 support
-Plug 'altercation/vim-colors-solarized'
+" Plug 'altercation/vim-colors-solarized'
 Plug 'mhinz/vim-startify'
+Plug 'morhetz/gruvbox'
 let g:startify_change_to_dir = 0
 " }}}
 
@@ -108,6 +109,7 @@ Plug 'jiangmiao/auto-pairs'
 au Filetype markdown let b:AutoPairs = {"(": ")"}
 Plug 'luochen1990/rainbow'
 Plug 'airblade/vim-gitgutter'
+Plug 'vim-airline/vim-airline'
 " }}}
 
 call plug#end()
@@ -167,14 +169,14 @@ if bgcolor == 'dark'
 else
   set background=light
 endif
-colorscheme solarized
+colorscheme gruvbox
 
 set t_ut=
 
 syntax on
 set nocursorcolumn
 set nocursorline
-set colorcolumn=80
+set colorcolumn=100
 set synmaxcol=140
 set title
 set ffs=unix,mac,dos
@@ -211,7 +213,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set nowrap
-set textwidth=80
+set textwidth=100
 set list listchars=tab:»·,trail:·
 "}}}
 
@@ -228,9 +230,6 @@ nnoremap K <nop>
 " reselect visual lock after indent/outdent
 vnoremap < <gv
 vnoremap > >gv
-" improve movement on wrapped lines
-nnoremap j gj
-nnoremap k gk
 " }}}
 
 " Searching {{{
