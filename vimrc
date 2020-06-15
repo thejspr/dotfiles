@@ -81,10 +81,8 @@ let g:user_emmet_settings = {
 "  }}}
 
 " UI {{{
-Plug 'sjl/vitality.vim' " iterm2 support
-" Plug 'altercation/vim-colors-solarized'
-Plug 'mhinz/vim-startify'
 Plug 'morhetz/gruvbox'
+Plug 'mhinz/vim-startify'
 let g:startify_change_to_dir = 0
 " }}}
 
@@ -169,9 +167,9 @@ if bgcolor == 'dark'
 else
   set background=light
 endif
+let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_contrast_light='hard'
 colorscheme gruvbox
-
-set t_ut=
 
 syntax on
 set nocursorcolumn
