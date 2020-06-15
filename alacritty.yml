@@ -1,8 +1,8 @@
 font:
-  size: 14
+  size: 12
 
 # Colors (Gruvbox light)
-xcolors:
+colors:
   # Default colors
   primary:
     # hard contrast: background = '#f9f5d7'
@@ -33,7 +33,7 @@ xcolors:
     white:   '#3c3836'
 
 # Colors (Gruvbox dark)
-colors:
+xcolors:
   # Default colors
   primary:
     # hard contrast: background = '#1d2021'
