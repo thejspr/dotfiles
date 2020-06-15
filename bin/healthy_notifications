@@ -6,6 +6,8 @@ def number(multiplier)
   (Random.rand * multiplier).ceil
 end
 
+interval = ARGV.first&.to_i || 60
+
 notifications = [
   {
     title: "Arbøjning!",
@@ -13,12 +15,16 @@ notifications = [
   },
   {
     title: "Træk vejret!",
-    message: -> { "#{number(5)} minutters fokus paa vejrtrækning" }
+    message: -> { "#{number(3)} minutters fokus paa vejrtrækning" }
   },
   {
     title: "Stræk!",
     message: -> { "#{number(3)} minutters udstrækning" }
-  }
+  },
+  {
+    title: "Vand!",
+    message: -> { "Drik noget vand" }
+  },
 ]
 
 while(true) do
@@ -29,5 +35,5 @@ while(true) do
     message: notification[:message].call
   )
 
-  sleep (ARGV.first.to_i * 60)
+  sleep (interval * 60)
 end

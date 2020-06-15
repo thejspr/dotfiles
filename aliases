@@ -6,7 +6,7 @@ alias yt='youtube-dl'
 alias t='trailer'
 alias tua='trailer update all'
 alias btc='echo "connect 38:18:4C:BD:EB:B8\nquit" | bluetoothctl'
-mkcd() { mkdir -p "$1" && cd "$1";  }
+mkcd() { mkdir -p "$1" && cd "$1"; }
 
 # linux
 alias aptu='sudo apt update && sudo apt upgrade'
@@ -47,7 +47,7 @@ alias rt='rails -T'
 alias rr='rails routes'
 
 #Peanut
-alias reset_dev_db='rails db:drop db:create db:migrate db:data db:seed && rails runner ../seed-user.rb && RAILS_ENV=test rails db:migrate db:data'
+alias reset_dev_db='rails db:drop db:create db:migrate db:data && rails runner ../seed-user.rb && RAILS_ENV=test rails db:migrate db:data'
 
 #heroku
 alias h="heroku"
