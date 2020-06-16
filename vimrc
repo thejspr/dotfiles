@@ -161,12 +161,7 @@ set foldmethod=indent
 
 " UI {{{
 " set termguicolors
-let bgcolor=$BGCOLOR
-if bgcolor == 'dark'
-  set background=dark
-else
-  set background=light
-endif
+source ~/.colorscheme.vim
 let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_contrast_light='hard'
 colorscheme gruvbox

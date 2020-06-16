@@ -14,7 +14,7 @@ Dir.glob("*").each do |file|
   file_target = File.expand_path(target)
 
   if File.symlink?(file_target)
-    puts "#{file} symlink, skipping"
+    puts "#{file} symlink, skipping" if ARGV.include?('-v')
     next
   elsif File.exists?(file_target)
     puts "#{file} exists in root. [d]elete? [c]opy? [i]gnore?"
