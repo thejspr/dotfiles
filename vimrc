@@ -15,6 +15,8 @@ let g:auto_save = 1
 let g:auto_save_silent = 0
 let g:auto_save_events = ["InsertLeave", "TextChanged", "FocusLost"]
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gr <Plug>(coc-references)
 " }}}
 
 " Search & Code navigation {{{
@@ -81,7 +83,7 @@ let g:user_emmet_settings = {
 "  }}}
 
 " UI {{{
-Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 Plug 'mhinz/vim-startify'
 let g:startify_change_to_dir = 0
 " }}}
