@@ -7,7 +7,8 @@ alias t='trailer'
 alias tua='trailer update all'
 alias btc='echo "connect 38:18:4C:BD:EB:B8\nquit" | bluetoothctl'
 mkcd() { mkdir -p "$1" && cd "$1"; }
-alias s='vim ~/Dropbox/scratch.md'
+alias s='e ~/Dropbox/scratch.md'
+alias eaa='e ~/.alacritty.yml'
 
 # linux
 alias aptu='sudo apt update && sudo apt upgrade'

@@ -15,15 +15,15 @@ let g:auto_save = 1
 let g:auto_save_silent = 0
 let g:auto_save_events = ["InsertLeave", "TextChanged", "FocusLost"]
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-nmap <leader>gd <Plug>(coc-definition)
-nmap <leader>gr <Plug>(coc-references)
+nmap gd <Plug>(coc-definition)
+nmap gr <Plug>(coc-references)
 " }}}
 
 " Search & Code navigation {{{
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-noremap <leader>t :Files<cr>
-noremap <leader>T :GFiles<cr>
+noremap <leader>t :GFiles<cr>
+noremap <leader>T :Files<cr>
 noremap <leader>b :Buffers<cr>
 noremap <leader>r :History<cr>
 let g:fzf_layout = { 'down': '~30%' }
@@ -105,9 +105,9 @@ let test#ruby#rspec#executable = 'bundle exec rspec'
 
 " new stuff {{{
 Plug 'jiangmiao/auto-pairs'
-" let g:AutoPairsShortcutFastWrap = "<C-f>"
 au Filetype markdown let b:AutoPairs = {"(": ")"}
 Plug 'luochen1990/rainbow'
+let g:rainbow_active = 1
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 " }}}
