@@ -99,7 +99,7 @@ let test#strategy = "vimux"
 nmap <silent> <leader>x :TestNearest<CR>
 nmap <silent> <leader>X :TestFile<CR>
 nmap <silent> <leader>A :TestSuite<CR>
-nmap <silent> <leader>§ :VimuxRunLastCommand<CR>
+nmap <silent> <leader>½ :VimuxRunLastCommand<CR>
 let test#ruby#rspec#executable = 'bundle exec rspec'
 " }}}
 
@@ -171,7 +171,7 @@ colorscheme gruvbox
 syntax on
 set nocursorcolumn
 set nocursorline
-set colorcolumn=100
+set colorcolumn=90
 set synmaxcol=140
 set title
 set ffs=unix,mac,dos

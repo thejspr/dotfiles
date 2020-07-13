@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -e
+
+if [ "$1" == "dark" ]; then
+  echo "set background=dark" > "$HOME/.colorscheme.vim"
+else
+  echo "set background=light" > "$HOME/.colorscheme.vim"
+fi
