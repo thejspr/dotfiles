@@ -22,8 +22,8 @@ nmap gr <Plug>(coc-references)
 " Search & Code navigation {{{
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-noremap <leader>t :GFiles<cr>
-noremap <leader>T :Files<cr>
+noremap <leader>t :Files<cr>
+noremap <leader>T :GFiles<cr>
 noremap <leader>b :Buffers<cr>
 noremap <leader>r :History<cr>
 let g:fzf_layout = { 'down': '~30%' }
