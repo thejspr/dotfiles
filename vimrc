@@ -99,13 +99,14 @@ let test#strategy = "vimux"
 nmap <silent> <leader>x :TestNearest<CR>
 nmap <silent> <leader>X :TestFile<CR>
 nmap <silent> <leader>A :TestSuite<CR>
-nmap <silent> <leader>½ :VimuxRunLastCommand<CR>
+nmap <silent> <leader>` :VimuxRunLastCommand<CR>
 let test#ruby#rspec#executable = 'bundle exec rspec'
 " }}}
 
 " new stuff {{{
 Plug 'jiangmiao/auto-pairs'
 au Filetype markdown let b:AutoPairs = {"(": ")"}
+let g:AutoPairsShortcutFastWrap = "<C-f>" "fixes issue with å
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
 Plug 'airblade/vim-gitgutter'
@@ -171,7 +172,7 @@ colorscheme gruvbox
 syntax on
 set nocursorcolumn
 set nocursorline
-set colorcolumn=90
+set colorcolumn=80
 set synmaxcol=140
 set title
 set ffs=unix,mac,dos
@@ -208,7 +209,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set nowrap
-set textwidth=100
+set textwidth=80
 set list listchars=tab:»·,trail:·
 "}}}
 
@@ -303,4 +304,4 @@ set encoding=utf-8
 setglobal fileencoding=utf-8
 set scrolloff=25
 
-" vim: foldmethod=marker:foldlevel=1:textwidth=120:colorcolumn=120
+" vim: foldmethod=marker:foldlevel=1:textwidth=100:colorcolumn=100
