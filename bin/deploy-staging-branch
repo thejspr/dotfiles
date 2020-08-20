@@ -9,6 +9,8 @@ then
   branch="$(git rev-parse --abbrev-ref HEAD)"
 fi
 
+git push
+
 # read -p "Deploy branch: $branch ?" -n 1 -r
 # echo
 REPLY=y

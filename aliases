@@ -11,7 +11,7 @@ alias s='e ~/Dropbox/scratch.md'
 alias eaa='e ~/.alacritty.yml'
 
 # linux
-alias aptu='sudo apt update && sudo apt upgrade'
+alias aptu='sudo apt update && sudo apt upgrade -y'
 
 # tmux
 alias tma='tmux attach'
