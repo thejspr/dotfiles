@@ -12,7 +12,7 @@ Plug 'vim-scripts/kwbdi.vim'
 Plug 'tpope/vim-obsession' " sessions mgmt
 Plug '907th/vim-auto-save'
 let g:auto_save = 1
-let g:auto_save_silent = 0
+let g:auto_save_silent = 1
 let g:auto_save_events = ["InsertLeave", "TextChanged", "FocusLost"]
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 nmap gd <Plug>(coc-definition)
@@ -159,7 +159,7 @@ let g:coc_global_extensions = ['coc-solargraph']
 set foldenable
 set foldnestmax=10
 set foldlevelstart=10
-set foldmethod=indent
+" set foldmethod=manual
 " }}}
 
 " UI {{{
@@ -298,6 +298,7 @@ noremap fa :set foldlevel=20<cr>
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 cnoreabbrev pu PlugUpdate
+command! Es :e ~/Dropbox/scratch.md
 " }}}
 
 set encoding=utf-8

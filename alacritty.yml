@@ -1,5 +1,13 @@
 font:
   size: 12
+  normal:
+    family: 'Jetbrains Mono Regular'
+
+visual_bell:
+  duration: 0
+
+selection:
+  save_to_clipboard: true
 
 # Colors (Gruvbox light)
 colors:
