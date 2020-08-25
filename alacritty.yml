@@ -1,7 +1,8 @@
 font:
   size: 12
   normal:
-    family: 'Jetbrains Mono Regular'
+    family: 'Jetbrains Mono'
+    style: 'Regular'
 
 visual_bell:
   duration: 0
