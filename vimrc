@@ -99,7 +99,7 @@ let test#strategy = "vimux"
 nmap <silent> <leader>x :TestNearest<CR>
 nmap <silent> <leader>X :TestFile<CR>
 nmap <silent> <leader>A :TestSuite<CR>
-nmap <silent> <leader>` :VimuxRunLastCommand<CR>
+nmap <silent> <leader>q :VimuxRunLastCommand<CR>
 let test#ruby#rspec#executable = 'bundle exec rspec'
 " }}}
 
