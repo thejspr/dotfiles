@@ -4,14 +4,14 @@ font:
     family: 'Jetbrains Mono'
     style: 'Regular'
 
-visual_bell:
+bell:
   duration: 0
 
 selection:
   save_to_clipboard: true
 
 # Colors (Gruvbox light)
-colors:
+xcolors:
   # Default colors
   primary:
     # hard contrast: background = '#f9f5d7'
@@ -42,7 +42,7 @@ colors:
     white:   '#3c3836'
 
 # Colors (Gruvbox dark)
-xcolors:
+colors:
   # Default colors
   primary:
     # hard contrast: background = '#1d2021'

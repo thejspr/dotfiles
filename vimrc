@@ -159,7 +159,7 @@ let g:coc_global_extensions = ['coc-solargraph']
 set foldenable
 set foldnestmax=10
 set foldlevelstart=10
-" set foldmethod=manual
+set foldmethod=indent
 " }}}
 
 " UI {{{
