@@ -12,6 +12,7 @@ alias eaa='e ~/.alacritty.yml'
 
 # linux
 alias aptu='sudo apt update && sudo apt upgrade -y'
+alias apti='sudo apt install'
 
 # tmux
 alias tma='tmux attach'
