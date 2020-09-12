@@ -104,11 +104,13 @@ let test#ruby#rspec#executable = 'bundle exec rspec'
 " }}}
 
 " new stuff {{{
-Plug 'jiangmiao/auto-pairs'
-au Filetype markdown let b:AutoPairs = {"(": ")"}
-let g:AutoPairsShortcutFastWrap = "<C-f>" "fixes issue with å
+" Plug 'jiangmiao/auto-pairs'
+" au Filetype markdown let b:AutoPairs = {"(": ")"}
+" let g:AutoPairsShortcutFastWrap = "<C-f>" "fixes issue with å
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
+let g:gitgutter_map_keys = 0
+let g:gitgutter_enabled = 1
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 " }}}
