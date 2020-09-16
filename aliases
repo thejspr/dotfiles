@@ -67,7 +67,7 @@ alias aspecs='fspecs && specs'
 alias e='vim'
 
 # homebrew
-alias bup='brew update && echo "==> Outdated Formula" && brew outdated && brew cask outdated'
+alias bup='brew update && echo "==> Outdated Formula" && brew outdated && brew outdated --cask'
 alias bu='brew upgrade'
 
 #conviniences

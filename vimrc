@@ -84,8 +84,8 @@ let g:user_emmet_settings = {
 
 " UI {{{
 Plug 'gruvbox-community/gruvbox'
-Plug 'mhinz/vim-startify'
-let g:startify_change_to_dir = 0
+" Plug 'mhinz/vim-startify'
+" let g:startify_change_to_dir = 0
 " }}}
 
 " tmux and testing {{{
