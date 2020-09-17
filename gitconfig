@@ -44,7 +44,7 @@
 
   stg    = checkout staging
 
-  cl = !git co master && git pull && git remote prune origin && git bclean
+  cl = !git co master && git pull && git remote prune origin
 [apply]
   whitespace = nowarn
 [branch]
