@@ -1,55 +1,52 @@
-# new
-alias ff='find . -iname'
-alias yr='yarn run'
-alias fails='rspec --only-failures'
-alias yt='youtube-dl'
-alias t='trailer'
-alias tua='trailer update all'
-alias btc='echo "connect 38:18:4C:BD:EB:B8\nquit" | bluetoothctl'
+#new
 mkcd() { mkdir -p "$1" && cd "$1"; }
 alias s='e ~/Dropbox/scratch.md'
 alias eaa='e ~/.alacritty.yml'
 
-# linux
-alias aptu='sudo apt update && sudo apt upgrade -y'
-alias apti='sudo apt install'
+#system
+alias e='vim'
+alias kf='kill -9 %1'
+alias ff='find . -iname'
 
-# tmux
+#tmux
 alias tma='tmux attach'
 
 #ruby
 alias rb='rbenv'
 alias rv='rbenv version'
-alias wr='ps aux | grep ruby'
-alias kf='kill -9 %1'
-alias kk='kill -9'
 alias be='bundle exec'
-
-alias ci='open https://circleci.com/gh/team-peanut/peanutweb'
-alias nl='open https://app.netlify.com/sites'
 
 if [[ -v MAC ]]; then
   alias grep='ggrep'
   alias aws='aws2'
+  alias bup='brew update && echo "==> Outdated Formula" && brew outdated && brew outdated --cask'
+  alias bu='brew upgrade'
 else
   alias pbcopy="xclip -selection c"
   alias pbpaste="xclip -selection clipboard -o"
+
+  #ubuntu
+  alias aptu='sudo apt update && sudo apt upgrade'
+  alias apti='sudo apt install'
+  alias aptr='sudo apt remove'
+
+  alias btc='echo "connect 38:18:4C:BD:EB:B8\nquit" | bluetoothctl'
 fi
 
-# rails
+#rails
 alias rs='rails s'
-alias rag='rails g'
-alias ragm='rails generate migration'
+alias ragm='rails g migration'
 alias rc='rails c'
 alias migrate='rails db:migrate db:data && RAILS_ENV=test rails db:migrate db:data'
-alias bef='foreman start -f Procfile.dev'
 alias upgrade_gems="bundle update && rspec && git add -A && git commit -m 'Gem upgrades' && git push"
-alias ber="be rubocop --auto-correct"
 alias bea="be rubocop --auto-gen-config"
+alias ber="be rubocop --auto-correct"
+alias bef='foreman start -f Procfile.dev'
 alias rt='rails -T'
 alias rr='rails routes'
 
 #Peanut
+alias ci='open https://circleci.com/gh/team-peanut/peanutweb'
 alias reset_dev_db='rails db:drop db:create db:migrate db:data && rails runner ../seed-user.rb && RAILS_ENV=test rails db:migrate db:data'
 
 #heroku
@@ -62,13 +59,7 @@ alias hl="heroku logs -t"
 alias specs='rspec --tag ~type:feature'
 alias fspecs='rspec --tag type:feature'
 alias aspecs='fspecs && specs'
-
-#vim
-alias e='vim'
-
-# homebrew
-alias bup='brew update && echo "==> Outdated Formula" && brew outdated && brew outdated --cask'
-alias bu='brew upgrade'
+alias fails='rspec --only-failures'
 
 #conviniences
 alias -g V='|e -'
@@ -104,11 +95,10 @@ alias gr='git r'
 alias gcl='git pull && git branch --merged master | grep -vE "(master|production|release|develop)" | xargs git branch -d'
 
 #msc
-myip() { elinks -dump http://checkip.dyndns.org:8245/ }
 alias cd..='cd ..'
 alias ll='ls -l'
 
-# system and files editing
+#system and files editing
 alias ea='e ~/.aliases'
 alias eg='e ~/.gitconfig'
 alias ez='e ~/code/dotfiles/zsh_mods'
