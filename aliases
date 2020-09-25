@@ -47,7 +47,10 @@ alias rr='rails routes'
 
 #Peanut
 alias ci='open https://circleci.com/gh/team-peanut/peanutweb'
-alias reset_dev_db='rails db:drop db:create db:migrate db:data && rails runner ../seed-user.rb && RAILS_ENV=test rails db:migrate db:data'
+
+alias reset_dev_db='rails db:drop db:create db:migrate db:data'
+alias reset_test_db='RAILS_ENV=test rails db:drop db:create db:migrate db:data'
+alias reset_db='reset_dev_db && reset_tet_db'
 
 #heroku
 alias h="heroku"

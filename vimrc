@@ -131,30 +131,9 @@ set mouse=a
 
 " CoC {{{
 set updatetime=300
-" set shortmess+=c
-" set cmdheight=2
 set signcolumn=yes
 
 let g:coc_global_extensions = ['coc-solargraph']
-
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
-
-" if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
-"   let g:coc_global_extensions += ['coc-prettier']
-" endif
-
-" if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
-"   let g:coc_global_extensions += ['coc-eslint']
-" endif
 " }}}
 
 " Folding {{{
@@ -178,7 +157,7 @@ set colorcolumn=80
 set synmaxcol=140
 set title
 set ffs=unix,mac,dos
-set scrolloff=4
+set scrolloff=25
 set autoindent
 set smartindent
 set showmode
@@ -195,6 +174,9 @@ set number
 set splitbelow
 set splitright
 set infercase
+
+set encoding=utf-8
+setglobal fileencoding=utf-8
 
 " Resize splits when the win is resized
 au VimResized * wincmd =
@@ -237,8 +219,7 @@ set smartcase
 set gdefault
 set showmatch
 
-" let g:gutentags_ctags_executable='/usr/local/bin/ctags'
-set wildignore+=node_modules/*,bower_components/*
+set wildignore+=node_modules/*
 set wildignore+=app/assets/images/**/*
 set wildignore+=vendor/cache/**/*
 
@@ -287,7 +268,6 @@ set pastetoggle=<F3>
 " Rails.vim
 noremap <Leader>m :Emodel<space>
 noremap <Leader>c :Econtroller<space>
-noremap <Leader>v :Eview<space>
 " }}}
 
 " New stuff {{{
@@ -302,9 +282,5 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 cnoreabbrev pu PlugUpdate
 command! Es :e ~/Dropbox/scratch.md
 " }}}
-
-set encoding=utf-8
-setglobal fileencoding=utf-8
-set scrolloff=25
 
 " vim: foldmethod=marker:foldlevel=1:textwidth=100:colorcolumn=100
