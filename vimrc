@@ -41,18 +41,20 @@ vnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
-Plug 'AndrewRadev/splitjoin.vim'
-nmap sj :SplitjoinSplit<cr>
-nmap sk :SplitjoinJoin<cr>
+" Plug 'AndrewRadev/splitjoin.vim'
+" nmap sj :SplitjoinSplit<cr>
+" nmap sk :SplitjoinJoin<cr>
 Plug 'terryma/vim-multiple-cursors'
 " }}}
 
 " File management & Git {{{
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-eunuch'
+
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb' " Gbrowse handlers for github
+Plug 'airblade/vim-gitgutter'
 " }}}
 
 " Ruby {{{
@@ -84,8 +86,6 @@ let g:user_emmet_settings = {
 
 " UI {{{
 Plug 'gruvbox-community/gruvbox'
-" Plug 'mhinz/vim-startify'
-" let g:startify_change_to_dir = 0
 " }}}
 
 " tmux and testing {{{
@@ -111,8 +111,8 @@ Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
 let g:gitgutter_map_keys = 0
 let g:gitgutter_enabled = 1
-Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
+Plug 'roxma/vim-paste-easy'
 " }}}
 
 call plug#end()
