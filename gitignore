@@ -16,6 +16,7 @@ tmp/tags
 .bundle/
 .sass-cache/
 _site
+.generators
 
 is-it-green
 vendor/plugins/rails-dev-boost/
