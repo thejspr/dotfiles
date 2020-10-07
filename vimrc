@@ -59,7 +59,7 @@ Plug 'airblade/vim-gitgutter'
 
 " Ruby {{{
 Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-endwise'
+" Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
 Plug 'sickill/vim-pasta'
 "}}}

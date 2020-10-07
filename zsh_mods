@@ -27,10 +27,10 @@ else
   export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm
   export PATH="$PATH:/home/jesper/apps/swift/usr/bin"
-  # xmodmap ~/.Xmodmap
 fi
 
 source ~/.z.sh/z.sh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Ruby
 export PATH="$HOME/.rbenv/bin:$PATH"
@@ -71,4 +71,9 @@ source ~/.zsh/zsh-peco-history/zsh-peco-history.zsh
 
 GPG_TTY=$(tty)
 export GPG_TTY
+
+
+if [[ ! -v TMUX ]]; then
+  tmux attach || tmux
+fi
 # zprof
