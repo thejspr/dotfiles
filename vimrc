@@ -85,7 +85,12 @@ let g:user_emmet_settings = {
 "  }}}
 
 " UI {{{
-Plug 'gruvbox-community/gruvbox'
+Plug 'rakr/vim-one'
+Plug 'luochen1990/rainbow'
+let g:rainbow_active = 1
+let g:gitgutter_map_keys = 0
+let g:gitgutter_enabled = 1
+Plug 'vim-airline/vim-airline'
 " }}}
 
 " tmux and testing {{{
@@ -107,11 +112,6 @@ let test#ruby#rspec#executable = 'bundle exec rspec'
 " Plug 'jiangmiao/auto-pairs'
 " au Filetype markdown let b:AutoPairs = {"(": ")"}
 " let g:AutoPairsShortcutFastWrap = "<C-f>" "fixes issue with å
-Plug 'luochen1990/rainbow'
-let g:rainbow_active = 1
-let g:gitgutter_map_keys = 0
-let g:gitgutter_enabled = 1
-Plug 'vim-airline/vim-airline'
 Plug 'roxma/vim-paste-easy'
 " }}}
 
@@ -146,13 +146,12 @@ set foldmethod=indent
 
 " UI {{{
 " set termguicolors
+let g:airline_theme='one'
 source ~/.colorscheme.vim
-let g:gruvbox_contrast_dark='hard'
-let g:gruvbox_contrast_light='hard'
-colorscheme gruvbox
+colorscheme one
 
 syntax on
-set nocursorcolumn
+" set nocursorcolumn
 " set nocursorline
 set colorcolumn=80
 set synmaxcol=140
