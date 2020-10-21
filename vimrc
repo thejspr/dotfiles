@@ -132,6 +132,7 @@ set mouse=a
 " CoC {{{
 set updatetime=300
 set signcolumn=yes
+set shortmess+=c
 
 let g:coc_global_extensions = ['coc-solargraph']
 " }}}
@@ -152,7 +153,7 @@ colorscheme gruvbox
 
 syntax on
 set nocursorcolumn
-set nocursorline
+" set nocursorline
 set colorcolumn=80
 set synmaxcol=140
 set title
