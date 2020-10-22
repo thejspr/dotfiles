@@ -11,7 +11,7 @@ selection:
   save_to_clipboard: true
 
 # Colors (Gruvbox light)
-colors:
+xxcolors:
   # Default colors
   primary:
     # hard contrast: background = '#f9f5d7'

@@ -89,8 +89,8 @@ let g:user_emmet_settings = {
 
 " UI {{{
 Plug 'rakr/vim-one'
-Plug 'luochen1990/rainbow'
-let g:rainbow_active = 1
+" Plug 'luochen1990/rainbow'
+" let g:rainbow_active = 1
 let g:gitgutter_map_keys = 0
 let g:gitgutter_enabled = 1
 Plug 'vim-airline/vim-airline'
