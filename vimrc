@@ -74,6 +74,9 @@ Plug 'sheerun/vim-polyglot'
 Plug 'pangloss/vim-javascript'
 
 Plug 'mattn/emmet-vim'
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,eruby EmmetInstall
+let g:user_emmet_leader_key='<C-E>'
 let g:user_emmet_settings = {
 \  'javascript.jsx' : {
 \      'extends': 'jsx',
