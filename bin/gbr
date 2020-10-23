@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # quickly find a branch, using any part of the name to narrow it down further.
-# requires "FZF" (`brew install fzf`) installed
+# requires "FZF" installed
 
 set -e
 
