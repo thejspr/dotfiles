@@ -55,6 +55,8 @@ Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb' " Gbrowse handlers for github
 Plug 'airblade/vim-gitgutter'
+let g:gitgutter_map_keys = 0
+let g:gitgutter_enabled = 1
 " }}}
 
 " Ruby {{{
@@ -94,6 +96,8 @@ Plug 'rakr/vim-one'
 let g:gitgutter_map_keys = 0
 let g:gitgutter_enabled = 1
 Plug 'vim-airline/vim-airline'
+let g:airline_section_b = ''
+let g:airline_section_y = ''
 " }}}
 
 " tmux and testing {{{

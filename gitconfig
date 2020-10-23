@@ -12,6 +12,7 @@
   editor = vim
   whitespace = trailing-space,space-before-tab
   ignorecase = false
+	attributesfile = /Users/jesper/code/dotfiles/gitattributes
 [alias]
   a      = add --all
   aa     = add -A
