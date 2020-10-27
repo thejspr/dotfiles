@@ -90,8 +90,15 @@ let g:user_emmet_settings = {
 "  }}}
 
 " UI {{{
-Plug 'rakr/vim-one'
+Plug 'altercation/vim-colors-solarized'
+if !has('gui_running')
+  set t_Co=256
+endif
+
 Plug 'itchyny/lightline.vim'
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ }
 " Plug 'luochen1990/rainbow'
 " let g:rainbow_active = 1
 let g:gitgutter_map_keys = 0
@@ -150,9 +157,9 @@ set foldmethod=indent
 " }}}
 
 " UI {{{
-" set termguicolors
 source ~/.colorscheme.vim
-colorscheme one
+colorscheme solarized
+set termguicolors
 
 syntax on
 " set nocursorcolumn
