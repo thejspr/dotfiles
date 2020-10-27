@@ -91,13 +91,11 @@ let g:user_emmet_settings = {
 
 " UI {{{
 Plug 'rakr/vim-one'
+Plug 'itchyny/lightline.vim'
 " Plug 'luochen1990/rainbow'
 " let g:rainbow_active = 1
 let g:gitgutter_map_keys = 0
 let g:gitgutter_enabled = 1
-Plug 'vim-airline/vim-airline'
-let g:airline_section_b = ''
-let g:airline_section_y = ''
 " }}}
 
 " tmux and testing {{{
@@ -153,7 +151,6 @@ set foldmethod=indent
 
 " UI {{{
 " set termguicolors
-let g:airline_theme='one'
 source ~/.colorscheme.vim
 colorscheme one
 

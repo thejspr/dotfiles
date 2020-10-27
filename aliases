@@ -40,7 +40,7 @@ alias rc='rails c'
 alias migrate='rails db:migrate db:data && RAILS_ENV=test rails db:migrate db:data'
 alias upgrade_gems="bundle update && rspec && git add -A && git commit -m 'Gem upgrades' && git push"
 alias bea="be rubocop --auto-gen-config"
-alias ber="be rubocop --auto-correct"
+alias ber="be rubocop -A"
 alias bef='foreman start -f Procfile.dev'
 alias rt='rails -T'
 alias rr='rails routes'
