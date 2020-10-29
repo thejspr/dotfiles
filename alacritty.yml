@@ -1,6 +1,6 @@
 font:
   size: 14
-  normal:
+  xnormal:
     family: 'Jetbrains Mono'
     style: 'Regular'
 
@@ -10,10 +10,9 @@ bell:
 selection:
   save_to_clipboard: true
 
- 
 # Base16 Solarized Dark 256 - alacritty color config
 # Ethan Schoonover (modified by aramisgithub)
-colors:
+xcolors:
   # Default colors
   primary:
     background: '0x002b36'

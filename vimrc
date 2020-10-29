@@ -60,7 +60,18 @@ let g:gitgutter_enabled = 1
 " }}}
 
 " Ruby {{{
-Plug 'vim-ruby/vim-ruby'
+Plug 'dense-analysis/ale'
+let g:ale_linters = {
+      \   'ruby': ['rubocop'],
+      \   'javascript': ['eslint'],
+      \}
+
+let g:ale_fixers = {
+      \    'ruby': ['rubocop'],
+      \}
+" let g:ale_fix_on_save = 1
+
+" Plug 'vim-ruby/vim-ruby'
 " Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
 Plug 'sickill/vim-pasta'
@@ -70,9 +81,9 @@ Plug 'sickill/vim-pasta'
 Plug 'plasticboy/vim-markdown'
 Plug 'tpope/vim-ragtag'
 let g:ragtag_global_maps = 1
-Plug 'ludovicchabant/vim-gutentags'
-let g:gutentags_trace = 0
-Plug 'sheerun/vim-polyglot'
+" Plug 'ludovicchabant/vim-gutentags'
+" let g:gutentags_trace = 0
+" Plug 'sheerun/vim-polyglot'
 Plug 'pangloss/vim-javascript'
 
 Plug 'mattn/emmet-vim'
@@ -89,22 +100,6 @@ let g:user_emmet_settings = {
 \}
 "  }}}
 
-" UI {{{
-Plug 'altercation/vim-colors-solarized'
-if !has('gui_running')
-  set t_Co=256
-endif
-
-Plug 'itchyny/lightline.vim'
-let g:lightline = {
-      \ 'colorscheme': 'solarized',
-      \ }
-" Plug 'luochen1990/rainbow'
-" let g:rainbow_active = 1
-let g:gitgutter_map_keys = 0
-let g:gitgutter_enabled = 1
-" }}}
-
 " tmux and testing {{{
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
@@ -120,46 +115,43 @@ nmap <silent> <leader>q :VimuxRunLastCommand<CR>
 let test#ruby#rspec#executable = 'bundle exec rspec'
 " }}}
 
+" UI {{{
+Plug 'arcticicestudio/nord-vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'altercation/vim-colors-solarized'
+
+Plug 'itchyny/lightline.vim'
+" let g:lightline = { 'colorscheme': 'solarized', }
+let g:gitgutter_map_keys = 0
+let g:gitgutter_enabled = 1
+" }}}
+
 " new stuff {{{
 " Plug 'jiangmiao/auto-pairs'
 " au Filetype markdown let b:AutoPairs = {"(": ")"}
 " let g:AutoPairsShortcutFastWrap = "<C-f>" "fixes issue with å
 Plug 'roxma/vim-paste-easy'
+Plug 'vifm/vifm.vim'
 " }}}
 
 call plug#end()
 filetype plugin indent on
 " }}}
 
-" Settings {{{
-set history=500
-set nobackup
-set nowritebackup
-set noswapfile
-set undofile
-set undodir=~/.tmp,/tmp
-set mouse=a
-" }}}
-
 " CoC {{{
 set updatetime=300
 set signcolumn=yes
 set shortmess+=c
-
 let g:coc_global_extensions = ['coc-solargraph']
 " }}}
 
-" Folding {{{
-set foldenable
-set foldnestmax=10
-set foldlevelstart=10
-set foldmethod=indent
-" }}}
-
 " UI {{{
+" if !has('gui_running')
+"   set t_Co=256
+" endif
+" set termguicolors
 source ~/.colorscheme.vim
-colorscheme solarized
-set termguicolors
+colorscheme PaperColor
 
 syntax on
 " set nocursorcolumn
@@ -207,6 +199,23 @@ set nowrap
 set textwidth=80
 set list listchars=tab:»·,trail:·
 "}}}
+
+" Settings {{{
+set history=500
+set nobackup
+set nowritebackup
+set noswapfile
+set undofile
+set undodir=~/.tmp,/tmp
+set mouse=a
+" }}}
+
+" Folding {{{
+set foldenable
+set foldnestmax=10
+set foldlevelstart=10
+set foldmethod=indent
+" }}}
 
 " Key mappings {{{
 map , <leader>
@@ -265,6 +274,7 @@ let g:NERDTreeChDirMode=2
 let NERDTreeShowHidden=0
 let NERDTreeNaturalSort=1
 noremap tt :NERDTreeToggle<CR>
+noremap <F2> :VsplitVifm<CR>
 " }}}
 
 " Edit .vimrc {{{

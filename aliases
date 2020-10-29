@@ -2,6 +2,7 @@
 mkcd() { mkdir -p "$1" && cd "$1"; }
 alias s='e ~/Dropbox/scratch.md'
 alias eaa='e ~/.alacritty.yml'
+alias ei='e ~/.config/i3/config'
 
 #system
 alias e='vim'
