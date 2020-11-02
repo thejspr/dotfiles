@@ -28,6 +28,7 @@ else
   export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm
   export PATH="$PATH:/home/jesper/apps/swift/usr/bin"
+  xset r rate 220 40
 fi
 
 source ~/.z.sh/z.sh
