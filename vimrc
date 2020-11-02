@@ -286,7 +286,6 @@ set pastetoggle=<F3>
 " }}}
 
 " Ruby {{{
-" Rails.vim
 noremap <Leader>m :Emodel<space>
 noremap <Leader>c :Econtroller<space>
 " }}}

@@ -73,7 +73,7 @@ source ~/.zsh/zsh-peco-history/zsh-peco-history.zsh
 GPG_TTY=$(tty)
 export GPG_TTY
 
-if [[ ! -v TMUX ]]; then
-  tmux attach || sleep 2  && tmux
-fi
+# if [[ ! -v TMUX ]]; then
+#   tmux attach || (sleep 2 && tmux)
+# fi
 # zprof
