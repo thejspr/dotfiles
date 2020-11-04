@@ -194,8 +194,11 @@ assign [class="Todoist"] 2
 assign [class="Spotify"] 3
 
 # Statup applications
-exec alacritty
 exec google-chrome
+exec alacritty
 exec slack
 exec todoist
 exec spotify
+
+exec --no-startup-id dropbox start
+exec 'setxkbmap -layout gb'

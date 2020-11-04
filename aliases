@@ -3,6 +3,9 @@ mkcd() { mkdir -p "$1" && cd "$1"; }
 alias s='e ~/Dropbox/scratch.md'
 alias eaa='e ~/.alacritty.yml'
 alias ei='e ~/.i3/config'
+alias cp-head='git rev-parse --short HEAD | pbcopy'
+alias uk='setxkbmap -layout gb'
+alias dk='setxkbmap -layout dk'
 
 #system
 alias e='vim'
