@@ -17,6 +17,7 @@ let g:auto_save_events = ["InsertLeave", "TextChanged", "FocusLost"]
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 nmap gd <Plug>(coc-definition)
 nmap gr <Plug>(coc-references)
+Plug 'roxma/vim-paste-easy'
 " }}}
 
 " Search & Code navigation {{{
@@ -116,22 +117,14 @@ let test#ruby#rspec#executable = 'bundle exec rspec'
 " }}}
 
 " UI {{{
-Plug 'arcticicestudio/nord-vim'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'altercation/vim-colors-solarized'
-
+Plug 'nanotech/jellybeans.vim'
 Plug 'itchyny/lightline.vim'
-" let g:lightline = { 'colorscheme': 'solarized', }
-let g:gitgutter_map_keys = 0
-let g:gitgutter_enabled = 1
 " }}}
 
 " new stuff {{{
 " Plug 'jiangmiao/auto-pairs'
 " au Filetype markdown let b:AutoPairs = {"(": ")"}
 " let g:AutoPairsShortcutFastWrap = "<C-f>" "fixes issue with å
-Plug 'roxma/vim-paste-easy'
-Plug 'vifm/vifm.vim'
 " }}}
 
 call plug#end()
@@ -151,7 +144,7 @@ let g:coc_global_extensions = ['coc-solargraph']
 " endif
 " set termguicolors
 source ~/.colorscheme.vim
-colorscheme PaperColor
+colorscheme jellybeans
 
 syntax on
 " set nocursorcolumn
@@ -274,7 +267,6 @@ let g:NERDTreeChDirMode=2
 let NERDTreeShowHidden=0
 let NERDTreeNaturalSort=1
 noremap tt :NERDTreeToggle<CR>
-noremap <F2> :VsplitVifm<CR>
 " }}}
 
 " Edit .vimrc {{{
