@@ -9,10 +9,9 @@
   default = tracking
 [core]
   excludesfile = ~/.gitignore
-  editor = vim
   whitespace = trailing-space,space-before-tab
   ignorecase = false
-	attributesfile = /Users/jesper/code/dotfiles/gitattributes
+  attributesfile = /Users/jesper/code/dotfiles/gitattributes
 [alias]
   a      = add --all
   aa     = add -A
@@ -28,7 +27,7 @@
   d      = !clear && git diff
   dc     = diff --cached
   ds     = diff --stat
-  edit   = !git status -sb | tail +2 | grep -v '^ D' | awk '{print $2}' | xargs -o vim
+  edit   = !git status -sb | tail +2 | grep -v '^ D' | awk '{print $2}' | xargs -o $EDITOR
   gc     = gc --prune=now
   l      = log --oneline --decorate -16
   ll     = log --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(black)<%an>%Creset' \
@@ -78,4 +77,4 @@
 [merge]
   tool = vimdiff
 [pull]
-	ff = only
+  ff = only

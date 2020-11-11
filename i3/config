@@ -183,22 +183,32 @@ bar {
   separator_symbol "⁞"
 }
 
-# Take screenshot of area and save as png
-bindsym --release $mod+x exec --no-startup-id import /home/jesper/Downloads/latest-screenshot.png
+set $keyboard_layout "Keyboard Layout: (e) English, (d) Danish"
+mode $keyboard_layout {
+  bindsym d exec --no-startup-id setxkbmap dk, mode "default"
+  bindsym e exec --no-startup-id setxkbmap gb, mode "default"
+
+  # back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+Home mode $keyboard_layout
 
 # Application specific assignments
-assign [class="Google-chrome"] 1
+for_window [class="Spotify"] move to workspace $ws3
+
 assign [class="Alacritty"] 1
 assign [class="Slack"] 2
 assign [class="Todoist"] 2
-assign [class="Spotify"] 3
 
 # Statup applications
 exec google-chrome
 exec alacritty
-exec slack
 exec todoist
+exec slack
 exec spotify
 
+# Background apps
 exec --no-startup-id dropbox start
-exec 'setxkbmap -layout gb'
+exec --no-startup-id copyq
+exec --no-startup-id flameshot

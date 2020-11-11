@@ -117,6 +117,7 @@ let test#ruby#rspec#executable = 'bundle exec rspec'
 " }}}
 
 " UI {{{
+Plug 'altercation/vim-colors-solarized'
 Plug 'nanotech/jellybeans.vim'
 Plug 'itchyny/lightline.vim'
 " }}}
@@ -143,8 +144,9 @@ let g:coc_global_extensions = ['coc-solargraph']
 "   set t_Co=256
 " endif
 " set termguicolors
+let g:solarized_termcolors=256
 source ~/.colorscheme.vim
-colorscheme jellybeans
+colorscheme solarized
 
 syntax on
 " set nocursorcolumn
@@ -293,6 +295,8 @@ vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 cnoreabbrev pu PlugUpdate
 command! Es :e ~/Dropbox/scratch.md
+nnoremap <Space> @q
+nnoremap <leader>F :ALEFix<cr>
 " }}}
 
 " vim: foldmethod=marker:foldlevel=1:textwidth=100:colorcolumn=100

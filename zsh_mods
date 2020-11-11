@@ -1,7 +1,7 @@
 # zmodload zsh/zprof # uncomment for zsh startup testing `time  zsh -i -c exit`
 export HISTCONTROL=ignoreboth:erasedups
-export EDITOR='vim'
-export BUNDLER_EDITOR='vim'
+export EDITOR='nvim'
+export BUNDLER_EDITOR='nvim'
 export PATH="$PATH:`yarn global bin`"
 export PATH="$PATH:$PWD/bin:/home/jesper/.local/bin"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
@@ -29,6 +29,7 @@ else
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm
   export PATH="$PATH:/home/jesper/apps/swift/usr/bin"
   xset r rate 220 40
+  setxkbmap -layout gb
 fi
 
 source ~/.z.sh/z.sh
