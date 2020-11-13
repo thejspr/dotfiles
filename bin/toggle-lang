@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Changes keyboard layout from DK->GB or DK->GB
+
+set -e
+
+current=$(setxkbmap -query | grep layout | sed 's/layout: //')
+
+if [ $current = "dk" ]
+then
+  notify-send 'Changed keyboard layout to GB' -t 2000
+  setxkbmap gb
+else
+  notify-send 'Changed keyboard layout to DK' -t 2000
+  setxkbmap dk
+fi

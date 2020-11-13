@@ -194,6 +194,8 @@ mode $keyboard_layout {
 }
 bindsym $mod+Home mode $keyboard_layout
 
+bindsym $mod+F12 exec --no-startup-id toggle-lang
+
 # Application specific assignments
 for_window [class="Spotify"] move to workspace $ws3
 
