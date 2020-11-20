@@ -4,6 +4,6 @@
 
 filename = File.expand_path("~/Dropbox/notes/journal/#{Time.now.strftime('%Y-%m-%d')}.md")
 
-system "cp ~/Dropbox/notes/journal/.template #{filename}" unless File.exists?(filename)
+system "cp ~/Dropbox/notes/journal/.template #{filename}" unless File.exist?(filename)
 
 system "vim #{filename}"
