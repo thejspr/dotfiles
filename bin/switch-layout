@@ -8,9 +8,9 @@ current=$(setxkbmap -query | grep layout | sed 's/layout: //')
 
 if [ $current = "dk" ]
 then
-  notify-send 'Changed keyboard layout to GB' -t 2000
+  # notify-send 'Changed keyboard layout to GB' -t 2000
   setxkbmap gb
 else
-  notify-send 'Changed keyboard layout to DK' -t 2000
+  # notify-send 'Changed keyboard layout to DK' -t 2000
   setxkbmap dk
 fi

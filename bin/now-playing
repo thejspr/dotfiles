@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+# Present now playing info
+
+artist = `playerctl metadata artist`.strip
+track  = `playerctl metadata title`.strip
+
+playing = `playerctl -p spotify status`.delete("\n") == 'Playing'
+
+if playing
+  puts "#{artist} - #{track}".delete("\n")
+end

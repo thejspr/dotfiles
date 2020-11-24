@@ -120,6 +120,14 @@ let test#ruby#rspec#executable = 'bundle exec rspec'
 Plug 'altercation/vim-colors-solarized'
 Plug 'nanotech/jellybeans.vim'
 Plug 'itchyny/lightline.vim'
+let g:lightline = {
+      \ 'component_function': {
+      \   'filename': 'FullFilename',
+      \ },
+      \ }
+function! FullFilename()
+  return expand('%F')
+endfunction
 " }}}
 
 " new stuff {{{
@@ -167,7 +175,6 @@ set wildmode=full
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
-set statusline+=%f
 set number
 set splitbelow
 set splitright

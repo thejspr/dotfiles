@@ -19,8 +19,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 # Mediakeys
-bindsym XF86AudioRaiseVolume exec playerctl volume +10
-bindsym XF86AudioLowerVolume exec playerctl volume -10
+set $refresh_vol && pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +10% $refresh_vol
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -10% $refresh_vol
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
@@ -166,7 +167,7 @@ mode "$mode_system" {
 }
 bindsym $mod+Home mode "$mode_system"
 
-bindsym $mod+F12 exec --no-startup-id switch-layout
+bindsym $mod+F12 exec --no-startup-id switch-layout && pkill -SIGRTMIN+1 i3blocks
 
 # Fix handing of popups
 for_window [window_role="pop-up"] floating enable
