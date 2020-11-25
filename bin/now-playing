@@ -2,11 +2,15 @@
 
 # Present now playing info
 
-artist = `playerctl metadata artist`.strip
-track  = `playerctl metadata title`.strip
-
-playing = `playerctl -p spotify status`.delete("\n") == 'Playing'
-
-if playing
-  puts "#{artist} - #{track}".delete("\n")
+def playerctl_section(section)
+  `playerctl metadata #{section}`.delete("\n").strip
 end
+
+# Return nothing if not playing
+return unless `playerctl -p spotify status`.delete("\n") == 'Playing'
+
+artist = playerctl_section('artist')
+track = playerctl_section('title')
+artist = playerctl_section('album') if artist.empty? && !track.include?(artist)
+
+puts [artist, track].reject(&:empty?).join(' . ')
