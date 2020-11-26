@@ -5,8 +5,7 @@ alias eaa='e ~/.alacritty.yml'
 alias ei='e ~/.i3/config'
 alias eis='e ~/.i3blocks.conf'
 alias cp-head='git rev-parse --short HEAD | pbcopy'
-alias uk='setxkbmap -layout gb'
-alias dk='setxkbmap -layout dk'
+alias up-repo='git cl && bundle && migrate'
 
 #system
 alias e='$EDITOR'
