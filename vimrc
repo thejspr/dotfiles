@@ -42,9 +42,6 @@ vnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
-" Plug 'AndrewRadev/splitjoin.vim'
-" nmap sj :SplitjoinSplit<cr>
-" nmap sk :SplitjoinJoin<cr>
 Plug 'terryma/vim-multiple-cursors'
 " }}}
 
@@ -178,7 +175,6 @@ set laststatus=2
 set number
 set splitbelow
 set splitright
-set infercase
 
 set encoding=utf-8
 setglobal fileencoding=utf-8
@@ -237,6 +233,7 @@ vnoremap > >gv
 " Searching {{{
 set hlsearch
 set incsearch
+set ignorecase
 set smartcase
 set gdefault
 set showmatch

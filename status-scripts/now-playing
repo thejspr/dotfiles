@@ -11,6 +11,7 @@ return unless `playerctl -p spotify status`.delete("\n") == 'Playing'
 
 artist = playerctl_section('artist')
 track = playerctl_section('title')
-artist = playerctl_section('album') if artist.empty? && !track.include?(artist)
+album = playerctl_section('album')
+artist = album if artist.empty? && !track.include?(album)
 
-puts [artist, track].reject(&:empty?).join(' . ')
+puts [artist, track].reject(&:empty?).join(' - ')
