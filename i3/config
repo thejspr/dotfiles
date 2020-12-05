@@ -193,4 +193,3 @@ exec --no-startup-id copyq
 exec --no-startup-id flameshot
 exec --no-startup-id playerctld daemon
 exec --no-startup-id redshift
-exec --no-startup-id setxkbmap -layout gb
