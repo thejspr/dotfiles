@@ -1,6 +1,6 @@
 font:
   size: 12
-  xnormal:
+  normal:
     family: 'Jetbrains Mono'
     style: 'Regular'
 
@@ -12,7 +12,7 @@ selection:
 
 # Base16 Solarized Dark 256 - alacritty color config
 # Ethan Schoonover (modified by aramisgithub)
-xcolors:
+colors:
   # Default colors
   primary:
     background: '0x002b36'
@@ -55,7 +55,7 @@ xcolors:
 
 # Base16 Solarized Light - alacritty color config
 # Ethan Schoonover (modified by aramisgithub)
-colors:
+xcolors:
   # Default colors
   primary:
     background: '0xfdf6e3'

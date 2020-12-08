@@ -113,9 +113,8 @@ nmap <silent> <leader>q :VimuxRunLastCommand<CR>
 let test#ruby#rspec#executable = 'bundle exec rspec'
 " }}}
 
-" UI {{{
+" UI {
 Plug 'altercation/vim-colors-solarized'
-Plug 'nanotech/jellybeans.vim'
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
       \ 'component_function': {

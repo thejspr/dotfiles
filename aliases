@@ -1,5 +1,4 @@
 #new
-mkcd() { mkdir -p "$1" && cd "$1"; }
 alias s='e ~/Dropbox/scratch.md'
 alias eaa='e ~/.alacritty.yml'
 alias ei='e ~/.i3/config'
@@ -99,7 +98,7 @@ alias gp='git push'
 alias gpf='FORCE=1 git push --force-with-lease'
 alias gpr='gpc && hub browse'
 alias gr='git r'
-alias gcl='git pull && git branch --merged master | grep -vE "(master|production|release|develop)" | xargs git branch -d'
+alias gcl='git pull && git branch --merged master | grep -vE "(master)" | xargs git branch -d'
 
 #msc
 alias cd..='cd ..'
