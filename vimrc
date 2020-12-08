@@ -144,13 +144,9 @@ let g:coc_global_extensions = ['coc-solargraph']
 " }}}
 
 " UI {{{
-" if !has('gui_running')
-"   set t_Co=256
-" endif
-" set termguicolors
-let g:solarized_termcolors=256
 source ~/.colorscheme.vim
 colorscheme solarized
+call togglebg#map("<F5>")
 
 syntax on
 " set nocursorcolumn
