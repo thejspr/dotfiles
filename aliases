@@ -96,9 +96,6 @@ alias gg='git grep'
 alias gl='git l'
 alias gp='git push'
 alias gpf='FORCE=1 git push --force-with-lease'
-alias gpr='gpc && hub browse'
-alias gr='git r'
-alias gcl='git pull && git branch --merged master | grep -vE "(master)" | xargs git branch -d'
 
 #msc
 alias cd..='cd ..'

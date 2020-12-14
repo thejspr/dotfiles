@@ -14,8 +14,7 @@ bar {
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
+# NetworkManager
 exec --no-startup-id nm-applet
 
 # Mediakeys
@@ -35,9 +34,9 @@ bindsym $mod+Shift+q kill
 
 # start program launcher
 # bindsym $mod+d exec dmenu_run
-bindsym $mod+shift+d exec --no-startup-id i3-dmenu-desktop
+# bindsym $mod+shift+d exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+d exec --no-startup-id rofi -show run
-# bindsym $mod+Shift+d exec rofimoji
+bindsym $mod+shift+d exec --no-startup-id locate -e -i --regex "/home/$USER/[^\.]+" | rofi -dmenu -i | xargs -r -0 xdg-open
 # bindsym $mod+Ctrl+d exec rofi -show calc -modi calc -no-show-match -no-sort
 
 # use these keys for focus, movement, and resize directions when reaching for
@@ -137,6 +136,11 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
 
 bindsym $mod+F12 exec --no-startup-id switch-layout && pkill -SIGRTMIN+1 i3blocks
 
