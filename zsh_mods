@@ -9,7 +9,6 @@ export TERM=screen-256color
 
 autoload zmv
 bindkey -e
-# compdef g=git
 fpath=(/usr/local/share/zsh-completions $fpath)
 unalias gbr
 
@@ -21,13 +20,10 @@ if [[ -v MAC ]]; then
 
   export NVM_DIR="$HOME/.nvm"
   [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh" --no-use  # This loads nvm
-  cd ~/code/dotfiles && git pull
-  cd ~
 else
   export NVM_DIR="$HOME/.nvm"
   . "$NVM_DIR/nvm.sh" --no-use # This loads nvm
   xset r rate 220 40
-  setxkbmap -layout gb
 fi
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'

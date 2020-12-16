@@ -208,6 +208,7 @@ set foldenable
 set foldnestmax=10
 set foldlevelstart=10
 set foldmethod=indent
+map <leader>1 :set foldlevel=1<cr>
 " }}}
 
 " Key mappings {{{
