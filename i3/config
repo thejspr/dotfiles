@@ -1,12 +1,12 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 set $mod Mod4
 
-font pango:DejaVu Sans Mono 10
+font pango:DejaVu Sans Mono 12
 
 bar {
   status_command SCRIPT_DIR=~/code/dotfiles/status-scripts i3blocks
   position top
-  font pango:DejaVu Sans Mono 10
+  font pango:DejaVu Sans Mono 12
   separator_symbol "⁞"
 }
 
