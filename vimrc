@@ -11,7 +11,7 @@ Plug 'ervandew/supertab'
 Plug 'vim-scripts/kwbdi.vim'
 Plug 'tpope/vim-obsession' " sessions mgmt
 Plug '907th/vim-auto-save'
-let g:auto_save = 1
+let g:auto_save = 0
 let g:auto_save_silent = 1
 let g:auto_save_events = ["InsertLeave", "TextChanged", "FocusLost"]
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -52,9 +52,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb' " Gbrowse handlers for github
-Plug 'airblade/vim-gitgutter'
-let g:gitgutter_map_keys = 0
-let g:gitgutter_enabled = 1
+Plug 'mhinz/vim-signify'
 " }}}
 
 " Ruby {{{
@@ -79,9 +77,6 @@ Plug 'sickill/vim-pasta'
 Plug 'plasticboy/vim-markdown'
 Plug 'tpope/vim-ragtag'
 let g:ragtag_global_maps = 1
-" Plug 'ludovicchabant/vim-gutentags'
-" let g:gutentags_trace = 0
-" Plug 'sheerun/vim-polyglot'
 Plug 'pangloss/vim-javascript'
 
 Plug 'mattn/emmet-vim'
@@ -103,14 +98,14 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 let g:VimuxOrientation = "h"
 let g:VimuxHeight = "45"
-nnoremap <leader><space> :VimuxPromptCommand<cr>
+nmap <leader><space> :VimuxPromptCommand<cr>
+nmap <silent> <leader>q :VimuxRunLastCommand<CR>
 Plug 'janko-m/vim-test'
 let test#strategy = "vimux"
 nmap <silent> <leader>x :TestNearest<CR>
 nmap <silent> <leader>X :TestFile<CR>
 nmap <silent> <leader>A :TestSuite<CR>
-nmap <silent> <leader>q :VimuxRunLastCommand<CR>
-let test#ruby#rspec#executable = 'bundle exec rspec'
+" let test#ruby#rspec#executable = 'bundle exec rspec'
 " }}}
 
 " UI {
@@ -127,9 +122,6 @@ endfunction
 " }}}
 
 " new stuff {{{
-" Plug 'jiangmiao/auto-pairs'
-" au Filetype markdown let b:AutoPairs = {"(": ")"}
-" let g:AutoPairsShortcutFastWrap = "<C-f>" "fixes issue with å
 " }}}
 
 call plug#end()
@@ -137,7 +129,7 @@ filetype plugin indent on
 " }}}
 
 " CoC {{{
-set updatetime=300
+set updatetime=100
 set signcolumn=yes
 set shortmess+=c
 let g:coc_global_extensions = ['coc-solargraph']
@@ -149,20 +141,17 @@ colorscheme solarized
 call togglebg#map("<F5>")
 
 syntax on
-" set nocursorcolumn
-" set nocursorline
 set colorcolumn=80
 set synmaxcol=140
 set title
 set ffs=unix,mac,dos
 set scrolloff=25
-set autoindent
+" set autoindent
 set smartindent
 set showmode
 set modeline
 set showcmd
 set hidden
-set wildmenu
 set wildmode=full
 set ruler
 set backspace=indent,eol,start
@@ -209,6 +198,7 @@ set foldnestmax=10
 set foldlevelstart=10
 set foldmethod=indent
 map <leader>1 :set foldlevel=1<cr>
+map fa :set foldlevel=20<cr>
 " }}}
 
 " Key mappings {{{
@@ -273,6 +263,8 @@ noremap tt :NERDTreeToggle<CR>
 
 " Edit .vimrc {{{
 command! Ev :e ~/.vimrc
+autocmd bufwritepost .vimrc source $MYVIMRC
+autocmd bufread .vimrc set foldmethod=marker
 " }}}
 
 " Function Keys {{{
@@ -288,9 +280,7 @@ noremap <Leader>c :Econtroller<space>
 inoremap jj <esc>
 inoremap jk <esc>
 map <c-x> <Plug>Kwbd<CR>
-au BufReadPost *.html set formatoptions-=t
-noremap ff :set foldlevel=1<cr>
-noremap fa :set foldlevel=20<cr>
+au BufReadPost *.html* set formatoptions-=t
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 cnoreabbrev pu PlugUpdate
@@ -298,5 +288,3 @@ command! Es :e ~/Dropbox/scratch.md
 nnoremap <Space> @q
 nnoremap <leader>F :ALEFix<cr>
 " }}}
-
-" vim: foldmethod=marker:foldlevel=1:textwidth=100:colorcolumn=100
