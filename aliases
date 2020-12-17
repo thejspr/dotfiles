@@ -99,7 +99,9 @@ alias gpf='FORCE=1 git push --force-with-lease'
 
 #msc
 alias cd..='cd ..'
-alias ll='ls -l'
+alias ls='exa --group-directories-first'
+alias ll='exa -l --group-directories-first'
+alias la='exa -a --group-directories-first'
 
 #system and files editing
 alias ea='e ~/.aliases'
