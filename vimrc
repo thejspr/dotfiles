@@ -11,7 +11,7 @@ Plug 'ervandew/supertab'
 Plug 'vim-scripts/kwbdi.vim'
 Plug 'tpope/vim-obsession' " sessions mgmt
 Plug '907th/vim-auto-save'
-let g:auto_save = 0
+let g:auto_save = 1
 let g:auto_save_silent = 1
 let g:auto_save_events = ["InsertLeave", "TextChanged", "FocusLost"]
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -146,7 +146,7 @@ set synmaxcol=140
 set title
 set ffs=unix,mac,dos
 set scrolloff=25
-" set autoindent
+set autoindent
 set smartindent
 set showmode
 set modeline
@@ -197,8 +197,8 @@ set foldenable
 set foldnestmax=10
 set foldlevelstart=10
 set foldmethod=indent
-map <leader>1 :set foldlevel=1<cr>
-map fa :set foldlevel=20<cr>
+map f1 :set foldlevel=1<cr>
+map fa :set foldlevel=99<cr>
 " }}}
 
 " Key mappings {{{
