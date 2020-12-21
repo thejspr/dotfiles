@@ -108,7 +108,7 @@ nmap <silent> <leader>A :TestSuite<CR>
 " let test#ruby#rspec#executable = 'bundle exec rspec'
 " }}}
 
-" UI {
+" UI {{{
 Plug 'altercation/vim-colors-solarized'
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
@@ -198,6 +198,7 @@ set foldnestmax=10
 set foldlevelstart=10
 set foldmethod=indent
 map f1 :set foldlevel=1<cr>
+map f2 :set foldlevel=2<cr>
 map fa :set foldlevel=99<cr>
 " }}}
 
@@ -263,8 +264,11 @@ noremap tt :NERDTreeToggle<CR>
 
 " Edit .vimrc {{{
 command! Ev :e ~/.vimrc
-autocmd bufwritepost .vimrc source $MYVIMRC
-autocmd bufread .vimrc set foldmethod=marker
+augroup vimrc
+  autocmd!
+  au bufwritepost .vimrc source $MYVIMRC
+  au bufread .vimrc set foldmethod=marker
+augroup END
 " }}}
 
 " Function Keys {{{
