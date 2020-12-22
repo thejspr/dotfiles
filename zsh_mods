@@ -24,6 +24,8 @@ else
   export NVM_DIR="$HOME/.nvm"
   . "$NVM_DIR/nvm.sh" --no-use # This loads nvm
   xset r rate 220 40
+  setxkbmap -option "caps:escape"
+  setxkbmap gb
 fi
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
