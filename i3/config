@@ -180,7 +180,7 @@ assign [class="Todoist"] 2
 exec google-chrome
 exec alacritty
 exec todoist
-exec slack
+# exec slack
 exec spotify
 
 # Background apps
