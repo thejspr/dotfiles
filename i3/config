@@ -164,8 +164,6 @@ bindsym $mod+Home mode "$mode_system"
 for_window [instance="Alacritty" title="My Calculator"] floating enable
 bindsym $mod+c exec alacritty -t "My Calculator" -e calc
 
-##### handle windows
-
 # Fix handing of popups
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
@@ -175,12 +173,11 @@ for_window [class="Spotify"] move to workspace $ws3
 assign [class="Slack"] 2
 assign [class="Todoist"] 2
 
-##### Startup applications
-
+# Startup applications
 exec google-chrome
 exec alacritty
 exec todoist
-# exec slack
+exec slack
 exec spotify
 
 # Background apps
@@ -191,4 +188,4 @@ exec --no-startup-id copyq
 exec --no-startup-id flameshot
 exec --no-startup-id playerctld daemon
 exec --no-startup-id redshift-gtk
-exec --no-startup-id feh --randomize --bg-fill ~/Files/wallpapers/*
+exec --no-startup-id feh --randomize --bg-fill ~/Files/wallpapers/3440x1440/*
