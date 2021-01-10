@@ -12,7 +12,7 @@
 set -e
 
 readonly NOTES_DIRECTORY="${NOTES_DIRECTORY:-"${HOME}/Dropbox/notes/journal"}"
-readonly NOTES_FILE="$(date +%Y-%m-%d).md"
+readonly NOTES_FILE="$(date +%Y-%m).md"
 readonly NOTES_PATH="${NOTES_DIRECTORY}/${NOTES_FILE}"
 
 if [ ${#} -eq 0 ]; then

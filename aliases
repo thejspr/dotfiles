@@ -16,8 +16,7 @@ alias ff='find . -iname'
 alias tma='tmux attach'
 
 #ruby
-alias rb='rbenv'
-alias rv='rbenv version'
+alias rv='ruby --version'
 alias be='bundle exec'
 
 if [[ -v MAC ]]; then
