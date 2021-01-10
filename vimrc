@@ -46,8 +46,11 @@ Plug 'terryma/vim-multiple-cursors'
 " }}}
 
 " File management & Git {{{
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+" Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-vinegar'
+let g:netrw_liststyle=3
+let g:netrw_browse_split = 1
 
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
@@ -75,8 +78,8 @@ Plug 'sickill/vim-pasta'
 
 " Msc languages {{{
 Plug 'plasticboy/vim-markdown'
-Plug 'tpope/vim-ragtag'
-let g:ragtag_global_maps = 1
+" Plug 'tpope/vim-ragtag'
+" let g:ragtag_global_maps = 1
 Plug 'pangloss/vim-javascript'
 
 Plug 'mattn/emmet-vim'
@@ -119,9 +122,6 @@ let g:lightline = {
 function! FullFilename()
   return expand('%F')
 endfunction
-" }}}
-
-" new stuff {{{
 " }}}
 
 call plug#end()
@@ -197,17 +197,17 @@ set foldenable
 set foldnestmax=10
 set foldlevelstart=10
 set foldmethod=indent
-map f1 :set foldlevel=1<cr>
-map f2 :set foldlevel=2<cr>
-map fa :set foldlevel=99<cr>
+nmap f1 :set foldlevel=1<cr>
+nmap f2 :set foldlevel=2<cr>
+nmap fa :set foldlevel=99<cr>
 " }}}
 
 " Key mappings {{{
 map , <leader>
 
 " Buffer management
-noremap <tab> :bn<CR>
-noremap <S-tab> :bp<CR>
+nnoremap <tab> :bn<CR>
+nnoremap <S-tab> :bp<CR>
 "}}}
 
 " Msc annoyances {{{
@@ -229,9 +229,9 @@ set wildignore+=node_modules/*
 set wildignore+=app/assets/images/**/*
 set wildignore+=vendor/cache/**/*
 
-noremap <leader>, :noh<cr>
+nnoremap <leader>, :noh<cr>
 nnoremap <space> /
-noremap <leader>f :%s///<left><left>
+nnoremap <leader>f :%s///<left><left>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 autocmd BufReadPost *
@@ -252,14 +252,14 @@ au BufRead,BufNewFile COMMIT_EDITMSG setlocal ft=diff spell!
 "}}}
 
 " Nerdtree {{{
-let g:NERDTreeQuitOnOpen=0
-let g:NERDTreeShowBookmarks = 0
-let g:NERDTreeWinSize = 24
-let g:NERDTreeAutoDeleteBuffer=1
-let g:NERDTreeChDirMode=2
-let NERDTreeShowHidden=0
-let NERDTreeNaturalSort=1
-noremap tt :NERDTreeToggle<CR>
+" let g:NERDTreeQuitOnOpen=0
+" let g:NERDTreeShowBookmarks = 0
+" let g:NERDTreeWinSize = 24
+" let g:NERDTreeAutoDeleteBuffer=1
+" let g:NERDTreeChDirMode=2
+" let NERDTreeShowHidden=0
+" let NERDTreeNaturalSort=1
+" noremap tt :NERDTreeToggle<CR>
 " }}}
 
 " Edit .vimrc {{{
