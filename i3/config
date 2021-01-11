@@ -122,7 +122,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+# bindsym $mod+Return exec i3-sensible-terminal
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -175,7 +175,7 @@ assign [class="Todoist"] 2
 
 # Startup applications
 exec google-chrome
-exec alacritty
+exec alacritty --command tmux
 exec todoist
 exec slack
 exec spotify
