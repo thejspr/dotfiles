@@ -1,0 +1,4 @@
+keycode 108 = Mode_switch
+keycode 34 = bracketleft braceleft aring Aring
+keycode 47 = semicolon colon ae AE
+keycode 48 = apostrophe at oslash Oslash
