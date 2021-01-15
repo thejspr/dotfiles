@@ -3,13 +3,13 @@ set $mod Mod4
 
 font pango:Lato Mono 12
 
-bar {
-  status_command SCRIPT_DIR=~/code/dotfiles/status-scripts i3blocks
-  position top
-  # font pango:DejaVu Sans Mono 12
-  font pango:Lato Mono 12
-  separator_symbol "·"
-}
+# bar {
+#   status_command SCRIPT_DIR=~/code/dotfiles/status-scripts i3blocks
+#   position top
+#   font pango:DejaVu Sans Mono 12
+#   font pango:Lato Mono 12
+#   separator_symbol "·"
+# }
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
@@ -181,6 +181,7 @@ exec slack
 exec spotify
 
 # Background apps
+exec --no-startup-id ~/code/dotfiles/bin/polybar-launch
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id dropbox start
