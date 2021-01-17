@@ -46,11 +46,8 @@ Plug 'terryma/vim-multiple-cursors'
 " }}}
 
 " File management & Git {{{
-" Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-vinegar'
-let g:netrw_liststyle=3
-let g:netrw_browse_split = 1
 
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
@@ -252,14 +249,14 @@ au BufRead,BufNewFile COMMIT_EDITMSG setlocal ft=diff spell!
 "}}}
 
 " Nerdtree {{{
-" let g:NERDTreeQuitOnOpen=0
-" let g:NERDTreeShowBookmarks = 0
-" let g:NERDTreeWinSize = 24
-" let g:NERDTreeAutoDeleteBuffer=1
-" let g:NERDTreeChDirMode=2
-" let NERDTreeShowHidden=0
-" let NERDTreeNaturalSort=1
-" noremap tt :NERDTreeToggle<CR>
+let g:NERDTreeQuitOnOpen=0
+let g:NERDTreeShowBookmarks = 0
+let g:NERDTreeWinSize = 24
+let g:NERDTreeAutoDeleteBuffer=1
+let g:NERDTreeChDirMode=2
+let NERDTreeShowHidden=0
+let NERDTreeNaturalSort=1
+noremap tt :NERDTreeToggle<CR>
 " }}}
 
 " Edit .vimrc {{{
