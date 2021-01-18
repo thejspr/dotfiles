@@ -4,6 +4,12 @@ font:
     family: 'Jetbrains Mono'
     style: 'Regular'
 
+window:
+  dynamic_padding: true
+  # padding:
+  #   x: 2
+  #   y: 2
+
 bell:
   duration: 0
 

@@ -164,6 +164,8 @@ bindsym $mod+Home mode "$mode_system"
 for_window [instance="Alacritty" title="My Calculator"] floating enable
 bindsym $mod+c exec alacritty -t "My Calculator" -e calc
 
+bindsym $mod+g exec echo "" | rofi -dmenu -p "Search:" | xargs -I{} xdg-open https://www.google.dk/search?q={}
+
 # Fix handing of popups
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
