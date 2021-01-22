@@ -143,6 +143,7 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+F12 exec --no-startup-id switch-layout && pkill -SIGRTMIN+1 i3blocks
 
 bindsym Print exec flameshot gui
+bindsym $mod+x exec flameshot gui
 
 # Shutdown, reboot and lock
 set $Locker i3lock && sleep 1

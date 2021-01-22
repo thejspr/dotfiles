@@ -5,8 +5,6 @@
 -- SELECT * FROM<enter>. %R shows what type of input it expects.
 \set PROMPT2 '... > '
 
-\timing
-
 \x auto
 \set VERBOSITY verbose
 \set HISTFILE ~/.psql_history- :DBNAME

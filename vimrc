@@ -283,6 +283,5 @@ au BufReadPost *.html* set formatoptions-=t
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 command! Es :e ~/Dropbox/scratch.md
-nnoremap <Space> @q
 nnoremap <leader>F :ALEFix<cr>
 " }}}
