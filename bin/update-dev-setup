@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-# Neovim
-brew upgrade neovim
-gem install neovim
-pip3 install neovim --upgrade
-npm install -g neovim

@@ -18,6 +18,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 nmap gd <Plug>(coc-definition)
 nmap gr <Plug>(coc-references)
 Plug 'roxma/vim-paste-easy'
+Plug 'vimwiki/vimwiki'
+let g:vimwiki_list = [{'path': '~/Dropbox/notes/', 'syntax': 'markdown',
+      \ 'ext': '.md', 'diary_rel_path': 'journal/'}]
+let g:vimwiki_global_ext = 0
 " }}}
 
 " Search & Code navigation {{{
@@ -46,7 +50,7 @@ Plug 'terryma/vim-multiple-cursors'
 " }}}
 
 " File management & Git {{{
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+" Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-eunuch'
 
 Plug 'tpope/vim-git'
@@ -71,6 +75,7 @@ let g:ale_fixers = {
 " Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
 Plug 'sickill/vim-pasta'
+Plug 'tpope/vim-haml'
 "}}}
 
 " Msc languages {{{
@@ -119,6 +124,10 @@ let g:lightline = {
 function! FullFilename()
   return expand('%F')
 endfunction
+" }}}
+
+" New {{{
+Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
 " }}}
 
 call plug#end()
@@ -249,14 +258,14 @@ au BufRead,BufNewFile COMMIT_EDITMSG setlocal ft=diff spell!
 "}}}
 
 " Nerdtree {{{
-let g:NERDTreeQuitOnOpen=0
-let g:NERDTreeShowBookmarks = 0
-let g:NERDTreeWinSize = 24
-let g:NERDTreeAutoDeleteBuffer=1
-let g:NERDTreeChDirMode=2
-let NERDTreeShowHidden=0
-let NERDTreeNaturalSort=1
-noremap tt :NERDTreeToggle<CR>
+" let g:NERDTreeQuitOnOpen=0
+" let g:NERDTreeShowBookmarks = 0
+" let g:NERDTreeWinSize = 24
+" let g:NERDTreeAutoDeleteBuffer=1
+" let g:NERDTreeChDirMode=2
+" let NERDTreeShowHidden=0
+" let NERDTreeNaturalSort=1
+noremap tt :CHADopen<CR>
 " }}}
 
 " Edit .vimrc {{{
@@ -284,4 +293,8 @@ vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 command! Es :e ~/Dropbox/scratch.md
 nnoremap <leader>F :ALEFix<cr>
+
+autocmd TermOpen * startinsert
+command! -nargs=* T split | resize 25 | terminal <args>
+nnoremap <leader>c :T<cr>
 " }}}
