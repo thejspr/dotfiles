@@ -127,7 +127,8 @@ endfunction
 " }}}
 
 " New {{{
-Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
+Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
+noremap tt :CHADopen<CR>
 " }}}
 
 call plug#end()
@@ -265,7 +266,6 @@ au BufRead,BufNewFile COMMIT_EDITMSG setlocal ft=diff spell!
 " let g:NERDTreeChDirMode=2
 " let NERDTreeShowHidden=0
 " let NERDTreeNaturalSort=1
-noremap tt :CHADopen<CR>
 " }}}
 
 " Edit .vimrc {{{
