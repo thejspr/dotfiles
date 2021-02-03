@@ -24,6 +24,13 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
+bindsym $mod+Up exec pactl set-sink-volume @DEFAULT_SINK@ +10% $refresh_vol
+bindsym $mod+Down exec pactl set-sink-volume @DEFAULT_SINK@ -10% $refresh_vol
+bindsym $mod+m exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle $refresh_vol
+bindsym $mod+Return exec playerctl play-pause
+bindsym $mod+Right exec playerctl next
+bindsym $mod+Left exec playerctl previous
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
