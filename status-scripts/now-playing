@@ -14,6 +14,4 @@ track = playerctl_section('title')
 album = playerctl_section('album')
 artist = album if artist.empty? && !track.include?(album)
 
-return if artist == 'No players found'
-
 puts [artist, track].reject(&:empty?).join(' - ')

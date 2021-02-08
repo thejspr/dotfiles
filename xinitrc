@@ -1,1 +1,1 @@
-setxkbmap -layout gb
+setxkbmap -layout us

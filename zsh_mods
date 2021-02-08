@@ -22,7 +22,7 @@ if [[ -v MAC ]]; then
 else
   xset r rate 220 40
   setxkbmap -option "caps:escape"
-  setxkbmap gb
+  setxkbmap us
   xmodmap ~/.Xmodmap
 fi
 

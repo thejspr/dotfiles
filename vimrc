@@ -67,8 +67,10 @@ let g:ale_linters = {
       \}
 
 let g:ale_fixers = {
-      \    'ruby': ['rubocop'],
+      \ 'ruby': ['rubocop'],
+      \ 'sql': ['pgformatter']
       \}
+let b:ale_sql_pgformatter_options = '--spaces 2 --wrap-after 10'
 " let g:ale_fix_on_save = 1
 
 " Plug 'vim-ruby/vim-ruby'
@@ -256,6 +258,7 @@ noremap <leader>sp [s
 noremap <leader>sa zg
 noremap <leader>sd z=
 au BufRead,BufNewFile COMMIT_EDITMSG setlocal ft=diff spell!
+au BufRead,BufNewFile *.md setlocal spell!
 "}}}
 
 " Nerdtree {{{
