@@ -258,7 +258,7 @@ noremap <leader>sp [s
 noremap <leader>sa zg
 noremap <leader>sd z=
 au BufRead,BufNewFile COMMIT_EDITMSG setlocal ft=diff spell!
-au BufRead,BufNewFile *.md setlocal spell!
+" au BufRead,BufNewFile *.md setlocal spell!
 "}}}
 
 " Nerdtree {{{
