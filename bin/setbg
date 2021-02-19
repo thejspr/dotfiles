@@ -7,3 +7,5 @@ if [ "$1" == "dark" ]; then
 else
   echo "set background=light" > "$HOME/.colorscheme.vim"
 fi
+
+$EDITOR ~/code/dotfiles/alacritty.yml +$

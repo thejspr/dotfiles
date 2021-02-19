@@ -39,6 +39,7 @@ bindsym $mod+Shift+q kill
 
 # start program launcher
 bindsym $mod+d exec --no-startup-id rofi -show run
+# bindsym $mod+Shift+d exec --no-startup-id rofi -dmenu -i -p fzf ~/
 
 # define directional keys
 set $up k
@@ -150,13 +151,6 @@ for_window [class="Spotify"] move to workspace $ws3
 assign [class="Slack"] 2
 assign [class="Todoist"] 2
 
-# Startup applications
-exec google-chrome
-exec alacritty --command tmux
-exec todoist
-exec slack
-exec spotify
-
 # Background apps
 exec --no-startup-id ~/code/dotfiles/bin/polybar-launch
 exec --no-startup-id nm-applet
@@ -168,3 +162,10 @@ exec --no-startup-id flameshot
 exec --no-startup-id playerctld daemon
 exec --no-startup-id redshift-gtk
 exec --no-startup-id feh --randomize --bg-fill ~/Files/wallpapers/3440x1440/*
+
+# Startup applications
+exec alacritty --command tmux
+exec todoist
+exec spotify
+exec sleep 5 && google-chrome
+exec sleep 10 && slack

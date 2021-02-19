@@ -1,14 +1,11 @@
 font:
   size: 13
   normal:
-    family: 'Jetbrains Mono'
+    family: 'JetBrainsMono NF'
     style: 'Regular'
 
 window:
   dynamic_padding: true
-  # padding:
-  #   x: 2
-  #   y: 2
 
 bell:
   duration: 0
@@ -82,4 +79,5 @@ schemes:
       cyan:    '#93a1a1' # base1
       white:   '#fdf6e3' # base3
 
-colors: *light
+colors: *dark
+# colors: *light

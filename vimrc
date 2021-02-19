@@ -133,7 +133,9 @@ Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 noremap tt :CHADopen<CR>
 let g:chadtree_settings = { 'view': { 'width': 30 } }
 Plug 'Yggdroot/indentLine'
-let g:indentLine_color_term = 253
+let g:indentLine_char = '┊'
+" let g:indentLine_color_term = 253
+let g:indentLine_color_term = 238
 " }}}
 
 call plug#end()
