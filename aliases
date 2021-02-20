@@ -69,7 +69,8 @@ alias aspecs='fspecs && specs'
 alias fails='rspec --only-failures'
 
 #conviniences
-alias -g G='|rg --color'
+# alias -g G='|grep --color'
+alias -g G='|rg'
 
 #git
 unalias g

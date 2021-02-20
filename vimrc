@@ -50,7 +50,7 @@ Plug 'terryma/vim-multiple-cursors'
 " }}}
 
 " File management & Git {{{
-" Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-eunuch'
 
 Plug 'tpope/vim-git'
@@ -129,12 +129,11 @@ endfunction
 " }}}
 
 " New {{{
-Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
-noremap tt :CHADopen<CR>
-let g:chadtree_settings = { 'view': { 'width': 30 } }
+Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Yggdroot/indentLine'
 let g:indentLine_char = '┊'
-" let g:indentLine_color_term = 253
+let g:indentLine_bufNameExclude = ['NERD_tree.*', 'fzf']
+let g:indentLine_color_term = 253
 let g:indentLine_color_term = 238
 " }}}
 
@@ -274,6 +273,9 @@ au BufRead,BufNewFile COMMIT_EDITMSG setlocal ft=diff spell!
 " let g:NERDTreeChDirMode=2
 " let NERDTreeShowHidden=0
 " let NERDTreeNaturalSort=1
+" noremap tt :NERDTreeToggle<CR>
+" Requires: :CocInstall coc-explorer
+noremap tt :CocCommand explorer<CR>
 " }}}
 
 " Edit .vimrc {{{

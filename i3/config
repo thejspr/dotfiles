@@ -133,7 +133,7 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+x exec flameshot gui
 
 # file-browser
-bindsym $mod+n exec nautilus
+bindsym $mod+n exec nautilus ~/Downloads
 
 # Show a floating calc terminal with Mod+c
 for_window [instance="Alacritty" title="My Calculator"] floating enable
