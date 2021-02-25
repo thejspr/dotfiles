@@ -168,4 +168,4 @@ exec alacritty --command tmux
 exec todoist
 exec spotify
 exec sleep 5 && google-chrome
-exec sleep 10 && slack
+exec weekday && sleep 30 && slack

@@ -134,7 +134,7 @@ Plug 'Yggdroot/indentLine'
 let g:indentLine_char = '┊'
 let g:indentLine_bufNameExclude = ['NERD_tree.*', 'fzf']
 let g:indentLine_color_term = 253
-let g:indentLine_color_term = 238
+" let g:indentLine_color_term = 238
 " }}}
 
 call plug#end()

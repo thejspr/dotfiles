@@ -9,6 +9,7 @@ alias ra='ranger'
 function ew() {
   $EDITOR `which "$1"`
 }
+alias ww='e +VimwikiIndex'
 
 #system
 alias e='$EDITOR'
@@ -73,14 +74,15 @@ alias fails='rspec --only-failures'
 alias -g G='|rg'
 
 #git
-unalias g
-g() {
-  if [[ $# -eq 0 ]]; then
-    command hub status -sb
-  else
-    command hub "$@";
-  fi
-}
+# unalias g
+# g() {
+#   if [[ $# -eq 0 ]]; then
+#     command hub status -sb
+#   else
+#     command hub "$@";
+#   fi
+# }
+alias gs='git status -sb'
 unalias gcam
 gcam() {
   command git add -A;

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+
+if [[ $(date +%u) -lt 6 ]]; then
+  exit 0
+else
+  exit 1
+fi

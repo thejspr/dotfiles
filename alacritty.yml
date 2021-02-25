@@ -79,5 +79,5 @@ schemes:
       cyan:    '#93a1a1' # base1
       white:   '#fdf6e3' # base3
 
-colors: *dark
-# colors: *light
+# colors: *dark
+colors: *light
