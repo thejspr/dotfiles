@@ -133,8 +133,6 @@ Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Yggdroot/indentLine'
 let g:indentLine_char = '┊'
 let g:indentLine_bufNameExclude = ['NERD_tree.*', 'fzf']
-let g:indentLine_color_term = 253
-" let g:indentLine_color_term = 238
 " }}}
 
 call plug#end()
@@ -152,6 +150,12 @@ let g:coc_global_extensions = ['coc-solargraph']
 source ~/.colorscheme.vim
 colorscheme solarized
 call togglebg#map("<F5>")
+
+if &background == 'dark'
+  let g:indentLine_color_term = 238
+else
+  let g:indentLine_color_term = 253
+endif
 
 syntax on
 set colorcolumn=80
