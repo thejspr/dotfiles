@@ -24,14 +24,14 @@ else
   setxkbmap -option "caps:escape"
   setxkbmap us
   xmodmap ~/.Xmodmap
+  export NODEJS_CHECK_SIGNATURES=no
+  . $HOME/.asdf/asdf.sh
 fi
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 source ~/.z.sh/z.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export NODEJS_CHECK_SIGNATURES=no
-. $HOME/.asdf/asdf.sh
 fpath=(${ASDF_DIR}/completions $fpath)
 autoload -Uz compinit
 compinit
