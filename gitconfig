@@ -23,7 +23,7 @@
   c      = commit -v
   ca     = !git add -A && git commit -v
   co     = checkout
-  ci     = !hub ci-status -v | awk '{print $2}' | xargs open
+  ci     = !hub ci-status -v | awk '{print $4}' | xargs open
   d      = !clear && git diff
   dc     = diff --cached
   ds     = diff --stat

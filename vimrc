@@ -72,6 +72,7 @@ let g:ale_fixers = {
       \}
 let b:ale_sql_pgformatter_options = '--spaces 2 --wrap-after 10'
 " let g:ale_fix_on_save = 1
+nnoremap <leader>F :ALEFix<cr>
 
 " Plug 'vim-ruby/vim-ruby'
 " Plug 'tpope/vim-endwise'
@@ -306,9 +307,11 @@ au BufReadPost *.html* set formatoptions-=t
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 command! Es :e ~/Dropbox/scratch.md
-nnoremap <leader>F :ALEFix<cr>
 
-autocmd TermOpen * startinsert
-command! -nargs=* T split | resize 25 | terminal <args>
-nnoremap <leader>c :T<cr>
+if has("nvim")
+  " Terminal inside vim
+  autocmd TermOpen * startinsert
+  command! -nargs=* T split | resize 25 | terminal <args>
+  nnoremap <leader>c :T<cr>
+endif
 " }}}
