@@ -8,7 +8,6 @@ call plug#begin('~/.vim/plugged')
 " Essentials {{{
 Plug 'tpope/vim-repeat'
 Plug 'ervandew/supertab'
-Plug 'vim-scripts/kwbdi.vim'
 Plug 'tpope/vim-obsession' " sessions mgmt
 Plug '907th/vim-auto-save'
 let g:auto_save = 1
@@ -28,7 +27,6 @@ let g:vimwiki_global_ext = 0
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 noremap <leader>t :Files<cr>
-noremap <leader>T :GFiles<cr>
 noremap <leader>b :Buffers<cr>
 noremap <leader>r :History<cr>
 let g:fzf_layout = { 'down': '~30%' }
@@ -37,9 +35,6 @@ let g:fzf_history_dir = '~/.vim/history'
 Plug 'mhinz/vim-grepper'
 nnoremap <leader>a :GrepperRg <cword><CR>
 nnoremap <leader>g :Grepper -tool rg<cr>
-nnoremap <leader>G :Grepper -tool git<cr>
-nnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
-vnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
 " }}}
 
 " Text {{{
@@ -50,13 +45,11 @@ Plug 'terryma/vim-multiple-cursors'
 " }}}
 
 " File management & Git {{{
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'tpope/vim-eunuch'
-
+Plug 'tpope/vim-eunuch' " File command helpers: Rename, Delete etc.
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb' " Gbrowse handlers for github
-Plug 'mhinz/vim-signify'
+Plug 'mhinz/vim-signify' " Git signs column
 " }}}
 
 " Ruby {{{
@@ -65,7 +58,6 @@ let g:ale_linters = {
       \   'ruby': ['rubocop'],
       \   'javascript': ['eslint'],
       \}
-
 let g:ale_fixers = {
       \ 'ruby': ['rubocop'],
       \ 'sql': ['pgformatter']
@@ -74,8 +66,6 @@ let b:ale_sql_pgformatter_options = '--spaces 2 --wrap-after 10'
 " let g:ale_fix_on_save = 1
 nnoremap <leader>F :ALEFix<cr>
 
-" Plug 'vim-ruby/vim-ruby'
-" Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
 Plug 'sickill/vim-pasta'
 Plug 'tpope/vim-haml'
@@ -83,8 +73,6 @@ Plug 'tpope/vim-haml'
 
 " Msc languages {{{
 Plug 'plasticboy/vim-markdown'
-" Plug 'tpope/vim-ragtag'
-" let g:ragtag_global_maps = 1
 Plug 'pangloss/vim-javascript'
 
 Plug 'mattn/emmet-vim'
@@ -113,7 +101,6 @@ let test#strategy = "vimux"
 nmap <silent> <leader>x :TestNearest<CR>
 nmap <silent> <leader>X :TestFile<CR>
 nmap <silent> <leader>A :TestSuite<CR>
-" let test#ruby#rspec#executable = 'bundle exec rspec'
 " }}}
 
 " UI {{{
@@ -134,6 +121,8 @@ Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Yggdroot/indentLine'
 let g:indentLine_char = '┊'
 let g:indentLine_bufNameExclude = ['NERD_tree.*', 'fzf']
+Plug 'moll/vim-bbye'
+map <c-x> :Bdelete<CR>
 " }}}
 
 call plug#end()
@@ -302,7 +291,6 @@ noremap <Leader>c :Econtroller<space>
 " }}}
 
 " New stuff {{{
-map <c-x> <Plug>Kwbd<CR>
 au BufReadPost *.html* set formatoptions-=t
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
