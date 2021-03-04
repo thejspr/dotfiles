@@ -152,6 +152,7 @@ for_window [window_role="task_dialog"] floating enable
 for_window [class="Spotify"] move to workspace $ws3
 assign [class="Slack"] 2
 assign [class="Todoist"] 2
+assign [class="MineTime"] 2
 
 # Background apps
 exec --no-startup-id ~/code/dotfiles/bin/polybar-launch
@@ -168,6 +169,7 @@ exec --no-startup-id feh --randomize --bg-fill ~/Files/wallpapers/3440x1440/*
 # Startup applications
 exec alacritty --command tmux
 exec todoist
+exec minetime
 exec spotify
 exec sleep 5 && google-chrome
-exec weekday && sleep 30 && slack
+exec weekday && sleep 20 && slack
