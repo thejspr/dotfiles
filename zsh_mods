@@ -27,6 +27,7 @@ else
   xmodmap ~/.Xmodmap
   export NODEJS_CHECK_SIGNATURES=no
   . $HOME/.asdf/asdf.sh
+  export PATH="$PWD/bin:$PATH"
 fi
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
