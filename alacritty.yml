@@ -1,5 +1,5 @@
 font:
-  size: 13
+  size: 12
   normal:
     family: 'JetBrainsMono NF'
     style: 'Regular'
@@ -47,7 +47,6 @@ schemes:
       white:   '#fdf6e3' # base3
 
   solarized-dark: &themeDark
-    # Default colors
     primary:
       background: '#002b36' # base03
       foreground: '#839496' # base0
@@ -79,4 +78,4 @@ schemes:
       cyan:    '#93a1a1' # base1
       white:   '#fdf6e3' # base3
 
-colors: *themeLight
+colors: *themeDark

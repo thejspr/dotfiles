@@ -137,7 +137,7 @@ let g:coc_global_extensions = ['coc-solargraph']
 " }}}
 
 " UI {{{
-source ~/.colorscheme.vim
+set background=light
 colorscheme solarized
 call togglebg#map("<F5>")
 

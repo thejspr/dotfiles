@@ -3,11 +3,9 @@
 set -e
 
 if [ "$1" == "dark" ]; then
-  echo "set background=dark" > "$HOME/.colorscheme.vim"
+  sed -i 's/background=light/background=dark/g' ~/.vimrc
   sed -i 's/\*themeLight/*themeDark/g' ~/code/dotfiles/alacritty.yml
 else
-  echo "set background=light" > "$HOME/.colorscheme.vim"
+  sed -i 's/background=dark/background=light/g' ~/.vimrc
   sed -i 's/\*themeDark/*themeLight/g' ~/code/dotfiles/alacritty.yml
 fi
-
-# $EDITOR ~/code/dotfiles/alacritty.yml +$
