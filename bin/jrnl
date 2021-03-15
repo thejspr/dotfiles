@@ -19,7 +19,7 @@ if [ ${#} -eq 0 ]; then
   if [ -p "/dev/stdin" ]; then
     (cat; printf "\n\n") >> "${NOTES_PATH}"
   else
-    eval "${EDITOR}" "${NOTES_PATH}"
+    eval "${EDITOR}" "${NOTES_PATH}" +Goyo
   fi
 else
   printf "%s\n\n" "${*}" >> "${NOTES_PATH}"

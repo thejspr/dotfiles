@@ -38,6 +38,16 @@ fpath=(${ASDF_DIR}/completions $fpath)
 autoload -Uz compinit
 compinit
 
+unalias g
+g() {
+  if [[ $# -eq 0 ]]; then
+    command git status -sb
+  else
+    command hub "$@";
+  fi
+}
+# alias gs='git status -sb'
+
 # Ruby
 export RUBY_BUILD_CACHE_PATH=true
 export RUBY_HEAP_SLOTS_INCREMENT=10000
