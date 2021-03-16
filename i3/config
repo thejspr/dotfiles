@@ -3,33 +3,27 @@ set $mod Mod4
 
 font pango:Lato Mono 12
 
-# bar {
-#   status_command SCRIPT_DIR=~/code/dotfiles/status-scripts i3blocks
-#   position top
-#   font pango:DejaVu Sans Mono 12
-#   font pango:Lato Mono 12
-#   separator_symbol "·"
-# }
-
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # Mediakeys
-set $refresh_vol && pkill -SIGRTMIN+10 i3blocks
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +10% $refresh_vol
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -10% $refresh_vol
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle $refresh_vol
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+# set $refresh_vol && pkill -SIGRTMIN+10 i3blocks
+# bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +10% $refresh_vol
+# bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -10% $refresh_vol
+# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle $refresh_vol
+# bindsym XF86AudioPlay exec playerctl play-pause
+# bindsym XF86AudioNext exec playerctl next
+# bindsym XF86AudioPrev exec playerctl previous
 
-bindsym $mod+Up exec pactl set-sink-volume @DEFAULT_SINK@ +5% $refresh_vol
-bindsym $mod+Down exec pactl set-sink-volume @DEFAULT_SINK@ -5% $refresh_vol
-bindsym $mod+m exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle $refresh_vol
+bindsym $mod+Up exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym $mod+Down exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym $mod+m exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym $mod+Return exec playerctl play-pause
 bindsym $mod+Right exec playerctl next
 bindsym $mod+Left exec playerctl previous
+
+focus_follows_mouse no
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -86,9 +80,9 @@ bindsym $mod+space focus mode_toggle
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
+set $ws1 "1: main"
+set $ws2 "2: comms"
+set $ws3 "3: media"
 set $ws4 "4"
 set $ws5 "5"
 
@@ -172,4 +166,4 @@ exec todoist
 exec minetime
 exec spotify
 exec sleep 5 && google-chrome
-exec weekday && sleep 20 && slack
+exec weekday && sleep 10 && slack
