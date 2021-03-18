@@ -23,7 +23,7 @@ bindsym $mod+Return exec playerctl play-pause
 bindsym $mod+Right exec playerctl next
 bindsym $mod+Left exec playerctl previous
 
-focus_follows_mouse no
+focus_follows_mouse yes
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -166,4 +166,4 @@ exec todoist
 exec minetime
 exec spotify
 exec sleep 5 && google-chrome
-exec weekday && sleep 10 && slack
+exec weekday && sleep 20 && slack
