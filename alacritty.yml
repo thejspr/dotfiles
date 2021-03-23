@@ -6,7 +6,6 @@ font:
 
 window:
   dynamic_padding: true
-
   decorations: full
 
 bell:

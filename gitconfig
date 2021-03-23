@@ -46,7 +46,7 @@
 
   cl = !git co master && git pull && git remote prune origin
 
-  bip = for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads
+  bip = for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:yellow)%(refname:short)' refs/heads
 [apply]
   whitespace = nowarn
 [branch]

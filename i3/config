@@ -146,6 +146,7 @@ for_window [window_role="task_dialog"] floating enable
 for_window [class="Spotify"] move to workspace $ws3
 assign [class="Slack"] 2
 assign [class="Todoist"] 2
+for_window [class="Todoist"] resize set width 25ppt
 assign [class="MineTime"] 2
 
 # Background apps
