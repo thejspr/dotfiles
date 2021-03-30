@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+sudo apt update
+sudo apt upgrade
+sudo apt autoremove
+
+nvim +PlugUpdate +qall
+
+omz update

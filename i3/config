@@ -1,7 +1,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 set $mod Mod4
 
-font pango:Lato Mono 12
+font pango:Inter Medium 11
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
@@ -133,7 +133,7 @@ bindsym $mod+o exec ~/./apps/Obsidian-0.11.0.AppImage
 
 # Show a floating calc terminal with Mod+c
 for_window [instance="Alacritty" title="My Calculator"] floating enable
-bindsym $mod+c exec alacritty -t "My Calculator" -e calc
+bindsym $mod+c exec alacritty -t "My Calculator" -e bc
 
 # quick web search
 bindsym $mod+g exec echo "" | rofi -dmenu -p "Search:" | xargs -I{} xdg-open https://www.google.dk/search?q={}

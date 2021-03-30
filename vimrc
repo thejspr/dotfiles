@@ -14,8 +14,6 @@ let g:auto_save = 1
 let g:auto_save_silent = 1
 let g:auto_save_events = ["InsertLeave", "TextChanged", "FocusLost"]
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-nmap gd <Plug>(coc-definition)
-nmap gr <Plug>(coc-references)
 Plug 'roxma/vim-paste-easy'
 Plug 'vimwiki/vimwiki'
 let g:vimwiki_list = [{'path': '~/Dropbox/notes/', 'syntax': 'markdown',
@@ -117,7 +115,6 @@ endfunction
 " }}}
 
 " New {{{
-Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Yggdroot/indentLine'
 let g:indentLine_char = '┊'
 let g:indentLine_bufNameExclude = ['NERD_tree.*', 'fzf']
@@ -130,10 +127,14 @@ filetype plugin indent on
 " }}}
 
 " CoC {{{
-set updatetime=100
-set signcolumn=yes
+set updatetime=300
+set signcolumn=number
 set shortmess+=c
 let g:coc_global_extensions = ['coc-solargraph']
+nmap gd <Plug>(coc-definition)
+nmap gr <Plug>(coc-references)
+" Requires: :CocInstall coc-explorer
+noremap tt :CocCommand explorer<CR>
 " }}}
 
 " UI {{{
@@ -268,8 +269,6 @@ au BufRead,BufNewFile COMMIT_EDITMSG setlocal ft=diff spell!
 " let NERDTreeShowHidden=0
 " let NERDTreeNaturalSort=1
 " noremap tt :NERDTreeToggle<CR>
-" Requires: :CocInstall coc-explorer
-noremap tt :CocCommand explorer<CR>
 " }}}
 
 " Edit .vimrc {{{
