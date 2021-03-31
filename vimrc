@@ -13,12 +13,20 @@ Plug '907th/vim-auto-save'
 let g:auto_save = 1
 let g:auto_save_silent = 1
 let g:auto_save_events = ["InsertLeave", "TextChanged", "FocusLost"]
+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+nmap gd <Plug>(coc-definition)
+nmap gr <Plug>(coc-references)
+" Requires: :CocInstall coc-explorer
+noremap tt :CocCommand explorer<CR>
+
 Plug 'roxma/vim-paste-easy'
 Plug 'vimwiki/vimwiki'
 let g:vimwiki_list = [{'path': '~/Dropbox/notes/', 'syntax': 'markdown',
       \ 'ext': '.md', 'diary_rel_path': 'journal/'}]
 let g:vimwiki_global_ext = 0
+Plug 'moll/vim-bbye'
+map <c-x> :Bdelete<CR>
 " }}}
 
 " Search & Code navigation {{{
@@ -39,7 +47,7 @@ nnoremap <leader>g :Grepper -tool rg<cr>
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
-Plug 'terryma/vim-multiple-cursors'
+Plug 'mg979/vim-visual-multi'
 " }}}
 
 " File management & Git {{{
@@ -48,6 +56,7 @@ Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb' " Gbrowse handlers for github
 Plug 'mhinz/vim-signify' " Git signs column
+Plug 'pbrisbin/vim-mkdir' " Automatically create new folders for files
 " }}}
 
 " Ruby {{{
@@ -70,21 +79,21 @@ Plug 'tpope/vim-haml'
 "}}}
 
 " Msc languages {{{
-Plug 'plasticboy/vim-markdown'
+" Plug 'plasticboy/vim-markdown'
 Plug 'pangloss/vim-javascript'
 
-Plug 'mattn/emmet-vim'
-let g:user_emmet_install_global = 0
-autocmd FileType html,css,eruby EmmetInstall
-let g:user_emmet_leader_key='<C-E>'
-let g:user_emmet_settings = {
-\  'javascript.jsx' : {
-\      'extends': 'jsx',
-\      'quote_char': "'",
-\  },
-\  'html' : { 'quote_char': "'" },
-\  'erb' : { 'quote_char': "'" }
-\}
+" Plug 'mattn/emmet-vim'
+" let g:user_emmet_install_global = 0
+" autocmd FileType html,css,eruby EmmetInstall
+" let g:user_emmet_leader_key='<C-E>'
+" let g:user_emmet_settings = {
+" \  'javascript.jsx' : {
+" \      'extends': 'jsx',
+" \      'quote_char': "'",
+" \  },
+" \  'html' : { 'quote_char': "'" },
+" \  'erb' : { 'quote_char': "'" }
+" \}
 "  }}}
 
 " tmux and testing {{{
@@ -118,8 +127,8 @@ endfunction
 Plug 'Yggdroot/indentLine'
 let g:indentLine_char = '┊'
 let g:indentLine_bufNameExclude = ['NERD_tree.*', 'fzf']
-Plug 'moll/vim-bbye'
-map <c-x> :Bdelete<CR>
+Plug 'junegunn/goyo.vim'
+let g:goyo_width = 85
 " }}}
 
 call plug#end()
@@ -131,14 +140,10 @@ set updatetime=300
 set signcolumn=number
 set shortmess+=c
 let g:coc_global_extensions = ['coc-solargraph']
-nmap gd <Plug>(coc-definition)
-nmap gr <Plug>(coc-references)
-" Requires: :CocInstall coc-explorer
-noremap tt :CocCommand explorer<CR>
 " }}}
 
 " UI {{{
-set background=light
+set background=dark
 colorscheme solarized
 call togglebg#map("<F5>")
 
@@ -260,17 +265,6 @@ au BufRead,BufNewFile COMMIT_EDITMSG setlocal ft=diff spell!
 " au BufRead,BufNewFile *.md setlocal spell!
 "}}}
 
-" Nerdtree {{{
-" let g:NERDTreeQuitOnOpen=0
-" let g:NERDTreeShowBookmarks = 0
-" let g:NERDTreeWinSize = 24
-" let g:NERDTreeAutoDeleteBuffer=1
-" let g:NERDTreeChDirMode=2
-" let NERDTreeShowHidden=0
-" let NERDTreeNaturalSort=1
-" noremap tt :NERDTreeToggle<CR>
-" }}}
-
 " Edit .vimrc {{{
 command! Ev :e ~/.vimrc
 augroup vimrc
@@ -291,9 +285,6 @@ noremap <Leader>c :Econtroller<space>
 
 " New stuff {{{
 au BufReadPost *.html* set formatoptions-=t
-vnoremap <C-j> :m '>+1<CR>gv=gv
-vnoremap <C-k> :m '<-2<CR>gv=gv
-command! Es :e ~/Dropbox/scratch.md
 
 if has("nvim")
   " Terminal inside vim
@@ -301,4 +292,6 @@ if has("nvim")
   command! -nargs=* T split | resize 25 | terminal <args>
   nnoremap <leader>c :T<cr>
 endif
+noremap <C-q> <C-w>q
+noremap <f1> <Nop>
 " }}}
