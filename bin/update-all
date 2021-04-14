@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 sudo apt update
 sudo apt upgrade
@@ -6,4 +6,4 @@ sudo apt autoremove
 
 nvim +PlugUpdate +qall
 
-omz update
+# omz update

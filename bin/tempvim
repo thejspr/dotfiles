@@ -1,0 +1,5 @@
+#!/bin/bash
+
+tmp_file=$(mktemp)
+nvim -c startinsert -c 'setlocal spell' $tmp_file
+xsel --input --clipboard < $tmp_file

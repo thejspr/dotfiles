@@ -57,7 +57,7 @@ bindsym $mod+Shift+$right move right
 # bindsym $mod+h split |
 
 # split in vertical orientation
-bindsym $mod+v split v
+# bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -135,6 +135,10 @@ bindsym $mod+o exec ~/./apps/Obsidian-0.11.0.AppImage
 for_window [instance="Alacritty" title="My Calculator"] floating enable
 bindsym $mod+c exec alacritty -t "My Calculator" -e bc
 
+# Floating vim
+for_window [instance="Alacritty" title="Temp Vim"] floating enable
+bindsym $mod+v exec alacritty -t "Temp Vim" -e ~/bin/tempvim
+
 # quick web search
 bindsym $mod+g exec echo "" | rofi -dmenu -p "Search:" | xargs -I{} xdg-open https://www.google.dk/search?q={}
 
@@ -146,8 +150,7 @@ for_window [window_role="task_dialog"] floating enable
 for_window [class="Spotify"] move to workspace $ws3
 assign [class="Slack"] 2
 assign [class="Todoist"] 2
-for_window [class="Todoist"] resize set width 25ppt
-# assign [class="MineTime"] 2
+# for_window [class="Todoist"] resize set width 25ppt
 
 # Background apps
 exec --no-startup-id ~/code/dotfiles/bin/polybar-launch
@@ -164,7 +167,6 @@ exec --no-startup-id feh --randomize --bg-fill ~/Files/wallpapers/3440x1440/*
 # Startup applications
 exec alacritty --command tmux
 exec todoist
-# exec minetime
 exec spotify
 exec sleep 5 && google-chrome
 exec weekday && sleep 20 && slack
