@@ -161,7 +161,7 @@ exec --no-startup-id dropbox start
 exec --no-startup-id copyq
 exec --no-startup-id flameshot
 exec --no-startup-id playerctld daemon
-exec --no-startup-id redshift-gtk
+# exec --no-startup-id redshift-gtk
 exec --no-startup-id feh --randomize --bg-fill ~/Files/wallpapers/3440x1440/*
 
 # Startup applications
