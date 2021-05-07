@@ -104,10 +104,13 @@ let g:VimuxHeight = "45"
 nmap <leader><space> :VimuxPromptCommand<cr>
 nmap <silent> <leader>q :VimuxRunLastCommand<CR>
 Plug 'janko-m/vim-test'
+" let g:test#preserve_screen = 0
 let test#strategy = "vimux"
+" let test#strategy = "neovim"
+let test#neovim#term_position = "vert"
 nmap <silent> <leader>x :TestNearest<CR>
 nmap <silent> <leader>X :TestFile<CR>
-nmap <silent> <leader>A :TestSuite<CR>
+" nmap <silent> <CR> :TestFile<CR>
 " }}}
 
 " UI {{{
@@ -137,13 +140,13 @@ filetype plugin indent on
 
 " CoC {{{
 set updatetime=300
-set signcolumn=number
+set signcolumn=yes
 set shortmess+=c
 let g:coc_global_extensions = ['coc-solargraph']
 " }}}
 
 " UI {{{
-set background=dark
+set background=light
 colorscheme solarized
 call togglebg#map("<F5>")
 
@@ -217,6 +220,7 @@ nmap fa :set foldlevel=99<cr>
 
 " Key mappings {{{
 map , <leader>
+map <space> <leader>
 
 " Buffer management
 nnoremap <tab> :bn<CR>
@@ -243,7 +247,7 @@ set wildignore+=app/assets/images/**/*
 set wildignore+=vendor/cache/**/*
 
 nnoremap <leader>, :noh<cr>
-nnoremap <space> /
+" nnoremap <space> /
 nnoremap <leader>f :%s///<left><left>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 

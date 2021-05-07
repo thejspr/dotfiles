@@ -157,16 +157,16 @@ exec --no-startup-id ~/code/dotfiles/bin/polybar-launch
 exec --no-startup-id nm-applet
 exec --no-startup-id pasystray
 exec --no-startup-id blueman-applet
-exec --no-startup-id dropbox start
 exec --no-startup-id copyq
 exec --no-startup-id flameshot
 exec --no-startup-id playerctld daemon
-# exec --no-startup-id redshift-gtk
-exec --no-startup-id feh --randomize --bg-fill ~/Files/wallpapers/3440x1440/*
+exec --no-startup-id redshift-gtk
+exec --no-startup-id dropbox start
+exec --no-startup-id feh --randomize --bg-fill ~/Files/wallpapers/imgur-1/*
 
 # Startup applications
 exec alacritty --command tmux
 exec todoist
 exec spotify
-exec sleep 5 && google-chrome
-exec weekday && sleep 20 && slack
+exec google-chrome
+exec weekday && slack
