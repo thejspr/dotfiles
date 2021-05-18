@@ -150,7 +150,8 @@ for_window [window_role="task_dialog"] floating enable
 for_window [class="Spotify"] move to workspace $ws3
 assign [class="Slack"] 2
 assign [class="Todoist"] 2
-# for_window [class="Todoist"] resize set width 25ppt
+assign [class="Obsidian"] 2
+for_window [class="Todoist"] resize set width 20ppt
 
 # Background apps
 exec --no-startup-id ~/code/dotfiles/bin/polybar-launch
@@ -167,6 +168,7 @@ exec --no-startup-id feh --randomize --bg-fill ~/Files/wallpapers/imgur-1/*
 # Startup applications
 exec alacritty --command tmux
 exec todoist
+exec obsidian
+exec weekday && slack
 exec spotify
 exec google-chrome
-exec weekday && slack
