@@ -24,6 +24,7 @@ vendor/plugins/rails-dev-boost/
 .ignore
 node_modules/
 storage/
+.tool-versions
 
 tags.temp
 tags.back

@@ -79,7 +79,6 @@ Plug 'tpope/vim-haml'
 "}}}
 
 " Msc languages {{{
-" Plug 'plasticboy/vim-markdown'
 Plug 'pangloss/vim-javascript'
 
 " Plug 'mattn/emmet-vim'

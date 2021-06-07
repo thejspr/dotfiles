@@ -44,7 +44,7 @@
 
   stg    = checkout staging
 
-  cl = !git co master && git pull && git remote prune origin
+  cl = !git co master && git pull && git remote prune origin && git bclean
 
   bip = for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:yellow)%(refname:short)' refs/heads
 [apply]
