@@ -51,13 +51,6 @@ g() {
 }
 # alias gs='git status -sb'
 
-# Ruby
-export RUBY_BUILD_CACHE_PATH=true
-export RUBY_HEAP_SLOTS_INCREMENT=10000
-export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1.8
-export RUBY_GC_MALLOC_LIMIT=59000000
-export RUBY_HEAP_FREE_MIN=100000
-
 # Go
 export GOPATH=$HOME/golang
 export PATH=$PATH:$GOPATH/bin

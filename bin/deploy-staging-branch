@@ -9,7 +9,14 @@ then
   branch="$(git rev-parse --abbrev-ref HEAD)"
 fi
 
-git push
+if git rev-parse @{u} > /dev/null 2>&1
+then
+  printf "has an upstream\n"
+  git push
+else
+  printf "has no upstream\n"
+  git push -u origin $branch
+fi
 
 # read -p "Deploy branch: $branch ?" -n 1 -r
 # echo

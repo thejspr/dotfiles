@@ -80,10 +80,10 @@ bindsym $mod+space focus mode_toggle
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1: main"
-set $ws2 "2: comms"
-set $ws3 "3: media"
-set $ws4 "4"
+set $ws1 "1: Main"
+set $ws2 "2: Comms"
+set $ws3 "3: Spotify"
+set $ws4 "4: Db"
 set $ws5 "5"
 
 # switch to workspace
@@ -104,9 +104,6 @@ bindsym $mod+Shift+5 move container to workspace number $ws5
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
-# start a terminal
-# bindsym $mod+Return exec i3-sensible-terminal
-
 # resize window (you can also use the mouse for that)
 mode "resize" {
   bindsym $left resize shrink width 10 px or 10 ppt
@@ -115,7 +112,6 @@ mode "resize" {
   bindsym Right resize grow width 10 px or 10 ppt
   bindsym Escape mode "default"
 }
-
 bindsym $mod+r mode "resize"
 
 # Make the currently focused window a scratchpad
@@ -148,7 +144,7 @@ for_window [window_role="task_dialog"] floating enable
 for_window [class="Spotify"] move to workspace $ws3
 assign [class="Slack"] 2
 assign [class="obsidian"] 2
-assign [class="Todoist"] 3
+assign [class="Todoist"] $ws3
 for_window [class="Todoist"] resize set width 30ppt
 
 # Background apps
