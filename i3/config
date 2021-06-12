@@ -159,10 +159,12 @@ exec --no-startup-id redshift
 exec --no-startup-id dropbox start
 exec --no-startup-id feh --randomize --bg-fill ~/Files/wallpapers/imgur-1/*
 
+set $connectCheck nm-online --quiet --timeout=300
+
 # Startup applications
 exec alacritty --command tmux
 exec todoist
 exec obsidian
-exec google-chrome
-exec weekday && sleep 20 && slack
-exec sleep 10 && spotify
+exec $connectCheck && google-chrome
+exec weekday && $connectCheck && slack
+exec $connectCheck && spotify

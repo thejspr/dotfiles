@@ -1,8 +1,7 @@
 #new
-alias s='e ~/Dropbox/scratch.md'
 alias eaa='e ~/.alacritty.yml'
 alias ei='e ~/.i3/config'
-alias ep='e ~/.config/polybar/config'
+alias ep='e ~/.config/polybar/config && polybar-launch'
 alias cp-head='git rev-parse --short HEAD | pbcopy'
 alias up-repo='git cl && bundle && migrate'
 alias ra='ranger'
