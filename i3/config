@@ -6,6 +6,7 @@ font pango:Inter Medium 11
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+bindsym $mod+Shift+F10 exec --no-startup-id systemctl suspend
 
 # Mediakeys
 # set $refresh_vol && pkill -SIGRTMIN+10 i3blocks
@@ -141,10 +142,10 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 
 # Application specific assignments
-for_window [class="Spotify"] move to workspace $ws3
-assign [class="Slack"] 2
-assign [class="obsidian"] 2
+assign [class="Slack"] $ws2
+assign [class="obsidian"] $ws2
 assign [class="Todoist"] $ws3
+for_window [class="Spotify"] move to workspace $ws3
 for_window [class="Todoist"] resize set width 30ppt
 
 # Background apps

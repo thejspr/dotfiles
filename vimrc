@@ -298,4 +298,7 @@ if has("nvim")
 endif
 noremap <C-q> <C-w>q
 noremap <f1> <Nop>
+" nmap <silent>gx :sil !xdg-open <c-r><c-a><cr>
+" let g:netrw_browsex_viewer= "xdg-open"
+nmap <silent> gx :!xdg-open <cWORD><cr>
 " }}}
