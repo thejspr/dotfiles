@@ -75,6 +75,7 @@ nnoremap <leader>F :ALEFix<cr>
 
 Plug 'tpope/vim-rails'
 Plug 'sickill/vim-pasta'
+let g:pasta_disabled_filetypes = ['yaml']
 Plug 'tpope/vim-haml'
 "}}}
 

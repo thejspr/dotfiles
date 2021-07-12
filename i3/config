@@ -84,7 +84,7 @@ bindsym $mod+space focus mode_toggle
 set $ws1 "1: Main"
 set $ws2 "2: Comms"
 set $ws3 "3: Spotify"
-set $ws4 "4: Db"
+set $ws4 "4: Notes"
 set $ws5 "5"
 
 # switch to workspace
@@ -143,10 +143,10 @@ for_window [window_role="task_dialog"] floating enable
 
 # Application specific assignments
 assign [class="Slack"] $ws2
-assign [class="obsidian"] $ws2
-assign [class="Todoist"] $ws3
+assign [class="obsidian"] $ws4
+assign [class="Todoist"] $ws2
 for_window [class="Spotify"] move to workspace $ws3
-for_window [class="Todoist"] resize set width 30ppt
+# for_window [class="Todoist"] resize set width 30ppt
 
 # Background apps
 exec --no-startup-id nm-applet
