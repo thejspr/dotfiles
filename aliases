@@ -9,6 +9,7 @@ function ew() {
   $EDITOR `which "$1"`
 }
 alias ww='e +VimwikiIndex'
+alias cat='bat'
 
 #system
 alias e='$EDITOR'
