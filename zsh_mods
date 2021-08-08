@@ -27,14 +27,23 @@ else
   setxkbmap -option "caps:escape"
   setxkbmap us
   xmodmap ~/.Xmodmap
-  . $HOME/.asdf/asdf.sh
+  [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
   export PATH="$PWD/bin:$PATH"
   setopt HIST_FIND_NO_DUPS
   setopt HIST_IGNORE_DUPS
 fi
 
+if [[ -v T14 ]]; then
+  . /opt/asdf-vm/asdf.sh
+  [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+fi
+
+if [[ -v DESKTOP ]]; then
+  source ~/.z.sh/z.sh
+  . $HOME/.asdf/asdf.sh
+fi
+
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
-source ~/.z.sh/z.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 fpath=(${ASDF_DIR}/completions $fpath)
@@ -83,11 +92,11 @@ source ~/.zsh/zsh-peco-history/zsh-peco-history.zsh
 GPG_TTY=$(tty)
 export GPG_TTY
 
-if [ ! -S ~/.ssh/ssh_auth_sock ]; then
-  eval `ssh-agent`
-  ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
-fi
-export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
-ssh-add -l > /dev/null || ssh-add
+# if [ ! -S ~/.ssh/ssh_auth_sock ]; then
+#   eval `ssh-agent`
+#   ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
+# fi
+# export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+# ssh-add -l > /dev/null || ssh-add
 
 # zprof
