@@ -9,11 +9,11 @@ function ew() {
   $EDITOR `which "$1"`
 }
 alias ww='e +VimwikiIndex'
+alias cat='cat'
 
 #system
 alias e='$EDITOR'
 alias kf='kill -9 %1'
-alias ff='find . -iname'
 
 #tmux
 alias tma='tmux attach'
@@ -100,9 +100,9 @@ alias gpf='FORCE=1 git push --force-with-lease'
 
 #msc
 alias cd..='cd ..'
-alias ls='lsd'
-alias ll='lsd -l'
-alias la='lsd -a'
+alias ls='exa'
+alias ll='exa -l'
+alias la='exa -a'
 
 #system and files editing
 alias ea='e ~/.aliases'

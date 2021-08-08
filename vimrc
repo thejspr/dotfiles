@@ -75,6 +75,8 @@ nnoremap <leader>F :ALEFix<cr>
 
 Plug 'tpope/vim-rails'
 Plug 'sickill/vim-pasta'
+let g:pasta_disabled_filetypes = ['yaml']
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 Plug 'tpope/vim-haml'
 "}}}
 
@@ -130,7 +132,7 @@ Plug 'Yggdroot/indentLine'
 let g:indentLine_char = '┊'
 let g:indentLine_bufNameExclude = ['NERD_tree.*', 'fzf']
 Plug 'junegunn/goyo.vim'
-let g:goyo_width = 85
+let g:goyo_width = 90
 Plug 'dstein64/vim-startuptime'
 " }}}
 

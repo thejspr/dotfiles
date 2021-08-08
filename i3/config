@@ -84,7 +84,7 @@ bindsym $mod+space focus mode_toggle
 set $ws1 "1: Main"
 set $ws2 "2: Comms"
 set $ws3 "3: Spotify"
-set $ws4 "4: Db"
+set $ws4 "4: Notes"
 set $ws5 "5"
 
 # switch to workspace
@@ -130,6 +130,10 @@ bindsym $mod+n exec nautilus ~
 for_window [instance="Alacritty" title="My Calculator"] floating enable
 bindsym $mod+c exec alacritty -t "My Calculator" -e bc
 
+# Show todos
+for_window [instance="Alacritty" title="My Todos"] floating enable
+bindsym $mod+t exec alacritty -t "My Todos" -e nvim ~/Dropbox/notes/todo.md
+
 # Floating vim
 for_window [instance="Alacritty" title="Temp Vim"] floating enable
 bindsym $mod+v exec alacritty -t "Temp Vim" -e ~/bin/tempvim
@@ -144,9 +148,7 @@ for_window [window_role="task_dialog"] floating enable
 # Application specific assignments
 assign [class="Slack"] $ws2
 assign [class="obsidian"] $ws2
-assign [class="Todoist"] $ws3
 for_window [class="Spotify"] move to workspace $ws3
-for_window [class="Todoist"] resize set width 30ppt
 
 # Background apps
 exec --no-startup-id nm-applet
@@ -164,7 +166,6 @@ set $connectCheck nm-online --quiet --timeout=300
 
 # Startup applications
 exec alacritty --command tmux
-exec todoist
 exec obsidian
 exec $connectCheck && google-chrome
 # exec weekday && $connectCheck && slack
