@@ -33,8 +33,8 @@ floating_modifier $mod
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id rofi -show run
-# bindsym $mod+Shift+d exec --no-startup-id rofi -dmenu -i -p fzf ~/
+bindsym $mod+Shift+d exec --no-startup-id rofi -theme solarized_alternate -show run
+bindsym $mod+d exec --no-startup-id "rofi -theme solarized_alternate -combi-modi window,run -show combi"
 
 # define directional keys
 set $up k
@@ -81,10 +81,10 @@ bindsym $mod+space focus mode_toggle
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1: Main"
-set $ws2 "2: Comms"
-set $ws3 "3: Spotify"
-set $ws4 "4: Notes"
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
 set $ws5 "5"
 
 # switch to workspace
@@ -171,5 +171,5 @@ exec alacritty --command tmux
 # exec todoist
 exec obsidian
 exec $connectCheck && google-chrome
-# exec weekday && $connectCheck && slack
+exec weekday && $connectCheck && slack
 exec $connectCheck && spotify
