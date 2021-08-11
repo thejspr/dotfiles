@@ -6,4 +6,6 @@ sudo apt autoremove
 
 nvim +PlugUpdate +qall
 
+gem install solargraph
+
 # omz update
