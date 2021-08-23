@@ -21,10 +21,10 @@ nmap gr <Plug>(coc-references)
 noremap tt :CocCommand explorer<CR>
 
 Plug 'roxma/vim-paste-easy'
-Plug 'vimwiki/vimwiki'
-let g:vimwiki_list = [{'path': '~/Dropbox/notes/', 'syntax': 'markdown',
-      \ 'ext': '.md', 'diary_rel_path': 'journal/'}]
-let g:vimwiki_global_ext = 0
+" Plug 'vimwiki/vimwiki'
+" let g:vimwiki_list = [{'path': '~/Dropbox/notes/', 'syntax': 'markdown',
+"       \ 'ext': '.md', 'diary_rel_path': 'journal/'}]
+" let g:vimwiki_global_ext = 0
 Plug 'moll/vim-bbye'
 map <c-x> :Bdelete<CR>
 " }}}
@@ -46,8 +46,8 @@ nnoremap <leader>g :Grepper -tool rg<cr>
 " Text {{{
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-Plug 'godlygeek/tabular'
-Plug 'mg979/vim-visual-multi'
+" Plug 'godlygeek/tabular'
+" Plug 'mg979/vim-visual-multi'
 " }}}
 
 " File management & Git {{{
@@ -55,7 +55,7 @@ Plug 'tpope/vim-eunuch' " File command helpers: Rename, Delete etc.
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb' " Gbrowse handlers for github
-Plug 'mhinz/vim-signify' " Git signs column
+" Plug 'mhinz/vim-signify' " Git signs column
 Plug 'pbrisbin/vim-mkdir' " Automatically create new folders for files
 " }}}
 
@@ -133,7 +133,7 @@ let g:indentLine_char = '┊'
 let g:indentLine_bufNameExclude = ['NERD_tree.*', 'fzf']
 Plug 'junegunn/goyo.vim'
 let g:goyo_width = 90
-Plug 'dstein64/vim-startuptime'
+Plug 'tweekmonster/startuptime.vim'
 " }}}
 
 call plug#end()

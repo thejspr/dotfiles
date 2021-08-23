@@ -23,7 +23,7 @@ if [[ -v MAC ]]; then
   export NVM_DIR="$HOME/.nvm"
   [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh" --no-use  # This loads nvm
 else
-  xset r rate 220 40
+  xset r rate 250 40
   setxkbmap -option "caps:escape"
   setxkbmap us
   xmodmap ~/.Xmodmap

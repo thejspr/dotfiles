@@ -33,7 +33,6 @@ floating_modifier $mod
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+Shift+d exec --no-startup-id rofi -theme solarized_alternate -show run
 bindsym $mod+d exec --no-startup-id "rofi -theme solarized_alternate -combi-modi window,run -show combi"
 
 # define directional keys
@@ -138,9 +137,6 @@ bindsym $mod+t exec alacritty -t "My Todos" -e nvim ~/Dropbox/notes/todo.md
 for_window [instance="Alacritty" title="Temp Vim"] floating enable
 bindsym $mod+v exec alacritty -t "Temp Vim" -e ~/bin/tempvim
 
-# quick web search
-bindsym $mod+g exec echo "" | rofi -dmenu -p "Search:" | xargs -I{} xdg-open https://www.google.dk/search?q={}
-
 # Fix handing of popups
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
@@ -156,6 +152,7 @@ for_window [class="Spotify"] move to workspace $ws3
 exec --no-startup-id nm-applet
 exec --no-startup-id ~/code/dotfiles/bin/polybar-launch
 exec --no-startup-id pasystray
+exec --no-startup-id ulauncher
 exec --no-startup-id blueman-applet
 exec --no-startup-id copyq
 exec --no-startup-id flameshot
@@ -168,7 +165,6 @@ set $connectCheck nm-online --quiet --timeout=300
 
 # Startup applications
 exec alacritty --command tmux
-# exec todoist
 exec obsidian
 exec $connectCheck && google-chrome
 exec weekday && $connectCheck && slack
