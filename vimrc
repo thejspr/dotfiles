@@ -21,10 +21,6 @@ nmap gr <Plug>(coc-references)
 noremap tt :CocCommand explorer<CR>
 
 Plug 'roxma/vim-paste-easy'
-" Plug 'vimwiki/vimwiki'
-" let g:vimwiki_list = [{'path': '~/Dropbox/notes/', 'syntax': 'markdown',
-"       \ 'ext': '.md', 'diary_rel_path': 'journal/'}]
-" let g:vimwiki_global_ext = 0
 Plug 'moll/vim-bbye'
 map <c-x> :Bdelete<CR>
 " }}}
@@ -55,7 +51,6 @@ Plug 'tpope/vim-eunuch' " File command helpers: Rename, Delete etc.
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb' " Gbrowse handlers for github
-" Plug 'mhinz/vim-signify' " Git signs column
 Plug 'pbrisbin/vim-mkdir' " Automatically create new folders for files
 " }}}
 
@@ -82,19 +77,6 @@ Plug 'tpope/vim-haml'
 
 " Msc languages {{{
 Plug 'pangloss/vim-javascript'
-
-" Plug 'mattn/emmet-vim'
-" let g:user_emmet_install_global = 0
-" autocmd FileType html,css,eruby EmmetInstall
-" let g:user_emmet_leader_key='<C-E>'
-" let g:user_emmet_settings = {
-" \  'javascript.jsx' : {
-" \      'extends': 'jsx',
-" \      'quote_char': "'",
-" \  },
-" \  'html' : { 'quote_char': "'" },
-" \  'erb' : { 'quote_char': "'" }
-" \}
 "  }}}
 
 " tmux and testing {{{
@@ -111,7 +93,6 @@ let test#strategy = "vimux"
 let test#neovim#term_position = "vert"
 nmap <silent> <leader>x :TestNearest<CR>
 nmap <silent> <leader>X :TestFile<CR>
-" nmap <silent> <CR> :TestFile<CR>
 " }}}
 
 " UI {{{
@@ -133,7 +114,8 @@ let g:indentLine_char = '┊'
 let g:indentLine_bufNameExclude = ['NERD_tree.*', 'fzf']
 Plug 'junegunn/goyo.vim'
 let g:goyo_width = 90
-Plug 'tweekmonster/startuptime.vim'
+" Plug 'tweekmonster/startuptime.vim'
+Plug 'ap/vim-buftabline'
 " }}}
 
 call plug#end()
@@ -141,7 +123,7 @@ filetype plugin indent on
 " }}}
 
 " CoC {{{
-set updatetime=300
+set updatetime=750
 set signcolumn=yes
 set shortmess+=c
 let g:coc_global_extensions = ['coc-solargraph']
@@ -298,9 +280,7 @@ if has("nvim")
   command! -nargs=* T split | resize 25 | terminal <args>
   nnoremap <leader>c :T<cr>
 endif
-noremap <C-q> <C-w>q
 noremap <f1> <Nop>
-" nmap <silent>gx :sil !xdg-open <c-r><c-a><cr>
-" let g:netrw_browsex_viewer= "xdg-open"
 nmap <silent> gx :!xdg-open <cWORD><cr>
+nmap Y yy
 " }}}

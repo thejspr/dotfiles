@@ -33,7 +33,7 @@ floating_modifier $mod
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id "rofi -theme solarized_alternate -combi-modi window,run -show combi"
+bindsym $mod+d exec --no-startup-id "rofi -theme solarized_alternate -show run"
 
 # define directional keys
 set $up k
