@@ -1,6 +1,7 @@
 #new
 alias eaa='e ~/.alacritty.yml'
 alias ei='e ~/.i3/config'
+alias eis='sudo vim /etc/i3status.conf'
 alias ep='e ~/.config/polybar/config && polybar-launch'
 alias cp-head='git rev-parse --short HEAD | pbcopy'
 alias up-repo='git cl && bundle && migrate'
