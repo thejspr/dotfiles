@@ -38,9 +38,13 @@ noremap <leader>r :History<cr>
 let g:fzf_layout = { 'down': '~30%' }
 let g:fzf_history_dir = '~/.vim/history'
 
-Plug 'mhinz/vim-grepper'
-nnoremap <leader>a :GrepperRg <cword><CR>
-nnoremap <leader>g :Grepper -tool rg<cr>
+Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
+nnoremap <leader>a :Grepper -tool rg -cword -noprompt<cr>
+nnoremap <leader>g :Grepper<cr>
+" set grepprg=rg\ --vimgrep\ --smart-case
+" set grepformat=%f:%l:%c:%m,%f:%l:%m
+" nnoremap gs :silent grep <C-r><C-w><CR>:copen<CR>
+" xnoremap gs "sy:silent grep <C-r>s<CR>:copen<CR>
 " }}}
 
 " Text {{{
