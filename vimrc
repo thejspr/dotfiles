@@ -130,7 +130,7 @@ let g:coc_global_extensions = ['coc-solargraph']
 " }}}
 
 " UI {{{
-set background=light
+set background=dark
 colorscheme solarized
 call togglebg#map("<F5>")
 

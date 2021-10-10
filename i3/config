@@ -157,8 +157,8 @@ exec --no-startup-id blueman-applet
 exec --no-startup-id copyq
 exec --no-startup-id flameshot
 exec --no-startup-id playerctld daemon
-exec --no-startup-id redshift
 exec --no-startup-id dropbox start
+exec --no-startup-id mullvad
 exec --no-startup-id feh --randomize --bg-fill ~/Files/wallpapers/imgur-1/*
 
 set $connectCheck nm-online --quiet --timeout=300
