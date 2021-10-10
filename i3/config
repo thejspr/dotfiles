@@ -3,6 +3,11 @@ set $mod Mod4
 
 font pango:Inter Medium 11
 
+bar {
+  status_command i3status --config ~/.i3status.conf
+  font pango:Inter Medium 13
+}
+
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
@@ -150,7 +155,7 @@ for_window [class="Spotify"] move to workspace $ws3
 
 # Background apps
 exec --no-startup-id nm-applet
-exec --no-startup-id ~/code/dotfiles/bin/polybar-launch
+# exec --no-startup-id ~/code/dotfiles/bin/polybar-launch
 exec --no-startup-id pasystray
 exec --no-startup-id ulauncher
 exec --no-startup-id blueman-applet
