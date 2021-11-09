@@ -137,7 +137,8 @@ let g:indentLine_char = '┊'
 let g:indentLine_bufNameExclude = ['NERD_tree.*', 'fzf']
 Plug 'junegunn/goyo.vim'
 let g:goyo_width = 90
-Plug 'dstein64/vim-startuptime'
+" Plug 'dstein64/vim-startuptime'
+Plug 'ActivityWatch/aw-watcher-vim'
 " }}}
 
 call plug#end()

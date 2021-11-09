@@ -36,6 +36,7 @@ fi
 if [[ -v T14 ]]; then
   . /opt/asdf-vm/asdf.sh
   [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+  export BROWSER=/usr/bin/google-chrome-stable
 fi
 
 if [[ -v DESKTOP ]]; then
