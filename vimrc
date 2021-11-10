@@ -19,6 +19,10 @@ nmap gd <Plug>(coc-definition)
 nmap gr <Plug>(coc-references)
 " Requires: :CocInstall coc-explorer
 noremap tt :CocCommand explorer<CR>
+set updatetime=750
+set signcolumn=yes
+set shortmess+=c
+let g:coc_global_extensions = ['coc-solargraph']
 
 Plug 'roxma/vim-paste-easy'
 Plug 'moll/vim-bbye'
@@ -90,7 +94,7 @@ Plug 'janko-m/vim-test'
 " let g:test#preserve_screen = 0
 let test#strategy = "vimux"
 " let test#strategy = "neovim"
-let test#neovim#term_position = "vert"
+" let test#neovim#term_position = "vert"
 nmap <silent> <leader>x :TestNearest<CR>
 nmap <silent> <leader>X :TestFile<CR>
 " }}}
@@ -106,31 +110,23 @@ let g:lightline = {
 function! FullFilename()
   return expand('%F')
 endfunction
-" }}}
 
-" New {{{
 Plug 'Yggdroot/indentLine'
 let g:indentLine_char = '┊'
 let g:indentLine_bufNameExclude = ['NERD_tree.*', 'fzf']
-Plug 'junegunn/goyo.vim'
-let g:goyo_width = 90
-" Plug 'tweekmonster/startuptime.vim'
+
 Plug 'ap/vim-buftabline'
+" }}}
+
+" New {{{
 " }}}
 
 call plug#end()
 filetype plugin indent on
 " }}}
 
-" CoC {{{
-set updatetime=750
-set signcolumn=yes
-set shortmess+=c
-let g:coc_global_extensions = ['coc-solargraph']
-" }}}
-
 " UI {{{
-set background=dark
+set background=light
 colorscheme solarized
 call togglebg#map("<F5>")
 
@@ -145,7 +141,7 @@ set colorcolumn=80
 set synmaxcol=140
 set title
 set ffs=unix,mac,dos
-set scrolloff=25
+" set scrolloff=25
 set autoindent
 set smartindent
 set showmode

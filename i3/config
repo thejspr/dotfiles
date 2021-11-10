@@ -1,11 +1,11 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 set $mod Mod4
 
-font pango:Inter Medium 11
+font pango:JetBrainsMono 12
 
 bar {
   status_command i3status --config ~/.i3status.conf
-  font pango:Inter Medium 13
+  font pango:JetBrainsMono 13
 }
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
@@ -14,14 +14,6 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 bindsym $mod+Shift+F10 exec --no-startup-id systemctl suspend
 
 # Mediakeys
-# set $refresh_vol && pkill -SIGRTMIN+10 i3blocks
-# bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +10% $refresh_vol
-# bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -10% $refresh_vol
-# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle $refresh_vol
-# bindsym XF86AudioPlay exec playerctl play-pause
-# bindsym XF86AudioNext exec playerctl next
-# bindsym XF86AudioPrev exec playerctl previous
-
 bindsym $mod+Up exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym $mod+Down exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym $mod+m exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -38,7 +30,7 @@ floating_modifier $mod
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id "rofi -theme solarized_alternate -show run"
+bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,drun -theme solarized -font 'JetBrainsMono 14' -show combi -icon-theme 'Papirus' -show-icons"
 
 # define directional keys
 set $up k
@@ -155,15 +147,15 @@ for_window [class="Spotify"] move to workspace $ws3
 
 # Background apps
 exec --no-startup-id nm-applet
-# exec --no-startup-id ~/code/dotfiles/bin/polybar-launch
 exec --no-startup-id pasystray
-exec --no-startup-id ulauncher
 exec --no-startup-id blueman-applet
 exec --no-startup-id copyq
 exec --no-startup-id flameshot
 exec --no-startup-id playerctld daemon
 exec --no-startup-id dropbox start
-exec --no-startup-id mullvad
+exec --no-startup-id ~/apps/activitywatch/aw-qt
+exec --no-startup-id emote
+# exec --no-startup-id mullvad
 exec --no-startup-id feh --randomize --bg-fill ~/Files/wallpapers/imgur-1/*
 
 set $connectCheck nm-online --quiet --timeout=300
