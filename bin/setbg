@@ -3,9 +3,9 @@
 set -e
 
 if [ "$1" == "dark" ]; then
-  sed -i 's/background=light/background=dark/g' ~/code/dotfiles/vimrc
-  sed -i 's/\*themeLight/*themeDark/g' ~/code/dotfiles/alacritty.yml
+  sed -i'.bak' 's/background=light/background=dark/g' ~/code/dotfiles/vimrc
+  sed -i'.bak' 's/\*themeLight/*themeDark/g' ~/code/dotfiles/alacritty.yml
 else
-  sed -i 's/background=dark/background=light/g' ~/code/dotfiles/vimrc
-  sed -i 's/\*themeDark/*themeLight/g' ~/code/dotfiles/alacritty.yml
+  sed -i'.bak' 's/background=dark/background=light/g' ~/code/dotfiles/vimrc
+  sed -i'.bak' 's/\*themeDark/*themeLight/g' ~/code/dotfiles/alacritty.yml
 fi
