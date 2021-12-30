@@ -14,20 +14,27 @@ bindkey -e
 unalias gbr
 
 if [[ -v MAC ]]; then
+  export HOMEBREW_NO_AUTO_UPDATE=1
+  # export EDITOR=vim
   export SHELL=/usr/local/bin/zsh
   export PATH=/usr/local/bin:/usr/local/share/npm/bin:$PATH
   export PATH=./bin:~/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
   alias tar='/usr/local/bin/gtar'
-  . "$(brew --prefix asdf)/asdf.sh"
+  # . "$(brew --prefix asdf)/asdf.sh"
 
   export NVM_DIR="$HOME/.nvm"
   [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh" --no-use  # This loads nvm
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init - zsh)"
+  alias sed=gsed
 else
-  xset r rate 220 40
+  xset r rate 250 40
   setxkbmap -option "caps:escape"
   setxkbmap us
   xmodmap ~/.Xmodmap
   [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+  # . $HOME/.asdf/asdf.sh
+  eval "$(rbenv init -)"
   export PATH="$PWD/bin:$PATH"
   setopt HIST_FIND_NO_DUPS
   setopt HIST_IGNORE_DUPS

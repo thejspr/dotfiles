@@ -2,7 +2,7 @@
 alias eaa='e ~/.alacritty.yml'
 alias ei='e ~/.i3/config'
 alias eis='sudo vim /etc/i3status.conf'
-alias ep='e ~/.config/polybar/config && polybar-launch'
+alias ep='e ~/Dropbox/notes/peanut/todo.md'
 alias cp-head='git rev-parse --short HEAD | pbcopy'
 alias up-repo='git cl && bundle && migrate'
 alias ra='ranger'
@@ -42,7 +42,8 @@ fi
 alias rs='rails s'
 alias ragm='rails g migration'
 alias rc='rails c'
-alias migrate='rails db:migrate db:data && RAILS_ENV=test rails db:migrate db:data'
+alias migrate='rails db:migrate'
+alias pmigrate='rails db:migrate db:data && RAILS_ENV=test rails db:migrate db:data'
 alias upgrade_gems="bundle update && rspec && git add -A && git commit -m 'Gem upgrades' && git push"
 alias bea="be rubocop --auto-gen-config"
 alias ber="be rubocop -A"

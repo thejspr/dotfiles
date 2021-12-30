@@ -10,7 +10,7 @@ Plug 'tpope/vim-repeat'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-obsession' " sessions mgmt
 Plug '907th/vim-auto-save'
-let g:auto_save = 1
+let g:auto_save = 0
 let g:auto_save_silent = 1
 let g:auto_save_events = ["InsertLeave", "TextChanged", "FocusLost"]
 
@@ -19,12 +19,12 @@ nmap gd <Plug>(coc-definition)
 nmap gr <Plug>(coc-references)
 " Requires: :CocInstall coc-explorer
 noremap tt :CocCommand explorer<CR>
+" set updatetime=750
+set signcolumn=yes
+set shortmess+=c
+let g:coc_global_extensions = ['coc-solargraph']
 
-Plug 'roxma/vim-paste-easy'
-Plug 'vimwiki/vimwiki'
-let g:vimwiki_list = [{'path': '~/Dropbox/notes/', 'syntax': 'markdown',
-      \ 'ext': '.md', 'diary_rel_path': 'journal/'}]
-let g:vimwiki_global_ext = 0
+" Plug 'roxma/vim-paste-easy'
 Plug 'moll/vim-bbye'
 map <c-x> :Bdelete<CR>
 " }}}
@@ -39,19 +39,17 @@ let g:fzf_layout = { 'down': '~30%' }
 let g:fzf_history_dir = '~/.vim/history'
 
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
-nnoremap <leader>a :Grepper -tool rg -cword -noprompt<cr>
-nnoremap <leader>g :Grepper<cr>
-" set grepprg=rg\ --vimgrep\ --smart-case
-" set grepformat=%f:%l:%c:%m,%f:%l:%m
-" nnoremap gs :silent grep <C-r><C-w><CR>:copen<CR>
-" xnoremap gs "sy:silent grep <C-r>s<CR>:copen<CR>
+nnoremap <leader>a :GrepperRg <cword><CR>
+nnoremap <leader>g :Grepper -tool rg<cr>
 " }}}
 
 " Text {{{
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+" Plug 'mg979/vim-visual-multi'
 Plug 'godlygeek/tabular'
-Plug 'mg979/vim-visual-multi'
+Plug 'plasticboy/vim-markdown'
+" g:vim_markdown_new_list_item_indent = 0
 " }}}
 
 " File management & Git {{{
@@ -59,7 +57,6 @@ Plug 'tpope/vim-eunuch' " File command helpers: Rename, Delete etc.
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb' " Gbrowse handlers for github
-Plug 'mhinz/vim-signify' " Git signs column
 Plug 'pbrisbin/vim-mkdir' " Automatically create new folders for files
 " }}}
 
@@ -74,6 +71,9 @@ let g:ale_fixers = {
       \ 'sql': ['pgformatter']
       \}
 let b:ale_sql_pgformatter_options = '--spaces 2 --wrap-after 10'
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_enter = 0
 " let g:ale_fix_on_save = 1
 nnoremap <leader>F :ALEFix<cr>
 
@@ -86,19 +86,9 @@ Plug 'tpope/vim-haml'
 
 " Msc languages {{{
 Plug 'pangloss/vim-javascript'
-
-" Plug 'mattn/emmet-vim'
-" let g:user_emmet_install_global = 0
-" autocmd FileType html,css,eruby EmmetInstall
-" let g:user_emmet_leader_key='<C-E>'
-" let g:user_emmet_settings = {
-" \  'javascript.jsx' : {
-" \      'extends': 'jsx',
-" \      'quote_char': "'",
-" \  },
-" \  'html' : { 'quote_char': "'" },
-" \  'erb' : { 'quote_char': "'" }
-" \}
+let g:vim_json_conceal=0
+Plug 'mattn/emmet-vim'
+Plug 'tpope/vim-ragtag'
 "  }}}
 
 " tmux and testing {{{
@@ -112,10 +102,9 @@ Plug 'janko-m/vim-test'
 " let g:test#preserve_screen = 0
 let test#strategy = "vimux"
 " let test#strategy = "neovim"
-let test#neovim#term_position = "vert"
+" let test#neovim#term_position = "vert"
 nmap <silent> <leader>x :TestNearest<CR>
 nmap <silent> <leader>X :TestFile<CR>
-" nmap <silent> <CR> :TestFile<CR>
 " }}}
 
 " UI {{{
@@ -129,27 +118,20 @@ let g:lightline = {
 function! FullFilename()
   return expand('%F')
 endfunction
-" }}}
 
-" New {{{
 Plug 'Yggdroot/indentLine'
 let g:indentLine_char = '┊'
 let g:indentLine_bufNameExclude = ['NERD_tree.*', 'fzf']
-Plug 'junegunn/goyo.vim'
-let g:goyo_width = 90
+
+Plug 'ap/vim-buftabline'
+" }}}
+
+" New {{{
 " Plug 'dstein64/vim-startuptime'
-Plug 'ActivityWatch/aw-watcher-vim'
 " }}}
 
 call plug#end()
 filetype plugin indent on
-" }}}
-
-" CoC {{{
-set updatetime=300
-set signcolumn=yes
-set shortmess+=c
-let g:coc_global_extensions = ['coc-solargraph']
 " }}}
 
 " UI {{{
@@ -168,7 +150,7 @@ set colorcolumn=80
 set synmaxcol=140
 set title
 set ffs=unix,mac,dos
-set scrolloff=25
+" set scrolloff=25
 set autoindent
 set smartindent
 set showmode
@@ -274,6 +256,7 @@ noremap <leader>sa zg
 noremap <leader>sd z=
 au BufRead,BufNewFile COMMIT_EDITMSG setlocal ft=diff spell!
 " au BufRead,BufNewFile *.md setlocal spell!
+au BufRead,BufNewFile *.md setlocal nolist
 "}}}
 
 " Edit .vimrc {{{
@@ -303,9 +286,7 @@ if has("nvim")
   command! -nargs=* T split | resize 25 | terminal <args>
   nnoremap <leader>c :T<cr>
 endif
-noremap <C-q> <C-w>q
 noremap <f1> <Nop>
-" nmap <silent>gx :sil !xdg-open <c-r><c-a><cr>
-" let g:netrw_browsex_viewer= "xdg-open"
 nmap <silent> gx :!xdg-open <cWORD><cr>
+nmap Y yy
 " }}}

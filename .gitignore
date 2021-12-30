@@ -5,3 +5,4 @@ vim/UltiSnips
 iterm2/
 bin/skype4cocoa
 bin/helm
+*.bak
