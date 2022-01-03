@@ -14,6 +14,7 @@ bindkey -e
 unalias gbr
 
 if [[ -v MAC ]]; then
+  export EDITOR='vim'
   export SHELL=/usr/local/bin/zsh
   export PATH=/usr/local/bin:/usr/local/share/npm/bin:$PATH
   export PATH=./bin:~/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH

@@ -1,1 +1,1 @@
---skip-test-unit --database=postgresql --no-jbuilder
+--skip-test --database=postgresql --no-jbuilder

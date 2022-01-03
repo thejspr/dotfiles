@@ -19,7 +19,7 @@ nmap gd <Plug>(coc-definition)
 nmap gr <Plug>(coc-references)
 " Requires: :CocInstall coc-explorer
 noremap tt :CocCommand explorer<CR>
-set updatetime=750
+" set updatetime=750
 set signcolumn=yes
 set shortmess+=c
 let g:coc_global_extensions = ['coc-solargraph']
@@ -38,7 +38,7 @@ noremap <leader>r :History<cr>
 let g:fzf_layout = { 'down': '~30%' }
 let g:fzf_history_dir = '~/.vim/history'
 
-Plug 'mhinz/vim-grepper'
+Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
 nnoremap <leader>a :GrepperRg <cword><CR>
 nnoremap <leader>g :Grepper -tool rg<cr>
 " }}}
@@ -119,6 +119,7 @@ Plug 'ap/vim-buftabline'
 " }}}
 
 " New {{{
+Plug 'dstein64/vim-startuptime'
 " }}}
 
 call plug#end()
@@ -126,7 +127,7 @@ filetype plugin indent on
 " }}}
 
 " UI {{{
-set background=dark
+set background=light
 colorscheme solarized
 call togglebg#map("<F5>")
 
