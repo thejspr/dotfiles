@@ -124,7 +124,7 @@ bindsym $mod+n exec nautilus ~
 
 # Show a floating calc terminal with Mod+c
 for_window [instance="Alacritty" title="My Calculator"] floating enable
-bindsym $mod+c exec alacritty -t "My Calculator" -e bc
+bindsym $mod+c exec alacritty -t "My Calculator" -e calc
 
 # Show todos
 for_window [instance="Alacritty" title="My Todos"] floating enable
@@ -153,9 +153,9 @@ exec --no-startup-id copyq
 exec --no-startup-id flameshot
 exec --no-startup-id playerctld daemon
 exec --no-startup-id dropbox start
-exec --no-startup-id ~/apps/activitywatch/aw-qt
 exec --no-startup-id emote
-# exec --no-startup-id mullvad
+exec --no-startup-id guake
+exec --no-startup-id mullvad
 exec --no-startup-id feh --randomize --bg-fill ~/Files/wallpapers/imgur-1/*
 
 set $connectCheck nm-online --quiet --timeout=300

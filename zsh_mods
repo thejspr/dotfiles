@@ -32,7 +32,8 @@ else
   setxkbmap -option "caps:escape"
   setxkbmap us
   xmodmap ~/.Xmodmap
-  . $HOME/.asdf/asdf.sh
+  # . $HOME/.asdf/asdf.sh
+  eval "$(rbenv init -)"
   export PATH="$PWD/bin:$PATH"
   setopt HIST_FIND_NO_DUPS
   setopt HIST_IGNORE_DUPS

@@ -2,7 +2,7 @@
 alias eaa='e ~/.alacritty.yml'
 alias ei='e ~/.i3/config'
 alias eis='e ~/.i3status.conf'
-alias ep='e ~/.config/polybar/config && polybar-launch'
+alias ep='e ~/Dropbox/notes/peanut/todo.md'
 alias cp-head='git rev-parse --short HEAD | pbcopy'
 alias up-repo='git cl && bundle && migrate'
 alias ra='ranger'
