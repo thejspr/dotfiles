@@ -42,7 +42,8 @@ fi
 alias rs='rails s'
 alias ragm='rails g migration'
 alias rc='rails c'
-alias migrate='rails db:migrate db:data && RAILS_ENV=test rails db:migrate db:data'
+alias migrate='rails db:migrate'
+alias pmigrate='rails db:migrate db:data && RAILS_ENV=test rails db:migrate db:data'
 alias upgrade_gems="bundle update && rspec && git add -A && git commit -m 'Gem upgrades' && git push"
 alias bea="be rubocop --auto-gen-config"
 alias ber="be rubocop -A"

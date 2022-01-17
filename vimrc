@@ -10,7 +10,7 @@ Plug 'tpope/vim-repeat'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-obsession' " sessions mgmt
 Plug '907th/vim-auto-save'
-let g:auto_save = 1
+let g:auto_save = 0
 let g:auto_save_silent = 1
 let g:auto_save_events = ["InsertLeave", "TextChanged", "FocusLost"]
 
@@ -24,7 +24,7 @@ set signcolumn=yes
 set shortmess+=c
 let g:coc_global_extensions = ['coc-solargraph']
 
-Plug 'roxma/vim-paste-easy'
+" Plug 'roxma/vim-paste-easy'
 Plug 'moll/vim-bbye'
 map <c-x> :Bdelete<CR>
 " }}}
@@ -87,6 +87,8 @@ Plug 'tpope/vim-haml'
 " Msc languages {{{
 Plug 'pangloss/vim-javascript'
 let g:vim_json_conceal=0
+Plug 'mattn/emmet-vim'
+Plug 'tpope/vim-ragtag'
 "  }}}
 
 " tmux and testing {{{
