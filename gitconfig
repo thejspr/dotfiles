@@ -4,7 +4,7 @@
 [github]
   user = thejspr
 [color]
-  ui = auto
+	ui = true
 [push]
   default = tracking
 [core]
@@ -12,6 +12,7 @@
   whitespace = trailing-space,space-before-tab
   ignorecase = false
   attributesfile = /Users/jesper/code/dotfiles/gitattributes
+	pager = diff-so-fancy | less --tabs=4 -RFX
 [alias]
   a      = add --all
   aa     = add -A
@@ -80,3 +81,18 @@
   tool = vimdiff
 [pull]
   ff = only
+[interactive]
+	diffFilter = diff-so-fancy --patch
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	func = 146 bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse

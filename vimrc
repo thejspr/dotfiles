@@ -10,9 +10,9 @@ Plug 'tpope/vim-repeat'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-obsession' " sessions mgmt
 Plug '907th/vim-auto-save'
-let g:auto_save = 0
+let g:auto_save = 1
 let g:auto_save_silent = 1
-let g:auto_save_events = ["InsertLeave", "TextChanged", "FocusLost"]
+let g:auto_save_events = ["TextChanged", "FocusLost"]
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 nmap gd <Plug>(coc-definition)
@@ -46,10 +46,9 @@ nnoremap <leader>g :Grepper -tool rg<cr>
 " Text {{{
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-" Plug 'mg979/vim-visual-multi'
+Plug 'mg979/vim-visual-multi'
 Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-" g:vim_markdown_new_list_item_indent = 0
+Plug 'ixru/nvim-markdown' " fork of 'plasticboy/vim-markdown'
 " }}}
 
 " File management & Git {{{
@@ -135,7 +134,7 @@ filetype plugin indent on
 " }}}
 
 " UI {{{
-set background=light
+set background=dark
 colorscheme solarized
 call togglebg#map("<F5>")
 
@@ -255,7 +254,6 @@ noremap <leader>sp [s
 noremap <leader>sa zg
 noremap <leader>sd z=
 au BufRead,BufNewFile COMMIT_EDITMSG setlocal ft=diff spell!
-" au BufRead,BufNewFile *.md setlocal spell!
 au BufRead,BufNewFile *.md setlocal nolist
 "}}}
 
