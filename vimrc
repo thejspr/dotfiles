@@ -39,7 +39,7 @@ let g:fzf_layout = { 'down': '~30%' }
 let g:fzf_history_dir = '~/.vim/history'
 
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
-nnoremap <leader>a :GrepperRg <cword><CR>
+nnoremap <leader>a :GrepperRg <cword><cr>
 nnoremap <leader>g :Grepper -tool rg<cr>
 " }}}
 

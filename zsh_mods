@@ -8,6 +8,7 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 export TERM=screen-256color
 export SPRING=ON
 export NODEJS_CHECK_SIGNATURES=no
+export PGPORT=5434
 
 autoload zmv
 bindkey -e
