@@ -1,18 +1,13 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env bash
 
-def run(cmd)
-  puts cmd
-  system(cmd)
-end
+# code
+[ -d .git ] && git co master && git pull && git remote prune origin && git bclean
 
-run 'git co master && git pull && git remote prune origin && git bclean' if File.exist?('.git')
+# dependencies
+[ -f Gemfile ] && bundle install
+[ -f yarn.lock ] && yarn install
 
-run 'bundle install' if File.exist?('Gemfile')
-
-run 'yarn install' if File.exist?('yarn.lock')
-
-run 'rails db:migrate' if File.exist?('db/migrate')
-
-run 'rails db:data' if File.exist?('db/data')
-
-run 'RAILS_ENV=test rails db:migrate db:data' if Dir.getwd.end_with?('peanutweb')
+# data
+[ -d db/migrate ] && rails db:migrate
+[ -d db/data ] && rails db:migrate
+[[ "$PWD" =~ peanutweb ]] && RAILS_ENV=test rails db:migrate db:data
