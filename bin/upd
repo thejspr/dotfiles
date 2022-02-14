@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+def run(cmd)
+  puts cmd
+  # system(cmd)
+end
+
+run 'git co master && git pull && git remote prune origin && git bclean' if File.exist?('.git')
+
+run 'bundle install' if File.exist?('Gemfile')
+
+run 'yarn install' if File.exist?('yarn.lock')
+
+run 'rails db:migrate' if File.exist?('db/migrate')
+
+run 'rails db:data' if File.exist?('db/data')
+
+run 'RAILS_ENV=test rails db:migrate db:data' if Dir.getwd.end_with?('peanutweb')
