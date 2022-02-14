@@ -2,7 +2,7 @@
 
 def run(cmd)
   puts cmd
-  # system(cmd)
+  system(cmd)
 end
 
 run 'git co master && git pull && git remote prune origin && git bclean' if File.exist?('.git')
