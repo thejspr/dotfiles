@@ -134,7 +134,7 @@ filetype plugin indent on
 " }}}
 
 " UI {{{
-set background=dark
+set background=light
 colorscheme solarized
 call togglebg#map("<F5>")
 
@@ -150,8 +150,8 @@ set synmaxcol=140
 set title
 set ffs=unix,mac,dos
 " set scrolloff=25
-set autoindent
-set smartindent
+" set autoindent
+" set smartindent
 set showmode
 set modeline
 set showcmd
