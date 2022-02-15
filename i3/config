@@ -141,9 +141,7 @@ for_window [window_role="task_dialog"] floating enable
 # Application specific assignments
 assign [class="Slack"] $ws2
 assign [class="obsidian"] $ws2
-# assign [class="Todoist"] $ws2
 for_window [class="Spotify"] move to workspace $ws3
-# for_window [class="Todoist"] resize set width 30ppt
 
 # Background apps
 exec --no-startup-id nm-applet

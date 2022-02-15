@@ -126,7 +126,7 @@ Plug 'ap/vim-buftabline'
 " }}}
 
 " New {{{
-Plug 'dstein64/vim-startuptime'
+" Plug 'dstein64/vim-startuptime'
 " }}}
 
 call plug#end()
@@ -150,8 +150,8 @@ set synmaxcol=140
 set title
 set ffs=unix,mac,dos
 " set scrolloff=25
-set autoindent
-set smartindent
+" set autoindent
+" set smartindent
 set showmode
 set modeline
 set showcmd
