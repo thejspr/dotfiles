@@ -34,7 +34,6 @@ else
   setxkbmap us
   xmodmap ~/.Xmodmap
   [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
-  # . $HOME/.asdf/asdf.sh
   eval "$(rbenv init -)"
   export PATH="$PWD/bin:$PATH"
   setopt HIST_FIND_NO_DUPS
@@ -43,14 +42,11 @@ fi
 
 if [[ -v T14 ]]; then
   # . /opt/asdf-vm/asdf.sh
-  [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
   export BROWSER=/usr/bin/google-chrome-stable
   unset PGPORT
 fi
 
 if [[ -v DESKTOP ]]; then
-  source ~/.z.sh/z.sh
-  . $HOME/.asdf/asdf.sh
 fi
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
