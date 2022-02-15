@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-current=$(setxkbmap -query | grep layout | sed 's/layout: //' | tr a-z A-Z)
-
-echo $current
