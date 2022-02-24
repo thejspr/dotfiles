@@ -57,6 +57,7 @@ Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb' " Gbrowse handlers for github
 Plug 'pbrisbin/vim-mkdir' " Automatically create new folders for files
+Plug 'airblade/vim-gitgutter'
 " }}}
 
 " Ruby {{{

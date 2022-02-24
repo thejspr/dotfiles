@@ -7,7 +7,7 @@ then
 else
   sudo apt update
   sudo apt upgrade
-  sudo apt autoremove
+  sudo apt autoremove -f
 fi
 
 nvim +PlugUpdate +qall

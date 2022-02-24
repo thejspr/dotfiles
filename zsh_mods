@@ -48,6 +48,7 @@ if [[ -v T14 ]]; then
 fi
 
 if [[ -v DESKTOP ]]; then
+  source ~/.z.sh/z.sh
 fi
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
