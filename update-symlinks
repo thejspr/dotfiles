@@ -1,23 +1,23 @@
 #!/usr/bin/env ruby
 
-IGNORES = %w{zsh_mods ctags tags README.md update-symlinks.sh status-scripts}
+IGNORES = %w[zsh_mods ctags tags README.md update-symlinks status-scripts]
 
-Dir.glob("*").each do |file|
+Dir.glob('*').each do |file|
   next if IGNORES.include?(file)
-  next if file ~= /*.bak/
+  next if file =~ /.bak$/
 
-  if file == 'bin'
-    target = "~/#{file}"
-  else
-    target = "~/.#{file}"
-  end
+  target = if file == 'bin'
+             "~/#{file}"
+           else
+             "~/.#{file}"
+           end
 
   file_target = File.expand_path(target)
 
   if File.symlink?(file_target)
     puts "#{file} symlink, skipping" if ARGV.include?('-v')
     next
-  elsif File.exists?(file_target)
+  elsif File.exist?(file_target)
     puts "#{file} exists in root. [d]elete? [c]opy? [i]gnore?"
     prompt = STDIN.gets.chomp
 
@@ -38,4 +38,4 @@ Dir.glob("*").each do |file|
   system(cmd)
 end
 
-puts "Finished updating symlinks"
+puts 'Finished updating symlinks'

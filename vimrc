@@ -283,7 +283,7 @@ if has("nvim")
   " Terminal inside vim
   autocmd TermOpen * startinsert
   command! -nargs=* T split | resize 25 | terminal <args>
-  nnoremap <leader>c :T<cr>
+  " nnoremap <leader>c :T<cr>
 endif
 noremap <f1> <Nop>
 nmap <silent> gx :!xdg-open <cWORD><cr>
