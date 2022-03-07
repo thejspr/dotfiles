@@ -142,6 +142,7 @@ for_window [window_role="task_dialog"] floating enable
 assign [class="Slack"] $ws2
 assign [class="obsidian"] $ws2
 for_window [class="Spotify"] move to workspace $ws3
+for_window [class="pocket-casts"] move to workspace $ws3
 
 # Background apps
 exec --no-startup-id nm-applet
@@ -164,3 +165,4 @@ exec obsidian
 exec $connectCheck && google-chrome
 exec weekday && $connectCheck && slack
 exec $connectCheck && spotify
+exec $connectCheck && pocket-casts
