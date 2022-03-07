@@ -1,7 +1,7 @@
 font:
-  size: 11
+  size: 12
   normal:
-    family: 'JetBrainsMono NF'
+    family: 'JetBrainsMono Nerd Font'
     style: 'Regular'
 
 window:
