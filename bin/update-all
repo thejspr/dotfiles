@@ -1,14 +1,8 @@
 #!/usr/bin/env zsh
 
-if uname -a | grep -q 'MANJARO';
-then
-  sudo pacman -Syu
-  yay -Syu
-else
-  sudo apt update
-  sudo apt upgrade
-  sudo apt autoremove -f
-fi
+sudo apt update
+sudo apt upgrade
+sudo apt autoremove -f
 
 nvim +PlugUpdate +qall
 
