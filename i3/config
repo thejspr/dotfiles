@@ -13,13 +13,20 @@ bar {
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 bindsym $mod+Shift+F10 exec --no-startup-id systemctl suspend
 
-# Mediakeys
+# Desktop media control
 bindsym $mod+Up exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym $mod+Down exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym $mod+m exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym $mod+Return exec playerctl play-pause
 bindsym $mod+Right exec playerctl next
 bindsym $mod+Left exec playerctl previous
+
+# Laptop Mediakeys
+bindsym XF86MonBrightnessUp exec light -A 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 10 # decrease screen brightness
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 focus_follows_mouse yes
 
@@ -155,6 +162,7 @@ exec --no-startup-id dropbox start
 exec --no-startup-id emote
 exec --no-startup-id guake
 exec --no-startup-id mullvad
+exec --no-startup-id playerctld daemon
 exec --no-startup-id feh --randomize --bg-fill ~/Files/wallpapers/imgur-1/*
 
 set $connectCheck nm-online --quiet --timeout=300
