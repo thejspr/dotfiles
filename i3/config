@@ -152,6 +152,7 @@ for_window [class="Spotify"] move to workspace $ws3
 for_window [class="pocket-casts"] move to workspace $ws3
 
 # Background apps
+exec --no-startup-id ~/code/dotfiles/scripts/auto-brightness
 exec --no-startup-id nm-applet
 exec --no-startup-id pasystray
 exec --no-startup-id blueman-applet

@@ -65,10 +65,12 @@ Plug 'dense-analysis/ale'
 let g:ale_linters = {
       \   'ruby': ['rubocop'],
       \   'javascript': ['eslint'],
+      \   'python': ['autopep8']
       \}
 let g:ale_fixers = {
       \ 'ruby': ['rubocop'],
-      \ 'sql': ['pgformatter']
+      \ 'sql': ['pgformatter'],
+      \ 'python': ['autopep8']
       \}
 let b:ale_sql_pgformatter_options = '--spaces 2 --wrap-after 10'
 let g:ale_lint_on_text_changed = 'never'
@@ -83,6 +85,12 @@ let g:pasta_disabled_filetypes = ['yaml']
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 Plug 'tpope/vim-haml'
 "}}}
+
+" Python {{{
+" :CocInstall coc-pyright
+Plug 'Vimjas/vim-python-pep8-indent'
+" Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-plug'] }
+" }}}
 
 " Msc languages {{{
 Plug 'pangloss/vim-javascript'

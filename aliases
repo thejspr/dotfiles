@@ -12,6 +12,9 @@ function ew() {
 alias ww='e +VimwikiIndex'
 alias cat='cat'
 
+#python
+alias pym='python3 manage.py'
+
 #system
 alias e='$EDITOR'
 alias kf='kill -9 %1'
