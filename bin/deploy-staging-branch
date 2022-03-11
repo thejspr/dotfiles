@@ -29,6 +29,7 @@ then
   git merge $branch --no-edit
   git push
 
+  bundle --quiet
   bundle exec cap staging deploy
 
   git checkout $branch

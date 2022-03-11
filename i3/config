@@ -5,13 +5,14 @@ font pango:JetBrainsMono 0
 
 bar {
   status_command i3status --config ~/.i3status.conf
-  font pango:JetBrainsMono 13
+  font pango:JetBrainsMono 10
 }
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-bindsym $mod+Shift+F10 exec --no-startup-id systemctl suspend
+bindsym $mod+Shift+Delete exec --no-startup-id systemctl suspend
+bindsym $mod+Shift+l exec --no-startup-id i3lock
 
 # Desktop media control
 bindsym $mod+Up exec pactl set-sink-volume @DEFAULT_SINK@ +5%
