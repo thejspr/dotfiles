@@ -1,5 +1,5 @@
 font:
-  size: 8
+  size: 14
   normal:
     family: 'JetBrainsMono Nerd Font'
     style: 'Regular'
@@ -82,4 +82,4 @@ schemes:
       cyan:    '#93a1a1' # base1
       white:   '#fdf6e3' # base3
 
-colors: *themeLight
+colors: *themeDark
