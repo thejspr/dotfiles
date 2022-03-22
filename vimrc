@@ -12,7 +12,7 @@ Plug 'tpope/vim-obsession' " sessions mgmt
 Plug '907th/vim-auto-save'
 let g:auto_save = 1
 let g:auto_save_silent = 1
-let g:auto_save_events = ["TextChanged", "FocusLost"]
+let g:auto_save_events = ["TextChanged", "FocusLost", "InsertLeave"]
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 nmap gd <Plug>(coc-definition)
@@ -65,7 +65,6 @@ Plug 'dense-analysis/ale'
 let g:ale_linters = {
       \   'ruby': ['rubocop'],
       \   'javascript': ['eslint'],
-      \   'python': ['autopep8']
       \}
 let g:ale_fixers = {
       \ 'ruby': ['rubocop'],
@@ -143,7 +142,7 @@ filetype plugin indent on
 " }}}
 
 " UI {{{
-set background=dark
+set background=light
 colorscheme solarized
 call togglebg#map("<F5>")
 
@@ -285,6 +284,7 @@ noremap <Leader>c :Econtroller<space>
 " }}}
 
 " New stuff {{{
+autocmd bufwritepost ~/code/dotfiles/i3/config :silent !i3-msg restart ; notify-send "Reloaded i3 :)"
 au BufReadPost *.html* set formatoptions-=t
 
 if has("nvim")
