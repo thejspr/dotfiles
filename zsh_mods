@@ -34,8 +34,8 @@ else
   setxkbmap -option "caps:escape"
   setxkbmap us
   xmodmap ~/.Xmodmap
-  [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
-  [[ -r "~/.z.sh/z.sh" ]] && source ~/.z.sh/z.sh
+  [ -f /usr/share/z/z.sh ] && source /usr/share/z/z.sh
+  [ -f ~/.z.sh/z.sh ] && source ~/.z.sh/z.sh
   eval "$(rbenv init -)"
   export PATH="$PWD/bin:$PATH"
   setopt HIST_FIND_NO_DUPS
