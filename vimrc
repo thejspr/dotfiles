@@ -115,6 +115,7 @@ nmap <silent> <leader>X :TestFile<CR>
 " }}}
 
 " UI {{{
+Plug 'chriskempson/base16-vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
@@ -143,14 +144,8 @@ filetype plugin indent on
 
 " UI {{{
 set background=light
-colorscheme solarized
-call togglebg#map("<F5>")
-
-if &background == 'dark'
-  let g:indentLine_color_term = 238
-else
-  let g:indentLine_color_term = 253
-endif
+let base16colorspace=256
+colorscheme base16-solarized-light
 
 syntax on
 set colorcolumn=80

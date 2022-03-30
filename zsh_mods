@@ -31,7 +31,7 @@ if [[ -v MAC ]]; then
   alias sed=gsed
 else
   xset r rate 250 40
-  setxkbmap -option "caps:escape"
+  setxkbmap -option caps:escape
   setxkbmap us
   xmodmap ~/.Xmodmap
   [ -f /usr/share/z/z.sh ] && source /usr/share/z/z.sh
