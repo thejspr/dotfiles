@@ -20,7 +20,7 @@ end
 
 def set_brightness
   system "xrandr --output HDMI-0 --brightness #{value}"
-  system("setbg #{time > 18 ? 'dark' : 'light'}")
+  # system("setbg #{time > 18 ? 'dark' : 'light'}")
 end
 
 loop do

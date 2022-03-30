@@ -76,6 +76,8 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_enter = 0
 " let g:ale_fix_on_save = 1
+highlight ALEWarning ctermbg=none cterm=underline
+highlight ALEError ctermbg=none cterm=underline
 nnoremap <leader>F :ALEFix<cr>
 
 Plug 'tpope/vim-rails'
@@ -143,9 +145,15 @@ filetype plugin indent on
 " }}}
 
 " UI {{{
-set background=light
+set background=dark
 let base16colorspace=256
 colorscheme base16-solarized-light
+
+if &background == 'dark'
+  let g:indentLine_color_term = 238
+else
+  let g:indentLine_color_term = 253
+endif
 
 syntax on
 set colorcolumn=80

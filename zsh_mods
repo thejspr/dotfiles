@@ -49,15 +49,15 @@ fpath=(${ASDF_DIR}/completions $fpath)
 autoload -Uz compinit
 compinit
 
-unalias g
-g() {
-  if [[ $# -eq 0 ]]; then
-    command git status -sb
-  else
-    command hub "$@";
-  fi
-}
-# alias gs='git status -sb'
+# unalias g
+# g() {
+#   if [[ $# -eq 0 ]]; then
+#     command git status -sb
+#   else
+#     command hub "$@";
+#   fi
+# }
+alias gs='git status -sb'
 
 # Go
 export GOPATH=$HOME/golang
