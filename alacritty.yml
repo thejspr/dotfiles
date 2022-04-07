@@ -98,4 +98,4 @@ schemes:
       - { index: 20, color: '0x839496' }
       - { index: 21, color: '0xeee8d5' }
 
-colors: *themeDark
+colors: *themeLight

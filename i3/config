@@ -147,10 +147,10 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 
 # Application specific assignments
-assign [class="Slack"] $ws2
-assign [class="obsidian"] $ws2
-for_window [class="Spotify"] move to workspace $ws3
-for_window [class="pocket-casts"] move to workspace $ws3
+assign [class="Slack"] $ws3
+assign [class="obsidian"] $ws4
+# for_window [class="Spotify"] move to workspace $ws3
+# for_window [class="pocket-casts"] move to workspace $ws3
 
 # Background apps
 exec --no-startup-id ~/code/dotfiles/scripts/auto-brightness
