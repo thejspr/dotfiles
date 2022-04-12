@@ -2,6 +2,7 @@
 " Init {{{
 set nocompatible
 filetype off
+let g:loaded_perl_provider = 0
 call plug#begin('~/.vim/plugged')
 " }}}
 
