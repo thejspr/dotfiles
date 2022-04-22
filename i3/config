@@ -174,5 +174,5 @@ exec alacritty --command tmux
 exec obsidian
 exec $connectCheck && google-chrome
 exec weekday && $connectCheck && slack
-exec $connectCheck && spotify
+# exec $connectCheck && spotify
 exec $connectCheck && pocket-casts

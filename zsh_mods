@@ -22,8 +22,6 @@ if [[ -v MAC ]]; then
   export PATH=/usr/local/bin:/usr/local/share/npm/bin:$PATH
   export PATH=./bin:~/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
   alias tar='/usr/local/bin/gtar'
-  # . "$(brew --prefix asdf)/asdf.sh"
-
   export NVM_DIR="$HOME/.nvm"
   [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh" --no-use  # This loads nvm
   export PATH="$HOME/.rbenv/bin:$PATH"
@@ -42,7 +40,7 @@ else
   setopt HIST_IGNORE_DUPS
 fi
 
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*" --sort accessed'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 fpath=(${ASDF_DIR}/completions $fpath)
