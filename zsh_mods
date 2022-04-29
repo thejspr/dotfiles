@@ -8,6 +8,7 @@ export TERM=screen-256color
 export NODEJS_CHECK_SIGNATURES=no
 export PGPORT=5434
 export DD_TRACE_STARTUP_LOGS=false
+export SPRING=off
 
 autoload zmv
 bindkey -e

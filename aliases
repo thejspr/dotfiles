@@ -11,6 +11,7 @@ function ew() {
 }
 alias ww='e +VimwikiIndex'
 alias cat='cat'
+alias uall='update-all'
 
 #python
 alias pym='python3 manage.py'

@@ -288,7 +288,7 @@ noremap <Leader>c :Econtroller<space>
 " }}}
 
 " New stuff {{{
-autocmd bufwritepost ~/code/dotfiles/i3/config :silent !i3-msg restart ; notify-send "Reloaded i3 :)"
+" autocmd bufwritepost ~/code/dotfiles/i3/config :silent !i3-msg restart ; notify-send "Reloaded i3 :)"
 au BufReadPost *.html* set formatoptions-=t
 
 if has("nvim")
