@@ -33,7 +33,7 @@ map <c-x> :Bdelete<CR>
 " Search & Code navigation {{{
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-noremap <leader>t :GFiles<cr>
+noremap <leader>t :Files<cr>
 noremap <leader>b :Buffers<cr>
 noremap <leader>r :History<cr>
 let g:fzf_layout = { 'down': '~30%' }

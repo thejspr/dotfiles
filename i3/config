@@ -156,8 +156,8 @@ assign [class="obsidian"] $ws2
 for_window [class="Spotify"] move to workspace $ws3
 for_window [class="pocket-casts"] move to workspace $ws3
 
-set $main_monitor DP-0
-set $second_monitor HDMI-0
+set $main_monitor DP-1
+set $second_monitor HDMI-1
 
 workspace $ws1 output $main_monitor
 workspace $ws2 output $main_monitor
