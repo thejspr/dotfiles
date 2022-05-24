@@ -7,7 +7,7 @@ bar {
   status_command i3status --config ~/.i3status.conf
   font pango:JetBrainsMono 12
   # output DP-0
-  tray_output DP-0
+  # tray_output DP-0
 }
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
@@ -176,7 +176,7 @@ exec --no-startup-id emote
 exec --no-startup-id guake
 # exec --no-startup-id mullvad
 exec --no-startup-id playerctld daemon
-exec --no-startup-id feh --randomize --bg-fill ~/Files/wallpapers/3840x2160/*
+exec --no-startup-id feh --randomize --bg-fill ~/Files/wallpapers/*
 
 set $connectCheck nm-online --quiet --timeout=300
 
