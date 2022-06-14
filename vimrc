@@ -49,7 +49,9 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'mg979/vim-visual-multi'
 Plug 'godlygeek/tabular'
-Plug 'ixru/nvim-markdown' " fork of 'plasticboy/vim-markdown'
+" Plug 'ixru/nvim-markdown' " fork of 'plasticboy/vim-markdown'
+Plug 'preservim/vim-markdown'
+let g:vim_markdown_conceal = 0
 " }}}
 
 " File management & Git {{{
@@ -146,7 +148,7 @@ filetype plugin indent on
 " }}}
 
 " UI {{{
-set background=light
+set background=dark
 let base16colorspace=256
 colorscheme base16-solarized-light
 
@@ -300,4 +302,7 @@ endif
 noremap <f1> <Nop>
 nmap <silent> gx :!xdg-open '<cWORD>'<cr>
 nmap Y yy
+
+" Substitute in line
+nnoremap gs "zye:%s/<C-R>z//g<left><left>
 " }}}

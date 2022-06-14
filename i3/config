@@ -7,14 +7,14 @@ bar {
   status_command i3status --config ~/.i3status.conf
   font pango:JetBrainsMono 12
   # output DP-0
-  # tray_output DP-0
+  tray_output DP-1
 }
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 bindsym $mod+Shift+Home exec --no-startup-id i3lock
-bindsym $mod+Shift+End exec --no-startup-id systemctl suspend
+bindsym $mod+Esc exec --no-startup-id sudo pm-suspend
 
 # Desktop media control
 bindsym $mod+Up exec pactl set-sink-volume @DEFAULT_SINK@ +5%
@@ -23,13 +23,6 @@ bindsym $mod+m exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym $mod+Return exec playerctl play-pause
 bindsym $mod+Right exec playerctl next
 bindsym $mod+Left exec playerctl previous
-
-# Laptop Mediakeys
-bindsym XF86MonBrightnessUp exec light -A 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec light -U 10 # decrease screen brightness
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 focus_follows_mouse yes
 
@@ -156,6 +149,7 @@ assign [class="obsidian"] $ws2
 for_window [class="Spotify"] move to workspace $ws3
 for_window [class="pocket-casts"] move to workspace $ws3
 
+# Multi monitor settings
 set $main_monitor DP-1
 set $second_monitor HDMI-1
 
@@ -184,6 +178,6 @@ set $connectCheck nm-online --quiet --timeout=300
 exec alacritty --command tmux
 exec obsidian
 exec $connectCheck && google-chrome
-# exec weekday && $connectCheck && slack
+exec weekday && $connectCheck && slack
 # exec $connectCheck && spotify
 exec $connectCheck && pocket-casts
