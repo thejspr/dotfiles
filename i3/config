@@ -14,7 +14,7 @@ bar {
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 bindsym $mod+Shift+Home exec --no-startup-id i3lock
-bindsym $mod+Esc exec --no-startup-id sudo pm-suspend
+bindsym $mod+End exec --no-startup-id sudo pm-suspend
 
 # Desktop media control
 bindsym $mod+Up exec pactl set-sink-volume @DEFAULT_SINK@ +5%
