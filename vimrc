@@ -50,8 +50,8 @@ Plug 'tpope/vim-surround'
 Plug 'mg979/vim-visual-multi'
 Plug 'godlygeek/tabular'
 " Plug 'ixru/nvim-markdown' " fork of 'plasticboy/vim-markdown'
-Plug 'preservim/vim-markdown'
 let g:vim_markdown_conceal = 0
+Plug 'preservim/vim-markdown'
 " }}}
 
 " File management & Git {{{
@@ -106,8 +106,10 @@ Plug 'tpope/vim-ragtag'
 " tmux and testing {{{
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
+" let g:VimuxOrientation = "h"
+" let g:VimuxHeight = "45"
 let g:VimuxOrientation = "v"
-let g:VimuxHeight = "30"
+let g:VimuxHeight = "33"
 nmap <leader><space> :VimuxPromptCommand<cr>
 nmap <silent> <leader>q :VimuxRunLastCommand<CR>
 Plug 'janko-m/vim-test'
@@ -133,6 +135,7 @@ function! FullFilename()
 endfunction
 
 Plug 'Yggdroot/indentLine'
+let g:indentLine_setConceal = 0
 let g:indentLine_char = '┊'
 let g:indentLine_bufNameExclude = ['NERD_tree.*', 'fzf']
 
@@ -148,7 +151,7 @@ filetype plugin indent on
 " }}}
 
 " UI {{{
-set background=dark
+set background=light
 let base16colorspace=256
 colorscheme base16-solarized-light
 
