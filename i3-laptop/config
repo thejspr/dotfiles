@@ -151,9 +151,10 @@ for_window [window_role="task_dialog"] floating enable
 # Application specific assignments
 assign [class="Alacritty"] $ws2
 assign [class="obsidian"] $ws3
-assign [class="Slack"] $ws4
 for_window [class="Spotify"] move to workspace $ws3
 for_window [class="pocket-casts"] move to workspace $ws3
+assign [class="Slack"] $ws4
+for_window [class="slack"] move to workspace $ws4
 
 # Background apps
 exec --no-startup-id nm-applet

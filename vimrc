@@ -106,8 +106,8 @@ Plug 'tpope/vim-ragtag'
 " tmux and testing {{{
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
-let g:VimuxOrientation = "h"
-let g:VimuxHeight = "45"
+let g:VimuxOrientation = "v"
+let g:VimuxHeight = "30"
 nmap <leader><space> :VimuxPromptCommand<cr>
 nmap <silent> <leader>q :VimuxRunLastCommand<CR>
 Plug 'janko-m/vim-test'
