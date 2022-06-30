@@ -144,18 +144,18 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 
 # Application specific assignments
-assign [class="Slack"] $ws3
+assign [class="Slack"] $ws2
 assign [class="obsidian"] $ws2
 for_window [class="Spotify"] move to workspace $ws3
 for_window [class="pocket-casts"] move to workspace $ws3
 
 # Multi monitor settings
 set $main_monitor DP-1
-set $second_monitor HDMI-1
+# set $second_monitor HDMI-1
 
-workspace $ws1 output $main_monitor
-workspace $ws2 output $main_monitor
-workspace $ws3 output $second_monitor
+# workspace $ws1 output $main_monitor
+# workspace $ws2 output $main_monitor
+# workspace $ws3 output $second_monitor
 
 # Background apps
 # exec --no-startup-id ~/code/dotfiles/scripts/auto-brightness
@@ -167,6 +167,7 @@ exec --no-startup-id flameshot
 exec --no-startup-id playerctld daemon
 exec --no-startup-id dropbox start
 exec --no-startup-id emote
+bindsym $mod+Shift+e exec --no-startup-id emote
 exec --no-startup-id guake
 # exec --no-startup-id mullvad
 exec --no-startup-id playerctld daemon
