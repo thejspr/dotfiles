@@ -13,8 +13,8 @@ bar {
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-bindsym $mod+Shift+Home exec --no-startup-id i3lock
-bindsym $mod+End exec --no-startup-id sudo pm-suspend
+bindsym $mod+Home exec --no-startup-id i3lock
+bindsym End exec --no-startup-id sudo pm-suspend
 
 # Desktop media control
 bindsym $mod+Up exec pactl set-sink-volume @DEFAULT_SINK@ +5%
@@ -144,18 +144,18 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 
 # Application specific assignments
-assign [class="Slack"] $ws2
+assign [class="Slack"] $ws3
 assign [class="obsidian"] $ws2
 for_window [class="Spotify"] move to workspace $ws3
-for_window [class="pocket-casts"] move to workspace $ws3
 
 # Multi monitor settings
 set $main_monitor DP-1
-# set $second_monitor HDMI-1
+set $second_monitor HDMI-1
 
-# workspace $ws1 output $main_monitor
-# workspace $ws2 output $main_monitor
-# workspace $ws3 output $second_monitor
+workspace $ws1 output $main_monitor
+workspace $ws2 output $main_monitor
+workspace $ws3 output $second_monitor
+workspace $ws4 output $second_monitor
 
 # Background apps
 # exec --no-startup-id ~/code/dotfiles/scripts/auto-brightness
@@ -179,6 +179,5 @@ set $connectCheck nm-online --quiet --timeout=300
 exec alacritty --command tmux
 exec obsidian
 exec $connectCheck && google-chrome
-exec weekday && $connectCheck && slack
+# exec weekday && $connectCheck && slack
 # exec $connectCheck && spotify
-exec $connectCheck && pocket-casts
