@@ -34,6 +34,7 @@ map <c-x> :Bdelete<CR>
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 noremap <leader>t :Files<cr>
+" noremap <leader>t :FloatermNew fzf<cr>
 noremap <leader>b :Buffers<cr>
 noremap <leader>r :History<cr>
 let g:fzf_layout = { 'down': '~30%' }
@@ -144,6 +145,11 @@ Plug 'ap/vim-buftabline'
 
 " New {{{
 " Plug 'dstein64/vim-startuptime'
+Plug 'voldikss/vim-floaterm'
+let g:floaterm_keymap_toggle = '<F1>'
+let g:floaterm_keymap_new    = '<F2>'
+let g:floaterm_keymap_prev   = '<F3>'
+let g:floaterm_keymap_next   = '<F4>'
 " }}}
 
 call plug#end()
