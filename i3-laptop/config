@@ -40,7 +40,7 @@ bindsym $mod+Shift+q kill
 
 # start program launcher
 bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,drun -theme solarized -font 'JetBrainsMono 14' -show combi -icon-theme 'Papirus' -show-icons"
-bindsym $mod+Shift+e exec --no-startup-id emote
+# bindsym $mod+Shift+e exec --no-startup-id emote
 
 # define directional keys
 set $up k
