@@ -6,8 +6,7 @@ font pango:JetBrainsMono 0
 bar {
   status_command i3status --config ~/.i3status.conf
   font pango:JetBrainsMono 12
-  # output DP-0
-  tray_output DP-1
+  tray_output DP-0
 }
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
@@ -149,13 +148,14 @@ assign [class="obsidian"] $ws2
 for_window [class="Spotify"] move to workspace $ws3
 
 # Multi monitor settings
-set $main_monitor DP-1
-set $second_monitor HDMI-1
+set $main_monitor DP-0
+set $second_monitor HDMI-0
 
 workspace $ws1 output $main_monitor
 workspace $ws2 output $main_monitor
 workspace $ws3 output $second_monitor
 workspace $ws4 output $second_monitor
+workspace $ws5 output $main_monitor
 
 # Background apps
 # exec --no-startup-id ~/code/dotfiles/scripts/auto-brightness
