@@ -131,7 +131,7 @@ Plug 'tpope/vim-haml'
 
 " Python {{{
 " :CocInstall coc-pyright
-Plug 'Vimjas/vim-python-pep8-indent'
+" Plug 'Vimjas/vim-python-pep8-indent'
 " Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-plug'] }
 " }}}
 
@@ -190,8 +190,11 @@ let g:floaterm_keymap_prev   = '<F3>'
 let g:floaterm_keymap_next   = '<F4>'
 Plug 'AndrewRadev/splitjoin.vim'
 
-" Plug 'windwp/nvim-autopairs'
-" lua require("/home/jesper/.vim/plugged/nvim-autopairs").setup {}
+Plug 'windwp/nvim-autopairs'
+lua << EOF
+package.path = "/home/jesper/.vim/plugged/nvim-autopairs/lua/?.lua;" .. package.path
+require("nvim-autopairs").setup {}
+EOF
 " }}}
 
 call plug#end()
