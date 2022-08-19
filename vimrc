@@ -21,16 +21,23 @@ map <c-x> :Bdelete<CR>
 " }}}
 
 " CoC {{{
+" Docs https://github.com/neoclide/coc.nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-nmap gd <Plug>(coc-definition)
-nmap gr <Plug>(coc-references)
-"
-" Requires: :CocInstall coc-explorer
-noremap tt :CocCommand explorer<CR>
+
 set updatetime=300
 set signcolumn=yes
 set shortmess+=c
+
+# Plugins
+Plug 'yaegassy/coc-tailwindcss3', {'do': 'yarn install --frozen-lockfile'}
+Plug 'weirongxu/coc-explorer', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-solargraph', {'do': 'yarn install --frozen-lockfile'}
+
+noremap tt :CocCommand explorer<CR>
 let g:coc_global_extensions = ['coc-solargraph']
+
+nmap gd <Plug>(coc-definition)
+nmap gr <Plug>(coc-references)
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
