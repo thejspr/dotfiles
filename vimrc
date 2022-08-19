@@ -28,7 +28,7 @@ set updatetime=300
 set signcolumn=yes
 set shortmess+=c
 
-# Plugins
+" Plugins
 Plug 'yaegassy/coc-tailwindcss3', {'do': 'yarn install --frozen-lockfile'}
 Plug 'weirongxu/coc-explorer', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-solargraph', {'do': 'yarn install --frozen-lockfile'}
@@ -188,6 +188,10 @@ let g:floaterm_keymap_toggle = '<F1>'
 let g:floaterm_keymap_new    = '<F2>'
 let g:floaterm_keymap_prev   = '<F3>'
 let g:floaterm_keymap_next   = '<F4>'
+Plug 'AndrewRadev/splitjoin.vim'
+
+" Plug 'windwp/nvim-autopairs'
+" lua require("/home/jesper/.vim/plugged/nvim-autopairs").setup {}
 " }}}
 
 call plug#end()
