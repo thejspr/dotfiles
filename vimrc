@@ -67,18 +67,18 @@ endif
 " }}}
 
 " Search & Code navigation {{{
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-noremap <leader>t :Files<cr>
-" noremap <leader>t :FloatermNew fzf<cr>
-noremap <leader>b :Buffers<cr>
-noremap <leader>r :History<cr>
-let g:fzf_layout = { 'down': '~30%' }
-let g:fzf_history_dir = '~/.vim/history'
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
+" noremap <leader>t :Files<cr>
+" " noremap <leader>t :FloatermNew fzf<cr>
+" noremap <leader>b :Buffers<cr>
+" noremap <leader>r :History<cr>
+" let g:fzf_layout = { 'down': '~30%' }
+" let g:fzf_history_dir = '~/.vim/history'
 
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
 nmap <leader>a :Grepper -tool rg -cword -noprompt<cr>
-nmap <leader>g :Grepper -tool rg<cr>
+" nmap <leader>g :Grepper -tool rg<cr>
 " }}}
 
 " Text {{{
@@ -195,6 +195,15 @@ lua << EOF
 package.path = "/home/jesper/.vim/plugged/nvim-autopairs/lua/?.lua;" .. package.path
 require("nvim-autopairs").setup {}
 EOF
+
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+" Find files using Telescope command-line sugar.
+nnoremap <leader>t <cmd>Telescope find_files<cr>
+nnoremap <leader>g <cmd>Telescope live_grep<cr>
+nnoremap <leader>b <cmd>Telescope buffers<cr>
+nnoremap <leader>h <cmd>Telescope help_tags<cr>
 " }}}
 
 call plug#end()
