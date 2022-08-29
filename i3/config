@@ -126,9 +126,9 @@ bindsym $mod+x exec flameshot gui
 # file-browser
 bindsym $mod+n exec nautilus ~/Downloads
 
-# Show a floating calc terminal with Mod+c
+# Show a floating calc terminal with Mod+c https://github.com/Qalculate/libqalculate
 for_window [instance="Alacritty" title="My Calculator"] floating enable
-bindsym $mod+c exec alacritty -t "My Calculator" -e calc
+bindsym $mod+c exec alacritty -t "My Calculator" -e qalc
 
 # Show todos
 for_window [instance="Alacritty" title="My Todos"] floating enable
