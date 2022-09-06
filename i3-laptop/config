@@ -136,7 +136,7 @@ bindsym $mod+n exec nautilus ~
 
 # Show a floating calc terminal with Mod+c
 for_window [instance="Alacritty" title="My Calculator"] floating enable
-bindsym $mod+c exec alacritty -t "My Calculator" -e calc
+bindsym $mod+c exec alacritty -t "My Calculator" -e qalc
 
 # Show todos
 for_window [instance="Alacritty" title="My Todos"] floating enable
@@ -151,7 +151,7 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 
 # Application specific assignments
-assign [class="Alacritty"] $ws2
+# assign [class="Alacritty"] $ws2
 assign [class="obsidian"] $ws3
 for_window [class="Spotify"] move to workspace $ws3
 for_window [class="pocket-casts"] move to workspace $ws3
@@ -167,7 +167,7 @@ exec --no-startup-id flameshot
 exec --no-startup-id playerctld daemon
 exec --no-startup-id dropbox start
 exec --no-startup-id emote
-exec --no-startup-id guake
+# exec --no-startup-id guake
 # exec --no-startup-id mullvad
 exec --no-startup-id playerctld daemon
 exec --no-startup-id feh --randomize --bg-fill ~/Files/wallpapers/*

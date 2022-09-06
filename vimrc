@@ -78,7 +78,7 @@ endif
 
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
 nmap <leader>a :Grepper -tool rg -cword -noprompt<cr>
-" nmap <leader>g :Grepper -tool rg<cr>
+nmap <leader>G :Grepper -tool rg<cr>
 " }}}
 
 " Text {{{
@@ -111,6 +111,7 @@ let g:ale_fixers = {
       \ 'ruby': ['rubocop'],
       \ 'sql': ['pgformatter'],
       \ 'python': ['autopep8'],
+      \ 'javascript': ['prettier'],
       \}
 let g:ale_ruby_rubocop_options = '-A'
 let b:ale_sql_pgformatter_options = '--spaces 2 --wrap-after 10'
@@ -211,7 +212,7 @@ filetype plugin indent on
 " }}}
 
 " UI {{{
-set background=dark
+set background=light
 let base16colorspace=256
 colorscheme base16-solarized-light
 
