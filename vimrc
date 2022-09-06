@@ -86,7 +86,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'mg979/vim-visual-multi'
 Plug 'godlygeek/tabular'
-" Plug 'ixru/nvim-markdown' " fork of 'plasticboy/vim-markdown'
 let g:vim_markdown_conceal = 0
 Plug 'preservim/vim-markdown'
 " }}}
@@ -162,8 +161,7 @@ nmap <silent> <leader>X :TestFile<CR>
 " }}}
 
 " UI {{{
-Plug 'chriskempson/base16-vim'
-Plug 'altercation/vim-colors-solarized'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
       \ 'component_function': {
@@ -182,6 +180,18 @@ let g:indentLine_bufNameExclude = ['NERD_tree.*', 'fzf']
 Plug 'ap/vim-buftabline'
 " }}}
 
+" Telescope {{{
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+" Find files using Telescope command-line sugar.
+nnoremap <leader>t <cmd>Telescope find_files<cr>
+nnoremap <leader>g <cmd>Telescope live_grep<cr>
+nnoremap <leader>b <cmd>Telescope buffers<cr>
+nnoremap <leader>h <cmd>Telescope help_tags<cr>
+" }}}
+
 " New {{{
 " Plug 'dstein64/vim-startuptime'
 Plug 'voldikss/vim-floaterm'
@@ -196,15 +206,6 @@ lua << EOF
 package.path = "/home/jesper/.vim/plugged/nvim-autopairs/lua/?.lua;" .. package.path
 require("nvim-autopairs").setup {}
 EOF
-
-Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
-" Find files using Telescope command-line sugar.
-nnoremap <leader>t <cmd>Telescope find_files<cr>
-nnoremap <leader>g <cmd>Telescope live_grep<cr>
-nnoremap <leader>b <cmd>Telescope buffers<cr>
-nnoremap <leader>h <cmd>Telescope help_tags<cr>
 " }}}
 
 call plug#end()
@@ -212,15 +213,16 @@ filetype plugin indent on
 " }}}
 
 " UI {{{
-set background=light
-let base16colorspace=256
-colorscheme base16-solarized-light
+" set background=light
+au fileType * hi Normal guibg=NONE ctermbg=NONE
+let g:tokyonight_transparent = 1
+colorscheme tokyonight
 
-if &background == 'dark'
-  let g:indentLine_color_term = 238
-else
-  let g:indentLine_color_term = 253
-endif
+" if &background == 'dark'
+"   let g:indentLine_color_term = 238
+" else
+"   let g:indentLine_color_term = 253
+" endif
 
 syntax on
 set colorcolumn=80

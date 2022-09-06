@@ -6,7 +6,7 @@ font pango:JetBrainsMono 0
 bar {
   status_command i3status --config ~/.i3status.conf
   font pango:JetBrainsMono 12
-  tray_output DP-0
+  tray_output DP-4
 }
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
@@ -33,6 +33,7 @@ bindsym $mod+Shift+q kill
 
 # start program launcher
 bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,drun -theme solarized -font 'JetBrainsMono 14' -show combi -icon-theme 'Papirus' -show-icons"
+bindsym $mod+g exec --no-startup-id echo "" | rofi -dmenu -p "Search:" | xargs -I{} xdg-open https://www.google.dk/search?q={}
 
 # define directional keys
 set $up k
@@ -148,7 +149,7 @@ assign [class="obsidian"] $ws2
 for_window [class="Spotify"] move to workspace $ws3
 
 # Multi monitor settings
-set $main_monitor DP-0
+set $main_monitor DP-4
 set $second_monitor HDMI-0
 
 workspace $ws1 output $main_monitor
