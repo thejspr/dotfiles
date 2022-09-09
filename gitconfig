@@ -4,7 +4,7 @@
 [github]
   user = thejspr
 [color]
-  ui = true
+	ui = true
 [push]
   default = tracking
 [core]
@@ -12,7 +12,7 @@
   whitespace = trailing-space,space-before-tab
   ignorecase = false
   attributesfile = /Users/jesper/code/dotfiles/gitattributes
-  pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = diff-so-fancy | less --tabs=4 -RFX
 [alias]
   a      = add --all
   aa     = add -A
@@ -25,7 +25,7 @@
   ca     = !git add -A && git commit -v
   co     = checkout
   ci     = !hub ci-status -v | awk '{print $4}' | xargs xdg-open
-  d      = !clear && git diff
+  d      = diff
   dc     = diff --cached
   ds     = diff --stat
   edit   = !git status -sb | tail +2 | grep -v '^ D' | awk '{print $2}' | xargs -o $EDITOR
@@ -83,19 +83,19 @@
 [pull]
   ff = only
 [interactive]
-  diffFilter = diff-so-fancy --patch
+	diffFilter = diff-so-fancy --patch
 [color "diff-highlight"]
-  oldNormal = red bold
-  oldHighlight = red bold 52
-  newNormal = green bold
-  newHighlight = green bold 22
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
 [color "diff"]
-  meta = 11
-  frag = magenta bold
-  func = 146 bold
-  commit = yellow bold
-  old = red bold
-  new = green bold
-  whitespace = red reverse
+	meta = 11
+	frag = magenta bold
+	func = 146 bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
 [init]
-  defaultBranch = master
+	defaultBranch = master
