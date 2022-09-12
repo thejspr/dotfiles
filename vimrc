@@ -50,7 +50,7 @@ inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice.
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+imap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 function! CheckBackspace() abort
@@ -204,7 +204,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'windwp/nvim-autopairs'
 lua << EOF
 package.path = "/home/jesper/.vim/plugged/nvim-autopairs/lua/?.lua;" .. package.path
-require("nvim-autopairs").setup {}
+require("nvim-autopairs").setup {map_cr=false}
 EOF
 " }}}
 
