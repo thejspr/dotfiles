@@ -1,6 +1,12 @@
 #!/bin/env ruby
 
-require 'notifier'
+begin
+  require 'notifier'
+rescue LoadError
+  `gem install notifier`
+  puts 'retrying...'
+  retry
+end
 
 def number(multiplier)
   (Random.rand * multiplier).ceil

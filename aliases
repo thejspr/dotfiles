@@ -1,4 +1,5 @@
 #new
+alias ge='g edit'
 alias eaa='e ~/.alacritty.yml'
 alias ei='e ~/.i3/config'
 alias eis='sudo vim ~/.i3status.conf'
