@@ -4,3 +4,6 @@
 *.jpeg
 *.mp4
 *.gem
+.git/
+vendor/
+node_modules/

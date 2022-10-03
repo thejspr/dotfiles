@@ -25,7 +25,7 @@
   ca     = !git add -A && git commit -v
   co     = checkout
   ci     = !hub ci-status -v | awk '{print $4}' | xargs xdg-open
-  d      = diff
+  d      = !clear && git diff
   dc     = diff --cached
   ds     = diff --stat
   edit   = !git status -sb | tail +2 | grep -v '^ D' | awk '{print $2}' | xargs -o $EDITOR
