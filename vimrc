@@ -182,7 +182,7 @@ Plug 'ap/vim-buftabline'
 
 " Telescope {{{
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 " Find files using Telescope command-line sugar.
@@ -206,6 +206,13 @@ Plug 'windwp/nvim-autopairs'
 lua << EOF
 package.path = "/home/jesper/.vim/plugged/nvim-autopairs/lua/?.lua;" .. package.path
 require("nvim-autopairs").setup {map_cr=false}
+EOF
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'RRethy/nvim-treesitter-endwise'
+lua << EOF
+package.path = "/home/jesper/.vim/plugged/nvim-treesitter/lua/?.lua;" .. package.path
+require('nvim-treesitter.configs').setup { endwise = { enable = true } }
 EOF
 " }}}
 
@@ -365,6 +372,9 @@ if has("nvim")
   autocmd TermOpen * startinsert
   command! -nargs=* T split | resize 25 | terminal <args>
   " nnoremap <leader>c :T<cr>
+lua << EOF
+  vim.o.ch = 0
+EOF
 endif
 noremap <f1> <Nop>
 nmap <silent> gx :!xdg-open '<cWORD>'<cr>
