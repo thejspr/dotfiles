@@ -209,11 +209,7 @@ require("nvim-autopairs").setup {map_cr=false}
 EOF
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'RRethy/nvim-treesitter-endwise'
-lua << EOF
-package.path = "/home/jesper/.vim/plugged/nvim-treesitter/lua/?.lua;" .. package.path
-require('nvim-treesitter.configs').setup { endwise = { enable = true } }
-EOF
+Plug 'tpope/vim-endwise'
 " }}}
 
 call plug#end()
@@ -372,9 +368,9 @@ if has("nvim")
   autocmd TermOpen * startinsert
   command! -nargs=* T split | resize 25 | terminal <args>
   " nnoremap <leader>c :T<cr>
-lua << EOF
-  vim.o.ch = 0
-EOF
+" lua << EOF
+"   vim.o.ch = 0
+" EOF
 endif
 noremap <f1> <Nop>
 nmap <silent> gx :!xdg-open '<cWORD>'<cr>
