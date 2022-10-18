@@ -144,9 +144,14 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 
 # Application specific assignments
-assign [class="Slack"] $ws3
+assign [class="Alacritty"] $ws1
+assign [class="google-chrome"] $ws1
 assign [class="obsidian"] $ws2
-for_window [class="Spotify"] move to workspace $ws3
+
+assign [class="Slack"] $ws3
+assign [class="firefox"] $ws3
+
+assign [class="spotify"] $ws4
 
 # Multi monitor settings
 set $main_monitor DP-4
@@ -169,7 +174,6 @@ exec --no-startup-id playerctld daemon
 exec --no-startup-id dropbox start
 exec --no-startup-id emote
 exec --no-startup-id guake
-# exec --no-startup-id mullvad
 exec --no-startup-id playerctld daemon
 exec --no-startup-id feh --randomize --bg-fill ~/Files/wallpapers/*
 
@@ -177,7 +181,9 @@ set $connectCheck nm-online --quiet --timeout=300
 
 # Startup applications
 exec alacritty --command tmux
-exec obsidian
 exec $connectCheck && google-chrome
+
+exec obsidian
 exec weekday && $connectCheck && slack
+exec $connectCheck && firefox
 # exec $connectCheck && spotify
