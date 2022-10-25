@@ -10,6 +10,9 @@ export PGPORT=5434
 export DD_TRACE_STARTUP_LOGS=false
 export SPRING=ON
 
+export FLYCTL_INSTALL="/home/jesper/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
+
 autoload zmv
 bindkey -e
 unalias gbr

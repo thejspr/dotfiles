@@ -24,7 +24,7 @@
   c      = commit -v
   ca     = !git add -A && git commit -v
   co     = checkout
-  ci     = !hub ci-status -v | awk '{print $4}' | xargs xdg-open
+  ci     = ci-status -v
   d      = !clear && git diff
   dc     = diff --cached
   ds     = diff --stat
