@@ -13,7 +13,7 @@ bar {
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 bindsym $mod+Home exec --no-startup-id i3lock
-bindsym End exec --no-startup-id sudo pm-suspend
+bindsym $mod+Shift+End exec --no-startup-id sudo pm-suspend
 
 # Desktop media control
 bindsym $mod+Up exec pactl set-sink-volume @DEFAULT_SINK@ +5%
@@ -166,6 +166,7 @@ workspace $ws5 output $main_monitor
 # Background apps
 # exec --no-startup-id ~/code/dotfiles/scripts/auto-brightness
 exec --no-startup-id nm-applet
+exec --no-startup-id pulseaudio --daemonize
 exec --no-startup-id pasystray
 exec --no-startup-id blueman-applet
 exec --no-startup-id copyq
