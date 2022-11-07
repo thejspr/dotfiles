@@ -164,13 +164,15 @@ nmap <silent> <leader>X :TestFile<CR>
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
+      \ 'colorscheme': 'tokyonight',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
       \ 'component_function': {
-      \   'filename': 'FullFilename',
+      \   'gitbranch': 'FugitiveHead'
       \ },
       \ }
-function! FullFilename()
-  return expand('%F')
-endfunction
 
 Plug 'Yggdroot/indentLine'
 let g:indentLine_setConceal = 0
