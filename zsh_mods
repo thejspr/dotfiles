@@ -47,9 +47,10 @@ fi
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*" --sort accessed'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-fpath=(${ASDF_DIR}/completions $fpath)
-autoload -Uz compinit
-compinit
+# . $HOME/.asdf/asdf.sh
+# fpath=(${ASDF_DIR}/completions $fpath)
+# autoload -Uz compinit
+# compinit
 
 # unalias g
 # g() {

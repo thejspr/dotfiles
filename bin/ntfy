@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -e
+
+msg="$*"
+
+curl -d "$msg" ntfy.sh/thejspr
