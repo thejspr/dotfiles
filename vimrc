@@ -116,7 +116,7 @@ let g:ale_ruby_rubocop_options = '-A'
 let b:ale_sql_pgformatter_options = '--spaces 2 --wrap-after 10'
 " let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 0
-let g:ale_lint_on_enter = 1
+let g:ale_lint_on_enter = 0
 " let g:ale_fix_on_save = 1
 highlight ALEWarning ctermbg=none cterm=underline
 highlight ALEError ctermbg=none cterm=underline
@@ -167,7 +167,7 @@ let g:lightline = {
       \ 'colorscheme': 'tokyonight',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \             [ 'gitbranch', 'readonly', 'relativepath', 'modified' ] ]
       \ },
       \ 'component_function': {
       \   'gitbranch': 'FugitiveHead'
