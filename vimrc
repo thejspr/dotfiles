@@ -2,7 +2,7 @@
 " Init {{{
 set nocompatible
 filetype off
-let g:loaded_perl_provider = 0
+" let g:loaded_perl_provider = 0
 call plug#begin('~/.vim/plugged')
 " }}}
 
@@ -100,6 +100,7 @@ Plug 'airblade/vim-gitgutter'
 " }}}
 
 " Ruby {{{
+Plug 'vim-ruby/vim-ruby'
 Plug 'dense-analysis/ale'
 let g:ale_linters = {
       \   'ruby': ['rubocop'],
@@ -212,6 +213,7 @@ EOF
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'tpope/vim-endwise'
+Plug 'github/copilot.vim'
 " }}}
 
 call plug#end()
