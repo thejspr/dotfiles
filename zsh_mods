@@ -1,4 +1,3 @@
-# zmodload zsh/zprof # uncomment for zsh startup testing `time  zsh -i -c exit`
 export HISTCONTROL=ignoreboth:erasedups
 export EDITOR='nvim'
 export BUNDLER_EDITOR='nvim'
@@ -42,8 +41,10 @@ else
   export PATH="$PWD/bin:$PATH"
   setopt HIST_FIND_NO_DUPS
   setopt HIST_IGNORE_DUPS
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  # see zsh-nvm in .zshrc
+  # export NVM_DIR="$HOME/.nvm"
+  # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*" --sort accessed'
@@ -97,5 +98,3 @@ if [ ! -S ~/.ssh/ssh_auth_sock ]; then
 fi
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 ssh-add -l > /dev/null || ssh-add
-
-# zprof
