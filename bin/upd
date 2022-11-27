@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+branch="$(git rev-parse --abbrev-ref HEAD)"
+
 # code
 [ -d .git ] && git co master && git pull && git remote prune origin && git bclean
 
@@ -11,3 +13,5 @@
 [ -d db/migrate ] && rails db:migrate
 [ -d db/data ] && rails db:migrate
 [[ "$PWD" =~ peanutweb ]] && RAILS_ENV=test rails db:migrate db:data
+
+git checkout $branch
