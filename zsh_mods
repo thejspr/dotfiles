@@ -16,7 +16,7 @@ autoload zmv
 bindkey -e
 unalias gbr
 
-export PATH="$HOME/.rbenv/bin:$PATH"
+# export PATH="$HOME/.rbenv/bin:$PATH"
 
 if [[ -v MAC ]]; then
   export HOMEBREW_NO_AUTO_UPDATE=1
@@ -37,13 +37,13 @@ else
   xmodmap ~/.Xmodmap
   [ -f /usr/share/z/z.sh ] && source /usr/share/z/z.sh
   [ -f ~/.z.sh/z.sh ] && source ~/.z.sh/z.sh
-  eval "$(rbenv init -)"
+  # eval "$(rbenv init -)"
   export PATH="$PWD/bin:$PATH"
   setopt HIST_FIND_NO_DUPS
   setopt HIST_IGNORE_DUPS
   # see zsh-nvm in .zshrc
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  # export NVM_DIR="$HOME/.nvm"
+  # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
   # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 
