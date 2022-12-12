@@ -177,6 +177,7 @@ exec --no-startup-id emote
 exec --no-startup-id guake
 exec --no-startup-id playerctld daemon
 exec --no-startup-id feh --randomize --bg-fill ~/Files/wallpapers/*
+exec --no-startup-id stretchly
 
 set $connectCheck nm-online --quiet --timeout=300
 
