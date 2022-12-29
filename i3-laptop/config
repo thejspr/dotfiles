@@ -154,7 +154,6 @@ for_window [window_role="task_dialog"] floating enable
 # assign [class="Alacritty"] $ws2
 assign [class="obsidian"] $ws3
 for_window [class="Spotify"] move to workspace $ws3
-for_window [class="pocket-casts"] move to workspace $ws3
 assign [class="Slack"] $ws4
 for_window [class="slack"] move to workspace $ws4
 
@@ -171,6 +170,7 @@ exec --no-startup-id emote
 # exec --no-startup-id mullvad
 exec --no-startup-id playerctld daemon
 exec --no-startup-id feh --randomize --bg-fill ~/Files/wallpapers/*
+exec --no-startup-id stretchly
 
 set $connectCheck nm-online --quiet --timeout=300
 
@@ -180,4 +180,5 @@ exec obsidian
 exec $connectCheck && google-chrome
 exec weekday && $connectCheck && slack
 # exec $connectCheck && spotify
-# exec $connectCheck && pocket-casts
+#
+# vim: ft=i3config
