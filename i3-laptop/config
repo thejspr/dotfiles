@@ -8,6 +8,8 @@ bar {
   font pango:JetBrainsMono 12
 }
 
+exec_always --no-startup-id "picom --config /home/jesper/.config/picom.conf"
+
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
