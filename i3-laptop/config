@@ -153,7 +153,8 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 
 # Application specific assignments
-# assign [class="Alacritty"] $ws2
+assign [class="Alacritty"] $ws1
+assign [class="Google Chrome"] $ws2
 assign [class="obsidian"] $ws3
 for_window [class="Spotify"] move to workspace $ws3
 assign [class="Slack"] $ws4
