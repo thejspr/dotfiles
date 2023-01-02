@@ -8,6 +8,7 @@ export NODEJS_CHECK_SIGNATURES=no
 export PGPORT=5434
 export DD_TRACE_STARTUP_LOGS=false
 export SPRING=ON
+export ASDF_RUBY_BUILD_VERSION=master
 
 export FLYCTL_INSTALL="/home/jesper/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"

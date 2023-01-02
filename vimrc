@@ -133,7 +133,7 @@ Plug 'tpope/vim-haml'
 " Python {{{
 " :CocInstall coc-pyright
 Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-plug'] }
+" Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-plug'] }
 " }}}
 
 " Msc languages {{{

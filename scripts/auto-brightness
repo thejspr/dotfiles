@@ -1,18 +1,14 @@
 #!/usr/bin/env ruby
 
+# frozen_string_literal: true
+
 def time
   Time.now.hour
 end
 
 def value
-  if time > 19
+  if time > 15
     0.6
-  elsif time > 18
-    0.7
-  elsif time > 17
-    0.8
-  elsif time > 16
-    0.9
   else
     1
   end
@@ -20,10 +16,11 @@ end
 
 def set_brightness
   system "xrandr --output HDMI-0 --brightness #{value}"
+  system "xrandr --output DP-4 --brightness #{value}"
   # system("setbg #{time > 18 ? 'dark' : 'light'}")
 end
 
 loop do
   set_brightness
-  sleep(60)
+  sleep(3600)
 end

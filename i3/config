@@ -9,6 +9,8 @@ bar {
   tray_output DP-4
 }
 
+exec --no-startup-id "picom -b --config ~/.config/picom.conf"
+
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
@@ -148,7 +150,7 @@ assign [class="Alacritty"] $ws1
 assign [class="google-chrome"] $ws1
 assign [class="obsidian"] $ws2
 
-assign [class="Slack"] $ws3
+assign [class="Slack"] $ws4
 assign [class="firefox"] $ws3
 
 assign [class="spotify"] $ws4
@@ -174,7 +176,6 @@ exec --no-startup-id flameshot
 exec --no-startup-id playerctld daemon
 exec --no-startup-id dropbox start
 exec --no-startup-id emote
-exec --no-startup-id guake
 exec --no-startup-id playerctld daemon
 exec --no-startup-id feh --randomize --bg-fill ~/Files/wallpapers/*
 exec --no-startup-id stretchly
