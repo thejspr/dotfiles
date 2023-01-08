@@ -6,6 +6,7 @@ font pango:JetBrainsMono 0
 bar {
   status_command i3status --config ~/.i3status.conf
   font pango:JetBrainsMono 12
+  position top
 }
 
 exec --no-startup-id "picom -b --config /home/jesper/.config/picom.conf"
@@ -173,7 +174,7 @@ exec --no-startup-id emote
 # exec --no-startup-id mullvad
 exec --no-startup-id playerctld daemon
 exec --no-startup-id feh --randomize --bg-fill ~/Files/wallpapers/*
-exec --no-startup-id stretchly
+# exec --no-startup-id stretchly
 
 set $connectCheck nm-online --quiet --timeout=300
 
