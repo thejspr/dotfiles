@@ -150,7 +150,9 @@ bindsym $mod+n exec nautilus ~
 
 # Show a floating calc terminal with Mod+c
 for_window [instance="Alacritty" title="My Calculator"] floating enable
-bindsym $mod+c exec alacritty -t "My Calculator" -e qalc
+bindsym $mod+c exec alacritty -t "My Calculator" -e qalculate.qalc
+# bindsym $mod+c exec qalculate
+for_window [class="qalculate-gtk" instance="Qalculate!"] floating enable
 
 # Show todos
 for_window [instance="Alacritty" title="My Todos"] floating enable
