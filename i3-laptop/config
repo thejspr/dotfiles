@@ -7,6 +7,16 @@ bar {
   status_command i3status --config ~/.i3status.conf
   font pango:JetBrainsMono 12
   position top
+
+  colors {
+    background #1a1b26
+    statusline #a9b1d6
+
+    focused_workspace  #15161e #7aa2f7
+    active_workspace   #ffffff #c0caf5
+    inactive_workspace #888888 #222222
+    urgent_workspace   #ffffff #900000
+  }
 }
 
 exec --no-startup-id "picom -b --config /home/jesper/.config/picom.conf"
@@ -153,11 +163,13 @@ bindsym $mod+v exec alacritty -t "Temp Vim" -e ~/bin/tempvim
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 
+for_window [all] border pixel 0
+
 # Application specific assignments
 # assign [class="Alacritty"] $ws1
 assign [class="Google Chrome"] $ws2
 assign [class="obsidian"] $ws3
-for_window [class="Spotify"] move to workspace $ws3
+# for_window [class="Spotify"] move to workspace $ws3
 assign [class="Slack"] $ws4
 for_window [class="slack"] move to workspace $ws4
 
@@ -172,7 +184,6 @@ exec --no-startup-id dropbox start
 exec --no-startup-id emote
 # exec --no-startup-id guake
 # exec --no-startup-id mullvad
-exec --no-startup-id playerctld daemon
 exec --no-startup-id feh --randomize --bg-fill ~/Files/wallpapers/*
 # exec --no-startup-id stretchly
 
