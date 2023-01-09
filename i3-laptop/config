@@ -6,6 +6,7 @@ font pango:JetBrainsMono 0
 bar {
   status_command i3status --config ~/.i3status.conf
   font pango:JetBrainsMono 12
+  separator_symbol " | "
   position top
 
   colors {
@@ -174,8 +175,8 @@ assign [class="Slack"] $ws4
 for_window [class="slack"] move to workspace $ws4
 
 # Background apps
-exec --no-startup-id nm-applet
-exec --no-startup-id pasystray
+exec --no-startup-id nm-applet --indicator
+exec --no-startup-id pasystray --notify=all
 exec --no-startup-id blueman-applet
 exec --no-startup-id copyq
 exec --no-startup-id flameshot
