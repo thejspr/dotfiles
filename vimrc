@@ -119,6 +119,7 @@ let b:ale_sql_pgformatter_options = '--spaces 2 --wrap-after 10'
 let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_enter = 0
 " let g:ale_fix_on_save = 1
+let g:ale_virtualtext_cursor = 0
 highlight ALEWarning ctermbg=none cterm=underline
 highlight ALEError ctermbg=none cterm=underline
 nnoremap <leader>F :ALEFix<cr>

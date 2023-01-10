@@ -135,7 +135,7 @@ bindsym $mod+c exec alacritty -t "My Calculator" -e qalc
 
 # Show todos
 for_window [instance="Alacritty" title="My Todos"] floating enable
-bindsym $mod+t exec alacritty -t "My Todos" -e nvim ~/Dropbox/notes/todo.md
+bindsym $mod+t exec alacritty -t "My Todos" -e nvim ~/Dropbox/notes/peanut/todo.md
 
 # Floating vim
 for_window [instance="Alacritty" title="Temp Vim"] floating enable
@@ -178,7 +178,7 @@ exec --no-startup-id dropbox start
 exec --no-startup-id emote
 exec --no-startup-id playerctld daemon
 exec --no-startup-id feh --randomize --bg-fill ~/Files/wallpapers/*
-exec --no-startup-id stretchly
+# exec --no-startup-id stretchly
 
 set $connectCheck nm-online --quiet --timeout=300
 
