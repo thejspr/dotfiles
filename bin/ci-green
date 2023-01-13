@@ -1,15 +1,18 @@
+#!/usr/bin/env bash
+
 set -e
 
 while(true); do
-  var="`hub ci-status`"
+  status=$(hub ci-status)
 
-  if [ $var = 'success' ]; then
+  if [ $status = 'success' ]; then
     echo "CI passed"
     exit 0
-  elif [ $var = 'failure' ]; then
+  elif [ $status = 'failure' ]; then
     echo "CI Failed!"
     exit -1
-  elif [ $var = 'pending' ]; then
+  elif [ $status = 'pending' ]; then
+    echo "Pending"
     sleep 10
   fi
 done
