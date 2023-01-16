@@ -156,7 +156,7 @@ for_window [class="qalculate-gtk" instance="Qalculate!"] floating enable
 
 # Show todos
 for_window [instance="Alacritty" title="My Todos"] floating enable
-bindsym $mod+t exec alacritty -t "My Todos" -e nvim ~/Dropbox/notes/todo.md
+bindsym $mod+t exec alacritty -t "My Todos" -e nvim ~/notes/todo.md
 
 # Floating vim
 for_window [instance="Alacritty" title="Temp Vim"] floating enable

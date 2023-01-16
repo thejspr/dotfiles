@@ -135,7 +135,7 @@ bindsym $mod+c exec alacritty -t "My Calculator" -e qalc
 
 # Show todos
 for_window [instance="Alacritty" title="My Todos"] floating enable
-bindsym $mod+t exec alacritty -t "My Todos" -e nvim ~/Dropbox/notes/peanut/todo.md
+bindsym $mod+t exec alacritty -t "My Todos" -e nvim ~/notes/peanut/todo.md
 
 # Floating vim
 for_window [instance="Alacritty" title="Temp Vim"] floating enable

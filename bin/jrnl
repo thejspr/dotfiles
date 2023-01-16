@@ -11,7 +11,7 @@
 
 set -e
 
-readonly NOTES_DIRECTORY="${NOTES_DIRECTORY:-"${HOME}/Dropbox/notes/journal"}"
+readonly NOTES_DIRECTORY="${NOTES_DIRECTORY:-"${HOME}/notes/journal"}"
 readonly NOTES_FILE="$(date +%Y-%m).md"
 readonly NOTES_PATH="${NOTES_DIRECTORY}/${NOTES_FILE}"
 
