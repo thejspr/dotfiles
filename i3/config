@@ -7,6 +7,18 @@ bar {
   status_command i3status --config ~/.i3status.conf
   font pango:JetBrainsMono 12
   tray_output DP-4
+  separator_symbol " | "
+  position top
+
+  colors {
+    background #1a1b26
+    statusline #a9b1d6
+
+    focused_workspace  #15161e #7aa2f7
+    active_workspace   #ffffff #c0caf5
+    inactive_workspace #888888 #222222
+    urgent_workspace   #ffffff #900000
+  }
 }
 
 exec --no-startup-id "picom -b --config ~/.config/picom.conf"

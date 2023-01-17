@@ -2,9 +2,10 @@
 
 sudo apt update
 sudo apt upgrade
-# sudo apt autoremove -f
+sudo apt autoremove -f
 
-nvim +PlugUpdate +qall
+nvim +PlugUpdate +CocUpdate +qall
+nvim +CocUpdate +qall
 
 gem install solargraph
 

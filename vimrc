@@ -28,13 +28,8 @@ set updatetime=300
 set signcolumn=yes
 set shortmess+=c
 
-" Plugins
-Plug 'yaegassy/coc-tailwindcss3', {'do': 'yarn install --frozen-lockfile'}
-Plug 'weirongxu/coc-explorer', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-solargraph', {'do': 'yarn install --frozen-lockfile'}
-
 noremap tt :CocCommand explorer<CR>
-let g:coc_global_extensions = ['coc-solargraph']
+let g:coc_global_extensions = ['coc-solargraph', 'coc-explorer']
 
 nmap gd <Plug>(coc-definition)
 nmap gr <Plug>(coc-references)
@@ -86,7 +81,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'mg979/vim-visual-multi'
 Plug 'godlygeek/tabular'
-let g:vim_markdown_conceal = 0
+" let g:vim_markdown_conceal = 0
 Plug 'preservim/vim-markdown'
 " }}}
 
