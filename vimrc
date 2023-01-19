@@ -22,6 +22,7 @@ map <c-x> :Bdelete<CR>
 
 " CoC {{{
 " Docs https://github.com/neoclide/coc.nvim
+let g:coc_node_path = '/home/jesper/.asdf/shims/node'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 set updatetime=300
