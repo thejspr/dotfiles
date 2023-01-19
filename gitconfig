@@ -68,7 +68,7 @@
   prompt = false
   keepBackup = false
 [diff]
-  tool = vimdiff
+  tool = nvimdiff
 [difftool]
   prompt = false
 [filter "lfs"]

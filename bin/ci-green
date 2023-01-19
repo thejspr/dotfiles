@@ -1,18 +1,21 @@
 #!/usr/bin/env bash
 
+# requires hub to be installed: https://hub.github.com/
+
 set -e
 
 while(true); do
-  status=$(hub ci-status)
+  status=$(hub ci-status || true)
 
   if [ $status = 'success' ]; then
-    echo "CI passed"
+    echo "Build passed"
     exit 0
   elif [ $status = 'failure' ]; then
-    echo "CI Failed!"
+    echo "Build Failed!"
+    hub ci-status -v
     exit -1
   elif [ $status = 'pending' ]; then
-    echo "Pending"
+    echo -n "."
     sleep 10
   fi
 done

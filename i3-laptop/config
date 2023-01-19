@@ -24,7 +24,7 @@ exec --no-startup-id "picom -b --config /home/jesper/.config/picom.conf"
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 bindsym $mod+Shift+Home exec --no-startup-id i3lock
 bindsym End exec --no-startup-id systemctl suspend
 
@@ -166,7 +166,7 @@ bindsym $mod+v exec alacritty -t "Temp Vim" -e ~/bin/tempvim
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 
-for_window [all] border pixel 0
+for_window [all] border pixel 1
 
 # Application specific assignments
 # assign [class="Alacritty"] $ws1
