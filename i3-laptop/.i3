@@ -1,1 +1,0 @@
-/home/jesper/.i3

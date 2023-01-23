@@ -174,7 +174,7 @@ assign [class="Google Chrome"] $ws2
 assign [class="obsidian"] $ws3
 # for_window [class="Spotify"] move to workspace $ws3
 assign [class="Slack"] $ws4
-for_window [class="slack"] move to workspace $ws4
+# for_window [class="slack"] move to workspace $ws4
 
 # Background apps
 exec --no-startup-id nm-applet --indicator
