@@ -148,7 +148,10 @@ bindsym $mod+x exec flameshot gui
 # file-browser
 bindsym $mod+n exec nautilus ~
 
+for_window [all] border pixel 1
+
 # Show a floating calc terminal with Mod+c
+for_window [instance="Alacritty" title="My Calculator"] border pixel 5
 for_window [instance="Alacritty" title="My Calculator"] floating enable
 bindsym $mod+c exec alacritty -t "My Calculator" -e qalculate.qalc
 # bindsym $mod+c exec qalculate
@@ -166,7 +169,7 @@ bindsym $mod+v exec alacritty -t "Temp Vim" -e ~/bin/tempvim
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 
-for_window [all] border pixel 1
+for_window [class="Ulauncher"] border pixel 0
 
 # Application specific assignments
 # assign [class="Alacritty"] $ws1
