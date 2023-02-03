@@ -11,7 +11,7 @@ Plug 'tpope/vim-repeat'
 " Plug 'ervandew/supertab'
 Plug 'tpope/vim-obsession' " sessions mgmt
 Plug '907th/vim-auto-save'
-let g:auto_save = 1
+let g:auto_save = 0
 let g:auto_save_silent = 1
 let g:auto_save_events = ["TextChanged", "FocusLost", "InsertLeave"]
 
@@ -63,15 +63,6 @@ endif
 " }}}
 
 " Search & Code navigation {{{
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" Plug 'junegunn/fzf.vim'
-" noremap <leader>t :Files<cr>
-" " noremap <leader>t :FloatermNew fzf<cr>
-" noremap <leader>b :Buffers<cr>
-" noremap <leader>r :History<cr>
-" let g:fzf_layout = { 'down': '~30%' }
-" let g:fzf_history_dir = '~/.vim/history'
-
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
 nmap <leader>a :Grepper -tool rg -cword -noprompt<cr>
 nmap <leader>G :Grepper -tool rg<cr>
@@ -148,14 +139,16 @@ Plug 'benmills/vimux'
 let g:VimuxOrientation = "v"
 let g:VimuxHeight = "33"
 nmap <leader><space> :VimuxPromptCommand<cr>
-nmap <silent> <leader>q :VimuxRunLastCommand<CR>
-Plug 'janko-m/vim-test'
+" nmap <silent> <leader>q :VimuxRunLastCommand<CR>
+Plug 'vim-test/vim-test'
 " let g:test#preserve_screen = 0
-let test#strategy = "vimux"
+" let test#strategy = "vimux"
+let test#strategy = "floaterm"
 " let test#strategy = "neovim"
 " let test#neovim#term_position = "vert"
 nmap <silent> <leader>x :TestNearest<CR>
 nmap <silent> <leader>X :TestFile<CR>
+nmap <silent> <leader>q :TestLast<CR>
 " }}}
 
 " UI {{{
@@ -195,6 +188,9 @@ nnoremap <leader>h <cmd>Telescope help_tags<cr>
 
 " New {{{
 " Plug 'dstein64/vim-startuptime'
+let g:floaterm_width = 0.9
+let g:floaterm_height = 0.9
+let g:floaterm_autoclose = 1
 Plug 'voldikss/vim-floaterm'
 let g:floaterm_keymap_toggle = '<F1>'
 let g:floaterm_keymap_new    = '<F2>'
