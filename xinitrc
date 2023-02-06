@@ -1,3 +1,3 @@
 setxkbmap -layout us
-xset s 1200
+xset s off
 xset dpms 0 0 1200
