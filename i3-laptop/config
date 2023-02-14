@@ -144,10 +144,10 @@ bindsym $mod+n exec nautilus ~
 for_window [all] border pixel 1
 
 # Show a floating calc terminal with Mod+c
-for_window [instance="Alacritty" title="My Calculator"] border pixel 5 floating enable
-bindsym $mod+c exec alacritty -t "My Calculator" -e qalculate.qalc
-# bindsym $mod+c exec qalculate
-for_window [class="qalculate-gtk" instance="Qalculate!"] floating enable
+# for_window [instance="Alacritty" title="My Calculator"] border pixel 5, floating enable
+# bindsym $mod+c exec alacritty -t "My Calculator" -e qalculate.qalc
+for_window [class="Qalculate-gtk"] floating enable, resize set 800 400, move position center
+bindsym $mod+c exec qalculate
 
 # Show todos
 for_window [instance="Alacritty" title="My Todos"] floating enable
