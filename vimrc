@@ -188,6 +188,7 @@ nnoremap <leader>h <cmd>Telescope help_tags<cr>
 
 " New {{{
 " Plug 'dstein64/vim-startuptime'
+Plug 'rcarriga/nvim-notify'
 let g:floaterm_width = 0.9
 let g:floaterm_height = 0.9
 let g:floaterm_autoclose = 1
