@@ -190,7 +190,6 @@ exec --no-startup-id dropbox start
 exec --no-startup-id emote
 exec --no-startup-id playerctld daemon
 exec --no-startup-id blueman-applet
-# exec --no-startup-id stretchly
 
 set $connectCheck nm-online --quiet --timeout=300
 
