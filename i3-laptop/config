@@ -5,9 +5,11 @@ font pango:JetBrainsMono 0
 
 bar {
   status_command i3status --config ~/.i3status.conf
-  font pango:JetBrainsMono 12
+  font pango:JetBrainsMono 11
   separator_symbol " | "
   position top
+  padding 1
+  tray_padding 5
 
   colors {
     background #1a1b26

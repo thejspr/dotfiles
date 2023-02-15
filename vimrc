@@ -11,7 +11,7 @@ Plug 'tpope/vim-repeat'
 " Plug 'ervandew/supertab'
 Plug 'tpope/vim-obsession' " sessions mgmt
 Plug '907th/vim-auto-save'
-let g:auto_save = 0
+let g:auto_save = 1
 let g:auto_save_silent = 1
 let g:auto_save_events = ["TextChanged", "FocusLost", "InsertLeave"]
 
