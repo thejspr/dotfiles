@@ -26,7 +26,7 @@ exec --no-startup-id "picom -b --config /home/jesper/.config/picom.conf"
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-bindsym $mod+Shift+Home exec --no-startup-id i3lock
+bindsym Home exec --no-startup-id i3lock
 bindsym End exec --no-startup-id systemctl suspend
 
 # Desktop media control
@@ -115,8 +115,6 @@ bindsym $mod+Shift+2 move container to workspace number $ws2
 bindsym $mod+Shift+3 move container to workspace number $ws3
 bindsym $mod+Shift+4 move container to workspace number $ws4
 bindsym $mod+Shift+5 move container to workspace number $ws5
-
-bindsym $mod+p move workspace to output right
 
 # reload or restart i3
 bindsym $mod+Shift+c reload

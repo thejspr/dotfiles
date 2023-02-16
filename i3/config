@@ -9,6 +9,8 @@ bar {
   tray_output DP-4
   separator_symbol " | "
   position top
+  padding 1
+  tray_padding 4
 
   colors {
     background #1a1b26
@@ -86,11 +88,6 @@ bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
-
-# focus the parent container
-# bindsym $mod+a focus parent
-# focus the child container
-#bindsym $mod+d focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -201,3 +198,5 @@ exec obsidian
 exec weekday && $connectCheck && slack
 exec $connectCheck && firefox
 # exec $connectCheck && spotify
+
+# vim: ft=i3config
