@@ -139,8 +139,8 @@ bindsym $mod+x exec flameshot gui
 bindsym $mod+n exec nautilus ~/Downloads
 
 # Show a floating calc terminal with Mod+c https://github.com/Qalculate/libqalculate
-for_window [instance="Alacritty" title="My Calculator"] floating enable
-bindsym $mod+c exec alacritty -t "My Calculator" -e qalc
+for_window [class="Qalculate"] floating enable, resize set 800 400, move position center
+bindsym $mod+c exec qalculate
 
 # Show todos
 for_window [instance="Alacritty" title="My Todos"] floating enable
@@ -153,6 +153,7 @@ bindsym $mod+v exec alacritty -t "Temp Vim" -e ~/bin/tempvim
 # Fix handing of popups
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
+for_window [class="Ulauncher"] border pixel 0
 
 # Application specific assignments
 assign [class="Alacritty"] $ws1
@@ -175,11 +176,9 @@ workspace $ws4 output $second_monitor
 workspace $ws5 output $main_monitor
 
 # Background apps
-# exec --no-startup-id ~/code/dotfiles/scripts/auto-brightness
 exec --no-startup-id feh --randomize --bg-fill ~/Files/wallpapers/*
 exec --no-startup-id nm-applet
-exec --no-startup-id pulseaudio --daemonize
-exec --no-startup-id pasystray
+# exec --no-startup-id pulseaudio --daemonize
 exec --no-startup-id copyq
 exec --no-startup-id flameshot
 exec --no-startup-id playerctld daemon
@@ -187,6 +186,8 @@ exec --no-startup-id dropbox start
 exec --no-startup-id emote
 exec --no-startup-id playerctld daemon
 exec --no-startup-id blueman-applet
+exec --no-startup-id ulauncher
+exec --no-startup-id pasystray
 
 set $connectCheck nm-online --quiet --timeout=300
 
