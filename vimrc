@@ -46,8 +46,8 @@ inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice.
-imap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" imap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+"                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 function! CheckBackspace() abort
   let col = col('.') - 1
@@ -111,6 +111,7 @@ highlight ALEWarning ctermbg=none cterm=underline
 highlight ALEError ctermbg=none cterm=underline
 nnoremap <leader>F :ALEFix<cr>
 
+Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
 Plug 'sickill/vim-pasta'
 let g:pasta_disabled_filetypes = ['yaml']
@@ -133,22 +134,23 @@ Plug 'tpope/vim-ragtag'
 
 " tmux and testing {{{
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'benmills/vimux'
+" Plug 'benmills/vimux'
 " let g:VimuxOrientation = "h"
 " let g:VimuxHeight = "45"
-let g:VimuxOrientation = "v"
-let g:VimuxHeight = "33"
-nmap <leader><space> :VimuxPromptCommand<cr>
-" nmap <silent> <leader>q :VimuxRunLastCommand<CR>
+" let g:VimuxOrientation = "v"
+" let g:VimuxHeight = "33"
+nmap <leader><space> :FloatermNew!<space>
 Plug 'vim-test/vim-test'
-" let g:test#preserve_screen = 0
 " let test#strategy = "vimux"
-let test#strategy = "floaterm"
-" let test#strategy = "neovim"
-" let test#neovim#term_position = "vert"
 nmap <silent> <leader>x :TestNearest<CR>
 nmap <silent> <leader>X :TestFile<CR>
 nmap <silent> <leader>q :TestLast<CR>
+
+function! FloatermNewBang(cmd)
+  execute 'FloatermNew ' . a:cmd
+endfunction
+let g:test#custom_strategies = {'floatermbang': function('FloatermNewBang')}
+let test#strategy = "floaterm"
 " }}}
 
 " UI {{{
@@ -205,8 +207,6 @@ package.path = "/home/jesper/.vim/plugged/nvim-autopairs/lua/?.lua;" .. package.
 require("nvim-autopairs").setup {map_cr=false}
 EOF
 
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'tpope/vim-endwise'
 Plug 'github/copilot.vim'
 " }}}
 

@@ -26,8 +26,8 @@ exec --no-startup-id "picom -b --config /home/jesper/.config/picom.conf"
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-bindsym Home exec --no-startup-id i3lock
-bindsym End exec --no-startup-id systemctl suspend
+bindsym $mod+Home exec --no-startup-id i3lock
+bindsym $mod+End exec --no-startup-id systemctl suspend
 
 # Desktop media control
 bindsym $mod+Up exec pactl set-sink-volume @DEFAULT_SINK@ +5%
@@ -172,7 +172,7 @@ assign [class="Slack"] $ws4
 
 # Background apps
 exec --no-startup-id nm-applet --indicator
-exec --no-startup-id pasystray --notify=all
+exec --no-startup-id pasystray
 exec --no-startup-id blueman-applet
 exec --no-startup-id copyq
 exec --no-startup-id flameshot
