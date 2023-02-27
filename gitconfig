@@ -56,19 +56,20 @@
 [advice]
   pushNonFastForward = false
   statusHints = false
-[diff]
-  renames = copies
-  mnemonicprefix = true
-  algorithm = patience
 [gc]
-  auto = 0
+  auto = 1
 [heroku]
   account = me
 [mergetool]
   prompt = false
   keepBackup = false
 [diff]
+  renames = copies
+  mnemonicprefix = true
+  algorithm = patience
   tool = nvimdiff
+[difftool "nvimdiff"]
+	cmd = nvim -d \"$LOCAL\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd L\"
 [difftool]
   prompt = false
 [filter "lfs"]
@@ -76,10 +77,10 @@
   smudge = git-lfs smudge -- %f
   required = true
   process = git-lfs filter-process
-[credential]
-  helper = osxkeychain
 [merge]
-  tool = vimdiff
+  tool = nvimmerge
+[mergetool "nvimmerge"]
+	cmd = nvim -d \"$LOCAL\" \"$MERGED\" \"$BASE\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd J\"
 [pull]
   ff = only
 [interactive]
