@@ -9,8 +9,9 @@ bar {
   tray_output DP-4
   separator_symbol " | "
   position top
-  padding 1
+  padding 0
   tray_padding 4
+  workspace_min_width 200
 
   colors {
     background #1a1b26
@@ -126,6 +127,8 @@ mode "resize" {
   bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+
+for_window [all] border pixel 2
 
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad

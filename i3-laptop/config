@@ -10,6 +10,7 @@ bar {
   position top
   padding 1
   tray_padding 5
+  workspace_min_width 200
 
   colors {
     background #1a1b26
