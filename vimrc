@@ -227,7 +227,7 @@ colorscheme tokyonight
 " endif
 
 syntax on
-set colorcolumn=80
+set colorcolumn=90
 set synmaxcol=140
 set title
 set ffs=unix,mac,dos
@@ -264,7 +264,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set nowrap
-set textwidth=80
+set textwidth=90
 set list listchars=tab:»·,trail:·
 "}}}
 
