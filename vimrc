@@ -132,19 +132,6 @@ let g:indentLine_bufNameExclude = ['NERD_tree.*', 'fzf']
 Plug 'ap/vim-buftabline'
 " }}}
 
-" Telescope {{{
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
-" Find files using Telescope command-line sugar.
-nnoremap <leader>t <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files prompt_prefix=🔍<cr>
-" nnoremap <leader>t <cmd>Telescope find_files<cr>
-nnoremap <leader>g <cmd>Telescope live_grep<cr>
-nnoremap <leader>b <cmd>Telescope buffers<cr>
-nnoremap <leader>h <cmd>Telescope help_tags<cr>
-" }}}
-
 " New {{{
 " Plug 'dstein64/vim-startuptime'
 Plug 'rcarriga/nvim-notify'

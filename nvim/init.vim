@@ -7,5 +7,6 @@ if $SKIP_VIMRC == 'true'
 endif
 
 lua require('plugins')
+lua require('keymaps')
 
 source ~/.vimrc

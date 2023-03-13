@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-IGNORES = %w[zsh_mods ctags tags README.md update-symlinks scripts]
+IGNORES = %w[zsh_mods ctags tags README.md update-symlinks scripts].freeze
 
 Dir.glob('*').each do |file|
   next if IGNORES.include?(file)
@@ -19,11 +19,12 @@ Dir.glob('*').each do |file|
     next
   elsif File.exist?(file_target)
     puts "#{file} exists in root. [d]elete? [c]opy? [i]gnore?"
-    prompt = STDIN.gets.chomp
+    prompt = $stdin.gets.chomp
 
-    if prompt == 'd'
+    case prompt
+    when 'd'
       system "rm -f #{file_target}"
-    elsif prompt == 'c'
+    when 'c'
       puts "Copying and removing #{file_target}"
       system "cp #{file_target} ."
       system "rm -f #{file_target}"
