@@ -6,3 +6,4 @@ iterm2/
 bin/skype4cocoa
 bin/helm
 *.bak
+nvim/plugin/

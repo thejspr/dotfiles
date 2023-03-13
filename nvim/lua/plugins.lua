@@ -14,11 +14,39 @@ return require('packer').startup(function(use)
     }
   }
 
+  -- Telescope
   use {
-  'nvim-telescope/telescope.nvim', branch = '0.1.x',
-  requires = {
-    "nvim-lua/plenary.nvim",
-    "nvim-tree/nvim-web-devicons"
+    'nvim-telescope/telescope.nvim',
+    branch = '0.1.x',
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons"
+    }
   }
-}
+
+  -- Autopairs
+  use {
+    'windwp/nvim-autopairs',
+    config = function() require("nvim-autopairs").setup {map_cr=false} end
+  }
+
+  --- CMP
+  use {
+    "hrsh7th/nvim-cmp",
+    requires = {
+      'neovim/nvim-lspconfig',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      -- 'SirVer/ultisnips',
+      -- 'quangnguyen30192/cmp-nvim-ultisnips'
+      -- 'hrsh7th/cmp-nvim-lua',
+      -- 'octaltree/cmp-look',
+      -- 'hrsh7th/cmp-path',
+      -- 'hrsh7th/cmp-calc',
+      -- 'f3fora/cmp-spell',
+      -- 'hrsh7th/cmp-emoji'
+    }
+  }
 end)

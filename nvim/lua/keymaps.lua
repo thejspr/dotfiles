@@ -6,4 +6,4 @@ vim.keymap.set('n', '<leader>b', builtin.buffers, {})
 vim.keymap.set('n', '<leader>h', builtin.help_tags, {})
 
 -- Neotree
-vim.keymap.set('n', 'tt', ':Neotree<CR>', {})
+vim.keymap.set('n', 'tt', ':Neotree toggle<CR>', {})
