@@ -8,6 +8,7 @@ endif
 
 lua require('plugins')
 lua require('cmp_config')
+lua require('treesitter_config')
 lua require('keymaps')
 
 source ~/.vimrc

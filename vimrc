@@ -106,7 +106,6 @@ let test#strategy = "floaterm"
 " }}}
 
 " UI {{{
-Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
       \ 'colorscheme': 'tokyonight',

@@ -49,4 +49,13 @@ return require('packer').startup(function(use)
       -- 'hrsh7th/cmp-emoji'
     }
   }
+
+  -- Treesitter
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
+  use 'tree-sitter/tree-sitter-ruby'
+
+  use 'folke/tokyonight.nvim'
 end)
