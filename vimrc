@@ -2,20 +2,17 @@
 " Init {{{
 set nocompatible
 filetype off
-" let g:loaded_perl_provider = 0
 call plug#begin('~/.vim/plugged')
 " }}}
 
 " Essentials {{{
 Plug 'tpope/vim-repeat'
-" Plug 'ervandew/supertab'
 Plug 'tpope/vim-obsession' " sessions mgmt
 Plug '907th/vim-auto-save'
 let g:auto_save = 1
 let g:auto_save_silent = 0
 let g:auto_save_events = ["TextChanged", "FocusLost", "InsertLeave"]
 
-" Plug 'roxma/vim-paste-easy'
 Plug 'moll/vim-bbye'
 map <c-x> :Bdelete<CR>
 " }}}
@@ -31,7 +28,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'mg979/vim-visual-multi'
 Plug 'godlygeek/tabular'
-" let g:vim_markdown_conceal = 0
 Plug 'preservim/vim-markdown'
 " }}}
 
@@ -60,7 +56,6 @@ let g:ale_fixers = {
       \}
 let g:ale_ruby_rubocop_options = '-A'
 let b:ale_sql_pgformatter_options = '--spaces 2 --wrap-after 10'
-" let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_enter = 0
 let g:ale_fix_on_save = 0
@@ -134,22 +129,15 @@ Plug 'ap/vim-buftabline'
 
 " New {{{
 " Plug 'dstein64/vim-startuptime'
-Plug 'rcarriga/nvim-notify'
+Plug 'voldikss/vim-floaterm'
 let g:floaterm_width = 0.9
 let g:floaterm_height = 0.9
 let g:floaterm_autoclose = 1
-Plug 'voldikss/vim-floaterm'
 let g:floaterm_keymap_toggle = '<F1>'
 let g:floaterm_keymap_new    = '<F2>'
 let g:floaterm_keymap_prev   = '<F3>'
 let g:floaterm_keymap_next   = '<F4>'
 Plug 'AndrewRadev/splitjoin.vim'
-
-" Plug 'windwp/nvim-autopairs'
-" lua << EOF
-" package.path = "/home/jesper/.vim/plugged/nvim-autopairs/lua/?.lua;" .. package.path
-" require("nvim-autopairs").setup {map_cr=false}
-" EOF
 
 Plug 'github/copilot.vim'
 " }}}
@@ -159,6 +147,7 @@ filetype plugin indent on
 " }}}
 
 " UI {{{
+set termguicolors
 " set background=light
 au fileType * hi Normal guibg=NONE ctermbg=NONE
 let g:tokyonight_transparent = 1
