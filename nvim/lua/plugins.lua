@@ -30,6 +30,17 @@ return require('packer').startup(function(use)
     config = function() require("nvim-autopairs").setup {map_cr=false} end
   }
 
+  -- Splitjoin
+  use({
+    'Wansmer/treesj',
+    requires = { 'nvim-treesitter' },
+    config = function()
+      require('treesj').setup({
+        use_default_keymap = false,
+      })
+    end,
+  })
+
   --- CMP
   use {
     "hrsh7th/nvim-cmp",
