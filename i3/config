@@ -182,7 +182,7 @@ workspace $ws5 output $main_monitor
 exec --no-startup-id feh --randomize --bg-fill ~/Files/wallpapers/*
 exec --no-startup-id nm-applet
 # exec --no-startup-id pulseaudio --daemonize
-exec --no-startup-id copyq
+# exec --no-startup-id copyq
 exec --no-startup-id flameshot
 exec --no-startup-id playerctld daemon
 exec --no-startup-id dropbox start
