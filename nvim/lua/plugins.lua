@@ -66,7 +66,7 @@ return require('packer').startup(function(use)
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
   }
-  use 'tree-sitter/tree-sitter-ruby'
 
+  -- Theme
   use 'folke/tokyonight.nvim'
 end)

@@ -9,13 +9,17 @@ require'nvim-treesitter.configs'.setup {
   },
   ensure_installed = {
     "bash",
-    "ruby",
-    "json",
-    "yaml",
-    "sql",
+    "css",
+    "go",
     "html",
+    "javascript",
+    "json",
+    "markdown",
+    "python",
+    "ruby",
     "scss",
-    "css"
+    "sql",
+    "yaml",
   },
 }
 -- local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
