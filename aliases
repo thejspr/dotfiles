@@ -1,24 +1,11 @@
-#new
-alias ge='g edit'
-alias eaa='e ~/.alacritty.yml'
-alias ei='e ~/.i3/config'
-alias pt='e ~/notes/peanut/todo.md'
-alias eis='e ~/.i3status.conf'
-alias cp-head='git rev-parse --short HEAD | pbcopy'
-alias up-repo='git cl && bundle && migrate'
-alias ra='ranger'
-function ew() {
-  $EDITOR `which "$1"`
-}
-alias cat='cat'
-alias uall='update-all'
-
 #python
 alias pym='python3 manage.py'
 
 #system
 alias e='$EDITOR'
 alias kf='kill -9 %1'
+alias uall='update-all'
+alias cat='batcat'
 
 #tmux
 alias tma='tmux attach'
@@ -49,8 +36,6 @@ alias rc='rails c'
 alias migrate='rails db:migrate'
 alias pmigrate='rails db:migrate db:data && RAILS_ENV=test rails db:migrate db:data'
 alias upgrade_gems="bundle update && rspec && git add -A && git commit -m 'Gem upgrades' && git push"
-alias bea="be rubocop --auto-gen-config"
-alias ber="be rubocop -A"
 alias bef='foreman start -f Procfile.dev'
 alias rt='rails -T'
 alias rr='rails routes'
@@ -75,7 +60,6 @@ alias aspecs='fspecs && specs'
 alias fails='rspec --only-failures'
 
 #conviniences
-# alias -g G='|grep --color'
 alias -g G='|rg'
 
 #git
@@ -87,8 +71,7 @@ alias -g G='|rg'
 #     command hub "$@";
 #   fi
 # }
-alias gs='git status -sb'
-unalias gcam
+# unalias gcam
 gcam() {
   command git add -A;
   command git commit -m "$*";
@@ -99,10 +82,14 @@ alias gbx='git branch --delete'
 alias gc='git c'
 alias gca='git ca'
 alias gd='git d'
+alias ge='g edit'
 alias gg='git grep'
 alias gl='git l'
 alias gp='git push'
 alias gpf='FORCE=1 git push --force-with-lease'
+alias gs='git status -sb'
+alias gs='git status -sb'
+alias cp-head='git rev-parse --short HEAD | pbcopy'
 
 #msc
 alias cd..='cd ..'
@@ -118,3 +105,7 @@ alias ezz='e ~/.zshrc'
 alias et='e ~/code/dotfiles/tmux.conf'
 alias es='e ~/.ssh/config'
 alias sr='exec zsh'
+alias eaa='e ~/.alacritty.yml'
+alias ei='e ~/.i3/config'
+alias pt='e ~/notes/peanut/todo.md'
+alias eis='e ~/.i3status.conf'
