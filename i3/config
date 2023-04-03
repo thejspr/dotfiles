@@ -181,7 +181,6 @@ workspace $ws5 output $main_monitor
 # Background apps
 exec --no-startup-id feh --randomize --bg-fill ~/Files/wallpapers/*
 exec --no-startup-id nm-applet
-# exec --no-startup-id pulseaudio --daemonize
 # exec --no-startup-id copyq
 exec --no-startup-id flameshot
 exec --no-startup-id playerctld daemon
@@ -191,6 +190,8 @@ exec --no-startup-id playerctld daemon
 exec --no-startup-id blueman-applet
 exec --no-startup-id ulauncher
 exec --no-startup-id pasystray
+exec --no-startup-id pactl load-module module-switch-on-connect
+
 
 set $connectCheck nm-online --quiet --timeout=300
 

@@ -5,6 +5,7 @@ exclude:
   - spec/**/*
   - vendor/**/*
   - ".bundle/**/*"
+  - "node_modules/**/*"
 require: []
 domains: []
 reporters:

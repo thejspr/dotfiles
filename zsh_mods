@@ -11,7 +11,7 @@ export ASDF_RUBY_BUILD_VERSION=master
 
 autoload zmv
 bindkey -e
-# unalias gbr
+unalias gbr # exists in bin
 
 [ -x "$(command -v xset)" ] && xset r rate 250 40
 [ -x "$(command -v setxkbmap)" ] && setxkbmap -option caps:ctrl_modifier
@@ -58,3 +58,5 @@ if [ ! -S ~/.ssh/ssh_auth_sock ]; then
 fi
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 ssh-add -l > /dev/null || ssh-add
+
+eval "$(github-copilot-cli alias -- "$0")"

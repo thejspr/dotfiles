@@ -86,14 +86,14 @@ Plug 'tpope/vim-ragtag'
 
 " tmux and testing {{{
 Plug 'christoomey/vim-tmux-navigator'
-" Plug 'benmills/vimux'
+Plug 'benmills/vimux'
 " let g:VimuxOrientation = "h"
 " let g:VimuxHeight = "45"
-" let g:VimuxOrientation = "v"
-" let g:VimuxHeight = "33"
+let g:VimuxOrientation = "v"
+let g:VimuxHeight = "33"
 nmap <leader><space> :FloatermNew!<space>
 Plug 'vim-test/vim-test'
-" let test#strategy = "vimux"
+let test#strategy = "vimux"
 nmap <silent> <leader>x :TestNearest<CR>
 nmap <silent> <leader>X :TestFile<CR>
 nmap <silent> <leader>q :TestLast<CR>
@@ -102,7 +102,7 @@ function! FloatermNewBang(cmd)
   execute 'FloatermNew ' . a:cmd
 endfunction
 let g:test#custom_strategies = {'floatermbang': function('FloatermNewBang')}
-let test#strategy = "floaterm"
+" let test#strategy = "floaterm"
 " }}}
 
 " UI {{{
@@ -267,6 +267,7 @@ noremap <leader>sp [s
 noremap <leader>sa zg
 noremap <leader>sd z=
 au BufRead,BufNewFile COMMIT_EDITMSG setlocal ft=diff spell!
+au BufRead,BufNewFile COMMIT_EDITMSG 1
 au BufRead,BufNewFile *.md setlocal nolist
 "}}}
 
