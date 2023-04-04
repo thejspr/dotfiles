@@ -7,7 +7,3 @@ vim.keymap.set('n', '<leader>h', builtin.help_tags, {})
 
 -- Neotree
 vim.keymap.set('n', 'tt', ':Neotree toggle reveal<CR>', {})
-
--- Splitjoin
-vim.keymap.set('n', 'gS', require('treesj').split)
-vim.keymap.set('n', 'gJ', require('treesj').join)
