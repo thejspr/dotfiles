@@ -6,8 +6,7 @@ alias e='$EDITOR'
 alias kf='kill -9 %1'
 alias uall='update-all'
 alias cat='batcat'
-
-#tmux
+function ew() { $EDITOR `which "$1"` }
 alias tma='tmux attach'
 
 #ruby
@@ -27,6 +26,7 @@ else
   alias aptu='sudo apt update && sudo apt upgrade'
   alias apti='sudo apt install'
   alias aptr='sudo apt remove'
+  alias aptf='sudo apt-cache search'
 fi
 
 #rails
@@ -43,7 +43,6 @@ alias rr='rails routes'
 #Peanut
 alias ci='xdg-open https://circleci.com/gh/team-peanut/peanutweb'
 alias cap='TERM=xterm cap'
-
 alias reset_dev_db='rails db:drop db:create db:migrate db:data'
 alias reset_test_db='RAILS_ENV=test rails db:migrate db:data'
 alias reset_db='reset_dev_db && reset_test_db'
@@ -60,9 +59,6 @@ alias fspecs='rspec --tag type:feature'
 alias aspecs='fspecs && specs'
 alias fails='rspec --only-failures'
 
-#conviniences
-alias -g G='|rg'
-
 #git
 # unalias g
 # g() {
@@ -77,6 +73,7 @@ gcam() {
   command git add -A;
   command git commit -m "$*";
 }
+alias cp-head='git rev-parse --short HEAD | pbcopy'
 alias gb='git branch'
 alias gbX='git branch --delete --force'
 alias gbx='git branch --delete'
@@ -90,23 +87,25 @@ alias gp='git push'
 alias gpf='FORCE=1 git push --force-with-lease'
 alias gs='git status -sb'
 alias gs='git status -sb'
-alias cp-head='git rev-parse --short HEAD | pbcopy'
 
 #msc
 alias cd..='cd ..'
-alias ls='exa'
-alias ll='exa -l'
-alias la='exa -a'
+if [ "$(command -v exa)" ]; then
+  alias ls='exa'
+  alias ll='exa -l'
+  alias la='exa -a'
+fi
+alias -g G='|rg'
 
 #system and files editing
 alias ea='e ~/.aliases'
+alias eaa='e ~/.alacritty.yml'
 alias eg='e ~/.gitconfig'
+alias ei='e ~/.i3/config'
+alias eis='e ~/.i3status.conf'
+alias es='e ~/.ssh/config'
+alias et='e ~/code/dotfiles/tmux.conf'
 alias ez='e ~/code/dotfiles/zsh_mods'
 alias ezz='e ~/.zshrc'
-alias et='e ~/code/dotfiles/tmux.conf'
-alias es='e ~/.ssh/config'
-alias sr='exec zsh'
-alias eaa='e ~/.alacritty.yml'
-alias ei='e ~/.i3/config'
 alias pt='e ~/notes/peanut/todo.md'
-alias eis='e ~/.i3status.conf'
+alias sr='exec zsh'

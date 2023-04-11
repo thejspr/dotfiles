@@ -309,4 +309,5 @@ nmap Y yy
 
 " Substitute in line
 nnoremap gs "zye:%s/<C-R>z//g<left><left>
+nmap <leader>F :!rubocop -a %<cr>
 " }}}
