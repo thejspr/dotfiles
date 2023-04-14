@@ -102,6 +102,14 @@ function! FloatermNewBang(cmd)
   execute 'FloatermNew ' . a:cmd
 endfunction
 let g:test#custom_strategies = {'floatermbang': function('FloatermNewBang')}
+Plug 'voldikss/vim-floaterm'
+let g:floaterm_width = 0.9
+let g:floaterm_height = 0.9
+let g:floaterm_autoclose = 1
+let g:floaterm_keymap_toggle = '<F1>'
+let g:floaterm_keymap_new    = '<F2>'
+let g:floaterm_keymap_prev   = '<F3>'
+let g:floaterm_keymap_next   = '<F4>'
 " let test#strategy = "floaterm"
 " }}}
 
@@ -128,14 +136,6 @@ Plug 'ap/vim-buftabline'
 
 " New {{{
 " Plug 'dstein64/vim-startuptime'
-Plug 'voldikss/vim-floaterm'
-let g:floaterm_width = 0.9
-let g:floaterm_height = 0.9
-let g:floaterm_autoclose = 1
-let g:floaterm_keymap_toggle = '<F1>'
-let g:floaterm_keymap_new    = '<F2>'
-let g:floaterm_keymap_prev   = '<F3>'
-let g:floaterm_keymap_next   = '<F4>'
 Plug 'AndrewRadev/splitjoin.vim'
 
 Plug 'github/copilot.vim'
