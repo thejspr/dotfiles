@@ -147,16 +147,15 @@ filetype plugin indent on
 
 " UI {{{
 set termguicolors
-" set background=light
+if $DARKMODE == 'true'
+  set background=dark
+  colorscheme github_dark
+else
+  set background=light
+  colorscheme github_light
+endif
 au fileType * hi Normal guibg=NONE ctermbg=NONE
 let g:tokyonight_transparent = 1
-colorscheme tokyonight
-
-" if &background == 'dark'
-"   let g:indentLine_color_term = 238
-" else
-"   let g:indentLine_color_term = 253
-" endif
 
 syntax on
 set colorcolumn=90
@@ -165,7 +164,7 @@ set title
 set ffs=unix,mac,dos
 set scrolloff=999
 " set autoindent
-" set smartindent
+set smartindent
 set showmode
 set modeline
 set showcmd

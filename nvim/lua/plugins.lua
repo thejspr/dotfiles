@@ -58,4 +58,5 @@ return require('packer').startup(function(use)
 
   -- Theme
   use 'folke/tokyonight.nvim'
+  use 'projekt0n/github-nvim-theme'
 end)
