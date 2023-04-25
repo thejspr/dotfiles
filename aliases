@@ -42,7 +42,6 @@ alias rr='rails routes'
 
 #Peanut
 alias ci='xdg-open https://circleci.com/gh/team-peanut/peanutweb'
-alias cap='TERM=xterm cap'
 alias reset_dev_db='rails db:drop db:create db:migrate db:data'
 alias reset_test_db='RAILS_ENV=test rails db:migrate db:data'
 alias reset_db='reset_dev_db && reset_test_db'

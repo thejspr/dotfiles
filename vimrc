@@ -29,6 +29,7 @@ Plug 'tpope/vim-surround'
 Plug 'mg979/vim-visual-multi'
 Plug 'godlygeek/tabular'
 Plug 'preservim/vim-markdown'
+Plug 'AndrewRadev/splitjoin.vim'
 " }}}
 
 " File management & Git {{{
@@ -82,6 +83,7 @@ Plug 'pangloss/vim-javascript'
 let g:vim_json_conceal=0
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-ragtag'
+Plug 'github/copilot.vim'
 "  }}}
 
 " tmux and testing {{{
@@ -116,7 +118,6 @@ let g:floaterm_keymap_next   = '<F4>'
 " UI {{{
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
-      \ 'colorscheme': 'tokyonight',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'relativepath', 'modified' ] ]
@@ -136,9 +137,6 @@ Plug 'ap/vim-buftabline'
 
 " New {{{
 " Plug 'dstein64/vim-startuptime'
-Plug 'AndrewRadev/splitjoin.vim'
-
-Plug 'github/copilot.vim'
 " }}}
 
 call plug#end()
@@ -149,13 +147,12 @@ filetype plugin indent on
 set termguicolors
 if $DARKMODE == 'true'
   set background=dark
-  colorscheme github_dark
+  colorscheme catppuccin-mocha
 else
   set background=light
-  colorscheme github_light
+  colorscheme catppuccin-latte
 endif
-au fileType * hi Normal guibg=NONE ctermbg=NONE
-let g:tokyonight_transparent = 1
+" au fileType * hi Normal guibg=NONE ctermbg=NONE
 
 syntax on
 set colorcolumn=90
@@ -273,6 +270,7 @@ au BufRead,BufNewFile *.md setlocal nolist
 
 " Edit .vimrc {{{
 command! Ev :e ~/.vimrc
+command! Ec :e ~/.config/nvim/
 augroup vimrc
   autocmd!
   au bufwritepost .vimrc source $MYVIMRC

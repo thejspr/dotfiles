@@ -1,1 +1,1 @@
---database=postgresql --no-jbuilder
+--database=postgresql --no-jbuilder --skip-javascript
