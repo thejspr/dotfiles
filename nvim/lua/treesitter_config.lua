@@ -4,8 +4,11 @@ require'nvim-treesitter.configs'.setup {
     disable = {},
   },
   indent = {
-    enable = true,
+    enable = false,
     disable = {},
+  },
+  endwise = {
+    enable = true
   },
   ensure_installed = {
     "bash",

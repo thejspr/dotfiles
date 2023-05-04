@@ -33,12 +33,13 @@ Plug 'AndrewRadev/splitjoin.vim'
 " }}}
 
 " File management & Git {{{
+let g:eunuch_no_maps = 1
 Plug 'tpope/vim-eunuch' " File command helpers: Rename, Delete etc.
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb' " Gbrowse handlers for github
 Plug 'pbrisbin/vim-mkdir' " Automatically create new folders for files
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 " }}}
 
 " Ruby {{{
@@ -65,12 +66,11 @@ highlight ALEWarning ctermbg=none cterm=underline
 highlight ALEError ctermbg=none cterm=underline
 nnoremap <leader>F :ALEFix<cr>
 
-Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
 Plug 'sickill/vim-pasta'
 let g:pasta_disabled_filetypes = ['yaml']
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-Plug 'tpope/vim-haml'
+" Plug 'tpope/vim-haml'
 "}}}
 
 " Python {{{
@@ -112,7 +112,7 @@ let g:floaterm_keymap_toggle = '<F1>'
 let g:floaterm_keymap_new    = '<F2>'
 let g:floaterm_keymap_prev   = '<F3>'
 let g:floaterm_keymap_next   = '<F4>'
-" let test#strategy = "floaterm"
+let test#strategy = "floaterm"
 " }}}
 
 " UI {{{
@@ -145,12 +145,12 @@ filetype plugin indent on
 
 " UI {{{
 set termguicolors
-if $DARKMODE == 'true'
+if filereadable(expand("~/.darkmode"))
   set background=dark
-  colorscheme catppuccin-mocha
+  colorscheme catppuccin
 else
   set background=light
-  colorscheme catppuccin-latte
+  colorscheme github_light_default
 endif
 " au fileType * hi Normal guibg=NONE ctermbg=NONE
 
@@ -271,6 +271,7 @@ au BufRead,BufNewFile *.md setlocal nolist
 " Edit .vimrc {{{
 command! Ev :e ~/.vimrc
 command! Ec :e ~/.config/nvim/
+command! Ep :e ~/.config/nvim/lua/plugins.lua
 augroup vimrc
   autocmd!
   au bufwritepost .vimrc source $MYVIMRC

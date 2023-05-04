@@ -55,9 +55,17 @@ return require('packer').startup(function(use)
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
   }
+  use 'RRethy/nvim-treesitter-endwise'
 
-  -- Theme
+  -- Themes
   use 'folke/tokyonight.nvim'
   use 'projekt0n/github-nvim-theme'
   use { "catppuccin/nvim", as = "catppuccin" }
+
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup()
+    end
+  }
 end)

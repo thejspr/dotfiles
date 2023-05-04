@@ -1,3 +1,6 @@
+# new stuff
+alias se='sudo -E nvim'
+
 #python
 alias pym='python3 manage.py'
 
