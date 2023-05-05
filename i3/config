@@ -146,12 +146,19 @@ for_window [class="Qalculate"] floating enable, resize set 800 400, move positio
 bindsym $mod+c exec qalculate
 
 # Show todos
-for_window [instance="Alacritty" title="My Todos"] floating enable
-bindsym $mod+t exec alacritty -t "My Todos" -e nvim ~/notes/peanut/todo.md
+# for_window [instance="Alacritty" title="My Todos"] floating enable
+# bindsym $mod+t exec alacritty -t "My Todos" -e nvim ~/notes/peanut/todo.md
 
 # Floating vim
 for_window [instance="Alacritty" title="Temp Vim"] floating enable
 bindsym $mod+v exec alacritty -t "Temp Vim" -e ~/bin/tempvim
+
+# Floating todoist
+for_window [class="Todoist"] floating enable
+for_window [class="Todoist"] resize set 1200 1000, move position center
+for_window [class="Todoist"] border pixel 5
+for_window [class="Todoist"] move scratchpad
+bindsym $mod+t [class="Todoist"] scratchpad show
 
 # Fix handing of popups
 for_window [window_role="pop-up"] floating enable
@@ -191,6 +198,7 @@ exec --no-startup-id blueman-applet
 exec --no-startup-id ulauncher
 exec --no-startup-id pasystray
 exec --no-startup-id pactl load-module module-switch-on-connect
+exec --no-startup-id todoist
 
 
 set $connectCheck nm-online --quiet --timeout=300

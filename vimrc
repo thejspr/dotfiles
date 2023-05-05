@@ -150,7 +150,7 @@ if filereadable(expand("~/.darkmode"))
   colorscheme catppuccin
 else
   set background=light
-  colorscheme github_light_default
+  colorscheme github_light_high_contrast
 endif
 " au fileType * hi Normal guibg=NONE ctermbg=NONE
 
