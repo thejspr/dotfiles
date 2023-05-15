@@ -5,8 +5,8 @@ sudo apt upgrade
 # sudo apt autoremove -f
 
 nvim +PlugUpdate +qall
-nvim +PackerSync +qall
+nvim +PackerSync
 
-gem install solargraph
+# gem install solargraph
 
 # omz update

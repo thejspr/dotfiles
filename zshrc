@@ -1,10 +1,10 @@
 # zmodload zsh/zprof # uncomment for zsh startup testing `time  zsh -i -c exit`
-eval "$(starship init zsh)"
+[ -x "$(command -v starship)" ] && eval "$(starship init zsh)"
 
 export ZSH="${HOME}/.oh-my-zsh"
 # breaks coc-explorer in vim
-# export NVM_LAZY_LOAD=true
-plugins=(git history-substring-search zsh-autosuggestions zsh-syntax-highlighting zsh-peco-history asdf rake-fast)
+export NVM_LAZY_LOAD=true
+plugins=(git history-substring-search zsh-autosuggestions zsh-syntax-highlighting asdf rake-fast)
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#586e75"
 source $ZSH/oh-my-zsh.sh
 
