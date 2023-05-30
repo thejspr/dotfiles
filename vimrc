@@ -291,15 +291,13 @@ noremap <Leader>c :Econtroller<space>
 " New stuff {{{
 " autocmd bufwritepost ~/code/dotfiles/i3/config :silent !i3-msg restart ; notify-send "Reloaded i3 :)"
 au BufReadPost *.html* set formatoptions-=t
+command! Gbrowse GBrowse
 
 if has("nvim")
   " Terminal inside vim
   autocmd TermOpen * startinsert
   command! -nargs=* T split | resize 25 | terminal <args>
   " nnoremap <leader>c :T<cr>
-" lua << EOF
-"   vim.o.ch = 0
-" EOF
 endif
 noremap <f1> <Nop>
 nmap <silent> gx :!xdg-open '<cWORD>'<cr>
