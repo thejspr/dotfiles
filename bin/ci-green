@@ -4,6 +4,8 @@
 
 set -e
 
+git pull
+
 while(true); do
   status=$(hub ci-status || true)
 

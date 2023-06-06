@@ -9,7 +9,17 @@ alias e='$EDITOR'
 alias kf='kill -9 %1'
 alias uall='update-all'
 alias cat='batcat'
-function ew() { $EDITOR `which "$1"` }
+
+# edit existing command or create a new script
+function ew() {
+  if [[ -f `which "$1"` ]]; then
+    e `which "$1"`
+  else
+    echo "#!/usr/bin/env " > ~/bin/"$1"
+    chmod +x ~/bin/"$1"
+    e ~/bin/"$1"
+  fi
+}
 alias tma='tmux attach'
 
 #ruby
@@ -50,7 +60,7 @@ alias reset_test_db='RAILS_ENV=test rails db:migrate db:data'
 alias reset_db='reset_dev_db && reset_test_db'
 
 #heroku
-hpush() { git add -A; git commit -m "$*"; git push; git push production master; }
+hpush() { git add -A; git commit -m "$*"; git pull --rebase && git push; git push production master; }
 alias h="heroku"
 alias hc="heroku run rails console"
 alias hl="heroku logs -t"
