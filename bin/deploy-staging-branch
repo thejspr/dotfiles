@@ -12,10 +12,10 @@ fi
 if git rev-parse @{u} > /dev/null 2>&1
 then
   printf "has an upstream\n"
-  git push
+  git push --no-verify
 else
   printf "has no upstream\n"
-  git push -u origin $branch
+  git push --no-verify -u origin $branch
 fi
 
 # read -p "Deploy branch: $branch ?" -n 1 -r
@@ -27,7 +27,7 @@ then
   git checkout staging
   git pull
   git merge $branch --no-edit
-  git push
+  git push --no-verify
 
   bundle --quiet
   bundle exec cap staging deploy

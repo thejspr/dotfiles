@@ -1,5 +1,7 @@
 # new stuff
 alias se='sudo -E nvim'
+export DOKKU_HOST='app.webyard.dk'
+alias dokku='$HOME/.dokku/contrib/dokku_client.sh'
 
 #python
 alias pym='python3 manage.py'

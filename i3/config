@@ -155,7 +155,7 @@ bindsym $mod+v exec alacritty -t "Temp Vim" -e ~/bin/tempvim
 
 # Floating todoist
 for_window [class="Todoist"] floating enable
-for_window [class="Todoist"] resize set 1200 1000, move position center
+for_window [class="Todoist"] resize set 1400 1200, move position center
 for_window [class="Todoist"] border pixel 5
 for_window [class="Todoist"] move scratchpad
 bindsym $mod+t [class="Todoist"] scratchpad show

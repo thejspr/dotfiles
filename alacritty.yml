@@ -4,7 +4,7 @@ env:
 font:
   size: 14
   normal:
-    family: 'JetBrainsMono Nerd Font'
+    family: 'Hack Nerd Font'
     style: 'Regular'
 
 window:

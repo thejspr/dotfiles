@@ -8,8 +8,6 @@ export PGPORT=5434
 export DD_TRACE_STARTUP_LOGS=false
 export SPRING=OFF
 export ASDF_RUBY_BUILD_VERSION=master
-export LANGUAGE="en_GB.UTF-8"
-export LC_ALL="en_GB.UTF-8"
 
 autoload zmv
 bindkey -e
