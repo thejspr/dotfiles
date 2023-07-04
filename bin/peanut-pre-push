@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -e
+
+echo 'Running tests...'
+echo `git diff --name-only master -- spec | grep -v factories`
+git diff --name-only master -- spec | grep -v factories | grep -v shared_context | xargs bin/rspec
+
+pronto run --exit-code

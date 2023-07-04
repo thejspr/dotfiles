@@ -98,7 +98,7 @@ alias ge='g edit'
 alias gg='git grep'
 alias gl='git l'
 alias gp='git push'
-alias gpf='FORCE=1 git push --force-with-lease'
+alias gpf='FORCE=1 git push --force-with-lease --no-verify'
 alias gs='git status -sb'
 alias gs='git status -sb'
 
