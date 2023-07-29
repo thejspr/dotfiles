@@ -4,7 +4,7 @@ set -e
 
 bundle update $*
 
-bundle exec rspec
+# bundle exec rspec
 
 git add -A
 

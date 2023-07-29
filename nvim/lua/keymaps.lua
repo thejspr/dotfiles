@@ -8,3 +8,6 @@ vim.keymap.set('n', '<leader>h', builtin.help_tags, {})
 
 -- Neotree
 vim.keymap.set('n', 'tt', ':Neotree toggle reveal<CR>', {})
+
+-- Commandline floating
+vim.api.nvim_set_keymap('n', ':', '<cmd>FineCmdline<CR>', {noremap = true})

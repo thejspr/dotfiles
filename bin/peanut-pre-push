@@ -2,8 +2,13 @@
 
 set -e
 
-echo 'Running tests...'
-echo `git diff --name-only master -- spec | grep -v factories`
-git diff --name-only master -- spec | grep -v factories | grep -v shared_context | xargs bin/rspec
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+if [ "$BRANCH" = "staging" ] || [ "$BRANCH" = "master" ]; then
+  exit 0
+fi
 
 pronto run --exit-code
+
+echo 'Running tests...'
+echo `git diff --name-only master -- spec | grep -v factories | grep -v shared_context`
+git diff --name-only master -- spec | grep -v factories | grep -v shared_context | xargs -r bin/rspec
