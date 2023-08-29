@@ -71,10 +71,10 @@ bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
 
 # split in horizontal orientation
-# bindsym $mod+h split |
+# bindsym $mod+h split horizontal
 
 # split in vertical orientation
-# bindsym $mod+v split v
+bindsym $mod+v split vertical
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -150,8 +150,8 @@ bindsym $mod+c exec qalculate
 # bindsym $mod+t exec alacritty -t "My Todos" -e nvim ~/notes/peanut/todo.md
 
 # Floating vim
-for_window [instance="Alacritty" title="Temp Vim"] floating enable
-bindsym $mod+v exec alacritty -t "Temp Vim" -e ~/bin/tempvim
+# for_window [instance="Alacritty" title="Temp Vim"] floating enable
+# bindsym $mod+v exec alacritty -t "Temp Vim" -e ~/bin/tempvim
 
 # Floating todoist
 for_window [class="Todoist"] floating enable
