@@ -14,7 +14,5 @@ branch="$(git rev-parse --abbrev-ref HEAD)"
 
 # data
 [ -d db/migrate ] && rails db:migrate
-[ -d db/data ] && rails db:data
-[[ "$PWD" =~ peanutweb ]] && RAILS_ENV=test rails db:migrate db:data
 
 git checkout $branch

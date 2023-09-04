@@ -25,6 +25,7 @@ nmap <leader>G :Grepper -tool rg<cr>
 
 " Text {{{
 Plug 'tpope/vim-commentary'
+autocmd FileType javascript.jsx setlocal commentstring={/*\ %s\ */}
 Plug 'tpope/vim-surround'
 Plug 'mg979/vim-visual-multi'
 Plug 'godlygeek/tabular'
