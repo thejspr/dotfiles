@@ -84,6 +84,7 @@ let g:vim_json_conceal=0
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-ragtag'
 Plug 'github/copilot.vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 "  }}}
 
 " tmux and testing {{{
@@ -137,6 +138,7 @@ Plug 'ap/vim-buftabline'
 
 " New {{{
 " Plug 'dstein64/vim-startuptime'
+Plug 'wakatime/vim-wakatime'
 " }}}
 
 call plug#end()

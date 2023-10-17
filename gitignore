@@ -24,3 +24,4 @@ tmp/tags
 vendor/plugins/rails-dev-boost/
 vim/backup/
 ~*
+.idea/

@@ -148,7 +148,8 @@ for_window [all] border pixel 1
 # for_window [instance="Alacritty" title="My Calculator"] border pixel 5, floating enable
 # bindsym $mod+c exec alacritty -t "My Calculator" -e qalculate.qalc
 for_window [class="Qalculate-gtk"] floating enable, resize set 800 400, move position center
-bindsym $mod+c exec qalculate
+for_window [class="Qalculate-gtk"] move scratchpad
+bindsym $mod+c [class="Qalculate-gtk"] scratchpad show
 
 # Floating todoist
 for_window [class="Todoist"] floating enable
@@ -184,10 +185,11 @@ exec --no-startup-id playerctld daemon
 exec --no-startup-id dropbox start
 exec --no-startup-id emote
 exec --no-startup-id feh --randomize --bg-fill ~/Files/wallpapers/*
-exec --no-startup-id ulauncher
+# exec --no-startup-id ulauncher
 exec --no-startup-id /usr/bin/caffeine-indicator
-exec --no-startup-id mullvad
+# exec --no-startup-id mullvad
 exec --no-startup-id todoist
+exec --no-startup-id qalculate
 
 set $connectCheck nm-online --quiet --timeout=300
 

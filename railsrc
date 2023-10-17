@@ -1,1 +1,1 @@
---database=postgresql --no-jbuilder --skip-javascript
+--database=postgresql --no-jbuilder --css=tailwind
