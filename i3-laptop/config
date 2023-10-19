@@ -197,7 +197,7 @@ set $connectCheck nm-online --quiet --timeout=300
 exec alacritty --command tmux
 exec obsidian
 exec $connectCheck && google-chrome
-exec weekday && $connectCheck && slack
+# exec weekday && $connectCheck && slack
 # exec $connectCheck && spotify
 #
 # vim: ft=i3config
