@@ -94,7 +94,8 @@ Plug 'benmills/vimux'
 " let g:VimuxHeight = "45"
 let g:VimuxOrientation = "v"
 let g:VimuxHeight = "33"
-nmap <leader><space> :FloatermNew!<space>
+" nmap <leader><space> :FloatermNew!<space>
+nmap <leader><space> :VimuxPromptCommand<cr>
 Plug 'vim-test/vim-test'
 let test#strategy = "vimux"
 nmap <silent> <leader>x :TestNearest<CR>

@@ -142,8 +142,9 @@ bindsym $mod+x exec flameshot gui
 bindsym $mod+n exec nautilus ~/Downloads
 
 # Show a floating calc terminal with Mod+c https://github.com/Qalculate/libqalculate
-for_window [class="Qalculate"] floating enable, resize set 800 400, move position center
-bindsym $mod+c exec qalculate
+for_window [class="Qalculate-gtk"] floating enable, resize set 800 400, move position center
+for_window [class="Qalculate-gtk"] move scratchpad
+bindsym $mod+c [class="Qalculate-gtk"] scratchpad show
 
 # Show todos
 # for_window [instance="Alacritty" title="My Todos"] floating enable
@@ -164,7 +165,6 @@ bindsym $mod+t [class="Todoist"] scratchpad show
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [class="Ulauncher"] border pixel 0
-
 for_window [class="^jetbrains-.+"][window_type=dialog] focus
 
 # Application specific assignments
@@ -201,6 +201,7 @@ exec --no-startup-id ulauncher
 exec --no-startup-id pasystray
 exec --no-startup-id pactl load-module module-switch-on-connect
 exec --no-startup-id todoist
+exec --no-startup-id qalculate-gtk
 exec --no-startup-id ~/apps/jetbrains-toolbox --minimize
 
 
@@ -212,7 +213,7 @@ exec $connectCheck && google-chrome
 
 exec obsidian
 # exec weekday && $connectCheck && slack
-exec $connectCheck && firefox
+# exec $connectCheck && firefox
 # exec $connectCheck && spotify
 
 # vim: ft=i3config

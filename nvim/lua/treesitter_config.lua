@@ -16,6 +16,7 @@ require'nvim-treesitter.configs'.setup {
     "go",
     "html",
     "javascript",
+    "typescript",
     "json",
     "markdown",
     "python",
@@ -23,6 +24,8 @@ require'nvim-treesitter.configs'.setup {
     "scss",
     "sql",
     "yaml",
+    "csv",
+    "elixir"
   },
 }
 -- local parser_config = require "nvim-treesitter.parsers".get_parser_configs()

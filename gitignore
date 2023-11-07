@@ -25,3 +25,4 @@ vendor/plugins/rails-dev-boost/
 vim/backup/
 ~*
 .idea/
+*.sqlite3-*

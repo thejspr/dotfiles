@@ -3,6 +3,7 @@ alias se='sudo -E nvim'
 export DOKKU_HOST='app.webyard.dk'
 alias dokku='$HOME/.dokku/contrib/dokku_client.sh'
 alias lg='lazygit'
+alias kubectl="minikube kubectl --"
 
 #python
 alias pym='python3 manage.py'
