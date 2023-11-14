@@ -23,7 +23,7 @@ bar {
   }
 }
 
-# exec --no-startup-id "picom -b --config /home/jesper/.config/picom.conf"
+exec --no-startup-id "picom -b --config /home/jesper/.config/picom.conf"
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the screen before suspend. Use loginctl lock-session to lock your screen.
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
@@ -55,7 +55,7 @@ floating_modifier $mod
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,drun -theme solarized -font 'JetBrainsMono 14' -show combi -icon-theme 'Papirus' -show-icons"
+bindsym $mod+d exec --no-startup-id "rofi -combi-modi drun,window -theme solarized -font 'JetBrainsMono 14' -show combi -icon-theme 'Papirus' -show-icons"
 
 # define directional keys
 set $up k
@@ -190,6 +190,7 @@ exec --no-startup-id /usr/bin/caffeine-indicator
 # exec --no-startup-id mullvad
 exec --no-startup-id todoist
 exec --no-startup-id qalculate
+exec --no-startup-id redshift-gtk
 
 set $connectCheck nm-online --quiet --timeout=300
 

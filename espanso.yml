@@ -22,6 +22,9 @@ matches:
   - trigger: ",we"
     replace: "j@webyard.dk"
 
+  - trigger: ',fe'
+    replace: 'e424473c@newsletters.feedbin.com'
+
 
   # Date
   - trigger: ",dd"

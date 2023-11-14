@@ -85,6 +85,8 @@ Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-ragtag'
 Plug 'github/copilot.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 "  }}}
 
 " tmux and testing {{{
@@ -196,7 +198,7 @@ set shiftwidth=2
 set expandtab
 set nowrap
 set textwidth=90
-set list listchars=tab:»·,trail:·
+" set list listchars=tab:»·,trail:·
 "}}}
 
 " Settings {{{
