@@ -1,7 +1,6 @@
 # new stuff
 alias se='sudo -E nvim'
-export DOKKU_HOST='app.webyard.dk'
-alias dokku='$HOME/.dokku/contrib/dokku_client.sh'
+# alias dokku='$HOME/.dokku/contrib/dokku_client.sh'
 alias lg='lazygit'
 alias kubectl="minikube kubectl --"
 
@@ -12,7 +11,6 @@ alias pym='python3 manage.py'
 alias e='$EDITOR'
 alias kf='kill -9 %1'
 alias uall='update-all'
-alias cat='batcat'
 
 # edit existing command or create a new script
 function ew() {
@@ -40,10 +38,13 @@ else
   alias pbpaste="xclip -selection clipboard -o"
 
   #ubuntu
-  alias aptu='sudo apt update && sudo apt upgrade'
-  alias apti='sudo apt install'
-  alias aptr='sudo apt remove'
-  alias aptf='sudo apt-cache search'
+  if [ "$(command -v lsb_release)" ]; then
+    echo 'On ubuntu'
+    alias aptu='sudo apt update && sudo apt upgrade'
+    alias apti='sudo apt install'
+    alias aptr='sudo apt remove'
+    alias aptf='sudo apt-cache search'
+  fi
 fi
 
 #rails
@@ -51,7 +52,6 @@ alias rs='rails s'
 alias ragm='rails g migration'
 alias rc='rails c'
 alias migrate='rails db:migrate'
-alias pmigrate='rails db:migrate db:data && RAILS_ENV=test rails db:migrate db:data'
 alias upgrade_gems="bundle update && rspec && git add -A && git commit -m 'Gem upgrades' && git push"
 alias bef='foreman start -f Procfile.dev'
 alias rt='rails -T'

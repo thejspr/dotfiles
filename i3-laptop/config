@@ -1,16 +1,16 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 set $mod Mod4
 
-font pango:JetBrainsMono 0
+font pango:Inconsolata Nerd Font 14
 
 bar {
   status_command i3status --config ~/.i3status.conf
-  font pango:JetBrainsMono 11
+  font pango:Inconsolata Nerd Font 14
   separator_symbol " | "
   position top
   padding 1
   tray_padding 5
-  workspace_min_width 150
+  workspace_min_width 125
 
   colors {
     background #1a1b26
@@ -38,13 +38,20 @@ bindsym $mod+Return exec playerctl play-pause
 bindsym $mod+Right exec playerctl next
 bindsym $mod+Left exec playerctl previous
 
+bindsym $mod+Shift+e exec rofi -modi emoji -show emoji -emoji-format '{emoji}'
+
 # Laptop Mediakeys
-bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +10%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 10%-
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+# Google search
+# bindsym $mod+g exec --no-startup-id echo "" | rofi -dmenu  -theme solarized -font 'Inconsolata Nerd Font 18' -p "Search:" | xargs -I{} xdg-open https://www.google.dk/search?q={}
+# install rofi-search-git and googler and set GOOGLE_API_KEY=AIzaSyC3sUCwHRDuBXtadVURdSFgfBjHXm-0i_4 in .secrets
+bindsym $mod+g exec --no-startup-id rofi-search
 
 focus_follows_mouse yes
 
@@ -55,7 +62,7 @@ floating_modifier $mod
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id "rofi -combi-modi drun,window -theme solarized -font 'JetBrainsMono 14' -show combi -icon-theme 'Papirus' -show-icons"
+bindsym $mod+d exec --no-startup-id "rofi -combi-modi drun,window -theme solarized -font 'Inconsolata Nerd Font 18' -show combi -icon-theme 'Papirus' -show-icons"
 
 # define directional keys
 set $up k
@@ -140,7 +147,7 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+x exec flameshot gui
 
 # file-browser
-bindsym $mod+n exec nautilus ~
+bindsym $mod+n exec pcmanfm ~
 
 for_window [all] border pixel 1
 
@@ -165,7 +172,6 @@ bindsym $mod+v exec alacritty -t "Temp Vim" -e ~/bin/tempvim
 # Fix handing of popups
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
-for_window [class="Ulauncher"] border pixel 0
 
 # Application specific assignments
 # assign [class="Alacritty"] $ws1
@@ -176,6 +182,7 @@ assign [class="Slack"] $ws4
 # for_window [class="slack"] move to workspace $ws4
 
 # Background apps
+exec --no-startup-id redshift-gtk
 exec --no-startup-id nm-applet --indicator
 exec --no-startup-id pasystray
 exec --no-startup-id blueman-applet
@@ -183,14 +190,11 @@ exec --no-startup-id copyq
 exec --no-startup-id flameshot
 exec --no-startup-id playerctld daemon
 exec --no-startup-id dropbox start
-exec --no-startup-id emote
-exec --no-startup-id feh --randomize --bg-fill ~/Files/wallpapers/*
-# exec --no-startup-id ulauncher
-exec --no-startup-id /usr/bin/caffeine-indicator
+exec --no-startup-id feh --randomize --bg-fill ~/files/wallpapers/*
+# exec --no-startup-id /usr/bin/caffeine-indicator
 # exec --no-startup-id mullvad
 exec --no-startup-id todoist
 exec --no-startup-id qalculate
-exec --no-startup-id redshift-gtk
 
 set $connectCheck nm-online --quiet --timeout=300
 
