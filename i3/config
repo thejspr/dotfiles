@@ -7,7 +7,7 @@ font pango:Inconsolata Nerd Font 14
 
 bar {
   status_command i3status --config ~/.i3status.conf
-  font pango:Inconsolata Nerd Font 10
+  font pango:Inconsolata Nerd Font 14
   tray_output DP-4
   separator_symbol " | "
   position top

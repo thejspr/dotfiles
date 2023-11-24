@@ -1,6 +1,5 @@
 # new stuff
 alias se='sudo -E nvim'
-# alias dokku='$HOME/.dokku/contrib/dokku_client.sh'
 alias lg='lazygit'
 alias kubectl="minikube kubectl --"
 
