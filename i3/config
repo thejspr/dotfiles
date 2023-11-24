@@ -31,7 +31,6 @@ exec --no-startup-id "picom -b --config ~/.config/picom.conf"
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-bindsym $mod+Home exec --no-startup-id i3lock -i ~/Files/wallpapers/3840x2160/1095029.png
 bindsym $mod+End exec --no-startup-id sudo systemctl suspend
 
 # Desktop media control
@@ -160,7 +159,7 @@ bindsym $mod+c [class="Qalculate-gtk"] scratchpad show
 
 # Floating todoist
 for_window [class="Todoist"] floating enable
-for_window [class="Todoist"] resize set 1400 1200, move position center
+for_window [class="Todoist"] resize set 1000 800, move position center
 for_window [class="Todoist"] border pixel 5
 for_window [class="Todoist"] move scratchpad
 bindsym $mod+t [class="Todoist"] scratchpad show
