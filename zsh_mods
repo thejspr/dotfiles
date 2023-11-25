@@ -2,7 +2,7 @@ export HISTCONTROL=ignoreboth:erasedups
 export EDITOR='nvim'
 export BUNDLER_EDITOR='nvim'
 export PATH="$PATH:$PWD/bin:/home/jesper/.local/bin:/home/jesper/.yarn/bin:/home/jesper/.cargo/bin:/home/jesper/bin"
-export PATH=$PATH:/var/lib/flatpak/exports/bin:/home/jesper/apps
+export PATH=$PATH:/home/jesper/apps
 export LESS='-F -g -i -M -R -S -w -X -z-4'
 export NODEJS_CHECK_SIGNATURES=no
 export ASDF_RUBY_BUILD_VERSION=master
@@ -11,11 +11,10 @@ autoload zmv
 bindkey -e
 unalias gbr # exists in bin
 
-[ -x "$(command -v xset)" ] && xset r rate 250 40
-[ -x "$(command -v setxkbmap)" ] && setxkbmap -option caps:ctrl_modifier
+# [ -x "$(command -v xset)" ] && xset r rate 250 40
+# [ -x "$(command -v setxkbmap)" ] && setxkbmap -option caps:ctrl_modifier
 [ -x "$(command -v xmodmap)" ] && xmodmap ~/.Xmodmap
 [ -f /usr/share/z/z.sh ] && source /usr/share/z/z.sh
-export PATH="$PWD/bin:$PATH"
 setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_DUPS
 
