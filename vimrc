@@ -157,7 +157,6 @@ else
   set background=light
   colorscheme github_light
 endif
-" au fileType * hi Normal guibg=NONE ctermbg=NONE
 
 syntax on
 set colorcolumn=90
@@ -223,7 +222,6 @@ nmap fa :set foldlevel=99<cr>
 
 " Key mappings {{{
 map , <leader>
-map <space> <leader>
 
 " Buffer management
 nnoremap <tab> :bn<CR>

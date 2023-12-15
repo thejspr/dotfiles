@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+if File.exist?(File.expand_path("~/.darkmode"))
+  puts 'darkmode off'
+  system('rm -f ~/.darkmode')
+else
+  puts 'darkmode on'
+  system('touch ~/.darkmode')
+end
