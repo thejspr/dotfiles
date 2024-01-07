@@ -80,7 +80,7 @@ return require('lazy').setup({
 
   -- Treesitter
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
-  'RRethy/nvim-treesitter-endwise',
+  { 'RRethy/nvim-treesitter-endwise', event = "VeryLazy" },
 
   -- UI & Themes
 
