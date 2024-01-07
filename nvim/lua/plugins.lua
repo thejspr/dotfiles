@@ -1,87 +1,101 @@
-return require('packer').startup(function(use)
-  -- Packer https://github.com/wbthomason/packer.nvim
-  use 'wbthomason/packer.nvim'
+return require('lazy').setup({
 
-  -- Neo Tree https://github.com/nvim-neo-tree/neo-tree.nvim
-  vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
-  use {
+  -- Essentials
+  'tpope/vim-repeat',
+  'tpope/vim-obsession', -- sessions mgmt
+  '907th/vim-auto-save',
+  'wakatime/vim-wakatime',
+  'mhinz/vim-grepper',
+
+  'benmills/vimux',
+  'vim-test/vim-test',
+  'voldikss/vim-floaterm',
+  'christoomey/vim-tmux-navigator',
+
+  -- Text
+  'tpope/vim-commentary',
+  'tpope/vim-surround',
+  'mg979/vim-visual-multi',
+  'godlygeek/tabular',
+  'AndrewRadev/splitjoin.vim',
+
+  -- File management & Git
+  'tpope/vim-eunuch', -- File command helpers: Rename, Delete etc.
+  'tpope/vim-git',
+  'tpope/vim-fugitive',
+  'tpope/vim-rhubarb', -- Gbrowse handlers for github
+  'pbrisbin/vim-mkdir', -- Automatically create new folders for files
+  'moll/vim-bbye',
+
+  -- Ruby
+  'vim-ruby/vim-ruby',
+  'dense-analysis/ale',
+  'tpope/vim-rails',
+  'sickill/vim-pasta',
+
+  -- Msc. languages
+  'preservim/vim-markdown',
+  'Vimjas/vim-python-pep8-indent',
+  'pangloss/vim-javascript',
+  'mattn/emmet-vim',
+  'tpope/vim-ragtag',
+  'github/copilot.vim',
+  { 'fatih/vim-go', build = ':GoUpdateBinaries' },
+
+  {
   "nvim-neo-tree/neo-tree.nvim",
-    branch = "v2.x",
-    requires = {
+    branch = "v3.x",
+    dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
     }
-  }
-
-  -- Telescope
-  use {
+  },
+  {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
-    requires = {
+    dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons"
     }
-  }
-
-  -- Autopairs
-  use {
+  },
+  {
     'windwp/nvim-autopairs',
     config = function() require("nvim-autopairs").setup {map_cr=false} end
-  }
-
-  -- search/replace in multiple files
-  use {
-    "nvim-pack/nvim-spectre",
-    cmd = "Spectre",
-    opts = { open_cmd = "noswapfile vnew" },
-    -- stylua: ignore
-    keys = {
-      { "<leader>sr", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
-    },
-  }
-
-  --- CMP
-  use {
+  },
+  {
     "hrsh7th/nvim-cmp",
-    requires = {
+    dependencies = {
       'neovim/nvim-lspconfig',
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
-      -- 'SirVer/ultisnips',
-      -- 'quangnguyen30192/cmp-nvim-ultisnips'
-      -- 'hrsh7th/cmp-nvim-lua',
       -- 'octaltree/cmp-look',
       -- 'hrsh7th/cmp-path',
       -- 'hrsh7th/cmp-calc',
-      -- 'f3fora/cmp-spell',
       -- 'hrsh7th/cmp-emoji'
     }
-  }
+  },
 
   -- Treesitter
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate'
-  }
-  use 'RRethy/nvim-treesitter-endwise'
+  { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
+  'RRethy/nvim-treesitter-endwise',
 
-  -- Themes
-  use 'folke/tokyonight.nvim'
-  use 'projekt0n/github-nvim-theme'
-  use { "catppuccin/nvim", as = "catppuccin" }
+  -- UI & Themes
 
-  use {
+  'itchyny/lightline.vim',
+  'projekt0n/github-nvim-theme',
+  { "catppuccin/nvim" },
+
+  {
     'lewis6991/gitsigns.nvim',
+    event = "VeryLazy",
     config = function()
       require('gitsigns').setup()
     end
-  }
-
-  -- bufferline
-  use {
+  },
+  {
     "akinsho/bufferline.nvim",
     event = "VeryLazy",
     keys = {
@@ -113,4 +127,4 @@ return require('packer').startup(function(use)
       },
     },
   }
-end)
+})

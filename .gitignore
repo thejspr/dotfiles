@@ -2,8 +2,6 @@ vim/bundle/
 vim/view/
 vim/UltiSnips
 *.spl
-iterm2/
-bin/skype4cocoa
-bin/helm
 *.bak
 nvim/plugin/
+nvim/lazy-lock.json

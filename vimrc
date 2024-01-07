@@ -1,50 +1,23 @@
-" Plugins {{{
-" Init {{{
-set nocompatible
-filetype off
-call plug#begin('~/.vim/plugged')
-" }}}
-
 " Essentials {{{
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-obsession' " sessions mgmt
-Plug '907th/vim-auto-save'
 let g:auto_save = 1
 let g:auto_save_silent = 0
 let g:auto_save_events = ["TextChanged", "FocusLost", "InsertLeave"]
-
-Plug 'moll/vim-bbye'
-map <c-x> :Bdelete<CR>
 " }}}
 
 " Search & Code navigation {{{
-Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
 nmap <leader>a :Grepper -tool rg -cword -noprompt<cr>
 nmap <leader>G :Grepper -tool rg<cr>
 " }}}
 
 " Text {{{
-Plug 'tpope/vim-commentary'
 autocmd FileType javascript.jsx setlocal commentstring={/*\ %s\ */}
-Plug 'tpope/vim-surround'
-Plug 'mg979/vim-visual-multi'
-Plug 'godlygeek/tabular'
-Plug 'preservim/vim-markdown'
-Plug 'AndrewRadev/splitjoin.vim'
 " }}}
 
 " File management & Git {{{
 let g:eunuch_no_maps = 1
-Plug 'tpope/vim-eunuch' " File command helpers: Rename, Delete etc.
-Plug 'tpope/vim-git'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb' " Gbrowse handlers for github
-Plug 'pbrisbin/vim-mkdir' " Automatically create new folders for files
 " }}}
 
 " Ruby {{{
-Plug 'vim-ruby/vim-ruby'
-Plug 'dense-analysis/ale'
 let g:ale_linters = {
       \   'ruby': ['rubocop'],
       \   'javascript': ['eslint'],
@@ -70,39 +43,23 @@ highlight ALEError ctermbg=none cterm=underline
 " nmap <leader>F :!rubocop -a %<cr>
 nmap <leader>F :ALEFix<cr>
 
-Plug 'tpope/vim-rails'
-Plug 'sickill/vim-pasta'
 let g:pasta_disabled_filetypes = ['yaml']
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-" Plug 'tpope/vim-haml'
 "}}}
 
-" Python {{{
-Plug 'Vimjas/vim-python-pep8-indent'
-" Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-plug'] }
-" }}}
-
 " Msc languages {{{
-Plug 'pangloss/vim-javascript'
 let g:vim_json_conceal=0
-Plug 'mattn/emmet-vim'
-Plug 'tpope/vim-ragtag'
-Plug 'github/copilot.vim'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 "  }}}
 
 " tmux and testing {{{
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'benmills/vimux'
 " let g:VimuxOrientation = "h"
 " let g:VimuxHeight = "45"
 let g:VimuxOrientation = "v"
 let g:VimuxHeight = "33"
 " nmap <leader><space> :FloatermNew!<space>
 nmap <leader><space> :VimuxPromptCommand<cr>
-Plug 'vim-test/vim-test'
 let test#strategy = "vimux"
 nmap <silent> <leader>x :TestNearest<CR>
 nmap <silent> <leader>X :TestFile<CR>
@@ -112,7 +69,6 @@ function! FloatermNewBang(cmd)
   execute 'FloatermNew ' . a:cmd
 endfunction
 let g:test#custom_strategies = {'floatermbang': function('FloatermNewBang')}
-Plug 'voldikss/vim-floaterm'
 let g:floaterm_width = 0.9
 let g:floaterm_height = 0.9
 let g:floaterm_autoclose = 1
@@ -124,7 +80,6 @@ let g:floaterm_keymap_next   = '<F4>'
 " }}}
 
 " UI {{{
-Plug 'itchyny/lightline.vim'
 let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
@@ -135,21 +90,17 @@ let g:lightline = {
       \ },
       \ }
 
-Plug 'Yggdroot/indentLine'
-let g:indentLine_setConceal = 0
-let g:indentLine_char = '┊'
-let g:indentLine_bufNameExclude = ['NERD_tree.*', 'fzf']
+"Plug 'Yggdroot/indentLine'
+"let g:indentLine_setConceal = 0
+"let g:indentLine_char = '┊'
+"let g:indentLine_bufNameExclude = ['NERD_tree.*', 'fzf']
 
-Plug 'ap/vim-buftabline'
+"Plug 'ap/vim-buftabline'
 " }}}
 
 " New {{{
 " Plug 'dstein64/vim-startuptime'
-Plug 'wakatime/vim-wakatime'
 " }}}
-
-call plug#end()
-filetype plugin indent on
 " }}}
 
 " UI {{{
@@ -296,7 +247,6 @@ noremap <Leader>c :Econtroller<space>
 " }}}
 
 " New stuff {{{
-" autocmd bufwritepost ~/code/dotfiles/i3/config :silent !i3-msg restart ; notify-send "Reloaded i3 :)"
 au BufReadPost *.html* set formatoptions-=t
 command! Gbrowse GBrowse
 
