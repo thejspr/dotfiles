@@ -11,9 +11,7 @@ autoload zmv
 bindkey -e
 unalias gbr # exists in bin
 
-# [ -x "$(command -v xset)" ] && xset r rate 250 40
-# [ -x "$(command -v setxkbmap)" ] && setxkbmap -option caps:ctrl_modifier
-# if [ ! -f /tmp/xinit ]; then
+if [ ! -f /tmp/xinit ]; then
   setxkbmap -layout us
   setxkbmap -option ctrl:nocaps
   setxkbmap -option caps:ctrl_modifier
@@ -21,8 +19,8 @@ unalias gbr # exists in bin
   xset -dpms
   xset r rate 250 40
   touch /tmp/xinit
-# fi
-[ -x "$(command -v xmodmap)" ] && xmodmap ~/.Xmodmap
+fi
+xmodmap ~/.Xmodmap
 [ -f /usr/share/z/z.sh ] && source /usr/share/z/z.sh
 setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_DUPS
@@ -63,6 +61,6 @@ fi
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 ssh-add -l > /dev/null || ssh-add
 
-eval "$(github-copilot-cli alias -- "$0")"
+# adds 1 sec to startup time!
+# eval "$(github-copilot-cli alias -- "$0")"
 [ -x "$(command -v atuin)" ] && eval "$(atuin init zsh --disable-up-arrow)"
-eval "$(direnv hook zsh)"
