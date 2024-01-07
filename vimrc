@@ -48,6 +48,7 @@ Plug 'dense-analysis/ale'
 let g:ale_linters = {
       \   'ruby': ['rubocop'],
       \   'javascript': ['eslint'],
+      \   'json': ['jq'],
       \}
 let g:ale_fixers = {
       \ '*': ['remove_trailing_lines', 'trim_whitespace'],
@@ -55,16 +56,19 @@ let g:ale_fixers = {
       \ 'sql': ['pgformatter'],
       \ 'python': ['autopep8'],
       \ 'javascript': ['prettier'],
+      \ 'json': ['jq'],
       \}
 let g:ale_ruby_rubocop_options = '-A'
 let b:ale_sql_pgformatter_options = '--spaces 2 --wrap-after 10'
+let g:ale_history_log_output = 1
 let g:ale_lint_on_insert_leave = 1
-let g:ale_lint_on_enter = 0
-let g:ale_fix_on_save = 0
+let g:ale_lint_on_enter = 1
+let g:ale_fix_on_save = 1
 let g:ale_virtualtext_cursor = 0
 highlight ALEWarning ctermbg=none cterm=underline
 highlight ALEError ctermbg=none cterm=underline
-nnoremap <leader>F :ALEFix<cr>
+" nmap <leader>F :!rubocop -a %<cr>
+nmap <leader>F :ALEFix<cr>
 
 Plug 'tpope/vim-rails'
 Plug 'sickill/vim-pasta'
@@ -308,5 +312,4 @@ nmap Y yy
 
 " Substitute in line
 nnoremap gs "zye:%s/<C-R>z//g<left><left>
-nmap <leader>F :!rubocop -a %<cr>
 " }}}

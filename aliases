@@ -82,6 +82,11 @@ gcam() {
   command git add -A;
   command git commit -m "$*";
 }
+gpush() {
+  command git add -A;
+  command git commit -m "$*";
+  command git push
+}
 alias cp-head='git rev-parse --short HEAD | pbcopy'
 alias gb='git branch'
 alias gbX='git branch --delete --force'
@@ -108,7 +113,7 @@ alias -g G='|rg'
 
 #system and files editing
 alias ea='e ~/.aliases'
-alias eaa='e ~/.alacritty.yml'
+alias eaa='e ~/.alacritty.toml'
 alias eg='e ~/.gitconfig'
 alias ei='e ~/code/dotfiles/i3/config'
 alias eis='e ~/.i3status.conf'

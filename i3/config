@@ -154,12 +154,12 @@ bindsym $mod+c [class="Qalculate-gtk"] scratchpad show
 # for_window [instance="Alacritty" title="Temp Vim"] floating enable
 # bindsym $mod+v exec alacritty -t "Temp Vim" -e ~/bin/tempvim
 
-# Floating todoist
-for_window [class="Todoist"] floating enable
-for_window [class="Todoist"] resize set 1000 800, move position center
-for_window [class="Todoist"] border pixel 5
-for_window [class="Todoist"] move scratchpad
-bindsym $mod+t [class="Todoist"] scratchpad show
+# Floating heynote
+for_window [class="Heynote"] floating enable
+for_window [class="Heynote"] resize set 1000 800, move position center
+for_window [class="Heynote"] border pixel 5
+for_window [class="Heynote"] move scratchpad
+bindsym $mod+t [class="Heynote"] scratchpad show
 
 # Fix handing of popups
 for_window [window_role="pop-up"] floating enable
@@ -176,17 +176,17 @@ exec --no-startup-id playerctld daemon
 exec --no-startup-id blueman-applet
 exec --no-startup-id pasystray
 exec --no-startup-id pactl load-module module-switch-on-connect
-# exec --no-startup-id todoist
 exec --no-startup-id qalculate-gtk
 exec --no-startup-id ~/apps/jetbrains-toolbox --minimize
 exec --no-startup-id redshift-gtk
+exec --no-startup-id ~/apps/Heynote_1.4.2_x86_64.AppImage
 
 set $connectCheck nm-online --quiet --timeout=300
 
 # Startup applications
 exec alacritty --command tmux
 exec obsidian
-exec $connectCheck && google-chrome
+exec google-chrome
 
 # exec weekday && $connectCheck && slack
 # exec $connectCheck && firefox
