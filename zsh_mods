@@ -17,9 +17,9 @@ if [ ! -f /tmp/xinit ]; then
   setxkbmap -option caps:ctrl_modifier
   xset s off
   xset -dpms
-  xset r rate 250 40
   touch /tmp/xinit
 fi
+xset r rate 250 40
 xmodmap ~/.Xmodmap
 [ -f /usr/share/z/z.sh ] && source /usr/share/z/z.sh
 setopt HIST_FIND_NO_DUPS

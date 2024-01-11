@@ -19,7 +19,7 @@
   aa     = add -A
   ac     = !git add . && git commit -am
   amend  = commit -a --amend
-  amendf = !git add -A && git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - --amend
+  amendf = commit -a --amend --no-edit
   b      = branch
   bclean = !git co master && git branch --merged | grep -v master | grep -v staging | xargs -r git branch -d
   c      = commit -v

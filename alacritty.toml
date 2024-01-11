@@ -1,3 +1,7 @@
+import = [
+  "~/.config/alacritty/themes/themes/github_light.toml"
+]
+
 [bell]
 duration = 0
 
