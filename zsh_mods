@@ -11,16 +11,18 @@ autoload zmv
 bindkey -e
 unalias gbr # exists in bin
 
-if [ ! -f /tmp/xinit ]; then
-  setxkbmap -layout us
-  setxkbmap -option ctrl:nocaps
-  setxkbmap -option caps:ctrl_modifier
-  xset s off
-  xset -dpms
-  touch /tmp/xinit
+if [[ "$XDG_SESSION_TYPE" == "x11" ]]; then
+	# if [ ! -f /tmp/xinit ]; then
+	  setxkbmap -layout us
+	  setxkbmap -option ctrl:nocaps
+	  setxkbmap -option caps:ctrl_modifier
+	  xset s off
+	  xset -dpms
+	  touch /tmp/xinit
+	# fi
+	xset r rate 250 40
+	xmodmap ~/.Xmodmap
 fi
-xset r rate 250 40
-xmodmap ~/.Xmodmap
 [ -f /usr/share/z/z.sh ] && source /usr/share/z/z.sh
 setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_DUPS

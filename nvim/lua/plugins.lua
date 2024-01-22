@@ -4,7 +4,7 @@ return require('lazy').setup({
   'tpope/vim-repeat',
   'tpope/vim-obsession', -- sessions mgmt
   '907th/vim-auto-save',
-  'wakatime/vim-wakatime',
+  -- 'wakatime/vim-wakatime',
   'mhinz/vim-grepper',
 
   'benmills/vimux',
@@ -17,7 +17,7 @@ return require('lazy').setup({
   'tpope/vim-surround',
   'mg979/vim-visual-multi',
   'godlygeek/tabular',
-  'AndrewRadev/splitjoin.vim',
+  -- 'AndrewRadev/splitjoin.vim',
 
   -- File management & Git
   'tpope/vim-eunuch', -- File command helpers: Rename, Delete etc.
