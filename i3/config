@@ -188,7 +188,7 @@ exec alacritty --command tmux
 exec obsidian
 exec google-chrome
 
-# exec weekday && $connectCheck && slack
+exec weekday && $connectCheck && slack
 # exec $connectCheck && firefox
 # exec $connectCheck && spotify
 
