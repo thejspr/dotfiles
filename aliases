@@ -77,6 +77,7 @@ alias fails='rspec --only-failures'
 #     command hub "$@";
 #   fi
 # }
+unalias gbr 2>/dev/null # exists in bin
 [ "$(command -v gcam)" ] && unalias gcam
 gcam() {
   command git add -A;

@@ -25,7 +25,8 @@ require'nvim-treesitter.configs'.setup {
     "sql",
     "yaml",
     "csv",
-    "elixir"
+    "elixir",
+    "terraform"
   },
 }
 -- local parser_config = require "nvim-treesitter.parsers".get_parser_configs()

@@ -1,9 +1,3 @@
-input * {
-  xkb_layout "dk"
-  repeat_delay 250
-  repeat_rate 50
-}
-
 # Default config for sway
 # Read `man 5 sway` for a complete reference.
 
@@ -16,12 +10,6 @@ set $left h
 set $down j
 set $up k
 set $right l
-# Your preferred terminal emulator
-set $term alacritty
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
 
 ### Output configuration
 #
@@ -36,40 +24,34 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
 ### Idle configuration
 #
-# Example configuration:
-#
 exec swayidle -w \
          timeout 600 'swaylock -f -c 000000' \
          timeout 900 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
          before-sleep 'swaylock -f -c 000000'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
 
 ### Input configuration
-#
-# Example configuration:
-#
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
+#
+input "type:keyboard" {
+  xkb_layout "dk"
+  repeat_delay 250
+  repeat_rate 50
+  xkb_options caps:escape_shifted_capslock
+}
+
+input "type:touchpad" {
+  tap enabled
+  dwt enabled
+  middle_emulation enabled
+}
 
 ### Key bindings
 #
 # Basics:
 #
     # Kill focused window
-    # bindsym $mod+Shift+q kill
-
-    # Start your launcher
-    # bindsym $mod+d exec $menu
+    bindsym $mod+Shift+q kill
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -105,8 +87,6 @@ exec swayidle -w \
     bindsym $mod+Shift+8 move container to workspace number 8
     bindsym $mod+Shift+9 move container to workspace number 9
     bindsym $mod+Shift+0 move container to workspace number 10
-    # Note: workspaces can have any name you want, not just numbers.
-    # We just use 1-10 as the default.
 #
 # Layout stuff:
 #
@@ -129,9 +109,6 @@ exec swayidle -w \
 
     # Swap focus between the tiling area and the floating area
     bindsym $mod+space focus mode_toggle
-
-    # Move focus to the parent container
-    bindsym $mod+a focus parent
 #
 # Scratchpad:
 #
@@ -169,29 +146,14 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
-# bar {
-#     position top
-
-#     # When the status_command prints a new line to stdout, swaybar updates.
-#     # The default just shows the current date and time.
-#     status_command i3status
-
-#     colors {
-#         statusline #ffffff
-#         background #323232
-#         inactive_workspace #32323200 #32323200 #5c5c5c
-#     }
-# }
-
 include /etc/sway/config.d/*
 
 set $mod Mod4
 
-font pango:Inconsolata Nerd Font 14
+# Hide window titles
+font pango:monospace 0.00001
+titlebar_border_thickness 0
+titlebar_padding 0
 
 bar {
   status_command i3status --config ~/dotfiles/i3status.conf
@@ -199,31 +161,23 @@ bar {
   # tray_output DP-4
   separator_symbol " | "
   position top
-  # padding 0
   tray_padding 4
-  workspace_min_width 125
+  workspace_min_width 100
 
   colors {
     background #1a1b26
     statusline #a9b1d6
-
-    # focused_workspace  #15161e #7aa2f7
-    # active_workspace   #ffffff #c0caf5
-    # inactive_workspace #888888 #222222
-    # urgent_workspace   #ffffff #900000
   }
 }
 
-
-
-include ~/code/dotfiles/sway/`hostname`.conf
+# include ~/code/dotfiles/sway/`hostname`.conf
 
 bindsym $mod+Home exec --no-startup-id swaylock -c 000000
 bindsym $mod+End exec --no-startup-id systemctl suspend
 
 # Desktop media control
-bindsym $mod+Up exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym $mod+Down exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym $mod+Up exec pactl set-sink-volume @DEFAULT_SINK@ +10%
+bindsym $mod+Down exec pactl set-sink-volume @DEFAULT_SINK@ -10%
 bindsym $mod+m exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym $mod+Return exec playerctl play-pause
 bindsym $mod+Right exec playerctl next
@@ -233,20 +187,8 @@ bindsym $mod+Left exec playerctl previous
 
 focus_follows_mouse yes
 
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
-
-# kill focused window
-bindsym $mod+Shift+q kill
-
 # start program launcher
 bindsym $mod+d exec --no-startup-id "rofi -combi-modi drun,window -theme solarized -font 'Inconsolata Nerd Font 20' -show combi -icon-theme 'Papirus' -show-icons"
-
-# define directional keys
-set $up k
-set $down j
-set $left h
-set $right l
 
 # change focus
 bindsym $mod+$left focus left
@@ -260,35 +202,11 @@ bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
 
-# split in horizontal orientation
-# bindsym $mod+h splith
-
-# split in vertical orientation
-
-    # Reload the configuration file
-    # bindsym $mod+Shift+c reload
-# bindsym $mod+v splitv
-
-# enter fullscreen mode for the focused container
-# bindsym $mod+f fullscreen
-
-# change container layout (stacked, tabbed, toggle split)
-# bindsym $mod+s layout stacking
-# bindsym $mod+w layout tabbed
-# bindsym $mod+e layout toggle split
-
-# toggle tiling / floating
-# bindsym $mod+Shift+space floating toggle
-
-# change focus between tiling / floating windows
-# bindsym $mod+space focus mode_toggle
-
 bindsym $mod+p move workspace to output right
 
-# reload or restart i3
+# reload or restart sway
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-# bindsym $mod+r mode "resize"
 
 # for_window [all] border pixel 2
 
@@ -296,9 +214,6 @@ bindsym $mod+Shift+r restart
 # bindsym $mod+Shift+minus move scratchpad
 # Show the first scratchpad window
 # bindsym $mod+minus scratchpad show
-
-# screenshot
-bindsym $mod+x exec flameshot gui
 
 # file-browser
 bindsym $mod+n exec pcmanfm
@@ -327,15 +242,12 @@ bindsym $mod+Print exec grim -t jpeg -g "$(slurp)" ~/screenshots/$(date +%Y-%m-%
 exec --no-startup-id nm-applet --indicator
 exec --no-startup-id copyq
 # exec --no-startup-id playerctld daemon
-# exec --no-startup-id dropbox start
+exec --no-startup-id dropbox start
 exec --no-startup-id blueman-applet
 exec --no-startup-id pasystray
 exec --no-startup-id pactl load-module module-switch-on-connect
 exec --no-startup-id qalculate-gtk
 # exec --no-startup-id ~/apps/jetbrains-toolbox --minimize
-# exec --no-startup-id redshift-gtk
-# exec --no-startup-id ~/apps/Heynote_1.4.2_x86_64.AppImage
-# exec --no-startup-id dockd --daemon
 
 set $connectCheck nm-online --quiet --timeout=300
 
@@ -345,7 +257,5 @@ exec obsidian
 exec google-chrome
 
 exec weekday && $connectCheck && slack
-# exec $connectCheck && firefox
-# exec $connectCheck && spotify
 
 # vim: ft=i3config formatoptions-=t
