@@ -241,14 +241,10 @@ for_window [window_type="dialog"] floating enable
 for_window [window_role="dialog"] floating enable
 for_window [class="^jetbrains-.+"][window_type=dialog] focus
 
-# Take a screenshot with all output and save it into screenshots
-bindsym Print exec grim -t jpeg ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
-
+# Take a screenshot of active screen
+bindsym Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') -t jpeg ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
 # Take a Screenshot with the region select
-bindsym $mod+Print exec grim -t jpeg -g "$(slurp)" ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
-bindsym $mod+x exec grim -g "$(slurp)" | wl-copy -t image/png
-for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
-# bindsym $mod+x exec flameshot gui
+bindsym $mod+x exec grim -g "$(slurp)" - | swappy -f -
 
 # Background apps
 exec --no-startup-id nm-applet --indicator
