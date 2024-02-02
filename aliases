@@ -53,7 +53,7 @@ alias rc='rails c'
 alias migrate='rails db:migrate'
 alias upgrade_gems="bundle update && rspec && git add -A && git commit -m 'Gem upgrades' && git push"
 alias bef='foreman start -f Procfile.dev'
-alias rt='rails -T'
+alias rt='rake -T'
 alias rr='rails routes'
 
 #heroku

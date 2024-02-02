@@ -34,7 +34,7 @@ setopt HIST_IGNORE_DUPS
 # [ -f ~/.asdf/plugins/golang/set-env.zsh ] && source ~/.asdf/plugins/golang/set-env.zsh
 
 # hub alias
-[ -x "$(command -v hub)" ] && eval "$(hub alias -s)"
+# [ -x "$(command -v hub)" ] && eval "$(hub alias -s)"
 
 # Alias and function definitions.
 . ~/.aliases

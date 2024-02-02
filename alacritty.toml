@@ -1,5 +1,5 @@
 import = [
-  "~/.config/alacritty/themes/themes/github_light.toml"
+  "~/.config/alacritty/themes/themes/catppuccin.toml"
 ]
 
 [bell]
@@ -9,7 +9,7 @@ duration = 0
 TERM = "xterm-256color"
 
 [font]
-size = 18
+size = 20
 
 [font.normal]
 family = "Inconsolata Nerd Font"

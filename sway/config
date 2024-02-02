@@ -22,6 +22,8 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
+output "Dell Inc. DELL P2415Q D8VXF7AA0T9B" scale 1 mode 2560x1440@60Hz
+
 ### Idle configuration
 #
 exec swayidle -w \
@@ -29,15 +31,15 @@ exec swayidle -w \
          timeout 900 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
          before-sleep 'swaylock -f -c 000000'
 
-### Input configuration
+## Input configuration
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 #
 input "type:keyboard" {
-  xkb_layout "dk"
+  xkb_layout dk,us
   repeat_delay 250
   repeat_rate 50
-  xkb_options caps:escape_shifted_capslock
+  xkb_options caps:escape_shifted_capslock,grp:rctrl_rshift_toggle
 }
 
 input "type:touchpad" {
@@ -125,20 +127,21 @@ input "type:touchpad" {
 # Resizing containers:
 #
 mode "resize" {
+    set $step 20px
     # left will shrink the containers width
     # right will grow the containers width
     # up will shrink the containers height
     # down will grow the containers height
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
+    bindsym $left resize shrink width $step
+    bindsym $down resize grow height $step
+    bindsym $up resize shrink height $step
+    bindsym $right resize grow width $step
 
     # Ditto, with arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
+    bindsym Left resize shrink width $step
+    bindsym Down resize grow height $step
+    bindsym Up resize shrink height $step
+    bindsym Right resize grow width $step
 
     # Return to default mode
     bindsym Return mode "default"
@@ -156,7 +159,8 @@ titlebar_border_thickness 0
 titlebar_padding 0
 
 bar {
-  status_command i3status --config ~/dotfiles/i3status.conf
+  # status_command i3status --config ~/dotfiles/i3status.conf
+  swaybar_command waybar
   font pango:Inconsolata Nerd Font 14
   # tray_output DP-4
   separator_symbol " | "
@@ -210,26 +214,31 @@ bindsym $mod+Shift+r restart
 
 # for_window [all] border pixel 2
 
-# Make the currently focused window a scratchpad
-# bindsym $mod+Shift+minus move scratchpad
-# Show the first scratchpad window
-# bindsym $mod+minus scratchpad show
-
 # file-browser
 bindsym $mod+n exec pcmanfm
 
 # Show a floating calc terminal with Mod+c https://github.com/Qalculate/libqalculate
-for_window [class="Qalculate-gtk"] floating enable, resize set 800 400, move position center
-for_window [class="Qalculate-gtk"] move scratchpad
-bindsym $mod+c [class="Qalculate-gtk"] scratchpad show
+for_window [app_id="qalculate-gtk"] floating enable, resize set 800 400, move position center
+for_window [app_id="qalculate-gtk"] move scratchpad
+bindsym $mod+c [app_id="qalculate-gtk"] scratchpad show
 
 # Floating vim
 # for_window [instance="Alacritty" title="Temp Vim"] floating enable
+
+# Make the currently focused window a scratchpad
+# bindsym $mod+Shift+minus move scratchpad
+# Show the first scratchpad window
+# bindsym $mod+minus scratchpad show
 # bindsym $mod+v exec alacritty -t "Temp Vim" -e ~/bin/tempvim
 
+bindsym ctrl+alt+v exec copyq menu
+
 # Fix handing of popups
+for_window [app_id="copyq"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_role="dialog"] floating enable
 for_window [class="^jetbrains-.+"][window_type=dialog] focus
 
 # Take a screenshot with all output and save it into screenshots
@@ -237,6 +246,9 @@ bindsym Print exec grim -t jpeg ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
 
 # Take a Screenshot with the region select
 bindsym $mod+Print exec grim -t jpeg -g "$(slurp)" ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
+bindsym $mod+x exec grim -g "$(slurp)" | wl-copy -t image/png
+for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
+# bindsym $mod+x exec flameshot gui
 
 # Background apps
 exec --no-startup-id nm-applet --indicator
@@ -244,8 +256,8 @@ exec --no-startup-id copyq
 # exec --no-startup-id playerctld daemon
 exec --no-startup-id dropbox start
 exec --no-startup-id blueman-applet
-exec --no-startup-id pasystray
-exec --no-startup-id pactl load-module module-switch-on-connect
+# exec --no-startup-id pasystray
+# exec --no-startup-id pactl load-module module-switch-on-connect
 exec --no-startup-id qalculate-gtk
 # exec --no-startup-id ~/apps/jetbrains-toolbox --minimize
 
