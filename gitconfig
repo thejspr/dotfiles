@@ -50,6 +50,7 @@
   rcl = !git co master && git pull && bundle && migrate && git remote prune origin && git bclean
 
   bip = for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:yellow)%(refname:short)' refs/heads
+  rinse = !git submodule foreach --recursive git clean -xfd && git submodule sync --recursive && git restore . --recurse-submodules
 [apply]
   whitespace = nowarn
 [branch]

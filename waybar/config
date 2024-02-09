@@ -84,6 +84,7 @@
     "clock": {
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%H:%M %Y-%m-%d}",
         "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
@@ -164,4 +165,3 @@
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     }
 }
-

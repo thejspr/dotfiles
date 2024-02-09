@@ -1,7 +1,4 @@
 # new stuff
-alias se='sudo -E nvim'
-alias lg='lazygit'
-alias kubectl="minikube kubectl --"
 
 #python
 alias pym='python3 manage.py'
@@ -10,6 +7,7 @@ alias pym='python3 manage.py'
 alias e='$EDITOR'
 alias kf='kill -9 %1'
 alias uall='update-all'
+alias tma='tmux attach'
 
 # edit existing command or create a new script
 function ew() {
@@ -21,7 +19,6 @@ function ew() {
     e ~/bin/"$1"
   fi
 }
-alias tma='tmux attach'
 
 #ruby
 alias rv='ruby --version'
@@ -101,7 +98,7 @@ alias gl='git l'
 alias gp='git push'
 alias gpf='FORCE=1 git push --force-with-lease --no-verify'
 alias gs='git status -sb'
-alias gs='git status -sb'
+alias lg='lazygit'
 
 #msc
 alias cd..='cd ..'
@@ -117,10 +114,11 @@ alias ea='e ~/.aliases'
 alias eaa='e ~/.alacritty.toml'
 alias eg='e ~/.gitconfig'
 alias ei='e ~/dotfiles/i3/config'
-alias es='e ~/.config/sway/config'
 alias eis='e ~/.i3status.conf'
+alias es='e ~/.config/sway/config'
 alias ess='e ~/.ssh/config'
 alias et='e ~/dotfiles/tmux.conf'
 alias ez='e ~/dotfiles/zsh_mods'
 alias ezz='e ~/.zshrc'
+alias se='sudo -E nvim'
 alias sr='exec zsh'
