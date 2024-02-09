@@ -165,22 +165,19 @@ titlebar_border_thickness 0
 titlebar_padding 0
 
 bar {
-  # status_command i3status --config ~/dotfiles/i3status.conf
   swaybar_command waybar
   font pango:Inconsolata Nerd Font 14
   # tray_output DP-4
-  separator_symbol " | "
+  # separator_symbol " | "
   position top
-  tray_padding 4
-  workspace_min_width 100
+  # tray_padding 4
+  # workspace_min_width 100
 
-  colors {
-    background #1a1b26
-    statusline #a9b1d6
-  }
+  # colors {
+  #   background #1a1b26
+  #   statusline #a9b1d6
+  # }
 }
-
-# include ~/code/dotfiles/sway/`hostname`.conf
 
 bindsym $mod+Home exec --no-startup-id swaylock -c 000000
 bindsym $mod+End exec --no-startup-id systemctl suspend
@@ -198,7 +195,7 @@ bindsym $mod+Left exec playerctl previous
 focus_follows_mouse yes
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id "rofi -combi-modi drun,window -theme solarized -font 'Inconsolata Nerd Font 20' -show combi -icon-theme 'Papirus' -show-icons"
+bindsym $mod+d exec --no-startup-id "rofi -combi-modi drun,window -theme solarized -font 'Inconsolata Nerd Font 18' -show combi -icon-theme 'Papirus' -show-icons"
 
 # change focus
 bindsym $mod+$left focus left
@@ -256,7 +253,6 @@ bindsym $mod+x exec grim -g "$(slurp)" - | swappy -f -
 exec --no-startup-id nm-applet --indicator
 exec --no-startup-id copyq
 # exec --no-startup-id playerctld daemon
-# exec --no-startup-id dropbox start
 exec --no-startup-id blueman-applet
 exec --no-startup-id qalculate-gtk
 exec --no-startup-id darkman
