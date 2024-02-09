@@ -1,9 +1,13 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env bash
 
-if File.exist?(File.expand_path("~/.darkmode"))
-  puts 'darkmode off'
-  system('rm -f ~/.darkmode')
+set -e
+
+if [[ -f ~/.darkmode ]]; then
+  echo 'darkmode off'
+  sed -i'.bak' 's/catppuccin/catppuccin_latte/g' ~/dotfiles/alacritty.toml
+  rm -f ~/.darkmode
 else
-  puts 'darkmode on'
-  system('touch ~/.darkmode')
-end
+  echo 'darkmode on'
+  sed -i'.bak' 's/catppuccin_latte/catppuccin/g' ~/dotfiles/alacritty.toml
+  touch ~/.darkmode
+fi

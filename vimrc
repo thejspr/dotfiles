@@ -110,7 +110,7 @@ if filereadable(expand("~/.darkmode"))
   colorscheme catppuccin
 else
   set background=light
-  colorscheme github_light
+  colorscheme catppuccin-latte
 endif
 
 syntax on
