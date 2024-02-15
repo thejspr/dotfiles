@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+if [ "$1" == "work" ]; then
+  swaymsg output eDP-1 disable
+  # swaymsg output "Dell Inc. DELL P2415Q D8VXF7AA0TUB" scale 1.5
+  # swaymsg output "Dell Inc. DELL P2415Q D8VXF79M0FVL" scale 1.5
+  swaymsg output DP-5 scale 1 mode 2560x1440
+  swaymsg output DP-7 scale 1 mode 2560x1440
+else
+  swaymsg output eDP-1 enable
+fi

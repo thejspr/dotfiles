@@ -1,6 +1,9 @@
+[includeIf "gitdir:~/thejspr/"]
+  path = ~/thejspr/.gitconfig
+[includeIf "gitdir:~/clearhaus/"]
+  path = ~/clearhaus/.gitconfig
 [user]
   name = Jesper Kjeldgaard
-  email = jk@clearhaus.com
 [github]
   user = thejspr
 [color]
@@ -12,7 +15,7 @@
   excludesfile = ~/.gitignore
   whitespace = trailing-space,space-before-tab
   ignorecase = false
-  attributesfile = /Users/jesper/code/dotfiles/gitattributes
+  attributesfile = /Users/jesper/dotfiles/gitattributes
 	pager = diff-so-fancy | less --tabs=4 -RFX
 [alias]
   a      = add --all
@@ -60,8 +63,6 @@
   statusHints = false
 [gc]
   auto = 1
-[heroku]
-  account = me
 [mergetool]
   prompt = false
   keepBackup = false
@@ -102,13 +103,9 @@
 	whitespace = red reverse
 [init]
 	defaultBranch = master
-[hub]
-	protocol = ssh
 [credential "https://github.com"]
 	helper =
 	helper = !/usr/bin/gh auth git-credential
 [credential "https://gist.github.com"]
 	helper =
 	helper = !/usr/bin/gh auth git-credential
-[commit]
-	gpgsign = true

@@ -1,9 +1,9 @@
 #!/bin/bash
 
-export GBM_BACKEND=nvidia-drm
+# export GBM_BACKEND=nvidia-drm
 export GDK_BACKEND=wayland
 export GTK_THEME=Dracula
-export LIBVA_DRIVER_NAME=nvidia
+# export LIBVA_DRIVER_NAME=nvidia
 export QT_QPA_PLATFORM=wayland
 export SDL_VIDEODRIVER=wayland
 export WLR_NO_HARDWARE_CURSORS=1
@@ -11,7 +11,7 @@ export XDG_CURRENT_DESKTOP=sway
 export XDG_SESSION_DESKTOP=sway
 export XDG_SESSION_TYPE=wayland
 export _JAVA_AWT_WM_NONREPARENTING=1
-export __GLX_VENDOR_LIBRARY_NAME=nvidia
+# export __GLX_VENDOR_LIBRARY_NAME=nvidia
 
 #[FIREFOX]
 export MOZ_ENABLE_WAYLAND=1
@@ -19,4 +19,5 @@ export MOZ_ENABLE_WAYLAND=1
 #[PREVENT FLICKERING, BUT FUCK UP GAMING]
 export XWAYLAND_NO_GLAMOR=1
 
-exec sway --unsupported-gpu
+# exec sway --unsupported-gpu
+exec sway
