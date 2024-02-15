@@ -1,9 +1,6 @@
-[includeIf "gitdir:~/thejspr/"]
-  path = ~/thejspr/.gitconfig
-[includeIf "gitdir:~/clearhaus/"]
-  path = ~/clearhaus/.gitconfig
 [user]
   name = Jesper Kjeldgaard
+  email = thejspr@gmail.com
 [github]
   user = thejspr
 [color]
