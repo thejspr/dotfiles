@@ -244,6 +244,7 @@ set pastetoggle=<F3>
 " Ruby {{{
 noremap <Leader>m :Emodel<space>
 noremap <Leader>c :Econtroller<space>
+autocmd FileType ruby setlocal indentkeys-=.
 " }}}
 
 " New stuff {{{

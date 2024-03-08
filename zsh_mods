@@ -70,5 +70,4 @@ if [ ! -S ~/.ssh/ssh_auth_sock ]; then
 fi
 
 # adds 1 sec to startup time!
-# eval "$(github-copilot-cli alias -- "$0")"
 [ -x "$(command -v atuin)" ] && eval "$(atuin init zsh --disable-up-arrow)"
