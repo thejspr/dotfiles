@@ -186,7 +186,7 @@ set $mod Mod4
 
 # Hide window titles
 # disable_titlebar yes
-font pango:Inconsolata Nerd Font 10
+font pango:Inconsolata Nerd Font 0.00001
 titlebar_border_thickness 0
 titlebar_padding 0
 
@@ -274,7 +274,7 @@ bindsym Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focus
 bindsym $mod+x exec grim -g "$(slurp)" - | swappy -f -
 
 assign [app_id="Alacritty"] 1
-assign [class="Google-chrome"] 2
+# assign [class="Google-chrome"] 2
 assign [class="obsidian"] 3
 assign [class="Slack"] 4
 
