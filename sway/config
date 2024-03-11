@@ -27,10 +27,10 @@ set $swaylock "swaylock -f -F -k -l -i ~/Pictures/wallpapers/077_IIprHhw.jpg"
 
 
 # timeout 1200 'echo "swayidle displays off" | systemd-cat -p warning && swaymsg "output * power off"' \
-exec swayidle -w \
-         timeout 600 $swaylock \
-         resume 'swaymsg "output * power on"' \
-         before-sleep 'swaylock -f'
+# exec swayidle -w \
+#          timeout 600 $swaylock \
+#          resume 'swaymsg "output * power on"' \
+#          before-sleep 'swaylock -f'
 
 set $laptop eDP-1
 bindswitch --reload --locked lid:on output $laptop disable
@@ -283,7 +283,7 @@ exec --no-startup-id nm-applet --indicator
 # exec --no-startup-id copyq
 exec --no-startup-id blueman-applet
 exec --no-startup-id qalculate-gtk
-exec --no-startup-id darkman run
+# exec --no-startup-id darkman run
 exec --no-startup-id dropbox
 exec --no-startup-id 1password --silent
 # exec --no-startup-id ~/apps/jetbrains-toolbox --minimize

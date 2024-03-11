@@ -20,4 +20,5 @@ export XWAYLAND_NO_GLAMOR=1
 
 export ELECTRON_OZONE_PLATFORM_HINT=wayland
 
-exec sway --unsupported-gpu
+# exec sway --unsupported-gpu
+exec sway

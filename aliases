@@ -108,6 +108,7 @@ if [ "$(command -v exa)" ]; then
   alias la='exa -a'
 fi
 alias -g G='|rg'
+alias -g CPOUT='2>&1 | tee >(cat >&2) | xclip -selection clipboard'
 
 #system and files editing
 alias ea='e ~/.aliases'
