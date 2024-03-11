@@ -1,4 +1,5 @@
 # new stuff
+alias eh='e ~/.config/hypr/hyprland.conf'
 
 #python
 alias pym='python3 manage.py'
