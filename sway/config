@@ -31,6 +31,7 @@ set $swaylock "swaylock -f -F -k -l -i ~/Pictures/wallpapers/077_IIprHhw.jpg"
 #          timeout 600 $swaylock \
 #          resume 'swaymsg "output * power on"' \
 #          before-sleep 'swaylock -f'
+exec swayidle -w before-sleep 'swaylock -f'
 
 set $laptop eDP-1
 bindswitch --reload --locked lid:on output $laptop disable
@@ -186,7 +187,7 @@ set $mod Mod4
 
 # Hide window titles
 # disable_titlebar yes
-font pango:Inconsolata Nerd Font 0.00001
+font pango:Inconsolata Nerd Font 1
 titlebar_border_thickness 0
 titlebar_padding 0
 
