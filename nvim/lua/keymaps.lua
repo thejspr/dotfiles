@@ -13,3 +13,5 @@ vim.keymap.set('n', '<c-x>', ':Bdelete<CR>', {})
 vim.keymap.set('n', '<leader>E', ':e ~/.vimrc<CR>', {})
 vim.keymap.set('n', '<leader>Ep', ':e ~/dotfiles/nvim/lua/plugins.lua<CR>', {})
 vim.keymap.set('n', '<leader>Ek', ':e ~/dotfiles/nvim/lua/keymaps.lua<CR>', {})
+
+vim.keymap.set('n', '<leader>l', ':LazyGit<CR>', {})

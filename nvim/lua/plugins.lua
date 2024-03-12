@@ -27,6 +27,21 @@ return require('lazy').setup({
   'pbrisbin/vim-mkdir', -- Automatically create new folders for files
   'moll/vim-bbye',
 
+  {
+    "kdheepak/lazygit.nvim",
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
+    },
+    -- optional for floating window border decoration
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
+
   -- Ruby
   'vim-ruby/vim-ruby',
   'dense-analysis/ale',
