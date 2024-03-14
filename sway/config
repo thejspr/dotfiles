@@ -94,8 +94,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 #
 # Workspaces:
 #
-    bindsym $mod+Tab workspace next
-    bindsym $mod+Shift+Tab workspace prev
+    # bindsym $mod+Tab workspace next
+    # bindsym $mod+Shift+Tab workspace prev
 
     bindsym $mod+p move workspace to output right
 
@@ -223,6 +223,8 @@ focus_follows_mouse yes
 
 # start program launcher
 bindsym $mod+d exec --no-startup-id "rofi -combi-modi drun,window -theme solarized -font 'Inconsolata Nerd Font 18' -show combi -icon-theme 'Papirus' -show-icons"
+bindsym $mod+Tab exec --no-startup-id rofi -show window
+
 
 # change focus
 bindsym $mod+$left focus left
@@ -297,6 +299,7 @@ set $connectCheck nm-online --quiet --timeout=300
 exec alacritty --command tmux
 exec obsidian
 exec google-chrome-stable --profile-directory="Default"
+exec solaar --no-startup-id
 
 exec weekday && $connectCheck && slack
 
