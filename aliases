@@ -1,5 +1,6 @@
 # new stuff
 alias eh='e ~/.config/hypr/hyprland.conf'
+alias lz='lazygit'
 
 #python
 alias pym='python3 manage.py'
