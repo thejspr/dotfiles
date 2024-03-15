@@ -1,8 +1,11 @@
 [user]
   name = Jesper Kjeldgaard
-  email = thejspr@gmail.com
+  email = jk@clearhaus.com
+	signingkey = BA522F691E026E45
 [github]
   user = thejspr
+[commit]
+  gpgsign = true
 [color]
 	ui = true
 [push]
@@ -45,6 +48,7 @@
   undo   = reset HEAD~1 --mixed
 
   stg    = checkout staging
+  browse = !gh browse-branch
 
   cl = !git co master && git pull && git remote prune origin && git bclean
   rcl = !git co master && git pull && bundle && migrate && git remote prune origin && git bclean

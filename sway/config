@@ -276,7 +276,7 @@ bindsym Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focus
 # Take a Screenshot with the region select
 bindsym $mod+x exec grim -g "$(slurp)" - | swappy -f -
 
-assign [app_id="Alacritty"] 1
+# assign [app_id="Alacritty"] 1
 # assign [class="Google-chrome"] 2
 assign [class="obsidian"] 3
 assign [class="Slack"] 4
@@ -300,6 +300,7 @@ exec alacritty --command tmux
 exec obsidian
 exec google-chrome-stable --profile-directory="Default"
 exec solaar --no-startup-id
+exec lxqt-policykit-agent --no-startup-id
 
 exec weekday && $connectCheck && slack
 
