@@ -22,7 +22,8 @@ if [[ "$XDG_SESSION_TYPE" == "x11" ]]; then
 	xset r rate 250 40
 	xmodmap ~/.Xmodmap
 fi
-[ -f /usr/share/z/z.sh ] && source /usr/share/z/z.sh
+
+# [ -f /usr/share/z/z.sh ] && source /usr/share/z/z.sh
 setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_DUPS
 
@@ -71,3 +72,5 @@ fi
 
 # adds 1 sec to startup time!
 [ -x "$(command -v atuin)" ] && eval "$(atuin init zsh --disable-up-arrow)"
+
+eval "$(zoxide init zsh)"
