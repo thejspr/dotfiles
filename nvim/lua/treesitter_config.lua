@@ -36,7 +36,8 @@ require'nvim-treesitter.configs'.setup {
     "csv",
     "elixir",
     "terraform",
-    "hyprlang"
+    "hyprlang",
+    "rst"
   },
 }
 vim.filetype.add({
