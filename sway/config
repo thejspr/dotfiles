@@ -57,7 +57,7 @@ input "type:keyboard" {
   xkb_layout us,dk
   repeat_delay 250
   repeat_rate 50
-  xkb_options caps:escape_shifted_capslock,grp:win_space_toggle
+  xkb_options caps:escape_shifted_capslock,grp:alt_shift_toggle
 }
 
 input "type:touchpad" {
@@ -159,7 +159,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Resizing containers:
 #
 mode "resize" {
-    set $step 20px
+    set $step 40px
     # left will shrink the containers width
     # right will grow the containers width
     # up will shrink the containers height
