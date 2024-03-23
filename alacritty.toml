@@ -7,7 +7,7 @@ duration = 0
 TERM = "xterm-256color"
 
 [font]
-size = 20
+size = 18
 
 [font.normal]
 family = "Inconsolata Nerd Font"
