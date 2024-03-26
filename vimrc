@@ -11,6 +11,7 @@ nmap <leader>G :Grepper -tool rg<cr>
 
 " Text {{{
 autocmd FileType javascript.jsx setlocal commentstring={/*\ %s\ */}
+autocmd FileType hyprlang setlocal commentstring=#\ %s
 " }}}
 
 " File management & Git {{{

@@ -14,7 +14,12 @@ return require('lazy').setup({
 
   -- Text
   -- 'tpope/vim-commentary',
-  'numToStr/Comment.nvim',
+  {
+    'numToStr/Comment.nvim',
+    opts = {
+      basic = true
+    }
+  },
   'tpope/vim-surround',
   'mg979/vim-visual-multi',
   'godlygeek/tabular',
