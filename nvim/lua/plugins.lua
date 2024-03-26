@@ -13,7 +13,8 @@ return require('lazy').setup({
   'christoomey/vim-tmux-navigator',
 
   -- Text
-  'tpope/vim-commentary',
+  -- 'tpope/vim-commentary',
+  'numToStr/Comment.nvim',
   'tpope/vim-surround',
   'mg979/vim-visual-multi',
   'godlygeek/tabular',
