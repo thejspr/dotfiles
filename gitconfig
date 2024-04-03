@@ -72,19 +72,19 @@
   mnemonicprefix = true
   algorithm = patience
   tool = nvimdiff
-[difftool "nvimdiff"]
-	cmd = nvim -d \"$LOCAL\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd L\"
-[difftool]
-  prompt = false
+; [difftool "nvimdiff"]
+; 	cmd = nvim -d \"$LOCAL\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd L\"
+; [difftool]
+;   prompt = false
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
   required = true
   process = git-lfs filter-process
-[merge]
-  tool = nvimmerge
-[mergetool "nvimmerge"]
-	cmd = nvim -d \"$LOCAL\" \"$MERGED\" \"$BASE\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd J\"
+; [merge]
+;   tool = nvimmerge
+; [mergetool "nvimmerge"]
+; 	cmd = nvim -d \"$LOCAL\" \"$MERGED\" \"$BASE\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd J\"
 [pull]
   ff = only
 [interactive]
@@ -110,3 +110,16 @@
 [credential "https://gist.github.com"]
 	helper =
 	helper = !/usr/bin/gh auth git-credential
+
+[diff]
+    tool = p4merge
+[difftool]
+    prompt = false
+[difftool "p4merge"]
+    path = /home/jesper/apps/p4merge/bin/p4merge
+[merge]
+    tool = p4merge
+[mergetool "p4merge"]
+    path = /home/jesper/apps/p4merge/bin/p4merge
+[mergetool]
+    keepBackup = false
