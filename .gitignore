@@ -5,3 +5,4 @@ vim/UltiSnips
 *.bak
 nvim/plugin/
 nvim/lazy-lock.json
+hypr/local.conf
