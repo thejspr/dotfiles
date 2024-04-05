@@ -1,7 +1,7 @@
 * {
   /* `otf-font-awesome` is required to be installed for icons */
   font-family: FontAwesome, Inconsolata Nerd Font, Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 window#waybar {
@@ -203,7 +203,7 @@ window#waybar.solo {
   }
 
   #idle_inhibitor {
-    color: #2d3436;
+    color: #cccccc;
   }
 
   #idle_inhibitor.activated {
