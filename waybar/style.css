@@ -118,14 +118,14 @@ window#waybar.solo {
 
   @keyframes blink {
     to {
-      background-color: #ffffff;
+      background-color: #0000ff;
       color: #000000;
     }
   }
 
   #battery.critical:not(.charging) {
     animation-name: blink;
-    animation-duration: 0.5s;
+    animation-duration: 1s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;

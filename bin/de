@@ -1,0 +1,3 @@
+#!/usr/bin/sh
+
+nvim ~/dotfiles/$1
