@@ -1,4 +1,4 @@
-import = [ "~/.config/alacritty/themes/themes/catppuccin.toml" ]
+import = [ "~/.config/alacritty/themes/themes/catppuccin_latte.toml" ]
 
 [bell]
 duration = 0
@@ -7,7 +7,7 @@ duration = 0
 TERM = "xterm-256color"
 
 [font]
-size = 18
+size = 16
 
 [font.normal]
 family = "Inconsolata Nerd Font"
