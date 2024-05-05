@@ -6,7 +6,6 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 export NODEJS_CHECK_SIGNATURES=no
 export ASDF_RUBY_BUILD_VERSION=master
 
-
 autoload zmv
 bindkey -e
 
@@ -31,8 +30,8 @@ setopt HIST_IGNORE_DUPS
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Go
-export ASDF_GOLANG_MOD_VERSION_ENABLED=true
-[ -f ~/.asdf/plugins/golang/set-env.zsh ] && source ~/.asdf/plugins/golang/set-env.zsh
+# export ASDF_GOLANG_MOD_VERSION_ENABLED=true
+# [ -f ~/.asdf/plugins/golang/set-env.zsh ] && source ~/.asdf/plugins/golang/set-env.zsh
 
 # hub alias
 # [ -x "$(command -v hub)" ] && eval "$(hub alias -s)"

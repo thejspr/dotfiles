@@ -27,4 +27,3 @@ vim/backup/
 .idea/
 *.sqlite3-*
 development.key
-go-cache/
