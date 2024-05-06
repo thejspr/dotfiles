@@ -7,3 +7,4 @@ nvim/plugin/
 nvim/lazy-lock.json
 hypr/local.conf
 .stversions
+.stfolder
