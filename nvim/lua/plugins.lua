@@ -3,8 +3,7 @@ return require('lazy').setup({
   -- Essentials
   'tpope/vim-repeat',
   'tpope/vim-obsession', -- sessions mgmt
-  '907th/vim-auto-save',
-  -- 'wakatime/vim-wakatime',
+  -- '907th/vim-auto-save',
   'mhinz/vim-grepper',
 
   'benmills/vimux',
@@ -13,7 +12,6 @@ return require('lazy').setup({
   'christoomey/vim-tmux-navigator',
 
   -- Text
-  -- 'tpope/vim-commentary',
   {
     'numToStr/Comment.nvim',
     opts = {
