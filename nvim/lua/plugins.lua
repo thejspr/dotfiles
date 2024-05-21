@@ -30,7 +30,6 @@ return require('lazy').setup({
   'tpope/vim-rhubarb', -- Gbrowse handlers for github
   'pbrisbin/vim-mkdir', -- Automatically create new folders for files
   'moll/vim-bbye',
-  'stevearc/oil.nvim',
 
   {
     "kdheepak/lazygit.nvim",
