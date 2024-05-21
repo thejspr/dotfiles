@@ -16,4 +16,6 @@ require('cmp_config')
 require('treesitter_config')
 require('keymaps')
 
+require("oil").setup()
+
 vim.cmd('source ~/.vimrc')

@@ -1,4 +1,4 @@
-rupa/z              # some bash plugins work too
+#rupa/z              # some bash plugins work too
 sindresorhus/pure   # enhance your prompt
 
 # you can even use Oh My Zsh plugins
@@ -6,6 +6,6 @@ sindresorhus/pure   # enhance your prompt
 #ohmyzsh/ohmyzsh path:plugins/extract
 
 # add fish-like features
-#zsh-users/zsh-syntax-highlighting
-#zsh-users/zsh-autosuggestions
-#zsh-users/zsh-history-substring-search
+#zsh-users/zsh-syntax-highlighting kind:defer
+#zsh-users/zsh-autosuggestions kind:defer
+zsh-users/zsh-history-substring-search kind:defer

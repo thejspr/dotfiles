@@ -16,4 +16,5 @@ vim.keymap.set('n', '<c-x>', ':Bdelete<CR>', {})
 
 vim.keymap.set('n', '<leader>l', ':LazyGit<CR>', {})
 
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 vim.keymap.set('n', '<leader>E', ':Telescope find_files search_dirs=~/.config/nvim<CR>', {})
