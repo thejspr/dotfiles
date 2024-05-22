@@ -28,3 +28,4 @@ vim/backup/
 *.sqlite3-*
 development.key
 go-cache/
+nginx/

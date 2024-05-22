@@ -81,10 +81,10 @@
   smudge = git-lfs smudge -- %f
   required = true
   process = git-lfs filter-process
-; [merge]
-;   tool = nvimmerge
-; [mergetool "nvimmerge"]
-; 	cmd = nvim -d \"$LOCAL\" \"$MERGED\" \"$BASE\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd J\"
+[merge]
+  tool = nvimmerge
+[mergetool "nvimmerge"]
+	cmd = nvim -d \"$LOCAL\" \"$MERGED\" \"$BASE\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd J\"
 [pull]
   ff = only
 [interactive]
@@ -111,14 +111,14 @@
 	helper =
 	helper = !/usr/bin/gh auth git-credential
 
-[diff]
-    tool = p4merge
+; [diff]
+;     tool = p4merge
 [difftool]
     prompt = false
 [difftool "p4merge"]
     path = /home/jesper/apps/p4/bin/p4merge
-[merge]
-    tool = p4merge
+; [merge]
+;     tool = p4merge
 [mergetool "p4merge"]
     path = /home/jesper/apps/p4/bin/p4merge
 [mergetool]

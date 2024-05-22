@@ -3,7 +3,7 @@ return require('lazy').setup({
   -- Essentials
   'tpope/vim-repeat',
   'tpope/vim-obsession', -- sessions mgmt
-  -- '907th/vim-auto-save',
+  '907th/vim-auto-save',
   'mhinz/vim-grepper',
 
   'benmills/vimux',
