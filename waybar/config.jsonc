@@ -6,8 +6,8 @@
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces"],
-    "modules-center": ["hyprland/window"],
-      "modules-right": ["idle_inhibitor", "pulseaudio", "network#speed", "cpu", "memory", "temperature", "battery", "hyprland/language", "clock", "tray"],
+    // "modules-center": ["hyprland/window"],
+    "modules-right": ["idle_inhibitor", "pulseaudio", "network#speed", "cpu", "memory", "temperature", "battery", "hyprland/language", "clock", "tray"],
     // Modules configuration
     "hyprland/workspaces": {
        "format": "{icon}",
@@ -68,6 +68,11 @@
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
+    "hyprland/window": {
+        "format": "{title}",
+        "max-length": 50,
+        "tooltip": true
+    },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ({signalStrength}%) ",
@@ -80,15 +85,15 @@
     "network#speed": {
       "interval": 5,
       "format": "{ifname}",
-      "format-wifi": "{icon}   {bandwidthDownBytes}   {bandwidthUpBytes}",
-      "format-ethernet": "  {bandwidthDownBytes}   {bandwidthUpBytes}",
+      "format-wifi": "{icon}  {signalStrength}%",
+      "format-ethernet": "{ifname}  󰌘",
       "format-disconnected": "󰌙",
-      "tooltip-format": "{ipaddr}",
+      "tooltip-format": "  {bandwidthDownBytes}   {bandwidthUpBytes} ",
       "format-linked": "󰈁 {ifname} (No IP)",
-      "tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
-      "tooltip-format-ethernet": "{ifname} 󰌘",
+      // "tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
+      // "tooltip-format-ethernet": "{ifname} 󰌘",
       "tooltip-format-disconnected": "󰌙 Disconnected",
-      "max-length": 50,
+      // "max-length": 75,
       "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"]
     },
     "pulseaudio": {
