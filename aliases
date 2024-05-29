@@ -105,10 +105,10 @@ alias lg='lazygit'
 
 #msc
 alias cd..='cd ..'
-if [ "$(command -v exa)" ]; then
-  alias ls='exa'
-  alias ll='exa -l'
-  alias la='exa -a'
+if [ "$(command -v eza)" ]; then
+  alias ls='eza'
+  alias ll='eza -l'
+  alias la='eza -a'
 fi
 alias -g G='|rg'
 alias -g CPOUT='2>&1 | tee >(cat >&2) | xclip -selection clipboard'
