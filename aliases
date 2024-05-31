@@ -112,6 +112,7 @@ if [ "$(command -v eza)" ]; then
 fi
 alias -g G='|rg'
 alias -g CPOUT='2>&1 | tee >(cat >&2) | xclip -selection clipboard'
+[ "$(command -v bat)" ] && alias cat='bat'
 
 #system and files editing
 alias ea='e ~/.aliases'
