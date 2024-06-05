@@ -1,4 +1,3 @@
-*.rbc
 *.swp
 .DS_Store
 .agignore
@@ -7,13 +6,10 @@
 .generators
 .ignore
 .sass-cache/
-.spork
 .vagrant
 /tags
-Vagrantfile
 _site
 gems.tags
-is-it-green
 latest.dump
 node_modules/
 storage/
@@ -21,7 +17,6 @@ tags.back
 tags.temp
 tmp.txt
 tmp/tags
-vendor/plugins/rails-dev-boost/
 vim/backup/
 ~*
 .idea/
