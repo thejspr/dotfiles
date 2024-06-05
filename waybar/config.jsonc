@@ -86,7 +86,7 @@
       "interval": 5,
       "format": "{ifname}",
       "format-wifi": "{icon}  {signalStrength}%",
-      "format-ethernet": "{ifname}  󰌘",
+      "format-ethernet": "󰌘",
       "format-disconnected": "󰌙",
       "tooltip-format": "  {bandwidthDownBytes}   {bandwidthUpBytes} ",
       "format-linked": "󰈁 {ifname} (No IP)",
