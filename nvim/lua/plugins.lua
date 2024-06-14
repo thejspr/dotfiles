@@ -3,15 +3,14 @@ return require('lazy').setup({
   -- Essentials
   'tpope/vim-repeat',
   'tpope/vim-obsession', -- sessions mgmt
-  -- '907th/vim-auto-save',
+  '907th/vim-auto-save',
   'mhinz/vim-grepper',
 
   'benmills/vimux',
   'vim-test/vim-test',
   'voldikss/vim-floaterm',
   'christoomey/vim-tmux-navigator',
-  -- 'LunarVim/bigfile.nvim',
-  'pteroctopus/faster.nvim',
+  'pteroctopus/faster.nvim', -- for big files
 
   -- Text
   {
@@ -31,7 +30,7 @@ return require('lazy').setup({
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb', -- Gbrowse handlers for github
   'pbrisbin/vim-mkdir', -- Automatically create new folders for files
-  'moll/vim-bbye',
+  'moll/vim-bbye', -- Close buffers without closing windows
 
   {
     "kdheepak/lazygit.nvim",
@@ -50,11 +49,11 @@ return require('lazy').setup({
 
   -- Ruby
   'vim-ruby/vim-ruby',
-  'dense-analysis/ale',
   'tpope/vim-rails',
   -- 'sickill/vim-pasta',
 
   -- Msc. languages
+  'dense-analysis/ale',
   'preservim/vim-markdown',
   -- 'Vimjas/vim-python-pep8-indent',
   'pangloss/vim-javascript',

@@ -23,6 +23,7 @@ require'nvim-treesitter.configs'.setup {
     "bash",
     "css",
     "go",
+    "gotmpl",
     "html",
     "javascript",
     "typescript",
@@ -37,7 +38,7 @@ require'nvim-treesitter.configs'.setup {
     "elixir",
     "terraform",
     "hyprlang",
-    "rst"
+    "rst",
   },
 }
 vim.filetype.add({

@@ -59,6 +59,8 @@ let g:go_info_mode='gopls'
 " let g:VimuxHeight = "45"
 let g:VimuxOrientation = "v"
 let g:VimuxHeight = "33"
+let g:test#preserve_screen = 1
+let g:test#echo_command = 0
 " nmap <leader><space> :FloatermNew!<space>
 nmap <leader><space> :VimuxPromptCommand<cr>
 let test#strategy = "vimux"
@@ -171,8 +173,9 @@ set foldenable
 set foldnestmax=10
 set foldlevelstart=10
 set foldmethod=indent
-nmap f1 :set foldlevel=1<cr>
-nmap f2 :set foldlevel=2<cr>
+nmap f1 :set foldlevel=0<cr>
+nmap f2 :set foldlevel=1<cr>
+nmap f3 :set foldlevel=2<cr>
 nmap fa :set foldlevel=99<cr>
 " }}}
 
@@ -194,7 +197,7 @@ vnoremap > >gv
 " Searching {{{
 set hlsearch
 set incsearch
-set ignorecase
+" set ignorecase
 set smartcase
 set gdefault
 set showmatch
