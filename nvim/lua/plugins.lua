@@ -33,17 +33,17 @@ return require('lazy').setup({
   'moll/vim-bbye', -- Close buffers without closing windows
 
   {
-    "kdheepak/lazygit.nvim",
+    'kdheepak/lazygit.nvim',
     cmd = {
-      "LazyGit",
-      "LazyGitConfig",
-      "LazyGitCurrentFile",
-      "LazyGitFilter",
-      "LazyGitFilterCurrentFile",
+      'LazyGit',
+      'LazyGitConfig',
+      'LazyGitCurrentFile',
+      'LazyGitFilter',
+      'LazyGitFilterCurrentFile',
     },
     -- optional for floating window border decoration
     dependencies = {
-      "nvim-lua/plenary.nvim",
+      'nvim-lua/plenary.nvim',
     },
   },
 
@@ -63,28 +63,39 @@ return require('lazy').setup({
   { 'fatih/vim-go', build = ':GoUpdateBinaries' },
 
   {
-  "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
+    'nvim-tree/nvim-tree.lua',
+    version = '*',
+    lazy = false,
     dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
-      "MunifTanjim/nui.nvim",
-    }
+      'nvim-tree/nvim-web-devicons',
+    },
+    config = function()
+      require('nvim-tree').setup {}
+    end,
   },
+  -- {
+  -- 'nvim-neo-tree/neo-tree.nvim',
+  --   branch = 'v3.x',
+  --   dependencies = {
+  --     'nvim-lua/plenary.nvim',
+  --     'nvim-tree/nvim-web-devicons',
+  --     'MunifTanjim/nui.nvim',
+  --   }
+  -- },
   {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
     dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons"
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-web-devicons'
     }
   },
   {
     'windwp/nvim-autopairs',
-    config = function() require("nvim-autopairs").setup {map_cr=false} end
+    config = function() require('nvim-autopairs').setup {map_cr=false} end
   },
   {
-    "hrsh7th/nvim-cmp",
+    'hrsh7th/nvim-cmp',
     dependencies = {
       'neovim/nvim-lspconfig',
       'hrsh7th/cmp-nvim-lsp',
@@ -100,34 +111,34 @@ return require('lazy').setup({
 
   -- Treesitter
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
-  { 'RRethy/nvim-treesitter-endwise', event = "VeryLazy" },
+  { 'RRethy/nvim-treesitter-endwise', event = 'VeryLazy' },
 
   -- UI & Themes
 
   'itchyny/lightline.vim',
   'projekt0n/github-nvim-theme',
-  { "catppuccin/nvim" },
+  { 'catppuccin/nvim' },
 
   {
     'lewis6991/gitsigns.nvim',
-    event = "VeryLazy",
+    event = 'VeryLazy',
     config = function()
       require('gitsigns').setup()
     end
   },
   {
-    "akinsho/bufferline.nvim",
-    event = "VeryLazy",
+    'akinsho/bufferline.nvim',
+    event = 'VeryLazy',
     dependencies = 'nvim-tree/nvim-web-devicons',
     opts = {
       options = {
         always_show_bufferline = false,
         offsets = {
           {
-            filetype = "neo-tree",
-            text = "Neo-tree",
-            highlight = "Directory",
-            text_align = "left",
+            filetype = 'neo-tree',
+            text = 'Neo-tree',
+            highlight = 'Directory',
+            text_align = 'left',
           },
         },
       },
