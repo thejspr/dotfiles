@@ -20,7 +20,6 @@ let g:eunuch_no_maps = 1
 
 " Ruby {{{
 let g:ale_linters = {
-      \   'ruby': ['rubocop'],
       \   'javascript': ['eslint'],
       \   'json': ['jq'],
       \}
@@ -35,7 +34,7 @@ let g:ale_fixers = {
 let g:ale_ruby_rubocop_options = '-A'
 let b:ale_sql_pgformatter_options = '--spaces 2 --wrap-after 10'
 let g:ale_history_log_output = 1
-let g:ale_lint_on_insert_leave = 1
+let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_enter = 1
 let g:ale_fix_on_save = 1
 let g:ale_virtualtext_cursor = 0
@@ -121,7 +120,7 @@ set colorcolumn=90
 set synmaxcol=140
 set title
 set ffs=unix,mac,dos
-set scrolloff=999
+" set scrolloff=999
 " set autoindent
 set smartindent
 set showmode
