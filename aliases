@@ -2,7 +2,6 @@
 alias eh='e ~/.config/hypr/hyprland.conf'
 alias lz='lazygit'
 alias dokku='$HOME/.dokku/contrib/dokku_client.sh'
-alias b='gbr'
 
 #python
 alias pym='python3 manage.py'
@@ -10,7 +9,6 @@ alias pym='python3 manage.py'
 #system
 alias e='$EDITOR'
 alias kf='kill -9 %1'
-alias uall='update-all'
 alias tma='tmux attach'
 
 # edit existing command or create a new script
@@ -24,27 +22,20 @@ function ew() {
   fi
 }
 
+alias pbcopy="xclip -selection c"
+alias pbpaste="xclip -selection clipboard -o"
+
 #ruby
 alias rv='ruby --version'
 alias be='bundle exec'
 
-if [[ -v MAC ]]; then
-  alias grep='ggrep'
-  alias aws='aws2'
-  alias bup='brew update && echo "==> Outdated Formula" && brew outdated && brew outdated --cask'
-  alias bu='brew upgrade'
-else
-  alias pbcopy="xclip -selection c"
-  alias pbpaste="xclip -selection clipboard -o"
-
-  #ubuntu
-  if [ "$(command -v lsb_release)" ]; then
-    echo 'On ubuntu'
-    alias aptu='sudo apt update && sudo apt upgrade'
-    alias apti='sudo apt install'
-    alias aptr='sudo apt remove'
-    alias aptf='sudo apt-cache search'
-  fi
+#ubuntu
+if [ "$(command -v lsb_release)" ]; then
+  echo 'On ubuntu'
+  alias aptu='sudo apt update && sudo apt upgrade'
+  alias apti='sudo apt install'
+  alias aptr='sudo apt remove'
+  alias aptf='sudo apt-cache search'
 fi
 
 #rails
@@ -90,6 +81,7 @@ gpush() {
   command git push
 }
 alias cp-head='git rev-parse --short HEAD | pbcopy'
+alias b='gbr'
 alias gb='git branch'
 alias gbX='git branch --delete --force'
 alias gbx='git branch --delete'
@@ -112,7 +104,6 @@ if [ "$(command -v eza)" ]; then
   alias la='eza -a'
 fi
 alias -g G='|rg'
-alias -g CPOUT='2>&1 | tee >(cat >&2) | xclip -selection clipboard'
 [ "$(command -v bat)" ] && alias cat='bat'
 
 #system and files editing

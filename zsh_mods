@@ -19,9 +19,6 @@ export ASDF_RUBY_BUILD_VERSION=master
 export ASDF_GOLANG_MOD_VERSION_ENABLED=true
 [ -f ~/.asdf/plugins/golang/set-env.zsh ] && source ~/.asdf/plugins/golang/set-env.zsh
 
-# hub alias
-# [ -x "$(command -v hub)" ] && eval "$(hub alias -s)"
-
 # Alias and function definitions.
 . ~/.aliases
 . ~/.secrets
