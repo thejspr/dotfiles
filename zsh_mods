@@ -12,10 +12,8 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_DUPS
 
 # asdf
-. /opt/asdf-vm/asdf.sh
+[ -f /opt/asdf-vm/asdf.sh ] && source /opt/asdf-vm/asdf.sh
 export ASDF_RUBY_BUILD_VERSION=master
-
-# Go
 export ASDF_GOLANG_MOD_VERSION_ENABLED=true
 [ -f ~/.asdf/plugins/golang/set-env.zsh ] && source ~/.asdf/plugins/golang/set-env.zsh
 
