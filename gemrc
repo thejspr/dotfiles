@@ -1,1 +1,8 @@
-:ssl_verify_mode: 0
+---
+:backtrace: false
+:benchmark: false
+:bulk_threshold: 1000
+:update_sources: true
+:verbose: false
+
+gem: --no-document
