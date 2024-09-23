@@ -55,5 +55,5 @@ fi
 [ -x "$(command -v atuin)" ] && eval "$(atuin init zsh --disable-up-arrow)"
 # eval "$(zoxide init zsh)"
 [ -f /usr/share/z/z.sh ] && source /usr/share/z/z.sh
-[ -f z.sh ] && source z.sh
+[ -f ~/code/dotfiles/z.sh ] && source ~/code/dotfiles/z.sh
 # eval "$(gh copilot alias -- zsh)" # SLOW!
