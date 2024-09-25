@@ -20,3 +20,5 @@ require('treesitter_config')
 require('keymaps')
 
 vim.cmd('source ~/.vimrc')
+
+vim.g.autoformat = false
