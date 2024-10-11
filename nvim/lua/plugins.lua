@@ -2,15 +2,15 @@ return require('lazy').setup({
 
   -- Essentials
   'tpope/vim-repeat',
-  'tpope/vim-obsession', -- sessions mgmt
+  -- 'tpope/vim-obsession', -- sessions mgmt
   '907th/vim-auto-save',
   'mhinz/vim-grepper',
 
   'benmills/vimux',
   'vim-test/vim-test',
-  'voldikss/vim-floaterm',
+  -- 'voldikss/vim-floaterm',
   'christoomey/vim-tmux-navigator',
-  'pteroctopus/faster.nvim', -- for big files
+  -- 'pteroctopus/faster.nvim', -- for big files
 
   -- Text
   {
@@ -73,15 +73,6 @@ return require('lazy').setup({
       require('nvim-tree').setup {}
     end,
   },
-  -- {
-  -- 'nvim-neo-tree/neo-tree.nvim',
-  --   branch = 'v3.x',
-  --   dependencies = {
-  --     'nvim-lua/plenary.nvim',
-  --     'nvim-tree/nvim-web-devicons',
-  --     'MunifTanjim/nui.nvim',
-  --   }
-  -- },
   {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
@@ -101,7 +92,7 @@ return require('lazy').setup({
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
-      'hrsh7th/cmp-cmdline',
+      -- 'hrsh7th/cmp-cmdline',
       -- 'octaltree/cmp-look',
       -- 'hrsh7th/cmp-path',
       -- 'hrsh7th/cmp-calc',
@@ -116,7 +107,7 @@ return require('lazy').setup({
   -- UI & Themes
 
   'itchyny/lightline.vim',
-  'projekt0n/github-nvim-theme',
+  -- 'projekt0n/github-nvim-theme',
   { 'catppuccin/nvim' },
 
   {
