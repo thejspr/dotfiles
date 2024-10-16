@@ -21,7 +21,7 @@ return require('lazy').setup({
   },
   'tpope/vim-surround',
   'mg979/vim-visual-multi',
-  'godlygeek/tabular',
+  -- 'godlygeek/tabular',
   -- 'AndrewRadev/splitjoin.vim',
 
   -- File management & Git
@@ -83,7 +83,9 @@ return require('lazy').setup({
   },
   {
     'windwp/nvim-autopairs',
-    config = function() require('nvim-autopairs').setup {map_cr=false} end
+    config = function()
+      require('nvim-autopairs').setup {map_cr=false}
+    end
   },
   {
     'hrsh7th/nvim-cmp',
@@ -108,7 +110,7 @@ return require('lazy').setup({
 
   'itchyny/lightline.vim',
   -- 'projekt0n/github-nvim-theme',
-  { 'catppuccin/nvim' },
+  'catppuccin/nvim',
 
   {
     'lewis6991/gitsigns.nvim',
