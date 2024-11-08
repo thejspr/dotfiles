@@ -82,26 +82,18 @@ let g:floaterm_keymap_next   = '<F4>'
 " }}}
 
 " UI {{{
-let g:lightline = {
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'relativepath', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead'
-      \ },
-      \ }
-
-"Plug 'Yggdroot/indentLine'
-"let g:indentLine_setConceal = 0
-"let g:indentLine_char = '┊'
-"let g:indentLine_bufNameExclude = ['NERD_tree.*', 'fzf']
-
-"Plug 'ap/vim-buftabline'
+" let g:lightline = {
+"       \ 'active': {
+"       \   'left': [ [ 'mode', 'paste' ],
+"       \             [ 'gitbranch', 'readonly', 'relativepath', 'modified' ] ]
+"       \ },
+"       \ 'component_function': {
+"       \   'gitbranch': 'FugitiveHead'
+"       \ },
+"       \ }
 " }}}
 
 " New {{{
-" Plug 'dstein64/vim-startuptime'
 " }}}
 " }}}
 

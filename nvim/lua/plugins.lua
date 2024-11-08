@@ -26,9 +26,9 @@ return require('lazy').setup({
 
   -- File management & Git
   'tpope/vim-eunuch', -- File command helpers: Rename, Delete etc.
-  'tpope/vim-git',
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb', -- Gbrowse handlers for github
+  -- 'tpope/vim-git',
+  -- 'tpope/vim-fugitive',
+  -- 'tpope/vim-rhubarb', -- Gbrowse handlers for github
   'pbrisbin/vim-mkdir', -- Automatically create new folders for files
   'moll/vim-bbye', -- Close buffers without closing windows
 
