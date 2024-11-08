@@ -15,7 +15,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('plugins')
-require('cmp_config')
 require('treesitter_config')
 require('keymaps')
 
