@@ -2,6 +2,7 @@
 alias eh='e ~/.config/hypr/hyprland.conf'
 alias lz='lazygit'
 alias dokku='$HOME/.dokku/contrib/dokku_client.sh'
+alias p='paru'
 
 #python
 alias pym='python3 manage.py'
