@@ -1,6 +1,4 @@
 # new stuff
-alias eh='e ~/.config/hypr/hyprland.conf'
-alias lz='lazygit'
 alias dokku='$HOME/.dokku/contrib/dokku_client.sh'
 alias p='paru'
 
@@ -31,12 +29,17 @@ alias rv='ruby --version'
 alias be='bundle exec'
 
 #ubuntu
-if [ "$(command -v lsb_release)" ]; then
-  echo 'On ubuntu'
+if [ "$(command -v apt)" ]; then
   alias aptu='sudo apt update && sudo apt upgrade'
   alias apti='sudo apt install'
   alias aptr='sudo apt remove'
   alias aptf='sudo apt-cache search'
+
+  #heroku
+  hpush() { git add -A; git commit -m "$*"; git pull --rebase && git push; git push production master; }
+  alias h="heroku"
+  alias hc="heroku run rails console"
+  alias hl="heroku logs -t"
 fi
 
 #rails
@@ -48,12 +51,6 @@ alias upgrade_gems="bundle update && rspec && git add -A && git commit -m 'Gem u
 alias bef='foreman start -f Procfile.dev'
 alias rt='rake -T'
 alias rr='rails routes'
-
-#heroku
-hpush() { git add -A; git commit -m "$*"; git pull --rebase && git push; git push production master; }
-alias h="heroku"
-alias hc="heroku run rails console"
-alias hl="heroku logs -t"
 
 #testing
 alias specs='rspec --tag ~type:feature'
@@ -96,6 +93,7 @@ alias gp='git push'
 alias gpf='FORCE=1 git push --force-with-lease --no-verify'
 alias gs='git status -sb'
 alias lg='lazygit'
+alias lz='lazygit'
 
 #msc
 alias cd..='cd ..'
@@ -111,8 +109,6 @@ alias -g G='|rg'
 alias ea='e ~/.aliases'
 alias eaa='e ~/.alacritty.toml'
 alias eg='e ~/.gitconfig'
-alias ei='e ~/dotfiles/i3/config'
-alias eis='e ~/.i3status.conf'
 alias es='e ~/.ssh/config'
 alias et='e ~/dotfiles/tmux.conf'
 alias ez='e ~/dotfiles/zsh_mods'
