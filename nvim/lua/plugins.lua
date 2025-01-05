@@ -116,13 +116,20 @@ return require('lazy').setup({
 
       -- experimental signature help support
       -- trigger = { signature_help = { enabled = true } }
-    },
 
-    sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer' },
-    },
+      completion = {
+        menu = {
+          auto_show = function(ctx)
+            return ctx.mode ~= "cmdline" or not vim.tbl_contains({ '/', '?' }, vim.fn.getcmdtype())
+          end,
+        },
+      },
 
-    opts_extend = { "sorces.default" }
+      sources = {
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+      }
+    },
+    opts_extend = { "sources.default" }
   },
 
   {
