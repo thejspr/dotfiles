@@ -93,7 +93,7 @@ return require('lazy').setup({
   {
     'saghen/blink.cmp',
     lazy = false, -- lazy loading handled internally
-    -- dependencies = 'rafamadriz/friendly-snippets',
+    dependencies = 'rafamadriz/friendly-snippets',
     version = 'v0.*',
     opts = {
       -- 'default' for mappings similar to built-in completion
@@ -103,20 +103,26 @@ return require('lazy').setup({
       -- your own keymap.
       keymap = { preset = 'enter' },
 
-      highlight = {
+      appearance = {
         -- sets the fallback highlight groups to nvim-cmp's highlight groups
         -- useful for when your theme doesn't support blink.cmp
         -- will be removed in a future release, assuming themes add support
         use_nvim_cmp_as_default = true,
+        nerd_font_variant = 'mono'
       },
-      nerd_font_variant = 'mono',
 
       -- experimental auto-brackets support
       -- accept = { auto_brackets = { enabled = true } }
 
       -- experimental signature help support
       -- trigger = { signature_help = { enabled = true } }
-    }
+    },
+
+    sources = {
+      default = { 'lsp', 'path', 'snippets', 'buffer' },
+    },
+
+    opts_extend = { "sorces.default" }
   },
 
   {
