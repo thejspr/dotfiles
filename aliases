@@ -1,6 +1,7 @@
 # new stuff
 alias dokku='$HOME/.dokku/contrib/dokku_client.sh'
 alias p='paru'
+alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
 
 #python
 alias pym='python3 manage.py'
