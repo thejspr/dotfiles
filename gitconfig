@@ -29,7 +29,7 @@
   ca     = !git add -A && git commit -v
   co     = checkout
   ci     = ci-status -v
-  d      = !clear && git diff
+  d      = diff
   dc     = diff --cached
   ds     = diff --stat
   edit   = !git status -sb | tail +2 | grep -v '^ D' | awk '{print $2}' | xargs -o $EDITOR
