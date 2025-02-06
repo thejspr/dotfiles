@@ -16,9 +16,9 @@ function ew() {
   if [[ -f `which "$1"` ]]; then
     e `which "$1"`
   else
-    echo "#!/usr/bin/env " > ~/bin/"$1"
-    chmod +x ~/bin/"$1"
-    e ~/bin/"$1"
+    echo "#!/usr/bin/env " > ~/clearhaus/bin/"$1"
+    chmod +x ~/clearhaus/bin/"$1"
+    e ~/clearhaus/bin/"$1"
   fi
 }
 
