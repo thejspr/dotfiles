@@ -56,7 +56,7 @@ return require('lazy').setup({
   'dense-analysis/ale',
   'preservim/vim-markdown',
   -- 'Vimjas/vim-python-pep8-indent',
-  'pangloss/vim-javascript',
+  -- 'pangloss/vim-javascript',
   'mattn/emmet-vim',
   'tpope/vim-ragtag',
   'github/copilot.vim',
@@ -77,12 +77,12 @@ return require('lazy').setup({
     end,
   },
   {
-    'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-tree/nvim-web-devicons'
-    }
+    "ibhagwan/fzf-lua",
+    -- optional for icon support
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    -- or if using mini.icons/mini.nvim
+    -- dependencies = { "echasnovski/mini.icons" },
+    opts = {}
   },
   {
     'windwp/nvim-autopairs',

@@ -1,9 +1,8 @@
--- Telescope
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>t', builtin.find_files, {})
-vim.keymap.set('n', '<leader>r', builtin.oldfiles, {})
-vim.keymap.set('n', '<leader>g', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>b', builtin.buffers, {})
+-- Fzf-lua
+vim.keymap.set('n', '<leader>t', ':FzfLua files<CR>', {})
+vim.keymap.set('n', '<leader>r', ':FzfLua oldfiles<CR>', {})
+vim.keymap.set('n', '<leader>g', ':FzfLua live_grep<CR>', {})
+vim.keymap.set('n', '<leader>b', ':FzfLua buffers<CR>', {})
 
 vim.keymap.set('n', '<leader>e', ':NvimTreeFindFileToggle<CR>', {})
 
@@ -11,4 +10,4 @@ vim.keymap.set('n', '<c-x>', ':Bdelete<CR>', {})
 
 vim.keymap.set('n', '<leader>l', ':LazyGit<CR>', {})
 
-vim.keymap.set('n', '<leader>E', ':Telescope find_files search_dirs=~/.config/nvim<CR>', {})
+vim.keymap.set('n', '<leader>E', ':FzfLua files cwd=~/.config/nvim<CR>', {})
