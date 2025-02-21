@@ -114,8 +114,10 @@ return require('lazy').setup({
         },
       },
 
+      cmdline = {
+        enabled = false,
+      },
       sources = {
-        -- cmdline = {},
         default = { 'lsp', 'path', 'snippets', 'buffer' },
       }
     },
