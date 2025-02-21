@@ -13,9 +13,9 @@ style = "Regular"
 [selection]
 save_to_clipboard = true
 
-[window]
-decorations = "none"
-dynamic_padding = true
+# [window]
+# decorations = "none"
+# dynamic_padding = true
 
 [shell]
 program = "tmux"
