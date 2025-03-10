@@ -62,3 +62,7 @@ fi
 [ -f /usr/share/z/z.sh ] && source /usr/share/z/z.sh
 [ -f ~/code/dotfiles/z.sh ] && source ~/code/dotfiles/z.sh
 # eval "$(gh copilot alias -- zsh)" # SLOW!
+
+# aider-ai
+export PATH="/home/jesper/.local/bin:$PATH"
+export AIDER_EDITOR=nvim
