@@ -22,6 +22,7 @@ return require('lazy').setup({
       bigfile = { enabled = true },
       dashboard = { enabled = true },
       explorer = { enabled = true },
+      git = { enabled = true },
       gitbrowser = { enabled = true },
       indent = { enabled = true },
       input = { enabled = true },
@@ -33,6 +34,22 @@ return require('lazy').setup({
       statuscolumn = { enabled = true },
       words = { enabled = true },
     }
+  },
+
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    opts = {
+    },
+    keys = {
+      {
+        "<leader>?",
+        function()
+          require("which-key").show({ global = false })
+        end,
+        desc = "Buffer Local Keymaps (which-key)",
+      },
+    },
   },
 
   -- Text
@@ -195,7 +212,10 @@ return require('lazy').setup({
     dependencies = 'nvim-tree/nvim-web-devicons',
     opts = {
       options = {
-        always_show_bufferline = false,
+        close_command = function(n)
+          Snacks.bufdelete(n)
+        end,
+        always_show_bufferline = true,
         offsets = {
           {
             filetype = 'neo-tree',
