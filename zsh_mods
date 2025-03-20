@@ -13,13 +13,11 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_DUPS
 
 # asdf
-# [ -f /opt/asdf-vm/asdf.sh ] && source /opt/asdf-vm/asdf.sh
-# [ -f "$HOME/.asdf/asdf.sh" ] && source "$HOME/.asdf/asdf.sh"
 export ASDF_DATA_DIR="/home/jesper/.asdf"
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 autoload -Uz compinit && compinit
-# export ASDF_RUBY_BUILD_VERSION=master
+export ASDF_RUBY_BUILD_VERSION=master
 # export ASDF_GOLANG_MOD_VERSION_ENABLED=true
 # [ -f ~/.asdf/plugins/golang/set-env.zsh ] && source ~/.asdf/plugins/golang/set-env.zsh
 
