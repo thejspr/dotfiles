@@ -10,7 +10,30 @@ return require('lazy').setup({
   'vim-test/vim-test',
   -- 'voldikss/vim-floaterm',
   'christoomey/vim-tmux-navigator',
-  -- 'pteroctopus/faster.nvim', -- for big files
+
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+      bigfile = { enabled = true },
+      dashboard = { enabled = true },
+      explorer = { enabled = true },
+      gitbrowser = { enabled = true },
+      indent = { enabled = true },
+      input = { enabled = true },
+      notifier = { enabled = true },
+      picker = { enabled = true },
+      quickfile = { enabled = true },
+      scope = { enabled = true },
+      scroll = { enabled = true },
+      statuscolumn = { enabled = true },
+      words = { enabled = true },
+    }
+  },
 
   -- Text
   {
@@ -30,7 +53,6 @@ return require('lazy').setup({
   -- 'tpope/vim-fugitive',
   -- 'tpope/vim-rhubarb', -- Gbrowse handlers for github
   'pbrisbin/vim-mkdir', -- Automatically create new folders for files
-  'moll/vim-bbye', -- Close buffers without closing windows
 
   {
     'kdheepak/lazygit.nvim',
@@ -47,6 +69,21 @@ return require('lazy').setup({
     },
   },
 
+  -- AI
+  'github/copilot.vim',
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    dependencies = {
+      { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
+      { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
+    },
+    build = "make tiktoken", -- Only on MacOS or Linux
+    opts = {
+      -- See Configuration section for options
+    },
+    -- See Commands section for default commands if you want to lazy load on them
+  },
+
   -- Ruby
   'vim-ruby/vim-ruby',
   'tpope/vim-rails',
@@ -59,7 +96,6 @@ return require('lazy').setup({
   -- 'pangloss/vim-javascript',
   'mattn/emmet-vim',
   'tpope/vim-ragtag',
-  'github/copilot.vim',
   { 'fatih/vim-go', build = ':GoUpdateBinaries' },
 
   {
