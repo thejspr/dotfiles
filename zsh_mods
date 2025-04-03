@@ -18,8 +18,6 @@ export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 autoload -Uz compinit && compinit
 export ASDF_RUBY_BUILD_VERSION=master
-# export ASDF_GOLANG_MOD_VERSION_ENABLED=true
-# [ -f ~/.asdf/plugins/golang/set-env.zsh ] && source ~/.asdf/plugins/golang/set-env.zsh
 
 # Alias and function definitions.
 . ~/.aliases
@@ -54,7 +52,6 @@ if [ ! -S ~/.ssh/ssh_auth_sock ]; then
   ssh-add -l > /dev/null || ssh-add
 fi
 
-# [ -x "$(command -v atuin)" ] && eval "$(atuin init zsh --disable-up-arrow)"
 [ -x "$(command -v atuin)" ] && eval "$(atuin init zsh --disable-up-arrow)"
 # eval "$(zoxide init zsh)"
 [ -f /usr/share/z/z.sh ] && source /usr/share/z/z.sh
