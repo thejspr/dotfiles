@@ -19,31 +19,29 @@ let g:eunuch_no_maps = 1
 " }}}
 
 " Ruby {{{
-let g:ale_linters = {
-      \   'javascript': ['eslint'],
-      \   'json': ['jq'],
-      \}
-let g:ale_fixers = {
-      \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-      \ 'ruby': ['rubocop'],
-      \ 'sql': ['pgformatter'],
-      \ 'python': ['autopep8'],
-      \ 'javascript': ['prettier'],
-      \ 'json': ['jq'],
-      \}
-let g:ale_ruby_rubocop_options = '-A'
-let b:ale_sql_pgformatter_options = '--spaces 2 --wrap-after 10'
-let g:ale_history_log_output = 1
-let g:ale_lint_on_insert_leave = 0
-let g:ale_lint_on_enter = 1
-let g:ale_fix_on_save = 0
-let g:ale_virtualtext_cursor = 0
-highlight ALEWarning ctermbg=none cterm=underline
-highlight ALEError ctermbg=none cterm=underline
+" let g:ale_linters = {
+"       \   'javascript': ['eslint'],
+"       \   'json': ['jq'],
+"       \}
+" let g:ale_fixers = {
+"       \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+"       \ 'ruby': ['rubocop'],
+"       \ 'sql': ['pgformatter'],
+"       \ 'python': ['autopep8'],
+"       \ 'javascript': ['prettier'],
+"       \ 'json': ['jq'],
+"       \}
+" let g:ale_ruby_rubocop_options = '-A'
+" let b:ale_sql_pgformatter_options = '--spaces 2 --wrap-after 10'
+" let g:ale_history_log_output = 1
+" let g:ale_lint_on_insert_leave = 0
+" let g:ale_fix_on_save = 0
+" let g:ale_virtualtext_cursor = 0
+" highlight ALEWarning ctermbg=none cterm=underline
+" highlight ALEError ctermbg=none cterm=underline
 " nmap <leader>F :!rubocop -a %<cr>
 nmap <leader>F :ALEFix<cr>
 
-let g:pasta_disabled_filetypes = ['yaml']
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 "}}}
 
@@ -233,7 +231,7 @@ augroup END
 " }}}
 
 " Function Keys {{{
-set pastetoggle=<F3>
+" set pastetoggle=<F3>
 " }}}
 
 " Ruby {{{

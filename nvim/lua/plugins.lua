@@ -24,7 +24,7 @@ return require('lazy').setup({
       explorer = { enabled = true },
       git = { enabled = true },
       gitbrowser = { enabled = true },
-      indent = { enabled = true },
+      indent = { enabled = false },
       input = { enabled = true },
       notifier = { enabled = true },
       picker = { enabled = true },
@@ -104,10 +104,26 @@ return require('lazy').setup({
   -- Ruby
   'vim-ruby/vim-ruby',
   'tpope/vim-rails',
-  -- 'sickill/vim-pasta',
 
   -- Msc. languages
-  'dense-analysis/ale',
+  {
+    'dense-analysis/ale',
+    config = function()
+      vim.g.ale_enabled = 0
+      vim.g.ale_lint_on_enter = 0
+      vim.g.ale_ruby_rubocop_auto_correct_all = 0
+
+      vim.g.ale_fixers = {
+        all = { 'remove_trailing_lines', 'trim_whitespace' },
+      }
+
+      vim.g.ale_linters = {
+        ruby = {'rubocop', 'ruby'},
+        json = {'jq'},
+        lua = {'lua_language_server'}
+      }
+    end
+  },
   'preservim/vim-markdown',
   -- 'Vimjas/vim-python-pep8-indent',
   -- 'pangloss/vim-javascript',
