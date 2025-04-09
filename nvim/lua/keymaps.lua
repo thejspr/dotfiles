@@ -12,4 +12,5 @@ map('n', '<leader>l', ':LazyGit<CR>', {})
 
 map('n', '<leader>E', ':FzfLua files cwd=~/.config/nvim<CR>', {})
 
-map('n', '<c-x>', function() Snacks.bufdelete() end, {})
+map('n', '<c-x>', function() Snacks.bufdelete() end, { desc = 'Close buffer' })
+map('n', '<leader>b', function() Snacks.gitbrowse() end, { desc = 'Browse GitHub' })

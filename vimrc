@@ -201,7 +201,6 @@ autocmd FileType ruby setlocal indentkeys-=.
 
 " New stuff {{{
 au BufReadPost *.html* set formatoptions-=t
-command! Gbrowse GBrowse
 
 if has("nvim")
   " Terminal inside vim
