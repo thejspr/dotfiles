@@ -73,7 +73,7 @@ set colorcolumn=90
 set synmaxcol=140
 set title
 set ffs=unix,mac,dos
-" set scrolloff=999
+set scrolloff=5
 " set autoindent
 set smartindent
 set showmode
