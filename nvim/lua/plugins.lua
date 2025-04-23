@@ -10,6 +10,7 @@ return require('lazy').setup({
   'vim-test/vim-test',
   -- 'voldikss/vim-floaterm',
   'christoomey/vim-tmux-navigator',
+  -- 'ludovicchabant/vim-gutentags',
 
   {
     "folke/snacks.nvim",
@@ -24,9 +25,14 @@ return require('lazy').setup({
       explorer = { enabled = true },
       git = { enabled = true },
       gitbrowse = { enabled = true },
-      indent = { enabled = false },
+      indent = {
+        enabled = true,
+        animate = {
+          enabled = false
+        }
+      },
       input = { enabled = true },
-      notifier = { enabled = true },
+      notifier = { enabled = false },
       picker = { enabled = true },
       quickfile = { enabled = true },
       scope = { enabled = true },
@@ -40,6 +46,7 @@ return require('lazy').setup({
     "folke/which-key.nvim",
     event = "VeryLazy",
     opts = {
+      delay = 500,
     },
     keys = {
       {
@@ -105,30 +112,35 @@ return require('lazy').setup({
       "nvim-treesitter/nvim-treesitter",
     },
   },
+  {
+    'kiddos/gemini.nvim',
+    config = function()
+      require('gemini').setup()
+    end
+  },
 
   -- Ruby
   'vim-ruby/vim-ruby',
   'tpope/vim-rails',
 
   -- Msc. languages
-  {
-    'dense-analysis/ale',
-    config = function()
-      vim.g.ale_enabled = 0
-      vim.g.ale_lint_on_enter = 0
-      vim.g.ale_ruby_rubocop_auto_correct_all = 0
-
-      vim.g.ale_fixers = {
-        all = { 'remove_trailing_lines', 'trim_whitespace' },
-      }
-
-      vim.g.ale_linters = {
-        ruby = {'rubocop', 'ruby'},
-        json = {'jq'},
-        lua = {'lua_language_server'}
-      }
-    end
-  },
+  -- {
+  --   'dense-analysis/ale',
+  --   config = function()
+  --     vim.g.ale_lint_on_enter = 0
+  --     vim.g.ale_ruby_rubocop_auto_correct_all = 0
+  --
+  --     vim.g.ale_fixers = {
+  --       all = { 'remove_trailing_lines', 'trim_whitespace' },
+  --     }
+  --
+  --     vim.g.ale_linters = {
+  --       ruby = {'rubocop', 'ruby'},
+  --       json = {'jq'},
+  --       lua = {'lua_language_server'}
+  --     }
+  --   end
+  -- },
   'preservim/vim-markdown',
   -- 'Vimjas/vim-python-pep8-indent',
   -- 'pangloss/vim-javascript',
@@ -201,6 +213,14 @@ return require('lazy').setup({
   {
     'neovim/nvim-lspconfig',
     dependencies = { 'saghen/blink.cmp' },
+    opts = {
+      servers = {
+        ruby_lsp = {
+          mason = false,
+          cmd = { vim.fn.expand("~/.asdf/shims/ruby-lsp") },
+        },
+      },
+    },
     config = function(_, opts)
       local lspconfig = require('lspconfig')
       for server, config in pairs(opts.servers or {}) do
@@ -208,6 +228,14 @@ return require('lazy').setup({
         lspconfig[server].setup(config)
       end
     end
+  },
+  {
+    'adam12/ruby-lsp.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'neovim/nvim-lspconfig',
+    },
+    config = true,
   },
 
   -- Treesitter

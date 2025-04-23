@@ -1,5 +1,5 @@
 bundler
 pry
-solargraph
+ruby-lsp
 foreman
 neovim
