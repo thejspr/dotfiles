@@ -91,19 +91,29 @@ return require('lazy').setup({
   },
 
   -- AI
-  'github/copilot.vim',
   {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    dependencies = {
-      { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
-      { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
-    },
-    build = "make tiktoken", -- Only on MacOS or Linux
-    opts = {
-      -- See Configuration section for options
-    },
-    -- See Commands section for default commands if you want to lazy load on them
+    "zbirenbaum/copilot.lua",
+    lazy = false,
+    event = "InsertEnter",
+    cmd = "Copilot",
+    build = ":Copilot auth",
+    config = function()
+      require("copilot").setup({})
+    end,
   },
+  -- 'github/copilot.vim',
+  -- {
+  --   "CopilotC-Nvim/CopilotChat.nvim",
+  --   dependencies = {
+  --     { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
+  --     { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
+  --   },
+  --   build = "make tiktoken", -- Only on MacOS or Linux
+  --   opts = {
+  --     -- See Configuration section for options
+  --   },
+  --   -- See Commands section for default commands if you want to lazy load on them
+  -- },
   {
     "olimorris/codecompanion.nvim",
     opts = {},
@@ -112,12 +122,12 @@ return require('lazy').setup({
       "nvim-treesitter/nvim-treesitter",
     },
   },
-  {
-    'kiddos/gemini.nvim',
-    config = function()
-      require('gemini').setup()
-    end
-  },
+  -- {
+  --   'kiddos/gemini.nvim',
+  --   config = function()
+  --     require('gemini').setup()
+  --   end
+  -- },
 
   -- Ruby
   'vim-ruby/vim-ruby',

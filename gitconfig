@@ -28,7 +28,7 @@
   c      = commit -v
   ca     = !git add -A && git commit -v
   co     = checkout
-  ci     = ci-status -v
+  ci     = !gh pr checks
   d      = diff
   dc     = diff --cached
   ds     = diff --stat
