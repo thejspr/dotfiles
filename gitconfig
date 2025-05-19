@@ -16,7 +16,7 @@
   whitespace = trailing-space,space-before-tab
   ignorecase = false
   attributesfile = /Users/jesper/dotfiles/gitattributes
-	pager = /usr/bin/diff-so-fancy | less --tabs=4 -RFX
+	; pager = /usr/bin/diff-so-fancy | less --tabs=4 -RFX
 [alias]
   a      = add --all
   aa     = add -A
