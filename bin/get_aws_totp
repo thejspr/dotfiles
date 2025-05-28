@@ -1,3 +1,47 @@
 #!/usr/bin/env sh
 
-ap assume-admin totp
+get_totp(){
+	command -v ykman >/dev/null || abort "Required tool ykman is not installed, brew install ykman."
+
+	# Get ykman device account combi
+	otp_accounts=()
+	while read -r device
+	do
+		d=${device//* /}
+		while read -r account
+		do
+			[[ "$DEBUG" ]] && echo >&2 "[DEBUG] device account combi: $d:$account"
+			otp_accounts+=("$d:$account")
+		done < <(ykman --device "$d" oath accounts list)
+	done < <(ykman list)
+
+	# Read OTP code
+	[[ "$DEBUG" ]] && echo >&2 "[DEBUG] OTP accounts: " "${otp_accounts[@]}"
+	if [[ "${#otp_accounts[@]}" -gt 1 ]]
+	then
+		if [[ -n "$OTP_ACCOUNT" ]]
+		then
+			[[ "$DEBUG" ]] && echo >&2 "[DEBUG] Using OTP_DEVICE: $OTP_DEVICE"
+			otp_code=$(ykman --device "$OTP_DEVICE" oath accounts code "$OTP_ACCOUNT" | sed "s/.* //")
+		else
+			echo >&2 "Select ykman account:"
+			select device_account_combi in "${otp_accounts[@]}"; do
+				device=$(echo "$device_account_combi" | cut -d : -f 1)
+				account=$(echo "$device_account_combi" | cut -d : -f 2)
+				[[ "$DEBUG" ]] && echo >&2 "Selected ykman device: $device, account: $account"
+				otp_code=$(ykman --device "$device" oath accounts code "$account" | sed "s/.* //")
+				break
+			done
+			fi
+	else
+		device=$(echo "${otp_accounts[0]}" | cut -d : -f 1)
+		account=$(echo "${otp_accounts[0]}" | cut -d : -f 2)
+		otp_code=$(ykman --device "$device" oath accounts code "$account" | sed "s/.* //")
+	fi
+
+	[ "$(echo "$otp_code" | wc -l)" ] || abort "ykman could not determine device, use --ykman-account/-a."
+
+	echo "$otp_code"
+}
+
+get_totp
