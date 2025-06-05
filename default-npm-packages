@@ -1,3 +1,4 @@
 @githubnext/github-copilot-cli
+@anthropic-ai/claude-code
 yarn
 neovim
