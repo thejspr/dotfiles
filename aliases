@@ -1,11 +1,7 @@
 # new stuff
 alias dokku='$HOME/.dokku/contrib/dokku_client.sh'
-alias p='paru'
 alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias open='xdg-open'
-
-#python
-alias pym='python3 manage.py'
 
 #system
 alias e='$EDITOR'
@@ -36,12 +32,6 @@ if [ "$(command -v apt)" ]; then
   alias apti='sudo apt install'
   alias aptr='sudo apt remove'
   alias aptf='sudo apt-cache search'
-
-  #heroku
-  hpush() { git add -A; git commit -m "$*"; git pull --rebase && git push; git push production master; }
-  alias h="heroku"
-  alias hc="heroku run rails console"
-  alias hl="heroku logs -t"
 fi
 
 #rails
