@@ -13,11 +13,12 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_DUPS
 
 # asdf
-export ASDF_DATA_DIR="/home/jesper/.asdf"
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
-fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
-autoload -Uz compinit && compinit
-export ASDF_RUBY_BUILD_VERSION=master
+# export ASDF_DATA_DIR="/home/jesper/.asdf"
+# export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+# fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
+# autoload -Uz compinit && compinit
+# export ASDF_RUBY_BUILD_VERSION=master
+eval "$(/home/jesper/.local/bin/mise activate zsh)"
 
 # Alias and function definitions.
 . ~/.aliases
@@ -53,9 +54,9 @@ if [ ! -S ~/.ssh/ssh_auth_sock ]; then
 fi
 
 [ -x "$(command -v atuin)" ] && eval "$(atuin init zsh --disable-up-arrow)"
-# eval "$(zoxide init zsh)"
-[ -f /usr/share/z/z.sh ] && source /usr/share/z/z.sh
-[ -f ~/code/dotfiles/z.sh ] && source ~/code/dotfiles/z.sh
+eval "$(zoxide init zsh)"
+# [ -f /usr/share/z/z.sh ] && source /usr/share/z/z.sh
+# [ -f ~/code/dotfiles/z.sh ] && source ~/code/dotfiles/z.sh
 # eval "$(gh copilot alias -- zsh)" # SLOW!
 
 # aider-ai

@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-get_totp(){
+get_totp_old(){
 	command -v ykman >/dev/null || abort "Required tool ykman is not installed, brew install ykman."
 
 	# Get ykman device account combi
@@ -42,6 +42,11 @@ get_totp(){
 	[ "$(echo "$otp_code" | wc -l)" ] || abort "ykman could not determine device, use --ykman-account/-a."
 
 	echo "$otp_code"
+}
+
+get_totp() {
+  otp_code=$(ykman --device "$OTP_DEVICE" oath accounts code "$OTP_ACCOUNT" | sed "s/.* //")
+  echo "$otp_code"
 }
 
 get_totp

@@ -26,3 +26,4 @@ go-cache/
 nginx/
 cloudwatch-humio-ingestor_1.7.2_linux_arm64.zip
 cloudwatch-humio-ingestor_1.7.1-20231030_linux_arm64.zip
+.claude/
