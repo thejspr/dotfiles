@@ -4,5 +4,6 @@
 *.jpeg
 *.mp4
 *.gem
+*.svg
 .git/
 node_modules/
