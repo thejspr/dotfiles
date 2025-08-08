@@ -2,8 +2,12 @@
 [ -x "$(command -v starship)" ] && eval "$(starship init zsh)"
 
 export ZSH="${HOME}/.oh-my-zsh"
-plugins=(git history-substring-search zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git history-substring-search)
 source $ZSH/oh-my-zsh.sh
 
-source ~/code/dotfiles/zsh_mods
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+export PATH="$HOME/.local/share/omarchy/bin:$PATH"
+
+source ~/dotfiles/zsh_mods
 # zprof

@@ -101,7 +101,7 @@ alias -g G='|rg'
 
 #system and files editing
 alias ea='e ~/.aliases'
-alias eaa='e ~/.alacritty.toml'
+alias eaa='e ~/dotfiles/alacritty.toml'
 alias eg='e ~/.gitconfig'
 alias es='e ~/.ssh/config'
 alias et='e ~/dotfiles/tmux.conf'

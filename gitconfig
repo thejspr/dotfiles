@@ -1,11 +1,8 @@
 [user]
   name = Jesper Kjeldgaard
-  email = jk@clearhaus.com
-	signingkey = BA522F691E026E45
+  email = thejspr@gmail.com
 [github]
   user = thejspr
-[commit]
-  gpgsign = true
 [color]
 	ui = true
 [push]

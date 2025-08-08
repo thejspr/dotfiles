@@ -1,22 +1,34 @@
-import = [ "~/.config/alacritty/themes/themes/catppuccin.toml" ]
+general.import = [ "~/.config/alacritty/themes/themes/catppuccin.toml" ]
 
 [env]
 TERM = "xterm-256color"
 
-[font]
-size = 13
+# [font.normal]
+# family = "HackNerdFont"
+# style = "Regular"
 
-[font.normal]
-family = "HackNerdFont"
-style = "Regular"
+[font]
+normal = { family = "CaskaydiaMono Nerd Font", style = "Regular" }
+bold = { family = "CaskaydiaMono Nerd Font", style = "Bold" }
+italic = { family = "CaskaydiaMono Nerd Font", style = "Italic" }
+size = 12
 
 [selection]
 save_to_clipboard = true
 
-# [window]
+[window]
+padding.x = 14
+padding.y = 14
+decorations = "None"
+opacity = 0.98
 # decorations = "none"
 # dynamic_padding = true
 
-[shell]
-program = "tmux"
-args = ["new-session", "-A", "-s", "general"]
+# [terminal.shell]
+# program = "tmux"
+# args = ["new-session", "-A", "-s", "general"]
+
+[keyboard]
+bindings = [
+{ key = "F11", action = "ToggleFullscreen" }
+]

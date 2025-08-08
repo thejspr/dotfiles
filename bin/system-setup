@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Install extra dev things for arch
+sudo pacman -Syu --noconfirm
+sudo yay -S --noconfirm \
+  spotify \
+  pipewire \
+  pipewire-pulse \
+  pipewire-jack \
+  wireplumber \
+  tmux \
+  github-cli \
+  mise \
+  paru \
+  starship \
+  atuin
+
+mise install ruby
+mise install nodejs
+
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+mv ~/.config/nvim ~/.config/nvim-bak
+ln -s ~/.dotfiles/nvim ~/.config/nvim
+
+touch ~/.darkmode
+
+gh auth login
+
+gh repo clone thejspr/budgie
+gh repo clone thejspr/measurehub
+gh repo clone thejspr/meet_the_danes
