@@ -2,7 +2,6 @@ return require('lazy').setup({
 
   -- Essentials
   'tpope/vim-repeat',
-  -- 'tpope/vim-obsession', -- sessions mgmt
   '907th/vim-auto-save',
   'mhinz/vim-grepper',
 
@@ -62,8 +61,6 @@ return require('lazy').setup({
   -- Text
   'tpope/vim-surround',
   'mg979/vim-visual-multi',
-  -- 'godlygeek/tabular',
-  -- 'AndrewRadev/splitjoin.vim',
 
   -- File management & Git
   'tpope/vim-eunuch', -- File command helpers: Rename, Delete etc.
@@ -127,12 +124,6 @@ return require('lazy').setup({
       "nvim-treesitter/nvim-treesitter",
     },
   },
-  -- {
-  --   'kiddos/gemini.nvim',
-  --   config = function()
-  --     require('gemini').setup()
-  --   end
-  -- },
 
   -- Ruby
   'vim-ruby/vim-ruby',
@@ -265,20 +256,8 @@ return require('lazy').setup({
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       require('lualine').setup()
-      -- Show git blame in lualine
-      -- vim.g.gitblame_display_virtual_text = 0 -- Disable virtual text
-      -- local git_blame = require('gitblame')
-      --
-      -- require('lualine').setup({
-      --     sections = {
-      --             lualine_c = {
-      --                 { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available }
-      --             }
-      --     }
-      -- })
     end
   },
-  -- 'projekt0n/github-nvim-theme',
   'catppuccin/nvim',
 
   {
