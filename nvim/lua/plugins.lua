@@ -116,14 +116,14 @@ return require('lazy').setup({
   --   },
   --   -- See Commands section for default commands if you want to lazy load on them
   -- },
-  {
-    "olimorris/codecompanion.nvim",
-    opts = {},
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-    },
-  },
+  -- {
+  --   "olimorris/codecompanion.nvim",
+  --   opts = {},
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-treesitter/nvim-treesitter",
+  --   },
+  -- },
 
   -- Ruby
   'vim-ruby/vim-ruby',
@@ -223,26 +223,26 @@ return require('lazy').setup({
       servers = {
         ruby_lsp = {
           mason = false,
-          cmd = { vim.fn.expand("~/.asdf/shims/ruby-lsp") },
+          cmd = { vim.fn.expand("~/.local/share/mise/installs/ruby/latest/bin/ruby-lsp") },
         },
       },
     },
     config = function(_, opts)
-      local lspconfig = require('lspconfig')
-      for server, config in pairs(opts.servers or {}) do
-        config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
-        lspconfig[server].setup(config)
-      end
+      -- local lspconfig = require('lspconfig')
+      -- for server, config in pairs(opts.servers or {}) do
+      --   config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
+      --   lspconfig[server].setup(config)
+      -- end
     end
   },
-  {
-    'adam12/ruby-lsp.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'neovim/nvim-lspconfig',
-    },
-    config = true,
-  },
+  -- {
+  --   'adam12/ruby-lsp.nvim',
+  --   dependencies = {
+  --     'nvim-lua/plenary.nvim',
+  --     'neovim/nvim-lspconfig',
+  --   },
+  --   config = true,
+  -- },
 
   -- Treesitter
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
