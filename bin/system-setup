@@ -11,22 +11,27 @@ sudo yay -S --noconfirm \
   tmux \
   github-cli \
   mise \
-  paru \
-  starship \
+  zsh-syntax-highlighting \
+  zsh-autosuggestions \
+  zoxide \
   atuin
-
-mise install ruby
-mise install nodejs
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-mv ~/.config/nvim ~/.config/nvim-bak
-ln -s ~/.dotfiles/nvim ~/.config/nvim
+# mv ~/.config/nvim ~/.config/nvim-bak
+# ln -s ~/.dotfiles/nvim ~/.config/nvim
 
 touch ~/.darkmode
+touch ~/.secrets
 
 gh auth login
 
-gh repo clone thejspr/budgie
-gh repo clone thejspr/measurehub
-gh repo clone thejspr/meet_the_danes
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+mkdir -p ~/code
+gh repo clone thejspr/budgie ~/code/budgie
+gh repo clone thejspr/measurehub ~/code/measurehub
+gh repo clone thejspr/meet_the_danes ~/code/meet_the_danes
+
+mise install ruby
+mise install nodejs

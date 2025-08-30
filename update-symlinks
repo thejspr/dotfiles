@@ -1,11 +1,8 @@
 #!/usr/bin/env ruby
 
-IGNORES = %w[zsh_mods ctags tags README.md update-symlinks scripts sway i3-laptop].freeze
+FILES = %w[bin zshrc default-gems default-npm-packages gemrc gitconfig gitattributes gitignore pryrc psqlrc railsrc rgignore ripgreprc tmux.conf tool-versions].freeze
 
-Dir.glob('*').each do |file|
-  next if IGNORES.include?(file)
-  next if file =~ /.bak$/
-
+FILES.each do |file|
   target = if file == 'bin'
              "~/#{file}"
            else

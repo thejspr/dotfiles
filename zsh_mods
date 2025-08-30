@@ -11,7 +11,7 @@ bindkey -e
 setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_DUPS
 
-eval "$(/home/jesper/.local/bin/mise activate zsh)"
+eval "$(mise activate zsh)"
 
 # Alias and function definitions.
 . ~/.aliases
