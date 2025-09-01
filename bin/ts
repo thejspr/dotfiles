@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-# quickly switch tmux session
-# usage: ts <nothing | or part of session name>
-
-tmux switch-client -t $(tmux list-session | sed 's/:.*//' | fzf --select-1 --query=$1)
