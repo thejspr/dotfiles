@@ -18,12 +18,6 @@ autocmd FileType hyprlang setlocal commentstring=#\ %s
 let g:eunuch_no_maps = 1
 " }}}
 
-" Ruby {{{
-nmap <leader>F :ALEFix<cr>
-
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-"}}}
-
 " Msc languages {{{
 let g:vim_json_conceal=0
 let g:go_def_mode='gopls'
@@ -184,8 +178,6 @@ au BufRead,BufNewFile *.md setlocal nolist
 
 " Edit .vimrc {{{
 command! Ev :e ~/.vimrc
-command! Ec :e ~/.config/nvim/
-command! Ep :e ~/.config/nvim/lua/plugins.lua
 augroup vimrc
   autocmd!
   au bufwritepost .vimrc source $MYVIMRC
@@ -194,6 +186,9 @@ augroup END
 " }}}
 
 " Ruby {{{
+nmap <leader>F :ALEFix<cr>
+
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 noremap <Leader>m :Emodel<space>
 noremap <Leader>c :Econtroller<space>
 autocmd FileType ruby setlocal indentkeys-=.
@@ -211,7 +206,4 @@ endif
 noremap <f1> <Nop>
 nmap <silent> gx :!xdg-open '<cWORD>'<cr>
 nmap Y yy
-
-" Substitute in line
-nnoremap gs "zye:%s/<C-R>z//g<left><left>
 " }}}

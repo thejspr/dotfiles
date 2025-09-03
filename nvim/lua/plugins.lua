@@ -21,7 +21,7 @@ return require('lazy').setup({
       -- refer to the configuration section below
       bigfile = { enabled = true },
       dashboard = { enabled = true },
-      explorer = { enabled = true },
+      explorer = { enabled = false },
       git = { enabled = true },
       gitbrowse = { enabled = true },
       indent = {
