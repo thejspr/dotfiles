@@ -1,4 +1,4 @@
-let mapleader = ","
+let g:mapleader = ","
 
 " AutoSave {{{
 let g:auto_save = 1
@@ -22,7 +22,7 @@ let g:VimuxHeight = "33"
 let g:test#preserve_screen = 1
 let g:test#echo_command = 0
 let test#strategy = "vimux"
-nnoremap <leader><space> :VimuxPromptCommand<cr>
+nnoremap <silent> <leader><space> :VimuxPromptCommand<cr>
 nnoremap <silent> <leader>x :TestNearest<CR>
 nnoremap <silent> <leader>X :TestFile<CR>
 nnoremap <silent> <leader>q :TestLast<CR>
@@ -118,7 +118,7 @@ augroup MyAutoCmds
   autocmd FileType hyprlang setlocal commentstring=#\ %s
   autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType ruby setlocal indentkeys-=.
-  autocmd BufReadPost *.html* set formatoptions-=t
+  autocmd BufReadPost *.html* setlocal formatoptions-=t
   autocmd BufRead,BufNewFile COMMIT_EDITMSG setlocal ft=diff spell!
   autocmd BufRead,BufNewFile *.md setlocal nolist
 augroup END
@@ -134,7 +134,7 @@ noremap <leader>sd z=
 "}}}
 
 " Edit .vimrc {{{
-command! Ev :e ~/.vimrc
+command! -bar Ev :e ~/.vimrc
 augroup vimrc
   autocmd!
   au bufwritepost .vimrc source $MYVIMRC
