@@ -5,6 +5,7 @@ let g:auto_save_events = ["TextChanged", "FocusLost", "InsertLeave"]
 " }}}
 
 " File management & Git {{{
+nnoremap <leader>a :Grepper -tool rg -cword -noprompt<cr>
 let g:eunuch_no_maps = 1
 " }}}
 
@@ -35,6 +36,7 @@ else
   colorscheme catppuccin-latte
 endif
 
+set number
 set colorcolumn=90
 set synmaxcol=140
 set scrolloff=5
