@@ -1,16 +1,9 @@
+let mapleader = ","
+
 " AutoSave {{{
 let g:auto_save = 1
 let g:auto_save_silent = 0
 let g:auto_save_events = ["TextChanged", "FocusLost", "InsertLeave"]
-" }}}
-
-" Search & Code navigation {{{
-"nmap <leader>a :Grepper -tool rg -cword -noprompt<cr>
-" }}}
-
-" Text {{{
-autocmd FileType javascript.jsx setlocal commentstring={/*\ %s\ */}
-autocmd FileType hyprlang setlocal commentstring=#\ %s
 " }}}
 
 " File management & Git {{{
@@ -28,11 +21,11 @@ let g:VimuxOrientation = "v"
 let g:VimuxHeight = "33"
 let g:test#preserve_screen = 1
 let g:test#echo_command = 0
-nmap <leader><space> :VimuxPromptCommand<cr>
 let test#strategy = "vimux"
-nmap <silent> <leader>x :TestNearest<CR>
-nmap <silent> <leader>X :TestFile<CR>
-nmap <silent> <leader>q :TestLast<CR>
+nnoremap <leader><space> :VimuxPromptCommand<cr>
+nnoremap <silent> <leader>x :TestNearest<CR>
+nnoremap <silent> <leader>X :TestFile<CR>
+nnoremap <silent> <leader>q :TestLast<CR>
 
 " UI {{{
 set termguicolors
@@ -44,24 +37,20 @@ else
   colorscheme catppuccin-latte
 endif
 
-syntax on
 set colorcolumn=90
 set synmaxcol=140
 set scrolloff=5
-set smartindent
-set wildmode=full
-set laststatus=2
 set splitbelow
 set splitright
+filetype plugin indent on
 
 " Resize splits when the win is resized
 au VimResized * wincmd =
 
-" https://bluz71.github.io/2017/05/15/vim-tips-tricks.html
 set autoread
 augroup autoRead
   autocmd!
-  autocmd FocusLost * silent! wall
+  autocmd FocusLost,BufEnter * silent! checktime
 augroup END
 
 " Text Formatting
@@ -83,14 +72,13 @@ set foldenable
 set foldnestmax=10
 set foldlevelstart=10
 set foldmethod=indent
-nmap f1 :set foldlevel=0<cr>
-nmap f2 :set foldlevel=1<cr>
-nmap f3 :set foldlevel=2<cr>
-nmap fa :set foldlevel=99<cr>
+nnoremap f1 :set foldlevel=0<cr>
+nnoremap f2 :set foldlevel=1<cr>
+nnoremap f3 :set foldlevel=2<cr>
+nnoremap fa :set foldlevel=99<cr>
 " }}}
 
 " Key mappings {{{
-map , <leader>
 
 " Buffer management
 nnoremap <tab> :bn<CR>
@@ -108,7 +96,6 @@ vnoremap > >gv
 set hlsearch
 set incsearch
 set smartcase
-set gdefault
 set showmatch
 
 set wildignore+=node_modules/*
@@ -125,17 +112,25 @@ autocmd BufReadPost *
   \ endif
 " }}}
 
+augroup MyAutoCmds
+  autocmd!
+  autocmd FileType javascript.jsx setlocal commentstring={/*\ %s\ */}
+  autocmd FileType hyprlang setlocal commentstring=#\ %s
+  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType ruby setlocal indentkeys-=.
+  autocmd BufReadPost *.html* set formatoptions-=t
+  autocmd BufRead,BufNewFile COMMIT_EDITMSG setlocal ft=diff spell!
+  autocmd BufRead,BufNewFile *.md setlocal nolist
+augroup END
+
 " Spell checking {{{
-set spellfile+=~/.vim/spell/en.utf-8.add
-set dict+=~/.vim/spell/en.utf-8.add
+set spellfile+=~/.config/nvim/spell/en.utf-8.add
+set dict+=~/.config/nvim/spell/en.utf-8.add
 noremap <leader>ss :setlocal spell!<cr>
 noremap <leader>sn ]s
 noremap <leader>sp [s
 noremap <leader>sa zg
 noremap <leader>sd z=
-au BufRead,BufNewFile COMMIT_EDITMSG setlocal ft=diff spell!
-au BufRead,BufNewFile COMMIT_EDITMSG 1
-au BufRead,BufNewFile *.md setlocal nolist
 "}}}
 
 " Edit .vimrc {{{
@@ -148,17 +143,13 @@ augroup END
 " }}}
 
 " Ruby {{{
-nmap <leader>F :ALEFix<cr>
-
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-noremap <Leader>m :Emodel<space>
-noremap <Leader>c :Econtroller<space>
-autocmd FileType ruby setlocal indentkeys-=.
+nnoremap <leader>F :ALEFix<cr>
+nnoremap <Leader>m :Emodel<space>
+nnoremap <Leader>c :Econtroller<space>
 " }}}
 
 " New stuff {{{
-au BufReadPost *.html* set formatoptions-=t
 noremap <f1> <Nop>
-nmap <silent> gx :!xdg-open '<cWORD>'<cr>
-nmap Y yy
+nnoremap <silent> gx :!xdg-open '<cWORD>'<cr>
+nnoremap Y yy
 " }}}
