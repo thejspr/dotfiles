@@ -1,5 +1,7 @@
 local map = vim.keymap.set
 
+vim.g.mapleader = ','
+
 -- Fzf-lua
 map('n', '<leader>t', ':FzfLua files<CR>', {})
 map('n', '<leader>r', ':FzfLua oldfiles<CR>', {})
