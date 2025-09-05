@@ -4,7 +4,7 @@ local map = vim.keymap.set
 map('n', '<leader>t', ':FzfLua files<CR>', {})
 map('n', '<leader>r', ':FzfLua oldfiles<CR>', {})
 map('n', '<leader>g', ':FzfLua live_grep resume=true<CR>', {})
-map('n', '<leader>b', ':FzfLua buffers<CR>', {})
+map('n', '<leader>G', ':FzfLua live_grep<CR>', {})
 
 map('n', '<leader>e', ':NvimTreeFindFileToggle<CR>', {})
 
