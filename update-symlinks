@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-FILES = %w[bin zshrc default-gems default-npm-packages gemrc gitconfig gitattributes gitignore pryrc psqlrc railsrc rgignore ripgreprc tmux.conf tool-versions].freeze
+FILES = %w[aliases bin zshrc default-gems default-npm-packages gemrc gitconfig gitattributes gitignore pryrc psqlrc railsrc rgignore ripgreprc tmux.conf tool-versions vimrc].freeze
 
 FILES.each do |file|
   target = if file == 'bin'

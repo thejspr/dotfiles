@@ -35,7 +35,7 @@ require'nvim-treesitter.configs'.setup {
     "sql",
     "yaml",
     "csv",
-    -- "elixir",
+    "elixir",
     "terraform",
     "hyprlang",
     "rst",

@@ -1,8 +1,11 @@
 [user]
   name = Jesper Kjeldgaard
-  email = thejspr@gmail.com
 [github]
   user = thejspr
+[includeIf "gitdir:~/code/"]
+  path = ~/code/.gitconfig
+[includeIf "gitdir:~/clearhaus/"]
+  path = ~/clearhaus/.gitconfig
 [color]
 	ui = true
 [push]
@@ -45,7 +48,7 @@
   undo   = reset HEAD~1 --mixed
 
   stg    = checkout staging
-  browse = !gh browse-branch
+  browse = !gh browse
 
   cl = !git co master && git pull && git remote prune origin && git bclean
 

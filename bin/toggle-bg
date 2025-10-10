@@ -4,12 +4,12 @@ set -e
 
 if [[ -f ~/.darkmode ]]; then
   echo 'darkmode off'
-  sed -i'.bak' 's/catppuccin/catppuccin_latte/g' ~/.alacritty.toml
+  sed -i'.bak' 's/catppuccin/catppuccin_latte/g' ~/.config/alacritty/alacritty.toml
   gsettings set org.gnome.desktop.interface color-scheme 'default'
   rm -f ~/.darkmode
 else
   echo 'darkmode on'
-  sed -i'.bak' 's/catppuccin_latte/catppuccin/g' ~/.alacritty.toml
+  sed -i'.bak' 's/catppuccin_latte/catppuccin/g' ~/.config/alacritty/alacritty.toml
   gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
   touch ~/.darkmode
 fi

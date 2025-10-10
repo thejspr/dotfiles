@@ -4,6 +4,8 @@ alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias open='xdg-open'
 alias ghs='gh copilot suggest'
 alias ghe='gh copilot explain'
+alias eh='e ~/.config/hypr'
+alias claudec='claude --continue'
 
 #system
 alias e='$EDITOR'
@@ -21,8 +23,8 @@ function ew() {
   fi
 }
 
-alias pbcopy="xclip -selection c"
-alias pbpaste="xclip -selection clipboard -o"
+alias pbcopy="wl-copy"
+alias pbpaste="wl-paste"
 
 #ruby
 alias rv='ruby --version'
