@@ -120,7 +120,7 @@ output "eDP-1" {
     position x=0 y=200
 }
 output "Dell Inc. DELL U3223QE JVRK1H3" {
-    mode "3840x2160@30.00"
+    mode "3840x2160@60.00"
     scale 1
     transform "normal"
     position x=1920 y=0
@@ -634,9 +634,9 @@ binds {
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
 
-    Print { screenshot; }
-    Ctrl+Print { screenshot-screen; }
-    Alt+Print { screenshot-window; }
+    Mod+x { screenshot; }
+    // Ctrl+Print { screenshot-screen; }
+    // Alt+Print { screenshot-window; }
 
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here
