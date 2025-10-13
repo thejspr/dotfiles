@@ -120,14 +120,15 @@ output "eDP-1" {
     position x=0 y=200
 }
 output "Dell Inc. DELL U3223QE JVRK1H3" {
-    mode "3840x2160@60.00"
+    mode "3840x2160@59.996"
     scale 1
     transform "normal"
     position x=1920 y=0
 }
 output "Dell Inc. DELL S2722QC H9BQLD3" {
-    mode "3840x2160@30.00"
-    scale 1.3
+    mode "3840x2160@60.00"
+    // mode "2560x1440@59.951"
+    scale 1
     transform "normal"
     position x=5760 y=0
 }
@@ -304,12 +305,13 @@ layout {
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
-
-// This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
 spawn-at-startup "swayidle" "-w" "timeout" "601" "niri msg action power-off-monitors" "timeout" "600" "swaylock -f" "before-sleep" "swaylock -f"
-spawn-at-startup "swaybg -i ~/Pictures/luca-micheli-ruWkmt3nU58-unsplash.jpg -m fill"
+spawn-at-startup "swaybg" "-i" "/home/jk/Pictures/luca-micheli-ruWkmt3nU58-unsplash.jpg" "-m" "fill"
+spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
+spawn-at-startup "bash" "/home/jk/.config/niri/fix-monitors.sh"
+
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -367,6 +369,10 @@ window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
 }
+window-rule {
+	match app-id="Float"
+	open-floating true
+}
 
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
@@ -401,6 +407,9 @@ binds {
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
+
+    Super+v hotkey-overlay-title="Clipboard history" { spawn "sh" "-c" "cliphist list | fuzzel --dmenu -w 120 | cliphist decode | wl-copy"; }
+    Super+P hotkey-overlay-title="Fix Monitors" { spawn "bash" "/home/jk/.config/niri/fix-monitors.sh"; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
@@ -618,8 +627,8 @@ binds {
     Mod+Shift+Equal { set-window-height "+10%"; }
 
     // Move the focused window between the floating and the tiling layout.
-    Mod+V       { toggle-window-floating; }
-    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+    // Mod+V       { toggle-window-floating; }
+    // Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
     // Toggle tabbed column display mode.
     // Windows in this column will appear as vertical tabs,
