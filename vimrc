@@ -30,10 +30,10 @@ nnoremap <silent> <leader>q :TestLast<CR>
 set termguicolors
 if filereadable(expand("~/.darkmode"))
   set background=dark
-  colorscheme catppuccin
+  colorscheme solarized
 else
   set background=light
-  colorscheme catppuccin-latte
+  colorscheme solarized
 endif
 
 set number

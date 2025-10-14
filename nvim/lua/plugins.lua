@@ -252,6 +252,7 @@ return require('lazy').setup({
     end
   },
   'catppuccin/nvim',
+  'maxmx03/solarized.nvim',
 
   {
     'lewis6991/gitsigns.nvim',

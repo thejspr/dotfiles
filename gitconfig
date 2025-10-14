@@ -16,7 +16,6 @@
   whitespace = trailing-space,space-before-tab
   ignorecase = false
   attributesfile = /Users/jesper/dotfiles/gitattributes
-	; pager = /usr/bin/diff-so-fancy | less --tabs=4 -RFX
 [alias]
   a      = add --all
   aa     = add -A
@@ -69,11 +68,10 @@
   renames = copies
   mnemonicprefix = true
   algorithm = patience
-  tool = nvimdiff
-; [difftool "nvimdiff"]
-; 	cmd = nvim -d \"$LOCAL\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd L\"
-; [difftool]
-;   prompt = false
+  ; tool = nvimdiff
+  tool = nvim_difftool
+[difftool "nvim_difftool"]
+  cmd = nvim -c "packadd nvim.difftool" -c "DiffTool $LOCAL $REMOTE"
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
@@ -108,11 +106,5 @@
 [credential "https://gist.github.com"]
 	helper =
 	helper = !/usr/bin/gh auth git-credential
-[difftool]
-    prompt = false
-[difftool "p4merge"]
-    path = /home/jesper/apps/p4/bin/p4merge
-[mergetool "p4merge"]
-    path = /home/jesper/apps/p4/bin/p4merge
 [mergetool]
     keepBackup = false
