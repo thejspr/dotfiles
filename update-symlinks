@@ -1,15 +1,29 @@
 #!/usr/bin/env ruby
 
-FILES = %w[aliases bin zshrc default-gems default-npm-packages gemrc gitconfig gitattributes gitignore pryrc psqlrc railsrc rgignore ripgreprc tmux.conf tool-versions vimrc].freeze
+FILES = {
+  'aliases' => '.aliases',
+  'bin' => 'bin',
+  'zshrc' => '.zshrc',
+  'default-gems' => '.default-gems',
+  'default-npm-packages' => '.default-npm-packages',
+  'gemrc' => '.gemrc',
+  'gitconfig' => '.gitconfig',
+  'gitattributes' => '.gitattributes',
+  'gitignore' => '.gitignore',
+  'pryrc' => '.pryrc',
+  'psqlrc' => '.psqlrc',
+  'railsrc' => '.railsrc',
+  'rgignore' => '.rgignore',
+  'ripgreprc' => '.ripgreprc',
+  'tmux.conf' => '.tmux.conf',
+  'vimrc' => '.vimrc',
+  'niri' => '.config/niri',
+  'waybar' => '.config/waybar',
+  'alacritty.toml' => '.config/alacritty/alacritty.toml',
+}.freeze
 
-FILES.each do |file|
-  target = if file == 'bin'
-             "~/#{file}"
-           else
-             "~/.#{file}"
-           end
-
-  file_target = File.expand_path(target)
+FILES.each do |file, target|
+  file_target = File.expand_path("~/#{target}")
 
   if File.symlink?(file_target)
     puts "#{file} symlink, skipping" if ARGV.include?('-v')
