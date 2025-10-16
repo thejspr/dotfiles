@@ -4,11 +4,12 @@
 sudo pacman -Syu --noconfirm
 sudo yay -S --noconfirm \
   spotify \
-  pipewire \
-  pipewire-pulse \
-  pipewire-jack \
-  wireplumber \
+  # pipewire \
+  # pipewire-pulse \
+  # pipewire-jack \
+  # wireplumber \
   tmux \
+  slack-desktop \
   github-cli \
   mise \
   zsh-syntax-highlighting \
@@ -16,12 +17,16 @@ sudo yay -S --noconfirm \
   zoxide \
   atuin
 
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+if [ ! -d ~/.tmux/plugins/tpm ]; then
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
 
 # mv ~/.config/nvim ~/.config/nvim-bak
 # ln -s ~/.dotfiles/nvim ~/.config/nvim
 
-git clone git@github.com:dokku/dokku.git ~/.dokku
+if [ ! -d ~/.dokku ]; then
+  git clone git@github.com:dokku/dokku.git ~/.dokku
+fi
 
 touch ~/.darkmode
 touch ~/.secrets
@@ -30,10 +35,15 @@ gh auth login
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-mkdir -p ~/code
-gh repo clone thejspr/budgie ~/code/budgie
-gh repo clone thejspr/measurehub ~/code/measurehub
-gh repo clone thejspr/meet_the_danes ~/code/meet_the_danes
+# if code directory doesn't exist, create it
+if [ ! -d ~/code ]; then
+  mkdir ~/code
+  gh repo clone thejspr/budgie ~/code/budgie
+  gh repo clone thejspr/measurehub ~/code/measurehub
+  gh repo clone thejspr/meet_the_danes ~/code/meet_the_danes
+fi
 
 mise install ruby
 mise install nodejs
+
+npm install -g @anthropic-ai/claude-code
