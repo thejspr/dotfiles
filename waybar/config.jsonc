@@ -13,6 +13,7 @@
     "pulseaudio",
     "cpu",
     "battery",
+    "group/group-power",
     "clock"
   ],
   "hyprland/language": {
@@ -81,5 +82,50 @@
   "tray": {
     "icon-size": 12,
     "spacing": 12
+  },
+  "group/group-power": {
+    "orientation": "inherit",
+    "drawer": {
+        "transition-duration": 500,
+        "children-class": "not-power",
+        "transition-left-to-right": true
+    },
+    "modules": [
+        "custom/power",
+        "custom/suspend",
+        // "custom/quit",
+        "custom/lock",
+        "custom/reboot"
+    ]
+  },
+  "custom/suspend": {
+      "format": "󰍃 ",
+      "tooltip": true,
+      "tooltip-format": "Suspend",
+      "on-click": "suspend"
+  },
+  "custom/quit": {
+      "format": "󰗼 ",
+      "tooltip": true,
+      "tooltip-format": "Exit Niri Session",
+      "on-click": "niri msg action quit"
+  },
+  "custom/lock": {
+      "format": "󰍁 ",
+      "tooltip": true,
+      "tooltip-format": "Lock",
+      "on-click": "swaylock-cmd"
+  },
+  "custom/reboot": {
+      "format": "󰜉 ",
+      "tooltip": true,
+      "tooltip-format": "Reboot",
+      "on-click": "reboot"
+  },
+  "custom/power": {
+      "format": "   ",
+      "tooltip": true,
+      "tooltip-format": "Power Off",
+      "on-click": "poweroff"
   }
 }

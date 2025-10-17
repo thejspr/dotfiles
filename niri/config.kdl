@@ -46,7 +46,7 @@ output "Dell Inc. DELL U3223QE JVRK1H3" {
     position x=1920 y=0
 }
 output "Dell Inc. DELL S2722QC H9BQLD3" {
-    mode "3840x2160@60.00"
+    mode "3840x2160@30.00"
     // mode "2560x1440@59.951"
     scale 1.2
     transform "normal"
