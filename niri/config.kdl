@@ -44,6 +44,7 @@ output "Dell Inc. DELL U3223QE JVRK1H3" {
     scale 1.2
     transform "normal"
     position x=1920 y=0
+    // off
 }
 output "Dell Inc. DELL S2722QC H9BQLD3" {
     mode "3840x2160@30.00"
@@ -63,6 +64,10 @@ output "Dell Inc. DELL S2722QC H9BQLD3" {
 //     position x=4874 y=0
 // }
 
+
+// To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
+// spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
+
 // Add lines like this to spawn processes at startup.
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
@@ -72,7 +77,7 @@ spawn-at-startup "mako"
 spawn-at-startup "swayidle" "-w" "timeout" "601" "niri msg action power-off-monitors" "timeout" "600" "swaylock -f" "before-sleep" "swaylock -f"
 spawn-at-startup "swaybg" "-i" "/home/jk/Pictures/luca-micheli-ruWkmt3nU58-unsplash.jpg" "-m" "fill"
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
-// spawn-at-startup "bash" "/home/jk/.config/niri/fix-monitors.sh"
+spawn-at-startup "bash" "/home/jk/.config/niri/fix-monitors.sh"
 
 environment {
   XDG_SESSION_TYPE "wayland"
@@ -310,10 +315,6 @@ layout {
     }
 }
 
-
-// To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
-// spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
-
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
     // skip-at-startup
@@ -324,7 +325,7 @@ hotkey-overlay {
 // Additionally, clients will be informed that they are tiled, removing some client-side rounded corners.
 // This option will also fix border/focus ring drawing behind some semitransparent windows.
 // After enabling or disabling this, you need to restart the apps for this to take effect.
-// prefer-no-csd
+prefer-no-csd
 
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
@@ -372,25 +373,6 @@ window-rule {
 	open-floating true
 }
 
-// Example: block out two password managers from screen capture.
-// (This example rule is commented out with a "/-" in front.)
-/-window-rule {
-    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-    match app-id=r#"^org\.gnome\.World\.Secrets$"#
-
-    block-out-from "screen-capture"
-
-    // Use this instead if you want them visible on third-party screenshot tools.
-    // block-out-from "screencast"
-}
-
-// Example: enable rounded corners for all windows.
-// (This example rule is commented out with a "/-" in front.)
-/-window-rule {
-    geometry-corner-radius 12
-    clip-to-geometry true
-}
-
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
     // in the end. To find an XKB name for a particular key, you may use a program
@@ -407,7 +389,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Super+v hotkey-overlay-title="Clipboard history" { spawn "sh" "-c" "cliphist list | fuzzel --dmenu -w 120 | cliphist decode | wl-copy"; }
-    Super+P hotkey-overlay-title="Fix Monitors" { spawn "bash" "/home/jk/.config/niri/fix-monitors.sh"; }
+    Super+P hotkey-overlay-title="Fix Monitors" { spawn-sh "playerctl play-pause"; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
@@ -428,6 +410,8 @@ binds {
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
     XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+    XF86AudioPause        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    XF86AudioPlay         allow-when-locked=true { spawn-sh "playerctl play-pause"; }
 
     // Example brightness key mappings for brightnessctl.
     // You can use regular spawn with multiple arguments too (to avoid going through "sh"),
@@ -625,7 +609,7 @@ binds {
     Mod+Shift+Equal { set-window-height "+10%"; }
 
     // Move the focused window between the floating and the tiling layout.
-    // Mod+V       { toggle-window-floating; }
+    Mod+t       { toggle-window-floating; }
     // Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
     // Toggle tabbed column display mode.
@@ -662,4 +646,21 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
+}
+
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id=r#"org\.gtk\.FileChooserDialog"#
+    open-floating true
+}
+
+window-rule {
+    match title="Firefox"
+    match app-id="google-chrome-stable"
+    match app-id="brave"
+    match app-id="obsidian"
+    match app-id="Nautilus"
+    match app-id="Alacritty"
+
+    open-maximized true
 }
