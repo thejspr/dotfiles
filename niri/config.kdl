@@ -70,14 +70,13 @@ output "Dell Inc. DELL S2722QC H9BQLD3" {
 
 // Add lines like this to spawn processes at startup.
 // Note that running niri as a session supports xdg-desktop-autostart,
-// which may be more convenient to use.
-// See the binds section below for more spawn examples.
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
 spawn-at-startup "swayidle" "-w" "timeout" "601" "niri msg action power-off-monitors" "timeout" "600" "swaylock -f" "before-sleep" "swaylock -f"
 spawn-at-startup "swaybg" "-i" "/home/jk/Pictures/luca-micheli-ruWkmt3nU58-unsplash.jpg" "-m" "fill"
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
 spawn-at-startup "bash" "/home/jk/.config/niri/fix-monitors.sh"
+spawn-at-startup "1password --silent"
 
 environment {
   XDG_SESSION_TYPE "wayland"
