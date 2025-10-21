@@ -1,3 +1,7 @@
+[core]
+  excludesfile = ~/.gitignore
+  whitespace = trailing-space,space-before-tab
+  ignorecase = false
 [user]
   name = Jesper Kjeldgaard
 [github]
@@ -11,11 +15,6 @@
 [push]
   default = tracking
   autoSetupRemote = true
-[core]
-  excludesfile = ~/.gitignore
-  whitespace = trailing-space,space-before-tab
-  ignorecase = false
-  attributesfile = /Users/jesper/dotfiles/gitattributes
 [alias]
   a      = add --all
   aa     = add -A
@@ -85,19 +84,19 @@
   ff = only
 [interactive]
 	diffFilter = diff-so-fancy --patch
-[color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
-[color "diff"]
-	meta = 11
-	frag = magenta bold
-	func = 146 bold
-	commit = yellow bold
-	old = red bold
-	new = green bold
-	whitespace = red reverse
+; [color "diff-highlight"]
+; 	oldNormal = red bold
+; 	oldHighlight = red bold 52
+; 	newNormal = green bold
+; 	newHighlight = green bold 22
+; [color "diff"]
+; 	meta = 11
+; 	frag = magenta bold
+; 	func = 146 bold
+; 	commit = yellow bold
+; 	old = red bold
+; 	new = green bold
+; 	whitespace = red reverse
 [init]
 	defaultBranch = master
 [credential "https://github.com"]
@@ -106,5 +105,3 @@
 [credential "https://gist.github.com"]
 	helper =
 	helper = !/usr/bin/gh auth git-credential
-[mergetool]
-    keepBackup = false
