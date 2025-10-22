@@ -53,16 +53,16 @@ output "Dell Inc. DELL S2722QC H9BQLD3" {
     transform "normal"
     position x=5120 y=0
 }
-// output "Samsung Electric Company LS27A80 H4ZT100368" {
-//     mode "3840x2160@30.00"
-//     scale 1.3
-//     position x=1920 y=0
-// }
-// output "Samsung Electric Company LS27A80 H4ZRC00472" {
-//     mode "3840x2160@30.00"
-//     scale 1.3
-//     position x=4874 y=0
-// }
+output "Samsung Electric Company LS27A80 H4ZT100368" {
+    mode "3840x2160@60.00"
+    scale 1.3
+    position x=1920 y=0
+}
+output "Samsung Electric Company LS27A80 H4ZRC00472" {
+    mode "3840x2160@30.00"
+    scale 1.3
+    position x=4874 y=0
+}
 
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
@@ -76,7 +76,8 @@ spawn-at-startup "swayidle" "-w" "timeout" "601" "niri msg action power-off-moni
 spawn-at-startup "swaybg" "-i" "/home/jk/Pictures/luca-micheli-ruWkmt3nU58-unsplash.jpg" "-m" "fill"
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
 spawn-at-startup "bash" "/home/jk/.config/niri/fix-monitors.sh"
-spawn-at-startup "1password --silent"
+spawn-at-startup "1password" " --ozone-platform=wayland" "--silent"
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 
 environment {
   XDG_SESSION_TYPE "wayland"
