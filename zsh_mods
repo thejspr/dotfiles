@@ -14,7 +14,7 @@ setopt HIST_IGNORE_DUPS
 eval "$(mise activate zsh)"
 
 # Alias and function definitions.
-. ~/.aliases
+. ~/dotfiles/aliases
 . ~/.secrets
 
 fancy-ctrl-z () {

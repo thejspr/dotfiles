@@ -18,6 +18,7 @@ FILES = {
   'tmux.conf' => '.tmux.conf',
   'vimrc' => '.vimrc',
   'niri' => '.config/niri',
+  'nvim' => '.config/nvim',
   'waybar' => '.config/waybar',
   'alacritty.toml' => '.config/alacritty/alacritty.toml',
 }.freeze
@@ -34,11 +35,12 @@ FILES.each do |file, target|
 
     case prompt
     when 'd'
-      system "rm -f #{file_target}"
+      system "cp -r #{file_target} #{file_target}.bak"
+      system "rm -fr #{file_target}"
     when 'c'
       puts "Copying and removing #{file_target}"
       system "cp #{file_target} ."
-      system "rm -f #{file_target}"
+      system "rm -fr #{file_target}"
     else
       puts 'Ignoring...'
       next

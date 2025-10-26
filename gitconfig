@@ -4,6 +4,7 @@
   ignorecase = false
 [user]
   name = Jesper Kjeldgaard
+  email = jk@clearhaus.com
 [github]
   user = thejspr
 [includeIf "gitdir:~/code/"]
