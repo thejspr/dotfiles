@@ -73,7 +73,7 @@ output "Samsung Electric Company LS27A80 H4ZRC00472" {
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
 spawn-at-startup "swayidle" "-w" "timeout" "601" "niri msg action power-off-monitors" "timeout" "600" "swaylock -f" "before-sleep" "swaylock -f"
-spawn-at-startup "swaybg" "-i" "/home/jk/Pictures/luca-micheli-ruWkmt3nU58-unsplash.jpg" "-m" "fill"
+spawn-at-startup "swaybg" "-i" "/home/jk/wallpaper.jpg" "-m" "fill"
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
 spawn-at-startup "bash" "/home/jk/.config/niri/fix-monitors.sh"
 spawn-at-startup "1password" " --ozone-platform=wayland" "--silent"

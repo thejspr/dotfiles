@@ -176,7 +176,7 @@ return require('lazy').setup({
     'saghen/blink.cmp',
     lazy = false, -- lazy loading handled internally
     dependencies = 'rafamadriz/friendly-snippets',
-    version = 'v0.*',
+    version = 'v1.*',
     opts = {
       -- 'default' for mappings similar to built-in completion
       -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
