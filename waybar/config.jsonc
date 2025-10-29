@@ -13,7 +13,6 @@
     "pulseaudio",
     "cpu",
     "battery",
-    "group/group-power",
     "clock"
   ],
   "hyprland/language": {
@@ -40,7 +39,7 @@
     "tooltip-format-disconnected": "Disconnected",
     "interval": 3,
     "spacing": 1,
-    "on-click": "omarchy-launch-wifi"
+    "on-click": "alacritty --class=Float -e impala"
   },
   "battery": {
     "format": "{capacity}% {icon}",

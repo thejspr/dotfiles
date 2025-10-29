@@ -3,81 +3,45 @@
 // Check the wiki for a full description of the configuration:
 // https://yalter.github.io/niri/Configuration:-Introduction
 
-// You can configure outputs by their name, which you can find
-// by running `niri msg outputs` while inside a niri instance.
-// The built-in laptop monitor is usually called "eDP-1".
-// Find more information on the wiki:
-// https://yalter.github.io/niri/Configuration:-Outputs
-// Remember to uncomment the node by removing "/-"!
-output "eDP-1" {
-    // Uncomment this line to disable this output.
-    // off
-
-    // Resolution and, optionally, refresh rate of the output.
-    // The format is "<width>x<height>" or "<width>x<height>@<refresh rate>".
-    // If the refresh rate is omitted, niri will pick the highest refresh rate
-    // for the resolution.
-    // If the mode is omitted altogether or is invalid, niri will pick one automatically.
-    // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-    // mode "1920x1080@60.00"
-
-    // You can use integer or fractional scale, for example use 1.5 for 150% scale.
+output "Samsung Display Corp. 0x419F Unknown" {
     scale 1.3
-
-    // Transform allows to rotate the output counter-clockwise, valid values are:
-    // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
-    transform "normal"
-
-    // Position of the output in the global coordinate space.
-    // This affects directional monitor actions like "focus-monitor-left", and cursor movement.
-    // The cursor can only move between directly adjacent outputs.
-    // Output scale and rotation has to be taken into account for positioning:
-    // outputs are sized in logical, or scaled, pixels.
-    // For example, a 3840×2160 output with scale 2.0 will have a logical size of 1920×1080,
-    // so to put another output directly adjacent to it on the right, set its x to 1920.
-    // If the position is unset or results in an overlap, the output is instead placed
-    // automatically.
     position x=0 y=0
 }
 output "Dell Inc. DELL U3223QE JVRK1H3" {
     mode "3840x2160@59.996"
     scale 1.2
     transform "normal"
-    position x=1920 y=0
-    // off
+    position x=2216 y=0
 }
 output "Dell Inc. DELL S2722QC H9BQLD3" {
     mode "3840x2160@30.00"
-    // mode "2560x1440@59.951"
     scale 1.2
     transform "normal"
-    position x=5120 y=0
+    position x=5416 y=0
 }
 output "Samsung Electric Company LS27A80 H4ZT100368" {
     mode "3840x2160@60.00"
-    scale 1.3
-    position x=1920 y=0
+    scale 1.2
+    position x=2216 y=0
 }
 output "Samsung Electric Company LS27A80 H4ZRC00472" {
     mode "3840x2160@30.00"
-    scale 1.3
-    position x=4874 y=0
+    scale 1.2
+    position x=5416 y=0
 }
 
-
-// To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
-// spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
-
-// Add lines like this to spawn processes at startup.
-// Note that running niri as a session supports xdg-desktop-autostart,
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
-spawn-at-startup "swayidle" "-w" "timeout" "601" "niri msg action power-off-monitors" "timeout" "600" "swaylock -f" "before-sleep" "swaylock -f"
+spawn-at-startup "swayidle" "-w" "timeout" "600" "niri msg action power-off-monitors" "timeout" "300" "swaylock-fancy -p" "before-sleep" "swaylock-fancy -p"
 spawn-at-startup "swaybg" "-i" "/home/jk/wallpaper.jpg" "-m" "fill"
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
 spawn-at-startup "bash" "/home/jk/.config/niri/fix-monitors.sh"
 spawn-at-startup "1password" " --ozone-platform=wayland" "--silent"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+
+// Apps
+spawn-at-startup "/usr/bin/obsidian" "-enable-features=UseOzonePlatform" "-ozone-platform=wayland"
+spawn-at-startup "/usr/bin/slack" "--disable-gpu-compositing" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" "--enable-wayland-ime" "--enable-features=WebRTCPipeWireCapturer" "--enable-features=WaylandWindowDecorations" "--disable-features=WaylandFractionalScaleV1"
 
 environment {
   XDG_SESSION_TYPE "wayland"
@@ -88,9 +52,7 @@ environment {
   DISPLAY ":0"
 }
 
-// Input device configuration.
-// Find the full list of options on the wiki:
-// https://yalter.github.io/niri/Configuration:-Input
+// Input device configuration. https://yalter.github.io/niri/Configuration:-Input
 input {
     keyboard {
         xkb {
@@ -119,7 +81,6 @@ input {
     // Omitting settings disables them, or leaves them at their default values.
     // All commented-out settings here are examples, not defaults.
     touchpad {
-        // off
         tap
         // dwt
         // dwtp
@@ -367,7 +328,7 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
     Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock-fancy -p"; }
     Mod+b hotkey-overlay-title="Start Brave" { spawn "brave"; }
     Mod+g hotkey-overlay-title="Start Google" { spawn "google-chrome-stable"; }
 
