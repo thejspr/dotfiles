@@ -4,7 +4,8 @@
   "position": "top",
   "spacing": 10,
   "height": 26,
-  "modules-left": ["niri/workspaces", "wlr/taskbar"],
+  // "modules-left": ["niri/workspaces", "wlr/taskbar"],
+  "modules-left": ["niri/workspaces"],
   "modules-center": ["niri/window"],
   "modules-right": [
     "tray",

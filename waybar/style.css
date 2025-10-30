@@ -1,154 +1,116 @@
 * {
-  border: none;
-  font-family: "CaskaydiaMono Nerd Font";
-  font-size: 15px;
-  min-height: 5px;
+    font-family: "Fira Sans Semibold", "Font Awesome 6 Free", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
 }
 
 window#waybar {
-  background: rgba(10, 10, 30, 0.85);
+    background-color: #0f1117;
+    font-size: 14px;
+    border-radius: 0px;
+    margin: 0px;
+    padding: 0;
 }
 
-window#waybar.hidden {
-  opacity: 0.1;
-}
-
-#custom-archicon,
-#clock,
-#cpu,
-#memory,
-#disk,
-#battery,
-#idle_inhibitor,
-#pulseaudio,
-#network {
-  color: #ffffff;
-  margin-top: 6px;
-  margin-bottom: 6px;
-  padding-left: 10px;
-  padding-right: 10px;
-  transition: none;
-}
-
-#custom-archicon,
-#cpu,
-#idle_inhibitor {
-  margin-left: 5px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-}
-
-#custom-archicon {
-  color: cornflowerblue;
-}
-
-#clock,
-#battery,
-#language {
-  margin-right: 5px;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-
-#custom-archicon {
-  font-size: 20px;
-  background: #262626; /* visible grey */
-  padding-right: 17px;
-}
-
+/* Right-most: Clock */
 #clock {
-  background: #2a2a2a;
+    font-size: 14px;
+    background-color: #1e222a;
+    color: #c0c0c0;
+    border-radius: 0px;
+    padding: 0px 8px;
 }
 
-#cpu {
-  background: #2b2b2b;
+/* Active window title */
+#window {
+    font-size: 14px;
+    color: #e0e0e0;
+    border-radius: 0px;
+    padding: 4px 12px;
+    background-color: #1e222a;
 }
 
-#memory {
-  background: #2c2c2c;
+/* Workspace container */
+#niri-workspaces {
+    background: #1e222a;
+    font-weight: bold;
+    border-radius: 0px;
+    font-size: 8px;
+    color: #e0e0e0;
 }
 
-#disk {
-  background: #2d2d2d;
-}
-
-#battery {
-  background: #262626;
-}
-
-#workspaces {
-  background: #1f1f1f;
-  border-radius: 10px;
-  margin: 6px 5px;
-  padding: 0px 6px;
-}
-
-#workspaces button {
-  color: #ffffff;
-  background: transparent;
-  padding: 4px 4px;
-  margin: 0px 6px;
-  transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
-}
-
-#workspaces button.occupied {
-  color: #bbbbbb;
+/* Individual workspace buttons */
+#niri-workspaces button {
+    border-radius: 0px;
+    font-size: 8px;
 }
 
 #workspaces button.active {
-  color: #ffffff;
-  text-shadow: 0 0 6px #ff0000;
+    border-radius: 0px;
+    color: #0f1117;
+    background: #00ac89;
 }
 
 #workspaces button:hover {
-  color: #ff0000;
+    border-radius: 0px;
+    background: #0d3531;
+    border-width: 0px;
 }
 
+/* Power/exit button */
+#custom-exit {
+    background-color: #00ac89;
+    font-size: 14px;
+    font-weight: 800;
+    color: #0f1117;
+    padding: 0px 6px;
+    margin: 2px 2px 2px 0;
+}
+
+/* Tooltips */
+tooltip {
+    border-radius: 12px;
+    background-color: #0f1117;
+    color: #c0c0c0;
+    padding: 4px 8px;
+}
+
+/* Taskbar */
 #taskbar {
-  background: transparent;
-  border-radius: 10px;
-  padding: 0px 5px;
-  margin: 6px 5px;
+    background-color: #1e222a;
+    margin: 0px;
+    border-radius: 0px;
+    font-weight: normal;
 }
 
-#taskbar button {
-  padding: 0px 5px;
-  margin: 0px 3px;
-  border-radius: 6px;
-  transition: background 0.3s ease;
-  color: #ffffff;
+/* All system info modules */
+#backlight,
+#pulseaudio,
+#network,
+#bluetooth,
+#battery,
+#tray,
+#custom-updates,
+#language,
+#cpu,
+#custom-powermenu,
+#custom-notification {
+    background-color: #1e222a;
+    font-size: 14px;
+    font-weight: 800;
+    color: #c0c0c0;
+    border-radius: 0px;
+    padding: 4px 10px;
 }
 
-#taskbar button.active {
-  background: rgba(255, 0, 0, 0.2);
-  color: #ff0000;
-}
-
-#taskbar button:hover {
-  background: rgba(255, 0, 0, 0.3);
-  color: #ff0000;
-}
-
-#idle_inhibitor {
-  background: #282828;
-  padding-right: 15px;
-  color: #ffffff;
-}
-
-#pulseaudio {
-  background: #292929;
-  color: #ffffff;
-}
-
-#network {
-  background: #242424;
-  padding-right: 13px;
-  color: #ffffff;
+/* Battery critical warning */
+#battery.critical:not(.charging) {
+    background-color: #e65100;
+    color: #ffffff;
+    animation: blink 0.5s linear infinite alternate;
 }
 
 @keyframes blink {
-to {
-  background-color: #ff0000;
-  color: #ffffff;
-}
+    to {
+        background-color: #0f1117;
+        color: #ffffff;
+    }
 }

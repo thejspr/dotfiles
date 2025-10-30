@@ -38,6 +38,7 @@ spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
 spawn-at-startup "bash" "/home/jk/.config/niri/fix-monitors.sh"
 spawn-at-startup "1password" " --ozone-platform=wayland" "--silent"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+spawn-at-startup "niriswitcher"
 
 // Apps
 spawn-at-startup "/usr/bin/obsidian" "-enable-features=UseOzonePlatform" "-ozone-platform=wayland"
@@ -498,6 +499,8 @@ binds {
 
     // Switches focus between the current and the previous workspace.
     // Mod+Tab { focus-workspace-previous; }
+    Alt+Tab repeat=false { spawn "niriswitcherctl" "show" "--window"; }
+    Alt+Shift+Tab repeat=false { spawn "niriswitcherctl" "show" "--window"; }
 
     // The following binds move the focused window in and out of a column.
     // If the window is alone, they will consume it into the nearby column to the side.
