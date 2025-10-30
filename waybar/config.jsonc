@@ -4,19 +4,44 @@
   "position": "top",
   "spacing": 10,
   "height": 26,
-  "modules-left": ["niri/workspaces"],
+  "modules-left": ["niri/workspaces", "wlr/taskbar"],
   "modules-center": ["niri/window"],
   "modules-right": [
     "tray",
     "niri/language",
     "bluetooth",
-    // "network",
     "pulseaudio",
     "cpu",
     "battery",
     "clock",
     "custom/powermenu"
   ],
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 18,
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+    // "ignore-list": ["Alacritty", "kitty", "ghostty"],
+    "app_ids-mapping": {
+      "firefoxdeveloperedition": "firefox-developer-edition"
+    },
+    "rewrite": {
+      "Firefox Web Browser": "Firefox"
+    }
+  },
+  "niri/window": {
+    "format": "{}",
+    "rewrite": {
+      "(.*) - Brave": "$1",
+      "(.*) - Chromium": "$1",
+      "(.*) - Brave Search": "$1",
+      "(.*) - Outlook": "$1",
+      "(.*) Microsoft Teams": "$1"
+    },
+    "separate-outputs": true
+  },
+
   "niri/language": {
     "format": "{short}",
   },
@@ -29,19 +54,6 @@
     "format": "{:L%d %b %H:%M}",
     "tooltip": false,
     "on-click": "ags -t calendar"
-  },
-  "network": {
-    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
-    "format": "{icon}",
-    "format-wifi": "{icon}",
-    "format-ethernet": "󰀂",
-    "format-disconnected": "󰤮",
-    "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
-    "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
-    "tooltip-format-disconnected": "Disconnected",
-    "interval": 3,
-    "spacing": 1,
-    "on-click": "alacritty --class=Float -e impala"
   },
   "battery": {
     "format": "{capacity}% {icon}",
