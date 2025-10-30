@@ -7,15 +7,17 @@
   "modules-left": ["niri/workspaces"],
   "modules-center": ["niri/window"],
   "modules-right": [
+    "tray",
     "niri/language",
     "bluetooth",
-    "network",
+    // "network",
     "pulseaudio",
     "cpu",
     "battery",
-    "clock"
+    "clock",
+    "custom/powermenu"
   ],
-  "hyprland/language": {
+  "niri/language": {
     "format": "{short}",
   },
   "cpu": {
@@ -25,8 +27,8 @@
   },
   "clock": {
     "format": "{:L%d %b %H:%M}",
-    "format-alt": "{:L%d %B W%V %Y}",
     "tooltip": false,
+    "on-click": "ags -t calendar"
   },
   "network": {
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
@@ -54,10 +56,9 @@
     "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
     "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
     "interval": 5,
-    "on-click": "omarchy-menu power",
     "states": {
-      "warning": 20,
-      "critical": 10
+      "warning": 30,
+      "critical": 15
     }
   },
   "bluetooth": {
@@ -65,7 +66,8 @@
     "format-disabled": "󰂲",
     "format-connected": "",
     "tooltip-format": "Devices connected: {num_connections}",
-    "on-click": "blueberry"
+    "on-click": "blueberry",
+    "interval": 30
   },
   "pulseaudio": {
     "format": "{icon}",
@@ -82,49 +84,9 @@
     "icon-size": 12,
     "spacing": 12
   },
-  "group/group-power": {
-    "orientation": "inherit",
-    "drawer": {
-        "transition-duration": 500,
-        "children-class": "not-power",
-        "transition-left-to-right": true
-    },
-    "modules": [
-        "custom/power",
-        "custom/suspend",
-        // "custom/quit",
-        "custom/lock",
-        "custom/reboot"
-    ]
-  },
-  "custom/suspend": {
-      "format": "󰍃 ",
-      "tooltip": true,
-      "tooltip-format": "Suspend",
-      "on-click": "suspend"
-  },
-  "custom/quit": {
-      "format": "󰗼 ",
-      "tooltip": true,
-      "tooltip-format": "Exit Niri Session",
-      "on-click": "niri msg action quit"
-  },
-  "custom/lock": {
-      "format": "󰍁 ",
-      "tooltip": true,
-      "tooltip-format": "Lock",
-      "on-click": "swaylock-cmd"
-  },
-  "custom/reboot": {
-      "format": "󰜉 ",
-      "tooltip": true,
-      "tooltip-format": "Reboot",
-      "on-click": "reboot"
-  },
-  "custom/power": {
-      "format": "   ",
-      "tooltip": true,
-      "tooltip-format": "Power Off",
-      "on-click": "poweroff"
+  "custom/powermenu": {
+    "format": " 󰐥 ",
+    "on-click": "~/.config/waybar/power-menu.sh",
+    "tooltip-format": "Power Menu"
   }
 }
