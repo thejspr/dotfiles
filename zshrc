@@ -1,6 +1,7 @@
 # zmodload zsh/zprof # uncomment for zsh startup testing `time  zsh -i -c exit`
 [ -x "$(command -v starship)" ] && eval "$(starship init zsh)"
 
+export GPG_TTY=$(tty)
 export LANG=en_US.UTF-8
 export PATH_TO_TOOLCHAIN="$HOME/clearhaus/toolchain"
 export PATH_TO_TOOLCHAIN="$HOME/clearhaus/pci-local-procesr-stack"

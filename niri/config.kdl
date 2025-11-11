@@ -30,20 +30,6 @@ output "Samsung Electric Company LS27A80 H4ZRC00472" {
     position x=5416 y=0
 }
 
-spawn-at-startup "waybar"
-spawn-at-startup "mako"
-spawn-at-startup "swayidle" "-w" "timeout" "600" "niri msg action power-off-monitors" "timeout" "300" "swaylock-fancy -p" "before-sleep" "swaylock-fancy -p"
-spawn-at-startup "swaybg" "-i" "/home/jk/wallpaper.jpg" "-m" "fill"
-spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
-spawn-at-startup "bash" "/home/jk/.config/niri/fix-monitors.sh"
-spawn-at-startup "1password" " --ozone-platform=wayland" "--silent"
-spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-spawn-at-startup "niriswitcher"
-
-// Apps
-spawn-at-startup "/usr/bin/obsidian" "-enable-features=UseOzonePlatform" "-ozone-platform=wayland"
-spawn-at-startup "/usr/bin/slack" "--disable-gpu-compositing" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" "--enable-wayland-ime" "--enable-features=WebRTCPipeWireCapturer" "--enable-features=WaylandWindowDecorations" "--disable-features=WaylandFractionalScaleV1"
-
 environment {
   XDG_SESSION_TYPE "wayland"
   GDK_BACKEND "wayland"
@@ -52,6 +38,21 @@ environment {
   XDG_CURRENT_DESKTOP "niri"
   DISPLAY ":0"
 }
+
+spawn-at-startup "waybar"
+spawn-at-startup "mako"
+spawn-at-startup "swaybg" "-i" "/home/jk/wallpaper.jpg" "-m" "fill"
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
+spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
+spawn-sh-at-startup "swayidle -w timeout 600 niri msg action power-off-monitors timeout 300 swaylock before-sleep swaylock"
+spawn-sh-at-startup "/home/jk/.config/niri/fix-monitors.sh"
+
+// Apps
+spawn-at-startup "obsidian" "-enable-features=UseOzonePlatform" "-ozone-platform=wayland"
+spawn-at-startup "slack" "--disable-gpu-compositing" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" "--enable-wayland-ime" "--enable-features=WebRTCPipeWireCapturer" "--enable-features=WaylandWindowDecorations" "--disable-features=WaylandFractionalScaleV1"
+spawn-at-startup "ghostty"
+spawn-at-startup "1password" " --ozone-platform=wayland" "--silent"
 
 // Input device configuration. https://yalter.github.io/niri/Configuration:-Input
 input {
@@ -118,7 +119,7 @@ input {
 
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
-    focus-follows-mouse max-scroll-amount="0%"
+    focus-follows-mouse// max-scroll-amount="0%"
 }
 
 // Settings that influence how windows are positioned and sized.
@@ -126,7 +127,7 @@ input {
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 8
+    gaps 2
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -174,7 +175,7 @@ layout {
         // off
 
         // How many logical pixels the ring extends out from the windows.
-        width 4
+        width 2
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -212,7 +213,7 @@ layout {
         // If you enable the border, you probably want to disable the focus ring.
         off
 
-        width 4
+        width 2
         active-color "#ffc87f"
         inactive-color "#505050"
 
@@ -279,7 +280,7 @@ layout {
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
-    // skip-at-startup
+    skip-at-startup
 }
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
@@ -292,7 +293,7 @@ prefer-no-csd
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
 // The path is formatted with strftime(3) to give you the screenshot date and time.
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+screenshot-path "~/Pictures/Screenshots/screenshot-%Y-%m-%d %H-%M-%S.png"
 
 // You can also set this to null to disable saving screenshots to disk.
 // screenshot-path null
@@ -302,7 +303,7 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 // https://yalter.github.io/niri/Configuration:-Animations
 animations {
     // Uncomment to turn off all animations.
-    // off
+    off
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
     // slowdown 3.0
@@ -327,9 +328,9 @@ binds {
     Super+P hotkey-overlay-title="Fix Monitors" { spawn-sh "playerctl play-pause"; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal" { spawn "ghostty"; }
     Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock-fancy -p"; }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn-sh "swaylock"; }
     Mod+b hotkey-overlay-title="Start Brave" { spawn "brave"; }
     Mod+g hotkey-overlay-title="Start Google" { spawn "google-chrome-stable"; }
 
@@ -347,6 +348,12 @@ binds {
     XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
     XF86AudioPause        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
     XF86AudioPlay         allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
+    XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
+    Super+Right allow-when-locked=true { spawn-sh "playerctl next"; }
+    Super+Left allow-when-locked=true { spawn-sh "playerctl previous"; }
+    Super+Up allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
+    Super+Down allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
 
     // Example brightness key mappings for brightnessctl.
     // You can use regular spawn with multiple arguments too (to avoid going through "sh"),
@@ -498,9 +505,9 @@ binds {
     // Mod+Ctrl+1 { move-window-to-workspace 1; }
 
     // Switches focus between the current and the previous workspace.
-    // Mod+Tab { focus-workspace-previous; }
-    Alt+Tab repeat=false { spawn "niriswitcherctl" "show" "--window"; }
-    Alt+Shift+Tab repeat=false { spawn "niriswitcherctl" "show" "--window"; }
+    Alt+Tab { focus-workspace-previous; }
+    // Alt+Tab repeat=false { spawn "niriswitcherctl" "show" "--window"; }
+    // Alt+Shift+Tab repeat=false { spawn "niriswitcherctl" "show" "--window"; }
 
     // The following binds move the focused window in and out of a column.
     // If the window is alone, they will consume it into the nearby column to the side.
@@ -583,6 +590,10 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
+}
+
+switch-events {
+  lid-close { spawn "swaylock"; }
 }
 
 // Window rules let you adjust behavior for individual windows.

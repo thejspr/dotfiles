@@ -152,4 +152,5 @@ nnoremap <Leader>c :Econtroller<space>
 noremap <f1> <Nop>
 nnoremap <silent> gx :!xdg-open '<cWORD>'<cr>
 nnoremap Y yy
+set mousescroll=ver:1
 " }}}
