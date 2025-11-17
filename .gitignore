@@ -9,3 +9,4 @@ hypr/local.conf
 .stversions
 .stfolder
 bin/asdf
+nvim/nvim

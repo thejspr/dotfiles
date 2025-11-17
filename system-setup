@@ -4,10 +4,9 @@
 sudo pacman -Syu --noconfirm
 sudo yay -S --noconfirm \
   spotify \
-  # pipewire \
-  # pipewire-pulse \
-  # pipewire-jack \
-  # wireplumber \
+  fuzzel \
+  ghostty \
+  starship \
   tmux \
   slack-desktop \
   github-cli \

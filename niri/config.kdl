@@ -3,8 +3,9 @@
 // Check the wiki for a full description of the configuration:
 // https://yalter.github.io/niri/Configuration:-Introduction
 
-output "Samsung Display Corp. 0x419F Unknown" {
-    scale 1.3
+// priv
+output "Lenovo Group Limited 0x40A9 Unknown" {
+    scale 1
     position x=0 y=0
 }
 output "Dell Inc. DELL U3223QE JVRK1H3" {
@@ -18,6 +19,11 @@ output "Dell Inc. DELL S2722QC H9BQLD3" {
     scale 1.2
     transform "normal"
     position x=5416 y=0
+}
+// work
+output "Samsung Display Corp. 0x41A0 Unknown" {
+    scale 1.3
+    position x=0 y=0
 }
 output "Samsung Electric Company LS27A80 H4ZT100368" {
     mode "3840x2160@60.00"
@@ -36,12 +42,12 @@ environment {
   QT_QPA_PLATFORM "wayland"
   MOZ_ENABLE_WAYLAND "1"
   XDG_CURRENT_DESKTOP "niri"
-  DISPLAY ":0"
+  // DISPLAY ":0"
 }
 
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
-spawn-at-startup "swaybg" "-i" "/home/jk/wallpaper.jpg" "-m" "fill"
+spawn-at-startup "swaybg" "-i" "~/wallpaper.jpg" "-m" "fill"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-at-startup "swayidle" "-w" "timeout" "600" "niri" "msg" "action" "power-off-monitors" "timeout" "300" "swaylock" "before-sleep" "swaylock"
 spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
@@ -51,7 +57,7 @@ spawn-sh-at-startup "/home/jk/.config/niri/fix-monitors.sh"
 // Apps
 spawn-at-startup "obsidian" "-enable-features=UseOzonePlatform" "-ozone-platform=wayland"
 spawn-at-startup "slack" "--disable-gpu-compositing" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" "--enable-wayland-ime" "--enable-features=WebRTCPipeWireCapturer" "--enable-features=WaylandWindowDecorations" "--disable-features=WaylandFractionalScaleV1"
-spawn-at-startup "ghostty"
+spawn-at-startup "ghostty" "-e" "tmux"
 spawn-at-startup "1password" " --ozone-platform=wayland" "--silent"
 
 // Input device configuration. https://yalter.github.io/niri/Configuration:-Input
