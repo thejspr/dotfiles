@@ -43,9 +43,9 @@ spawn-at-startup "waybar"
 spawn-at-startup "mako"
 spawn-at-startup "swaybg" "-i" "/home/jk/wallpaper.jpg" "-m" "fill"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+spawn-at-startup "swayidle" "-w" "timeout" "600" "niri" "msg" "action" "power-off-monitors" "timeout" "300" "swaylock" "before-sleep" "swaylock"
 spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
 spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
-spawn-sh-at-startup "swayidle -w timeout 600 niri msg action power-off-monitors timeout 300 swaylock before-sleep swaylock"
 spawn-sh-at-startup "/home/jk/.config/niri/fix-monitors.sh"
 
 // Apps
@@ -328,7 +328,7 @@ binds {
     Super+P hotkey-overlay-title="Fix Monitors" { spawn-sh "playerctl play-pause"; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+Return hotkey-overlay-title="Open a Terminal" { spawn "ghostty"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal" { spawn "ghostty" "-e" "tmux"; }
     Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn-sh "swaylock"; }
     Mod+b hotkey-overlay-title="Start Brave" { spawn "brave"; }
