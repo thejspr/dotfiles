@@ -21,6 +21,7 @@ FILES = {
   'nvim' => '.config/nvim',
   'waybar' => '.config/waybar',
   'alacritty.toml' => '.config/alacritty/alacritty.toml',
+  'ghostty' => '.config/ghostty',
 }.freeze
 
 FILES.each do |file, target|

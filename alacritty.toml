@@ -1,4 +1,4 @@
-general.import = [ "~/.config/alacritty/themes/themes/solarized_light.toml" ]
+general.import = [ "~/.config/alacritty/themes/themes/solarized_dark.toml" ]
 
 [env]
 TERM = "xterm-256color"
