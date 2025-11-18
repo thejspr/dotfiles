@@ -42,17 +42,18 @@ environment {
   QT_QPA_PLATFORM "wayland"
   MOZ_ENABLE_WAYLAND "1"
   XDG_CURRENT_DESKTOP "niri"
-  // DISPLAY ":0"
+  DISPLAY ":0"
 }
 
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
-spawn-at-startup "swaybg" "-i" "~/wallpaper.jpg" "-m" "fill"
+spawn-at-startup "aww-daemon && awww img /home/jk/wallpapers/wallpaper.jpg"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-at-startup "swayidle" "-w" "timeout" "600" "niri" "msg" "action" "power-off-monitors" "timeout" "300" "swaylock" "before-sleep" "swaylock"
 spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
 spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
 spawn-sh-at-startup "/home/jk/.config/niri/fix-monitors.sh"
+spawn-sh-at-startup "/home/jk/.config/niri/wallpaper.sh"
 
 // Apps
 spawn-at-startup "obsidian" "-enable-features=UseOzonePlatform" "-ozone-platform=wayland"
