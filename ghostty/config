@@ -47,7 +47,7 @@
 # # which is explained in the docs for that config option.
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
-initial-command = tmux new-session
+# initial-command = tmux new-session
 theme = dark:Solarized Osaka Night, light:Solarized Osaka Day
 font-family = CaskaydiaMono NF Regular
 font-size = 12

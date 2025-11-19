@@ -22,6 +22,7 @@ FILES = {
   'waybar' => '.config/waybar',
   'alacritty.toml' => '.config/alacritty/alacritty.toml',
   'ghostty' => '.config/ghostty',
+  'starship.toml' => '.config/starship.toml'
 }.freeze
 
 FILES.each do |file, target|
