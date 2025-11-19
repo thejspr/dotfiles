@@ -21,7 +21,7 @@ output "Dell Inc. DELL S2722QC H9BQLD3" {
     position x=5416 y=0
 }
 // work
-output "Samsung Display Corp. 0x41A0 Unknown" {
+output "Samsung Display Corp. 0x419F Unknown" {
     scale 1.3
     position x=0 y=0
 }

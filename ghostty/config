@@ -50,5 +50,6 @@
 initial-command = tmux new-session
 theme = dark:Solarized Osaka Night, light:Solarized Osaka Day
 font-family = CaskaydiaMono NF Regular
+font-size = 12
 keybind = performable:ctrl+c=copy_to_clipboard
 copy-on-select = clipboard

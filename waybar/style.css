@@ -8,6 +8,7 @@ window#waybar {
     border-radius: 0px;
     margin: 0px;
     padding: 0;
+    margin: 0;
 }
 
 /* Right-most: Clock */
@@ -52,17 +53,6 @@ window#waybar {
 #workspaces button:hover {
     border-radius: 0px;
     background: #0d3531;
-    border-width: 0px;
-}
-
-/* Power/exit button */
-#custom-exit {
-    background-color: #00ac89;
-    font-size: 14px;
-    font-weight: 800;
-    color: #0f1117;
-    padding: 0px 6px;
-    margin: 2px 2px 2px 0;
 }
 
 /* Tooltips */
