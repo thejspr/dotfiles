@@ -151,6 +151,7 @@ nnoremap <Leader>c :Econtroller<space>
 " New stuff {{{
 noremap <f1> <Nop>
 nnoremap <silent> gx :!xdg-open '<cWORD>'<cr>
-nnoremap Y yy
+vnoremap Y "+y
+nnoremap Y "+Y
 set mousescroll=ver:1
 " }}}
