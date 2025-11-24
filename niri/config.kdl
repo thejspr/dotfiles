@@ -47,7 +47,7 @@ environment {
 
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
-spawn-at-startup "aww-daemon && awww img /home/jk/wallpapers/wallpaper.jpg"
+spawn-at-startup "awww-daemon && awww img ~/wallpapers/wallpaper.jpg"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-sh-at-startup "swayidle -w timeout 600 'niri msg action power-off-monitors' timeout 300 swaylock before-sleep swaylock"
 spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
