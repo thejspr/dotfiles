@@ -30,7 +30,7 @@ return require('lazy').setup({
       },
       input = { enabled = true },
       notifier = { enabled = false },
-      picker = { enabled = true },
+      picker = { enabled = false },
       quickfile = { enabled = true },
       scope = { enabled = true },
       scroll = { enabled = false },
@@ -76,17 +76,6 @@ return require('lazy').setup({
     -- optional for floating window border decoration
     dependencies = {
       'nvim-lua/plenary.nvim',
-    },
-  },
-  {
-    "f-person/git-blame.nvim",
-    event = "VeryLazy",
-    opts = {
-        enabled = false,  -- if you want to enable the plugin
-        message_template = " <summary> • <date> • <author> • <<sha>>", -- template for the blame message, check the Message template section for more options
-        date_format = "%m-%d-%Y %H:%M:%S", -- template for the date, check Date format section for more options
-        virtual_text_column = 1,  -- virtual text start column, check Start virtual text at column section for more options
-        message_when_not_committed = "", -- message when the file is not committed
     },
   },
 
@@ -262,13 +251,12 @@ return require('lazy').setup({
     end
   },
   'catppuccin/nvim',
-  'maxmx03/solarized.nvim',
   {
     "craftzdog/solarized-osaka.nvim",
     lazy = false,
     priority = 1000,
     opts = {},
-  },  
+  },
 
   {
     'lewis6991/gitsigns.nvim',

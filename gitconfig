@@ -60,7 +60,7 @@
   pushNonFastForward = false
   statusHints = false
 [gc]
-  auto = 1
+  auto = 256
 [mergetool]
   prompt = false
   keepBackup = false

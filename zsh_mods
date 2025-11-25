@@ -1,4 +1,3 @@
-export HISTCONTROL=ignoreboth:erasedups
 export EDITOR='nvim'
 export BUNDLER_EDITOR='nvim'
 export PATH="$PATH:$PWD/bin:$HOME/.cargo/bin:$HOME/bin:$HOME/clearhaus/bin:$HOME/go/bin"
