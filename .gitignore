@@ -10,3 +10,4 @@ hypr/local.conf
 .stfolder
 bin/asdf
 nvim/nvim
+.claude
