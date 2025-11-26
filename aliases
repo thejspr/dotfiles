@@ -7,6 +7,7 @@ alias ghe='gh copilot explain'
 alias en='e ~/.config/niri/config.kdl'
 alias claudec='claude --continue'
 alias cc='claude --continue'
+alias dc='docker compose'
 
 #system
 alias e='$EDITOR'
