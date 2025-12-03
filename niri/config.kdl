@@ -43,6 +43,7 @@ environment {
   MOZ_ENABLE_WAYLAND "1"
   XDG_CURRENT_DESKTOP "niri"
   DISPLAY ":0"
+  ELECTRON_OZONE_PLATFORM_HINT "auto"
 }
 
 spawn-at-startup "waybar"
@@ -55,7 +56,7 @@ spawn-sh-at-startup "/home/jk/.config/niri/fix-monitors.sh"
 spawn-sh-at-startup "/home/jk/.config/niri/wallpaper.sh"
 
 // Apps
-spawn-at-startup "obsidian" "-enable-features=UseOzonePlatform" "-ozone-platform=wayland"
+spawn-at-startup "obsidian"// "-enable-features=UseOzonePlatform" "-ozone-platform=wayland"
 spawn-at-startup "slack" "--disable-gpu-compositing" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" "--enable-wayland-ime" "--enable-features=WebRTCPipeWireCapturer" "--enable-features=WaylandWindowDecorations" "--disable-features=WaylandFractionalScaleV1"
 spawn-at-startup "ghostty" "-e" "tmux"
 spawn-at-startup "1password" " --ozone-platform=wayland" "--silent"

@@ -94,6 +94,7 @@ return require('lazy').setup({
   {
     "olimorris/codecompanion.nvim",
     opts = {
+      ignore_warnings = true,
       inline = {
         adapter = "anthropic",
       }
