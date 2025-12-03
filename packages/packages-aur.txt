@@ -1,0 +1,15 @@
+1password
+1password-cli
+aws-cli-bin
+aws-console-git
+aws-session-manager-plugin
+awww-git
+debtap
+gitify
+git-secrets
+google-chrome
+grype-bin
+niriswitcher
+slack-desktop-wayland
+spotify
+sunsetr
