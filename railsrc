@@ -1,1 +1,1 @@
---database=sqlite3 --skip-jbuilder --css=tailwind --skip-kamal --skip-rubocop --skip-brakeman
+--database=postgresql --skip-jbuilder --css=tailwind --skip-kamal --skip-rubocop --skip-brakeman --skip-thruster --skip-bundler-audit --skip-action-text
