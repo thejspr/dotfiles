@@ -24,6 +24,7 @@ FILES = {
   'ghostty' => '.config/ghostty',
   'starship.toml' => '.config/starship.toml',
   'swaylock' => '.config/swaylock',
+  'satty' => '.config/satty',
 }.freeze
 
 FILES.each do |file, target|
