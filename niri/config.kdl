@@ -577,7 +577,8 @@ binds {
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
 
-    Mod+x { screenshot; }
+    Mod+x { spawn-sh "~/dotfiles/bin/screenshot"; }
+    // Mod+x { screenshot; }
     // Ctrl+Print { screenshot-screen; }
     // Alt+Print { screenshot-window; }
 
