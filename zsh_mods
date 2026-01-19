@@ -15,6 +15,7 @@ eval "$(mise activate zsh)"
 # Alias and function definitions.
 . ~/dotfiles/aliases
 . ~/clearhaus/.secrets
+. ~/clearhaus/.terraform-helpers
 
 fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then
