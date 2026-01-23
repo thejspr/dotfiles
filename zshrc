@@ -13,6 +13,3 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 source ~/dotfiles/zsh_mods
 # zprof
-
-# opencode
-export PATH=/home/jk/.opencode/bin:$PATH

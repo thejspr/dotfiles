@@ -1,5 +1,6 @@
 # new stuff
-alias dokku='$HOME/.dokku/contrib/dokku_client.sh'
+
+[ ! "$(command -v dokku)" ] && alias dokku='$HOME/.dokku/contrib/dokku_client.sh'
 alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias open='xdg-open'
 alias ghs='gh copilot suggest'
