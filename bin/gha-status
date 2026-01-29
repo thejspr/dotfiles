@@ -1,0 +1,93 @@
+#!/bin/bash
+
+# Script to check GitHub Actions status across repositories
+# Usage: gh-status [path] [--verbose]
+#        gh-status [--verbose] [path]
+
+VERBOSE=false
+SEARCH_PATH="$HOME/code"
+
+# Parse arguments
+for arg in "$@"; do
+    case $arg in
+        --verbose)
+            VERBOSE=true
+            ;;
+        *)
+            if [[ -d "$arg" ]]; then
+                SEARCH_PATH="$arg"
+            fi
+            ;;
+    esac
+done
+
+echo "Checking GitHub Actions status for repositories in $SEARCH_PATH..."
+echo "=================================================="
+
+# Find git repositories in top-level folders of the specified path only
+find "$SEARCH_PATH" -maxdepth 2 -name ".git" -type d | while read git_dir; do
+    repo_dir=$(dirname "$git_dir")
+    repo_name=$(basename "$repo_dir")
+    
+    cd "$repo_dir" || continue
+    
+    # Get the remote URL and extract owner/repo
+    remote_url=$(git remote get-url origin 2>/dev/null)
+    if [[ -z "$remote_url" ]]; then
+        echo "❌ $repo_name: No remote origin found"
+        continue
+    fi
+    
+    # Extract owner/repo from GitHub URL
+    if [[ "$remote_url" =~ github\.com[:/]([^/]+)/([^/.]+) ]]; then
+        owner="${BASH_REMATCH[1]}"
+        repo="${BASH_REMATCH[2]}"
+    else
+        echo "❌ $repo_name: Not a GitHub repository"
+        continue
+    fi
+    
+    echo "📁 $repo_name ($owner/$repo)"
+    
+    # Check if GitHub CLI is authenticated
+    if ! gh auth status >/dev/null 2>&1; then
+        echo "   ⚠️  GitHub CLI not authenticated"
+        continue
+    fi
+    
+    # Get latest workflow runs
+    workflow_status=$(gh run list --repo "$owner/$repo" --limit 3 --json status,conclusion,workflowName,displayTitle,createdAt 2>/dev/null)
+    
+    if [[ $? -ne 0 ]]; then
+        echo "   ❌ Failed to fetch workflow runs (repository may be private or not exist)"
+        continue
+    fi
+    
+    if [[ "$workflow_status" == "[]" ]]; then
+        echo "   ℹ️  No workflow runs found"
+        continue
+    fi
+    
+    # Parse and display results
+    echo "$workflow_status" | jq -r '.[] | 
+        if .conclusion == "success" then "   ✅"
+        elif .conclusion == "failure" then "   ❌"
+        elif .conclusion == "cancelled" then "   🚫"
+        elif .status == "in_progress" then "   🔄"
+        else "   ⚪"
+        end + " " + .workflowName + 
+        (if .conclusion then " (" + .conclusion + ")" else " (" + .status + ")" end) +
+        " - " + .createdAt[:10]'
+    
+    if [[ "$VERBOSE" == "true" ]]; then
+        echo "$workflow_status" | jq -r '.[] | "      📝 " + .displayTitle'
+    fi
+    
+    echo
+done
+
+echo "=================================================="
+echo "Legend: ✅ Success | ❌ Failure | 🚫 Cancelled | 🔄 In Progress | ⚪ Other"
+if [[ "$VERBOSE" == "false" ]]; then
+    echo "Use --verbose flag to see commit titles"
+fi

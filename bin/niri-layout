@@ -1,0 +1,207 @@
+#!/bin/bash
+# niri-layout - Save and restore niri window layouts
+#
+# Usage:
+#   niri-layout save [name]     Save current layout (default: laptop)
+#   niri-layout restore [name]  Restore a saved layout
+#   niri-layout list            List saved layouts
+#   niri-layout show [name]     Show contents of a layout
+
+set -e
+
+LAYOUT_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/niri-layouts"
+DEFAULT_LAYOUT="laptop"
+
+mkdir -p "$LAYOUT_DIR"
+
+usage() {
+    echo "Usage: niri-layout <command> [name]"
+    echo ""
+    echo "Commands:"
+    echo "  save [name]     Save current window layout (default: $DEFAULT_LAYOUT)"
+    echo "  restore [name]  Restore windows to saved layout"
+    echo "  list            List saved layouts"
+    echo "  show [name]     Show contents of a saved layout"
+    exit 1
+}
+
+get_workspace_idx() {
+    local ws_id="$1"
+    local workspaces="$2"
+    echo "$workspaces" | jq -r --arg id "$ws_id" '.[] | select(.id == ($id | tonumber)) | .idx'
+}
+
+save_layout() {
+    local name="${1:-$DEFAULT_LAYOUT}"
+    local layout_file="$LAYOUT_DIR/$name.json"
+
+    local windows
+    windows=$(niri msg -j windows)
+
+    local workspaces
+    workspaces=$(niri msg -j workspaces)
+
+    # Build layout: map app_id to workspace index
+    # For apps with multiple windows, include title for disambiguation
+    local layout
+    layout=$(echo "$windows" | jq --argjson ws "$workspaces" '
+        # Create workspace id -> idx lookup
+        ($ws | map({(.id | tostring): .idx}) | add) as $ws_lookup |
+
+        # Group windows by app_id to detect duplicates
+        group_by(.app_id) |
+        map(
+            if length > 1 then
+                # Multiple windows with same app_id - include title
+                .[] | {
+                    app_id: .app_id,
+                    title: .title,
+                    workspace_idx: $ws_lookup[.workspace_id | tostring],
+                    is_floating: .is_floating
+                }
+            else
+                # Single window - app_id is enough
+                .[0] | {
+                    app_id: .app_id,
+                    title: null,
+                    workspace_idx: $ws_lookup[.workspace_id | tostring],
+                    is_floating: .is_floating
+                }
+            end
+        ) | flatten
+    ')
+
+    # Add metadata
+    local output
+    output=$(jq -n \
+        --arg name "$name" \
+        --arg date "$(date -Iseconds)" \
+        --argjson layout "$layout" \
+        '{
+            name: $name,
+            saved_at: $date,
+            windows: $layout
+        }')
+
+    echo "$output" > "$layout_file"
+    echo "Saved layout '$name' to $layout_file"
+    echo ""
+    echo "Windows saved:"
+    echo "$output" | jq -r '.windows[] | "  \(.app_id) -> workspace \(.workspace_idx)"'
+}
+
+restore_layout() {
+    local name="${1:-$DEFAULT_LAYOUT}"
+    local layout_file="$LAYOUT_DIR/$name.json"
+
+    if [[ ! -f "$layout_file" ]]; then
+        echo "Error: Layout '$name' not found at $layout_file"
+        echo "Available layouts:"
+        list_layouts
+        exit 1
+    fi
+
+    local saved_layout
+    saved_layout=$(cat "$layout_file")
+
+    local current_windows
+    current_windows=$(niri msg -j windows)
+
+    echo "Restoring layout '$name'..."
+    echo ""
+
+    # For each saved window config, find matching current window and move it
+    echo "$saved_layout" | jq -c '.windows[]' | while read -r saved_window; do
+        local app_id
+        app_id=$(echo "$saved_window" | jq -r '.app_id')
+
+        local saved_title
+        saved_title=$(echo "$saved_window" | jq -r '.title // empty')
+
+        local target_ws
+        target_ws=$(echo "$saved_window" | jq -r '.workspace_idx')
+
+        # Find matching window(s)
+        local matching_windows
+        if [[ -n "$saved_title" ]]; then
+            # Match by app_id and partial title match
+            matching_windows=$(echo "$current_windows" | jq -c --arg app "$app_id" --arg title "$saved_title" '
+                .[] | select(.app_id == $app and (.title | contains($title[0:30])))
+            ')
+        else
+            # Match by app_id only
+            matching_windows=$(echo "$current_windows" | jq -c --arg app "$app_id" '
+                .[] | select(.app_id == $app)
+            ')
+        fi
+
+        if [[ -z "$matching_windows" ]]; then
+            echo "  Skip: No window found for $app_id"
+            continue
+        fi
+
+        # Move each matching window
+        echo "$matching_windows" | while read -r window; do
+            local window_id
+            window_id=$(echo "$window" | jq -r '.id')
+
+            local window_title
+            window_title=$(echo "$window" | jq -r '.title')
+
+            echo "  Moving $app_id (id=$window_id) to workspace $target_ws"
+            niri msg action move-window-to-workspace "$target_ws" --window-id "$window_id" --focus false 2>/dev/null || true
+        done
+    done
+
+    echo ""
+    echo "Layout restored."
+}
+
+list_layouts() {
+    if [[ ! -d "$LAYOUT_DIR" ]] || [[ -z "$(ls -A "$LAYOUT_DIR" 2>/dev/null)" ]]; then
+        echo "No saved layouts found in $LAYOUT_DIR"
+        exit 0
+    fi
+
+    echo "Saved layouts:"
+    for f in "$LAYOUT_DIR"/*.json; do
+        [[ -f "$f" ]] || continue
+        local name
+        name=$(basename "$f" .json)
+        local date
+        date=$(jq -r '.saved_at // "unknown"' "$f")
+        local count
+        count=$(jq '.windows | length' "$f")
+        echo "  $name ($count windows, saved $date)"
+    done
+}
+
+show_layout() {
+    local name="${1:-$DEFAULT_LAYOUT}"
+    local layout_file="$LAYOUT_DIR/$name.json"
+
+    if [[ ! -f "$layout_file" ]]; then
+        echo "Error: Layout '$name' not found"
+        exit 1
+    fi
+
+    jq '.' "$layout_file"
+}
+
+case "${1:-}" in
+    save)
+        save_layout "$2"
+        ;;
+    restore)
+        restore_layout "$2"
+        ;;
+    list)
+        list_layouts
+        ;;
+    show)
+        show_layout "$2"
+        ;;
+    *)
+        usage
+        ;;
+esac
