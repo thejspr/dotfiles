@@ -41,12 +41,14 @@ save_layout() {
     local workspaces
     workspaces=$(niri msg -j workspaces)
 
-    # Build layout: map app_id to workspace index
+    # Build layout: map app_id to workspace index and output
     # For apps with multiple windows, include title for disambiguation
     local layout
     layout=$(echo "$windows" | jq --argjson ws "$workspaces" '
         # Create workspace id -> idx lookup
         ($ws | map({(.id | tostring): .idx}) | add) as $ws_lookup |
+        # Create workspace id -> output lookup
+        ($ws | map({(.id | tostring): .output}) | add) as $output_lookup |
 
         # Group windows by app_id to detect duplicates
         group_by(.app_id) |
@@ -57,6 +59,7 @@ save_layout() {
                     app_id: .app_id,
                     title: .title,
                     workspace_idx: $ws_lookup[.workspace_id | tostring],
+                    output: $output_lookup[.workspace_id | tostring],
                     is_floating: .is_floating
                 }
             else
@@ -65,6 +68,7 @@ save_layout() {
                     app_id: .app_id,
                     title: null,
                     workspace_idx: $ws_lookup[.workspace_id | tostring],
+                    output: $output_lookup[.workspace_id | tostring],
                     is_floating: .is_floating
                 }
             end
@@ -87,7 +91,7 @@ save_layout() {
     echo "Saved layout '$name' to $layout_file"
     echo ""
     echo "Windows saved:"
-    echo "$output" | jq -r '.windows[] | "  \(.app_id) -> workspace \(.workspace_idx)"'
+    echo "$output" | jq -r '.windows[] | "  \(.app_id) -> workspace \(.workspace_idx) on \(.output)"'
 }
 
 restore_layout() {
@@ -121,6 +125,9 @@ restore_layout() {
         local target_ws
         target_ws=$(echo "$saved_window" | jq -r '.workspace_idx')
 
+        local target_output
+        target_output=$(echo "$saved_window" | jq -r '.output // empty')
+
         # Find matching window(s)
         local matching_windows
         if [[ -n "$saved_title" ]]; then
@@ -148,7 +155,13 @@ restore_layout() {
             local window_title
             window_title=$(echo "$window" | jq -r '.title')
 
-            echo "  Moving $app_id (id=$window_id) to workspace $target_ws"
+            # Move to correct output first (if specified), then to workspace
+            if [[ -n "$target_output" ]]; then
+                echo "  Moving $app_id (id=$window_id) to output $target_output, workspace $target_ws"
+                niri msg action move-window-to-output "$target_output" --window-id "$window_id" --focus false 2>/dev/null || true
+            else
+                echo "  Moving $app_id (id=$window_id) to workspace $target_ws"
+            fi
             niri msg action move-window-to-workspace "$target_ws" --window-id "$window_id" --focus false 2>/dev/null || true
         done
     done
