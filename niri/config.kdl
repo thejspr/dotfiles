@@ -55,6 +55,7 @@ spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
 spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
 spawn-sh-at-startup "/home/jk/.config/niri/fix-monitors.sh"
 spawn-sh-at-startup "/home/jk/.config/niri/wallpaper.sh"
+spawn-sh-at-startup "gitify --password-store=gnome-libsecret"
 
 // Apps
 spawn-at-startup "obsidian"// "-enable-features=UseOzonePlatform" "-ozone-platform=wayland"
@@ -311,7 +312,7 @@ screenshot-path "~/Pictures/Screenshots/screenshot-%Y-%m-%d %H-%M-%S.png"
 // https://yalter.github.io/niri/Configuration:-Animations
 animations {
     // Uncomment to turn off all animations.
-    off
+    // off
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
     // slowdown 3.0
@@ -540,7 +541,7 @@ binds {
     // Makes the column "fill the rest of the space".
     Mod+Ctrl+F { expand-column-to-available-width; }
 
-    Mod+C { center-column; }
+    // Mod+C { center-column; }
 
     // Center all fully visible columns on screen.
     Mod+Ctrl+C { center-visible-columns; }
@@ -599,6 +600,7 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
+    Mod+c { spawn "qalculate-gtk"; }
 }
 
 switch-events {
@@ -618,6 +620,22 @@ window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     match app-id=r#"org\.gtk\.FileChooserDialog"#
     open-floating true
+}
+
+window-rule {
+	match app-id="qalculate-gtk"
+	open-floating true
+  // default-column-width { proportion 0.3; }
+  min-height 400
+  max-height 400
+  min-width 500
+  max-width 500
+}
+
+window-rule {
+	match app-id="gitify"
+	open-floating true
+  default-floating-position x=80 y=2 relative-to="top-right"
 }
 
 // window-rule {
