@@ -23,9 +23,6 @@ return require('lazy').setup({
       gitbrowse = { enabled = true },
       indent = {
         enabled = false,
-        animate = {
-          enabled = false
-        }
       },
       input = { enabled = true },
       notifier = { enabled = false },
@@ -105,7 +102,7 @@ return require('lazy').setup({
   },
 
   -- Ruby
-  'vim-ruby/vim-ruby',
+  -- 'vim-ruby/vim-ruby',
   'tpope/vim-rails',
 
   -- Msc. languages
@@ -177,13 +174,13 @@ return require('lazy').setup({
         nerd_font_variant = 'mono'
       },
 
-      completion = {
-        menu = {
-          auto_show = function(ctx)
-            return ctx.mode ~= "cmdline" or not vim.tbl_contains({ '/', '?' }, vim.fn.getcmdtype())
-          end,
-        },
-      },
+      -- completion = {
+      --   menu = {
+      --     auto_show = function(ctx)
+      --       return ctx.mode ~= "cmdline" or not vim.tbl_contains({ '/', '?' }, vim.fn.getcmdtype())
+      --     end,
+      --   },
+      -- },
 
       cmdline = {
         enabled = false,
@@ -256,8 +253,8 @@ return require('lazy').setup({
         always_show_bufferline = true,
         offsets = {
           {
-            filetype = 'neo-tree',
-            text = 'Neo-tree',
+            filetype = 'NvimTree',
+            text = 'NvimTree',
             highlight = 'Directory',
             text_align = 'left',
           },

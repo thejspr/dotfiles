@@ -142,7 +142,7 @@ augroup END
 " }}}
 
 " Ruby {{{
-nnoremap <leader>F :ALEFix<cr>
+"nnoremap <leader>F :ALEFix<cr>
 nnoremap <Leader>m :Emodel<space>
 nnoremap <Leader>c :Econtroller<space>
 " }}}
