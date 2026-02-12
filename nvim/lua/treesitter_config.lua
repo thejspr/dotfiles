@@ -1,11 +1,9 @@
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
-    disable = {},
   },
   indent = {
     enable = true,
-    disable = {},
   },
   endwise = {
     enable = true
@@ -26,7 +24,6 @@ require'nvim-treesitter.configs'.setup {
     "gotmpl",
     "html",
     "javascript",
-    -- "typescript",
     "json",
     "markdown",
     "python",
@@ -37,12 +34,6 @@ require'nvim-treesitter.configs'.setup {
     "csv",
     "elixir",
     "terraform",
-    -- "hyprlang",
     "rst",
   },
 }
-vim.filetype.add({
-  pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
-})
--- local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
--- parser_config.tsx.used_by = { "javascript", "typescript.tsx" }

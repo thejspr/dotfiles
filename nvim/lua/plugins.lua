@@ -13,23 +13,13 @@ return require('lazy').setup({
     priority = 1000,
     lazy = false,
     opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
       bigfile = { enabled = true },
       dashboard = { enabled = true },
-      explorer = { enabled = false },
       git = { enabled = true },
       gitbrowse = { enabled = true },
-      indent = {
-        enabled = false,
-      },
       input = { enabled = true },
-      notifier = { enabled = false },
-      picker = { enabled = false },
       quickfile = { enabled = true },
       scope = { enabled = true },
-      scroll = { enabled = false },
       statuscolumn = { enabled = true },
       words = { enabled = true },
     }
@@ -76,16 +66,6 @@ return require('lazy').setup({
   },
 
   -- AI
-  -- {
-  --   "zbirenbaum/copilot.lua",
-  --   lazy = false,
-  --   event = "InsertEnter",
-  --   cmd = "Copilot",
-  --   build = ":Copilot auth",
-  --   config = function()
-  --     require("copilot").setup({})
-  --   end,
-  -- },
   'github/copilot.vim',
   {
     "olimorris/codecompanion.nvim",
@@ -102,32 +82,9 @@ return require('lazy').setup({
   },
 
   -- Ruby
-  -- 'vim-ruby/vim-ruby',
   'tpope/vim-rails',
 
   -- Msc. languages
-  -- {
-  --   'dense-analysis/ale',
-  --   config = function()
-  --     vim.g.ale_lint_on_enter = 0
-  --     vim.g.ale_ruby_rubocop_auto_correct_all = 0
-  --
-  --     vim.g.ale_fixers = {
-  --       all = { 'remove_trailing_lines', 'trim_whitespace' },
-  --     }
-  --
-  --     vim.g.ale_linters = {
-  --       ruby = {'rubocop', 'ruby'},
-  --       json = {'jq'},
-  --       lua = {'lua_language_server'}
-  --     }
-  --   end
-  -- },
-  -- 'preservim/vim-markdown',
-  -- 'Vimjas/vim-python-pep8-indent',
-  -- 'pangloss/vim-javascript',
-  -- 'mattn/emmet-vim',
-  -- 'tpope/vim-ragtag',
   { 'fatih/vim-go', build = ':GoUpdateBinaries' },
 
   {
@@ -140,23 +97,17 @@ return require('lazy').setup({
     config = function()
       require('nvim-tree').setup {
         disable_netrw = true,
-        hijack_netrw = false,
       }
     end,
   },
   {
     "ibhagwan/fzf-lua",
-    -- optional for icon support
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    -- or if using mini.icons/mini.nvim
-    -- dependencies = { "echasnovski/mini.icons" },
     opts = {}
   },
   {
     'windwp/nvim-autopairs',
-    config = function()
-      require('nvim-autopairs').setup {map_cr=false}
-    end
+    opts = { map_cr = false },
   },
   {
     'saghen/blink.cmp',
@@ -174,14 +125,6 @@ return require('lazy').setup({
         nerd_font_variant = 'mono'
       },
 
-      -- completion = {
-      --   menu = {
-      --     auto_show = function(ctx)
-      --       return ctx.mode ~= "cmdline" or not vim.tbl_contains({ '/', '?' }, vim.fn.getcmdtype())
-      --     end,
-      --   },
-      -- },
-
       cmdline = {
         enabled = false,
       },
@@ -197,24 +140,20 @@ return require('lazy').setup({
   { 'RRethy/nvim-treesitter-endwise', event = 'VeryLazy' },
 
   -- UI & Themes
-
-  -- 'itchyny/lightline.vim',
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function()
-      require('lualine').setup({
-        sections = {
-          lualine_a = {
-            {
-              'filename',
-              file_status = true, -- displays file status (readonly status, modified status)
-              path = 2 -- 0 = just filename, 1 = relative path, 2 = absolute path
-            }
+    opts = {
+      sections = {
+        lualine_a = {
+          {
+            'filename',
+            file_status = true,
+            path = 2,
           }
         }
-      })
-    end
+      }
+    },
   },
   {
     "craftzdog/solarized-osaka.nvim",
@@ -237,9 +176,7 @@ return require('lazy').setup({
   {
     'lewis6991/gitsigns.nvim',
     event = 'VeryLazy',
-    config = function()
-      require('gitsigns').setup()
-    end
+    opts = {},
   },
   {
     'akinsho/bufferline.nvim',

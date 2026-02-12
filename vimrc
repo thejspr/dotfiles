@@ -41,15 +41,13 @@ set synmaxcol=140
 set scrolloff=5
 set splitbelow
 set splitright
-filetype plugin indent on
 
 " Resize splits when the win is resized
 au VimResized * wincmd =
 
-set autoread
 augroup autoRead
   autocmd!
-  autocmd FocusLost,BufEnter * silent! checktime
+  autocmd FocusGained,BufEnter * silent! checktime
 augroup END
 
 " Text Formatting
@@ -92,8 +90,6 @@ vnoremap > >gv
 " }}}
 
 " Searching {{{
-set hlsearch
-set incsearch
 set smartcase
 set showmatch
 
@@ -105,17 +101,11 @@ nnoremap <leader>, :noh<cr>
 nnoremap <leader>f :%s///<left><left>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
-autocmd BufReadPost *
-  \ if line("'\"") > 0 && line("'\"") <= line("$") |
-  \ exe "normal g`\"" |
-  \ endif
 " }}}
 
 augroup MyAutoCmds
   autocmd!
   autocmd FileType javascript.jsx setlocal commentstring={/*\ %s\ */}
-  autocmd FileType hyprlang setlocal commentstring=#\ %s
-  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType ruby setlocal indentkeys-=.
   autocmd BufReadPost *.html* setlocal formatoptions-=t
   autocmd BufRead,BufNewFile COMMIT_EDITMSG setlocal ft=diff spell!
@@ -142,7 +132,6 @@ augroup END
 " }}}
 
 " Ruby {{{
-"nnoremap <leader>F :ALEFix<cr>
 nnoremap <Leader>m :Emodel<space>
 nnoremap <Leader>c :Econtroller<space>
 " }}}
