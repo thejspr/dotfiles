@@ -617,6 +617,11 @@ window-rule {
 }
 
 window-rule {
+	match app-id="satty"
+	open-floating true
+}
+
+window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     match app-id=r#"org\.gtk\.FileChooserDialog"#
     open-floating true

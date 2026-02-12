@@ -14,6 +14,8 @@ $terraform\
 $os\
 $character"""
 
+# right_format = """$time"""
+
 add_newline = false
 
 [directory]
@@ -23,3 +25,7 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = "⎇  "
+
+[time]
+disabled = false
+format = '[$time]($style) '
