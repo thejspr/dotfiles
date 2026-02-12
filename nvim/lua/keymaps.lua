@@ -7,6 +7,7 @@ map('n', '<leader>t', ':FzfLua files<CR>', {})
 map('n', '<leader>r', ':FzfLua oldfiles<CR>', {})
 map('n', '<leader>g', ':FzfLua live_grep resume=true<CR>', {})
 map('n', '<leader>G', ':FzfLua live_grep<CR>', {})
+map('n', '<leader>a', ':FzfLua grep_cword<CR>', {})
 
 map('n', '<leader>e', ':NvimTreeFindFileToggle<CR>', {})
 

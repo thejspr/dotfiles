@@ -5,7 +5,6 @@ let g:auto_save_events = ["TextChanged", "FocusLost", "InsertLeave"]
 " }}}
 
 " File management & Git {{{
-nnoremap <leader>a :Grepper -tool rg -cword -noprompt<cr>
 let g:eunuch_no_maps = 1
 " }}}
 

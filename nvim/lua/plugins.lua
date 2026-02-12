@@ -3,7 +3,6 @@ return require('lazy').setup({
   -- Essentials
   'tpope/vim-repeat',
   '907th/vim-auto-save',
-  'mhinz/vim-grepper',
 
   'benmills/vimux',
   'vim-test/vim-test',
@@ -251,7 +250,6 @@ return require('lazy').setup({
       })
     end
   },
-  'catppuccin/nvim',
   {
     "craftzdog/solarized-osaka.nvim",
     lazy = false,
