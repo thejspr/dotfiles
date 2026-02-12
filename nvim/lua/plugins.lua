@@ -126,11 +126,11 @@ return require('lazy').setup({
   --     }
   --   end
   -- },
-  'preservim/vim-markdown',
+  -- 'preservim/vim-markdown',
   -- 'Vimjas/vim-python-pep8-indent',
   -- 'pangloss/vim-javascript',
   -- 'mattn/emmet-vim',
-  'tpope/vim-ragtag',
+  -- 'tpope/vim-ragtag',
   { 'fatih/vim-go', build = ':GoUpdateBinaries' },
 
   {
