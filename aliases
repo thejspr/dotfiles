@@ -19,8 +19,8 @@ alias tma='tmux attach'
 
 # edit existing command or create a new script
 function ew() {
-  if [[ -f `which "$1"` ]]; then
-    e `which "$1"`
+  if [[ -f $(whence -p "$1") ]]; then
+    e $(whence -p "$1")
   else
     echo "#!/usr/bin/env " > ~/clearhaus/bin/"$1"
     chmod +x ~/clearhaus/bin/"$1"
@@ -60,16 +60,6 @@ alias aspecs='fspecs && specs'
 alias fails='rspec --only-failures'
 
 #git
-# unalias g
-# g() {
-#   if [[ $# -eq 0 ]]; then
-#     command hub status -sb
-#   else
-#     command hub "$@";
-#   fi
-# }
-unalias gbr 2>/dev/null # exists in bin
-[ "$(command -v gcam)" ] && unalias gcam
 gcam() {
   command git add -A;
   command git commit -m "$*";
@@ -93,7 +83,6 @@ alias gl='git l'
 alias gp='git push'
 alias gpf='FORCE=1 git push --force-with-lease --no-verify'
 alias gs='git status -sb'
-alias lg='lazygit'
 alias lz='lazygit'
 
 #msc
@@ -107,7 +96,7 @@ alias -g G='|rg'
 [ "$(command -v bat)" ] && alias cat='bat'
 
 #system and files editing
-alias ea='e ~/.aliases'
+alias ea='e ~/dotfiles/aliases'
 alias eaa='e ~/.config/alacritty/alacritty.toml'
 alias egg='e ~/.config/ghostty/config'
 alias eg='e ~/.gitconfig'
@@ -122,8 +111,8 @@ alias sr='exec zsh'
 # Create a new worktree and branch from within current git directory.
 gawc() {
   if [[ -z "$1" ]]; then
-    echo "Usage: ga [branch name]"
-    exit 1
+    echo "Usage: gawc [branch name]"
+    return 1
   fi
 
   local branch="$1"

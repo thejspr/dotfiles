@@ -1,8 +1,6 @@
 export EDITOR='nvim'
 export BUNDLER_EDITOR='nvim'
-export PATH="$PATH:$PWD/bin:$HOME/.cargo/bin:$HOME/bin:$HOME/clearhaus/bin:$HOME/go/bin"
-export PATH=/home/jk/.opencode/bin:$PATH
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.opencode/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/bin:$HOME/clearhaus/bin:$HOME/go/bin:$PATH"
 export LESS='-F -g -i -M -R -S -w -X'
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
@@ -48,8 +46,3 @@ fi
 
 [ -x "$(command -v atuin)" ] && eval "$(atuin init zsh --disable-up-arrow)"
 eval "$(zoxide init zsh)"
-# eval "$(gh copilot alias -- zsh)" # SLOW!
-
-# aider-ai
-# export PATH="/home/jesper/.local/bin:$PATH"
-# export AIDER_EDITOR=nvim
