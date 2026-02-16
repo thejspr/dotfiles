@@ -6,7 +6,7 @@ alias open='xdg-open'
 alias ghs='gh copilot suggest'
 alias ghe='gh copilot explain'
 alias en='e ~/.config/niri/config.kdl'
-alias cl='claude'
+cl() { claude "$@"; echo "\n--- Changes made ---"; git status -sb && git diff --stat }
 alias cc='claude --continue'
 alias cld='claude --dangerously-skip-permissions'
 alias ccd='claude --continue --dangerously-skip-permissions'
@@ -60,6 +60,8 @@ alias aspecs='fspecs && specs'
 alias fails='rspec --only-failures'
 
 #git
+alias g='git'
+gsd() { git status -sb && echo "---" && git diff --stat && git diff }
 gcam() {
   command git add -A;
   command git commit -m "$*";
@@ -69,6 +71,13 @@ gpush() {
   command git commit -m "$*";
   command git push
 }
+alias grestore='git restore . --recurse-submodules'
+alias bump-almanac='git submodule update --remote vendor/gems/almanac'
+alias trigger-build='git commit --allow-empty -m "Trigger build" && gp'
+alias fix-dns='sudo systemctl restart systemd-resolved.service'
+alias gpr='g pc && g browse'
+bump-sub() { git submodule update --remote "vendor/gems/$1" && gcam "bump $1" && gp }
+load-test() { local n=$1; shift; for i in $(seq 1 "$n"); do ap "$@" & done; wait }
 alias cp-head='git rev-parse --short HEAD | pbcopy'
 alias b='gbr'
 alias gb='git branch'
