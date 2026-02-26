@@ -18,7 +18,6 @@
   autoSetupRemote = true
 [alias]
   a      = add --all
-  aa     = add -A
   ac     = !git add . && git commit -am
   amend  = commit -a --amend
   amendf = commit -a --amend --no-edit
@@ -85,19 +84,6 @@
   ff = only
 [interactive]
 	diffFilter = diff-so-fancy --patch
-; [color "diff-highlight"]
-; 	oldNormal = red bold
-; 	oldHighlight = red bold 52
-; 	newNormal = green bold
-; 	newHighlight = green bold 22
-; [color "diff"]
-; 	meta = 11
-; 	frag = magenta bold
-; 	func = 146 bold
-; 	commit = yellow bold
-; 	old = red bold
-; 	new = green bold
-; 	whitespace = red reverse
 [init]
 	defaultBranch = master
 [credential "https://github.com"]

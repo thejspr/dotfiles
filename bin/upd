@@ -6,7 +6,7 @@ branch="$(git rev-parse --abbrev-ref HEAD)"
 [ -d .git ] && git co master && git pull && git remote prune origin && git bclean
 
 # runtimes
-[ -f .tool-versions ] && asdf install
+[ -f .tool-versions ] && mise install
 
 # dependencies
 [ -f Gemfile ] && bundle install

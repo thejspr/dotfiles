@@ -20,7 +20,6 @@ FILES = {
   'niri' => '.config/niri',
   'nvim' => '.config/nvim',
   'waybar' => '.config/waybar',
-  'alacritty.toml' => '.config/alacritty/alacritty.toml',
   'ghostty' => '.config/ghostty',
   'starship.toml' => '.config/starship.toml',
   'swaylock' => '.config/swaylock',

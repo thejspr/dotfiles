@@ -49,7 +49,7 @@
   "cpu": {
     "interval": 5,
     "format": "󰍛",
-    "on-click": "alacritty --class=Float -e btop"
+    "on-click": "ghostty -e btop"
   },
   "clock": {
     "format": "{:L%d %b %H:%M}",
@@ -99,7 +99,7 @@
   },
   "pulseaudio": {
     "format": "{icon}",
-    "on-click": "alacritty --class=Float -e wiremix",
+    "on-click": "ghostty -e wiremix",
     "on-click-right": "pamixer -t",
     "tooltip-format": "Playing at {volume}%",
     "scroll-step": 10,

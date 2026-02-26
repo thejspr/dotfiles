@@ -55,7 +55,7 @@ spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
 spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
 spawn-sh-at-startup "/home/jk/.config/niri/fix-monitors.sh"
 spawn-sh-at-startup "/home/jk/.config/niri/wallpaper.sh"
-spawn-sh-at-startup "gitify --password-store=gnome-libsecret"
+// spawn-sh-at-startup "gitify --password-store=gnome-libsecret"
 
 // Apps
 spawn-at-startup "obsidian"// "-enable-features=UseOzonePlatform" "-ozone-platform=wayland"

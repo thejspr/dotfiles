@@ -106,7 +106,6 @@ alias -g G='|rg'
 
 #system and files editing
 alias ea='e ~/dotfiles/aliases'
-alias eaa='e ~/.config/alacritty/alacritty.toml'
 alias egg='e ~/.config/ghostty/config'
 alias eg='e ~/.gitconfig'
 alias es='e ~/.ssh/config'
