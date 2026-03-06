@@ -17,3 +17,5 @@ vim/backup/
 development.key
 go-cache/
 nginx/
+nvim.log
+.pnp*

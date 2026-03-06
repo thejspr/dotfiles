@@ -82,8 +82,8 @@
 	cmd = nvim -d \"$LOCAL\" \"$MERGED\" \"$BASE\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd J\"
 [pull]
   ff = only
-[interactive]
-	diffFilter = diff-so-fancy --patch
+; [interactive]
+; 	diffFilter = diff-so-fancy --patch
 [init]
 	defaultBranch = master
 [credential "https://github.com"]

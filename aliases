@@ -6,7 +6,7 @@ alias open='xdg-open'
 alias ghs='gh copilot suggest'
 alias ghe='gh copilot explain'
 alias en='e ~/.config/niri/config.kdl'
-cl() { claude "$@"; echo "\n--- Changes made ---"; git status -sb && git diff --stat }
+# TODO: Switch to --enable-auto-mode
 alias cc='claude --continue'
 alias cld='claude --dangerously-skip-permissions'
 alias ccd='claude --continue --dangerously-skip-permissions'
