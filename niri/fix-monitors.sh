@@ -1,10 +1,11 @@
 #!/bin/bash
 
-# If `niri msg outputs` include DELL U3223QE, turn it off and on again
-if niri msg outputs | grep -q "DELL U3223QE"; then
-    echo "DELL U3223QE detected"
+# If DELL U3223QE is connected and enabled, turn it off and on again
+if niri msg -j outputs | jq -e 'to_entries[] | select(.value.model == "DELL U3223QE" and .value.current_mode != null)' > /dev/null 2>&1; then
+    echo "DELL U3223QE detected and enabled"
 else
-    echo "DELL U3223QE not detected, exiting"
+    echo "DELL U3223QE not detected or not enabled, exiting"
+    niri msg output "Dell Inc. DELL U3223QE JVRK1H3" off
     exit 1
 fi
 
