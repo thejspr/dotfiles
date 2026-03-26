@@ -10,15 +10,15 @@ output "Lenovo Group Limited 0x40A9 Unknown" {
 }
 output "Dell Inc. DELL U3223QE JVRK1H3" {
     mode "3840x2160@59.996"
-    scale 1.2
+    scale 1
     transform "normal"
-    position x=2216 y=0
+    position x=2880 y=0
 }
 output "Dell Inc. DELL S2722QC H9BQLD3" {
     mode "3840x2160@30.00"
-    scale 1.2
+    scale 1
     transform "normal"
-    position x=5416 y=0
+    position x=6720 y=0
 }
 // work
 output "Samsung Display Corp. 0x419F Unknown" {
@@ -34,7 +34,7 @@ output "Samsung Electric Company LS27A80 H4ZT100368" {
     position x=2880 y=0
 }
 output "Samsung Electric Company LS27A80 H4ZRC00472" {
-    mode "3840x2160@60.00"
+    mode "3840x2160@30.00"
     // scale 1.4
     // position x=5416 y=0
     scale 1
