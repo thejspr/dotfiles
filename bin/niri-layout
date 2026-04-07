@@ -115,7 +115,7 @@ restore_layout() {
     echo ""
 
     # For each saved window config, find matching current window and move it
-    echo "$saved_layout" | jq -c '.windows[]' | while read -r saved_window; do
+    echo "$saved_layout" | jq -c '.windows | sort_by(.workspace_idx) | .[]' | while read -r saved_window; do
         local app_id
         app_id=$(echo "$saved_window" | jq -r '.app_id')
 
