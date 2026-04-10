@@ -5,7 +5,6 @@ vim/UltiSnips
 *.bak
 nvim/plugin/
 nvim/lazy-lock.json
-hypr/local.conf
 .stversions
 .stfolder
 bin/asdf

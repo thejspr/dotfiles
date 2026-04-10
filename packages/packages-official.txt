@@ -2,7 +2,6 @@ accountsservice
 adobe-source-han-sans-cn-fonts
 adobe-source-han-sans-jp-fonts
 adobe-source-han-sans-kr-fonts
-alacritty
 alsa-firmware
 alsa-plugins
 alsa-utils
@@ -22,7 +21,6 @@ brightnessctl
 btop
 btrfs-assistant
 btrfs-progs
-cachyos-alacritty-config
 cachyos-fish-config
 cachyos-hello
 cachyos-hooks
