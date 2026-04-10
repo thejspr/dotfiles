@@ -1,9 +1,6 @@
 return require('lazy').setup({
 
   -- Essentials
-  'tpope/vim-repeat',
-  '907th/vim-auto-save',
-
   'benmills/vimux',
   'vim-test/vim-test',
   'christoomey/vim-tmux-navigator',
@@ -43,13 +40,9 @@ return require('lazy').setup({
   },
 
   -- Text
-  'tpope/vim-surround',
   'mg979/vim-visual-multi',
 
-  -- File management & Git
-  'tpope/vim-eunuch', -- File command helpers: Rename, Delete etc.
-  'pbrisbin/vim-mkdir', -- Automatically create new folders for files
-
+  -- Git
   {
     'kdheepak/lazygit.nvim',
     cmd = {
@@ -66,7 +59,6 @@ return require('lazy').setup({
   },
 
   -- AI
-  'github/copilot.vim',
   {
     "olimorris/codecompanion.nvim",
     opts = {
@@ -162,17 +154,6 @@ return require('lazy').setup({
     opts = {},
   },
 
-  {
-    "f-person/git-blame.nvim",
-    event = "VeryLazy",
-    opts = {
-      enabled = false,  -- if you want to enable the plugin
-      message_template = " <summary> • <date> • <author> • <<sha>>", -- template for the blame message, check the Message template section for more options
-      date_format = "%m-%d-%Y %H:%M:%S", -- template for the date, check Date format section for more options
-      virtual_text_column = 1,  -- virtual text start column, check Start virtual text at column section for more options
-      message_when_not_committed = "", -- message when the file is not committed
-    } 
-  },
   {
     'lewis6991/gitsigns.nvim',
     event = 'VeryLazy',

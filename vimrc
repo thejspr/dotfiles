@@ -1,11 +1,8 @@
 " AutoSave {{{
-let g:auto_save = 1
-let g:auto_save_silent = 0
-let g:auto_save_events = ["TextChanged", "FocusLost", "InsertLeave"]
-" }}}
-
-" File management & Git {{{
-let g:eunuch_no_maps = 1
+augroup AutoSave
+  autocmd!
+  autocmd TextChanged,FocusLost,InsertLeave * silent! update
+augroup END
 " }}}
 
 " Msc languages {{{
