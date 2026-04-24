@@ -38,3 +38,8 @@ fi
 
 [ -x "$(command -v atuin)" ] && eval "$(atuin init zsh --disable-up-arrow)"
 eval "$(zoxide init zsh)"
+
+random () {
+	'cat' /dev/random | base64 | sed -E --expression 's/[^a-zA-Z0-9]//g' | tr --delete '\n' | head -c ${1:="32"}
+	echo
+}

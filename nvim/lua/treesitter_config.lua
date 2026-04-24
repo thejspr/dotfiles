@@ -1,39 +1,34 @@
-require'nvim-treesitter.configs'.setup {
-  highlight = {
-    enable = true,
-  },
-  indent = {
-    enable = true,
-  },
-  endwise = {
-    enable = true
-  },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = '<CR>',
-      scope_incremental = '<CR>',
-      node_incremental = '<TAB>',
-      node_decremental = '<S-TAB>',
-    },
-  },
-  ensure_installed = {
-    "bash",
-    "css",
-    "go",
-    "gotmpl",
-    "html",
-    "javascript",
-    "json",
-    "markdown",
-    "python",
-    "ruby",
-    "scss",
-    "sql",
-    "yaml",
-    "csv",
-    "elixir",
-    "terraform",
-    "rst",
-  },
-}
+local ts = require('nvim-treesitter')
+
+ts.setup({
+  install_dir = vim.fn.stdpath('data') .. '/site',
+})
+
+ts.install({
+  'bash',
+  'css',
+  'go',
+  'gotmpl',
+  'html',
+  'javascript',
+  'json',
+  'markdown',
+  'python',
+  'ruby',
+  'scss',
+  'sql',
+  'yaml',
+  'csv',
+  'elixir',
+  'terraform',
+  'rst',
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  callback = function(args)
+    local buf = args.buf
+    if pcall(vim.treesitter.start, buf) then
+      vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end
+  end,
+})

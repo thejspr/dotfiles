@@ -47,7 +47,7 @@ environment {
   QT_QPA_PLATFORM "wayland"
   MOZ_ENABLE_WAYLAND "1"
   XDG_CURRENT_DESKTOP "niri"
-  DISPLAY ":0"
+  // DISPLAY ":0"
   ELECTRON_OZONE_PLATFORM_HINT "auto"
 }
 

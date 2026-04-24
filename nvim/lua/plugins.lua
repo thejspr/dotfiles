@@ -127,9 +127,13 @@ return require('lazy').setup({
     opts_extend = { "sources.default" }
   },
 
-  -- Treesitter
-  { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
-  { 'RRethy/nvim-treesitter-endwise', event = 'VeryLazy' },
+  -- Treesitter (main branch — required for Neovim 0.11+)
+  {
+    'nvim-treesitter/nvim-treesitter',
+    branch = 'main',
+    lazy = false,
+    build = ':TSUpdate',
+  },
 
   -- UI & Themes
   {
