@@ -57,6 +57,22 @@ return require('lazy').setup({
       'nvim-lua/plenary.nvim',
     },
   },
+  {
+    "f-person/git-blame.nvim",
+    -- load the plugin at startup
+    event = "VeryLazy",
+    -- Because of the keys part, you will be lazy loading this plugin.
+    -- The plugin will only load once one of the keys is used.
+    -- If you want to load the plugin at startup, add something like event = "VeryLazy",
+    -- or lazy = false. One of both options will work.
+    opts = {
+        enabled = true,
+        display_virtual_text = false,
+        message_template = " <summary> • <date> • <author> • <<sha>>",
+        date_format = "%m-%d-%Y %H:%M:%S",
+        virtual_text_column = 1,
+    },
+  },
 
   -- AI
   {
@@ -71,6 +87,12 @@ return require('lazy').setup({
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
     },
+  },
+  {
+    'github/copilot.vim',
+    init = function()
+      vim.g.copilot_npx_command = 0
+    end,
   },
 
   -- Ruby
