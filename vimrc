@@ -24,13 +24,6 @@ nnoremap <silent> <leader>q :TestLast<CR>
 
 " UI {{{
 set termguicolors
-if filereadable(expand("~/.darkmode"))
-  set background=dark
-  colorscheme solarized-osaka
-else
-  set background=light
-  colorscheme solarized-osaka
-endif
 
 set number
 set colorcolumn=90
