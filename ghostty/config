@@ -48,7 +48,7 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 # initial-command = tmux new-session
-theme = dark:Solarized Osaka Night, light:Solarized Osaka Day
+theme = dark:Solarized Osaka Night, light:iTerm2 Solarized Light
 font-family = CaskaydiaMono NF Regular
 font-size = 14
 keybind = performable:ctrl+c=copy_to_clipboard
