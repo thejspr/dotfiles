@@ -19,7 +19,7 @@ fi
 # Alias and function definitions.
 . ~/dotfiles/aliases
 
-if [ -f "~/clearhaus" ]; then
+if [ -d ~/clearhaus ]; then
   . ~/clearhaus/.secrets
   . ~/clearhaus/.terraform-helpers
 fi

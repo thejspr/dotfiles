@@ -1,7 +1,7 @@
 {
   "reload_style_on_change": true,
   "layer": "top",
-  "position": "top",
+  "position": "bottom",
   "spacing": 10,
   // "height": 26,
   // "modules-left": ["niri/workspaces", "wlr/taskbar"],
