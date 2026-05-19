@@ -1,0 +1,11 @@
+@define-color bg            #0f1117;
+@define-color surface       #1e222a;
+@define-color text          #c0c0c0;
+@define-color text-bright   #e0e0e0;
+@define-color accent        #00ac89;
+@define-color accent-fg     #0f1117;
+@define-color hover         #0d3531;
+@define-color critical-bg   #e65100;
+@define-color critical-fg   #ffffff;
+
+@import url("base.css");

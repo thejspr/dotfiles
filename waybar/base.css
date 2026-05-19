@@ -1,0 +1,106 @@
+* {
+    font-family: "Fira Sans Semibold", "Font Awesome 6 Free", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+}
+
+window#waybar {
+    background-color: @bg;
+    font-size: 14px;
+    border-radius: 0px;
+    margin: 0px;
+    padding: 0;
+    margin: 0;
+}
+
+/* Right-most: Clock */
+#clock {
+    font-size: 14px;
+    background-color: @surface;
+    color: @text;
+    border-radius: 0px;
+    padding: 0px 8px;
+}
+
+/* Active window title */
+#window {
+    font-size: 14px;
+    color: @text-bright;
+    border-radius: 0px;
+    padding: 4px 12px;
+    background-color: @surface;
+}
+
+/* Workspace container */
+#niri-workspaces {
+    background: @surface;
+    font-weight: bold;
+    border-radius: 0px;
+    font-size: 8px;
+    color: @text-bright;
+}
+
+/* Individual workspace buttons */
+#niri-workspaces button {
+    border-radius: 0px;
+    font-size: 8px;
+}
+
+#workspaces button.active {
+    border-radius: 0px;
+    color: @accent-fg;
+    background: @accent;
+}
+
+#workspaces button:hover {
+    border-radius: 0px;
+    background: @hover;
+}
+
+/* Tooltips */
+tooltip {
+    border-radius: 12px;
+    background-color: @bg;
+    color: @text;
+    padding: 4px 8px;
+}
+
+/* Taskbar */
+#taskbar {
+    background-color: @surface;
+    margin: 0px;
+    border-radius: 0px;
+    font-weight: normal;
+}
+
+/* All system info modules */
+#backlight,
+#pulseaudio,
+#network,
+#bluetooth,
+#battery,
+#tray,
+#custom-updates,
+#language,
+#cpu,
+#custom-powermenu,
+#custom-notification {
+    background-color: @surface;
+    font-size: 14px;
+    font-weight: 800;
+    color: @text;
+    border-radius: 0px;
+    padding: 4px 10px;
+}
+
+/* Battery critical warning */
+#battery.critical:not(.charging) {
+    background-color: @critical-bg;
+    color: @critical-fg;
+    animation: blink 0.5s linear infinite alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: @bg;
+        color: @critical-fg;
+    }
+}

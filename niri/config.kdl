@@ -51,7 +51,7 @@ environment {
   ELECTRON_OZONE_PLATFORM_HINT "auto"
 }
 
-spawn-at-startup "waybar"
+spawn-at-startup "/home/jk/dotfiles/waybar/waybar.sh"
 spawn-at-startup "mako"
 spawn-at-startup "sunsetr"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
